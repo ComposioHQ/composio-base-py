@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource payments', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('createSession: only required params', async () => {
+  test('createSession: only required params', async () => {
     const responsePromise = client.api.payments.createSession({ applyDiscount: true, plan: 'HOBBY' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,13 +19,11 @@ describe('resource payments', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('createSession: required and optional params', async () => {
+  test('createSession: required and optional params', async () => {
     const response = await client.api.payments.createSession({ applyDiscount: true, plan: 'HOBBY' });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('manageSubscription', async () => {
+  test('manageSubscription', async () => {
     const responsePromise = client.api.payments.manageSubscription();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -37,8 +34,7 @@ describe('resource payments', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('manageSubscription: request options and params are passed correctly', async () => {
+  test('manageSubscription: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.api.payments.manageSubscription({}, { path: '/_stainless_unknown_path' }),

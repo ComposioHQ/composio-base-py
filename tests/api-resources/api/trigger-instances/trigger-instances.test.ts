@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource triggerInstances', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('listActive', async () => {
+  test('listActive', async () => {
     const responsePromise = client.api.triggerInstances.listActive();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource triggerInstances', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('listActive: request options and params are passed correctly', async () => {
+  test('listActive: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.api.triggerInstances.listActive(
@@ -39,8 +37,7 @@ describe('resource triggerInstances', () => {
     ).rejects.toThrow(ComposioSDK.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('removeUpsert', async () => {
+  test('removeUpsert', async () => {
     const responsePromise = client.api.triggerInstances.removeUpsert('slug');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -51,8 +48,7 @@ describe('resource triggerInstances', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('updateStatus: only required params', async () => {
+  test('updateStatus: only required params', async () => {
     const responsePromise = client.api.triggerInstances.updateStatus('enable', { slug: 'slug' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -63,13 +59,11 @@ describe('resource triggerInstances', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('updateStatus: required and optional params', async () => {
+  test('updateStatus: required and optional params', async () => {
     const response = await client.api.triggerInstances.updateStatus('enable', { slug: 'slug' });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('upsert: only required params', async () => {
+  test('upsert: only required params', async () => {
     const responsePromise = client.api.triggerInstances.upsert('slug', {
       connectedAuthId: 'connectedAuthId',
       triggerConfig: { foo: 'bar' },
@@ -83,8 +77,7 @@ describe('resource triggerInstances', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('upsert: required and optional params', async () => {
+  test('upsert: required and optional params', async () => {
     const response = await client.api.triggerInstances.upsert('slug', {
       connectedAuthId: 'connectedAuthId',
       triggerConfig: { foo: 'bar' },

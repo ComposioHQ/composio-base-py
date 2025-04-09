@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource admin', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('identify: only required params', async () => {
+  test('identify: only required params', async () => {
     const responsePromise = client.api.admin.identify({ hash: 'hash' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource admin', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('identify: required and optional params', async () => {
+  test('identify: required and optional params', async () => {
     const response = await client.api.admin.identify({ hash: 'hash', adminToken: 'adminToken' });
   });
 });

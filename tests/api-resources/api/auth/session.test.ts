@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource session', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('logout', async () => {
+  test('logout', async () => {
     const responsePromise = client.api.auth.session.logout();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource session', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveInfo', async () => {
+  test('retrieveInfo', async () => {
     const responsePromise = client.api.auth.session.retrieveInfo();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

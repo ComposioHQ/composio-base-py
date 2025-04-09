@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource actionExecution', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('log: only required params', async () => {
+  test('log: only required params', async () => {
     const responsePromise = client.api.internal.actionExecution.log({ cursor: 0 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource actionExecution', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('log: required and optional params', async () => {
+  test('log: required and optional params', async () => {
     const response = await client.api.internal.actionExecution.log({
       cursor: 0,
       case_sensitive: true,
@@ -32,8 +30,7 @@ describe('resource actionExecution', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveFields', async () => {
+  test('retrieveFields', async () => {
     const responsePromise = client.api.internal.actionExecution.retrieveFields();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -44,8 +41,7 @@ describe('resource actionExecution', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveLog', async () => {
+  test('retrieveLog', async () => {
     const responsePromise = client.api.internal.actionExecution.retrieveLog('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

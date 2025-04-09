@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource teamMembers', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('update: only required params', async () => {
+  test('update: only required params', async () => {
     const responsePromise = client.api.teamMembers.update('tm_123456', {
       email: 'dev@stainless.com',
       name: 'name',
@@ -24,8 +23,7 @@ describe('resource teamMembers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('update: required and optional params', async () => {
+  test('update: required and optional params', async () => {
     const response = await client.api.teamMembers.update('tm_123456', {
       email: 'dev@stainless.com',
       name: 'name',
@@ -33,8 +31,7 @@ describe('resource teamMembers', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list', async () => {
+  test('list', async () => {
     const responsePromise = client.api.teamMembers.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -45,8 +42,7 @@ describe('resource teamMembers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('invite: only required params', async () => {
+  test('invite: only required params', async () => {
     const responsePromise = client.api.teamMembers.invite({
       email: 'dev@stainless.com',
       name: 'name',
@@ -61,8 +57,7 @@ describe('resource teamMembers', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('invite: required and optional params', async () => {
+  test('invite: required and optional params', async () => {
     const response = await client.api.teamMembers.invite({
       email: 'dev@stainless.com',
       name: 'name',
@@ -71,8 +66,7 @@ describe('resource teamMembers', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('remove', async () => {
+  test('remove', async () => {
     const responsePromise = client.api.teamMembers.remove('tm_123456');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

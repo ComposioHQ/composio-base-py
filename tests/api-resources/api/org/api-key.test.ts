@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource apiKey', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve', async () => {
+  test('retrieve', async () => {
     const responsePromise = client.api.org.apiKey.retrieve();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource apiKey', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('regenerate', async () => {
+  test('regenerate', async () => {
     const responsePromise = client.api.org.apiKey.regenerate();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

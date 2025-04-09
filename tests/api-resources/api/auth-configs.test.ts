@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource authConfigs', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('create: only required params', async () => {
+  test('create: only required params', async () => {
     const responsePromise = client.api.authConfigs.create({ toolkit: { slug: 'slug' } });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,16 +19,14 @@ describe('resource authConfigs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('create: required and optional params', async () => {
+  test('create: required and optional params', async () => {
     const response = await client.api.authConfigs.create({
       toolkit: { slug: 'slug' },
       auth_config: { type: 'use_composio_managed_auth', credentials: { foo: 'string' }, name: 'name' },
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve', async () => {
+  test('retrieve', async () => {
     const responsePromise = client.api.authConfigs.retrieve('nanoid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -40,8 +37,7 @@ describe('resource authConfigs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('update: only required params', async () => {
+  test('update: only required params', async () => {
     const responsePromise = client.api.authConfigs.update('nanoid', { auth_config: {} });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -52,15 +48,13 @@ describe('resource authConfigs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('update: required and optional params', async () => {
+  test('update: required and optional params', async () => {
     const response = await client.api.authConfigs.update('nanoid', {
       auth_config: { credentials: { foo: 'bar' } },
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list', async () => {
+  test('list', async () => {
     const responsePromise = client.api.authConfigs.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -71,8 +65,7 @@ describe('resource authConfigs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list: request options and params are passed correctly', async () => {
+  test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.api.authConfigs.list(
@@ -82,8 +75,7 @@ describe('resource authConfigs', () => {
     ).rejects.toThrow(ComposioSDK.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('delete', async () => {
+  test('delete', async () => {
     const responsePromise = client.api.authConfigs.delete('nanoid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -94,8 +86,7 @@ describe('resource authConfigs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('updateStatus: only required params', async () => {
+  test('updateStatus: only required params', async () => {
     const responsePromise = client.api.authConfigs.updateStatus('ENABLED', { nanoid: 'nanoid' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -106,8 +97,7 @@ describe('resource authConfigs', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('updateStatus: required and optional params', async () => {
+  test('updateStatus: required and optional params', async () => {
     const response = await client.api.authConfigs.updateStatus('ENABLED', { nanoid: 'nanoid' });
   });
 });

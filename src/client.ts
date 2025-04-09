@@ -34,7 +34,7 @@ type Environment = keyof typeof environments;
 
 export interface ClientOptions {
   /**
-   * Defaults to process.env['COMPOSIO_SDK_API_KEY'].
+   * Defaults to process.env['COMPOSIO_API_KEY'].
    */
   apiKey?: string | null | undefined;
 
@@ -136,7 +136,7 @@ export class ComposioSDK {
   /**
    * API Client for interfacing with the Composio SDK API.
    *
-   * @param {string | null | undefined} [opts.apiKey=process.env['COMPOSIO_SDK_API_KEY'] ?? null]
+   * @param {string | null | undefined} [opts.apiKey=process.env['COMPOSIO_API_KEY'] ?? null]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['COMPOSIO_SDK_BASE_URL'] ?? http://localhost:9901] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -148,7 +148,7 @@ export class ComposioSDK {
    */
   constructor({
     baseURL = readEnv('COMPOSIO_SDK_BASE_URL'),
-    apiKey = readEnv('COMPOSIO_SDK_API_KEY') ?? null,
+    apiKey = readEnv('COMPOSIO_API_KEY') ?? null,
     ...opts
   }: ClientOptions = {}) {
     const options: ClientOptions = {

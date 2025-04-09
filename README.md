@@ -26,7 +26,7 @@ The full API of this library can be found in [api.md](api.md).
 import ComposioSDK from 'composio-sdk';
 
 const client = new ComposioSDK({
-  apiKey: process.env['COMPOSIO_SDK_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['COMPOSIO_API_KEY'], // This is the default and can be omitted
   environment: 'environment_1', // or 'production' | 'environment_2'; defaults to 'production'
 });
 
@@ -48,7 +48,7 @@ This library includes TypeScript definitions for all request params and response
 import ComposioSDK from 'composio-sdk';
 
 const client = new ComposioSDK({
-  apiKey: process.env['COMPOSIO_SDK_API_KEY'], // This is the default and can be omitted
+  apiKey: process.env['COMPOSIO_API_KEY'], // This is the default and can be omitted
   environment: 'environment_1', // or 'production' | 'environment_2'; defaults to 'production'
 });
 

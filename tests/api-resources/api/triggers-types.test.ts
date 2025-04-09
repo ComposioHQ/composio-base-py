@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource triggersTypes', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve', async () => {
+  test('retrieve', async () => {
     const responsePromise = client.api.triggersTypes.retrieve('slug');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource triggersTypes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list', async () => {
+  test('list', async () => {
     const responsePromise = client.api.triggersTypes.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -32,8 +30,7 @@ describe('resource triggersTypes', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list: request options and params are passed correctly', async () => {
+  test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.api.triggersTypes.list(
@@ -49,8 +46,7 @@ describe('resource triggersTypes', () => {
     ).rejects.toThrow(ComposioSDK.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveEnum', async () => {
+  test('retrieveEnum', async () => {
     const responsePromise = client.api.triggersTypes.retrieveEnum();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

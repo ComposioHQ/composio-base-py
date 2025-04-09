@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource execute', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('input: only required params', async () => {
+  test('input: only required params', async () => {
     const responsePromise = client.api.tools.execute.input('actionName', { text: 'text' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource execute', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('input: required and optional params', async () => {
+  test('input: required and optional params', async () => {
     const response = await client.api.tools.execute.input('actionName', {
       text: 'text',
       customDescription: 'customDescription',
@@ -30,8 +28,7 @@ describe('resource execute', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('proxy: only required params', async () => {
+  test('proxy: only required params', async () => {
     const responsePromise = client.api.tools.execute.proxy({ endpoint: 'endpoint', method: 'GET' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -42,8 +39,7 @@ describe('resource execute', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('proxy: required and optional params', async () => {
+  test('proxy: required and optional params', async () => {
     const response = await client.api.tools.execute.proxy({
       endpoint: 'endpoint',
       method: 'GET',
@@ -53,8 +49,7 @@ describe('resource execute', () => {
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('run', async () => {
+  test('run', async () => {
     const responsePromise = client.api.tools.execute.run('action');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -65,8 +60,7 @@ describe('resource execute', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('run: request options and params are passed correctly', async () => {
+  test('run: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.api.tools.execute.run(

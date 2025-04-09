@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource toolkits', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve', async () => {
+  test('retrieve', async () => {
     const responsePromise = client.api.toolkits.retrieve('slug');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource toolkits', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list', async () => {
+  test('list', async () => {
     const responsePromise = client.api.toolkits.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -32,8 +30,7 @@ describe('resource toolkits', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list: request options and params are passed correctly', async () => {
+  test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.api.toolkits.list(
@@ -43,8 +40,7 @@ describe('resource toolkits', () => {
     ).rejects.toThrow(ComposioSDK.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveCategories', async () => {
+  test('retrieveCategories', async () => {
     const responsePromise = client.api.toolkits.retrieveCategories();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

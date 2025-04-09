@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource webhook', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve: only required params', async () => {
+  test('retrieve: only required params', async () => {
     const responsePromise = client.api.org.project.webhook.retrieve({ type: 'trigger' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,13 +19,11 @@ describe('resource webhook', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve: required and optional params', async () => {
+  test('retrieve: required and optional params', async () => {
     const response = await client.api.org.project.webhook.retrieve({ type: 'trigger' });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('update: only required params', async () => {
+  test('update: only required params', async () => {
     const responsePromise = client.api.org.project.webhook.update({
       type: 'trigger',
       webhook_url: 'https://example.com',
@@ -40,16 +37,14 @@ describe('resource webhook', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('update: required and optional params', async () => {
+  test('update: required and optional params', async () => {
     const response = await client.api.org.project.webhook.update({
       type: 'trigger',
       webhook_url: 'https://example.com',
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('delete: only required params', async () => {
+  test('delete: only required params', async () => {
     const responsePromise = client.api.org.project.webhook.delete({ type: 'trigger' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -60,13 +55,11 @@ describe('resource webhook', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('delete: required and optional params', async () => {
+  test('delete: required and optional params', async () => {
     const response = await client.api.org.project.webhook.delete({ type: 'trigger' });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('refresh', async () => {
+  test('refresh', async () => {
     const responsePromise = client.api.org.project.webhook.refresh();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);

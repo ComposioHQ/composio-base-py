@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource magicLink', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('send: only required params', async () => {
+  test('send: only required params', async () => {
     const responsePromise = client.api.auth.magicLink.send({ email: 'dev@stainless.com' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,16 +19,14 @@ describe('resource magicLink', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('send: required and optional params', async () => {
+  test('send: required and optional params', async () => {
     const response = await client.api.auth.magicLink.send({
       email: 'dev@stainless.com',
       verifyHost: 'verifyHost',
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('verify: only required params', async () => {
+  test('verify: only required params', async () => {
     const responsePromise = client.api.auth.magicLink.verify({ token: 'token' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -40,8 +37,7 @@ describe('resource magicLink', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('verify: required and optional params', async () => {
+  test('verify: required and optional params', async () => {
     const response = await client.api.auth.magicLink.verify({ token: 'token' });
   });
 });

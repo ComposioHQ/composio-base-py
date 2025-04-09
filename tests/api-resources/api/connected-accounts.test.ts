@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource connectedAccounts', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('create: only required params', async () => {
+  test('create: only required params', async () => {
     const responsePromise = client.api.connectedAccounts.create({
       auth_config: { id: 'id' },
       connection: {},
@@ -23,16 +22,14 @@ describe('resource connectedAccounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('create: required and optional params', async () => {
+  test('create: required and optional params', async () => {
     const response = await client.api.connectedAccounts.create({
       auth_config: { id: 'id' },
       connection: { data: { foo: 'bar' }, redirect_uri: 'https://example.com', user_id: 'user_id' },
     });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve', async () => {
+  test('retrieve', async () => {
     const responsePromise = client.api.connectedAccounts.retrieve('nanoid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -43,8 +40,7 @@ describe('resource connectedAccounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list', async () => {
+  test('list', async () => {
     const responsePromise = client.api.connectedAccounts.list();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -55,8 +51,7 @@ describe('resource connectedAccounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('list: request options and params are passed correctly', async () => {
+  test('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.api.connectedAccounts.list(
@@ -74,8 +69,7 @@ describe('resource connectedAccounts', () => {
     ).rejects.toThrow(ComposioSDK.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('delete', async () => {
+  test('delete', async () => {
     const responsePromise = client.api.connectedAccounts.delete('nanoid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -86,8 +80,7 @@ describe('resource connectedAccounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('refresh', async () => {
+  test('refresh', async () => {
     const responsePromise = client.api.connectedAccounts.refresh('nanoid');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -98,8 +91,7 @@ describe('resource connectedAccounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('updateStatus: only required params', async () => {
+  test('updateStatus: only required params', async () => {
     const responsePromise = client.api.connectedAccounts.updateStatus('nanoId', { enabled: true });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -110,8 +102,7 @@ describe('resource connectedAccounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('updateStatus: required and optional params', async () => {
+  test('updateStatus: required and optional params', async () => {
     const response = await client.api.connectedAccounts.updateStatus('nanoId', { enabled: true });
   });
 });

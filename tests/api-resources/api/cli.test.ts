@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource cli', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('createSession', async () => {
+  test('createSession', async () => {
     const responsePromise = client.api.cli.createSession();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,8 +19,7 @@ describe('resource cli', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('linkSession: only required params', async () => {
+  test('linkSession: only required params', async () => {
     const responsePromise = client.api.cli.linkSession({ id: 'id' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -32,13 +30,11 @@ describe('resource cli', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('linkSession: required and optional params', async () => {
+  test('linkSession: required and optional params', async () => {
     const response = await client.api.cli.linkSession({ id: 'id' });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveSession: only required params', async () => {
+  test('retrieveSession: only required params', async () => {
     const responsePromise = client.api.cli.retrieveSession({ id: 'id' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -49,8 +45,7 @@ describe('resource cli', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveSession: required and optional params', async () => {
+  test('retrieveSession: required and optional params', async () => {
     const response = await client.api.cli.retrieveSession({ id: 'id' });
   });
 });

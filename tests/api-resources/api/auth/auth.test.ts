@@ -32,8 +32,7 @@ describe('resource auth', () => {
     ).rejects.toThrow(ComposioSDK.NotFoundError);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('oneTap: only required params', async () => {
+  test('oneTap: only required params', async () => {
     const responsePromise = client.api.auth.oneTap('github', { data: { jwt: 'jwt' }, type: 'jwt' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -44,13 +43,11 @@ describe('resource auth', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('oneTap: required and optional params', async () => {
+  test('oneTap: required and optional params', async () => {
     const response = await client.api.auth.oneTap('github', { data: { jwt: 'jwt' }, type: 'jwt' });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveCallback', async () => {
+  test('retrieveCallback', async () => {
     const responsePromise = client.api.auth.retrieveCallback('github');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -61,8 +58,7 @@ describe('resource auth', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieveCallback: request options and params are passed correctly', async () => {
+  test('retrieveCallback: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
       client.api.auth.retrieveCallback(

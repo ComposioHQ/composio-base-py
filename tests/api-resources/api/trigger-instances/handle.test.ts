@@ -8,8 +8,7 @@ const client = new ComposioSDK({
 });
 
 describe('resource handle', () => {
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve: only required params', async () => {
+  test('retrieve: only required params', async () => {
     const responsePromise = client.api.triggerInstances.handle.retrieve('projectId', { slug: 'slug' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -20,13 +19,11 @@ describe('resource handle', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('retrieve: required and optional params', async () => {
+  test('retrieve: required and optional params', async () => {
     const response = await client.api.triggerInstances.handle.retrieve('projectId', { slug: 'slug' });
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('execute: only required params', async () => {
+  test('execute: only required params', async () => {
     const responsePromise = client.api.triggerInstances.handle.execute('projectId', { slug: 'slug' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -37,8 +34,7 @@ describe('resource handle', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // skipped: tests are disabled for the time being
-  test.skip('execute: required and optional params', async () => {
+  test('execute: required and optional params', async () => {
     const response = await client.api.triggerInstances.handle.execute('projectId', { slug: 'slug' });
   });
 });
