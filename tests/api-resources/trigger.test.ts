@@ -9,7 +9,7 @@ const client = new ComposioSDK({
 
 describe('resource trigger', () => {
   test('log: only required params', async () => {
-    const responsePromise = client.internal.trigger.log({ cursor: 'cursor' });
+    const responsePromise = client.trigger.log({ cursor: 'cursor' });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,7 +20,7 @@ describe('resource trigger', () => {
   });
 
   test('log: required and optional params', async () => {
-    const response = await client.internal.trigger.log({
+    const response = await client.trigger.log({
       cursor: 'cursor',
       entityId: 'entityId',
       integrationId: '182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e',

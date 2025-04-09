@@ -20,6 +20,13 @@ import { APIPromise } from './core/api-promise';
 import { type Fetch } from './internal/builtin-types';
 import { HeadersLike, NullableHeaders, buildHeaders } from './internal/headers';
 import { FinalRequestOptions, RequestOptions } from './internal/request-options';
+import {
+  ActionExecution,
+  ActionExecutionLogParams,
+  ActionExecutionLogResponse,
+  ActionExecutionRetrieveFieldsResponse,
+  ActionExecutionRetrieveLogResponse,
+} from './resources/action-execution';
 import { Admin, AdminIdentifyParams, AdminIdentifyResponse } from './resources/admin';
 import {
   AuthConfigCreateParams,
@@ -34,14 +41,6 @@ import {
   AuthConfigUpdateStatusResponse,
   AuthConfigs,
 } from './resources/auth-configs';
-import {
-  Cli,
-  CliCreateSessionResponse,
-  CliLinkSessionParams,
-  CliLinkSessionResponse,
-  CliRetrieveSessionParams,
-  CliRetrieveSessionResponse,
-} from './resources/cli';
 import {
   ConnectedAccountCreateParams,
   ConnectedAccountCreateResponse,
@@ -77,6 +76,7 @@ import {
   ToolkitRetrieveResponse,
   Toolkits,
 } from './resources/toolkits';
+import { Trigger, TriggerLogParams, TriggerLogResponse } from './resources/trigger';
 import {
   TriggersTypeListParams,
   TriggersTypeListResponse,
@@ -95,8 +95,6 @@ import {
   AuthRetrieveCallbackParams,
   AuthRetrieveCallbackResponse,
 } from './resources/auth/auth';
-import { Internal } from './resources/internal/internal';
-import { OpenAPI } from './resources/openapi/openapi';
 import { Org } from './resources/org/org';
 import {
   ToolListParams,
@@ -799,10 +797,9 @@ export class ComposioSDK {
   auth: API.Auth = new API.Auth(this);
   admin: API.Admin = new API.Admin(this);
   authConfigs: API.AuthConfigs = new API.AuthConfigs(this);
-  cli: API.Cli = new API.Cli(this);
   connectedAccounts: API.ConnectedAccounts = new API.ConnectedAccounts(this);
-  internal: API.Internal = new API.Internal(this);
-  openAPI: API.OpenAPI = new API.OpenAPI(this);
+  trigger: API.Trigger = new API.Trigger(this);
+  actionExecution: API.ActionExecution = new API.ActionExecution(this);
   org: API.Org = new API.Org(this);
   teamMembers: API.TeamMembers = new API.TeamMembers(this);
   toolkits: API.Toolkits = new API.Toolkits(this);
@@ -814,10 +811,9 @@ export class ComposioSDK {
 ComposioSDK.Auth = Auth;
 ComposioSDK.Admin = Admin;
 ComposioSDK.AuthConfigs = AuthConfigs;
-ComposioSDK.Cli = Cli;
 ComposioSDK.ConnectedAccounts = ConnectedAccounts;
-ComposioSDK.Internal = Internal;
-ComposioSDK.OpenAPI = OpenAPI;
+ComposioSDK.Trigger = Trigger;
+ComposioSDK.ActionExecution = ActionExecution;
 ComposioSDK.Org = Org;
 ComposioSDK.TeamMembers = TeamMembers;
 ComposioSDK.Toolkits = Toolkits;
@@ -858,15 +854,6 @@ export declare namespace ComposioSDK {
   };
 
   export {
-    Cli as Cli,
-    type CliCreateSessionResponse as CliCreateSessionResponse,
-    type CliLinkSessionResponse as CliLinkSessionResponse,
-    type CliRetrieveSessionResponse as CliRetrieveSessionResponse,
-    type CliLinkSessionParams as CliLinkSessionParams,
-    type CliRetrieveSessionParams as CliRetrieveSessionParams,
-  };
-
-  export {
     ConnectedAccounts as ConnectedAccounts,
     type ConnectedAccountCreateResponse as ConnectedAccountCreateResponse,
     type ConnectedAccountRetrieveResponse as ConnectedAccountRetrieveResponse,
@@ -879,9 +866,19 @@ export declare namespace ComposioSDK {
     type ConnectedAccountUpdateStatusParams as ConnectedAccountUpdateStatusParams,
   };
 
-  export { Internal as Internal };
+  export {
+    Trigger as Trigger,
+    type TriggerLogResponse as TriggerLogResponse,
+    type TriggerLogParams as TriggerLogParams,
+  };
 
-  export { OpenAPI as OpenAPI };
+  export {
+    ActionExecution as ActionExecution,
+    type ActionExecutionLogResponse as ActionExecutionLogResponse,
+    type ActionExecutionRetrieveFieldsResponse as ActionExecutionRetrieveFieldsResponse,
+    type ActionExecutionRetrieveLogResponse as ActionExecutionRetrieveLogResponse,
+    type ActionExecutionLogParams as ActionExecutionLogParams,
+  };
 
   export { Org as Org };
 

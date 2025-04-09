@@ -1,5 +1,12 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+export {
+  ActionExecution,
+  type ActionExecutionLogResponse,
+  type ActionExecutionRetrieveFieldsResponse,
+  type ActionExecutionRetrieveLogResponse,
+  type ActionExecutionLogParams,
+} from './action-execution';
 export { Admin, type AdminIdentifyResponse, type AdminIdentifyParams } from './admin';
 export {
   Auth,
@@ -23,14 +30,6 @@ export {
   type AuthConfigUpdateStatusParams,
 } from './auth-configs';
 export {
-  Cli,
-  type CliCreateSessionResponse,
-  type CliLinkSessionResponse,
-  type CliRetrieveSessionResponse,
-  type CliLinkSessionParams,
-  type CliRetrieveSessionParams,
-} from './cli';
-export {
   ConnectedAccounts,
   type ConnectedAccountCreateResponse,
   type ConnectedAccountRetrieveResponse,
@@ -42,8 +41,6 @@ export {
   type ConnectedAccountListParams,
   type ConnectedAccountUpdateStatusParams,
 } from './connected-accounts';
-export { Internal } from './internal/internal';
-export { OpenAPI } from './openapi/openapi';
 export { Org } from './org/org';
 export {
   Payments,
@@ -75,6 +72,7 @@ export {
   type ToolRetrieveEnumResponse,
   type ToolListParams,
 } from './tools/tools';
+export { Trigger, type TriggerLogResponse, type TriggerLogParams } from './trigger';
 export {
   TriggerInstances,
   type TriggerInstanceListActiveResponse,

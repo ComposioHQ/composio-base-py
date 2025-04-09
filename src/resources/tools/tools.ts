@@ -4,12 +4,12 @@ import { APIResource } from '../../core/resource';
 import * as ExecuteAPI from './execute';
 import {
   Execute,
+  ExecuteExecuteParams,
+  ExecuteExecuteResponse,
   ExecuteInputParams,
   ExecuteInputResponse,
   ExecuteProxyParams,
   ExecuteProxyResponse,
-  ExecuteRunParams,
-  ExecuteRunResponse,
 } from './execute';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -163,11 +163,11 @@ export declare namespace Tools {
 
   export {
     Execute as Execute,
+    type ExecuteExecuteResponse as ExecuteExecuteResponse,
     type ExecuteInputResponse as ExecuteInputResponse,
     type ExecuteProxyResponse as ExecuteProxyResponse,
-    type ExecuteRunResponse as ExecuteRunResponse,
+    type ExecuteExecuteParams as ExecuteExecuteParams,
     type ExecuteInputParams as ExecuteInputParams,
     type ExecuteProxyParams as ExecuteProxyParams,
-    type ExecuteRunParams as ExecuteRunParams,
   };
 }

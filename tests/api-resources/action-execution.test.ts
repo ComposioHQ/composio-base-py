@@ -9,7 +9,7 @@ const client = new ComposioSDK({
 
 describe('resource actionExecution', () => {
   test('log: only required params', async () => {
-    const responsePromise = client.internal.actionExecution.log({ cursor: 0 });
+    const responsePromise = client.actionExecution.log({ cursor: 0 });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -20,7 +20,7 @@ describe('resource actionExecution', () => {
   });
 
   test('log: required and optional params', async () => {
-    const response = await client.internal.actionExecution.log({
+    const response = await client.actionExecution.log({
       cursor: 0,
       case_sensitive: true,
       from: 0,
@@ -31,7 +31,7 @@ describe('resource actionExecution', () => {
   });
 
   test('retrieveFields', async () => {
-    const responsePromise = client.internal.actionExecution.retrieveFields();
+    const responsePromise = client.actionExecution.retrieveFields();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -42,7 +42,7 @@ describe('resource actionExecution', () => {
   });
 
   test('retrieveLog', async () => {
-    const responsePromise = client.internal.actionExecution.retrieveLog('id');
+    const responsePromise = client.actionExecution.retrieveLog('id');
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;

@@ -65,20 +65,6 @@ Methods:
 - <code title="delete /api/v3/auth_configs/{nanoid}">client.authConfigs.<a href="./src/resources/auth-configs.ts">delete</a>(nanoid) -> AuthConfigDeleteResponse</code>
 - <code title="patch /api/v3/auth_configs/{nanoid}/{status}">client.authConfigs.<a href="./src/resources/auth-configs.ts">updateStatus</a>(status, { ...params }) -> AuthConfigUpdateStatusResponse</code>
 
-# Cli
-
-Types:
-
-- <code><a href="./src/resources/cli.ts">CliCreateSessionResponse</a></code>
-- <code><a href="./src/resources/cli.ts">CliLinkSessionResponse</a></code>
-- <code><a href="./src/resources/cli.ts">CliRetrieveSessionResponse</a></code>
-
-Methods:
-
-- <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/resources/cli.ts">createSession</a>() -> CliCreateSessionResponse</code>
-- <code title="put /api/v3/cli/link-session">client.cli.<a href="./src/resources/cli.ts">linkSession</a>({ ...params }) -> CliLinkSessionResponse</code>
-- <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/resources/cli.ts">retrieveSession</a>({ ...params }) -> CliRetrieveSessionResponse</code>
-
 # ConnectedAccounts
 
 Types:
@@ -99,49 +85,29 @@ Methods:
 - <code title="post /api/v3/connected_accounts/{nanoid}/refresh">client.connectedAccounts.<a href="./src/resources/connected-accounts.ts">refresh</a>(nanoid) -> ConnectedAccountRefreshResponse</code>
 - <code title="patch /api/v3/connected_accounts/{nanoId}/status">client.connectedAccounts.<a href="./src/resources/connected-accounts.ts">updateStatus</a>(nanoID, { ...params }) -> ConnectedAccountUpdateStatusResponse</code>
 
-# Internal
-
-## Trigger
+# Trigger
 
 Types:
 
-- <code><a href="./src/resources/internal/trigger.ts">TriggerLogResponse</a></code>
+- <code><a href="./src/resources/trigger.ts">TriggerLogResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/internal/trigger/logs">client.internal.trigger.<a href="./src/resources/internal/trigger.ts">log</a>({ ...params }) -> TriggerLogResponse</code>
+- <code title="post /api/v3/internal/trigger/logs">client.trigger.<a href="./src/resources/trigger.ts">log</a>({ ...params }) -> TriggerLogResponse</code>
 
-## ActionExecution
+# ActionExecution
 
 Types:
 
-- <code><a href="./src/resources/internal/action-execution.ts">ActionExecutionLogResponse</a></code>
-- <code><a href="./src/resources/internal/action-execution.ts">ActionExecutionRetrieveFieldsResponse</a></code>
-- <code><a href="./src/resources/internal/action-execution.ts">ActionExecutionRetrieveLogResponse</a></code>
+- <code><a href="./src/resources/action-execution.ts">ActionExecutionLogResponse</a></code>
+- <code><a href="./src/resources/action-execution.ts">ActionExecutionRetrieveFieldsResponse</a></code>
+- <code><a href="./src/resources/action-execution.ts">ActionExecutionRetrieveLogResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/internal/action_execution/logs">client.internal.actionExecution.<a href="./src/resources/internal/action-execution.ts">log</a>({ ...params }) -> ActionExecutionLogResponse</code>
-- <code title="get /api/v3/internal/action_execution/fields">client.internal.actionExecution.<a href="./src/resources/internal/action-execution.ts">retrieveFields</a>() -> ActionExecutionRetrieveFieldsResponse</code>
-- <code title="get /api/v3/internal/action_execution/log/{id}">client.internal.actionExecution.<a href="./src/resources/internal/action-execution.ts">retrieveLog</a>(id) -> ActionExecutionRetrieveLogResponse</code>
-
-# OpenAPI
-
-## Specs
-
-Types:
-
-- <code><a href="./src/resources/openapi/specs.ts">SpecCreateResponse</a></code>
-- <code><a href="./src/resources/openapi/specs.ts">SpecListResponse</a></code>
-- <code><a href="./src/resources/openapi/specs.ts">SpecDeleteResponse</a></code>
-- <code><a href="./src/resources/openapi/specs.ts">SpecRetrieveStatusResponse</a></code>
-
-Methods:
-
-- <code title="post /api/v3/openapi/specs/create">client.openAPI.specs.<a href="./src/resources/openapi/specs.ts">create</a>({ ...params }) -> SpecCreateResponse</code>
-- <code title="get /api/v3/openapi/specs/list">client.openAPI.specs.<a href="./src/resources/openapi/specs.ts">list</a>() -> SpecListResponse</code>
-- <code title="delete /api/v3/openapi/specs/{id}">client.openAPI.specs.<a href="./src/resources/openapi/specs.ts">delete</a>(id) -> SpecDeleteResponse</code>
-- <code title="get /api/v3/openapi/specs/status/{id}">client.openAPI.specs.<a href="./src/resources/openapi/specs.ts">retrieveStatus</a>(id) -> SpecRetrieveStatusResponse</code>
+- <code title="post /api/v3/internal/action_execution/logs">client.actionExecution.<a href="./src/resources/action-execution.ts">log</a>({ ...params }) -> ActionExecutionLogResponse</code>
+- <code title="get /api/v3/internal/action_execution/fields">client.actionExecution.<a href="./src/resources/action-execution.ts">retrieveFields</a>() -> ActionExecutionRetrieveFieldsResponse</code>
+- <code title="get /api/v3/internal/action_execution/log/{id}">client.actionExecution.<a href="./src/resources/action-execution.ts">retrieveLog</a>(id) -> ActionExecutionRetrieveLogResponse</code>
 
 # Org
 
@@ -265,15 +231,15 @@ Methods:
 
 Types:
 
+- <code><a href="./src/resources/tools/execute.ts">ExecuteExecuteResponse</a></code>
 - <code><a href="./src/resources/tools/execute.ts">ExecuteInputResponse</a></code>
 - <code><a href="./src/resources/tools/execute.ts">ExecuteProxyResponse</a></code>
-- <code><a href="./src/resources/tools/execute.ts">ExecuteRunResponse</a></code>
 
 Methods:
 
+- <code title="post /api/v3/tools/execute/{action}">client.tools.execute.<a href="./src/resources/tools/execute.ts">execute</a>(action, { ...params }) -> ExecuteExecuteResponse</code>
 - <code title="post /api/v3/tools/execute/{actionName}/input">client.tools.execute.<a href="./src/resources/tools/execute.ts">input</a>(actionName, { ...params }) -> ExecuteInputResponse</code>
 - <code title="post /api/v3/tools/execute/proxy">client.tools.execute.<a href="./src/resources/tools/execute.ts">proxy</a>({ ...params }) -> ExecuteProxyResponse</code>
-- <code title="post /api/v3/tools/execute/{action}">client.tools.execute.<a href="./src/resources/tools/execute.ts">run</a>(action, { ...params }) -> ExecuteRunResponse</code>
 
 # TriggerInstances
 
