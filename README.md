@@ -31,7 +31,7 @@ const client = new ComposioSDK({
 });
 
 async function main() {
-  const response = await client.api.auth.retrieveCallback('REPLACE_ME');
+  const response = await client.auth.retrieveCallback('REPLACE_ME');
 
   console.log(response.data);
 }
@@ -53,9 +53,7 @@ const client = new ComposioSDK({
 });
 
 async function main() {
-  const response: ComposioSDK.API.AuthRetrieveCallbackResponse = await client.api.auth.retrieveCallback(
-    'REPLACE_ME',
-  );
+  const response: ComposioSDK.AuthRetrieveCallbackResponse = await client.auth.retrieveCallback('REPLACE_ME');
 }
 
 main();
@@ -72,7 +70,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const response = await client.api.auth.retrieveCallback('REPLACE_ME').catch(async (err) => {
+  const response = await client.auth.retrieveCallback('REPLACE_ME').catch(async (err) => {
     if (err instanceof ComposioSDK.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -115,7 +113,7 @@ const client = new ComposioSDK({
 });
 
 // Or, configure per-request:
-await client.api.auth.retrieveCallback('REPLACE_ME', {
+await client.auth.retrieveCallback('REPLACE_ME', {
   maxRetries: 5,
 });
 ```
@@ -132,7 +130,7 @@ const client = new ComposioSDK({
 });
 
 // Override per-request:
-await client.api.auth.retrieveCallback('REPLACE_ME', {
+await client.auth.retrieveCallback('REPLACE_ME', {
   timeout: 5 * 1000,
 });
 ```
@@ -155,11 +153,11 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new ComposioSDK();
 
-const response = await client.api.auth.retrieveCallback('REPLACE_ME').asResponse();
+const response = await client.auth.retrieveCallback('REPLACE_ME').asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.api.auth.retrieveCallback('REPLACE_ME').withResponse();
+const { data: response, response: raw } = await client.auth.retrieveCallback('REPLACE_ME').withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(response.data);
 ```
