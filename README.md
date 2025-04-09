@@ -31,9 +31,9 @@ const client = new ComposioSDK({
 });
 
 async function main() {
-  const response = await client.auth.retrieveCallback('tool_slug');
+  const response = await client.tools.execute.execute('action');
 
-  console.log(response.data);
+  console.log(response.log_id);
 }
 
 main();
