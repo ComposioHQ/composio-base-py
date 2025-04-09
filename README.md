@@ -27,7 +27,7 @@ import ComposioSDK from 'composio-sdk';
 
 const client = new ComposioSDK({
   apiKey: process.env['COMPOSIO_API_KEY'], // This is the default and can be omitted
-  environment: 'environment_1', // or 'production' | 'environment_2'; defaults to 'production'
+  environment: 'staging', // or 'production' | 'local'; defaults to 'production'
 });
 
 async function main() {
@@ -49,7 +49,7 @@ import ComposioSDK from 'composio-sdk';
 
 const client = new ComposioSDK({
   apiKey: process.env['COMPOSIO_API_KEY'], // This is the default and can be omitted
-  environment: 'environment_1', // or 'production' | 'environment_2'; defaults to 'production'
+  environment: 'staging', // or 'production' | 'local'; defaults to 'production'
 });
 
 async function main() {

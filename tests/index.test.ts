@@ -306,13 +306,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['COMPOSIO_SDK_BASE_URL'] = ''; // empty
       const client = new ComposioSDK({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('http://localhost:9901');
+      expect(client.baseURL).toEqual('https://backend.composio.dev');
     });
 
     test('blank env variable', () => {
       process.env['COMPOSIO_SDK_BASE_URL'] = '  '; // blank
       const client = new ComposioSDK({ apiKey: 'My API Key' });
-      expect(client.baseURL).toEqual('http://localhost:9901');
+      expect(client.baseURL).toEqual('https://backend.composio.dev');
     });
 
     test('env variable with environment', () => {
@@ -325,7 +325,7 @@ describe('instantiate client', () => {
       );
 
       const client = new ComposioSDK({ apiKey: 'My API Key', baseURL: null, environment: 'production' });
-      expect(client.baseURL).toEqual('http://localhost:9901');
+      expect(client.baseURL).toEqual('https://backend.composio.dev');
     });
   });
 

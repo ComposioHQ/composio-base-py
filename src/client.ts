@@ -115,9 +115,9 @@ import {
 } from './resources/trigger-instances/trigger-instances';
 
 const environments = {
-  production: 'http://localhost:9901',
-  environment_1: 'https://staging-backend.composio.dev',
-  environment_2: 'http://localhost:9901',
+  production: 'https://backend.composio.dev',
+  staging: 'https://staging-backend.composio.dev',
+  local: 'http://localhost:9901',
 };
 type Environment = keyof typeof environments;
 
@@ -131,9 +131,9 @@ export interface ClientOptions {
    * Specifies the environment to use for the API.
    *
    * Each environment maps to a different base URL:
-   * - `production` corresponds to `http://localhost:9901`
-   * - `environment_1` corresponds to `https://staging-backend.composio.dev`
-   * - `environment_2` corresponds to `http://localhost:9901`
+   * - `production` corresponds to `https://backend.composio.dev`
+   * - `staging` corresponds to `https://staging-backend.composio.dev`
+   * - `local` corresponds to `http://localhost:9901`
    */
   environment?: Environment | undefined;
 
@@ -227,7 +227,7 @@ export class ComposioSDK {
    *
    * @param {string | null | undefined} [opts.apiKey=process.env['COMPOSIO_API_KEY'] ?? null]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
-   * @param {string} [opts.baseURL=process.env['COMPOSIO_SDK_BASE_URL'] ?? http://localhost:9901] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['COMPOSIO_SDK_BASE_URL'] ?? https://backend.composio.dev] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {MergedRequestInit} [opts.fetchOptions] - Additional `RequestInit` options to be passed to `fetch` calls.
    * @param {Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
