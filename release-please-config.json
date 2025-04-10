@@ -59,15 +59,8 @@
       "hidden": true
     }
   ],
-  "release-type": "node",
+  "release-type": "python",
   "extra-files": [
-    "src/version.ts",
-    "README.md",
-    "packages/mcp-server/yarn.lock",
-    {
-      "type": "json",
-      "path": "packages/mcp-server/package.json",
-      "jsonpath": "$.version"
-    }
+    "src/composio_sdk/_version.py"
   ]
 }
