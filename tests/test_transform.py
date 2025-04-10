@@ -8,15 +8,15 @@ from typing_extensions import Required, Annotated, TypedDict
 
 import pytest
 
-from composio_sdk._types import Base64FileInput
-from composio_sdk._utils import (
+from composio_client._types import Base64FileInput
+from composio_client._utils import (
     PropertyInfo,
     transform as _transform,
     parse_datetime,
     async_transform as _async_transform,
 )
-from composio_sdk._compat import PYDANTIC_V2
-from composio_sdk._models import BaseModel
+from composio_client._compat import PYDANTIC_V2
+from composio_client._models import BaseModel
 
 _T = TypeVar("_T")
 

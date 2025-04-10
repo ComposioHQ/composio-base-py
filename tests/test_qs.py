@@ -4,7 +4,7 @@ from urllib.parse import unquote
 
 import pytest
 
-from composio_sdk._qs import Querystring, stringify
+from composio_client._qs import Querystring, stringify
 
 
 def test_empty() -> None:
