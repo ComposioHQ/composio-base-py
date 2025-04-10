@@ -1,6 +1,6 @@
 # Composio SDK Python API library
 
-[![PyPI version](https://img.shields.io/pypi/v/composio-base.svg)](https://pypi.org/project/composio-base/)
+[![PyPI version](https://img.shields.io/pypi/v/composio-client.svg)](https://pypi.org/project/composio-client/)
 
 The Composio SDK Python library provides convenient access to the Composio SDK REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.composio-sdk.com](https://docs.
 
 ```sh
 # install from PyPI
-pip install --pre composio-base
+pip install --pre composio-client
 ```
 
 ## Usage

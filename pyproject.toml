@@ -1,5 +1,5 @@
 [project]
-name = "composio-base"
+name = "composio-client"
 version = "0.0.1-alpha.0"
 description = "The official Python library for the composio-sdk API"
 dynamic = ["readme"]
