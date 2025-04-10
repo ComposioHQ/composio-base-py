@@ -181,13 +181,10 @@ The following tools are available in this MCP server.
 
 - `retrieve_tools` (`read`):
 - `list_tools` (`read`):
+- `execute_tools` (`write`):
+- `get_input_tools` (`write`):
+- `proxy_tools` (`write`):
 - `retrieve_enum_tools` (`read`):
-- `run_tools` (`write`):
-
-### Resource `tools.execute`:
-
-- `get_input_tools_execute` (`write`):
-- `proxy_tools_execute` (`write`):
 
 ### Resource `trigger_instances`:
 

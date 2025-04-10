@@ -170,29 +170,21 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/tools/tools.ts">ToolRetrieveResponse</a></code>
-- <code><a href="./src/resources/tools/tools.ts">ToolListResponse</a></code>
-- <code><a href="./src/resources/tools/tools.ts">ToolRetrieveEnumResponse</a></code>
-- <code><a href="./src/resources/tools/tools.ts">ToolRunResponse</a></code>
+- <code><a href="./src/resources/tools.ts">ToolRetrieveResponse</a></code>
+- <code><a href="./src/resources/tools.ts">ToolListResponse</a></code>
+- <code><a href="./src/resources/tools.ts">ToolExecuteResponse</a></code>
+- <code><a href="./src/resources/tools.ts">ToolGetInputResponse</a></code>
+- <code><a href="./src/resources/tools.ts">ToolProxyResponse</a></code>
+- <code><a href="./src/resources/tools.ts">ToolRetrieveEnumResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/tools/{tool_slug}">client.tools.<a href="./src/resources/tools/tools.ts">retrieve</a>(toolSlug) -> ToolRetrieveResponse</code>
-- <code title="get /api/v3/tools">client.tools.<a href="./src/resources/tools/tools.ts">list</a>({ ...params }) -> ToolListResponse</code>
-- <code title="get /api/v3/tools/enum">client.tools.<a href="./src/resources/tools/tools.ts">retrieveEnum</a>() -> string</code>
-- <code title="post /api/v3/tools/execute/{action}">client.tools.<a href="./src/resources/tools/tools.ts">run</a>(action, { ...params }) -> ToolRunResponse</code>
-
-## Execute
-
-Types:
-
-- <code><a href="./src/resources/tools/execute.ts">ExecuteGetInputResponse</a></code>
-- <code><a href="./src/resources/tools/execute.ts">ExecuteProxyResponse</a></code>
-
-Methods:
-
-- <code title="post /api/v3/tools/execute/{actionName}/input">client.tools.execute.<a href="./src/resources/tools/execute.ts">getInput</a>(actionName, { ...params }) -> ExecuteGetInputResponse</code>
-- <code title="post /api/v3/tools/execute/proxy">client.tools.execute.<a href="./src/resources/tools/execute.ts">proxy</a>({ ...params }) -> ExecuteProxyResponse</code>
+- <code title="get /api/v3/tools/{tool_slug}">client.tools.<a href="./src/resources/tools.ts">retrieve</a>(toolSlug) -> ToolRetrieveResponse</code>
+- <code title="get /api/v3/tools">client.tools.<a href="./src/resources/tools.ts">list</a>({ ...params }) -> ToolListResponse</code>
+- <code title="post /api/v3/tools/execute/{action}">client.tools.<a href="./src/resources/tools.ts">execute</a>(action, { ...params }) -> ToolExecuteResponse</code>
+- <code title="post /api/v3/tools/execute/{actionName}/input">client.tools.<a href="./src/resources/tools.ts">getInput</a>(actionName, { ...params }) -> ToolGetInputResponse</code>
+- <code title="post /api/v3/tools/execute/proxy">client.tools.<a href="./src/resources/tools.ts">proxy</a>({ ...params }) -> ToolProxyResponse</code>
+- <code title="get /api/v3/tools/enum">client.tools.<a href="./src/resources/tools.ts">retrieveEnum</a>() -> string</code>
 
 # TriggerInstances
 

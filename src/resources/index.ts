@@ -53,11 +53,15 @@ export {
   Tools,
   type ToolRetrieveResponse,
   type ToolListResponse,
+  type ToolExecuteResponse,
+  type ToolGetInputResponse,
+  type ToolProxyResponse,
   type ToolRetrieveEnumResponse,
-  type ToolRunResponse,
   type ToolListParams,
-  type ToolRunParams,
-} from './tools/tools';
+  type ToolExecuteParams,
+  type ToolGetInputParams,
+  type ToolProxyParams,
+} from './tools';
 export { Trigger, type TriggerLogResponse, type TriggerLogParams } from './trigger';
 export {
   TriggerInstances,

@@ -31,7 +31,7 @@ const client = new ComposioSDK({
 });
 
 async function main() {
-  const response = await client.tools.run('action');
+  const response = await client.tools.execute('action');
 
   console.log(response.log_id);
 }
@@ -53,7 +53,7 @@ const client = new ComposioSDK({
 });
 
 async function main() {
-  const response: ComposioSDK.ToolRunResponse = await client.tools.run('action');
+  const response: ComposioSDK.ToolExecuteResponse = await client.tools.execute('action');
 }
 
 main();
@@ -70,7 +70,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const response = await client.tools.run('action').catch(async (err) => {
+  const response = await client.tools.execute('action').catch(async (err) => {
     if (err instanceof ComposioSDK.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -113,7 +113,7 @@ const client = new ComposioSDK({
 });
 
 // Or, configure per-request:
-await client.tools.run('action', {
+await client.tools.execute('action', {
   maxRetries: 5,
 });
 ```
@@ -130,7 +130,7 @@ const client = new ComposioSDK({
 });
 
 // Override per-request:
-await client.tools.run('action', {
+await client.tools.execute('action', {
   timeout: 5 * 1000,
 });
 ```
@@ -153,11 +153,11 @@ Unlike `.asResponse()` this method consumes the body, returning once it is parse
 ```ts
 const client = new ComposioSDK();
 
-const response = await client.tools.run('action').asResponse();
+const response = await client.tools.execute('action').asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: response, response: raw } = await client.tools.run('action').withResponse();
+const { data: response, response: raw } = await client.tools.execute('action').withResponse();
 console.log(raw.headers.get('X-My-Header'));
 console.log(response.log_id);
 ```

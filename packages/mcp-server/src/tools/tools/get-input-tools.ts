@@ -11,29 +11,28 @@ export const metadata: Metadata = {
 };
 
 export const tool: Tool = {
-  name: 'run_tools',
+  name: 'get_input_tools',
   description: '',
   inputSchema: {
     type: 'object',
     properties: {
-      action: {
-        type: 'string',
-        description: 'The name of the action',
-      },
-      allow_tracing: {
-        type: 'boolean',
-      },
-      arguments: {
-        type: 'object',
-      },
-      connected_account_id: {
-        type: 'string',
-      },
-      entity_id: {
+      actionName: {
         type: 'string',
       },
       text: {
         type: 'string',
+        description:
+          'The use-case description for the action, this will give context to LLM to generate the correct inputs for the action.',
+      },
+      customDescription: {
+        type: 'string',
+        description:
+          'The custom description for the action, use this to provide customised context about the action to the LLM to suit your use-case.',
+      },
+      systemPrompt: {
+        type: 'string',
+        description:
+          'The system prompt to be used by LLM, use this to control and guide the behaviour of the LLM.',
       },
       version: {
         type: 'string',
@@ -43,8 +42,8 @@ export const tool: Tool = {
 };
 
 export const handler = (client: ComposioSDK, args: any) => {
-  const { action, ...body } = args;
-  return client.tools.run(action, body);
+  const { actionName, ...body } = args;
+  return client.tools.getInput(actionName, body);
 };
 
 export default { metadata, tool, handler };

@@ -68,6 +68,19 @@ import {
   ToolkitRetrieveResponse,
   Toolkits,
 } from './resources/toolkits';
+import {
+  ToolExecuteParams,
+  ToolExecuteResponse,
+  ToolGetInputParams,
+  ToolGetInputResponse,
+  ToolListParams,
+  ToolListResponse,
+  ToolProxyParams,
+  ToolProxyResponse,
+  ToolRetrieveEnumResponse,
+  ToolRetrieveResponse,
+  Tools,
+} from './resources/tools';
 import { Trigger, TriggerLogParams, TriggerLogResponse } from './resources/trigger';
 import {
   TriggersTypeListParams,
@@ -80,15 +93,6 @@ import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
 import { Org } from './resources/org/org';
-import {
-  ToolListParams,
-  ToolListResponse,
-  ToolRetrieveEnumResponse,
-  ToolRetrieveResponse,
-  ToolRunParams,
-  ToolRunResponse,
-  Tools,
-} from './resources/tools/tools';
 import {
   TriggerInstanceListActiveParams,
   TriggerInstanceListActiveResponse,
@@ -869,10 +873,14 @@ export declare namespace ComposioSDK {
     Tools as Tools,
     type ToolRetrieveResponse as ToolRetrieveResponse,
     type ToolListResponse as ToolListResponse,
+    type ToolExecuteResponse as ToolExecuteResponse,
+    type ToolGetInputResponse as ToolGetInputResponse,
+    type ToolProxyResponse as ToolProxyResponse,
     type ToolRetrieveEnumResponse as ToolRetrieveEnumResponse,
-    type ToolRunResponse as ToolRunResponse,
     type ToolListParams as ToolListParams,
-    type ToolRunParams as ToolRunParams,
+    type ToolExecuteParams as ToolExecuteParams,
+    type ToolGetInputParams as ToolGetInputParams,
+    type ToolProxyParams as ToolProxyParams,
   };
 
   export {
