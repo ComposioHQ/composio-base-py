@@ -4,18 +4,8 @@ set -e
 
 cd "$(dirname "$0")/.."
 
-echo "==> Running eslint"
-./node_modules/.bin/eslint .
+echo "==> Running lints"
+rye run lint
 
-echo "==> Building"
-./scripts/build
-
-echo "==> Checking types"
-./node_modules/typescript/bin/tsc
-
-echo "==> Running Are The Types Wrong?"
-./node_modules/.bin/attw --pack dist -f json >.attw.json || true
-node scripts/utils/attw-report.cjs
-
-echo "==> Running publint"
-./node_modules/.bin/publint dist
+echo "==> Making sure it imports"
+rye run python -c 'import composio_sdk'
