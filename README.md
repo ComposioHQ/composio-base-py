@@ -27,6 +27,7 @@ import ComposioSDK from 'composio-sdk';
 
 const client = new ComposioSDK({
   environment: 'staging', // or 'production' | 'local'; defaults to 'production'
+  apiKey: 'My API Key',
 });
 
 async function main() {
@@ -48,6 +49,7 @@ import ComposioSDK from 'composio-sdk';
 
 const client = new ComposioSDK({
   environment: 'staging', // or 'production' | 'local'; defaults to 'production'
+  apiKey: 'My API Key',
 });
 
 async function main() {
@@ -108,6 +110,7 @@ You can use the `maxRetries` option to configure or disable this:
 // Configure the default for all requests:
 const client = new ComposioSDK({
   maxRetries: 0, // default is 2
+  apiKey: 'My API Key',
 });
 
 // Or, configure per-request:
@@ -125,6 +128,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 // Configure the default for all requests:
 const client = new ComposioSDK({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
+  apiKey: 'My API Key',
 });
 
 // Override per-request:

@@ -115,7 +115,7 @@ export interface ClientOptions {
   /**
    * Defaults to process.env['COMPOSIO_API_KEY'].
    */
-  apiKey?: string | null | undefined;
+  apiKey?: string | undefined;
 
   /**
    * Specifies the environment to use for the API.
@@ -198,7 +198,7 @@ export interface ClientOptions {
  * API Client for interfacing with the Composio SDK API.
  */
 export class ComposioSDK {
-  apiKey: string | null;
+  apiKey: string;
 
   baseURL: string;
   maxRetries: number;
@@ -215,7 +215,7 @@ export class ComposioSDK {
   /**
    * API Client for interfacing with the Composio SDK API.
    *
-   * @param {string | null | undefined} [opts.apiKey=process.env['COMPOSIO_API_KEY'] ?? null]
+   * @param {string | undefined} [opts.apiKey=process.env['COMPOSIO_API_KEY'] ?? undefined]
    * @param {Environment} [opts.environment=production] - Specifies the environment URL to use for the API.
    * @param {string} [opts.baseURL=process.env['COMPOSIO_SDK_BASE_URL'] ?? https://backend.composio.dev] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
@@ -227,9 +227,15 @@ export class ComposioSDK {
    */
   constructor({
     baseURL = readEnv('COMPOSIO_SDK_BASE_URL'),
-    apiKey = readEnv('COMPOSIO_API_KEY') ?? null,
+    apiKey = readEnv('COMPOSIO_API_KEY'),
     ...opts
   }: ClientOptions = {}) {
+    if (apiKey === undefined) {
+      throw new Errors.ComposioSDKError(
+        "The COMPOSIO_API_KEY environment variable is missing or empty; either provide it, or instantiate the ComposioSDK client with an apiKey option, like new ComposioSDK({ apiKey: 'My API Key' }).",
+      );
+    }
+
     const options: ClientOptions = {
       apiKey,
       ...opts,

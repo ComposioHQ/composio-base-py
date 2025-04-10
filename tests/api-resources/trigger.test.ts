@@ -2,7 +2,10 @@
 
 import ComposioSDK from 'composio-sdk';
 
-const client = new ComposioSDK({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new ComposioSDK({
+  apiKey: 'My API Key',
+  baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
+});
 
 describe('resource trigger', () => {
   test('log: only required params', async () => {
