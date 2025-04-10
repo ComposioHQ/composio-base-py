@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from composio_sdk import ComposioSDK, AsyncComposioSDK
+from composio_client import ComposioSDK, AsyncComposioSDK
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
