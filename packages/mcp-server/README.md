@@ -133,10 +133,10 @@ The following tools are available in this MCP server.
 - `retrieve_fields_action_execution` (`read`):
 - `retrieve_log_action_execution` (`read`):
 
-### Resource `org`:
+### Resource `org.api_key`:
 
-- `regenerate_api_key_org` (`write`):
-- `retrieve_api_key_org` (`read`):
+- `retrieve_org_api_key` (`read`):
+- `regenerate_org_api_key` (`write`):
 
 ### Resource `org.project`:
 

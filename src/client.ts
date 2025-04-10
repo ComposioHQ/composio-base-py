@@ -86,7 +86,7 @@ import {
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
-import { Org, OrgRegenerateAPIKeyResponse, OrgRetrieveAPIKeyResponse } from './resources/org/org';
+import { Org } from './resources/org/org';
 import {
   ToolListParams,
   ToolListResponse,
@@ -854,11 +854,7 @@ export declare namespace ComposioSDK {
     type ActionExecutionLogParams as ActionExecutionLogParams,
   };
 
-  export {
-    Org as Org,
-    type OrgRegenerateAPIKeyResponse as OrgRegenerateAPIKeyResponse,
-    type OrgRetrieveAPIKeyResponse as OrgRetrieveAPIKeyResponse,
-  };
+  export { Org as Org };
 
   export {
     TeamMembers as TeamMembers,
