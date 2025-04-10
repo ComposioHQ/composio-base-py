@@ -2,131 +2,112 @@
 
 Types:
 
-```python
-from composio_sdk.types import AuthOneTapResponse, AuthRetrieveCallbackResponse
-```
+- <code><a href="./src/resources/auth/auth.ts">AuthOneTapResponse</a></code>
+- <code><a href="./src/resources/auth/auth.ts">AuthRetrieveCallbackResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/auth/{provider_name}/login">client.auth.<a href="./src/composio_sdk/resources/auth/auth.py">login</a>(provider_name, \*\*<a href="src/composio_sdk/types/auth_login_params.py">params</a>) -> None</code>
-- <code title="post /api/v3/auth/{provider_name}/one-tap">client.auth.<a href="./src/composio_sdk/resources/auth/auth.py">one_tap</a>(provider_name, \*\*<a href="src/composio_sdk/types/auth_one_tap_params.py">params</a>) -> <a href="./src/composio_sdk/types/auth_one_tap_response.py">AuthOneTapResponse</a></code>
-- <code title="get /api/v3/auth/{provider_name}/callback">client.auth.<a href="./src/composio_sdk/resources/auth/auth.py">retrieve_callback</a>(provider_name, \*\*<a href="src/composio_sdk/types/auth_retrieve_callback_params.py">params</a>) -> <a href="./src/composio_sdk/types/auth_retrieve_callback_response.py">AuthRetrieveCallbackResponse</a></code>
+- <code title="get /api/v3/auth/{provider_name}/login">client.auth.<a href="./src/resources/auth/auth.ts">login</a>(providerName, { ...params }) -> void</code>
+- <code title="post /api/v3/auth/{provider_name}/one-tap">client.auth.<a href="./src/resources/auth/auth.ts">oneTap</a>(providerName, { ...params }) -> AuthOneTapResponse</code>
+- <code title="get /api/v3/auth/{provider_name}/callback">client.auth.<a href="./src/resources/auth/auth.ts">retrieveCallback</a>(providerName, { ...params }) -> AuthRetrieveCallbackResponse</code>
 
 ## MagicLink
 
 Types:
 
-```python
-from composio_sdk.types.auth import MagicLinkSendResponse, MagicLinkVerifyResponse
-```
+- <code><a href="./src/resources/auth/magic-link.ts">MagicLinkSendResponse</a></code>
+- <code><a href="./src/resources/auth/magic-link.ts">MagicLinkVerifyResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/auth/magic_link/send">client.auth.magic_link.<a href="./src/composio_sdk/resources/auth/magic_link.py">send</a>(\*\*<a href="src/composio_sdk/types/auth/magic_link_send_params.py">params</a>) -> <a href="./src/composio_sdk/types/auth/magic_link_send_response.py">MagicLinkSendResponse</a></code>
-- <code title="post /api/v3/auth/magic_link/verify">client.auth.magic_link.<a href="./src/composio_sdk/resources/auth/magic_link.py">verify</a>(\*\*<a href="src/composio_sdk/types/auth/magic_link_verify_params.py">params</a>) -> <a href="./src/composio_sdk/types/auth/magic_link_verify_response.py">MagicLinkVerifyResponse</a></code>
+- <code title="post /api/v3/auth/magic_link/send">client.auth.magicLink.<a href="./src/resources/auth/magic-link.ts">send</a>({ ...params }) -> MagicLinkSendResponse</code>
+- <code title="post /api/v3/auth/magic_link/verify">client.auth.magicLink.<a href="./src/resources/auth/magic-link.ts">verify</a>({ ...params }) -> MagicLinkVerifyResponse</code>
 
 ## Session
 
 Types:
 
-```python
-from composio_sdk.types.auth import SessionLogoutResponse, SessionRetrieveInfoResponse
-```
+- <code><a href="./src/resources/auth/session.ts">SessionLogoutResponse</a></code>
+- <code><a href="./src/resources/auth/session.ts">SessionRetrieveInfoResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/auth/session/logout">client.auth.session.<a href="./src/composio_sdk/resources/auth/session.py">logout</a>() -> <a href="./src/composio_sdk/types/auth/session_logout_response.py">SessionLogoutResponse</a></code>
-- <code title="get /api/v3/auth/session/info">client.auth.session.<a href="./src/composio_sdk/resources/auth/session.py">retrieve_info</a>() -> <a href="./src/composio_sdk/types/auth/session_retrieve_info_response.py">SessionRetrieveInfoResponse</a></code>
+- <code title="post /api/v3/auth/session/logout">client.auth.session.<a href="./src/resources/auth/session.ts">logout</a>() -> SessionLogoutResponse</code>
+- <code title="get /api/v3/auth/session/info">client.auth.session.<a href="./src/resources/auth/session.ts">retrieveInfo</a>() -> SessionRetrieveInfoResponse</code>
 
 # Admin
 
 Types:
 
-```python
-from composio_sdk.types import AdminIdentifyResponse
-```
+- <code><a href="./src/resources/admin.ts">AdminIdentifyResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/admin/identify">client.admin.<a href="./src/composio_sdk/resources/admin.py">identify</a>(\*\*<a href="src/composio_sdk/types/admin_identify_params.py">params</a>) -> <a href="./src/composio_sdk/types/admin_identify_response.py">AdminIdentifyResponse</a></code>
+- <code title="post /api/v3/admin/identify">client.admin.<a href="./src/resources/admin.ts">identify</a>({ ...params }) -> AdminIdentifyResponse</code>
 
 # AuthConfigs
 
 Types:
 
-```python
-from composio_sdk.types import (
-    AuthConfigCreateResponse,
-    AuthConfigRetrieveResponse,
-    AuthConfigUpdateResponse,
-    AuthConfigListResponse,
-    AuthConfigDeleteResponse,
-    AuthConfigUpdateStatusResponse,
-)
-```
+- <code><a href="./src/resources/auth-configs.ts">AuthConfigCreateResponse</a></code>
+- <code><a href="./src/resources/auth-configs.ts">AuthConfigRetrieveResponse</a></code>
+- <code><a href="./src/resources/auth-configs.ts">AuthConfigUpdateResponse</a></code>
+- <code><a href="./src/resources/auth-configs.ts">AuthConfigListResponse</a></code>
+- <code><a href="./src/resources/auth-configs.ts">AuthConfigDeleteResponse</a></code>
+- <code><a href="./src/resources/auth-configs.ts">AuthConfigUpdateStatusResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/auth_configs">client.auth_configs.<a href="./src/composio_sdk/resources/auth_configs.py">create</a>(\*\*<a href="src/composio_sdk/types/auth_config_create_params.py">params</a>) -> <a href="./src/composio_sdk/types/auth_config_create_response.py">AuthConfigCreateResponse</a></code>
-- <code title="get /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_sdk/resources/auth_configs.py">retrieve</a>(nanoid) -> <a href="./src/composio_sdk/types/auth_config_retrieve_response.py">AuthConfigRetrieveResponse</a></code>
-- <code title="patch /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_sdk/resources/auth_configs.py">update</a>(nanoid, \*\*<a href="src/composio_sdk/types/auth_config_update_params.py">params</a>) -> <a href="./src/composio_sdk/types/auth_config_update_response.py">AuthConfigUpdateResponse</a></code>
-- <code title="get /api/v3/auth_configs">client.auth_configs.<a href="./src/composio_sdk/resources/auth_configs.py">list</a>(\*\*<a href="src/composio_sdk/types/auth_config_list_params.py">params</a>) -> <a href="./src/composio_sdk/types/auth_config_list_response.py">AuthConfigListResponse</a></code>
-- <code title="delete /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_sdk/resources/auth_configs.py">delete</a>(nanoid) -> <a href="./src/composio_sdk/types/auth_config_delete_response.py">AuthConfigDeleteResponse</a></code>
-- <code title="patch /api/v3/auth_configs/{nanoid}/{status}">client.auth_configs.<a href="./src/composio_sdk/resources/auth_configs.py">update_status</a>(status, \*, nanoid) -> <a href="./src/composio_sdk/types/auth_config_update_status_response.py">AuthConfigUpdateStatusResponse</a></code>
+- <code title="post /api/v3/auth_configs">client.authConfigs.<a href="./src/resources/auth-configs.ts">create</a>({ ...params }) -> AuthConfigCreateResponse</code>
+- <code title="get /api/v3/auth_configs/{nanoid}">client.authConfigs.<a href="./src/resources/auth-configs.ts">retrieve</a>(nanoid) -> AuthConfigRetrieveResponse</code>
+- <code title="patch /api/v3/auth_configs/{nanoid}">client.authConfigs.<a href="./src/resources/auth-configs.ts">update</a>(nanoid, { ...params }) -> AuthConfigUpdateResponse</code>
+- <code title="get /api/v3/auth_configs">client.authConfigs.<a href="./src/resources/auth-configs.ts">list</a>({ ...params }) -> AuthConfigListResponse</code>
+- <code title="delete /api/v3/auth_configs/{nanoid}">client.authConfigs.<a href="./src/resources/auth-configs.ts">delete</a>(nanoid) -> AuthConfigDeleteResponse</code>
+- <code title="patch /api/v3/auth_configs/{nanoid}/{status}">client.authConfigs.<a href="./src/resources/auth-configs.ts">updateStatus</a>(status, { ...params }) -> AuthConfigUpdateStatusResponse</code>
 
 # ConnectedAccounts
 
 Types:
 
-```python
-from composio_sdk.types import (
-    ConnectedAccountCreateResponse,
-    ConnectedAccountRetrieveResponse,
-    ConnectedAccountListResponse,
-    ConnectedAccountDeleteResponse,
-    ConnectedAccountRefreshResponse,
-    ConnectedAccountUpdateStatusResponse,
-)
-```
+- <code><a href="./src/resources/connected-accounts.ts">ConnectedAccountCreateResponse</a></code>
+- <code><a href="./src/resources/connected-accounts.ts">ConnectedAccountRetrieveResponse</a></code>
+- <code><a href="./src/resources/connected-accounts.ts">ConnectedAccountListResponse</a></code>
+- <code><a href="./src/resources/connected-accounts.ts">ConnectedAccountDeleteResponse</a></code>
+- <code><a href="./src/resources/connected-accounts.ts">ConnectedAccountRefreshResponse</a></code>
+- <code><a href="./src/resources/connected-accounts.ts">ConnectedAccountUpdateStatusResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/connected_accounts">client.connected_accounts.<a href="./src/composio_sdk/resources/connected_accounts.py">create</a>(\*\*<a href="src/composio_sdk/types/connected_account_create_params.py">params</a>) -> <a href="./src/composio_sdk/types/connected_account_create_response.py">ConnectedAccountCreateResponse</a></code>
-- <code title="get /api/v3/connected_accounts/{nanoid}">client.connected_accounts.<a href="./src/composio_sdk/resources/connected_accounts.py">retrieve</a>(nanoid) -> <a href="./src/composio_sdk/types/connected_account_retrieve_response.py">ConnectedAccountRetrieveResponse</a></code>
-- <code title="get /api/v3/connected_accounts">client.connected_accounts.<a href="./src/composio_sdk/resources/connected_accounts.py">list</a>(\*\*<a href="src/composio_sdk/types/connected_account_list_params.py">params</a>) -> <a href="./src/composio_sdk/types/connected_account_list_response.py">ConnectedAccountListResponse</a></code>
-- <code title="delete /api/v3/connected_accounts/{nanoid}">client.connected_accounts.<a href="./src/composio_sdk/resources/connected_accounts.py">delete</a>(nanoid) -> <a href="./src/composio_sdk/types/connected_account_delete_response.py">ConnectedAccountDeleteResponse</a></code>
-- <code title="post /api/v3/connected_accounts/{nanoid}/refresh">client.connected_accounts.<a href="./src/composio_sdk/resources/connected_accounts.py">refresh</a>(nanoid) -> <a href="./src/composio_sdk/types/connected_account_refresh_response.py">ConnectedAccountRefreshResponse</a></code>
-- <code title="patch /api/v3/connected_accounts/{nanoId}/status">client.connected_accounts.<a href="./src/composio_sdk/resources/connected_accounts.py">update_status</a>(nano_id, \*\*<a href="src/composio_sdk/types/connected_account_update_status_params.py">params</a>) -> <a href="./src/composio_sdk/types/connected_account_update_status_response.py">ConnectedAccountUpdateStatusResponse</a></code>
+- <code title="post /api/v3/connected_accounts">client.connectedAccounts.<a href="./src/resources/connected-accounts.ts">create</a>({ ...params }) -> ConnectedAccountCreateResponse</code>
+- <code title="get /api/v3/connected_accounts/{nanoid}">client.connectedAccounts.<a href="./src/resources/connected-accounts.ts">retrieve</a>(nanoid) -> ConnectedAccountRetrieveResponse</code>
+- <code title="get /api/v3/connected_accounts">client.connectedAccounts.<a href="./src/resources/connected-accounts.ts">list</a>({ ...params }) -> ConnectedAccountListResponse</code>
+- <code title="delete /api/v3/connected_accounts/{nanoid}">client.connectedAccounts.<a href="./src/resources/connected-accounts.ts">delete</a>(nanoid) -> ConnectedAccountDeleteResponse</code>
+- <code title="post /api/v3/connected_accounts/{nanoid}/refresh">client.connectedAccounts.<a href="./src/resources/connected-accounts.ts">refresh</a>(nanoid) -> ConnectedAccountRefreshResponse</code>
+- <code title="patch /api/v3/connected_accounts/{nanoId}/status">client.connectedAccounts.<a href="./src/resources/connected-accounts.ts">updateStatus</a>(nanoID, { ...params }) -> ConnectedAccountUpdateStatusResponse</code>
 
 # Trigger
 
 Types:
 
-```python
-from composio_sdk.types import TriggerLogResponse
-```
+- <code><a href="./src/resources/trigger.ts">TriggerLogResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/internal/trigger/logs">client.trigger.<a href="./src/composio_sdk/resources/trigger.py">log</a>(\*\*<a href="src/composio_sdk/types/trigger_log_params.py">params</a>) -> <a href="./src/composio_sdk/types/trigger_log_response.py">TriggerLogResponse</a></code>
+- <code title="post /api/v3/internal/trigger/logs">client.trigger.<a href="./src/resources/trigger.ts">log</a>({ ...params }) -> TriggerLogResponse</code>
 
 # ActionExecution
 
 Types:
 
-```python
-from composio_sdk.types import (
-    ActionExecutionLogResponse,
-    ActionExecutionRetrieveFieldsResponse,
-    ActionExecutionRetrieveLogResponse,
-)
-```
+- <code><a href="./src/resources/action-execution.ts">ActionExecutionLogResponse</a></code>
+- <code><a href="./src/resources/action-execution.ts">ActionExecutionRetrieveFieldsResponse</a></code>
+- <code><a href="./src/resources/action-execution.ts">ActionExecutionRetrieveLogResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/internal/action_execution/logs">client.action_execution.<a href="./src/composio_sdk/resources/action_execution.py">log</a>(\*\*<a href="src/composio_sdk/types/action_execution_log_params.py">params</a>) -> <a href="./src/composio_sdk/types/action_execution_log_response.py">ActionExecutionLogResponse</a></code>
-- <code title="get /api/v3/internal/action_execution/fields">client.action_execution.<a href="./src/composio_sdk/resources/action_execution.py">retrieve_fields</a>() -> <a href="./src/composio_sdk/types/action_execution_retrieve_fields_response.py">ActionExecutionRetrieveFieldsResponse</a></code>
-- <code title="get /api/v3/internal/action_execution/log/{id}">client.action_execution.<a href="./src/composio_sdk/resources/action_execution.py">retrieve_log</a>(id) -> <a href="./src/composio_sdk/types/action_execution_retrieve_log_response.py">ActionExecutionRetrieveLogResponse</a></code>
+- <code title="post /api/v3/internal/action_execution/logs">client.actionExecution.<a href="./src/resources/action-execution.ts">log</a>({ ...params }) -> ActionExecutionLogResponse</code>
+- <code title="get /api/v3/internal/action_execution/fields">client.actionExecution.<a href="./src/resources/action-execution.ts">retrieveFields</a>() -> ActionExecutionRetrieveFieldsResponse</code>
+- <code title="get /api/v3/internal/action_execution/log/{id}">client.actionExecution.<a href="./src/resources/action-execution.ts">retrieveLog</a>(id) -> ActionExecutionRetrieveLogResponse</code>
 
 # Org
 
@@ -134,218 +115,182 @@ Methods:
 
 Types:
 
-```python
-from composio_sdk.types.org import APIKeyRetrieveResponse, APIKeyRegenerateResponse
-```
+- <code><a href="./src/resources/org/api-key.ts">APIKeyRetrieveResponse</a></code>
+- <code><a href="./src/resources/org/api-key.ts">APIKeyRegenerateResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/org/api_key">client.org.api_key.<a href="./src/composio_sdk/resources/org/api_key.py">retrieve</a>() -> <a href="./src/composio_sdk/types/org/api_key_retrieve_response.py">APIKeyRetrieveResponse</a></code>
-- <code title="post /api/v3/org/api_key/regenerate">client.org.api_key.<a href="./src/composio_sdk/resources/org/api_key.py">regenerate</a>() -> <a href="./src/composio_sdk/types/org/api_key_regenerate_response.py">APIKeyRegenerateResponse</a></code>
+- <code title="get /api/v3/org/api_key">client.org.apiKey.<a href="./src/resources/org/api-key.ts">retrieve</a>() -> APIKeyRetrieveResponse</code>
+- <code title="post /api/v3/org/api_key/regenerate">client.org.apiKey.<a href="./src/resources/org/api-key.ts">regenerate</a>() -> APIKeyRegenerateResponse</code>
 
 ## Project
 
 Types:
 
-```python
-from composio_sdk.types.org import (
-    ProjectCreateResponse,
-    ProjectRetrieveResponse,
-    ProjectListResponse,
-    ProjectDeleteResponse,
-)
-```
+- <code><a href="./src/resources/org/project/project.ts">ProjectCreateResponse</a></code>
+- <code><a href="./src/resources/org/project/project.ts">ProjectRetrieveResponse</a></code>
+- <code><a href="./src/resources/org/project/project.ts">ProjectListResponse</a></code>
+- <code><a href="./src/resources/org/project/project.ts">ProjectDeleteResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/org/project/new">client.org.project.<a href="./src/composio_sdk/resources/org/project/project.py">create</a>(\*\*<a href="src/composio_sdk/types/org/project_create_params.py">params</a>) -> <a href="./src/composio_sdk/types/org/project_create_response.py">ProjectCreateResponse</a></code>
-- <code title="get /api/v3/org/project/{projectId}">client.org.project.<a href="./src/composio_sdk/resources/org/project/project.py">retrieve</a>(project_id) -> <a href="./src/composio_sdk/types/org/project_retrieve_response.py">ProjectRetrieveResponse</a></code>
-- <code title="get /api/v3/org/project/list">client.org.project.<a href="./src/composio_sdk/resources/org/project/project.py">list</a>() -> <a href="./src/composio_sdk/types/org/project_list_response.py">ProjectListResponse</a></code>
-- <code title="delete /api/v3/org/project/delete/{projectId}">client.org.project.<a href="./src/composio_sdk/resources/org/project/project.py">delete</a>(project_id) -> <a href="./src/composio_sdk/types/org/project_delete_response.py">ProjectDeleteResponse</a></code>
+- <code title="post /api/v3/org/project/new">client.org.project.<a href="./src/resources/org/project/project.ts">create</a>({ ...params }) -> ProjectCreateResponse</code>
+- <code title="get /api/v3/org/project/{projectId}">client.org.project.<a href="./src/resources/org/project/project.ts">retrieve</a>(projectID) -> ProjectRetrieveResponse</code>
+- <code title="get /api/v3/org/project/list">client.org.project.<a href="./src/resources/org/project/project.ts">list</a>() -> ProjectListResponse</code>
+- <code title="delete /api/v3/org/project/delete/{projectId}">client.org.project.<a href="./src/resources/org/project/project.ts">delete</a>(projectID) -> ProjectDeleteResponse</code>
 
 ### APIKeys
 
 Types:
 
-```python
-from composio_sdk.types.org.project import (
-    APIKeyCreateResponse,
-    APIKeyListResponse,
-    APIKeyDeleteResponse,
-    APIKeyCreateAPIKeyResponse,
-)
-```
+- <code><a href="./src/resources/org/project/api-keys.ts">APIKeyCreateResponse</a></code>
+- <code><a href="./src/resources/org/project/api-keys.ts">APIKeyListResponse</a></code>
+- <code><a href="./src/resources/org/project/api-keys.ts">APIKeyDeleteResponse</a></code>
+- <code><a href="./src/resources/org/project/api-keys.ts">APIKeyCreateAPIKeyResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/org/project/{projectId}/api_keys/create">client.org.project.api_keys.<a href="./src/composio_sdk/resources/org/project/api_keys.py">create</a>(project_id, \*\*<a href="src/composio_sdk/types/org/project/api_key_create_params.py">params</a>) -> <a href="./src/composio_sdk/types/org/project/api_key_create_response.py">APIKeyCreateResponse</a></code>
-- <code title="get /api/v3/org/project/{projectId}/api_keys/list">client.org.project.api_keys.<a href="./src/composio_sdk/resources/org/project/api_keys.py">list</a>(project_id) -> <a href="./src/composio_sdk/types/org/project/api_key_list_response.py">APIKeyListResponse</a></code>
-- <code title="delete /api/v3/org/project/{projectId}/api_keys/remove/{id}">client.org.project.api_keys.<a href="./src/composio_sdk/resources/org/project/api_keys.py">delete</a>(id, \*, project_id) -> <a href="./src/composio_sdk/types/org/project/api_key_delete_response.py">APIKeyDeleteResponse</a></code>
-- <code title="post /api/v3/org/project/{projectId}/api_keys/create-api-key">client.org.project.api_keys.<a href="./src/composio_sdk/resources/org/project/api_keys.py">create_api_key</a>(project_id) -> <a href="./src/composio_sdk/types/org/project/api_key_create_api_key_response.py">APIKeyCreateAPIKeyResponse</a></code>
+- <code title="post /api/v3/org/project/{projectId}/api_keys/create">client.org.project.apiKeys.<a href="./src/resources/org/project/api-keys.ts">create</a>(projectID, { ...params }) -> APIKeyCreateResponse</code>
+- <code title="get /api/v3/org/project/{projectId}/api_keys/list">client.org.project.apiKeys.<a href="./src/resources/org/project/api-keys.ts">list</a>(projectID) -> APIKeyListResponse</code>
+- <code title="delete /api/v3/org/project/{projectId}/api_keys/remove/{id}">client.org.project.apiKeys.<a href="./src/resources/org/project/api-keys.ts">delete</a>(id, { ...params }) -> APIKeyDeleteResponse</code>
+- <code title="post /api/v3/org/project/{projectId}/api_keys/create-api-key">client.org.project.apiKeys.<a href="./src/resources/org/project/api-keys.ts">createAPIKey</a>(projectID) -> APIKeyCreateAPIKeyResponse</code>
 
 ### Webhook
 
 Types:
 
-```python
-from composio_sdk.types.org.project import (
-    WebhookRetrieveResponse,
-    WebhookUpdateResponse,
-    WebhookDeleteResponse,
-    WebhookRefreshResponse,
-)
-```
+- <code><a href="./src/resources/org/project/webhook.ts">WebhookRetrieveResponse</a></code>
+- <code><a href="./src/resources/org/project/webhook.ts">WebhookUpdateResponse</a></code>
+- <code><a href="./src/resources/org/project/webhook.ts">WebhookDeleteResponse</a></code>
+- <code><a href="./src/resources/org/project/webhook.ts">WebhookRefreshResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/org/project/webhook">client.org.project.webhook.<a href="./src/composio_sdk/resources/org/project/webhook.py">retrieve</a>(\*\*<a href="src/composio_sdk/types/org/project/webhook_retrieve_params.py">params</a>) -> <a href="./src/composio_sdk/types/org/project/webhook_retrieve_response.py">WebhookRetrieveResponse</a></code>
-- <code title="post /api/v3/org/project/webhook/update">client.org.project.webhook.<a href="./src/composio_sdk/resources/org/project/webhook.py">update</a>(\*\*<a href="src/composio_sdk/types/org/project/webhook_update_params.py">params</a>) -> <a href="./src/composio_sdk/types/org/project/webhook_update_response.py">WebhookUpdateResponse</a></code>
-- <code title="delete /api/v3/org/project/webhook">client.org.project.webhook.<a href="./src/composio_sdk/resources/org/project/webhook.py">delete</a>(\*\*<a href="src/composio_sdk/types/org/project/webhook_delete_params.py">params</a>) -> <a href="./src/composio_sdk/types/org/project/webhook_delete_response.py">WebhookDeleteResponse</a></code>
-- <code title="post /api/v3/org/project/webhook/refresh">client.org.project.webhook.<a href="./src/composio_sdk/resources/org/project/webhook.py">refresh</a>() -> <a href="./src/composio_sdk/types/org/project/webhook_refresh_response.py">WebhookRefreshResponse</a></code>
+- <code title="get /api/v3/org/project/webhook">client.org.project.webhook.<a href="./src/resources/org/project/webhook.ts">retrieve</a>({ ...params }) -> WebhookRetrieveResponse</code>
+- <code title="post /api/v3/org/project/webhook/update">client.org.project.webhook.<a href="./src/resources/org/project/webhook.ts">update</a>({ ...params }) -> WebhookUpdateResponse</code>
+- <code title="delete /api/v3/org/project/webhook">client.org.project.webhook.<a href="./src/resources/org/project/webhook.ts">delete</a>({ ...params }) -> WebhookDeleteResponse</code>
+- <code title="post /api/v3/org/project/webhook/refresh">client.org.project.webhook.<a href="./src/resources/org/project/webhook.ts">refresh</a>() -> WebhookRefreshResponse</code>
 
 ### Trigger
 
 Types:
 
-```python
-from composio_sdk.types.org.project import TriggerUpdateResponse, TriggerListResponse
-```
+- <code><a href="./src/resources/org/project/trigger.ts">TriggerUpdateResponse</a></code>
+- <code><a href="./src/resources/org/project/trigger.ts">TriggerListResponse</a></code>
 
 Methods:
 
-- <code title="patch /api/v3/org/project/trigger">client.org.project.trigger.<a href="./src/composio_sdk/resources/org/project/trigger.py">update</a>(\*\*<a href="src/composio_sdk/types/org/project/trigger_update_params.py">params</a>) -> <a href="./src/composio_sdk/types/org/project/trigger_update_response.py">TriggerUpdateResponse</a></code>
-- <code title="get /api/v3/org/project/trigger">client.org.project.trigger.<a href="./src/composio_sdk/resources/org/project/trigger.py">list</a>() -> <a href="./src/composio_sdk/types/org/project/trigger_list_response.py">TriggerListResponse</a></code>
+- <code title="patch /api/v3/org/project/trigger">client.org.project.trigger.<a href="./src/resources/org/project/trigger.ts">update</a>({ ...params }) -> TriggerUpdateResponse</code>
+- <code title="get /api/v3/org/project/trigger">client.org.project.trigger.<a href="./src/resources/org/project/trigger.ts">list</a>() -> TriggerListResponse</code>
 
 # TeamMembers
 
 Types:
 
-```python
-from composio_sdk.types import (
-    TeamMemberUpdateResponse,
-    TeamMemberListResponse,
-    TeamMemberInviteResponse,
-    TeamMemberRemoveResponse,
-)
-```
+- <code><a href="./src/resources/team-members.ts">TeamMemberUpdateResponse</a></code>
+- <code><a href="./src/resources/team-members.ts">TeamMemberListResponse</a></code>
+- <code><a href="./src/resources/team-members.ts">TeamMemberInviteResponse</a></code>
+- <code><a href="./src/resources/team-members.ts">TeamMemberRemoveResponse</a></code>
 
 Methods:
 
-- <code title="put /api/v3/team-members/update/{id}">client.team_members.<a href="./src/composio_sdk/resources/team_members.py">update</a>(id, \*\*<a href="src/composio_sdk/types/team_member_update_params.py">params</a>) -> <a href="./src/composio_sdk/types/team_member_update_response.py">TeamMemberUpdateResponse</a></code>
-- <code title="get /api/v3/team-members/list">client.team_members.<a href="./src/composio_sdk/resources/team_members.py">list</a>() -> <a href="./src/composio_sdk/types/team_member_list_response.py">TeamMemberListResponse</a></code>
-- <code title="post /api/v3/team-members/invite">client.team_members.<a href="./src/composio_sdk/resources/team_members.py">invite</a>(\*\*<a href="src/composio_sdk/types/team_member_invite_params.py">params</a>) -> <a href="./src/composio_sdk/types/team_member_invite_response.py">TeamMemberInviteResponse</a></code>
-- <code title="delete /api/v3/team-members/remove/{id}">client.team_members.<a href="./src/composio_sdk/resources/team_members.py">remove</a>(id) -> <a href="./src/composio_sdk/types/team_member_remove_response.py">TeamMemberRemoveResponse</a></code>
+- <code title="put /api/v3/team-members/update/{id}">client.teamMembers.<a href="./src/resources/team-members.ts">update</a>(id, { ...params }) -> TeamMemberUpdateResponse</code>
+- <code title="get /api/v3/team-members/list">client.teamMembers.<a href="./src/resources/team-members.ts">list</a>() -> TeamMemberListResponse</code>
+- <code title="post /api/v3/team-members/invite">client.teamMembers.<a href="./src/resources/team-members.ts">invite</a>({ ...params }) -> TeamMemberInviteResponse</code>
+- <code title="delete /api/v3/team-members/remove/{id}">client.teamMembers.<a href="./src/resources/team-members.ts">remove</a>(id) -> TeamMemberRemoveResponse</code>
 
 # Toolkits
 
 Types:
 
-```python
-from composio_sdk.types import (
-    ToolkitRetrieveResponse,
-    ToolkitListResponse,
-    ToolkitRetrieveCategoriesResponse,
-)
-```
+- <code><a href="./src/resources/toolkits.ts">ToolkitRetrieveResponse</a></code>
+- <code><a href="./src/resources/toolkits.ts">ToolkitListResponse</a></code>
+- <code><a href="./src/resources/toolkits.ts">ToolkitRetrieveCategoriesResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/toolkits/{slug}">client.toolkits.<a href="./src/composio_sdk/resources/toolkits.py">retrieve</a>(slug) -> <a href="./src/composio_sdk/types/toolkit_retrieve_response.py">ToolkitRetrieveResponse</a></code>
-- <code title="get /api/v3/toolkits">client.toolkits.<a href="./src/composio_sdk/resources/toolkits.py">list</a>(\*\*<a href="src/composio_sdk/types/toolkit_list_params.py">params</a>) -> <a href="./src/composio_sdk/types/toolkit_list_response.py">ToolkitListResponse</a></code>
-- <code title="get /api/v3/toolkits/categories">client.toolkits.<a href="./src/composio_sdk/resources/toolkits.py">retrieve_categories</a>() -> <a href="./src/composio_sdk/types/toolkit_retrieve_categories_response.py">ToolkitRetrieveCategoriesResponse</a></code>
+- <code title="get /api/v3/toolkits/{slug}">client.toolkits.<a href="./src/resources/toolkits.ts">retrieve</a>(slug) -> ToolkitRetrieveResponse</code>
+- <code title="get /api/v3/toolkits">client.toolkits.<a href="./src/resources/toolkits.ts">list</a>({ ...params }) -> ToolkitListResponse</code>
+- <code title="get /api/v3/toolkits/categories">client.toolkits.<a href="./src/resources/toolkits.ts">retrieveCategories</a>() -> ToolkitRetrieveCategoriesResponse</code>
 
 # Tools
 
 Types:
 
-```python
-from composio_sdk.types import ToolRetrieveResponse, ToolListResponse, ToolRetrieveEnumResponse
-```
+- <code><a href="./src/resources/tools/tools.ts">ToolRetrieveResponse</a></code>
+- <code><a href="./src/resources/tools/tools.ts">ToolListResponse</a></code>
+- <code><a href="./src/resources/tools/tools.ts">ToolRetrieveEnumResponse</a></code>
+- <code><a href="./src/resources/tools/tools.ts">ToolRunResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/tools/{tool_slug}">client.tools.<a href="./src/composio_sdk/resources/tools/tools.py">retrieve</a>(tool_slug) -> <a href="./src/composio_sdk/types/tool_retrieve_response.py">ToolRetrieveResponse</a></code>
-- <code title="get /api/v3/tools">client.tools.<a href="./src/composio_sdk/resources/tools/tools.py">list</a>(\*\*<a href="src/composio_sdk/types/tool_list_params.py">params</a>) -> <a href="./src/composio_sdk/types/tool_list_response.py">ToolListResponse</a></code>
-- <code title="get /api/v3/tools/enum">client.tools.<a href="./src/composio_sdk/resources/tools/tools.py">retrieve_enum</a>() -> str</code>
+- <code title="get /api/v3/tools/{tool_slug}">client.tools.<a href="./src/resources/tools/tools.ts">retrieve</a>(toolSlug) -> ToolRetrieveResponse</code>
+- <code title="get /api/v3/tools">client.tools.<a href="./src/resources/tools/tools.ts">list</a>({ ...params }) -> ToolListResponse</code>
+- <code title="get /api/v3/tools/enum">client.tools.<a href="./src/resources/tools/tools.ts">retrieveEnum</a>() -> string</code>
+- <code title="post /api/v3/tools/execute/{action}">client.tools.<a href="./src/resources/tools/tools.ts">run</a>(action, { ...params }) -> ToolRunResponse</code>
 
 ## Execute
 
 Types:
 
-```python
-from composio_sdk.types.tools import (
-    ExecuteExecuteResponse,
-    ExecuteInputResponse,
-    ExecuteProxyResponse,
-)
-```
+- <code><a href="./src/resources/tools/execute.ts">ExecuteGetInputResponse</a></code>
+- <code><a href="./src/resources/tools/execute.ts">ExecuteProxyResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/tools/execute/{action}">client.tools.execute.<a href="./src/composio_sdk/resources/tools/execute.py">execute</a>(action, \*\*<a href="src/composio_sdk/types/tools/execute_execute_params.py">params</a>) -> <a href="./src/composio_sdk/types/tools/execute_execute_response.py">ExecuteExecuteResponse</a></code>
-- <code title="post /api/v3/tools/execute/{actionName}/input">client.tools.execute.<a href="./src/composio_sdk/resources/tools/execute.py">input</a>(action_name, \*\*<a href="src/composio_sdk/types/tools/execute_input_params.py">params</a>) -> <a href="./src/composio_sdk/types/tools/execute_input_response.py">ExecuteInputResponse</a></code>
-- <code title="post /api/v3/tools/execute/proxy">client.tools.execute.<a href="./src/composio_sdk/resources/tools/execute.py">proxy</a>(\*\*<a href="src/composio_sdk/types/tools/execute_proxy_params.py">params</a>) -> <a href="./src/composio_sdk/types/tools/execute_proxy_response.py">ExecuteProxyResponse</a></code>
+- <code title="post /api/v3/tools/execute/{actionName}/input">client.tools.execute.<a href="./src/resources/tools/execute.ts">getInput</a>(actionName, { ...params }) -> ExecuteGetInputResponse</code>
+- <code title="post /api/v3/tools/execute/proxy">client.tools.execute.<a href="./src/resources/tools/execute.ts">proxy</a>({ ...params }) -> ExecuteProxyResponse</code>
 
 # TriggerInstances
 
 Types:
 
-```python
-from composio_sdk.types import (
-    TriggerInstanceListActiveResponse,
-    TriggerInstanceRemoveUpsertResponse,
-    TriggerInstanceUpdateStatusResponse,
-    TriggerInstanceUpsertResponse,
-)
-```
+- <code><a href="./src/resources/trigger-instances/trigger-instances.ts">TriggerInstanceListActiveResponse</a></code>
+- <code><a href="./src/resources/trigger-instances/trigger-instances.ts">TriggerInstanceRemoveUpsertResponse</a></code>
+- <code><a href="./src/resources/trigger-instances/trigger-instances.ts">TriggerInstanceUpdateStatusResponse</a></code>
+- <code><a href="./src/resources/trigger-instances/trigger-instances.ts">TriggerInstanceUpsertResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/trigger_instances/active">client.trigger_instances.<a href="./src/composio_sdk/resources/trigger_instances/trigger_instances.py">list_active</a>(\*\*<a href="src/composio_sdk/types/trigger_instance_list_active_params.py">params</a>) -> <a href="./src/composio_sdk/types/trigger_instance_list_active_response.py">TriggerInstanceListActiveResponse</a></code>
-- <code title="delete /api/v3/trigger_instances/{slug}/upsert">client.trigger_instances.<a href="./src/composio_sdk/resources/trigger_instances/trigger_instances.py">remove_upsert</a>(slug) -> <a href="./src/composio_sdk/types/trigger_instance_remove_upsert_response.py">TriggerInstanceRemoveUpsertResponse</a></code>
-- <code title="patch /api/v3/trigger_instances/{slug}/status/{status}">client.trigger_instances.<a href="./src/composio_sdk/resources/trigger_instances/trigger_instances.py">update_status</a>(status, \*, slug) -> <a href="./src/composio_sdk/types/trigger_instance_update_status_response.py">TriggerInstanceUpdateStatusResponse</a></code>
-- <code title="post /api/v3/trigger_instances/{slug}/upsert">client.trigger_instances.<a href="./src/composio_sdk/resources/trigger_instances/trigger_instances.py">upsert</a>(slug, \*\*<a href="src/composio_sdk/types/trigger_instance_upsert_params.py">params</a>) -> <a href="./src/composio_sdk/types/trigger_instance_upsert_response.py">TriggerInstanceUpsertResponse</a></code>
+- <code title="get /api/v3/trigger_instances/active">client.triggerInstances.<a href="./src/resources/trigger-instances/trigger-instances.ts">listActive</a>({ ...params }) -> TriggerInstanceListActiveResponse</code>
+- <code title="delete /api/v3/trigger_instances/{slug}/upsert">client.triggerInstances.<a href="./src/resources/trigger-instances/trigger-instances.ts">removeUpsert</a>(slug) -> TriggerInstanceRemoveUpsertResponse</code>
+- <code title="patch /api/v3/trigger_instances/{slug}/status/{status}">client.triggerInstances.<a href="./src/resources/trigger-instances/trigger-instances.ts">updateStatus</a>(status, { ...params }) -> TriggerInstanceUpdateStatusResponse</code>
+- <code title="post /api/v3/trigger_instances/{slug}/upsert">client.triggerInstances.<a href="./src/resources/trigger-instances/trigger-instances.ts">upsert</a>(slug, { ...params }) -> TriggerInstanceUpsertResponse</code>
 
 ## Handle
 
 Types:
 
-```python
-from composio_sdk.types.trigger_instances import HandleRetrieveResponse, HandleExecuteResponse
-```
+- <code><a href="./src/resources/trigger-instances/handle.ts">HandleRetrieveResponse</a></code>
+- <code><a href="./src/resources/trigger-instances/handle.ts">HandleExecuteResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/trigger_instances/{slug}/{projectId}/handle">client.trigger_instances.handle.<a href="./src/composio_sdk/resources/trigger_instances/handle.py">retrieve</a>(project_id, \*, slug) -> str</code>
-- <code title="post /api/v3/trigger_instances/{slug}/{projectId}/handle">client.trigger_instances.handle.<a href="./src/composio_sdk/resources/trigger_instances/handle.py">execute</a>(project_id, \*, slug) -> str</code>
+- <code title="get /api/v3/trigger_instances/{slug}/{projectId}/handle">client.triggerInstances.handle.<a href="./src/resources/trigger-instances/handle.ts">retrieve</a>(projectID, { ...params }) -> string</code>
+- <code title="post /api/v3/trigger_instances/{slug}/{projectId}/handle">client.triggerInstances.handle.<a href="./src/resources/trigger-instances/handle.ts">execute</a>(projectID, { ...params }) -> string</code>
 
 # TriggersTypes
 
 Types:
 
-```python
-from composio_sdk.types import (
-    TriggersTypeRetrieveResponse,
-    TriggersTypeListResponse,
-    TriggersTypeRetrieveEnumResponse,
-)
-```
+- <code><a href="./src/resources/triggers-types.ts">TriggersTypeRetrieveResponse</a></code>
+- <code><a href="./src/resources/triggers-types.ts">TriggersTypeListResponse</a></code>
+- <code><a href="./src/resources/triggers-types.ts">TriggersTypeRetrieveEnumResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/triggers_types/{slug}">client.triggers_types.<a href="./src/composio_sdk/resources/triggers_types.py">retrieve</a>(slug) -> <a href="./src/composio_sdk/types/triggers_type_retrieve_response.py">TriggersTypeRetrieveResponse</a></code>
-- <code title="get /api/v3/triggers_types">client.triggers_types.<a href="./src/composio_sdk/resources/triggers_types.py">list</a>(\*\*<a href="src/composio_sdk/types/triggers_type_list_params.py">params</a>) -> <a href="./src/composio_sdk/types/triggers_type_list_response.py">TriggersTypeListResponse</a></code>
-- <code title="get /api/v3/triggers_types/list/enum">client.triggers_types.<a href="./src/composio_sdk/resources/triggers_types.py">retrieve_enum</a>() -> str</code>
+- <code title="get /api/v3/triggers_types/{slug}">client.triggersTypes.<a href="./src/resources/triggers-types.ts">retrieve</a>(slug) -> TriggersTypeRetrieveResponse</code>
+- <code title="get /api/v3/triggers_types">client.triggersTypes.<a href="./src/resources/triggers-types.ts">list</a>({ ...params }) -> TriggersTypeListResponse</code>
+- <code title="get /api/v3/triggers_types/list/enum">client.triggersTypes.<a href="./src/resources/triggers-types.ts">retrieveEnum</a>() -> string</code>
 
 # Payments
 
 Types:
 
-```python
-from composio_sdk.types import PaymentCreateSessionResponse, PaymentManageSubscriptionResponse
-```
+- <code><a href="./src/resources/payments.ts">PaymentCreateSessionResponse</a></code>
+- <code><a href="./src/resources/payments.ts">PaymentManageSubscriptionResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/payments/session">client.payments.<a href="./src/composio_sdk/resources/payments.py">create_session</a>(\*\*<a href="src/composio_sdk/types/payment_create_session_params.py">params</a>) -> <a href="./src/composio_sdk/types/payment_create_session_response.py">PaymentCreateSessionResponse</a></code>
-- <code title="post /api/v3/payments/manage-subscription">client.payments.<a href="./src/composio_sdk/resources/payments.py">manage_subscription</a>() -> <a href="./src/composio_sdk/types/payment_manage_subscription_response.py">PaymentManageSubscriptionResponse</a></code>
+- <code title="post /api/v3/payments/session">client.payments.<a href="./src/resources/payments.ts">createSession</a>({ ...params }) -> PaymentCreateSessionResponse</code>
+- <code title="post /api/v3/payments/manage-subscription">client.payments.<a href="./src/resources/payments.ts">manageSubscription</a>() -> PaymentManageSubscriptionResponse</code>
