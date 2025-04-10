@@ -2,10 +2,6 @@
 
 errors=()
 
-if [ -z "${PYPI_TOKEN}" ]; then
-  errors+=("The COMPOSIO_SDK_PYPI_TOKEN secret has not been set. Please set it in either this repository's secrets or your organization secrets.")
-fi
-
 lenErrors=${#errors[@]}
 
 if [[ lenErrors -gt 0 ]]; then
@@ -19,3 +15,4 @@ if [[ lenErrors -gt 0 ]]; then
 fi
 
 echo "The environment is ready to push releases!"
+
