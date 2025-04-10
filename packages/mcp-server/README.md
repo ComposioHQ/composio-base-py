@@ -9,8 +9,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 Because it's not published yet, clone the repo and build it:
 
 ```sh
-git clone git@github.com:alt-glitch/composio-base-ts.git
-cd composio-base-ts
+git clone git@github.com:composiohq/composio-base-typescript.git
+cd composio-base-typescript
 yarn && ./scripts/build-all
 ```
 
@@ -39,7 +39,7 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "composio_sdk_api": {
       "command": "npx",
-      "args": ["-y", "/path/to/local/composio-base-ts/packages/mcp-server"],
+      "args": ["-y", "/path/to/local/composio-base-typescript/packages/mcp-server"],
       "env": {
         "COMPOSIO_API_KEY": "My API Key"
       }

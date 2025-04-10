@@ -9,7 +9,7 @@ on:
 jobs:
   release:
     name: release
-    if: github.ref == 'refs/heads/main' && github.repository == 'alt-glitch/composio-base-ts'
+    if: github.ref == 'refs/heads/main' && github.repository == 'composiohq/composio-base-typescript'
     runs-on: ubuntu-latest
 
     steps:
