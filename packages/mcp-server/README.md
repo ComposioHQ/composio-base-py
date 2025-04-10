@@ -206,8 +206,3 @@ The following tools are available in this MCP server.
 - `retrieve_triggers_types` (`read`):
 - `list_triggers_types` (`read`):
 - `retrieve_enum_triggers_types` (`read`):
-
-### Resource `payments`:
-
-- `create_session_payments` (`write`):
-- `manage_subscription_payments` (`write`):

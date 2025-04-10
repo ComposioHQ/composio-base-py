@@ -53,13 +53,6 @@ import {
   ConnectedAccounts,
 } from './resources/connected-accounts';
 import {
-  PaymentCreateSessionParams,
-  PaymentCreateSessionResponse,
-  PaymentManageSubscriptionParams,
-  PaymentManageSubscriptionResponse,
-  Payments,
-} from './resources/payments';
-import {
   TeamMemberInviteParams,
   TeamMemberInviteResponse,
   TeamMemberListResponse,
@@ -797,7 +790,6 @@ export class ComposioSDK {
   tools: API.Tools = new API.Tools(this);
   triggerInstances: API.TriggerInstances = new API.TriggerInstances(this);
   triggersTypes: API.TriggersTypes = new API.TriggersTypes(this);
-  payments: API.Payments = new API.Payments(this);
 }
 ComposioSDK.AuthConfigs = AuthConfigs;
 ComposioSDK.ConnectedAccounts = ConnectedAccounts;
@@ -809,7 +801,6 @@ ComposioSDK.Toolkits = Toolkits;
 ComposioSDK.Tools = Tools;
 ComposioSDK.TriggerInstances = TriggerInstances;
 ComposioSDK.TriggersTypes = TriggersTypes;
-ComposioSDK.Payments = Payments;
 export declare namespace ComposioSDK {
   export type RequestOptions = Opts.RequestOptions;
 
@@ -901,13 +892,5 @@ export declare namespace ComposioSDK {
     type TriggersTypeListResponse as TriggersTypeListResponse,
     type TriggersTypeRetrieveEnumResponse as TriggersTypeRetrieveEnumResponse,
     type TriggersTypeListParams as TriggersTypeListParams,
-  };
-
-  export {
-    Payments as Payments,
-    type PaymentCreateSessionResponse as PaymentCreateSessionResponse,
-    type PaymentManageSubscriptionResponse as PaymentManageSubscriptionResponse,
-    type PaymentCreateSessionParams as PaymentCreateSessionParams,
-    type PaymentManageSubscriptionParams as PaymentManageSubscriptionParams,
   };
 }

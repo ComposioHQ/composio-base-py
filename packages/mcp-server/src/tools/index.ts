@@ -57,8 +57,6 @@ import execute_trigger_instances_handle from './trigger-instances/handle/execute
 import retrieve_triggers_types from './triggers-types/retrieve-triggers-types';
 import list_triggers_types from './triggers-types/list-triggers-types';
 import retrieve_enum_triggers_types from './triggers-types/retrieve-enum-triggers-types';
-import create_session_payments from './payments/create-session-payments';
-import manage_subscription_payments from './payments/manage-subscription-payments';
 
 export type HandlerFunction = (client: ComposioSDK, args: any) => Promise<any>;
 
@@ -134,8 +132,6 @@ addEndpoint(execute_trigger_instances_handle);
 addEndpoint(retrieve_triggers_types);
 addEndpoint(list_triggers_types);
 addEndpoint(retrieve_enum_triggers_types);
-addEndpoint(create_session_payments);
-addEndpoint(manage_subscription_payments);
 
 export type Filter = {
   type: 'resource' | 'operation' | 'tag' | 'tool';

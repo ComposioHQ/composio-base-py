@@ -34,13 +34,6 @@ export {
 } from './connected-accounts';
 export { Org } from './org/org';
 export {
-  Payments,
-  type PaymentCreateSessionResponse,
-  type PaymentManageSubscriptionResponse,
-  type PaymentCreateSessionParams,
-  type PaymentManageSubscriptionParams,
-} from './payments';
-export {
   TeamMembers,
   type TeamMemberUpdateResponse,
   type TeamMemberListResponse,
