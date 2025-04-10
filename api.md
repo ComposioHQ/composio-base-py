@@ -64,17 +64,15 @@ Methods:
 
 # Org
 
-## APIKey
-
 Types:
 
-- <code><a href="./src/resources/org/api-key.ts">APIKeyRetrieveResponse</a></code>
-- <code><a href="./src/resources/org/api-key.ts">APIKeyRegenerateResponse</a></code>
+- <code><a href="./src/resources/org/org.ts">OrgRegenerateAPIKeyResponse</a></code>
+- <code><a href="./src/resources/org/org.ts">OrgRetrieveAPIKeyResponse</a></code>
 
 Methods:
 
-- <code title="get /api/v3/org/api_key">client.org.apiKey.<a href="./src/resources/org/api-key.ts">retrieve</a>() -> APIKeyRetrieveResponse</code>
-- <code title="post /api/v3/org/api_key/regenerate">client.org.apiKey.<a href="./src/resources/org/api-key.ts">regenerate</a>() -> APIKeyRegenerateResponse</code>
+- <code title="post /api/v3/org/api_key/regenerate">client.org.<a href="./src/resources/org/org.ts">regenerateAPIKey</a>() -> OrgRegenerateAPIKeyResponse</code>
+- <code title="get /api/v3/org/api_key">client.org.<a href="./src/resources/org/org.ts">retrieveAPIKey</a>() -> OrgRetrieveAPIKeyResponse</code>
 
 ## Project
 

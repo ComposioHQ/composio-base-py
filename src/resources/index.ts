@@ -32,7 +32,7 @@ export {
   type ConnectedAccountListParams,
   type ConnectedAccountUpdateStatusParams,
 } from './connected-accounts';
-export { Org } from './org/org';
+export { Org, type OrgRegenerateAPIKeyResponse, type OrgRetrieveAPIKeyResponse } from './org/org';
 export {
   Payments,
   type PaymentCreateSessionResponse,

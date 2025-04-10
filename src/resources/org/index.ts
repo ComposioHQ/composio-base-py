@@ -1,7 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-export { APIKey, type APIKeyRetrieveResponse, type APIKeyRegenerateResponse } from './api-key';
-export { Org } from './org';
+export { Org, type OrgRegenerateAPIKeyResponse, type OrgRetrieveAPIKeyResponse } from './org';
 export {
   Project,
   type ProjectCreateResponse,

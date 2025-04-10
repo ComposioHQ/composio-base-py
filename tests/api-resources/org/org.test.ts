@@ -7,9 +7,9 @@ const client = new ComposioSDK({
   baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
 });
 
-describe('resource apiKey', () => {
-  test('retrieve', async () => {
-    const responsePromise = client.org.apiKey.retrieve();
+describe('resource org', () => {
+  test('regenerateAPIKey', async () => {
+    const responsePromise = client.org.regenerateAPIKey();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
@@ -19,8 +19,8 @@ describe('resource apiKey', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('regenerate', async () => {
-    const responsePromise = client.org.apiKey.regenerate();
+  test('retrieveAPIKey', async () => {
+    const responsePromise = client.org.retrieveAPIKey();
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
     const response = await responsePromise;
