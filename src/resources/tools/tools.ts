@@ -4,12 +4,10 @@ import { APIResource } from '../../core/resource';
 import * as ExecuteAPI from './execute';
 import {
   Execute,
-  ExecuteInputParams,
-  ExecuteInputResponse,
+  ExecuteGetInputParams,
+  ExecuteGetInputResponse,
   ExecuteProxyParams,
   ExecuteProxyResponse,
-  ExecuteRunParams,
-  ExecuteRunResponse,
 } from './execute';
 import { APIPromise } from '../../core/api-promise';
 import { RequestOptions } from '../../internal/request-options';
@@ -31,6 +29,14 @@ export class Tools extends APIResource {
 
   retrieveEnum(options?: RequestOptions): APIPromise<string> {
     return this._client.get('/api/v3/tools/enum', options);
+  }
+
+  run(
+    action: string,
+    body: ToolRunParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<ToolRunResponse> {
+    return this._client.post(path`/api/v3/tools/execute/${action}`, { body, ...options });
   }
 }
 
@@ -124,6 +130,18 @@ export namespace ToolListResponse {
 
 export type ToolRetrieveEnumResponse = string;
 
+export interface ToolRunResponse {
+  data: Record<string, unknown>;
+
+  error: string | null;
+
+  successful: boolean;
+
+  log_id?: string;
+
+  session_info?: unknown;
+}
+
 export interface ToolListParams {
   /**
    * The cursor to paginate through the results
@@ -151,6 +169,20 @@ export interface ToolListParams {
   toolkit_slug?: string;
 }
 
+export interface ToolRunParams {
+  allow_tracing?: boolean;
+
+  arguments?: Record<string, unknown>;
+
+  connected_account_id?: string;
+
+  entity_id?: string;
+
+  text?: string;
+
+  version?: string;
+}
+
 Tools.Execute = Execute;
 
 export declare namespace Tools {
@@ -158,16 +190,16 @@ export declare namespace Tools {
     type ToolRetrieveResponse as ToolRetrieveResponse,
     type ToolListResponse as ToolListResponse,
     type ToolRetrieveEnumResponse as ToolRetrieveEnumResponse,
+    type ToolRunResponse as ToolRunResponse,
     type ToolListParams as ToolListParams,
+    type ToolRunParams as ToolRunParams,
   };
 
   export {
     Execute as Execute,
-    type ExecuteInputResponse as ExecuteInputResponse,
+    type ExecuteGetInputResponse as ExecuteGetInputResponse,
     type ExecuteProxyResponse as ExecuteProxyResponse,
-    type ExecuteRunResponse as ExecuteRunResponse,
-    type ExecuteInputParams as ExecuteInputParams,
+    type ExecuteGetInputParams as ExecuteGetInputParams,
     type ExecuteProxyParams as ExecuteProxyParams,
-    type ExecuteRunParams as ExecuteRunParams,
   };
 }

@@ -6,28 +6,20 @@ import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
 export class Execute extends APIResource {
-  input(
+  getInput(
     actionName: string,
-    body: ExecuteInputParams,
+    body: ExecuteGetInputParams,
     options?: RequestOptions,
-  ): APIPromise<ExecuteInputResponse> {
+  ): APIPromise<ExecuteGetInputResponse> {
     return this._client.post(path`/api/v3/tools/execute/${actionName}/input`, { body, ...options });
   }
 
   proxy(body: ExecuteProxyParams, options?: RequestOptions): APIPromise<ExecuteProxyResponse> {
     return this._client.post('/api/v3/tools/execute/proxy', { body, ...options });
   }
-
-  run(
-    action: string,
-    body: ExecuteRunParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<ExecuteRunResponse> {
-    return this._client.post(path`/api/v3/tools/execute/${action}`, { body, ...options });
-  }
 }
 
-export interface ExecuteInputResponse {
+export interface ExecuteGetInputResponse {
   /**
    * The arguments for the action needed to execute the given task.
    */
@@ -47,19 +39,7 @@ export interface ExecuteProxyResponse {
   headers?: Record<string, string>;
 }
 
-export interface ExecuteRunResponse {
-  data: Record<string, unknown>;
-
-  error: string | null;
-
-  successful: boolean;
-
-  log_id?: string;
-
-  session_info?: unknown;
-}
-
-export interface ExecuteInputParams {
+export interface ExecuteGetInputParams {
   /**
    * The use-case description for the action, this will give context to LLM to
    * generate the correct inputs for the action.
@@ -103,27 +83,11 @@ export namespace ExecuteProxyParams {
   }
 }
 
-export interface ExecuteRunParams {
-  allow_tracing?: boolean;
-
-  arguments?: Record<string, unknown>;
-
-  connected_account_id?: string;
-
-  entity_id?: string;
-
-  text?: string;
-
-  version?: string;
-}
-
 export declare namespace Execute {
   export {
-    type ExecuteInputResponse as ExecuteInputResponse,
+    type ExecuteGetInputResponse as ExecuteGetInputResponse,
     type ExecuteProxyResponse as ExecuteProxyResponse,
-    type ExecuteRunResponse as ExecuteRunResponse,
-    type ExecuteInputParams as ExecuteInputParams,
+    type ExecuteGetInputParams as ExecuteGetInputParams,
     type ExecuteProxyParams as ExecuteProxyParams,
-    type ExecuteRunParams as ExecuteRunParams,
   };
 }

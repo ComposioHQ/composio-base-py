@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export const tool: Tool = {
-  name: 'input_tools_execute',
+  name: 'get_input_tools_execute',
   description: '',
   inputSchema: {
     type: 'object',
@@ -43,7 +43,7 @@ export const tool: Tool = {
 
 export const handler = (client: ComposioSDK, args: any) => {
   const { actionName, ...body } = args;
-  return client.tools.execute.input(actionName, body);
+  return client.tools.execute.getInput(actionName, body);
 };
 
 export default { metadata, tool, handler };

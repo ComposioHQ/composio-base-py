@@ -70,7 +70,9 @@ export {
   type ToolRetrieveResponse,
   type ToolListResponse,
   type ToolRetrieveEnumResponse,
+  type ToolRunResponse,
   type ToolListParams,
+  type ToolRunParams,
 } from './tools/tools';
 export { Trigger, type TriggerLogResponse, type TriggerLogParams } from './trigger';
 export {

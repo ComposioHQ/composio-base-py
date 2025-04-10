@@ -101,6 +101,8 @@ import {
   ToolListResponse,
   ToolRetrieveEnumResponse,
   ToolRetrieveResponse,
+  ToolRunParams,
+  ToolRunResponse,
   Tools,
 } from './resources/tools/tools';
 import {
@@ -905,7 +907,9 @@ export declare namespace ComposioSDK {
     type ToolRetrieveResponse as ToolRetrieveResponse,
     type ToolListResponse as ToolListResponse,
     type ToolRetrieveEnumResponse as ToolRetrieveEnumResponse,
+    type ToolRunResponse as ToolRunResponse,
     type ToolListParams as ToolListParams,
+    type ToolRunParams as ToolRunParams,
   };
 
   export {

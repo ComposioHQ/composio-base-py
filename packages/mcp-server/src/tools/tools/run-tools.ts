@@ -1,17 +1,17 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import type { Metadata } from '../../';
+import type { Metadata } from '../';
 import ComposioSDK from 'composio-sdk';
 
 export const metadata: Metadata = {
-  resource: 'tools.execute',
+  resource: 'tools',
   operation: 'write',
   tags: [],
 };
 
 export const tool: Tool = {
-  name: 'run_tools_execute',
+  name: 'run_tools',
   description: '',
   inputSchema: {
     type: 'object',
@@ -44,7 +44,7 @@ export const tool: Tool = {
 
 export const handler = (client: ComposioSDK, args: any) => {
   const { action, ...body } = args;
-  return client.tools.execute.run(action, body);
+  return client.tools.run(action, body);
 };
 
 export default { metadata, tool, handler };
