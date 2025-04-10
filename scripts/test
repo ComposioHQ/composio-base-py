@@ -52,5 +52,10 @@ else
   echo
 fi
 
+export DEFER_PYDANTIC_BUILD=false
+
 echo "==> Running tests"
-./node_modules/.bin/jest "$@"
+rye run pytest "$@"
+
+echo "==> Running Pydantic v1 tests"
+rye run nox -s test-pydantic-v1 -- "$@"
