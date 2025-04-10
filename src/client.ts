@@ -27,7 +27,6 @@ import {
   ActionExecutionRetrieveFieldsResponse,
   ActionExecutionRetrieveLogResponse,
 } from './resources/action-execution';
-import { Admin, AdminIdentifyParams, AdminIdentifyResponse } from './resources/admin';
 import {
   AuthConfigCreateParams,
   AuthConfigCreateResponse,
@@ -87,14 +86,6 @@ import {
 import { readEnv } from './internal/utils/env';
 import { formatRequestDetails, loggerFor } from './internal/utils/log';
 import { isEmptyObj } from './internal/utils/values';
-import {
-  Auth,
-  AuthLoginParams,
-  AuthOneTapParams,
-  AuthOneTapResponse,
-  AuthRetrieveCallbackParams,
-  AuthRetrieveCallbackResponse,
-} from './resources/auth/auth';
 import { Org } from './resources/org/org';
 import {
   ToolListParams,
@@ -796,8 +787,6 @@ export class ComposioSDK {
 
   static toFile = Uploads.toFile;
 
-  auth: API.Auth = new API.Auth(this);
-  admin: API.Admin = new API.Admin(this);
   authConfigs: API.AuthConfigs = new API.AuthConfigs(this);
   connectedAccounts: API.ConnectedAccounts = new API.ConnectedAccounts(this);
   trigger: API.Trigger = new API.Trigger(this);
@@ -810,8 +799,6 @@ export class ComposioSDK {
   triggersTypes: API.TriggersTypes = new API.TriggersTypes(this);
   payments: API.Payments = new API.Payments(this);
 }
-ComposioSDK.Auth = Auth;
-ComposioSDK.Admin = Admin;
 ComposioSDK.AuthConfigs = AuthConfigs;
 ComposioSDK.ConnectedAccounts = ConnectedAccounts;
 ComposioSDK.Trigger = Trigger;
@@ -825,21 +812,6 @@ ComposioSDK.TriggersTypes = TriggersTypes;
 ComposioSDK.Payments = Payments;
 export declare namespace ComposioSDK {
   export type RequestOptions = Opts.RequestOptions;
-
-  export {
-    Auth as Auth,
-    type AuthOneTapResponse as AuthOneTapResponse,
-    type AuthRetrieveCallbackResponse as AuthRetrieveCallbackResponse,
-    type AuthLoginParams as AuthLoginParams,
-    type AuthOneTapParams as AuthOneTapParams,
-    type AuthRetrieveCallbackParams as AuthRetrieveCallbackParams,
-  };
-
-  export {
-    Admin as Admin,
-    type AdminIdentifyResponse as AdminIdentifyResponse,
-    type AdminIdentifyParams as AdminIdentifyParams,
-  };
 
   export {
     AuthConfigs as AuthConfigs,

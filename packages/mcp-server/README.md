@@ -9,8 +9,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 Because it's not published yet, clone the repo and build it:
 
 ```sh
-git clone git@github.com:composiohq/composio-base-typescript.git
-cd composio-base-typescript
+git clone git@github.com:composiohq/composio-base-ts.git
+cd composio-base-ts
 yarn && ./scripts/build-all
 ```
 
@@ -39,7 +39,7 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "composio_sdk_api": {
       "command": "npx",
-      "args": ["-y", "/path/to/local/composio-base-typescript/packages/mcp-server"],
+      "args": ["-y", "/path/to/local/composio-base-ts/packages/mcp-server"],
       "env": {
         "COMPOSIO_API_KEY": "My API Key"
       }
@@ -73,7 +73,7 @@ Use `--list` to see the list of available tools, or see below.
 import { server, endpoints, init } from "composio-sdk-mcp/server";
 
 // import a specific tool
-import loginAuth from "composio-sdk-mcp/tools/auth/login-auth";
+import createAuthConfigs from "composio-sdk-mcp/tools/auth-configs/create-auth-configs";
 
 // initialize the server and all endpoints
 init({ server, endpoints });
@@ -98,32 +98,12 @@ const myCustomEndpoint = {
 };
 
 // initialize the server with your custom endpoints
-init({ server: myServer, endpoints: [loginAuth, myCustomEndpoint] });
+init({ server: myServer, endpoints: [createAuthConfigs, myCustomEndpoint] });
 ```
 
 ## Available Tools
 
 The following tools are available in this MCP server.
-
-### Resource `auth`:
-
-- `login_auth` (`read`):
-- `one_tap_auth` (`write`):
-- `retrieve_callback_auth` (`read`):
-
-### Resource `auth.magic_link`:
-
-- `send_auth_magic_link` (`write`):
-- `verify_auth_magic_link` (`write`):
-
-### Resource `auth.session`:
-
-- `logout_auth_session` (`write`):
-- `retrieve_info_auth_session` (`read`):
-
-### Resource `admin`:
-
-- `identify_admin` (`write`):
 
 ### Resource `auth_configs`:
 

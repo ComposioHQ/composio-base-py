@@ -42,15 +42,15 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:composiohq/composio-base-typescript.git
+$ npm install git+ssh://git@github.com:composiohq/composio-base-ts.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/composiohq/composio-base-typescript
-$ cd composio-base-typescript
+$ git clone https://www.github.com/composiohq/composio-base-ts
+$ cd composio-base-ts
 
 # With yarn
 $ yarn link

@@ -7,15 +7,6 @@ export {
   type ActionExecutionRetrieveLogResponse,
   type ActionExecutionLogParams,
 } from './action-execution';
-export { Admin, type AdminIdentifyResponse, type AdminIdentifyParams } from './admin';
-export {
-  Auth,
-  type AuthOneTapResponse,
-  type AuthRetrieveCallbackResponse,
-  type AuthLoginParams,
-  type AuthOneTapParams,
-  type AuthRetrieveCallbackParams,
-} from './auth/auth';
 export {
   AuthConfigs,
   type AuthConfigCreateResponse,

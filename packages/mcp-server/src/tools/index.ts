@@ -3,14 +3,6 @@
 import ComposioSDK from 'composio-sdk';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
 
-import login_auth from './auth/login-auth';
-import one_tap_auth from './auth/one-tap-auth';
-import retrieve_callback_auth from './auth/retrieve-callback-auth';
-import send_auth_magic_link from './auth/magic-link/send-auth-magic-link';
-import verify_auth_magic_link from './auth/magic-link/verify-auth-magic-link';
-import logout_auth_session from './auth/session/logout-auth-session';
-import retrieve_info_auth_session from './auth/session/retrieve-info-auth-session';
-import identify_admin from './admin/identify-admin';
 import create_auth_configs from './auth-configs/create-auth-configs';
 import retrieve_auth_configs from './auth-configs/retrieve-auth-configs';
 import update_auth_configs from './auth-configs/update-auth-configs';
@@ -88,14 +80,6 @@ function addEndpoint(endpoint: Endpoint) {
   endpoints.push(endpoint);
 }
 
-addEndpoint(login_auth);
-addEndpoint(one_tap_auth);
-addEndpoint(retrieve_callback_auth);
-addEndpoint(send_auth_magic_link);
-addEndpoint(verify_auth_magic_link);
-addEndpoint(logout_auth_session);
-addEndpoint(retrieve_info_auth_session);
-addEndpoint(identify_admin);
 addEndpoint(create_auth_configs);
 addEndpoint(retrieve_auth_configs);
 addEndpoint(update_auth_configs);
