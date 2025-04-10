@@ -231,15 +231,15 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/tools/execute.ts">ExecuteExecuteResponse</a></code>
 - <code><a href="./src/resources/tools/execute.ts">ExecuteInputResponse</a></code>
 - <code><a href="./src/resources/tools/execute.ts">ExecuteProxyResponse</a></code>
+- <code><a href="./src/resources/tools/execute.ts">ExecuteRunResponse</a></code>
 
 Methods:
 
-- <code title="post /api/v3/tools/execute/{action}">client.tools.execute.<a href="./src/resources/tools/execute.ts">execute</a>(action, { ...params }) -> ExecuteExecuteResponse</code>
 - <code title="post /api/v3/tools/execute/{actionName}/input">client.tools.execute.<a href="./src/resources/tools/execute.ts">input</a>(actionName, { ...params }) -> ExecuteInputResponse</code>
 - <code title="post /api/v3/tools/execute/proxy">client.tools.execute.<a href="./src/resources/tools/execute.ts">proxy</a>({ ...params }) -> ExecuteProxyResponse</code>
+- <code title="post /api/v3/tools/execute/{action}">client.tools.execute.<a href="./src/resources/tools/execute.ts">run</a>(action, { ...params }) -> ExecuteRunResponse</code>
 
 # TriggerInstances
 

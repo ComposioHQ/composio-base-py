@@ -6,14 +6,6 @@ import { RequestOptions } from '../../internal/request-options';
 import { path } from '../../internal/utils/path';
 
 export class Execute extends APIResource {
-  execute(
-    action: string,
-    body: ExecuteExecuteParams | null | undefined = {},
-    options?: RequestOptions,
-  ): APIPromise<ExecuteExecuteResponse> {
-    return this._client.post(path`/api/v3/tools/execute/${action}`, { body, ...options });
-  }
-
   input(
     actionName: string,
     body: ExecuteInputParams,
@@ -25,18 +17,14 @@ export class Execute extends APIResource {
   proxy(body: ExecuteProxyParams, options?: RequestOptions): APIPromise<ExecuteProxyResponse> {
     return this._client.post('/api/v3/tools/execute/proxy', { body, ...options });
   }
-}
 
-export interface ExecuteExecuteResponse {
-  data: Record<string, unknown>;
-
-  error: string | null;
-
-  successful: boolean;
-
-  log_id?: string;
-
-  session_info?: unknown;
+  run(
+    action: string,
+    body: ExecuteRunParams | null | undefined = {},
+    options?: RequestOptions,
+  ): APIPromise<ExecuteRunResponse> {
+    return this._client.post(path`/api/v3/tools/execute/${action}`, { body, ...options });
+  }
 }
 
 export interface ExecuteInputResponse {
@@ -59,18 +47,16 @@ export interface ExecuteProxyResponse {
   headers?: Record<string, string>;
 }
 
-export interface ExecuteExecuteParams {
-  allow_tracing?: boolean;
+export interface ExecuteRunResponse {
+  data: Record<string, unknown>;
 
-  arguments?: Record<string, unknown>;
+  error: string | null;
 
-  connected_account_id?: string;
+  successful: boolean;
 
-  entity_id?: string;
+  log_id?: string;
 
-  text?: string;
-
-  version?: string;
+  session_info?: unknown;
 }
 
 export interface ExecuteInputParams {
@@ -117,13 +103,27 @@ export namespace ExecuteProxyParams {
   }
 }
 
+export interface ExecuteRunParams {
+  allow_tracing?: boolean;
+
+  arguments?: Record<string, unknown>;
+
+  connected_account_id?: string;
+
+  entity_id?: string;
+
+  text?: string;
+
+  version?: string;
+}
+
 export declare namespace Execute {
   export {
-    type ExecuteExecuteResponse as ExecuteExecuteResponse,
     type ExecuteInputResponse as ExecuteInputResponse,
     type ExecuteProxyResponse as ExecuteProxyResponse,
-    type ExecuteExecuteParams as ExecuteExecuteParams,
+    type ExecuteRunResponse as ExecuteRunResponse,
     type ExecuteInputParams as ExecuteInputParams,
     type ExecuteProxyParams as ExecuteProxyParams,
+    type ExecuteRunParams as ExecuteRunParams,
   };
 }

@@ -2,12 +2,12 @@
 
 export {
   Execute,
-  type ExecuteExecuteResponse,
   type ExecuteInputResponse,
   type ExecuteProxyResponse,
-  type ExecuteExecuteParams,
+  type ExecuteRunResponse,
   type ExecuteInputParams,
   type ExecuteProxyParams,
+  type ExecuteRunParams,
 } from './execute';
 export {
   Tools,

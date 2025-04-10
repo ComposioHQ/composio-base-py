@@ -205,9 +205,9 @@ The following tools are available in this MCP server.
 
 ### Resource `tools.execute`:
 
-- `execute_tools_execute` (`write`):
 - `input_tools_execute` (`write`):
 - `proxy_tools_execute` (`write`):
+- `run_tools_execute` (`write`):
 
 ### Resource `trigger_instances`:
 

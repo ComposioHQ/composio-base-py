@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export const tool: Tool = {
-  name: 'execute_tools_execute',
+  name: 'run_tools_execute',
   description: '',
   inputSchema: {
     type: 'object',
@@ -44,7 +44,7 @@ export const tool: Tool = {
 
 export const handler = (client: ComposioSDK, args: any) => {
   const { action, ...body } = args;
-  return client.tools.execute.execute(action, body);
+  return client.tools.execute.run(action, body);
 };
 
 export default { metadata, tool, handler };
