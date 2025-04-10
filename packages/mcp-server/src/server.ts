@@ -11,7 +11,7 @@ export { endpoints } from './tools';
 export const server = new McpServer(
   {
     name: 'composio_sdk_api',
-    version: '0.0.1-alpha.0',
+    version: '0.0.1-alpha.1',
   },
   {
     capabilities: {
