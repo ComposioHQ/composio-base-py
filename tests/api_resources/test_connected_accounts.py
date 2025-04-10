@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from composio_sdk import ComposioSDK, AsyncComposioSDK
-from composio_sdk.types import (
+from composio_client import ComposioSDK, AsyncComposioSDK
+from composio_client.types import (
     ConnectedAccountListResponse,
     ConnectedAccountCreateResponse,
     ConnectedAccountDeleteResponse,

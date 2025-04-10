@@ -5,8 +5,8 @@ from typing import Iterator, AsyncIterator
 import httpx
 import pytest
 
-from composio_sdk import ComposioSDK, AsyncComposioSDK
-from composio_sdk._streaming import Stream, AsyncStream, ServerSentEvent
+from composio_client import ComposioSDK, AsyncComposioSDK
+from composio_client._streaming import Stream, AsyncStream, ServerSentEvent
 
 
 @pytest.mark.asyncio

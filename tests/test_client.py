@@ -21,19 +21,19 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from composio_sdk import ComposioSDK, AsyncComposioSDK, APIResponseValidationError
-from composio_sdk._types import Omit
-from composio_sdk._utils import maybe_transform
-from composio_sdk._models import BaseModel, FinalRequestOptions
-from composio_sdk._constants import RAW_RESPONSE_HEADER
-from composio_sdk._exceptions import APIStatusError, APITimeoutError, ComposioSDKError, APIResponseValidationError
-from composio_sdk._base_client import (
+from composio_client import ComposioSDK, AsyncComposioSDK, APIResponseValidationError
+from composio_client._types import Omit
+from composio_client._utils import maybe_transform
+from composio_client._models import BaseModel, FinalRequestOptions
+from composio_client._constants import RAW_RESPONSE_HEADER
+from composio_client._exceptions import APIStatusError, APITimeoutError, ComposioSDKError, APIResponseValidationError
+from composio_client._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
     BaseClient,
     make_request_options,
 )
-from composio_sdk.types.tool_execute_params import ToolExecuteParams
+from composio_client.types.tool_execute_params import ToolExecuteParams
 
 from .utils import update_env
 
@@ -232,10 +232,10 @@ class TestComposioSDK:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "composio_sdk/_legacy_response.py",
-                        "composio_sdk/_response.py",
+                        "composio_client/_legacy_response.py",
+                        "composio_client/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "composio_sdk/_compat.py",
+                        "composio_client/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -731,7 +731,7 @@ class TestComposioSDK:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/api/v3/tools/execute/action").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -746,7 +746,7 @@ class TestComposioSDK:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/api/v3/tools/execute/action").mock(return_value=httpx.Response(500))
@@ -762,7 +762,7 @@ class TestComposioSDK:
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.parametrize("failure_mode", ["status", "exception"])
     def test_retries_taken(
@@ -793,7 +793,7 @@ class TestComposioSDK:
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_omit_retry_count_header(
         self, client: ComposioSDK, failures_before_success: int, respx_mock: MockRouter
@@ -818,7 +818,7 @@ class TestComposioSDK:
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_overwrite_retry_count_header(
         self, client: ComposioSDK, failures_before_success: int, respx_mock: MockRouter
@@ -1018,10 +1018,10 @@ class TestAsyncComposioSDK:
                         # to_raw_response_wrapper leaks through the @functools.wraps() decorator.
                         #
                         # removing the decorator fixes the leak for reasons we don't understand.
-                        "composio_sdk/_legacy_response.py",
-                        "composio_sdk/_response.py",
+                        "composio_client/_legacy_response.py",
+                        "composio_client/_response.py",
                         # pydantic.BaseModel.model_dump || pydantic.BaseModel.dict leak memory for some reason.
-                        "composio_sdk/_compat.py",
+                        "composio_client/_compat.py",
                         # Standard library leaks we don't care about.
                         "/logging/__init__.py",
                     ]
@@ -1521,7 +1521,7 @@ class TestAsyncComposioSDK:
         calculated = client._calculate_retry_timeout(remaining_retries, options, headers)
         assert calculated == pytest.approx(timeout, 0.5 * 0.875)  # pyright: ignore[reportUnknownMemberType]
 
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/api/v3/tools/execute/action").mock(side_effect=httpx.TimeoutException("Test timeout error"))
@@ -1536,7 +1536,7 @@ class TestAsyncComposioSDK:
 
         assert _get_open_connections(self.client) == 0
 
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
         respx_mock.post("/api/v3/tools/execute/action").mock(return_value=httpx.Response(500))
@@ -1552,7 +1552,7 @@ class TestAsyncComposioSDK:
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     @pytest.mark.parametrize("failure_mode", ["status", "exception"])
@@ -1584,7 +1584,7 @@ class TestAsyncComposioSDK:
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     async def test_omit_retry_count_header(
@@ -1610,7 +1610,7 @@ class TestAsyncComposioSDK:
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
-    @mock.patch("composio_sdk._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
+    @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     async def test_overwrite_retry_count_header(
@@ -1646,8 +1646,8 @@ class TestAsyncComposioSDK:
         import nest_asyncio
         import threading
 
-        from composio_sdk._utils import asyncify
-        from composio_sdk._base_client import get_platform
+        from composio_client._utils import asyncify
+        from composio_client._base_client import get_platform
 
         async def test_main() -> None:
             result = await asyncify(get_platform)()
