@@ -1,0 +1,521 @@
+# File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
+
+from __future__ import annotations
+
+import os
+from typing import Any, cast
+
+import pytest
+
+from tests.utils import assert_matches_type
+from composio_sdk import ComposioSDK, AsyncComposioSDK
+from composio_sdk.types import (
+    AuthConfigListResponse,
+    AuthConfigCreateResponse,
+    AuthConfigDeleteResponse,
+    AuthConfigUpdateResponse,
+    AuthConfigRetrieveResponse,
+    AuthConfigUpdateStatusResponse,
+)
+
+base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
+
+
+class TestAuthConfigs:
+    parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    def test_method_create(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.create(
+            toolkit={"slug": "slug"},
+        )
+        assert_matches_type(AuthConfigCreateResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_method_create_with_all_params(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.create(
+            toolkit={"slug": "slug"},
+            auth_config={
+                "type": "use_composio_managed_auth",
+                "credentials": {"foo": "string"},
+                "name": "name",
+            },
+        )
+        assert_matches_type(AuthConfigCreateResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_raw_response_create(self, client: ComposioSDK) -> None:
+        response = client.auth_configs.with_raw_response.create(
+            toolkit={"slug": "slug"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = response.parse()
+        assert_matches_type(AuthConfigCreateResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_streaming_response_create(self, client: ComposioSDK) -> None:
+        with client.auth_configs.with_streaming_response.create(
+            toolkit={"slug": "slug"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = response.parse()
+            assert_matches_type(AuthConfigCreateResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_retrieve(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.retrieve(
+            "nanoid",
+        )
+        assert_matches_type(AuthConfigRetrieveResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve(self, client: ComposioSDK) -> None:
+        response = client.auth_configs.with_raw_response.retrieve(
+            "nanoid",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = response.parse()
+        assert_matches_type(AuthConfigRetrieveResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve(self, client: ComposioSDK) -> None:
+        with client.auth_configs.with_streaming_response.retrieve(
+            "nanoid",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = response.parse()
+            assert_matches_type(AuthConfigRetrieveResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_retrieve(self, client: ComposioSDK) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
+            client.auth_configs.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
+    def test_method_update(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.update(
+            nanoid="nanoid",
+            auth_config={},
+        )
+        assert_matches_type(AuthConfigUpdateResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.update(
+            nanoid="nanoid",
+            auth_config={"credentials": {"foo": "bar"}},
+        )
+        assert_matches_type(AuthConfigUpdateResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: ComposioSDK) -> None:
+        response = client.auth_configs.with_raw_response.update(
+            nanoid="nanoid",
+            auth_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = response.parse()
+        assert_matches_type(AuthConfigUpdateResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: ComposioSDK) -> None:
+        with client.auth_configs.with_streaming_response.update(
+            nanoid="nanoid",
+            auth_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = response.parse()
+            assert_matches_type(AuthConfigUpdateResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: ComposioSDK) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
+            client.auth_configs.with_raw_response.update(
+                nanoid="",
+                auth_config={},
+            )
+
+    @parametrize
+    def test_method_list(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.list()
+        assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.list(
+            cursor="cursor",
+            is_composio_managed="string",
+            limit="limit",
+            toolkit_slug="toolkit_slug",
+        )
+        assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: ComposioSDK) -> None:
+        response = client.auth_configs.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = response.parse()
+        assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: ComposioSDK) -> None:
+        with client.auth_configs.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = response.parse()
+            assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_delete(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.delete(
+            "nanoid",
+        )
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: ComposioSDK) -> None:
+        response = client.auth_configs.with_raw_response.delete(
+            "nanoid",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = response.parse()
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: ComposioSDK) -> None:
+        with client.auth_configs.with_streaming_response.delete(
+            "nanoid",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = response.parse()
+            assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: ComposioSDK) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
+            client.auth_configs.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
+    def test_method_update_status(self, client: ComposioSDK) -> None:
+        auth_config = client.auth_configs.update_status(
+            status="ENABLED",
+            nanoid="nanoid",
+        )
+        assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_raw_response_update_status(self, client: ComposioSDK) -> None:
+        response = client.auth_configs.with_raw_response.update_status(
+            status="ENABLED",
+            nanoid="nanoid",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = response.parse()
+        assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update_status(self, client: ComposioSDK) -> None:
+        with client.auth_configs.with_streaming_response.update_status(
+            status="ENABLED",
+            nanoid="nanoid",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = response.parse()
+            assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update_status(self, client: ComposioSDK) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
+            client.auth_configs.with_raw_response.update_status(
+                status="ENABLED",
+                nanoid="",
+            )
+
+
+class TestAsyncAuthConfigs:
+    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_create(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.create(
+            toolkit={"slug": "slug"},
+        )
+        assert_matches_type(AuthConfigCreateResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_method_create_with_all_params(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.create(
+            toolkit={"slug": "slug"},
+            auth_config={
+                "type": "use_composio_managed_auth",
+                "credentials": {"foo": "string"},
+                "name": "name",
+            },
+        )
+        assert_matches_type(AuthConfigCreateResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_raw_response_create(self, async_client: AsyncComposioSDK) -> None:
+        response = await async_client.auth_configs.with_raw_response.create(
+            toolkit={"slug": "slug"},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = await response.parse()
+        assert_matches_type(AuthConfigCreateResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_create(self, async_client: AsyncComposioSDK) -> None:
+        async with async_client.auth_configs.with_streaming_response.create(
+            toolkit={"slug": "slug"},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = await response.parse()
+            assert_matches_type(AuthConfigCreateResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_retrieve(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.retrieve(
+            "nanoid",
+        )
+        assert_matches_type(AuthConfigRetrieveResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve(self, async_client: AsyncComposioSDK) -> None:
+        response = await async_client.auth_configs.with_raw_response.retrieve(
+            "nanoid",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = await response.parse()
+        assert_matches_type(AuthConfigRetrieveResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve(self, async_client: AsyncComposioSDK) -> None:
+        async with async_client.auth_configs.with_streaming_response.retrieve(
+            "nanoid",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = await response.parse()
+            assert_matches_type(AuthConfigRetrieveResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_retrieve(self, async_client: AsyncComposioSDK) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
+            await async_client.auth_configs.with_raw_response.retrieve(
+                "",
+            )
+
+    @parametrize
+    async def test_method_update(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.update(
+            nanoid="nanoid",
+            auth_config={},
+        )
+        assert_matches_type(AuthConfigUpdateResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.update(
+            nanoid="nanoid",
+            auth_config={"credentials": {"foo": "bar"}},
+        )
+        assert_matches_type(AuthConfigUpdateResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncComposioSDK) -> None:
+        response = await async_client.auth_configs.with_raw_response.update(
+            nanoid="nanoid",
+            auth_config={},
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = await response.parse()
+        assert_matches_type(AuthConfigUpdateResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncComposioSDK) -> None:
+        async with async_client.auth_configs.with_streaming_response.update(
+            nanoid="nanoid",
+            auth_config={},
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = await response.parse()
+            assert_matches_type(AuthConfigUpdateResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncComposioSDK) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
+            await async_client.auth_configs.with_raw_response.update(
+                nanoid="",
+                auth_config={},
+            )
+
+    @parametrize
+    async def test_method_list(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.list()
+        assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.list(
+            cursor="cursor",
+            is_composio_managed="string",
+            limit="limit",
+            toolkit_slug="toolkit_slug",
+        )
+        assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncComposioSDK) -> None:
+        response = await async_client.auth_configs.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = await response.parse()
+        assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncComposioSDK) -> None:
+        async with async_client.auth_configs.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = await response.parse()
+            assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.delete(
+            "nanoid",
+        )
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncComposioSDK) -> None:
+        response = await async_client.auth_configs.with_raw_response.delete(
+            "nanoid",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = await response.parse()
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncComposioSDK) -> None:
+        async with async_client.auth_configs.with_streaming_response.delete(
+            "nanoid",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = await response.parse()
+            assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncComposioSDK) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
+            await async_client.auth_configs.with_raw_response.delete(
+                "",
+            )
+
+    @parametrize
+    async def test_method_update_status(self, async_client: AsyncComposioSDK) -> None:
+        auth_config = await async_client.auth_configs.update_status(
+            status="ENABLED",
+            nanoid="nanoid",
+        )
+        assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update_status(self, async_client: AsyncComposioSDK) -> None:
+        response = await async_client.auth_configs.with_raw_response.update_status(
+            status="ENABLED",
+            nanoid="nanoid",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        auth_config = await response.parse()
+        assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update_status(self, async_client: AsyncComposioSDK) -> None:
+        async with async_client.auth_configs.with_streaming_response.update_status(
+            status="ENABLED",
+            nanoid="nanoid",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            auth_config = await response.parse()
+            assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update_status(self, async_client: AsyncComposioSDK) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
+            await async_client.auth_configs.with_raw_response.update_status(
+                status="ENABLED",
+                nanoid="",
+            )
