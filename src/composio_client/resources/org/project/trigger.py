@@ -32,7 +32,7 @@ class TriggerResource(SyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/composiohq/composio-base-py#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/ComposioHQ/composio-base-py#accessing-raw-response-data-eg-headers
         """
         return TriggerResourceWithRawResponse(self)
 
@@ -41,7 +41,7 @@ class TriggerResource(SyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/composiohq/composio-base-py#with_streaming_response
+        For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
         return TriggerResourceWithStreamingResponse(self)
 
@@ -106,7 +106,7 @@ class AsyncTriggerResource(AsyncAPIResource):
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
-        For more information, see https://www.github.com/composiohq/composio-base-py#accessing-raw-response-data-eg-headers
+        For more information, see https://www.github.com/ComposioHQ/composio-base-py#accessing-raw-response-data-eg-headers
         """
         return AsyncTriggerResourceWithRawResponse(self)
 
@@ -115,7 +115,7 @@ class AsyncTriggerResource(AsyncAPIResource):
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
-        For more information, see https://www.github.com/composiohq/composio-base-py#with_streaming_response
+        For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
         return AsyncTriggerResourceWithStreamingResponse(self)
 
