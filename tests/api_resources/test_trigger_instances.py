@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from composio_client import ComposioSDK, AsyncComposioSDK
+from composio_client import Composio, AsyncComposio
 from composio_client.types import (
     TriggerInstanceUpsertResponse,
     TriggerInstanceListActiveResponse,
@@ -23,12 +23,12 @@ class TestTriggerInstances:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_list_active(self, client: ComposioSDK) -> None:
+    def test_method_list_active(self, client: Composio) -> None:
         trigger_instance = client.trigger_instances.list_active()
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_method_list_active_with_all_params(self, client: ComposioSDK) -> None:
+    def test_method_list_active_with_all_params(self, client: Composio) -> None:
         trigger_instance = client.trigger_instances.list_active(
             auth_config_ids="authConfigIds",
             connected_account_ids="connectedAccountIds",
@@ -41,7 +41,7 @@ class TestTriggerInstances:
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_raw_response_list_active(self, client: ComposioSDK) -> None:
+    def test_raw_response_list_active(self, client: Composio) -> None:
         response = client.trigger_instances.with_raw_response.list_active()
 
         assert response.is_closed is True
@@ -50,7 +50,7 @@ class TestTriggerInstances:
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_streaming_response_list_active(self, client: ComposioSDK) -> None:
+    def test_streaming_response_list_active(self, client: Composio) -> None:
         with client.trigger_instances.with_streaming_response.list_active() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -61,14 +61,14 @@ class TestTriggerInstances:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_remove_upsert(self, client: ComposioSDK) -> None:
+    def test_method_remove_upsert(self, client: Composio) -> None:
         trigger_instance = client.trigger_instances.remove_upsert(
             "slug",
         )
         assert_matches_type(TriggerInstanceRemoveUpsertResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_raw_response_remove_upsert(self, client: ComposioSDK) -> None:
+    def test_raw_response_remove_upsert(self, client: Composio) -> None:
         response = client.trigger_instances.with_raw_response.remove_upsert(
             "slug",
         )
@@ -79,7 +79,7 @@ class TestTriggerInstances:
         assert_matches_type(TriggerInstanceRemoveUpsertResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_streaming_response_remove_upsert(self, client: ComposioSDK) -> None:
+    def test_streaming_response_remove_upsert(self, client: Composio) -> None:
         with client.trigger_instances.with_streaming_response.remove_upsert(
             "slug",
         ) as response:
@@ -92,14 +92,14 @@ class TestTriggerInstances:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_remove_upsert(self, client: ComposioSDK) -> None:
+    def test_path_params_remove_upsert(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.trigger_instances.with_raw_response.remove_upsert(
                 "",
             )
 
     @parametrize
-    def test_method_update_status(self, client: ComposioSDK) -> None:
+    def test_method_update_status(self, client: Composio) -> None:
         trigger_instance = client.trigger_instances.update_status(
             status="enable",
             slug="slug",
@@ -107,7 +107,7 @@ class TestTriggerInstances:
         assert_matches_type(TriggerInstanceUpdateStatusResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_raw_response_update_status(self, client: ComposioSDK) -> None:
+    def test_raw_response_update_status(self, client: Composio) -> None:
         response = client.trigger_instances.with_raw_response.update_status(
             status="enable",
             slug="slug",
@@ -119,7 +119,7 @@ class TestTriggerInstances:
         assert_matches_type(TriggerInstanceUpdateStatusResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_streaming_response_update_status(self, client: ComposioSDK) -> None:
+    def test_streaming_response_update_status(self, client: Composio) -> None:
         with client.trigger_instances.with_streaming_response.update_status(
             status="enable",
             slug="slug",
@@ -133,7 +133,7 @@ class TestTriggerInstances:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_update_status(self, client: ComposioSDK) -> None:
+    def test_path_params_update_status(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.trigger_instances.with_raw_response.update_status(
                 status="enable",
@@ -141,7 +141,7 @@ class TestTriggerInstances:
             )
 
     @parametrize
-    def test_method_upsert(self, client: ComposioSDK) -> None:
+    def test_method_upsert(self, client: Composio) -> None:
         trigger_instance = client.trigger_instances.upsert(
             slug="slug",
             connected_auth_id="connectedAuthId",
@@ -150,7 +150,7 @@ class TestTriggerInstances:
         assert_matches_type(TriggerInstanceUpsertResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_raw_response_upsert(self, client: ComposioSDK) -> None:
+    def test_raw_response_upsert(self, client: Composio) -> None:
         response = client.trigger_instances.with_raw_response.upsert(
             slug="slug",
             connected_auth_id="connectedAuthId",
@@ -163,7 +163,7 @@ class TestTriggerInstances:
         assert_matches_type(TriggerInstanceUpsertResponse, trigger_instance, path=["response"])
 
     @parametrize
-    def test_streaming_response_upsert(self, client: ComposioSDK) -> None:
+    def test_streaming_response_upsert(self, client: Composio) -> None:
         with client.trigger_instances.with_streaming_response.upsert(
             slug="slug",
             connected_auth_id="connectedAuthId",
@@ -178,7 +178,7 @@ class TestTriggerInstances:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_path_params_upsert(self, client: ComposioSDK) -> None:
+    def test_path_params_upsert(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.trigger_instances.with_raw_response.upsert(
                 slug="",
@@ -191,12 +191,12 @@ class TestAsyncTriggerInstances:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_list_active(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_list_active(self, async_client: AsyncComposio) -> None:
         trigger_instance = await async_client.trigger_instances.list_active()
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_method_list_active_with_all_params(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_list_active_with_all_params(self, async_client: AsyncComposio) -> None:
         trigger_instance = await async_client.trigger_instances.list_active(
             auth_config_ids="authConfigIds",
             connected_account_ids="connectedAccountIds",
@@ -209,7 +209,7 @@ class TestAsyncTriggerInstances:
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_raw_response_list_active(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_list_active(self, async_client: AsyncComposio) -> None:
         response = await async_client.trigger_instances.with_raw_response.list_active()
 
         assert response.is_closed is True
@@ -218,7 +218,7 @@ class TestAsyncTriggerInstances:
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list_active(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_list_active(self, async_client: AsyncComposio) -> None:
         async with async_client.trigger_instances.with_streaming_response.list_active() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -229,14 +229,14 @@ class TestAsyncTriggerInstances:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_remove_upsert(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_remove_upsert(self, async_client: AsyncComposio) -> None:
         trigger_instance = await async_client.trigger_instances.remove_upsert(
             "slug",
         )
         assert_matches_type(TriggerInstanceRemoveUpsertResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_raw_response_remove_upsert(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_remove_upsert(self, async_client: AsyncComposio) -> None:
         response = await async_client.trigger_instances.with_raw_response.remove_upsert(
             "slug",
         )
@@ -247,7 +247,7 @@ class TestAsyncTriggerInstances:
         assert_matches_type(TriggerInstanceRemoveUpsertResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_streaming_response_remove_upsert(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_remove_upsert(self, async_client: AsyncComposio) -> None:
         async with async_client.trigger_instances.with_streaming_response.remove_upsert(
             "slug",
         ) as response:
@@ -260,14 +260,14 @@ class TestAsyncTriggerInstances:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_remove_upsert(self, async_client: AsyncComposioSDK) -> None:
+    async def test_path_params_remove_upsert(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.trigger_instances.with_raw_response.remove_upsert(
                 "",
             )
 
     @parametrize
-    async def test_method_update_status(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_update_status(self, async_client: AsyncComposio) -> None:
         trigger_instance = await async_client.trigger_instances.update_status(
             status="enable",
             slug="slug",
@@ -275,7 +275,7 @@ class TestAsyncTriggerInstances:
         assert_matches_type(TriggerInstanceUpdateStatusResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_raw_response_update_status(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_update_status(self, async_client: AsyncComposio) -> None:
         response = await async_client.trigger_instances.with_raw_response.update_status(
             status="enable",
             slug="slug",
@@ -287,7 +287,7 @@ class TestAsyncTriggerInstances:
         assert_matches_type(TriggerInstanceUpdateStatusResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update_status(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_update_status(self, async_client: AsyncComposio) -> None:
         async with async_client.trigger_instances.with_streaming_response.update_status(
             status="enable",
             slug="slug",
@@ -301,7 +301,7 @@ class TestAsyncTriggerInstances:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_update_status(self, async_client: AsyncComposioSDK) -> None:
+    async def test_path_params_update_status(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.trigger_instances.with_raw_response.update_status(
                 status="enable",
@@ -309,7 +309,7 @@ class TestAsyncTriggerInstances:
             )
 
     @parametrize
-    async def test_method_upsert(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_upsert(self, async_client: AsyncComposio) -> None:
         trigger_instance = await async_client.trigger_instances.upsert(
             slug="slug",
             connected_auth_id="connectedAuthId",
@@ -318,7 +318,7 @@ class TestAsyncTriggerInstances:
         assert_matches_type(TriggerInstanceUpsertResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_raw_response_upsert(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_upsert(self, async_client: AsyncComposio) -> None:
         response = await async_client.trigger_instances.with_raw_response.upsert(
             slug="slug",
             connected_auth_id="connectedAuthId",
@@ -331,7 +331,7 @@ class TestAsyncTriggerInstances:
         assert_matches_type(TriggerInstanceUpsertResponse, trigger_instance, path=["response"])
 
     @parametrize
-    async def test_streaming_response_upsert(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_upsert(self, async_client: AsyncComposio) -> None:
         async with async_client.trigger_instances.with_streaming_response.upsert(
             slug="slug",
             connected_auth_id="connectedAuthId",
@@ -346,7 +346,7 @@ class TestAsyncTriggerInstances:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_path_params_upsert(self, async_client: AsyncComposioSDK) -> None:
+    async def test_path_params_upsert(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.trigger_instances.with_raw_response.upsert(
                 slug="",

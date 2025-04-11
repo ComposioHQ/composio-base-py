@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from composio_client import ComposioSDK, AsyncComposioSDK
+from composio_client import Composio, AsyncComposio
 from composio_client.types.org.project import (
     WebhookDeleteResponse,
     WebhookUpdateResponse,
@@ -23,14 +23,14 @@ class TestWebhook:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_retrieve(self, client: ComposioSDK) -> None:
+    def test_method_retrieve(self, client: Composio) -> None:
         webhook = client.org.project.webhook.retrieve(
             type="trigger",
         )
         assert_matches_type(WebhookRetrieveResponse, webhook, path=["response"])
 
     @parametrize
-    def test_raw_response_retrieve(self, client: ComposioSDK) -> None:
+    def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.org.project.webhook.with_raw_response.retrieve(
             type="trigger",
         )
@@ -41,7 +41,7 @@ class TestWebhook:
         assert_matches_type(WebhookRetrieveResponse, webhook, path=["response"])
 
     @parametrize
-    def test_streaming_response_retrieve(self, client: ComposioSDK) -> None:
+    def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.org.project.webhook.with_streaming_response.retrieve(
             type="trigger",
         ) as response:
@@ -54,7 +54,7 @@ class TestWebhook:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_update(self, client: ComposioSDK) -> None:
+    def test_method_update(self, client: Composio) -> None:
         webhook = client.org.project.webhook.update(
             type="trigger",
             webhook_url="https://example.com",
@@ -62,7 +62,7 @@ class TestWebhook:
         assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
 
     @parametrize
-    def test_raw_response_update(self, client: ComposioSDK) -> None:
+    def test_raw_response_update(self, client: Composio) -> None:
         response = client.org.project.webhook.with_raw_response.update(
             type="trigger",
             webhook_url="https://example.com",
@@ -74,7 +74,7 @@ class TestWebhook:
         assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
 
     @parametrize
-    def test_streaming_response_update(self, client: ComposioSDK) -> None:
+    def test_streaming_response_update(self, client: Composio) -> None:
         with client.org.project.webhook.with_streaming_response.update(
             type="trigger",
             webhook_url="https://example.com",
@@ -88,14 +88,14 @@ class TestWebhook:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_delete(self, client: ComposioSDK) -> None:
+    def test_method_delete(self, client: Composio) -> None:
         webhook = client.org.project.webhook.delete(
             type="trigger",
         )
         assert_matches_type(WebhookDeleteResponse, webhook, path=["response"])
 
     @parametrize
-    def test_raw_response_delete(self, client: ComposioSDK) -> None:
+    def test_raw_response_delete(self, client: Composio) -> None:
         response = client.org.project.webhook.with_raw_response.delete(
             type="trigger",
         )
@@ -106,7 +106,7 @@ class TestWebhook:
         assert_matches_type(WebhookDeleteResponse, webhook, path=["response"])
 
     @parametrize
-    def test_streaming_response_delete(self, client: ComposioSDK) -> None:
+    def test_streaming_response_delete(self, client: Composio) -> None:
         with client.org.project.webhook.with_streaming_response.delete(
             type="trigger",
         ) as response:
@@ -119,12 +119,12 @@ class TestWebhook:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_refresh(self, client: ComposioSDK) -> None:
+    def test_method_refresh(self, client: Composio) -> None:
         webhook = client.org.project.webhook.refresh()
         assert_matches_type(WebhookRefreshResponse, webhook, path=["response"])
 
     @parametrize
-    def test_raw_response_refresh(self, client: ComposioSDK) -> None:
+    def test_raw_response_refresh(self, client: Composio) -> None:
         response = client.org.project.webhook.with_raw_response.refresh()
 
         assert response.is_closed is True
@@ -133,7 +133,7 @@ class TestWebhook:
         assert_matches_type(WebhookRefreshResponse, webhook, path=["response"])
 
     @parametrize
-    def test_streaming_response_refresh(self, client: ComposioSDK) -> None:
+    def test_streaming_response_refresh(self, client: Composio) -> None:
         with client.org.project.webhook.with_streaming_response.refresh() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -148,14 +148,14 @@ class TestAsyncWebhook:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_retrieve(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         webhook = await async_client.org.project.webhook.retrieve(
             type="trigger",
         )
         assert_matches_type(WebhookRetrieveResponse, webhook, path=["response"])
 
     @parametrize
-    async def test_raw_response_retrieve(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.webhook.with_raw_response.retrieve(
             type="trigger",
         )
@@ -166,7 +166,7 @@ class TestAsyncWebhook:
         assert_matches_type(WebhookRetrieveResponse, webhook, path=["response"])
 
     @parametrize
-    async def test_streaming_response_retrieve(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.webhook.with_streaming_response.retrieve(
             type="trigger",
         ) as response:
@@ -179,7 +179,7 @@ class TestAsyncWebhook:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_update(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_update(self, async_client: AsyncComposio) -> None:
         webhook = await async_client.org.project.webhook.update(
             type="trigger",
             webhook_url="https://example.com",
@@ -187,7 +187,7 @@ class TestAsyncWebhook:
         assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_update(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.webhook.with_raw_response.update(
             type="trigger",
             webhook_url="https://example.com",
@@ -199,7 +199,7 @@ class TestAsyncWebhook:
         assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.webhook.with_streaming_response.update(
             type="trigger",
             webhook_url="https://example.com",
@@ -213,14 +213,14 @@ class TestAsyncWebhook:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_delete(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_delete(self, async_client: AsyncComposio) -> None:
         webhook = await async_client.org.project.webhook.delete(
             type="trigger",
         )
         assert_matches_type(WebhookDeleteResponse, webhook, path=["response"])
 
     @parametrize
-    async def test_raw_response_delete(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.webhook.with_raw_response.delete(
             type="trigger",
         )
@@ -231,7 +231,7 @@ class TestAsyncWebhook:
         assert_matches_type(WebhookDeleteResponse, webhook, path=["response"])
 
     @parametrize
-    async def test_streaming_response_delete(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.webhook.with_streaming_response.delete(
             type="trigger",
         ) as response:
@@ -244,12 +244,12 @@ class TestAsyncWebhook:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_refresh(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_refresh(self, async_client: AsyncComposio) -> None:
         webhook = await async_client.org.project.webhook.refresh()
         assert_matches_type(WebhookRefreshResponse, webhook, path=["response"])
 
     @parametrize
-    async def test_raw_response_refresh(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_refresh(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.webhook.with_raw_response.refresh()
 
         assert response.is_closed is True
@@ -258,7 +258,7 @@ class TestAsyncWebhook:
         assert_matches_type(WebhookRefreshResponse, webhook, path=["response"])
 
     @parametrize
-    async def test_streaming_response_refresh(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_refresh(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.webhook.with_streaming_response.refresh() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

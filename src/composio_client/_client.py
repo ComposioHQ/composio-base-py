@@ -35,7 +35,7 @@ from .resources import (
     connected_accounts,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import APIStatusError, ComposioSDKError
+from ._exceptions import ComposioError, APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -50,8 +50,8 @@ __all__ = [
     "Transport",
     "ProxiesTypes",
     "RequestOptions",
-    "ComposioSDK",
-    "AsyncComposioSDK",
+    "Composio",
+    "AsyncComposio",
     "Client",
     "AsyncClient",
 ]
@@ -63,7 +63,7 @@ ENVIRONMENTS: Dict[str, str] = {
 }
 
 
-class ComposioSDK(SyncAPIClient):
+class Composio(SyncAPIClient):
     auth_configs: auth_configs.AuthConfigsResource
     connected_accounts: connected_accounts.ConnectedAccountsResource
     trigger: trigger.TriggerResource
@@ -74,8 +74,8 @@ class ComposioSDK(SyncAPIClient):
     tools: tools.ToolsResource
     trigger_instances: trigger_instances.TriggerInstancesResource
     triggers_types: triggers_types.TriggersTypesResource
-    with_raw_response: ComposioSDKWithRawResponse
-    with_streaming_response: ComposioSDKWithStreamedResponse
+    with_raw_response: ComposioWithRawResponse
+    with_streaming_response: ComposioWithStreamedResponse
 
     # client options
     api_key: str
@@ -106,28 +106,28 @@ class ComposioSDK(SyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new synchronous ComposioSDK client instance.
+        """Construct a new synchronous Composio client instance.
 
         This automatically infers the `api_key` argument from the `COMPOSIO_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("COMPOSIO_API_KEY")
         if api_key is None:
-            raise ComposioSDKError(
+            raise ComposioError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the COMPOSIO_API_KEY environment variable"
             )
         self.api_key = api_key
 
         self._environment = environment
 
-        base_url_env = os.environ.get("COMPOSIO_SDK_BASE_URL")
+        base_url_env = os.environ.get("COMPOSIO_BASE_URL")
         if is_given(base_url) and base_url is not None:
             # cast required because mypy doesn't understand the type narrowing
             base_url = cast("str | httpx.URL", base_url)  # pyright: ignore[reportUnnecessaryCast]
         elif is_given(environment):
             if base_url_env and base_url is not None:
                 raise ValueError(
-                    "Ambiguous URL; The `COMPOSIO_SDK_BASE_URL` env var and the `environment` argument are given. If you want to use the environment, you must pass base_url=None",
+                    "Ambiguous URL; The `COMPOSIO_BASE_URL` env var and the `environment` argument are given. If you want to use the environment, you must pass base_url=None",
                 )
 
             try:
@@ -165,8 +165,8 @@ class ComposioSDK(SyncAPIClient):
         self.tools = tools.ToolsResource(self)
         self.trigger_instances = trigger_instances.TriggerInstancesResource(self)
         self.triggers_types = triggers_types.TriggersTypesResource(self)
-        self.with_raw_response = ComposioSDKWithRawResponse(self)
-        self.with_streaming_response = ComposioSDKWithStreamedResponse(self)
+        self.with_raw_response = ComposioWithRawResponse(self)
+        self.with_streaming_response = ComposioWithStreamedResponse(self)
 
     @property
     @override
@@ -275,7 +275,7 @@ class ComposioSDK(SyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class AsyncComposioSDK(AsyncAPIClient):
+class AsyncComposio(AsyncAPIClient):
     auth_configs: auth_configs.AsyncAuthConfigsResource
     connected_accounts: connected_accounts.AsyncConnectedAccountsResource
     trigger: trigger.AsyncTriggerResource
@@ -286,8 +286,8 @@ class AsyncComposioSDK(AsyncAPIClient):
     tools: tools.AsyncToolsResource
     trigger_instances: trigger_instances.AsyncTriggerInstancesResource
     triggers_types: triggers_types.AsyncTriggersTypesResource
-    with_raw_response: AsyncComposioSDKWithRawResponse
-    with_streaming_response: AsyncComposioSDKWithStreamedResponse
+    with_raw_response: AsyncComposioWithRawResponse
+    with_streaming_response: AsyncComposioWithStreamedResponse
 
     # client options
     api_key: str
@@ -318,28 +318,28 @@ class AsyncComposioSDK(AsyncAPIClient):
         # part of our public interface in the future.
         _strict_response_validation: bool = False,
     ) -> None:
-        """Construct a new async AsyncComposioSDK client instance.
+        """Construct a new async AsyncComposio client instance.
 
         This automatically infers the `api_key` argument from the `COMPOSIO_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("COMPOSIO_API_KEY")
         if api_key is None:
-            raise ComposioSDKError(
+            raise ComposioError(
                 "The api_key client option must be set either by passing api_key to the client or by setting the COMPOSIO_API_KEY environment variable"
             )
         self.api_key = api_key
 
         self._environment = environment
 
-        base_url_env = os.environ.get("COMPOSIO_SDK_BASE_URL")
+        base_url_env = os.environ.get("COMPOSIO_BASE_URL")
         if is_given(base_url) and base_url is not None:
             # cast required because mypy doesn't understand the type narrowing
             base_url = cast("str | httpx.URL", base_url)  # pyright: ignore[reportUnnecessaryCast]
         elif is_given(environment):
             if base_url_env and base_url is not None:
                 raise ValueError(
-                    "Ambiguous URL; The `COMPOSIO_SDK_BASE_URL` env var and the `environment` argument are given. If you want to use the environment, you must pass base_url=None",
+                    "Ambiguous URL; The `COMPOSIO_BASE_URL` env var and the `environment` argument are given. If you want to use the environment, you must pass base_url=None",
                 )
 
             try:
@@ -377,8 +377,8 @@ class AsyncComposioSDK(AsyncAPIClient):
         self.tools = tools.AsyncToolsResource(self)
         self.trigger_instances = trigger_instances.AsyncTriggerInstancesResource(self)
         self.triggers_types = triggers_types.AsyncTriggersTypesResource(self)
-        self.with_raw_response = AsyncComposioSDKWithRawResponse(self)
-        self.with_streaming_response = AsyncComposioSDKWithStreamedResponse(self)
+        self.with_raw_response = AsyncComposioWithRawResponse(self)
+        self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
 
     @property
     @override
@@ -487,8 +487,8 @@ class AsyncComposioSDK(AsyncAPIClient):
         return APIStatusError(err_msg, response=response, body=body)
 
 
-class ComposioSDKWithRawResponse:
-    def __init__(self, client: ComposioSDK) -> None:
+class ComposioWithRawResponse:
+    def __init__(self, client: Composio) -> None:
         self.auth_configs = auth_configs.AuthConfigsResourceWithRawResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithRawResponse(client.connected_accounts)
         self.trigger = trigger.TriggerResourceWithRawResponse(client.trigger)
@@ -501,8 +501,8 @@ class ComposioSDKWithRawResponse:
         self.triggers_types = triggers_types.TriggersTypesResourceWithRawResponse(client.triggers_types)
 
 
-class AsyncComposioSDKWithRawResponse:
-    def __init__(self, client: AsyncComposioSDK) -> None:
+class AsyncComposioWithRawResponse:
+    def __init__(self, client: AsyncComposio) -> None:
         self.auth_configs = auth_configs.AsyncAuthConfigsResourceWithRawResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithRawResponse(
             client.connected_accounts
@@ -519,8 +519,8 @@ class AsyncComposioSDKWithRawResponse:
         self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithRawResponse(client.triggers_types)
 
 
-class ComposioSDKWithStreamedResponse:
-    def __init__(self, client: ComposioSDK) -> None:
+class ComposioWithStreamedResponse:
+    def __init__(self, client: Composio) -> None:
         self.auth_configs = auth_configs.AuthConfigsResourceWithStreamingResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithStreamingResponse(
             client.connected_accounts
@@ -537,8 +537,8 @@ class ComposioSDKWithStreamedResponse:
         self.triggers_types = triggers_types.TriggersTypesResourceWithStreamingResponse(client.triggers_types)
 
 
-class AsyncComposioSDKWithStreamedResponse:
-    def __init__(self, client: AsyncComposioSDK) -> None:
+class AsyncComposioWithStreamedResponse:
+    def __init__(self, client: AsyncComposio) -> None:
         self.auth_configs = auth_configs.AsyncAuthConfigsResourceWithStreamingResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithStreamingResponse(
             client.connected_accounts
@@ -557,6 +557,6 @@ class AsyncComposioSDKWithStreamedResponse:
         self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithStreamingResponse(client.triggers_types)
 
 
-Client = ComposioSDK
+Client = Composio
 
-AsyncClient = AsyncComposioSDK
+AsyncClient = AsyncComposio

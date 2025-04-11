@@ -8,13 +8,13 @@ from typing import TYPE_CHECKING
 import anyio
 
 if TYPE_CHECKING:
-    from ._client import ComposioSDK, AsyncComposioSDK
+    from ._client import Composio, AsyncComposio
 
 
 class SyncAPIResource:
-    _client: ComposioSDK
+    _client: Composio
 
-    def __init__(self, client: ComposioSDK) -> None:
+    def __init__(self, client: Composio) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post
@@ -28,9 +28,9 @@ class SyncAPIResource:
 
 
 class AsyncAPIResource:
-    _client: AsyncComposioSDK
+    _client: AsyncComposio
 
-    def __init__(self, client: AsyncComposioSDK) -> None:
+    def __init__(self, client: AsyncComposio) -> None:
         self._client = client
         self._get = client.get
         self._post = client.post

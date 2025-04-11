@@ -8,7 +8,7 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from composio_client import ComposioSDK, AsyncComposioSDK
+from composio_client import Composio, AsyncComposio
 from composio_client.types.org.project import TriggerListResponse, TriggerUpdateResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -18,14 +18,14 @@ class TestTrigger:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_update(self, client: ComposioSDK) -> None:
+    def test_method_update(self, client: Composio) -> None:
         trigger = client.org.project.trigger.update(
             enabled=True,
         )
         assert_matches_type(TriggerUpdateResponse, trigger, path=["response"])
 
     @parametrize
-    def test_raw_response_update(self, client: ComposioSDK) -> None:
+    def test_raw_response_update(self, client: Composio) -> None:
         response = client.org.project.trigger.with_raw_response.update(
             enabled=True,
         )
@@ -36,7 +36,7 @@ class TestTrigger:
         assert_matches_type(TriggerUpdateResponse, trigger, path=["response"])
 
     @parametrize
-    def test_streaming_response_update(self, client: ComposioSDK) -> None:
+    def test_streaming_response_update(self, client: Composio) -> None:
         with client.org.project.trigger.with_streaming_response.update(
             enabled=True,
         ) as response:
@@ -49,12 +49,12 @@ class TestTrigger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_list(self, client: ComposioSDK) -> None:
+    def test_method_list(self, client: Composio) -> None:
         trigger = client.org.project.trigger.list()
         assert_matches_type(TriggerListResponse, trigger, path=["response"])
 
     @parametrize
-    def test_raw_response_list(self, client: ComposioSDK) -> None:
+    def test_raw_response_list(self, client: Composio) -> None:
         response = client.org.project.trigger.with_raw_response.list()
 
         assert response.is_closed is True
@@ -63,7 +63,7 @@ class TestTrigger:
         assert_matches_type(TriggerListResponse, trigger, path=["response"])
 
     @parametrize
-    def test_streaming_response_list(self, client: ComposioSDK) -> None:
+    def test_streaming_response_list(self, client: Composio) -> None:
         with client.org.project.trigger.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -78,14 +78,14 @@ class TestAsyncTrigger:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_update(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_update(self, async_client: AsyncComposio) -> None:
         trigger = await async_client.org.project.trigger.update(
             enabled=True,
         )
         assert_matches_type(TriggerUpdateResponse, trigger, path=["response"])
 
     @parametrize
-    async def test_raw_response_update(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_update(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.trigger.with_raw_response.update(
             enabled=True,
         )
@@ -96,7 +96,7 @@ class TestAsyncTrigger:
         assert_matches_type(TriggerUpdateResponse, trigger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_update(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_update(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.trigger.with_streaming_response.update(
             enabled=True,
         ) as response:
@@ -109,12 +109,12 @@ class TestAsyncTrigger:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_list(self, async_client: AsyncComposioSDK) -> None:
+    async def test_method_list(self, async_client: AsyncComposio) -> None:
         trigger = await async_client.org.project.trigger.list()
         assert_matches_type(TriggerListResponse, trigger, path=["response"])
 
     @parametrize
-    async def test_raw_response_list(self, async_client: AsyncComposioSDK) -> None:
+    async def test_raw_response_list(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.trigger.with_raw_response.list()
 
         assert response.is_closed is True
@@ -123,7 +123,7 @@ class TestAsyncTrigger:
         assert_matches_type(TriggerListResponse, trigger, path=["response"])
 
     @parametrize
-    async def test_streaming_response_list(self, async_client: AsyncComposioSDK) -> None:
+    async def test_streaming_response_list(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.trigger.with_streaming_response.list() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
