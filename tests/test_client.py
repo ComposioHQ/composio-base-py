@@ -21,12 +21,12 @@ import pytest
 from respx import MockRouter
 from pydantic import ValidationError
 
-from composio_client import ComposioSDK, AsyncComposioSDK, APIResponseValidationError
+from composio_client import Composio, AsyncComposio, APIResponseValidationError
 from composio_client._types import Omit
 from composio_client._utils import maybe_transform
 from composio_client._models import BaseModel, FinalRequestOptions
 from composio_client._constants import RAW_RESPONSE_HEADER
-from composio_client._exceptions import APIStatusError, APITimeoutError, ComposioSDKError, APIResponseValidationError
+from composio_client._exceptions import ComposioError, APIStatusError, APITimeoutError, APIResponseValidationError
 from composio_client._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
@@ -51,7 +51,7 @@ def _low_retry_timeout(*_args: Any, **_kwargs: Any) -> float:
     return 0.1
 
 
-def _get_open_connections(client: ComposioSDK | AsyncComposioSDK) -> int:
+def _get_open_connections(client: Composio | AsyncComposio) -> int:
     transport = client._client._transport
     assert isinstance(transport, httpx.HTTPTransport) or isinstance(transport, httpx.AsyncHTTPTransport)
 
@@ -59,8 +59,8 @@ def _get_open_connections(client: ComposioSDK | AsyncComposioSDK) -> int:
     return len(pool._requests)
 
 
-class TestComposioSDK:
-    client = ComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+class TestComposio:
+    client = Composio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     def test_raw_response(self, respx_mock: MockRouter) -> None:
@@ -107,7 +107,7 @@ class TestComposioSDK:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = ComposioSDK(
+        client = Composio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -141,7 +141,7 @@ class TestComposioSDK:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = ComposioSDK(
+        client = Composio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -266,7 +266,7 @@ class TestComposioSDK:
         assert timeout == httpx.Timeout(100.0)
 
     def test_client_timeout_option(self) -> None:
-        client = ComposioSDK(
+        client = Composio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -277,7 +277,7 @@ class TestComposioSDK:
     def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         with httpx.Client(timeout=None) as http_client:
-            client = ComposioSDK(
+            client = Composio(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -287,7 +287,7 @@ class TestComposioSDK:
 
         # no timeout given to the httpx client should not use the httpx default
         with httpx.Client() as http_client:
-            client = ComposioSDK(
+            client = Composio(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -297,7 +297,7 @@ class TestComposioSDK:
 
         # explicitly passing the default timeout currently results in it being ignored
         with httpx.Client(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = ComposioSDK(
+            client = Composio(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -308,7 +308,7 @@ class TestComposioSDK:
     async def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             async with httpx.AsyncClient() as http_client:
-                ComposioSDK(
+                Composio(
                     base_url=base_url,
                     api_key=api_key,
                     _strict_response_validation=True,
@@ -316,14 +316,14 @@ class TestComposioSDK:
                 )
 
     def test_default_headers_option(self) -> None:
-        client = ComposioSDK(
+        client = Composio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = ComposioSDK(
+        client2 = Composio(
             base_url=base_url,
             api_key=api_key,
             _strict_response_validation=True,
@@ -337,17 +337,17 @@ class TestComposioSDK:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_validate_headers(self) -> None:
-        client = ComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = Composio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("X-Api-Key") == api_key
 
-        with pytest.raises(ComposioSDKError):
+        with pytest.raises(ComposioError):
             with update_env(**{"COMPOSIO_API_KEY": Omit()}):
-                client2 = ComposioSDK(base_url=base_url, api_key=None, _strict_response_validation=True)
+                client2 = Composio(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
-        client = ComposioSDK(
+        client = Composio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -461,7 +461,7 @@ class TestComposioSDK:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, client: ComposioSDK) -> None:
+    def test_multipart_repeating_array(self, client: Composio) -> None:
         request = client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -548,9 +548,7 @@ class TestComposioSDK:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = ComposioSDK(
-            base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True
-        )
+        client = Composio(base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True)
         assert client.base_url == "https://example.com/from_init/"
 
         client.base_url = "https://example.com/from_setter"  # type: ignore[assignment]
@@ -558,16 +556,16 @@ class TestComposioSDK:
         assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
-        with update_env(COMPOSIO_SDK_BASE_URL="http://localhost:5000/from/env"):
-            client = ComposioSDK(api_key=api_key, _strict_response_validation=True)
+        with update_env(COMPOSIO_BASE_URL="http://localhost:5000/from/env"):
+            client = Composio(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
         # explicit environment arg requires explicitness
-        with update_env(COMPOSIO_SDK_BASE_URL="http://localhost:5000/from/env"):
+        with update_env(COMPOSIO_BASE_URL="http://localhost:5000/from/env"):
             with pytest.raises(ValueError, match=r"you must pass base_url=None"):
-                ComposioSDK(api_key=api_key, _strict_response_validation=True, environment="production")
+                Composio(api_key=api_key, _strict_response_validation=True, environment="production")
 
-            client = ComposioSDK(
+            client = Composio(
                 base_url=None, api_key=api_key, _strict_response_validation=True, environment="production"
             )
             assert str(client.base_url).startswith("https://backend.composio.dev")
@@ -575,10 +573,8 @@ class TestComposioSDK:
     @pytest.mark.parametrize(
         "client",
         [
-            ComposioSDK(
-                base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
-            ),
-            ComposioSDK(
+            Composio(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            Composio(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -587,7 +583,7 @@ class TestComposioSDK:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: ComposioSDK) -> None:
+    def test_base_url_trailing_slash(self, client: Composio) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -600,10 +596,8 @@ class TestComposioSDK:
     @pytest.mark.parametrize(
         "client",
         [
-            ComposioSDK(
-                base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
-            ),
-            ComposioSDK(
+            Composio(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            Composio(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -612,7 +606,7 @@ class TestComposioSDK:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: ComposioSDK) -> None:
+    def test_base_url_no_trailing_slash(self, client: Composio) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -625,10 +619,8 @@ class TestComposioSDK:
     @pytest.mark.parametrize(
         "client",
         [
-            ComposioSDK(
-                base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
-            ),
-            ComposioSDK(
+            Composio(base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True),
+            Composio(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -637,7 +629,7 @@ class TestComposioSDK:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: ComposioSDK) -> None:
+    def test_absolute_request_url(self, client: Composio) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -648,7 +640,7 @@ class TestComposioSDK:
         assert request.url == "https://myapi.com/foo"
 
     def test_copied_client_does_not_close_http(self) -> None:
-        client = ComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = Composio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -659,7 +651,7 @@ class TestComposioSDK:
         assert not client.is_closed()
 
     def test_client_context_manager(self) -> None:
-        client = ComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = Composio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -680,9 +672,7 @@ class TestComposioSDK:
 
     def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            ComposioSDK(
-                base_url=base_url, api_key=api_key, _strict_response_validation=True, max_retries=cast(Any, None)
-            )
+            Composio(base_url=base_url, api_key=api_key, _strict_response_validation=True, max_retries=cast(Any, None))
 
     @pytest.mark.respx(base_url=base_url)
     def test_received_text_for_expected_json(self, respx_mock: MockRouter) -> None:
@@ -691,12 +681,12 @@ class TestComposioSDK:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = ComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        strict_client = Composio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             strict_client.get("/foo", cast_to=Model)
 
-        client = ComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+        client = Composio(base_url=base_url, api_key=api_key, _strict_response_validation=False)
 
         response = client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -724,7 +714,7 @@ class TestComposioSDK:
     )
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = ComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = Composio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -767,7 +757,7 @@ class TestComposioSDK:
     @pytest.mark.parametrize("failure_mode", ["status", "exception"])
     def test_retries_taken(
         self,
-        client: ComposioSDK,
+        client: Composio,
         failures_before_success: int,
         failure_mode: Literal["status", "exception"],
         respx_mock: MockRouter,
@@ -796,7 +786,7 @@ class TestComposioSDK:
     @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_omit_retry_count_header(
-        self, client: ComposioSDK, failures_before_success: int, respx_mock: MockRouter
+        self, client: Composio, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = client.with_options(max_retries=4)
 
@@ -821,7 +811,7 @@ class TestComposioSDK:
     @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_overwrite_retry_count_header(
-        self, client: ComposioSDK, failures_before_success: int, respx_mock: MockRouter
+        self, client: Composio, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = client.with_options(max_retries=4)
 
@@ -843,8 +833,8 @@ class TestComposioSDK:
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
 
 
-class TestAsyncComposioSDK:
-    client = AsyncComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+class TestAsyncComposio:
+    client = AsyncComposio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
@@ -893,7 +883,7 @@ class TestAsyncComposioSDK:
         assert isinstance(self.client.timeout, httpx.Timeout)
 
     def test_copy_default_headers(self) -> None:
-        client = AsyncComposioSDK(
+        client = AsyncComposio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         assert client.default_headers["X-Foo"] == "bar"
@@ -927,7 +917,7 @@ class TestAsyncComposioSDK:
             client.copy(set_default_headers={}, default_headers={"X-Foo": "Bar"})
 
     def test_copy_default_query(self) -> None:
-        client = AsyncComposioSDK(
+        client = AsyncComposio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"foo": "bar"}
         )
         assert _get_params(client)["foo"] == "bar"
@@ -1052,7 +1042,7 @@ class TestAsyncComposioSDK:
         assert timeout == httpx.Timeout(100.0)
 
     async def test_client_timeout_option(self) -> None:
-        client = AsyncComposioSDK(
+        client = AsyncComposio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, timeout=httpx.Timeout(0)
         )
 
@@ -1063,7 +1053,7 @@ class TestAsyncComposioSDK:
     async def test_http_client_timeout_option(self) -> None:
         # custom timeout given to the httpx client should be used
         async with httpx.AsyncClient(timeout=None) as http_client:
-            client = AsyncComposioSDK(
+            client = AsyncComposio(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1073,7 +1063,7 @@ class TestAsyncComposioSDK:
 
         # no timeout given to the httpx client should not use the httpx default
         async with httpx.AsyncClient() as http_client:
-            client = AsyncComposioSDK(
+            client = AsyncComposio(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1083,7 +1073,7 @@ class TestAsyncComposioSDK:
 
         # explicitly passing the default timeout currently results in it being ignored
         async with httpx.AsyncClient(timeout=HTTPX_DEFAULT_TIMEOUT) as http_client:
-            client = AsyncComposioSDK(
+            client = AsyncComposio(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, http_client=http_client
             )
 
@@ -1094,7 +1084,7 @@ class TestAsyncComposioSDK:
     def test_invalid_http_client(self) -> None:
         with pytest.raises(TypeError, match="Invalid `http_client` arg"):
             with httpx.Client() as http_client:
-                AsyncComposioSDK(
+                AsyncComposio(
                     base_url=base_url,
                     api_key=api_key,
                     _strict_response_validation=True,
@@ -1102,14 +1092,14 @@ class TestAsyncComposioSDK:
                 )
 
     def test_default_headers_option(self) -> None:
-        client = AsyncComposioSDK(
+        client = AsyncComposio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_headers={"X-Foo": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-foo") == "bar"
         assert request.headers.get("x-stainless-lang") == "python"
 
-        client2 = AsyncComposioSDK(
+        client2 = AsyncComposio(
             base_url=base_url,
             api_key=api_key,
             _strict_response_validation=True,
@@ -1123,17 +1113,17 @@ class TestAsyncComposioSDK:
         assert request.headers.get("x-stainless-lang") == "my-overriding-header"
 
     def test_validate_headers(self) -> None:
-        client = AsyncComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncComposio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("X-Api-Key") == api_key
 
-        with pytest.raises(ComposioSDKError):
+        with pytest.raises(ComposioError):
             with update_env(**{"COMPOSIO_API_KEY": Omit()}):
-                client2 = AsyncComposioSDK(base_url=base_url, api_key=None, _strict_response_validation=True)
+                client2 = AsyncComposio(base_url=base_url, api_key=None, _strict_response_validation=True)
             _ = client2
 
     def test_default_query_option(self) -> None:
-        client = AsyncComposioSDK(
+        client = AsyncComposio(
             base_url=base_url, api_key=api_key, _strict_response_validation=True, default_query={"query_param": "bar"}
         )
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
@@ -1247,7 +1237,7 @@ class TestAsyncComposioSDK:
         params = dict(request.url.params)
         assert params == {"foo": "2"}
 
-    def test_multipart_repeating_array(self, async_client: AsyncComposioSDK) -> None:
+    def test_multipart_repeating_array(self, async_client: AsyncComposio) -> None:
         request = async_client._build_request(
             FinalRequestOptions.construct(
                 method="get",
@@ -1334,7 +1324,7 @@ class TestAsyncComposioSDK:
         assert response.foo == 2
 
     def test_base_url_setter(self) -> None:
-        client = AsyncComposioSDK(
+        client = AsyncComposio(
             base_url="https://example.com/from_init", api_key=api_key, _strict_response_validation=True
         )
         assert client.base_url == "https://example.com/from_init/"
@@ -1344,16 +1334,16 @@ class TestAsyncComposioSDK:
         assert client.base_url == "https://example.com/from_setter/"
 
     def test_base_url_env(self) -> None:
-        with update_env(COMPOSIO_SDK_BASE_URL="http://localhost:5000/from/env"):
-            client = AsyncComposioSDK(api_key=api_key, _strict_response_validation=True)
+        with update_env(COMPOSIO_BASE_URL="http://localhost:5000/from/env"):
+            client = AsyncComposio(api_key=api_key, _strict_response_validation=True)
             assert client.base_url == "http://localhost:5000/from/env/"
 
         # explicit environment arg requires explicitness
-        with update_env(COMPOSIO_SDK_BASE_URL="http://localhost:5000/from/env"):
+        with update_env(COMPOSIO_BASE_URL="http://localhost:5000/from/env"):
             with pytest.raises(ValueError, match=r"you must pass base_url=None"):
-                AsyncComposioSDK(api_key=api_key, _strict_response_validation=True, environment="production")
+                AsyncComposio(api_key=api_key, _strict_response_validation=True, environment="production")
 
-            client = AsyncComposioSDK(
+            client = AsyncComposio(
                 base_url=None, api_key=api_key, _strict_response_validation=True, environment="production"
             )
             assert str(client.base_url).startswith("https://backend.composio.dev")
@@ -1361,10 +1351,10 @@ class TestAsyncComposioSDK:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncComposioSDK(
+            AsyncComposio(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncComposioSDK(
+            AsyncComposio(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1373,7 +1363,7 @@ class TestAsyncComposioSDK:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_trailing_slash(self, client: AsyncComposioSDK) -> None:
+    def test_base_url_trailing_slash(self, client: AsyncComposio) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1386,10 +1376,10 @@ class TestAsyncComposioSDK:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncComposioSDK(
+            AsyncComposio(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncComposioSDK(
+            AsyncComposio(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1398,7 +1388,7 @@ class TestAsyncComposioSDK:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_base_url_no_trailing_slash(self, client: AsyncComposioSDK) -> None:
+    def test_base_url_no_trailing_slash(self, client: AsyncComposio) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1411,10 +1401,10 @@ class TestAsyncComposioSDK:
     @pytest.mark.parametrize(
         "client",
         [
-            AsyncComposioSDK(
+            AsyncComposio(
                 base_url="http://localhost:5000/custom/path/", api_key=api_key, _strict_response_validation=True
             ),
-            AsyncComposioSDK(
+            AsyncComposio(
                 base_url="http://localhost:5000/custom/path/",
                 api_key=api_key,
                 _strict_response_validation=True,
@@ -1423,7 +1413,7 @@ class TestAsyncComposioSDK:
         ],
         ids=["standard", "custom http client"],
     )
-    def test_absolute_request_url(self, client: AsyncComposioSDK) -> None:
+    def test_absolute_request_url(self, client: AsyncComposio) -> None:
         request = client._build_request(
             FinalRequestOptions(
                 method="post",
@@ -1434,7 +1424,7 @@ class TestAsyncComposioSDK:
         assert request.url == "https://myapi.com/foo"
 
     async def test_copied_client_does_not_close_http(self) -> None:
-        client = AsyncComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncComposio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         assert not client.is_closed()
 
         copied = client.copy()
@@ -1446,7 +1436,7 @@ class TestAsyncComposioSDK:
         assert not client.is_closed()
 
     async def test_client_context_manager(self) -> None:
-        client = AsyncComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncComposio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         async with client as c2:
             assert c2 is client
             assert not c2.is_closed()
@@ -1468,7 +1458,7 @@ class TestAsyncComposioSDK:
 
     async def test_client_max_retries_validation(self) -> None:
         with pytest.raises(TypeError, match=r"max_retries cannot be None"):
-            AsyncComposioSDK(
+            AsyncComposio(
                 base_url=base_url, api_key=api_key, _strict_response_validation=True, max_retries=cast(Any, None)
             )
 
@@ -1480,12 +1470,12 @@ class TestAsyncComposioSDK:
 
         respx_mock.get("/foo").mock(return_value=httpx.Response(200, text="my-custom-format"))
 
-        strict_client = AsyncComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        strict_client = AsyncComposio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         with pytest.raises(APIResponseValidationError):
             await strict_client.get("/foo", cast_to=Model)
 
-        client = AsyncComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=False)
+        client = AsyncComposio(base_url=base_url, api_key=api_key, _strict_response_validation=False)
 
         response = await client.get("/foo", cast_to=Model)
         assert isinstance(response, str)  # type: ignore[unreachable]
@@ -1514,7 +1504,7 @@ class TestAsyncComposioSDK:
     @mock.patch("time.time", mock.MagicMock(return_value=1696004797))
     @pytest.mark.asyncio
     async def test_parse_retry_after_header(self, remaining_retries: int, retry_after: str, timeout: float) -> None:
-        client = AsyncComposioSDK(base_url=base_url, api_key=api_key, _strict_response_validation=True)
+        client = AsyncComposio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
 
         headers = httpx.Headers({"retry-after": retry_after})
         options = FinalRequestOptions(method="get", url="/foo", max_retries=3)
@@ -1558,7 +1548,7 @@ class TestAsyncComposioSDK:
     @pytest.mark.parametrize("failure_mode", ["status", "exception"])
     async def test_retries_taken(
         self,
-        async_client: AsyncComposioSDK,
+        async_client: AsyncComposio,
         failures_before_success: int,
         failure_mode: Literal["status", "exception"],
         respx_mock: MockRouter,
@@ -1588,7 +1578,7 @@ class TestAsyncComposioSDK:
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     async def test_omit_retry_count_header(
-        self, async_client: AsyncComposioSDK, failures_before_success: int, respx_mock: MockRouter
+        self, async_client: AsyncComposio, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = async_client.with_options(max_retries=4)
 
@@ -1614,7 +1604,7 @@ class TestAsyncComposioSDK:
     @pytest.mark.respx(base_url=base_url)
     @pytest.mark.asyncio
     async def test_overwrite_retry_count_header(
-        self, async_client: AsyncComposioSDK, failures_before_success: int, respx_mock: MockRouter
+        self, async_client: AsyncComposio, failures_before_success: int, respx_mock: MockRouter
     ) -> None:
         client = async_client.with_options(max_retries=4)
 

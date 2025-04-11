@@ -1,11 +1,11 @@
 [project]
 name = "composio-client"
 version = "0.1.0-alpha.1"
-description = "The official Python library for the composio-sdk API"
+description = "The official Python library for the composio API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Composio SDK", email = "dev-feedback@composio-sdk.com" },
+{ name = "Composio", email = "dev-feedback@composio-sdk.com" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
