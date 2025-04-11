@@ -18,11 +18,11 @@ __all__ = [
 ]
 
 
-class ComposioSDKError(Exception):
+class ComposioError(Exception):
     pass
 
 
-class APIError(ComposioSDKError):
+class APIError(ComposioError):
     message: str
     request: httpx.Request
 
