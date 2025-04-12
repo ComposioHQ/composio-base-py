@@ -177,7 +177,7 @@ class Composio(SyncAPIClient):
     @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
-        return {"X-Api-Key": api_key}
+        return {"x-api-key": api_key}
 
     @property
     @override
@@ -389,7 +389,7 @@ class AsyncComposio(AsyncAPIClient):
     @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
-        return {"X-Api-Key": api_key}
+        return {"x-api-key": api_key}
 
     @property
     @override
