@@ -339,7 +339,7 @@ class TestComposio:
     def test_validate_headers(self) -> None:
         client = Composio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert request.headers.get("X-Api-Key") == api_key
+        assert request.headers.get("x-api-key") == api_key
 
         with pytest.raises(ComposioError):
             with update_env(**{"COMPOSIO_API_KEY": Omit()}):
@@ -1115,7 +1115,7 @@ class TestAsyncComposio:
     def test_validate_headers(self) -> None:
         client = AsyncComposio(base_url=base_url, api_key=api_key, _strict_response_validation=True)
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
-        assert request.headers.get("X-Api-Key") == api_key
+        assert request.headers.get("x-api-key") == api_key
 
         with pytest.raises(ComposioError):
             with update_env(**{"COMPOSIO_API_KEY": Omit()}):
