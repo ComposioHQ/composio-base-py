@@ -80,7 +80,7 @@ class Step(BaseModel):
 
     start_time: float = FieldInfo(alias="startTime")
 
-    status: Literal["success", "error"]
+    status: Literal["success", "failure", "error"]
 
     total_duration: float = FieldInfo(alias="totalDuration")
 
