@@ -25,6 +25,7 @@ from ._utils import (
 )
 from ._version import __version__
 from .resources import (
+    cli,
     tools,
     trigger,
     toolkits,
@@ -41,6 +42,7 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .resources.mcp import mcp
 from .resources.org import org
 from .resources.trigger_instances import trigger_instances
 
@@ -74,6 +76,8 @@ class Composio(SyncAPIClient):
     tools: tools.ToolsResource
     trigger_instances: trigger_instances.TriggerInstancesResource
     triggers_types: triggers_types.TriggersTypesResource
+    cli: cli.CliResource
+    mcp: mcp.McpResource
     with_raw_response: ComposioWithRawResponse
     with_streaming_response: ComposioWithStreamedResponse
 
@@ -165,6 +169,8 @@ class Composio(SyncAPIClient):
         self.tools = tools.ToolsResource(self)
         self.trigger_instances = trigger_instances.TriggerInstancesResource(self)
         self.triggers_types = triggers_types.TriggersTypesResource(self)
+        self.cli = cli.CliResource(self)
+        self.mcp = mcp.McpResource(self)
         self.with_raw_response = ComposioWithRawResponse(self)
         self.with_streaming_response = ComposioWithStreamedResponse(self)
 
@@ -286,6 +292,8 @@ class AsyncComposio(AsyncAPIClient):
     tools: tools.AsyncToolsResource
     trigger_instances: trigger_instances.AsyncTriggerInstancesResource
     triggers_types: triggers_types.AsyncTriggersTypesResource
+    cli: cli.AsyncCliResource
+    mcp: mcp.AsyncMcpResource
     with_raw_response: AsyncComposioWithRawResponse
     with_streaming_response: AsyncComposioWithStreamedResponse
 
@@ -377,6 +385,8 @@ class AsyncComposio(AsyncAPIClient):
         self.tools = tools.AsyncToolsResource(self)
         self.trigger_instances = trigger_instances.AsyncTriggerInstancesResource(self)
         self.triggers_types = triggers_types.AsyncTriggersTypesResource(self)
+        self.cli = cli.AsyncCliResource(self)
+        self.mcp = mcp.AsyncMcpResource(self)
         self.with_raw_response = AsyncComposioWithRawResponse(self)
         self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
 
@@ -499,6 +509,8 @@ class ComposioWithRawResponse:
         self.tools = tools.ToolsResourceWithRawResponse(client.tools)
         self.trigger_instances = trigger_instances.TriggerInstancesResourceWithRawResponse(client.trigger_instances)
         self.triggers_types = triggers_types.TriggersTypesResourceWithRawResponse(client.triggers_types)
+        self.cli = cli.CliResourceWithRawResponse(client.cli)
+        self.mcp = mcp.McpResourceWithRawResponse(client.mcp)
 
 
 class AsyncComposioWithRawResponse:
@@ -517,6 +529,8 @@ class AsyncComposioWithRawResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithRawResponse(client.triggers_types)
+        self.cli = cli.AsyncCliResourceWithRawResponse(client.cli)
+        self.mcp = mcp.AsyncMcpResourceWithRawResponse(client.mcp)
 
 
 class ComposioWithStreamedResponse:
@@ -535,6 +549,8 @@ class ComposioWithStreamedResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.TriggersTypesResourceWithStreamingResponse(client.triggers_types)
+        self.cli = cli.CliResourceWithStreamingResponse(client.cli)
+        self.mcp = mcp.McpResourceWithStreamingResponse(client.mcp)
 
 
 class AsyncComposioWithStreamedResponse:
@@ -555,6 +571,8 @@ class AsyncComposioWithStreamedResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithStreamingResponse(client.triggers_types)
+        self.cli = cli.AsyncCliResourceWithStreamingResponse(client.cli)
+        self.mcp = mcp.AsyncMcpResourceWithStreamingResponse(client.mcp)
 
 
 Client = Composio
