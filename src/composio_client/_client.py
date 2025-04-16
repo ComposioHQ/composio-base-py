@@ -83,7 +83,6 @@ class Composio(SyncAPIClient):
 
     # client options
     api_key: str
-    cookie: str
 
     _environment: Literal["production", "staging", "local"] | NotGiven
 
@@ -91,7 +90,6 @@ class Composio(SyncAPIClient):
         self,
         *,
         api_key: str | None = None,
-        cookie: str | None = None,
         environment: Literal["production", "staging", "local"] | NotGiven = NOT_GIVEN,
         base_url: str | httpx.URL | None | NotGiven = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -114,9 +112,7 @@ class Composio(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous Composio client instance.
 
-        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
-        - `api_key` from `COMPOSIO_API_KEY`
-        - `cookie` from `BEARER_TOKEN`
+        This automatically infers the `api_key` argument from the `COMPOSIO_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("COMPOSIO_API_KEY")
@@ -125,14 +121,6 @@ class Composio(SyncAPIClient):
                 "The api_key client option must be set either by passing api_key to the client or by setting the COMPOSIO_API_KEY environment variable"
             )
         self.api_key = api_key
-
-        if cookie is None:
-            cookie = os.environ.get("BEARER_TOKEN")
-        if cookie is None:
-            raise ComposioError(
-                "The cookie client option must be set either by passing cookie to the client or by setting the BEARER_TOKEN environment variable"
-            )
-        self.cookie = cookie
 
         self._environment = environment
 
@@ -194,17 +182,8 @@ class Composio(SyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
-        return {**self._api_key_auth, **self._cookie_auth}
-
-    @property
-    def _api_key_auth(self) -> dict[str, str]:
         api_key = self.api_key
         return {"x-api-key": api_key}
-
-    @property
-    def _cookie_auth(self) -> dict[str, str]:
-        cookie = self.cookie
-        return {"authToken": cookie}
 
     @property
     @override
@@ -219,7 +198,6 @@ class Composio(SyncAPIClient):
         self,
         *,
         api_key: str | None = None,
-        cookie: str | None = None,
         environment: Literal["production", "staging", "local"] | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -255,7 +233,6 @@ class Composio(SyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
-            cookie=cookie or self.cookie,
             base_url=base_url or self.base_url,
             environment=environment or self._environment,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
@@ -322,7 +299,6 @@ class AsyncComposio(AsyncAPIClient):
 
     # client options
     api_key: str
-    cookie: str
 
     _environment: Literal["production", "staging", "local"] | NotGiven
 
@@ -330,7 +306,6 @@ class AsyncComposio(AsyncAPIClient):
         self,
         *,
         api_key: str | None = None,
-        cookie: str | None = None,
         environment: Literal["production", "staging", "local"] | NotGiven = NOT_GIVEN,
         base_url: str | httpx.URL | None | NotGiven = NOT_GIVEN,
         timeout: Union[float, Timeout, None, NotGiven] = NOT_GIVEN,
@@ -353,9 +328,7 @@ class AsyncComposio(AsyncAPIClient):
     ) -> None:
         """Construct a new async AsyncComposio client instance.
 
-        This automatically infers the following arguments from their corresponding environment variables if they are not provided:
-        - `api_key` from `COMPOSIO_API_KEY`
-        - `cookie` from `BEARER_TOKEN`
+        This automatically infers the `api_key` argument from the `COMPOSIO_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
             api_key = os.environ.get("COMPOSIO_API_KEY")
@@ -364,14 +337,6 @@ class AsyncComposio(AsyncAPIClient):
                 "The api_key client option must be set either by passing api_key to the client or by setting the COMPOSIO_API_KEY environment variable"
             )
         self.api_key = api_key
-
-        if cookie is None:
-            cookie = os.environ.get("BEARER_TOKEN")
-        if cookie is None:
-            raise ComposioError(
-                "The cookie client option must be set either by passing cookie to the client or by setting the BEARER_TOKEN environment variable"
-            )
-        self.cookie = cookie
 
         self._environment = environment
 
@@ -433,17 +398,8 @@ class AsyncComposio(AsyncAPIClient):
     @property
     @override
     def auth_headers(self) -> dict[str, str]:
-        return {**self._api_key_auth, **self._cookie_auth}
-
-    @property
-    def _api_key_auth(self) -> dict[str, str]:
         api_key = self.api_key
         return {"x-api-key": api_key}
-
-    @property
-    def _cookie_auth(self) -> dict[str, str]:
-        cookie = self.cookie
-        return {"authToken": cookie}
 
     @property
     @override
@@ -458,7 +414,6 @@ class AsyncComposio(AsyncAPIClient):
         self,
         *,
         api_key: str | None = None,
-        cookie: str | None = None,
         environment: Literal["production", "staging", "local"] | None = None,
         base_url: str | httpx.URL | None = None,
         timeout: float | Timeout | None | NotGiven = NOT_GIVEN,
@@ -494,7 +449,6 @@ class AsyncComposio(AsyncAPIClient):
         http_client = http_client or self._client
         return self.__class__(
             api_key=api_key or self.api_key,
-            cookie=cookie or self.cookie,
             base_url=base_url or self.base_url,
             environment=environment or self._environment,
             timeout=self.timeout if isinstance(timeout, NotGiven) else timeout,
