@@ -24,6 +24,14 @@ from .org import (
     OrgResourceWithStreamingResponse,
     AsyncOrgResourceWithStreamingResponse,
 )
+from .auth import (
+    AuthResource,
+    AsyncAuthResource,
+    AuthResourceWithRawResponse,
+    AsyncAuthResourceWithRawResponse,
+    AuthResourceWithStreamingResponse,
+    AsyncAuthResourceWithStreamingResponse,
+)
 from .tools import (
     ToolsResource,
     AsyncToolsResource,
@@ -98,6 +106,12 @@ from .connected_accounts import (
 )
 
 __all__ = [
+    "AuthResource",
+    "AsyncAuthResource",
+    "AuthResourceWithRawResponse",
+    "AsyncAuthResourceWithRawResponse",
+    "AuthResourceWithStreamingResponse",
+    "AsyncAuthResourceWithStreamingResponse",
     "AuthConfigsResource",
     "AsyncAuthConfigsResource",
     "AuthConfigsResourceWithRawResponse",
