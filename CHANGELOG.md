@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-04-17)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** Include session info ([594fd87](https://github.com/ComposioHQ/composio-base-py/commit/594fd877c2984780b9262c0bf469efc901f302cf))
+
+
+### Chores
+
+* **internal:** base client updates ([a4d6b81](https://github.com/ComposioHQ/composio-base-py/commit/a4d6b8158a722714d6d556251108601a16b8fa6d))
+* **internal:** bump pyright version ([4c14aec](https://github.com/ComposioHQ/composio-base-py/commit/4c14aec5de451cc2158bd0372ede1ff6fafe2d73))
+
 ## 0.1.0-alpha.2 (2025-04-16)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
