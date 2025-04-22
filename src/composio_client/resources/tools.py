@@ -89,6 +89,7 @@ class ToolsResource(SyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
+        tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -106,6 +107,8 @@ class ToolsResource(SyncAPIResource):
           limit: The number of results to return
 
           search: The search query to filter by
+
+          tool_slugs: The comma separated slugs of the tools to filter by
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -130,6 +133,7 @@ class ToolsResource(SyncAPIResource):
                         "important": important,
                         "limit": limit,
                         "search": search,
+                        "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
                     },
                     tool_list_params.ToolListParams,
@@ -361,6 +365,7 @@ class AsyncToolsResource(AsyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
+        tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -378,6 +383,8 @@ class AsyncToolsResource(AsyncAPIResource):
           limit: The number of results to return
 
           search: The search query to filter by
+
+          tool_slugs: The comma separated slugs of the tools to filter by
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -402,6 +409,7 @@ class AsyncToolsResource(AsyncAPIResource):
                         "important": important,
                         "limit": limit,
                         "search": search,
+                        "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
                     },
                     tool_list_params.ToolListParams,
