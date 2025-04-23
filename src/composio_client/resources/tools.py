@@ -146,6 +146,7 @@ class ToolsResource(SyncAPIResource):
         allow_tracing: bool | NotGiven = NOT_GIVEN,
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
+        custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -159,6 +160,9 @@ class ToolsResource(SyncAPIResource):
         """
         Args:
           action: The name of the action
+
+          custom_auth_params: An optional field for people who want to use their own auth to execute the
+              action.
 
           extra_headers: Send extra headers
 
@@ -177,6 +181,7 @@ class ToolsResource(SyncAPIResource):
                     "allow_tracing": allow_tracing,
                     "arguments": arguments,
                     "connected_account_id": connected_account_id,
+                    "custom_auth_params": custom_auth_params,
                     "entity_id": entity_id,
                     "text": text,
                     "version": version,
@@ -422,6 +427,7 @@ class AsyncToolsResource(AsyncAPIResource):
         allow_tracing: bool | NotGiven = NOT_GIVEN,
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
+        custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -435,6 +441,9 @@ class AsyncToolsResource(AsyncAPIResource):
         """
         Args:
           action: The name of the action
+
+          custom_auth_params: An optional field for people who want to use their own auth to execute the
+              action.
 
           extra_headers: Send extra headers
 
@@ -453,6 +462,7 @@ class AsyncToolsResource(AsyncAPIResource):
                     "allow_tracing": allow_tracing,
                     "arguments": arguments,
                     "connected_account_id": connected_account_id,
+                    "custom_auth_params": custom_auth_params,
                     "entity_id": entity_id,
                     "text": text,
                     "version": version,
