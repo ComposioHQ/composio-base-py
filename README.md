@@ -90,10 +90,21 @@ from composio_client import Composio
 
 client = Composio()
 
-auth_config = client.auth_configs.create(
-    toolkit={"slug": "slug"},
+response = client.tools.execute(
+    action="action",
+    custom_auth_params={
+        "parameters": [
+            {
+                "in": "query",
+                "name": "name",
+                "value": "string",
+            }
+        ],
+        "base_url": "base_url",
+        "body": {"foo": "bar"},
+    },
 )
-print(auth_config.toolkit)
+print(response.custom_auth_params)
 ```
 
 ## Handling errors
