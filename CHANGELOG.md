@@ -1,5 +1,32 @@
 # Changelog
 
+## 0.1.0-alpha.4 (2025-04-24)
+
+Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
+
+### Features
+
+* **api:** Add tool_slugs to list tools api ([685aa20](https://github.com/ComposioHQ/composio-base-py/commit/685aa203b7f235c47c1586f3659a8fd0bbee5eb8))
+* **api:** manual updates to add custom_auth_params in execute tool api ([6fa2a37](https://github.com/ComposioHQ/composio-base-py/commit/6fa2a37e0469abb16cfb7a6ea4cfae7769d10dd8))
+
+
+### Bug Fixes
+
+* **pydantic v1:** more robust ModelField.annotation check ([5fd4604](https://github.com/ComposioHQ/composio-base-py/commit/5fd46041feb0b3c85bf79fcaf13304e735768e62))
+
+
+### Chores
+
+* broadly detect json family of content-type headers ([5e428e3](https://github.com/ComposioHQ/composio-base-py/commit/5e428e3a8c329ab5bdbd2ad733b75edd0a008d01))
+* **ci:** add timeout thresholds for CI jobs ([f2a3972](https://github.com/ComposioHQ/composio-base-py/commit/f2a39722639ca8d894ee8e53ff692132813e4b2c))
+* **ci:** only use depot for staging repos ([c7adb59](https://github.com/ComposioHQ/composio-base-py/commit/c7adb59868d7858862680e5face914fce96ec6b2))
+* **internal:** codegen related update ([c725bf6](https://github.com/ComposioHQ/composio-base-py/commit/c725bf6786bb6a5669d18ba3dad3e9aa869dc80c))
+* **internal:** fix list file params ([c3cd0e7](https://github.com/ComposioHQ/composio-base-py/commit/c3cd0e7beeb3553e7b163cc06b29e59508fd26b4))
+* **internal:** import reformatting ([b3ac2f9](https://github.com/ComposioHQ/composio-base-py/commit/b3ac2f9ea16dc5ad1078355d01fcb8f0497f1ded))
+* **internal:** minor formatting changes ([98fc9df](https://github.com/ComposioHQ/composio-base-py/commit/98fc9df1d078474dd01a4bd65921816fba0b588e))
+* **internal:** refactor retries to not use recursion ([444bfb7](https://github.com/ComposioHQ/composio-base-py/commit/444bfb7a7e37bb060daf7257715deec6d30513c3))
+* **internal:** update models test ([fa5a284](https://github.com/ComposioHQ/composio-base-py/commit/fa5a28413fd5f77a11d81ced91f884fc9bfc2ee6))
+
 ## 0.1.0-alpha.3 (2025-04-17)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)

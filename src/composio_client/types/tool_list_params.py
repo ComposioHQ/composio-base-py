@@ -20,5 +20,8 @@ class ToolListParams(TypedDict, total=False):
     search: str
     """The search query to filter by"""
 
+    tool_slugs: str
+    """The comma separated slugs of the tools to filter by"""
+
     toolkit_slug: str
     """The slug of the toolkit to filter by"""

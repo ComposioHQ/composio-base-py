@@ -73,6 +73,7 @@ class TestTools:
             important="true",
             limit="20",
             search="github actions",
+            tool_slugs="github",
             toolkit_slug="github",
         )
         assert_matches_type(ToolListResponse, tool, path=["response"])
@@ -111,6 +112,17 @@ class TestTools:
             allow_tracing=True,
             arguments={"foo": "bar"},
             connected_account_id="connected_account_id",
+            custom_auth_params={
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "value": "string",
+                    }
+                ],
+                "base_url": "base_url",
+                "body": {"foo": "bar"},
+            },
             entity_id="entity_id",
             text="text",
             version="version",
@@ -331,6 +343,7 @@ class TestAsyncTools:
             important="true",
             limit="20",
             search="github actions",
+            tool_slugs="github",
             toolkit_slug="github",
         )
         assert_matches_type(ToolListResponse, tool, path=["response"])
@@ -369,6 +382,17 @@ class TestAsyncTools:
             allow_tracing=True,
             arguments={"foo": "bar"},
             connected_account_id="connected_account_id",
+            custom_auth_params={
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "name",
+                        "value": "string",
+                    }
+                ],
+                "base_url": "base_url",
+                "body": {"foo": "bar"},
+            },
             entity_id="entity_id",
             text="text",
             version="version",

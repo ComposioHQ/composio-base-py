@@ -9,10 +9,7 @@ import httpx
 
 from ..types import tool_list_params, tool_proxy_params, tool_execute_params, tool_get_input_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import (
-    maybe_transform,
-    async_maybe_transform,
-)
+from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -89,6 +86,7 @@ class ToolsResource(SyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
+        tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -106,6 +104,8 @@ class ToolsResource(SyncAPIResource):
           limit: The number of results to return
 
           search: The search query to filter by
+
+          tool_slugs: The comma separated slugs of the tools to filter by
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -130,6 +130,7 @@ class ToolsResource(SyncAPIResource):
                         "important": important,
                         "limit": limit,
                         "search": search,
+                        "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
                     },
                     tool_list_params.ToolListParams,
@@ -145,6 +146,7 @@ class ToolsResource(SyncAPIResource):
         allow_tracing: bool | NotGiven = NOT_GIVEN,
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
+        custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -158,6 +160,9 @@ class ToolsResource(SyncAPIResource):
         """
         Args:
           action: The name of the action
+
+          custom_auth_params: An optional field for people who want to use their own auth to execute the
+              action.
 
           extra_headers: Send extra headers
 
@@ -176,6 +181,7 @@ class ToolsResource(SyncAPIResource):
                     "allow_tracing": allow_tracing,
                     "arguments": arguments,
                     "connected_account_id": connected_account_id,
+                    "custom_auth_params": custom_auth_params,
                     "entity_id": entity_id,
                     "text": text,
                     "version": version,
@@ -361,6 +367,7 @@ class AsyncToolsResource(AsyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
+        tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -378,6 +385,8 @@ class AsyncToolsResource(AsyncAPIResource):
           limit: The number of results to return
 
           search: The search query to filter by
+
+          tool_slugs: The comma separated slugs of the tools to filter by
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -402,6 +411,7 @@ class AsyncToolsResource(AsyncAPIResource):
                         "important": important,
                         "limit": limit,
                         "search": search,
+                        "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
                     },
                     tool_list_params.ToolListParams,
@@ -417,6 +427,7 @@ class AsyncToolsResource(AsyncAPIResource):
         allow_tracing: bool | NotGiven = NOT_GIVEN,
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
+        custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
         entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -430,6 +441,9 @@ class AsyncToolsResource(AsyncAPIResource):
         """
         Args:
           action: The name of the action
+
+          custom_auth_params: An optional field for people who want to use their own auth to execute the
+              action.
 
           extra_headers: Send extra headers
 
@@ -448,6 +462,7 @@ class AsyncToolsResource(AsyncAPIResource):
                     "allow_tracing": allow_tracing,
                     "arguments": arguments,
                     "connected_account_id": connected_account_id,
+                    "custom_auth_params": custom_auth_params,
                     "entity_id": entity_id,
                     "text": text,
                     "version": version,
