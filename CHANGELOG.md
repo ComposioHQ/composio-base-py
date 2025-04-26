@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.5 (2025-04-26)
+
+Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)
+
+### Features
+
+* **api:** fix local environment url ([36a1f67](https://github.com/ComposioHQ/composio-base-py/commit/36a1f67aed0de60a5b971bd5c379c334662eb140))
+
 ## 0.1.0-alpha.4 (2025-04-24)
 
 Full Changelog: [v0.1.0-alpha.3...v0.1.0-alpha.4](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.3...v0.1.0-alpha.4)
