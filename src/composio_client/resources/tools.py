@@ -86,7 +86,7 @@ class ToolsResource(SyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
-        tool_slugs: List[str] | NotGiven = NOT_GIVEN,
+        tool_slugs: str | List[str] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -367,7 +367,7 @@ class AsyncToolsResource(AsyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
-        tool_slugs: List[str] | NotGiven = NOT_GIVEN,
+        tool_slugs: str | List[str] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

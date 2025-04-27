@@ -62,13 +62,13 @@ class TriggerInstancesResource(SyncAPIResource):
     def list_active(
         self,
         *,
-        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
-        connected_account_ids: List[str] | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | List[str] | NotGiven = NOT_GIVEN,
+        connected_account_ids: str | List[str] | NotGiven = NOT_GIVEN,
         limit: float | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
-        trigger_ids: List[str] | NotGiven = NOT_GIVEN,
-        trigger_names: List[str] | NotGiven = NOT_GIVEN,
+        trigger_ids: str | List[str] | NotGiven = NOT_GIVEN,
+        trigger_names: str | List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -268,13 +268,13 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
     async def list_active(
         self,
         *,
-        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
-        connected_account_ids: List[str] | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | List[str] | NotGiven = NOT_GIVEN,
+        connected_account_ids: str | List[str] | NotGiven = NOT_GIVEN,
         limit: float | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
-        trigger_ids: List[str] | NotGiven = NOT_GIVEN,
-        trigger_names: List[str] | NotGiven = NOT_GIVEN,
+        trigger_ids: str | List[str] | NotGiven = NOT_GIVEN,
+        trigger_names: str | List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
