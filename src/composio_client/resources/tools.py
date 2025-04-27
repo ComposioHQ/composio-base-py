@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable, Optional
+from typing import Dict, List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -86,7 +86,7 @@ class ToolsResource(SyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
-        tool_slugs: str | NotGiven = NOT_GIVEN,
+        tool_slugs: List[str] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -105,7 +105,7 @@ class ToolsResource(SyncAPIResource):
 
           search: The search query to filter by
 
-          tool_slugs: The comma separated slugs of the tools to filter by
+          tool_slugs: The slugs of the tools to filter by
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -367,7 +367,7 @@ class AsyncToolsResource(AsyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
-        tool_slugs: str | NotGiven = NOT_GIVEN,
+        tool_slugs: List[str] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -386,7 +386,7 @@ class AsyncToolsResource(AsyncAPIResource):
 
           search: The search query to filter by
 
-          tool_slugs: The comma separated slugs of the tools to filter by
+          tool_slugs: The slugs of the tools to filter by
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -398,6 +398,15 @@ class AsyncToolsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        query_params = {
+            "cursor": cursor,
+            "important": important,
+            "limit": limit,
+            "search": search,
+            "tool_slugs": tool_slugs,  # Transformation will handle list->string conversion
+            "toolkit_slug": toolkit_slug,
+        }
+
         return await self._get(
             "/api/v3/tools",
             options=make_request_options(
@@ -406,14 +415,7 @@ class AsyncToolsResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {
-                        "cursor": cursor,
-                        "important": important,
-                        "limit": limit,
-                        "search": search,
-                        "tool_slugs": tool_slugs,
-                        "toolkit_slug": toolkit_slug,
-                    },
+                    query_params,
                     tool_list_params.ToolListParams,
                 ),
             ),
