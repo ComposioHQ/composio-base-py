@@ -39,6 +39,27 @@ _T = TypeVar("_T")
 PropertyFormat = Literal["iso8601", "base64", "custom"]
 
 
+def _maybe_convert_to_comma_string(data: object, expected_type: type) -> object:
+    """Try to convert a list to a comma-separated string if appropriate.
+
+    Returns the original data if no conversion is needed or possible.
+    """
+    # Only convert if target type is string and input is a list
+    if not (get_origin(expected_type) == str and isinstance(data, list)):
+        return data
+
+    # Use a pragmatic approach with type ignores
+    try:
+        # We know this is a list at this point, so we can safely join it
+        # Convert the list to a comma-separated string, ignoring type errors
+        # since we already verified it's a list with isinstance
+        result = ",".join(str(x) for x in data)  # type: ignore
+        return result  # type: ignore[return-value]
+    except Exception:
+        # If conversion fails for any reason, return the original data
+        return data  # type: ignore[return-value]
+
+
 class PropertyInfo:
     """Metadata class to be used in Annotated types to provide information about a given type.
 
@@ -172,6 +193,10 @@ def _transform_recursive(
 
     stripped_type = strip_annotated_type(inner_type)
     origin = get_origin(stripped_type) or stripped_type
+
+    # Special case: Automatically convert lists to comma-separated strings for query parameters
+    data = _maybe_convert_to_comma_string(data, stripped_type)
+
     if is_typeddict(stripped_type) and is_mapping(data):
         return _transform_typeddict(data, stripped_type)
 
@@ -334,6 +359,10 @@ async def _async_transform_recursive(
 
     stripped_type = strip_annotated_type(inner_type)
     origin = get_origin(stripped_type) or stripped_type
+
+    # Special case: Automatically convert lists to comma-separated strings for query parameters
+    data = _maybe_convert_to_comma_string(data, stripped_type)
+
     if is_typeddict(stripped_type) and is_mapping(data):
         return await _async_transform_typeddict(data, stripped_type)
 
