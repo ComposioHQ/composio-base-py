@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -66,6 +66,8 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountCreateResponse:
         """
+        Create a new connected account
+
         Args:
           extra_headers: Send extra headers
 
@@ -102,6 +104,8 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountRetrieveResponse:
         """
+        Get connected account details by ID
+
         Args:
           extra_headers: Send extra headers
 
@@ -124,13 +128,15 @@ class ConnectedAccountsResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: Optional[float] | NotGiven = NOT_GIVEN,
+        labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        status: Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"] | NotGiven = NOT_GIVEN,
-        toolkit_slug: str | NotGiven = NOT_GIVEN,
-        user_id: str | NotGiven = NOT_GIVEN,
+        statues: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
+        | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,20 +145,24 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountListResponse:
         """
+        List connected accounts with optional filters
+
         Args:
-          auth_config_id: The auth config id of the connected account
+          auth_config_ids: The auth config ids of the connected accounts
 
           cursor: The cursor to paginate through the connected accounts
+
+          labels: The labels of the connected accounts
 
           limit: The limit of the connected accounts to return
 
           order_by: The order by of the connected accounts
 
-          status: The status of the connected account
+          statues: The status of the connected account
 
-          toolkit_slug: The toolkit slug of the connected account
+          toolkit_slugs: The toolkit slugs of the connected accounts
 
-          user_id: The user id of the connected account
+          user_ids: The user ids of the connected accounts
 
           extra_headers: Send extra headers
 
@@ -171,13 +181,14 @@ class ConnectedAccountsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
+                        "labels": labels,
                         "limit": limit,
                         "order_by": order_by,
-                        "status": status,
-                        "toolkit_slug": toolkit_slug,
-                        "user_id": user_id,
+                        "statues": statues,
+                        "toolkit_slugs": toolkit_slugs,
+                        "user_ids": user_ids,
                     },
                     connected_account_list_params.ConnectedAccountListParams,
                 ),
@@ -197,6 +208,8 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountDeleteResponse:
         """
+        Delete a connected account
+
         Args:
           extra_headers: Send extra headers
 
@@ -228,6 +241,8 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountRefreshResponse:
         """
+        Refresh authentication for a connected account
+
         Args:
           extra_headers: Send extra headers
 
@@ -260,6 +275,8 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountUpdateStatusResponse:
         """
+        Enable or disable a connected account
+
         Args:
           extra_headers: Send extra headers
 
@@ -316,6 +333,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountCreateResponse:
         """
+        Create a new connected account
+
         Args:
           extra_headers: Send extra headers
 
@@ -352,6 +371,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountRetrieveResponse:
         """
+        Get connected account details by ID
+
         Args:
           extra_headers: Send extra headers
 
@@ -374,13 +395,15 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: Optional[float] | NotGiven = NOT_GIVEN,
+        labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        status: Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"] | NotGiven = NOT_GIVEN,
-        toolkit_slug: str | NotGiven = NOT_GIVEN,
-        user_id: str | NotGiven = NOT_GIVEN,
+        statues: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
+        | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -389,20 +412,24 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountListResponse:
         """
+        List connected accounts with optional filters
+
         Args:
-          auth_config_id: The auth config id of the connected account
+          auth_config_ids: The auth config ids of the connected accounts
 
           cursor: The cursor to paginate through the connected accounts
+
+          labels: The labels of the connected accounts
 
           limit: The limit of the connected accounts to return
 
           order_by: The order by of the connected accounts
 
-          status: The status of the connected account
+          statues: The status of the connected account
 
-          toolkit_slug: The toolkit slug of the connected account
+          toolkit_slugs: The toolkit slugs of the connected accounts
 
-          user_id: The user id of the connected account
+          user_ids: The user ids of the connected accounts
 
           extra_headers: Send extra headers
 
@@ -421,13 +448,14 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
+                        "labels": labels,
                         "limit": limit,
                         "order_by": order_by,
-                        "status": status,
-                        "toolkit_slug": toolkit_slug,
-                        "user_id": user_id,
+                        "statues": statues,
+                        "toolkit_slugs": toolkit_slugs,
+                        "user_ids": user_ids,
                     },
                     connected_account_list_params.ConnectedAccountListParams,
                 ),
@@ -447,6 +475,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountDeleteResponse:
         """
+        Delete a connected account
+
         Args:
           extra_headers: Send extra headers
 
@@ -478,6 +508,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountRefreshResponse:
         """
+        Refresh authentication for a connected account
+
         Args:
           extra_headers: Send extra headers
 
@@ -510,6 +542,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountUpdateStatusResponse:
         """
+        Enable or disable a connected account
+
         Args:
           extra_headers: Send extra headers
 

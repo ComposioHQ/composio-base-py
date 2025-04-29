@@ -273,7 +273,7 @@ class TestMcp:
     def test_method_validate(self, client: Composio) -> None:
         mcp = client.mcp.validate(
             uuid="uuid",
-            x_admin_token="x-admin-token",
+            x_composio_admin_token="x-composio-admin-token",
         )
         assert_matches_type(McpValidateResponse, mcp, path=["response"])
 
@@ -281,7 +281,7 @@ class TestMcp:
     def test_raw_response_validate(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.validate(
             uuid="uuid",
-            x_admin_token="x-admin-token",
+            x_composio_admin_token="x-composio-admin-token",
         )
 
         assert response.is_closed is True
@@ -293,7 +293,7 @@ class TestMcp:
     def test_streaming_response_validate(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.validate(
             uuid="uuid",
-            x_admin_token="x-admin-token",
+            x_composio_admin_token="x-composio-admin-token",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -308,7 +308,7 @@ class TestMcp:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `uuid` but received ''"):
             client.mcp.with_raw_response.validate(
                 uuid="",
-                x_admin_token="x-admin-token",
+                x_composio_admin_token="x-composio-admin-token",
             )
 
 
@@ -563,7 +563,7 @@ class TestAsyncMcp:
     async def test_method_validate(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.validate(
             uuid="uuid",
-            x_admin_token="x-admin-token",
+            x_composio_admin_token="x-composio-admin-token",
         )
         assert_matches_type(McpValidateResponse, mcp, path=["response"])
 
@@ -571,7 +571,7 @@ class TestAsyncMcp:
     async def test_raw_response_validate(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.validate(
             uuid="uuid",
-            x_admin_token="x-admin-token",
+            x_composio_admin_token="x-composio-admin-token",
         )
 
         assert response.is_closed is True
@@ -583,7 +583,7 @@ class TestAsyncMcp:
     async def test_streaming_response_validate(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.validate(
             uuid="uuid",
-            x_admin_token="x-admin-token",
+            x_composio_admin_token="x-composio-admin-token",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -598,5 +598,5 @@ class TestAsyncMcp:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `uuid` but received ''"):
             await async_client.mcp.with_raw_response.validate(
                 uuid="",
-                x_admin_token="x-admin-token",
+                x_composio_admin_token="x-composio-admin-token",
             )

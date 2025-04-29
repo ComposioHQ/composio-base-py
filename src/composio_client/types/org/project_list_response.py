@@ -23,8 +23,6 @@ class Data(BaseModel):
 
     name: str
 
-    nano_id: Optional[str] = None
-
     org_id: str
 
     updated_at: str

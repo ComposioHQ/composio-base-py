@@ -1,17 +1,3 @@
-# Auth
-
-## Session
-
-Types:
-
-```python
-from composio_client.types.auth import SessionGetInfoResponse
-```
-
-Methods:
-
-- <code title="get /api/v3/auth/session/info">client.auth.session.<a href="./src/composio_client/resources/auth/session.py">get_info</a>() -> <a href="./src/composio_client/types/auth/session_get_info_response.py">SessionGetInfoResponse</a></code>
-
 # AuthConfigs
 
 Types:
@@ -31,10 +17,10 @@ Methods:
 
 - <code title="post /api/v3/auth_configs">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">create</a>(\*\*<a href="src/composio_client/types/auth_config_create_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_create_response.py">AuthConfigCreateResponse</a></code>
 - <code title="get /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">retrieve</a>(nanoid) -> <a href="./src/composio_client/types/auth_config_retrieve_response.py">AuthConfigRetrieveResponse</a></code>
-- <code title="patch /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update</a>(nanoid, \*\*<a href="src/composio_client/types/auth_config_update_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_update_response.py">AuthConfigUpdateResponse</a></code>
+- <code title="patch /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update</a>(nanoid, \*\*<a href="src/composio_client/types/auth_config_update_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_update_response.py">object</a></code>
 - <code title="get /api/v3/auth_configs">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">list</a>(\*\*<a href="src/composio_client/types/auth_config_list_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_list_response.py">AuthConfigListResponse</a></code>
-- <code title="delete /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">delete</a>(nanoid) -> <a href="./src/composio_client/types/auth_config_delete_response.py">AuthConfigDeleteResponse</a></code>
-- <code title="patch /api/v3/auth_configs/{nanoid}/{status}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update_status</a>(status, \*, nanoid) -> <a href="./src/composio_client/types/auth_config_update_status_response.py">AuthConfigUpdateStatusResponse</a></code>
+- <code title="delete /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">delete</a>(nanoid) -> <a href="./src/composio_client/types/auth_config_delete_response.py">object</a></code>
+- <code title="patch /api/v3/auth_configs/{nanoid}/{status}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update_status</a>(status, \*, nanoid) -> <a href="./src/composio_client/types/auth_config_update_status_response.py">object</a></code>
 
 # ConnectedAccounts
 
@@ -296,18 +282,12 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import (
-    CliCreateSessionResponse,
-    CliLinkSessionResponse,
-    CliRetrieveSessionResponse,
-)
+from composio_client.types import CliLinkSessionResponse
 ```
 
 Methods:
 
-- <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli.py">create_session</a>() -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
 - <code title="put /api/v3/cli/link-session">client.cli.<a href="./src/composio_client/resources/cli.py">link_session</a>(\*\*<a href="src/composio_client/types/cli_link_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_link_session_response.py">CliLinkSessionResponse</a></code>
-- <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/composio_client/resources/cli.py">retrieve_session</a>(\*\*<a href="src/composio_client/types/cli_retrieve_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_retrieve_session_response.py">CliRetrieveSessionResponse</a></code>
 
 # Mcp
 
@@ -346,3 +326,28 @@ from composio_client.types.mcp import CommandGenerateResponse
 Methods:
 
 - <code title="post /api/v3/mcp/command/generate">client.mcp.command.<a href="./src/composio_client/resources/mcp/command.py">generate</a>(\*\*<a href="src/composio_client/types/mcp/command_generate_params.py">params</a>) -> <a href="./src/composio_client/types/mcp/command_generate_response.py">CommandGenerateResponse</a></code>
+
+# Files
+
+Types:
+
+```python
+from composio_client.types import FileListResponse, FileCreatePresignedURLResponse
+```
+
+Methods:
+
+- <code title="get /api/v3/files">client.files.<a href="./src/composio_client/resources/files.py">list</a>(\*\*<a href="src/composio_client/types/file_list_params.py">params</a>) -> <a href="./src/composio_client/types/file_list_response.py">FileListResponse</a></code>
+- <code title="post /api/v3/files/upload/{fileType}">client.files.<a href="./src/composio_client/resources/files.py">create_presigned_url</a>(file_type, \*\*<a href="src/composio_client/types/file_create_presigned_url_params.py">params</a>) -> <a href="./src/composio_client/types/file_create_presigned_url_response.py">FileCreatePresignedURLResponse</a></code>
+
+# Migration
+
+Types:
+
+```python
+from composio_client.types import MigrationRetrieveNanoidResponse
+```
+
+Methods:
+
+- <code title="get /api/v3/migration/get-nanoid">client.migration.<a href="./src/composio_client/resources/migration.py">retrieve_nanoid</a>(\*\*<a href="src/composio_client/types/migration_retrieve_nanoid_params.py">params</a>) -> <a href="./src/composio_client/types/migration_retrieve_nanoid_response.py">MigrationRetrieveNanoidResponse</a></code>

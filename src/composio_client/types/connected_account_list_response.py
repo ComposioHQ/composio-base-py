@@ -5,7 +5,19 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["ConnectedAccountListResponse", "Item", "ItemAuthConfig", "ItemToolkit"]
+__all__ = [
+    "ConnectedAccountListResponse",
+    "Item",
+    "ItemAuthConfig",
+    "ItemAuthConfigDeprecated",
+    "ItemToolkit",
+    "ItemDeprecated",
+]
+
+
+class ItemAuthConfigDeprecated(BaseModel):
+    uuid: str
+    """The uuid of the auth config"""
 
 
 class ItemAuthConfig(BaseModel):
@@ -35,10 +47,20 @@ class ItemAuthConfig(BaseModel):
     is_disabled: bool
     """Whether the auth config is disabled"""
 
+    deprecated: Optional[ItemAuthConfigDeprecated] = None
+
 
 class ItemToolkit(BaseModel):
     slug: str
     """The slug of the toolkit"""
+
+
+class ItemDeprecated(BaseModel):
+    labels: List[str]
+    """The labels of the connection"""
+
+    uuid: str
+    """The uuid of the connection"""
 
 
 class Item(BaseModel):
@@ -70,11 +92,10 @@ class Item(BaseModel):
     user_id: str
     """The user id of the connection"""
 
+    deprecated: Optional[ItemDeprecated] = None
+
     test_request_endpoint: Optional[str] = None
     """The endpoint to make test request for verification"""
-
-    uuid: Optional[str] = None
-    """The uuid of the connected account"""
 
 
 class ConnectedAccountListResponse(BaseModel):

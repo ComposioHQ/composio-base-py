@@ -2,9 +2,11 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
-from ..types import cli_link_session_params
+from ..types import migration_retrieve_nanoid_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -16,48 +18,45 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.cli_link_session_response import CliLinkSessionResponse
+from ..types.migration_retrieve_nanoid_response import MigrationRetrieveNanoidResponse
 
-__all__ = ["CliResource", "AsyncCliResource"]
+__all__ = ["MigrationResource", "AsyncMigrationResource"]
 
 
-class CliResource(SyncAPIResource):
+class MigrationResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CliResourceWithRawResponse:
+    def with_raw_response(self) -> MigrationResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#accessing-raw-response-data-eg-headers
         """
-        return CliResourceWithRawResponse(self)
+        return MigrationResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CliResourceWithStreamingResponse:
+    def with_streaming_response(self) -> MigrationResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
-        return CliResourceWithStreamingResponse(self)
+        return MigrationResourceWithStreamingResponse(self)
 
-    def link_session(
+    def retrieve_nanoid(
         self,
         *,
-        id: str,
+        type: Literal["CONNECTED_ACCOUNT", "AUTH_CONFIG", "TRIGGER_INSTANCE"],
+        uuid: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CliLinkSessionResponse:
+    ) -> MigrationRetrieveNanoidResponse:
         """
-        Link a CLI session to the authenticated user
-
         Args:
-          id: CLI session ID or code to link
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -66,53 +65,59 @@ class CliResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._put(
-            "/api/v3/cli/link-session",
-            body=maybe_transform({"id": id}, cli_link_session_params.CliLinkSessionParams),
+        return self._get(
+            "/api/v3/migration/get-nanoid",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "type": type,
+                        "uuid": uuid,
+                    },
+                    migration_retrieve_nanoid_params.MigrationRetrieveNanoidParams,
+                ),
             ),
-            cast_to=CliLinkSessionResponse,
+            cast_to=MigrationRetrieveNanoidResponse,
         )
 
 
-class AsyncCliResource(AsyncAPIResource):
+class AsyncMigrationResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCliResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncMigrationResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#accessing-raw-response-data-eg-headers
         """
-        return AsyncCliResourceWithRawResponse(self)
+        return AsyncMigrationResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCliResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncMigrationResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
-        return AsyncCliResourceWithStreamingResponse(self)
+        return AsyncMigrationResourceWithStreamingResponse(self)
 
-    async def link_session(
+    async def retrieve_nanoid(
         self,
         *,
-        id: str,
+        type: Literal["CONNECTED_ACCOUNT", "AUTH_CONFIG", "TRIGGER_INSTANCE"],
+        uuid: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CliLinkSessionResponse:
+    ) -> MigrationRetrieveNanoidResponse:
         """
-        Link a CLI session to the authenticated user
-
         Args:
-          id: CLI session ID or code to link
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -121,47 +126,56 @@ class AsyncCliResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._put(
-            "/api/v3/cli/link-session",
-            body=await async_maybe_transform({"id": id}, cli_link_session_params.CliLinkSessionParams),
+        return await self._get(
+            "/api/v3/migration/get-nanoid",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "type": type,
+                        "uuid": uuid,
+                    },
+                    migration_retrieve_nanoid_params.MigrationRetrieveNanoidParams,
+                ),
             ),
-            cast_to=CliLinkSessionResponse,
+            cast_to=MigrationRetrieveNanoidResponse,
         )
 
 
-class CliResourceWithRawResponse:
-    def __init__(self, cli: CliResource) -> None:
-        self._cli = cli
+class MigrationResourceWithRawResponse:
+    def __init__(self, migration: MigrationResource) -> None:
+        self._migration = migration
 
-        self.link_session = to_raw_response_wrapper(
-            cli.link_session,
+        self.retrieve_nanoid = to_raw_response_wrapper(
+            migration.retrieve_nanoid,
         )
 
 
-class AsyncCliResourceWithRawResponse:
-    def __init__(self, cli: AsyncCliResource) -> None:
-        self._cli = cli
+class AsyncMigrationResourceWithRawResponse:
+    def __init__(self, migration: AsyncMigrationResource) -> None:
+        self._migration = migration
 
-        self.link_session = async_to_raw_response_wrapper(
-            cli.link_session,
+        self.retrieve_nanoid = async_to_raw_response_wrapper(
+            migration.retrieve_nanoid,
         )
 
 
-class CliResourceWithStreamingResponse:
-    def __init__(self, cli: CliResource) -> None:
-        self._cli = cli
+class MigrationResourceWithStreamingResponse:
+    def __init__(self, migration: MigrationResource) -> None:
+        self._migration = migration
 
-        self.link_session = to_streamed_response_wrapper(
-            cli.link_session,
+        self.retrieve_nanoid = to_streamed_response_wrapper(
+            migration.retrieve_nanoid,
         )
 
 
-class AsyncCliResourceWithStreamingResponse:
-    def __init__(self, cli: AsyncCliResource) -> None:
-        self._cli = cli
+class AsyncMigrationResourceWithStreamingResponse:
+    def __init__(self, migration: AsyncMigrationResource) -> None:
+        self._migration = migration
 
-        self.link_session = async_to_streamed_response_wrapper(
-            cli.link_session,
+        self.retrieve_nanoid = async_to_streamed_response_wrapper(
+            migration.retrieve_nanoid,
         )

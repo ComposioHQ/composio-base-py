@@ -12,6 +12,11 @@ class AuthConfigListParams(TypedDict, total=False):
     cursor: str
     """The cursor to paginate through the auth configs"""
 
+    deprecated_app_id: str
+    """The app id to filter by"""
+
+    deprecated_status: str
+
     is_composio_managed: Union[str, bool]
     """Whether to filter by composio managed auth configs"""
 

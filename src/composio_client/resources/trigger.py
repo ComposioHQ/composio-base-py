@@ -62,6 +62,8 @@ class TriggerResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggerLogResponse:
         """
+        Search and retrieve trigger event logs
+
         Args:
           cursor: cursor that can be used to paginate through the logs
 
@@ -140,6 +142,8 @@ class AsyncTriggerResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggerLogResponse:
         """
+        Search and retrieve trigger event logs
+
         Args:
           cursor: cursor that can be used to paginate through the logs
 

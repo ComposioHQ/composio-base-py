@@ -94,7 +94,7 @@ class APIKeysResource(SyncAPIResource):
     ) -> APIKeyListResponse:
         """
         Args:
-          project_id: Project ID
+          project_id: Nano ID of the project
 
           extra_headers: Send extra headers
 
@@ -256,7 +256,7 @@ class AsyncAPIKeysResource(AsyncAPIResource):
     ) -> APIKeyListResponse:
         """
         Args:
-          project_id: Project ID
+          project_id: Nano ID of the project
 
           extra_headers: Send extra headers
 

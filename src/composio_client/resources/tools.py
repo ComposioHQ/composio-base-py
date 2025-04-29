@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable, Optional
+from typing import Dict, List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -86,6 +86,7 @@ class ToolsResource(SyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
+        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -105,7 +106,9 @@ class ToolsResource(SyncAPIResource):
 
           search: The search query to filter by
 
-          tool_slugs: The comma separated slugs of the tools to filter by
+          tags: The tags to filter the tools by
+
+          tool_slugs: The slugs of the tools to filter by
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -130,6 +133,7 @@ class ToolsResource(SyncAPIResource):
                         "important": important,
                         "limit": limit,
                         "search": search,
+                        "tags": tags,
                         "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
                     },
@@ -367,6 +371,7 @@ class AsyncToolsResource(AsyncAPIResource):
         important: str | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
+        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -386,7 +391,9 @@ class AsyncToolsResource(AsyncAPIResource):
 
           search: The search query to filter by
 
-          tool_slugs: The comma separated slugs of the tools to filter by
+          tags: The tags to filter the tools by
+
+          tool_slugs: The slugs of the tools to filter by
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -411,6 +418,7 @@ class AsyncToolsResource(AsyncAPIResource):
                         "important": important,
                         "limit": limit,
                         "search": search,
+                        "tags": tags,
                         "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
                     },

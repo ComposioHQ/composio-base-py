@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import List, Optional
+
 from .._models import BaseModel
 
 __all__ = ["AuthConfigCreateResponse", "AuthConfig", "Toolkit"]
@@ -14,6 +16,9 @@ class AuthConfig(BaseModel):
 
     is_composio_managed: bool
     """Whether the auth config is managed by Composio"""
+
+    restrict_to_following_tools: Optional[List[str]] = None
+    """The actions that the user can perform on the auth config"""
 
 
 class Toolkit(BaseModel):
