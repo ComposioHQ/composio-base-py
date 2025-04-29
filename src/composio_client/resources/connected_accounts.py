@@ -133,7 +133,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        statues: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
+        statuses: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
         | NotGiven = NOT_GIVEN,
         toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -158,7 +158,7 @@ class ConnectedAccountsResource(SyncAPIResource):
 
           order_by: The order by of the connected accounts
 
-          statues: The status of the connected account
+          statuses: The status of the connected account
 
           toolkit_slugs: The toolkit slugs of the connected accounts
 
@@ -186,7 +186,7 @@ class ConnectedAccountsResource(SyncAPIResource):
                         "labels": labels,
                         "limit": limit,
                         "order_by": order_by,
-                        "statues": statues,
+                        "statuses": statuses,
                         "toolkit_slugs": toolkit_slugs,
                         "user_ids": user_ids,
                     },
@@ -400,7 +400,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        statues: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
+        statuses: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
         | NotGiven = NOT_GIVEN,
         toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -425,7 +425,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
 
           order_by: The order by of the connected accounts
 
-          statues: The status of the connected account
+          statuses: The status of the connected account
 
           toolkit_slugs: The toolkit slugs of the connected accounts
 
@@ -453,7 +453,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
                         "labels": labels,
                         "limit": limit,
                         "order_by": order_by,
-                        "statues": statues,
+                        "statuses": statuses,
                         "toolkit_slugs": toolkit_slugs,
                         "user_ids": user_ids,
                     },

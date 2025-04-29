@@ -121,7 +121,7 @@ class TestConnectedAccounts:
             labels=["string"],
             limit=0,
             order_by="created_at",
-            statues=["ACTIVE"],
+            statuses=["ACTIVE"],
             toolkit_slugs=["string"],
             user_ids=["string"],
         )
@@ -366,7 +366,7 @@ class TestAsyncConnectedAccounts:
             labels=["string"],
             limit=0,
             order_by="created_at",
-            statues=["ACTIVE"],
+            statuses=["ACTIVE"],
             toolkit_slugs=["string"],
             user_ids=["string"],
         )
