@@ -10,7 +10,6 @@ import pytest
 from tests.utils import assert_matches_type
 from composio_client import Composio, AsyncComposio
 from composio_client.types import (
-    ConnectedAccountListResponse,
     ConnectedAccountCreateResponse,
     ConnectedAccountDeleteResponse,
     ConnectedAccountRefreshResponse,
@@ -38,7 +37,7 @@ class TestConnectedAccounts:
             auth_config={"id": "id"},
             connection={
                 "data": {"foo": "bar"},
-                "redirect_uri": "https://example.com",
+                "redirect_url": "https://example.com",
                 "user_id": "user_id",
             },
         )
@@ -111,21 +110,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_method_list(self, client: Composio) -> None:
         connected_account = client.connected_accounts.list()
-        assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
-
-    @parametrize
-    def test_method_list_with_all_params(self, client: Composio) -> None:
-        connected_account = client.connected_accounts.list(
-            auth_config_ids=["string"],
-            cursor=0,
-            labels=["string"],
-            limit=0,
-            order_by="created_at",
-            statuses=["ACTIVE"],
-            toolkit_slugs=["string"],
-            user_ids=["string"],
-        )
-        assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
+        assert connected_account is None
 
     @parametrize
     def test_raw_response_list(self, client: Composio) -> None:
@@ -134,7 +119,7 @@ class TestConnectedAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         connected_account = response.parse()
-        assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
+        assert connected_account is None
 
     @parametrize
     def test_streaming_response_list(self, client: Composio) -> None:
@@ -143,7 +128,7 @@ class TestConnectedAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             connected_account = response.parse()
-            assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
+            assert connected_account is None
 
         assert cast(Any, response.is_closed) is True
 
@@ -283,7 +268,7 @@ class TestAsyncConnectedAccounts:
             auth_config={"id": "id"},
             connection={
                 "data": {"foo": "bar"},
-                "redirect_uri": "https://example.com",
+                "redirect_url": "https://example.com",
                 "user_id": "user_id",
             },
         )
@@ -356,21 +341,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_method_list(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.list()
-        assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
-
-    @parametrize
-    async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
-        connected_account = await async_client.connected_accounts.list(
-            auth_config_ids=["string"],
-            cursor=0,
-            labels=["string"],
-            limit=0,
-            order_by="created_at",
-            statuses=["ACTIVE"],
-            toolkit_slugs=["string"],
-            user_ids=["string"],
-        )
-        assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
+        assert connected_account is None
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncComposio) -> None:
@@ -379,7 +350,7 @@ class TestAsyncConnectedAccounts:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         connected_account = await response.parse()
-        assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
+        assert connected_account is None
 
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncComposio) -> None:
@@ -388,7 +359,7 @@ class TestAsyncConnectedAccounts:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             connected_account = await response.parse()
-            assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
+            assert connected_account is None
 
         assert cast(Any, response.is_closed) is True
 

@@ -23,7 +23,7 @@ class Connection(TypedDict, total=False):
     data: Dict[str, Optional[object]]
     """Initial data to pass to the connected account"""
 
-    redirect_uri: str
+    redirect_url: str
     """The URL to redirect to after connection completion"""
 
     user_id: str
