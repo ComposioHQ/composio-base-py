@@ -26,12 +26,10 @@ from .tool_get_input_params import ToolGetInputParams as ToolGetInputParams
 from .toolkit_list_response import ToolkitListResponse as ToolkitListResponse
 from .tool_retrieve_response import ToolRetrieveResponse as ToolRetrieveResponse
 from .auth_config_list_params import AuthConfigListParams as AuthConfigListParams
-from .cli_link_session_params import CliLinkSessionParams as CliLinkSessionParams
 from .tool_get_input_response import ToolGetInputResponse as ToolGetInputResponse
 from .auth_config_create_params import AuthConfigCreateParams as AuthConfigCreateParams
 from .auth_config_list_response import AuthConfigListResponse as AuthConfigListResponse
 from .auth_config_update_params import AuthConfigUpdateParams as AuthConfigUpdateParams
-from .cli_link_session_response import CliLinkSessionResponse as CliLinkSessionResponse
 from .mcp_retrieve_app_response import McpRetrieveAppResponse as McpRetrieveAppResponse
 from .team_member_invite_params import TeamMemberInviteParams as TeamMemberInviteParams
 from .team_member_list_response import TeamMemberListResponse as TeamMemberListResponse

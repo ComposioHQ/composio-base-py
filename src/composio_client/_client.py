@@ -23,7 +23,6 @@ from ._types import (
 from ._utils import is_given, get_async_library
 from ._version import __version__
 from .resources import (
-    cli,
     files,
     tools,
     trigger,
@@ -76,7 +75,6 @@ class Composio(SyncAPIClient):
     tools: tools.ToolsResource
     trigger_instances: trigger_instances.TriggerInstancesResource
     triggers_types: triggers_types.TriggersTypesResource
-    cli: cli.CliResource
     mcp: mcp.McpResource
     files: files.FilesResource
     migration: migration.MigrationResource
@@ -167,7 +165,6 @@ class Composio(SyncAPIClient):
         self.tools = tools.ToolsResource(self)
         self.trigger_instances = trigger_instances.TriggerInstancesResource(self)
         self.triggers_types = triggers_types.TriggersTypesResource(self)
-        self.cli = cli.CliResource(self)
         self.mcp = mcp.McpResource(self)
         self.files = files.FilesResource(self)
         self.migration = migration.MigrationResource(self)
@@ -305,7 +302,6 @@ class AsyncComposio(AsyncAPIClient):
     tools: tools.AsyncToolsResource
     trigger_instances: trigger_instances.AsyncTriggerInstancesResource
     triggers_types: triggers_types.AsyncTriggersTypesResource
-    cli: cli.AsyncCliResource
     mcp: mcp.AsyncMcpResource
     files: files.AsyncFilesResource
     migration: migration.AsyncMigrationResource
@@ -396,7 +392,6 @@ class AsyncComposio(AsyncAPIClient):
         self.tools = tools.AsyncToolsResource(self)
         self.trigger_instances = trigger_instances.AsyncTriggerInstancesResource(self)
         self.triggers_types = triggers_types.AsyncTriggersTypesResource(self)
-        self.cli = cli.AsyncCliResource(self)
         self.mcp = mcp.AsyncMcpResource(self)
         self.files = files.AsyncFilesResource(self)
         self.migration = migration.AsyncMigrationResource(self)
@@ -535,7 +530,6 @@ class ComposioWithRawResponse:
         self.tools = tools.ToolsResourceWithRawResponse(client.tools)
         self.trigger_instances = trigger_instances.TriggerInstancesResourceWithRawResponse(client.trigger_instances)
         self.triggers_types = triggers_types.TriggersTypesResourceWithRawResponse(client.triggers_types)
-        self.cli = cli.CliResourceWithRawResponse(client.cli)
         self.mcp = mcp.McpResourceWithRawResponse(client.mcp)
         self.files = files.FilesResourceWithRawResponse(client.files)
         self.migration = migration.MigrationResourceWithRawResponse(client.migration)
@@ -557,7 +551,6 @@ class AsyncComposioWithRawResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithRawResponse(client.triggers_types)
-        self.cli = cli.AsyncCliResourceWithRawResponse(client.cli)
         self.mcp = mcp.AsyncMcpResourceWithRawResponse(client.mcp)
         self.files = files.AsyncFilesResourceWithRawResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithRawResponse(client.migration)
@@ -579,7 +572,6 @@ class ComposioWithStreamedResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.TriggersTypesResourceWithStreamingResponse(client.triggers_types)
-        self.cli = cli.CliResourceWithStreamingResponse(client.cli)
         self.mcp = mcp.McpResourceWithStreamingResponse(client.mcp)
         self.files = files.FilesResourceWithStreamingResponse(client.files)
         self.migration = migration.MigrationResourceWithStreamingResponse(client.migration)
@@ -603,7 +595,6 @@ class AsyncComposioWithStreamedResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithStreamingResponse(client.triggers_types)
-        self.cli = cli.AsyncCliResourceWithStreamingResponse(client.cli)
         self.mcp = mcp.AsyncMcpResourceWithStreamingResponse(client.mcp)
         self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithStreamingResponse(client.migration)
