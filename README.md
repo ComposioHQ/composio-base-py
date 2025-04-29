@@ -28,7 +28,7 @@ import os
 from composio_client import Composio
 
 client = Composio(
-    api_key=os.environ.get("COMPOSIO_SDK_API_KEY"),  # This is the default and can be omitted
+    api_key=os.environ.get("COMPOSIO_API_KEY"),  # This is the default and can be omitted
     # or 'production' | 'local'; defaults to "production".
     environment="staging",
 )
@@ -41,7 +41,7 @@ print(response.log_id)
 
 While you can provide an `api_key` keyword argument,
 we recommend using [python-dotenv](https://pypi.org/project/python-dotenv/)
-to add `COMPOSIO_SDK_API_KEY="My API Key"` to your `.env` file
+to add `COMPOSIO_API_KEY="My API Key"` to your `.env` file
 so that your API Key is not stored in source control.
 
 ## Async usage
@@ -54,7 +54,7 @@ import asyncio
 from composio_client import AsyncComposio
 
 client = AsyncComposio(
-    api_key=os.environ.get("COMPOSIO_SDK_API_KEY"),  # This is the default and can be omitted
+    api_key=os.environ.get("COMPOSIO_API_KEY"),  # This is the default and can be omitted
     # or 'production' | 'local'; defaults to "production".
     environment="staging",
 )
