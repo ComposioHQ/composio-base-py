@@ -112,10 +112,10 @@ class Composio(SyncAPIClient):
     ) -> None:
         """Construct a new synchronous Composio client instance.
 
-        This automatically infers the `api_key` argument from the `COMPOSIO_SDK_API_KEY` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `COMPOSIO_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("COMPOSIO_SDK_API_KEY")
+            api_key = os.environ.get("COMPOSIO_API_KEY")
         self.api_key = api_key
 
         self._environment = environment
@@ -339,10 +339,10 @@ class AsyncComposio(AsyncAPIClient):
     ) -> None:
         """Construct a new async AsyncComposio client instance.
 
-        This automatically infers the `api_key` argument from the `COMPOSIO_SDK_API_KEY` environment variable if it is not provided.
+        This automatically infers the `api_key` argument from the `COMPOSIO_API_KEY` environment variable if it is not provided.
         """
         if api_key is None:
-            api_key = os.environ.get("COMPOSIO_SDK_API_KEY")
+            api_key = os.environ.get("COMPOSIO_API_KEY")
         self.api_key = api_key
 
         self._environment = environment

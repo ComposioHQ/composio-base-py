@@ -341,7 +341,7 @@ class TestComposio:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-api-key") == api_key
 
-        with update_env(**{"COMPOSIO_SDK_API_KEY": Omit()}):
+        with update_env(**{"COMPOSIO_API_KEY": Omit()}):
             client2 = Composio(base_url=base_url, api_key=None, _strict_response_validation=True)
 
         with pytest.raises(
@@ -1124,7 +1124,7 @@ class TestAsyncComposio:
         request = client._build_request(FinalRequestOptions(method="get", url="/foo"))
         assert request.headers.get("x-api-key") == api_key
 
-        with update_env(**{"COMPOSIO_SDK_API_KEY": Omit()}):
+        with update_env(**{"COMPOSIO_API_KEY": Omit()}):
             client2 = AsyncComposio(base_url=base_url, api_key=None, _strict_response_validation=True)
 
         with pytest.raises(
