@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Union
-from typing_extensions import Literal
+from typing import Dict, List, Union, Optional
+from typing_extensions import Literal, overload
 
 import httpx
 
 from ..types import auth_config_list_params, auth_config_create_params, auth_config_update_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import required_args, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -21,10 +21,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.auth_config_list_response import AuthConfigListResponse
 from ..types.auth_config_create_response import AuthConfigCreateResponse
-from ..types.auth_config_delete_response import AuthConfigDeleteResponse
-from ..types.auth_config_update_response import AuthConfigUpdateResponse
 from ..types.auth_config_retrieve_response import AuthConfigRetrieveResponse
-from ..types.auth_config_update_status_response import AuthConfigUpdateStatusResponse
 
 __all__ = ["AuthConfigsResource", "AsyncAuthConfigsResource"]
 
@@ -62,6 +59,8 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthConfigCreateResponse:
         """
+        Create new authentication configuration
+
         Args:
           extra_headers: Send extra headers
 
@@ -98,6 +97,8 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthConfigRetrieveResponse:
         """
+        Get single authentication configuration by ID
+
         Args:
           extra_headers: Send extra headers
 
@@ -117,19 +118,24 @@ class AuthConfigsResource(SyncAPIResource):
             cast_to=AuthConfigRetrieveResponse,
         )
 
+    @overload
     def update(
         self,
         nanoid: str,
         *,
-        auth_config: auth_config_update_params.AuthConfig,
+        credentials: Dict[str, Optional[object]],
+        type: Literal["custom"],
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AuthConfigUpdateResponse:
+    ) -> object:
         """
+        Update an authentication configuration
+
         Args:
           extra_headers: Send extra headers
 
@@ -139,21 +145,78 @@ class AuthConfigsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        ...
+
+    @overload
+    def update(
+        self,
+        nanoid: str,
+        *,
+        scopes: List[str],
+        type: Literal["default"],
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
+        """
+        Update an authentication configuration
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["credentials", "type"], ["scopes", "type"])
+    def update(
+        self,
+        nanoid: str,
+        *,
+        credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        type: Literal["custom"] | Literal["default"],
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        scopes: List[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._patch(
             f"/api/v3/auth_configs/{nanoid}",
-            body=maybe_transform({"auth_config": auth_config}, auth_config_update_params.AuthConfigUpdateParams),
+            body=maybe_transform(
+                {
+                    "credentials": credentials,
+                    "type": type,
+                    "restrict_to_following_tools": restrict_to_following_tools,
+                    "scopes": scopes,
+                },
+                auth_config_update_params.AuthConfigUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AuthConfigUpdateResponse,
+            cast_to=object,
         )
 
     def list(
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
+        deprecated_app_id: str | NotGiven = NOT_GIVEN,
+        deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
@@ -165,8 +228,12 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthConfigListResponse:
         """
+        List authentication configurations with optional filters
+
         Args:
           cursor: The cursor to paginate through the auth configs
+
+          deprecated_app_id: The app id to filter by
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
@@ -192,6 +259,8 @@ class AuthConfigsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "cursor": cursor,
+                        "deprecated_app_id": deprecated_app_id,
+                        "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
                         "toolkit_slug": toolkit_slug,
@@ -212,8 +281,10 @@ class AuthConfigsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AuthConfigDeleteResponse:
+    ) -> object:
         """
+        Delete an authentication configuration
+
         Args:
           extra_headers: Send extra headers
 
@@ -230,7 +301,7 @@ class AuthConfigsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AuthConfigDeleteResponse,
+            cast_to=object,
         )
 
     def update_status(
@@ -244,8 +315,10 @@ class AuthConfigsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AuthConfigUpdateStatusResponse:
+    ) -> object:
         """
+        Enable or disable an authentication configuration
+
         Args:
           extra_headers: Send extra headers
 
@@ -264,7 +337,7 @@ class AuthConfigsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AuthConfigUpdateStatusResponse,
+            cast_to=object,
         )
 
 
@@ -301,6 +374,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthConfigCreateResponse:
         """
+        Create new authentication configuration
+
         Args:
           extra_headers: Send extra headers
 
@@ -337,6 +412,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthConfigRetrieveResponse:
         """
+        Get single authentication configuration by ID
+
         Args:
           extra_headers: Send extra headers
 
@@ -356,19 +433,24 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
             cast_to=AuthConfigRetrieveResponse,
         )
 
+    @overload
     async def update(
         self,
         nanoid: str,
         *,
-        auth_config: auth_config_update_params.AuthConfig,
+        credentials: Dict[str, Optional[object]],
+        type: Literal["custom"],
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AuthConfigUpdateResponse:
+    ) -> object:
         """
+        Update an authentication configuration
+
         Args:
           extra_headers: Send extra headers
 
@@ -378,23 +460,78 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        ...
+
+    @overload
+    async def update(
+        self,
+        nanoid: str,
+        *,
+        scopes: List[str],
+        type: Literal["default"],
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
+        """
+        Update an authentication configuration
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        ...
+
+    @required_args(["credentials", "type"], ["scopes", "type"])
+    async def update(
+        self,
+        nanoid: str,
+        *,
+        credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        type: Literal["custom"] | Literal["default"],
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        scopes: List[str] | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> object:
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._patch(
             f"/api/v3/auth_configs/{nanoid}",
             body=await async_maybe_transform(
-                {"auth_config": auth_config}, auth_config_update_params.AuthConfigUpdateParams
+                {
+                    "credentials": credentials,
+                    "type": type,
+                    "restrict_to_following_tools": restrict_to_following_tools,
+                    "scopes": scopes,
+                },
+                auth_config_update_params.AuthConfigUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AuthConfigUpdateResponse,
+            cast_to=object,
         )
 
     async def list(
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
+        deprecated_app_id: str | NotGiven = NOT_GIVEN,
+        deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
@@ -406,8 +543,12 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthConfigListResponse:
         """
+        List authentication configurations with optional filters
+
         Args:
           cursor: The cursor to paginate through the auth configs
+
+          deprecated_app_id: The app id to filter by
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
@@ -433,6 +574,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "cursor": cursor,
+                        "deprecated_app_id": deprecated_app_id,
+                        "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
                         "toolkit_slug": toolkit_slug,
@@ -453,8 +596,10 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AuthConfigDeleteResponse:
+    ) -> object:
         """
+        Delete an authentication configuration
+
         Args:
           extra_headers: Send extra headers
 
@@ -471,7 +616,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AuthConfigDeleteResponse,
+            cast_to=object,
         )
 
     async def update_status(
@@ -485,8 +630,10 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AuthConfigUpdateStatusResponse:
+    ) -> object:
         """
+        Enable or disable an authentication configuration
+
         Args:
           extra_headers: Send extra headers
 
@@ -505,7 +652,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=AuthConfigUpdateStatusResponse,
+            cast_to=object,
         )
 
 

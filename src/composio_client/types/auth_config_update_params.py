@@ -2,16 +2,26 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
-from typing_extensions import Required, TypedDict
+from typing import Dict, List, Union, Optional
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-__all__ = ["AuthConfigUpdateParams", "AuthConfig"]
-
-
-class AuthConfigUpdateParams(TypedDict, total=False):
-    auth_config: Required[AuthConfig]
+__all__ = ["AuthConfigUpdateParams", "Variant0", "Variant1"]
 
 
-class AuthConfig(TypedDict, total=False):
-    credentials: Dict[str, Optional[object]]
-    """Authentication configuration"""
+class Variant0(TypedDict, total=False):
+    credentials: Required[Dict[str, Optional[object]]]
+
+    type: Required[Literal["custom"]]
+
+    restrict_to_following_tools: List[str]
+
+
+class Variant1(TypedDict, total=False):
+    scopes: Required[List[str]]
+
+    type: Required[Literal["default"]]
+
+    restrict_to_following_tools: List[str]
+
+
+AuthConfigUpdateParams: TypeAlias = Union[Variant0, Variant1]

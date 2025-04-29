@@ -13,6 +13,7 @@ from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
     Omit,
+    Headers,
     Timeout,
     NotGiven,
     Transport,
@@ -22,10 +23,11 @@ from ._types import (
 from ._utils import is_given, get_async_library
 from ._version import __version__
 from .resources import (
-    cli,
+    files,
     tools,
     trigger,
     toolkits,
+    migration,
     auth_configs,
     team_members,
     triggers_types,
@@ -33,7 +35,7 @@ from .resources import (
     connected_accounts,
 )
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
-from ._exceptions import ComposioError, APIStatusError
+from ._exceptions import APIStatusError
 from ._base_client import (
     DEFAULT_MAX_RETRIES,
     SyncAPIClient,
@@ -41,7 +43,6 @@ from ._base_client import (
 )
 from .resources.mcp import mcp
 from .resources.org import org
-from .resources.auth import auth
 from .resources.trigger_instances import trigger_instances
 
 __all__ = [
@@ -64,7 +65,6 @@ ENVIRONMENTS: Dict[str, str] = {
 
 
 class Composio(SyncAPIClient):
-    auth: auth.AuthResource
     auth_configs: auth_configs.AuthConfigsResource
     connected_accounts: connected_accounts.ConnectedAccountsResource
     trigger: trigger.TriggerResource
@@ -75,13 +75,14 @@ class Composio(SyncAPIClient):
     tools: tools.ToolsResource
     trigger_instances: trigger_instances.TriggerInstancesResource
     triggers_types: triggers_types.TriggersTypesResource
-    cli: cli.CliResource
     mcp: mcp.McpResource
+    files: files.FilesResource
+    migration: migration.MigrationResource
     with_raw_response: ComposioWithRawResponse
     with_streaming_response: ComposioWithStreamedResponse
 
     # client options
-    api_key: str
+    api_key: str | None
 
     _environment: Literal["production", "staging", "local"] | NotGiven
 
@@ -115,10 +116,6 @@ class Composio(SyncAPIClient):
         """
         if api_key is None:
             api_key = os.environ.get("COMPOSIO_API_KEY")
-        if api_key is None:
-            raise ComposioError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the COMPOSIO_API_KEY environment variable"
-            )
         self.api_key = api_key
 
         self._environment = environment
@@ -158,7 +155,6 @@ class Composio(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.auth = auth.AuthResource(self)
         self.auth_configs = auth_configs.AuthConfigsResource(self)
         self.connected_accounts = connected_accounts.ConnectedAccountsResource(self)
         self.trigger = trigger.TriggerResource(self)
@@ -169,8 +165,9 @@ class Composio(SyncAPIClient):
         self.tools = tools.ToolsResource(self)
         self.trigger_instances = trigger_instances.TriggerInstancesResource(self)
         self.triggers_types = triggers_types.TriggersTypesResource(self)
-        self.cli = cli.CliResource(self)
         self.mcp = mcp.McpResource(self)
+        self.files = files.FilesResource(self)
+        self.migration = migration.MigrationResource(self)
         self.with_raw_response = ComposioWithRawResponse(self)
         self.with_streaming_response = ComposioWithStreamedResponse(self)
 
@@ -183,6 +180,8 @@ class Composio(SyncAPIClient):
     @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
+        if api_key is None:
+            return {}
         return {"x-api-key": api_key}
 
     @property
@@ -193,6 +192,17 @@ class Composio(SyncAPIClient):
             "X-Stainless-Async": "false",
             **self._custom_headers,
         }
+
+    @override
+    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
+        if self.api_key and headers.get("x-api-key"):
+            return
+        if isinstance(custom_headers.get("x-api-key"), Omit):
+            return
+
+        raise TypeError(
+            '"Could not resolve authentication method. Expected the api_key to be set. Or for the `x-api-key` headers to be explicitly omitted"'
+        )
 
     def copy(
         self,
@@ -282,7 +292,6 @@ class Composio(SyncAPIClient):
 
 
 class AsyncComposio(AsyncAPIClient):
-    auth: auth.AsyncAuthResource
     auth_configs: auth_configs.AsyncAuthConfigsResource
     connected_accounts: connected_accounts.AsyncConnectedAccountsResource
     trigger: trigger.AsyncTriggerResource
@@ -293,13 +302,14 @@ class AsyncComposio(AsyncAPIClient):
     tools: tools.AsyncToolsResource
     trigger_instances: trigger_instances.AsyncTriggerInstancesResource
     triggers_types: triggers_types.AsyncTriggersTypesResource
-    cli: cli.AsyncCliResource
     mcp: mcp.AsyncMcpResource
+    files: files.AsyncFilesResource
+    migration: migration.AsyncMigrationResource
     with_raw_response: AsyncComposioWithRawResponse
     with_streaming_response: AsyncComposioWithStreamedResponse
 
     # client options
-    api_key: str
+    api_key: str | None
 
     _environment: Literal["production", "staging", "local"] | NotGiven
 
@@ -333,10 +343,6 @@ class AsyncComposio(AsyncAPIClient):
         """
         if api_key is None:
             api_key = os.environ.get("COMPOSIO_API_KEY")
-        if api_key is None:
-            raise ComposioError(
-                "The api_key client option must be set either by passing api_key to the client or by setting the COMPOSIO_API_KEY environment variable"
-            )
         self.api_key = api_key
 
         self._environment = environment
@@ -376,7 +382,6 @@ class AsyncComposio(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.auth = auth.AsyncAuthResource(self)
         self.auth_configs = auth_configs.AsyncAuthConfigsResource(self)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResource(self)
         self.trigger = trigger.AsyncTriggerResource(self)
@@ -387,8 +392,9 @@ class AsyncComposio(AsyncAPIClient):
         self.tools = tools.AsyncToolsResource(self)
         self.trigger_instances = trigger_instances.AsyncTriggerInstancesResource(self)
         self.triggers_types = triggers_types.AsyncTriggersTypesResource(self)
-        self.cli = cli.AsyncCliResource(self)
         self.mcp = mcp.AsyncMcpResource(self)
+        self.files = files.AsyncFilesResource(self)
+        self.migration = migration.AsyncMigrationResource(self)
         self.with_raw_response = AsyncComposioWithRawResponse(self)
         self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
 
@@ -401,6 +407,8 @@ class AsyncComposio(AsyncAPIClient):
     @override
     def auth_headers(self) -> dict[str, str]:
         api_key = self.api_key
+        if api_key is None:
+            return {}
         return {"x-api-key": api_key}
 
     @property
@@ -411,6 +419,17 @@ class AsyncComposio(AsyncAPIClient):
             "X-Stainless-Async": f"async:{get_async_library()}",
             **self._custom_headers,
         }
+
+    @override
+    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
+        if self.api_key and headers.get("x-api-key"):
+            return
+        if isinstance(custom_headers.get("x-api-key"), Omit):
+            return
+
+        raise TypeError(
+            '"Could not resolve authentication method. Expected the api_key to be set. Or for the `x-api-key` headers to be explicitly omitted"'
+        )
 
     def copy(
         self,
@@ -501,7 +520,6 @@ class AsyncComposio(AsyncAPIClient):
 
 class ComposioWithRawResponse:
     def __init__(self, client: Composio) -> None:
-        self.auth = auth.AuthResourceWithRawResponse(client.auth)
         self.auth_configs = auth_configs.AuthConfigsResourceWithRawResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithRawResponse(client.connected_accounts)
         self.trigger = trigger.TriggerResourceWithRawResponse(client.trigger)
@@ -512,13 +530,13 @@ class ComposioWithRawResponse:
         self.tools = tools.ToolsResourceWithRawResponse(client.tools)
         self.trigger_instances = trigger_instances.TriggerInstancesResourceWithRawResponse(client.trigger_instances)
         self.triggers_types = triggers_types.TriggersTypesResourceWithRawResponse(client.triggers_types)
-        self.cli = cli.CliResourceWithRawResponse(client.cli)
         self.mcp = mcp.McpResourceWithRawResponse(client.mcp)
+        self.files = files.FilesResourceWithRawResponse(client.files)
+        self.migration = migration.MigrationResourceWithRawResponse(client.migration)
 
 
 class AsyncComposioWithRawResponse:
     def __init__(self, client: AsyncComposio) -> None:
-        self.auth = auth.AsyncAuthResourceWithRawResponse(client.auth)
         self.auth_configs = auth_configs.AsyncAuthConfigsResourceWithRawResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithRawResponse(
             client.connected_accounts
@@ -533,13 +551,13 @@ class AsyncComposioWithRawResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithRawResponse(client.triggers_types)
-        self.cli = cli.AsyncCliResourceWithRawResponse(client.cli)
         self.mcp = mcp.AsyncMcpResourceWithRawResponse(client.mcp)
+        self.files = files.AsyncFilesResourceWithRawResponse(client.files)
+        self.migration = migration.AsyncMigrationResourceWithRawResponse(client.migration)
 
 
 class ComposioWithStreamedResponse:
     def __init__(self, client: Composio) -> None:
-        self.auth = auth.AuthResourceWithStreamingResponse(client.auth)
         self.auth_configs = auth_configs.AuthConfigsResourceWithStreamingResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithStreamingResponse(
             client.connected_accounts
@@ -554,13 +572,13 @@ class ComposioWithStreamedResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.TriggersTypesResourceWithStreamingResponse(client.triggers_types)
-        self.cli = cli.CliResourceWithStreamingResponse(client.cli)
         self.mcp = mcp.McpResourceWithStreamingResponse(client.mcp)
+        self.files = files.FilesResourceWithStreamingResponse(client.files)
+        self.migration = migration.MigrationResourceWithStreamingResponse(client.migration)
 
 
 class AsyncComposioWithStreamedResponse:
     def __init__(self, client: AsyncComposio) -> None:
-        self.auth = auth.AsyncAuthResourceWithStreamingResponse(client.auth)
         self.auth_configs = auth_configs.AsyncAuthConfigsResourceWithStreamingResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithStreamingResponse(
             client.connected_accounts
@@ -577,8 +595,9 @@ class AsyncComposioWithStreamedResponse:
             client.trigger_instances
         )
         self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithStreamingResponse(client.triggers_types)
-        self.cli = cli.AsyncCliResourceWithStreamingResponse(client.cli)
         self.mcp = mcp.AsyncMcpResourceWithStreamingResponse(client.mcp)
+        self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
+        self.migration = migration.AsyncMigrationResourceWithStreamingResponse(client.migration)
 
 
 Client = Composio

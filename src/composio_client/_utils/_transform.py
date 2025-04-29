@@ -194,9 +194,6 @@ def _transform_recursive(
     stripped_type = strip_annotated_type(inner_type)
     origin = get_origin(stripped_type) or stripped_type
 
-    # Special case: Automatically convert lists to comma-separated strings for query parameters
-    data = _maybe_convert_to_comma_string(data, stripped_type)
-
     if is_typeddict(stripped_type) and is_mapping(data):
         return _transform_typeddict(data, stripped_type)
 
@@ -359,9 +356,6 @@ async def _async_transform_recursive(
 
     stripped_type = strip_annotated_type(inner_type)
     origin = get_origin(stripped_type) or stripped_type
-
-    # Special case: Automatically convert lists to comma-separated strings for query parameters
-    data = _maybe_convert_to_comma_string(data, stripped_type)
 
     if is_typeddict(stripped_type) and is_mapping(data):
         return await _async_transform_typeddict(data, stripped_type)

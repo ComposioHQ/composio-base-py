@@ -116,13 +116,14 @@ class TestConnectedAccounts:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         connected_account = client.connected_accounts.list(
-            auth_config_id="auth_config_id",
+            auth_config_ids=["string"],
             cursor=0,
+            labels=["string"],
             limit=0,
             order_by="created_at",
-            status="ACTIVE",
-            toolkit_slug="toolkit_slug",
-            user_id="user_id",
+            statuses=["ACTIVE"],
+            toolkit_slugs=["string"],
+            user_ids=["string"],
         )
         assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
 
@@ -360,13 +361,14 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.list(
-            auth_config_id="auth_config_id",
+            auth_config_ids=["string"],
             cursor=0,
+            labels=["string"],
             limit=0,
             order_by="created_at",
-            status="ACTIVE",
-            toolkit_slug="toolkit_slug",
-            user_id="user_id",
+            statuses=["ACTIVE"],
+            toolkit_slugs=["string"],
+            user_ids=["string"],
         )
         assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
 

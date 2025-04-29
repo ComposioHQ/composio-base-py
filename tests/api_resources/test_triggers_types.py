@@ -66,8 +66,6 @@ class TestTriggersTypes:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         triggers_type = client.triggers_types.list(
-            auth_config_id="auth_config_id",
-            connected_account_id="connected_account_id",
             cursor="cursor",
             limit=0,
             toolkit_slugs="toolkit_slugs",
@@ -169,8 +167,6 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         triggers_type = await async_client.triggers_types.list(
-            auth_config_id="auth_config_id",
-            connected_account_id="connected_account_id",
             cursor="cursor",
             limit=0,
             toolkit_slugs="toolkit_slugs",

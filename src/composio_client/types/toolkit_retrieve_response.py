@@ -45,9 +45,13 @@ class Meta(BaseModel):
 
 
 class AuthConfigDetailFieldsAuthConfigCreationOptional(BaseModel):
+    description: str
+
     display_name: str = FieldInfo(alias="displayName")
 
     name: str
+
+    required: bool
 
     type: str
 
@@ -55,9 +59,13 @@ class AuthConfigDetailFieldsAuthConfigCreationOptional(BaseModel):
 
 
 class AuthConfigDetailFieldsAuthConfigCreationRequired(BaseModel):
+    description: str
+
     display_name: str = FieldInfo(alias="displayName")
 
     name: str
+
+    required: bool
 
     type: str
 
@@ -71,9 +79,13 @@ class AuthConfigDetailFieldsAuthConfigCreation(BaseModel):
 
 
 class AuthConfigDetailFieldsConnectedAccountInitiationOptional(BaseModel):
+    description: str
+
     display_name: str = FieldInfo(alias="displayName")
 
     name: str
+
+    required: bool
 
     type: str
 
@@ -81,9 +93,13 @@ class AuthConfigDetailFieldsConnectedAccountInitiationOptional(BaseModel):
 
 
 class AuthConfigDetailFieldsConnectedAccountInitiationRequired(BaseModel):
+    description: str
+
     display_name: str = FieldInfo(alias="displayName")
 
     name: str
+
+    required: bool
 
     type: str
 

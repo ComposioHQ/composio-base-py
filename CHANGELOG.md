@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.6 (2025-04-29)
+
+Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
+
+### Features
+
+* **api:** API filtering updates ([76c0a9d](https://github.com/ComposioHQ/composio-base-py/commit/76c0a9d443b67b3c14f5e8e17147c01948091113))
+* **api:** fix api issues ([2997e67](https://github.com/ComposioHQ/composio-base-py/commit/2997e67c722a2cf0dc5ada7c194b0879eb6f9215))
+* **api:** fix read_env ([d663d79](https://github.com/ComposioHQ/composio-base-py/commit/d663d79fe05894d407b70ad9b0ee0287530a69f4))
+* **api:** fix removed pvt apis ([e66fec5](https://github.com/ComposioHQ/composio-base-py/commit/e66fec5e6aefc895846ae9ba0afaf684a826d766))
+* **api:** fix removed pvt apis ([bc14e33](https://github.com/ComposioHQ/composio-base-py/commit/bc14e3363b7a4ef5700d9aa4f00ce64cdc690bc6))
+* **api:** manual updates ([1bf44e3](https://github.com/ComposioHQ/composio-base-py/commit/1bf44e3161e2d3bb50a90cb4c4d0ce978d52da99))
+
 ## 0.1.0-alpha.5 (2025-04-26)
 
 Full Changelog: [v0.1.0-alpha.4...v0.1.0-alpha.5](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.4...v0.1.0-alpha.5)

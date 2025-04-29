@@ -50,14 +50,14 @@ class CustomAuthParams(TypedDict, total=False):
 
     base_url: str
     """
-    The base URL (root address) you should use while making HTTP requests to the
-    connected account. For example, for Gmail, it would be
-    'https://gmail.googleapis.com'.
+    The base URL (root address) what you should use while making http requests to
+    the connected account. For example, for gmail, it would be
+    'https://gmail.googleapis.com'
     """
 
     body: Dict[str, Optional[object]]
     """The body to be sent to the endpoint for authentication.
 
-    This can either be a JSON field or a string. Note: This is very rarely needed
-    and is only required by very few apps.
+    This is a JSON object. Note: This is very rarely neeed and is only required by
+    very few apps.
     """

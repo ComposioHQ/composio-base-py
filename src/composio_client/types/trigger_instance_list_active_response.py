@@ -6,7 +6,12 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["TriggerInstanceListActiveResponse", "Item"]
+__all__ = ["TriggerInstanceListActiveResponse", "Item", "ItemDeprecated"]
+
+
+class ItemDeprecated(BaseModel):
+    created_at: str = FieldInfo(alias="createdAt")
+    """Deprecated createdAt for the trigger instance"""
 
 
 class Item(BaseModel):
@@ -30,6 +35,9 @@ class Item(BaseModel):
 
     updated_at: str = FieldInfo(alias="updatedAt")
     """ISO 8601 timestamp when the trigger instance was updated"""
+
+    deprecated: Optional[ItemDeprecated] = None
+    """Deprecated fields for the trigger instance"""
 
     trigger_data: Optional[str] = FieldInfo(alias="triggerData", default=None)
     """Additional data associated with the trigger instance"""

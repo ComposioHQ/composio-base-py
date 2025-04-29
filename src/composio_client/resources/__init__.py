@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .cli import (
-    CliResource,
-    AsyncCliResource,
-    CliResourceWithRawResponse,
-    AsyncCliResourceWithRawResponse,
-    CliResourceWithStreamingResponse,
-    AsyncCliResourceWithStreamingResponse,
-)
 from .mcp import (
     McpResource,
     AsyncMcpResource,
@@ -24,13 +16,13 @@ from .org import (
     OrgResourceWithStreamingResponse,
     AsyncOrgResourceWithStreamingResponse,
 )
-from .auth import (
-    AuthResource,
-    AsyncAuthResource,
-    AuthResourceWithRawResponse,
-    AsyncAuthResourceWithRawResponse,
-    AuthResourceWithStreamingResponse,
-    AsyncAuthResourceWithStreamingResponse,
+from .files import (
+    FilesResource,
+    AsyncFilesResource,
+    FilesResourceWithRawResponse,
+    AsyncFilesResourceWithRawResponse,
+    FilesResourceWithStreamingResponse,
+    AsyncFilesResourceWithStreamingResponse,
 )
 from .tools import (
     ToolsResource,
@@ -55,6 +47,14 @@ from .toolkits import (
     AsyncToolkitsResourceWithRawResponse,
     ToolkitsResourceWithStreamingResponse,
     AsyncToolkitsResourceWithStreamingResponse,
+)
+from .migration import (
+    MigrationResource,
+    AsyncMigrationResource,
+    MigrationResourceWithRawResponse,
+    AsyncMigrationResourceWithRawResponse,
+    MigrationResourceWithStreamingResponse,
+    AsyncMigrationResourceWithStreamingResponse,
 )
 from .auth_configs import (
     AuthConfigsResource,
@@ -106,12 +106,6 @@ from .connected_accounts import (
 )
 
 __all__ = [
-    "AuthResource",
-    "AsyncAuthResource",
-    "AuthResourceWithRawResponse",
-    "AsyncAuthResourceWithRawResponse",
-    "AuthResourceWithStreamingResponse",
-    "AsyncAuthResourceWithStreamingResponse",
     "AuthConfigsResource",
     "AsyncAuthConfigsResource",
     "AuthConfigsResourceWithRawResponse",
@@ -172,16 +166,22 @@ __all__ = [
     "AsyncTriggersTypesResourceWithRawResponse",
     "TriggersTypesResourceWithStreamingResponse",
     "AsyncTriggersTypesResourceWithStreamingResponse",
-    "CliResource",
-    "AsyncCliResource",
-    "CliResourceWithRawResponse",
-    "AsyncCliResourceWithRawResponse",
-    "CliResourceWithStreamingResponse",
-    "AsyncCliResourceWithStreamingResponse",
     "McpResource",
     "AsyncMcpResource",
     "McpResourceWithRawResponse",
     "AsyncMcpResourceWithRawResponse",
     "McpResourceWithStreamingResponse",
     "AsyncMcpResourceWithStreamingResponse",
+    "FilesResource",
+    "AsyncFilesResource",
+    "FilesResourceWithRawResponse",
+    "AsyncFilesResourceWithRawResponse",
+    "FilesResourceWithStreamingResponse",
+    "AsyncFilesResourceWithStreamingResponse",
+    "MigrationResource",
+    "AsyncMigrationResource",
+    "MigrationResourceWithRawResponse",
+    "AsyncMigrationResourceWithRawResponse",
+    "MigrationResourceWithStreamingResponse",
+    "AsyncMigrationResourceWithStreamingResponse",
 ]

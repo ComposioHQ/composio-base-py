@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import List, Optional
 from typing_extensions import TypedDict
 
 __all__ = ["ToolListParams"]
@@ -20,8 +21,11 @@ class ToolListParams(TypedDict, total=False):
     search: str
     """The search query to filter by"""
 
+    tags: Optional[List[str]]
+    """The tags to filter the tools by"""
+
     tool_slugs: str
-    """The comma separated slugs of the tools to filter by"""
+    """The slugs of the tools to filter by"""
 
     toolkit_slug: str
     """The slug of the toolkit to filter by"""

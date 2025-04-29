@@ -5,7 +5,17 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["AuthConfigRetrieveResponse", "Toolkit"]
+__all__ = ["AuthConfigRetrieveResponse", "DeprecatedParams", "Toolkit"]
+
+
+class DeprecatedParams(BaseModel):
+    default_connector_id: Optional[str] = None
+
+    expected_input_fields: Optional[List[Dict[str, Optional[object]]]] = None
+
+    member_uuid: Optional[str] = None
+
+    toolkit_id: Optional[str] = None
 
 
 class Toolkit(BaseModel):
@@ -20,6 +30,8 @@ class AuthConfigRetrieveResponse(BaseModel):
     id: str
     """The unique id of the auth config"""
 
+    deprecated_params: DeprecatedParams
+
     name: str
     """The name of the auth config"""
 
@@ -29,6 +41,9 @@ class AuthConfigRetrieveResponse(BaseModel):
     status: Literal["ENABLED", "DISABLED"]
 
     toolkit: Toolkit
+
+    type: Literal["default", "custom"]
+    """The type of the auth config"""
 
     uuid: str
     """The unique id of the auth config"""
@@ -65,3 +80,5 @@ class AuthConfigRetrieveResponse(BaseModel):
 
     last_updated_at: Optional[str] = None
     """The date and time the auth config was last updated"""
+
+    restrict_to_following_tools: Optional[List[str]] = None

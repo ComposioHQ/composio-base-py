@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union
+from typing import Dict, List, Union
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._utils import PropertyInfo
@@ -28,6 +28,9 @@ class AuthConfigUnionMember0(TypedDict, total=False):
 
     name: str
     """The name of the integration"""
+
+    restrict_to_following_tools: List[str]
+    """The actions that the user can perform on the auth config"""
 
 
 class AuthConfigUnionMember1(TypedDict, total=False):
@@ -58,6 +61,9 @@ class AuthConfigUnionMember1(TypedDict, total=False):
 
     name: str
     """The name of the integration"""
+
+    restrict_to_following_tools: List[str]
+    """The actions that the user can perform on the auth config"""
 
 
 AuthConfig: TypeAlias = Union[AuthConfigUnionMember0, AuthConfigUnionMember1]

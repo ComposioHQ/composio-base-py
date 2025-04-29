@@ -78,8 +78,6 @@ class TriggersTypesResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
-        connected_account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         toolkit_slugs: str | NotGiven = NOT_GIVEN,
@@ -111,8 +109,6 @@ class TriggersTypesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
-                        "connected_account_id": connected_account_id,
                         "cursor": cursor,
                         "limit": limit,
                         "toolkit_slugs": toolkit_slugs,
@@ -196,8 +192,6 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
-        connected_account_id: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         toolkit_slugs: str | NotGiven = NOT_GIVEN,
@@ -229,8 +223,6 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
-                        "connected_account_id": connected_account_id,
                         "cursor": cursor,
                         "limit": limit,
                         "toolkit_slugs": toolkit_slugs,

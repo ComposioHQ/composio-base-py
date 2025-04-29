@@ -57,6 +57,8 @@ class CommandResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CommandGenerateResponse:
         """
+        Generate CLI command to set up MCP server
+
         Args:
           id: The ID of the MCP server
 
@@ -123,6 +125,8 @@ class AsyncCommandResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> CommandGenerateResponse:
         """
+        Generate CLI command to set up MCP server
+
         Args:
           id: The ID of the MCP server
 
