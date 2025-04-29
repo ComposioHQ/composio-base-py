@@ -2,10 +2,17 @@
 
 from __future__ import annotations
 
+from typing import List, Optional
+from typing_extensions import Literal
+
 import httpx
 
-from ..types import connected_account_create_params, connected_account_update_status_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..types import (
+    connected_account_list_params,
+    connected_account_create_params,
+    connected_account_update_status_params,
+)
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -16,6 +23,7 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.connected_account_list_response import ConnectedAccountListResponse
 from ..types.connected_account_create_response import ConnectedAccountCreateResponse
 from ..types.connected_account_delete_response import ConnectedAccountDeleteResponse
 from ..types.connected_account_refresh_response import ConnectedAccountRefreshResponse
@@ -120,20 +128,72 @@ class ConnectedAccountsResource(SyncAPIResource):
     def list(
         self,
         *,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        cursor: Optional[float] | NotGiven = NOT_GIVEN,
+        labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
+        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
+        statuses: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
+        | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+    ) -> ConnectedAccountListResponse:
+        """
+        List connected accounts with optional filters
+
+        Args:
+          auth_config_ids: The auth config ids of the connected accounts
+
+          cursor: The cursor to paginate through the connected accounts
+
+          labels: The labels of the connected accounts
+
+          limit: The limit of the connected accounts to return
+
+          order_by: The order by of the connected accounts
+
+          statuses: The status of the connected account
+
+          toolkit_slugs: The toolkit slugs of the connected accounts
+
+          user_ids: The user ids of the connected accounts
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             "/api/v3/connected_accounts",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "auth_config_ids": auth_config_ids,
+                        "cursor": cursor,
+                        "labels": labels,
+                        "limit": limit,
+                        "order_by": order_by,
+                        "statuses": statuses,
+                        "toolkit_slugs": toolkit_slugs,
+                        "user_ids": user_ids,
+                    },
+                    connected_account_list_params.ConnectedAccountListParams,
+                ),
             ),
-            cast_to=NoneType,
+            cast_to=ConnectedAccountListResponse,
         )
 
     def delete(
@@ -335,20 +395,72 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        cursor: Optional[float] | NotGiven = NOT_GIVEN,
+        labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
+        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
+        statuses: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
+        | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+    ) -> ConnectedAccountListResponse:
+        """
+        List connected accounts with optional filters
+
+        Args:
+          auth_config_ids: The auth config ids of the connected accounts
+
+          cursor: The cursor to paginate through the connected accounts
+
+          labels: The labels of the connected accounts
+
+          limit: The limit of the connected accounts to return
+
+          order_by: The order by of the connected accounts
+
+          statuses: The status of the connected account
+
+          toolkit_slugs: The toolkit slugs of the connected accounts
+
+          user_ids: The user ids of the connected accounts
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             "/api/v3/connected_accounts",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "auth_config_ids": auth_config_ids,
+                        "cursor": cursor,
+                        "labels": labels,
+                        "limit": limit,
+                        "order_by": order_by,
+                        "statuses": statuses,
+                        "toolkit_slugs": toolkit_slugs,
+                        "user_ids": user_ids,
+                    },
+                    connected_account_list_params.ConnectedAccountListParams,
+                ),
             ),
-            cast_to=NoneType,
+            cast_to=ConnectedAccountListResponse,
         )
 
     async def delete(

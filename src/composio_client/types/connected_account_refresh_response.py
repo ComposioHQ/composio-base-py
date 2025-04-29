@@ -13,7 +13,7 @@ class ConnectedAccountRefreshResponse(BaseModel):
     """The id of the connected account"""
 
     redirect_url: Optional[str] = None
-    """The redirect url of the app"""
+    """The redirect URL of the app (previously named redirect_uri)"""
 
     status: Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]
     """The status of the connected account"""
