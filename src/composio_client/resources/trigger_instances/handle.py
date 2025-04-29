@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Union
+from typing_extensions import Literal
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -40,7 +43,7 @@ class HandleResource(SyncAPIResource):
 
     def retrieve(
         self,
-        project_id: str,
+        project_id: Union[str, Literal["default"]],
         *,
         slug: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -54,8 +57,6 @@ class HandleResource(SyncAPIResource):
         Args:
           slug: The slug of the trigger instance
 
-          project_id: The project ID
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -66,8 +67,6 @@ class HandleResource(SyncAPIResource):
         """
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
-        if not project_id:
-            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
         return self._get(
             f"/api/v3/trigger_instances/{slug}/{project_id}/handle",
             options=make_request_options(
@@ -78,7 +77,7 @@ class HandleResource(SyncAPIResource):
 
     def execute(
         self,
-        project_id: str,
+        project_id: Union[str, Literal["default"]],
         *,
         slug: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -92,8 +91,6 @@ class HandleResource(SyncAPIResource):
         Args:
           slug: The slug of the trigger instance
 
-          project_id: The project ID
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -104,8 +101,6 @@ class HandleResource(SyncAPIResource):
         """
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
-        if not project_id:
-            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
         return self._post(
             f"/api/v3/trigger_instances/{slug}/{project_id}/handle",
             options=make_request_options(
@@ -137,7 +132,7 @@ class AsyncHandleResource(AsyncAPIResource):
 
     async def retrieve(
         self,
-        project_id: str,
+        project_id: Union[str, Literal["default"]],
         *,
         slug: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -151,8 +146,6 @@ class AsyncHandleResource(AsyncAPIResource):
         Args:
           slug: The slug of the trigger instance
 
-          project_id: The project ID
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -163,8 +156,6 @@ class AsyncHandleResource(AsyncAPIResource):
         """
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
-        if not project_id:
-            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
         return await self._get(
             f"/api/v3/trigger_instances/{slug}/{project_id}/handle",
             options=make_request_options(
@@ -175,7 +166,7 @@ class AsyncHandleResource(AsyncAPIResource):
 
     async def execute(
         self,
-        project_id: str,
+        project_id: Union[str, Literal["default"]],
         *,
         slug: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -189,8 +180,6 @@ class AsyncHandleResource(AsyncAPIResource):
         Args:
           slug: The slug of the trigger instance
 
-          project_id: The project ID
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -201,8 +190,6 @@ class AsyncHandleResource(AsyncAPIResource):
         """
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
-        if not project_id:
-            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
         return await self._post(
             f"/api/v3/trigger_instances/{slug}/{project_id}/handle",
             options=make_request_options(

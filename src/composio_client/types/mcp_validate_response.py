@@ -1,5 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from typing import List, Optional
+
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
@@ -39,3 +41,13 @@ class McpValidateResponse(BaseModel):
     """The URL of the MCP server"""
 
     user_data: UserData = FieldInfo(alias="userData")
+
+    actions: Optional[List[str]] = None
+
+    apps: Optional[List[str]] = None
+
+    connected_account_ids: Optional[List[str]] = FieldInfo(alias="connectedAccountIds", default=None)
+
+    custom_auth_headers: Optional[bool] = FieldInfo(alias="customAuthHeaders", default=None)
+
+    entity_ids: Optional[List[str]] = FieldInfo(alias="entityIds", default=None)

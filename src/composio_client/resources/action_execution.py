@@ -62,6 +62,8 @@ class ActionExecutionResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ActionExecutionLogResponse:
         """
+        Search and retrieve action execution logs
+
         Args:
           cursor: cursor_that_can_be_used_to_paginate_through_the_logs
 
@@ -110,6 +112,7 @@ class ActionExecutionResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ActionExecutionRetrieveFieldsResponse:
+        """Get action log fields for filtering"""
         return self._get(
             "/api/v3/internal/action_execution/fields",
             options=make_request_options(
@@ -130,6 +133,8 @@ class ActionExecutionResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ActionExecutionRetrieveLogResponse:
         """
+        Get detailed execution log by ID
+
         Args:
           extra_headers: Send extra headers
 
@@ -187,6 +192,8 @@ class AsyncActionExecutionResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ActionExecutionLogResponse:
         """
+        Search and retrieve action execution logs
+
         Args:
           cursor: cursor_that_can_be_used_to_paginate_through_the_logs
 
@@ -235,6 +242,7 @@ class AsyncActionExecutionResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ActionExecutionRetrieveFieldsResponse:
+        """Get action log fields for filtering"""
         return await self._get(
             "/api/v3/internal/action_execution/fields",
             options=make_request_options(
@@ -255,6 +263,8 @@ class AsyncActionExecutionResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ActionExecutionRetrieveLogResponse:
         """
+        Get detailed execution log by ID
+
         Args:
           extra_headers: Send extra headers
 

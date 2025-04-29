@@ -9,10 +9,6 @@ __all__ = ["TriggersTypeListParams"]
 
 
 class TriggersTypeListParams(TypedDict, total=False):
-    auth_config_id: str
-
-    connected_account_id: str
-
     cursor: str
 
     limit: Optional[float]

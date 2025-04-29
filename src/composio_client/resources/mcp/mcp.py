@@ -81,6 +81,8 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpCreateResponse:
         """
+        Create a new MCP server
+
         Args:
           name: Name of the MCP server
 
@@ -139,6 +141,8 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveResponse:
         """
+        Get MCP server details by ID
+
         Args:
           id: The ID of the MCP server
 
@@ -175,6 +179,8 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpUpdateResponse:
         """
+        Update MCP server configuration
+
         Args:
           id: The ID of the MCP server
 
@@ -227,6 +233,8 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpListResponse:
         """
+        List MCP servers with optional filters
+
         Args:
           app_id: App IDs to filter by
 
@@ -282,6 +290,8 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpDeleteResponse:
         """
+        Delete an MCP server
+
         Args:
           id: The ID of the MCP server
 
@@ -315,6 +325,8 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveAppResponse:
         """
+        List MCP servers for a specific app
+
         Args:
           app_key: The key of the app to find MCP servers for
 
@@ -340,7 +352,7 @@ class McpResource(SyncAPIResource):
         self,
         uuid: str,
         *,
-        x_admin_token: str,
+        x_composio_admin_token: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -349,10 +361,12 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpValidateResponse:
         """
+        Validate MCP server and retrieve connection details
+
         Args:
           uuid: UUID of the MCP server to validate
 
-          x_admin_token: Admin token
+          x_composio_admin_token: Admin token
 
           extra_headers: Send extra headers
 
@@ -364,7 +378,7 @@ class McpResource(SyncAPIResource):
         """
         if not uuid:
             raise ValueError(f"Expected a non-empty value for `uuid` but received {uuid!r}")
-        extra_headers = {"x-admin-token": x_admin_token, **(extra_headers or {})}
+        extra_headers = {"x-composio-admin-token": x_composio_admin_token, **(extra_headers or {})}
         return self._get(
             f"/api/v3/mcp/validate/{uuid}",
             options=make_request_options(
@@ -417,6 +431,8 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpCreateResponse:
         """
+        Create a new MCP server
+
         Args:
           name: Name of the MCP server
 
@@ -475,6 +491,8 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveResponse:
         """
+        Get MCP server details by ID
+
         Args:
           id: The ID of the MCP server
 
@@ -511,6 +529,8 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpUpdateResponse:
         """
+        Update MCP server configuration
+
         Args:
           id: The ID of the MCP server
 
@@ -563,6 +583,8 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpListResponse:
         """
+        List MCP servers with optional filters
+
         Args:
           app_id: App IDs to filter by
 
@@ -618,6 +640,8 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpDeleteResponse:
         """
+        Delete an MCP server
+
         Args:
           id: The ID of the MCP server
 
@@ -651,6 +675,8 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveAppResponse:
         """
+        List MCP servers for a specific app
+
         Args:
           app_key: The key of the app to find MCP servers for
 
@@ -676,7 +702,7 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         uuid: str,
         *,
-        x_admin_token: str,
+        x_composio_admin_token: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -685,10 +711,12 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpValidateResponse:
         """
+        Validate MCP server and retrieve connection details
+
         Args:
           uuid: UUID of the MCP server to validate
 
-          x_admin_token: Admin token
+          x_composio_admin_token: Admin token
 
           extra_headers: Send extra headers
 
@@ -700,7 +728,7 @@ class AsyncMcpResource(AsyncAPIResource):
         """
         if not uuid:
             raise ValueError(f"Expected a non-empty value for `uuid` but received {uuid!r}")
-        extra_headers = {"x-admin-token": x_admin_token, **(extra_headers or {})}
+        extra_headers = {"x-composio-admin-token": x_composio_admin_token, **(extra_headers or {})}
         return await self._get(
             f"/api/v3/mcp/validate/{uuid}",
             options=make_request_options(

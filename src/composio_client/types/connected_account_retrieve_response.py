@@ -1,11 +1,16 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["ConnectedAccountRetrieveResponse", "AuthConfig", "Toolkit"]
+__all__ = ["ConnectedAccountRetrieveResponse", "AuthConfig", "AuthConfigDeprecated", "Toolkit", "Deprecated"]
+
+
+class AuthConfigDeprecated(BaseModel):
+    uuid: str
+    """The uuid of the auth config"""
 
 
 class AuthConfig(BaseModel):
@@ -35,10 +40,20 @@ class AuthConfig(BaseModel):
     is_disabled: bool
     """Whether the auth config is disabled"""
 
+    deprecated: Optional[AuthConfigDeprecated] = None
+
 
 class Toolkit(BaseModel):
     slug: str
     """The slug of the toolkit"""
+
+
+class Deprecated(BaseModel):
+    labels: List[str]
+    """The labels of the connection"""
+
+    uuid: str
+    """The uuid of the connection"""
 
 
 class ConnectedAccountRetrieveResponse(BaseModel):
@@ -73,8 +88,7 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     user_id: str
     """The user id of the connection"""
 
-    uuid: str
-    """The uuid of the connection"""
+    deprecated: Optional[Deprecated] = None
 
     test_request_endpoint: Optional[str] = None
     """The endpoint to make test request for verification"""

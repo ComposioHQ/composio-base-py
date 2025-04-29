@@ -19,7 +19,7 @@ class TestHandle:
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
         handle = client.trigger_instances.handle.retrieve(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         )
         assert_matches_type(str, handle, path=["response"])
@@ -27,7 +27,7 @@ class TestHandle:
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.trigger_instances.handle.with_raw_response.retrieve(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         )
 
@@ -39,7 +39,7 @@ class TestHandle:
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.trigger_instances.handle.with_streaming_response.retrieve(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         ) as response:
             assert not response.is_closed
@@ -54,20 +54,14 @@ class TestHandle:
     def test_path_params_retrieve(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.trigger_instances.handle.with_raw_response.retrieve(
-                project_id="projectId",
+                project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 slug="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `project_id` but received ''"):
-            client.trigger_instances.handle.with_raw_response.retrieve(
-                project_id="",
-                slug="slug",
             )
 
     @parametrize
     def test_method_execute(self, client: Composio) -> None:
         handle = client.trigger_instances.handle.execute(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         )
         assert_matches_type(str, handle, path=["response"])
@@ -75,7 +69,7 @@ class TestHandle:
     @parametrize
     def test_raw_response_execute(self, client: Composio) -> None:
         response = client.trigger_instances.handle.with_raw_response.execute(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         )
 
@@ -87,7 +81,7 @@ class TestHandle:
     @parametrize
     def test_streaming_response_execute(self, client: Composio) -> None:
         with client.trigger_instances.handle.with_streaming_response.execute(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         ) as response:
             assert not response.is_closed
@@ -102,14 +96,8 @@ class TestHandle:
     def test_path_params_execute(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.trigger_instances.handle.with_raw_response.execute(
-                project_id="projectId",
+                project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 slug="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `project_id` but received ''"):
-            client.trigger_instances.handle.with_raw_response.execute(
-                project_id="",
-                slug="slug",
             )
 
 
@@ -119,7 +107,7 @@ class TestAsyncHandle:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         handle = await async_client.trigger_instances.handle.retrieve(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         )
         assert_matches_type(str, handle, path=["response"])
@@ -127,7 +115,7 @@ class TestAsyncHandle:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.trigger_instances.handle.with_raw_response.retrieve(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         )
 
@@ -139,7 +127,7 @@ class TestAsyncHandle:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.trigger_instances.handle.with_streaming_response.retrieve(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         ) as response:
             assert not response.is_closed
@@ -154,20 +142,14 @@ class TestAsyncHandle:
     async def test_path_params_retrieve(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.trigger_instances.handle.with_raw_response.retrieve(
-                project_id="projectId",
+                project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 slug="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `project_id` but received ''"):
-            await async_client.trigger_instances.handle.with_raw_response.retrieve(
-                project_id="",
-                slug="slug",
             )
 
     @parametrize
     async def test_method_execute(self, async_client: AsyncComposio) -> None:
         handle = await async_client.trigger_instances.handle.execute(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         )
         assert_matches_type(str, handle, path=["response"])
@@ -175,7 +157,7 @@ class TestAsyncHandle:
     @parametrize
     async def test_raw_response_execute(self, async_client: AsyncComposio) -> None:
         response = await async_client.trigger_instances.handle.with_raw_response.execute(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         )
 
@@ -187,7 +169,7 @@ class TestAsyncHandle:
     @parametrize
     async def test_streaming_response_execute(self, async_client: AsyncComposio) -> None:
         async with async_client.trigger_instances.handle.with_streaming_response.execute(
-            project_id="projectId",
+            project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
             slug="slug",
         ) as response:
             assert not response.is_closed
@@ -202,12 +184,6 @@ class TestAsyncHandle:
     async def test_path_params_execute(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.trigger_instances.handle.with_raw_response.execute(
-                project_id="projectId",
+                project_id="182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e",
                 slug="",
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `project_id` but received ''"):
-            await async_client.trigger_instances.handle.with_raw_response.execute(
-                project_id="",
-                slug="slug",
             )

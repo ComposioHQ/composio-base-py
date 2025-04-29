@@ -125,7 +125,7 @@ class ProjectResource(SyncAPIResource):
     ) -> ProjectRetrieveResponse:
         """
         Args:
-          project_id: Project ID
+          project_id: Nano ID of the project
 
           extra_headers: Send extra headers
 
@@ -176,7 +176,7 @@ class ProjectResource(SyncAPIResource):
     ) -> ProjectDeleteResponse:
         """
         Args:
-          project_id: Project ID
+          project_id: Nano ID of the project
 
           extra_headers: Send extra headers
 
@@ -274,7 +274,7 @@ class AsyncProjectResource(AsyncAPIResource):
     ) -> ProjectRetrieveResponse:
         """
         Args:
-          project_id: Project ID
+          project_id: Nano ID of the project
 
           extra_headers: Send extra headers
 
@@ -325,7 +325,7 @@ class AsyncProjectResource(AsyncAPIResource):
     ) -> ProjectDeleteResponse:
         """
         Args:
-          project_id: Project ID
+          project_id: Nano ID of the project
 
           extra_headers: Send extra headers
 

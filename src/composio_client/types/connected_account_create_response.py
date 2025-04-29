@@ -3,14 +3,26 @@
 from typing import Optional
 from typing_extensions import Literal
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 
-__all__ = ["ConnectedAccountCreateResponse"]
+__all__ = ["ConnectedAccountCreateResponse", "Deprecated"]
+
+
+class Deprecated(BaseModel):
+    auth_config_uuid: str = FieldInfo(alias="authConfigUuid")
+    """The uuid of the auth config"""
+
+    uuid: str
+    """The uuid of the connected account"""
 
 
 class ConnectedAccountCreateResponse(BaseModel):
     id: str
     """The id of the connected account"""
+
+    deprecated: Deprecated
 
     redirect_uri: Optional[str] = None
     """The redirect uri of the app"""
