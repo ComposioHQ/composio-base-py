@@ -27,9 +27,9 @@ class Connection(TypedDict, total=False):
     """Initial data to pass to the connected account"""
 
     redirect_uri: str
-    """[DEPRECATED] The URL to redirect to after connection completion.
+    """DEPRECATED: This parameter will be removed in a future version.
 
-    Use callback_url instead.
+    Please use callback_url instead.
     """
 
     user_id: str
