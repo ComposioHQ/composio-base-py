@@ -73,7 +73,7 @@ class TestTools:
             important="true",
             limit="20",
             search="github actions",
-            tags=["user", "apps"],
+            tags=["string"],
             tool_slugs="github-actions,github-repos",
             toolkit_slug="github",
         )
@@ -344,7 +344,7 @@ class TestAsyncTools:
             important="true",
             limit="20",
             search="github actions",
-            tags=["user", "apps"],
+            tags=["string"],
             tool_slugs="github-actions,github-repos",
             toolkit_slug="github",
         )
