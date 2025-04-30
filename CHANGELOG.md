@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.1.0-alpha.7 (2025-04-30)
+
+Full Changelog: [v0.1.0-alpha.6...v0.1.0-alpha.7](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.6...v0.1.0-alpha.7)
+
+### Features
+
+* **api:** fix redirect_uri terms ([34fb28e](https://github.com/ComposioHQ/composio-base-py/commit/34fb28ede7004b1680f911d3f1c45c98f46ab279))
+* **api:** fix redirect_uri terms ([c61472f](https://github.com/ComposioHQ/composio-base-py/commit/c61472fafbe7875f093d7f6ffda06f959f955ceb))
+* **api:** fix redirect_uri terms ([c198f7b](https://github.com/ComposioHQ/composio-base-py/commit/c198f7b688fa3fa51df6d9442d684d936e0aa533))
+* **api:** fix redirect_uri terms ([3d74ef2](https://github.com/ComposioHQ/composio-base-py/commit/3d74ef28c6e75682527c0409431635005a5c5659))
+
 ## 0.1.0-alpha.6 (2025-04-29)
 
 Full Changelog: [v0.1.0-alpha.5...v0.1.0-alpha.6](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.5...v0.1.0-alpha.6)
