@@ -20,17 +20,11 @@ class AuthConfig(TypedDict, total=False):
 
 
 class Connection(TypedDict, total=False):
-    callback_url: str
-    """The URL to redirect to after connection completion"""
-
     data: Dict[str, Optional[object]]
     """Initial data to pass to the connected account"""
 
     redirect_uri: str
-    """DEPRECATED: This parameter will be removed in a future version.
-
-    Please use callback_url instead.
-    """
+    """The URL to redirect to after connection completion"""
 
     user_id: str
     """The user id of the connected account"""

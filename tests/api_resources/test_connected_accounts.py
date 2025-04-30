@@ -37,7 +37,6 @@ class TestConnectedAccounts:
         connected_account = client.connected_accounts.create(
             auth_config={"id": "id"},
             connection={
-                "callback_url": "https://example.com",
                 "data": {"foo": "bar"},
                 "redirect_uri": "https://example.com",
                 "user_id": "user_id",
@@ -283,7 +282,6 @@ class TestAsyncConnectedAccounts:
         connected_account = await async_client.connected_accounts.create(
             auth_config={"id": "id"},
             connection={
-                "callback_url": "https://example.com",
                 "data": {"foo": "bar"},
                 "redirect_uri": "https://example.com",
                 "user_id": "user_id",
