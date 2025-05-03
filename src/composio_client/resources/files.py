@@ -48,8 +48,8 @@ class FilesResource(SyncAPIResource):
     def list(
         self,
         *,
-        action: str | NotGiven = NOT_GIVEN,
-        app: str | NotGiven = NOT_GIVEN,
+        tool_slug: str | NotGiven = NOT_GIVEN,
+        toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -61,9 +61,9 @@ class FilesResource(SyncAPIResource):
         List files with optional app and action filters
 
         Args:
-          action: Name of the action where this file belongs to.
+          tool_slug: Name of the action where this file belongs to.
 
-          app: Name of the app where this file belongs to.
+          toolkit_slug: Slug of the app where this file belongs to.
 
           extra_headers: Send extra headers
 
@@ -74,7 +74,7 @@ class FilesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/files",
+            "/api/v3/files/list",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -82,8 +82,8 @@ class FilesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "action": action,
-                        "app": app,
+                        "tool_slug": tool_slug,
+                        "toolkit_slug": toolkit_slug,
                     },
                     file_list_params.FileListParams,
                 ),
@@ -95,11 +95,11 @@ class FilesResource(SyncAPIResource):
         self,
         file_type: Literal["request", "response"],
         *,
-        action: str,
-        app: str,
         filename: str,
         md5: str,
         mimetype: str,
+        tool_slug: str,
+        toolkit_slug: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -111,15 +111,15 @@ class FilesResource(SyncAPIResource):
         Create presigned URL for file upload to S3
 
         Args:
-          action: Name of the action where this file belongs to.
-
-          app: Name of the app where this file belongs to.
-
           filename: Name of the original file.
 
           md5: MD5 of a file.
 
           mimetype: Mime type of the original file.
+
+          tool_slug: Slug of the action where this file belongs to.
+
+          toolkit_slug: Slug of the app where this file belongs to.
 
           extra_headers: Send extra headers
 
@@ -137,11 +137,11 @@ class FilesResource(SyncAPIResource):
                 f"/api/v3/files/upload/{file_type}",
                 body=maybe_transform(
                     {
-                        "action": action,
-                        "app": app,
                         "filename": filename,
                         "md5": md5,
                         "mimetype": mimetype,
+                        "tool_slug": tool_slug,
+                        "toolkit_slug": toolkit_slug,
                     },
                     file_create_presigned_url_params.FileCreatePresignedURLParams,
                 ),
@@ -178,8 +178,8 @@ class AsyncFilesResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        action: str | NotGiven = NOT_GIVEN,
-        app: str | NotGiven = NOT_GIVEN,
+        tool_slug: str | NotGiven = NOT_GIVEN,
+        toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -191,9 +191,9 @@ class AsyncFilesResource(AsyncAPIResource):
         List files with optional app and action filters
 
         Args:
-          action: Name of the action where this file belongs to.
+          tool_slug: Name of the action where this file belongs to.
 
-          app: Name of the app where this file belongs to.
+          toolkit_slug: Slug of the app where this file belongs to.
 
           extra_headers: Send extra headers
 
@@ -204,7 +204,7 @@ class AsyncFilesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/files",
+            "/api/v3/files/list",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -212,8 +212,8 @@ class AsyncFilesResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "action": action,
-                        "app": app,
+                        "tool_slug": tool_slug,
+                        "toolkit_slug": toolkit_slug,
                     },
                     file_list_params.FileListParams,
                 ),
@@ -225,11 +225,11 @@ class AsyncFilesResource(AsyncAPIResource):
         self,
         file_type: Literal["request", "response"],
         *,
-        action: str,
-        app: str,
         filename: str,
         md5: str,
         mimetype: str,
+        tool_slug: str,
+        toolkit_slug: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -241,15 +241,15 @@ class AsyncFilesResource(AsyncAPIResource):
         Create presigned URL for file upload to S3
 
         Args:
-          action: Name of the action where this file belongs to.
-
-          app: Name of the app where this file belongs to.
-
           filename: Name of the original file.
 
           md5: MD5 of a file.
 
           mimetype: Mime type of the original file.
+
+          tool_slug: Slug of the action where this file belongs to.
+
+          toolkit_slug: Slug of the app where this file belongs to.
 
           extra_headers: Send extra headers
 
@@ -267,11 +267,11 @@ class AsyncFilesResource(AsyncAPIResource):
                 f"/api/v3/files/upload/{file_type}",
                 body=await async_maybe_transform(
                     {
-                        "action": action,
-                        "app": app,
                         "filename": filename,
                         "md5": md5,
                         "mimetype": mimetype,
+                        "tool_slug": tool_slug,
+                        "toolkit_slug": toolkit_slug,
                     },
                     file_create_presigned_url_params.FileCreatePresignedURLParams,
                 ),

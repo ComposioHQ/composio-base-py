@@ -8,8 +8,8 @@ __all__ = ["FileListParams"]
 
 
 class FileListParams(TypedDict, total=False):
-    action: str
+    tool_slug: str
     """Name of the action where this file belongs to."""
 
-    app: str
-    """Name of the app where this file belongs to."""
+    toolkit_slug: str
+    """Slug of the app where this file belongs to."""

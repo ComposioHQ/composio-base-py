@@ -8,12 +8,6 @@ __all__ = ["FileListResponse", "Item"]
 
 
 class Item(BaseModel):
-    action: str
-    """Name of the action where this file belongs to."""
-
-    app: str
-    """Name of the app where this file belongs to."""
-
     filename: str
     """Name of the original file."""
 
@@ -22,6 +16,12 @@ class Item(BaseModel):
 
     mimetype: str
     """Mime type of the original file."""
+
+    tool_slug: str
+    """Name of the action where this file belongs to."""
+
+    toolkit_slug: str
+    """Slug of the app where this file belongs to."""
 
 
 class FileListResponse(BaseModel):

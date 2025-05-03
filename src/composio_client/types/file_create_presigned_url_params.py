@@ -8,12 +8,6 @@ __all__ = ["FileCreatePresignedURLParams"]
 
 
 class FileCreatePresignedURLParams(TypedDict, total=False):
-    action: Required[str]
-    """Name of the action where this file belongs to."""
-
-    app: Required[str]
-    """Name of the app where this file belongs to."""
-
     filename: Required[str]
     """Name of the original file."""
 
@@ -22,3 +16,9 @@ class FileCreatePresignedURLParams(TypedDict, total=False):
 
     mimetype: Required[str]
     """Mime type of the original file."""
+
+    tool_slug: Required[str]
+    """Slug of the action where this file belongs to."""
+
+    toolkit_slug: Required[str]
+    """Slug of the app where this file belongs to."""
