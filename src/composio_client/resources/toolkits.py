@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Optional
 from typing_extensions import Literal
 
 import httpx
@@ -80,8 +81,8 @@ class ToolkitsResource(SyncAPIResource):
         self,
         *,
         category: str | NotGiven = NOT_GIVEN,
-        is_local: bool | NotGiven = NOT_GIVEN,
-        managed_by: Literal["all", "composio_managed", "project_managed"] | NotGiven = NOT_GIVEN,
+        is_local: Optional[bool] | NotGiven = NOT_GIVEN,
+        managed_by: Literal["composio", "all", "project"] | NotGiven = NOT_GIVEN,
         sort_by: Literal["usage", "alphabetically"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -92,6 +93,8 @@ class ToolkitsResource(SyncAPIResource):
     ) -> ToolkitListResponse:
         """
         Args:
+          is_local: Whether to include local toolkits
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -194,8 +197,8 @@ class AsyncToolkitsResource(AsyncAPIResource):
         self,
         *,
         category: str | NotGiven = NOT_GIVEN,
-        is_local: bool | NotGiven = NOT_GIVEN,
-        managed_by: Literal["all", "composio_managed", "project_managed"] | NotGiven = NOT_GIVEN,
+        is_local: Optional[bool] | NotGiven = NOT_GIVEN,
+        managed_by: Literal["composio", "all", "project"] | NotGiven = NOT_GIVEN,
         sort_by: Literal["usage", "alphabetically"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -206,6 +209,8 @@ class AsyncToolkitsResource(AsyncAPIResource):
     ) -> ToolkitListResponse:
         """
         Args:
+          is_local: Whether to include local toolkits
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

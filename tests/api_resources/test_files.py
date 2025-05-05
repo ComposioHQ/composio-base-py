@@ -56,7 +56,6 @@ class TestFiles:
     @parametrize
     def test_method_create_presigned_url(self, client: Composio) -> None:
         file = client.files.create_presigned_url(
-            file_type="request",
             filename="filename",
             md5="md5",
             mimetype="mimetype",
@@ -68,7 +67,6 @@ class TestFiles:
     @parametrize
     def test_raw_response_create_presigned_url(self, client: Composio) -> None:
         response = client.files.with_raw_response.create_presigned_url(
-            file_type="request",
             filename="filename",
             md5="md5",
             mimetype="mimetype",
@@ -84,7 +82,6 @@ class TestFiles:
     @parametrize
     def test_streaming_response_create_presigned_url(self, client: Composio) -> None:
         with client.files.with_streaming_response.create_presigned_url(
-            file_type="request",
             filename="filename",
             md5="md5",
             mimetype="mimetype",
@@ -139,7 +136,6 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_create_presigned_url(self, async_client: AsyncComposio) -> None:
         file = await async_client.files.create_presigned_url(
-            file_type="request",
             filename="filename",
             md5="md5",
             mimetype="mimetype",
@@ -151,7 +147,6 @@ class TestAsyncFiles:
     @parametrize
     async def test_raw_response_create_presigned_url(self, async_client: AsyncComposio) -> None:
         response = await async_client.files.with_raw_response.create_presigned_url(
-            file_type="request",
             filename="filename",
             md5="md5",
             mimetype="mimetype",
@@ -167,7 +162,6 @@ class TestAsyncFiles:
     @parametrize
     async def test_streaming_response_create_presigned_url(self, async_client: AsyncComposio) -> None:
         async with async_client.files.with_streaming_response.create_presigned_url(
-            file_type="request",
             filename="filename",
             md5="md5",
             mimetype="mimetype",

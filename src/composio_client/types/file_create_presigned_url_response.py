@@ -12,10 +12,10 @@ __all__ = ["FileCreatePresignedURLResponse", "UnionMember0", "UnionMember1", "Un
 
 class UnionMember0(BaseModel):
     id: str
-    """ID of the file"""
+    """ID of the request file"""
 
     existing_url: str = FieldInfo(alias="existingUrl")
-    """URL of the existing file"""
+    """URL of the existing request file"""
 
     key: str
     """S3 upload location"""
@@ -25,7 +25,7 @@ class UnionMember0(BaseModel):
 
 class UnionMember1(BaseModel):
     id: str
-    """ID of the file"""
+    """ID of the request file"""
 
     key: str
     """S3 upload location"""
@@ -38,7 +38,7 @@ class UnionMember1(BaseModel):
 
 class UnionMember2(BaseModel):
     id: str
-    """ID of the file"""
+    """ID of the request file"""
 
     key: str
     """S3 upload location"""

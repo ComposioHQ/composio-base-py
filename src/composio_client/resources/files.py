@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import Any, cast
-from typing_extensions import Literal
 
 import httpx
 
@@ -93,7 +92,6 @@ class FilesResource(SyncAPIResource):
 
     def create_presigned_url(
         self,
-        file_type: Literal["request", "response"],
         *,
         filename: str,
         md5: str,
@@ -108,7 +106,7 @@ class FilesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> FileCreatePresignedURLResponse:
         """
-        Create presigned URL for file upload to S3
+        Create presigned URL for request file upload to S3
 
         Args:
           filename: Name of the original file.
@@ -129,12 +127,10 @@ class FilesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not file_type:
-            raise ValueError(f"Expected a non-empty value for `file_type` but received {file_type!r}")
         return cast(
             FileCreatePresignedURLResponse,
             self._post(
-                f"/api/v3/files/upload/{file_type}",
+                "/api/v3/files/upload/request",
                 body=maybe_transform(
                     {
                         "filename": filename,
@@ -223,7 +219,6 @@ class AsyncFilesResource(AsyncAPIResource):
 
     async def create_presigned_url(
         self,
-        file_type: Literal["request", "response"],
         *,
         filename: str,
         md5: str,
@@ -238,7 +233,7 @@ class AsyncFilesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> FileCreatePresignedURLResponse:
         """
-        Create presigned URL for file upload to S3
+        Create presigned URL for request file upload to S3
 
         Args:
           filename: Name of the original file.
@@ -259,12 +254,10 @@ class AsyncFilesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not file_type:
-            raise ValueError(f"Expected a non-empty value for `file_type` but received {file_type!r}")
         return cast(
             FileCreatePresignedURLResponse,
             await self._post(
-                f"/api/v3/files/upload/{file_type}",
+                "/api/v3/files/upload/request",
                 body=await async_maybe_transform(
                     {
                         "filename": filename,

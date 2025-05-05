@@ -34,7 +34,7 @@ class TestTriggerInstances:
             connected_account_ids="connectedAccountIds",
             limit=1,
             page=1,
-            show_disabled=True,
+            show_disabled="showDisabled",
             trigger_ids="triggerIds",
             trigger_names="triggerNames",
         )
@@ -202,7 +202,7 @@ class TestAsyncTriggerInstances:
             connected_account_ids="connectedAccountIds",
             limit=1,
             page=1,
-            show_disabled=True,
+            show_disabled="showDisabled",
             trigger_ids="triggerIds",
             trigger_names="triggerNames",
         )
