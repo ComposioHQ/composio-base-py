@@ -6,22 +6,22 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ToolListResponse", "Item", "ItemDepracated", "ItemDepracatedToolkit", "ItemToolkit"]
+__all__ = ["ToolListResponse", "Item", "ItemDeprecated", "ItemDeprecatedToolkit", "ItemToolkit"]
 
 
-class ItemDepracatedToolkit(BaseModel):
+class ItemDeprecatedToolkit(BaseModel):
     logo: str
     """The logo of the toolkit"""
 
 
-class ItemDepracated(BaseModel):
+class ItemDeprecated(BaseModel):
     available_versions: List[str]
     """The available versions of the tool"""
 
     display_name: str = FieldInfo(alias="displayName")
     """The display name of the tool"""
 
-    toolkit: ItemDepracatedToolkit
+    toolkit: ItemDeprecatedToolkit
 
     version: str
     """The version of the tool"""
@@ -36,7 +36,7 @@ class ItemToolkit(BaseModel):
 
 
 class Item(BaseModel):
-    depracated: ItemDepracated
+    deprecated: ItemDeprecated
 
     description: str
     """The description of the tool"""

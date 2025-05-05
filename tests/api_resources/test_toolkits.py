@@ -69,7 +69,7 @@ class TestToolkits:
         toolkit = client.toolkits.list(
             category="category",
             is_local=True,
-            managed_by="all",
+            managed_by="composio",
             sort_by="usage",
         )
         assert_matches_type(ToolkitListResponse, toolkit, path=["response"])
@@ -171,7 +171,7 @@ class TestAsyncToolkits:
         toolkit = await async_client.toolkits.list(
             category="category",
             is_local=True,
-            managed_by="all",
+            managed_by="composio",
             sort_by="usage",
         )
         assert_matches_type(ToolkitListResponse, toolkit, path=["response"])
