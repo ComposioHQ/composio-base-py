@@ -23,7 +23,7 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     page: float
     """Page number for pagination. Starts from 1."""
 
-    show_disabled: Annotated[Optional[bool], PropertyInfo(alias="showDisabled")]
+    show_disabled: Annotated[Optional[str], PropertyInfo(alias="showDisabled")]
     """When set to true, includes disabled triggers in the response."""
 
     trigger_ids: Annotated[str, PropertyInfo(alias="triggerIds")]

@@ -320,13 +320,12 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import FileListResponse, FileCreatePresignedURLResponse
+from composio_client.types import FileListResponse
 ```
 
 Methods:
 
 - <code title="get /api/v3/files/list">client.files.<a href="./src/composio_client/resources/files.py">list</a>(\*\*<a href="src/composio_client/types/file_list_params.py">params</a>) -> <a href="./src/composio_client/types/file_list_response.py">FileListResponse</a></code>
-- <code title="post /api/v3/files/upload/{fileType}">client.files.<a href="./src/composio_client/resources/files.py">create_presigned_url</a>(file_type, \*\*<a href="src/composio_client/types/file_create_presigned_url_params.py">params</a>) -> <a href="./src/composio_client/types/file_create_presigned_url_response.py">FileCreatePresignedURLResponse</a></code>
 
 # Migration
 

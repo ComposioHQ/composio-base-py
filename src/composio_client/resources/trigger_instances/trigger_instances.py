@@ -66,7 +66,7 @@ class TriggerInstancesResource(SyncAPIResource):
         connected_account_ids: str | List[str] | NotGiven = NOT_GIVEN,
         limit: float | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
-        show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
+        show_disabled: Optional[str] | NotGiven = NOT_GIVEN,
         trigger_ids: str | List[str] | NotGiven = NOT_GIVEN,
         trigger_names: str | List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -272,7 +272,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         connected_account_ids: str | List[str] | NotGiven = NOT_GIVEN,
         limit: float | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
-        show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
+        show_disabled: Optional[str] | NotGiven = NOT_GIVEN,
         trigger_ids: str | List[str] | NotGiven = NOT_GIVEN,
         trigger_names: str | List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
