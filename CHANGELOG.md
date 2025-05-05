@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.10 (2025-05-05)
+
+Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)
+
+### Features
+
+* **api:** api spec updates ([b34af18](https://github.com/ComposioHQ/composio-base-py/commit/b34af182367c11eb0fea9e202c9964f2d810b19f))
+* **api:** api updates ([c5f61bc](https://github.com/ComposioHQ/composio-base-py/commit/c5f61bc2a1fb1a885c0efdcbe66b45462b563e0b))
+
 ## 0.1.0-alpha.9 (2025-05-02)
 
 Full Changelog: [v0.1.0-alpha.8...v0.1.0-alpha.9](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.8...v0.1.0-alpha.9)
