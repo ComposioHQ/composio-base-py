@@ -46,36 +46,6 @@ Methods:
 - <code title="post /api/v3/connected_accounts/{nanoid}/refresh">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">refresh</a>(nanoid) -> <a href="./src/composio_client/types/connected_account_refresh_response.py">ConnectedAccountRefreshResponse</a></code>
 - <code title="patch /api/v3/connected_accounts/{nanoId}/status">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">update_status</a>(nano_id, \*\*<a href="src/composio_client/types/connected_account_update_status_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_update_status_response.py">ConnectedAccountUpdateStatusResponse</a></code>
 
-# Trigger
-
-Types:
-
-```python
-from composio_client.types import TriggerLogResponse
-```
-
-Methods:
-
-- <code title="post /api/v3/internal/trigger/logs">client.trigger.<a href="./src/composio_client/resources/trigger.py">log</a>(\*\*<a href="src/composio_client/types/trigger_log_params.py">params</a>) -> <a href="./src/composio_client/types/trigger_log_response.py">TriggerLogResponse</a></code>
-
-# ActionExecution
-
-Types:
-
-```python
-from composio_client.types import (
-    ActionExecutionLogResponse,
-    ActionExecutionRetrieveFieldsResponse,
-    ActionExecutionRetrieveLogResponse,
-)
-```
-
-Methods:
-
-- <code title="post /api/v3/internal/action_execution/logs">client.action_execution.<a href="./src/composio_client/resources/action_execution.py">log</a>(\*\*<a href="src/composio_client/types/action_execution_log_params.py">params</a>) -> <a href="./src/composio_client/types/action_execution_log_response.py">ActionExecutionLogResponse</a></code>
-- <code title="get /api/v3/internal/action_execution/fields">client.action_execution.<a href="./src/composio_client/resources/action_execution.py">retrieve_fields</a>() -> <a href="./src/composio_client/types/action_execution_retrieve_fields_response.py">ActionExecutionRetrieveFieldsResponse</a></code>
-- <code title="get /api/v3/internal/action_execution/log/{id}">client.action_execution.<a href="./src/composio_client/resources/action_execution.py">retrieve_log</a>(id) -> <a href="./src/composio_client/types/action_execution_retrieve_log_response.py">ActionExecutionRetrieveLogResponse</a></code>
-
 # Org
 
 ## APIKey

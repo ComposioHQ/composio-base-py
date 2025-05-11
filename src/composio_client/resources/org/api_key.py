@@ -50,6 +50,7 @@ class APIKeyResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> APIKeyRetrieveResponse:
+        """Retrieve the API key for the current organization (admin only)"""
         return self._get(
             "/api/v3/org/api_key",
             options=make_request_options(
@@ -68,6 +69,10 @@ class APIKeyResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> APIKeyRegenerateResponse:
+        """
+        Generate a new API key for the organization, invalidating the previous one
+        (admin only)
+        """
         return self._post(
             "/api/v3/org/api_key/regenerate",
             options=make_request_options(
@@ -107,6 +112,7 @@ class AsyncAPIKeyResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> APIKeyRetrieveResponse:
+        """Retrieve the API key for the current organization (admin only)"""
         return await self._get(
             "/api/v3/org/api_key",
             options=make_request_options(
@@ -125,6 +131,10 @@ class AsyncAPIKeyResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> APIKeyRegenerateResponse:
+        """
+        Generate a new API key for the organization, invalidating the previous one
+        (admin only)
+        """
         return await self._post(
             "/api/v3/org/api_key/regenerate",
             options=make_request_options(

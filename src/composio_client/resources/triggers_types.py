@@ -56,6 +56,9 @@ class TriggersTypesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggersTypeRetrieveResponse:
         """
+        Retrieve detailed information about a specific trigger type using its slug
+        identifier
+
         Args:
           extra_headers: Send extra headers
 
@@ -89,6 +92,8 @@ class TriggersTypesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggersTypeListResponse:
         """
+        Retrieve a list of available trigger types with optional filtering by toolkit
+
         Args:
           toolkit_slugs: Comma separated list of toolkit slugs
 
@@ -170,6 +175,9 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggersTypeRetrieveResponse:
         """
+        Retrieve detailed information about a specific trigger type using its slug
+        identifier
+
         Args:
           extra_headers: Send extra headers
 
@@ -203,6 +211,8 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggersTypeListResponse:
         """
+        Retrieve a list of available trigger types with optional filtering by toolkit
+
         Args:
           toolkit_slugs: Comma separated list of toolkit slugs
 

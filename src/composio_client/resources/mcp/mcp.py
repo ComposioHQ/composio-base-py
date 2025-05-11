@@ -219,10 +219,10 @@ class McpResource(SyncAPIResource):
     def list(
         self,
         *,
-        app_id: List[str] | NotGiven = NOT_GIVEN,
-        connected_account_id: List[str] | NotGiven = NOT_GIVEN,
+        app_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        connected_account_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: Optional[float] | NotGiven = NOT_GIVEN,
-        entity_id: List[str] | NotGiven = NOT_GIVEN,
+        entity_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
         integration_id: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -569,10 +569,10 @@ class AsyncMcpResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        app_id: List[str] | NotGiven = NOT_GIVEN,
-        connected_account_id: List[str] | NotGiven = NOT_GIVEN,
+        app_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        connected_account_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: Optional[float] | NotGiven = NOT_GIVEN,
-        entity_id: List[str] | NotGiven = NOT_GIVEN,
+        entity_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
         integration_id: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

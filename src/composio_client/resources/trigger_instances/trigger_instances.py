@@ -62,13 +62,15 @@ class TriggerInstancesResource(SyncAPIResource):
     def list_active(
         self,
         *,
-        auth_config_ids: str | List[str] | NotGiven = NOT_GIVEN,
-        connected_account_ids: str | List[str] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        connected_account_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        deprecated_auth_config_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        deprecated_connected_account_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: float | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         show_disabled: Optional[str] | NotGiven = NOT_GIVEN,
-        trigger_ids: str | List[str] | NotGiven = NOT_GIVEN,
-        trigger_names: str | List[str] | NotGiven = NOT_GIVEN,
+        trigger_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        trigger_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -78,9 +80,13 @@ class TriggerInstancesResource(SyncAPIResource):
     ) -> TriggerInstanceListActiveResponse:
         """
         Args:
-          auth_config_ids: List of auth config IDs to filter triggers by
+          auth_config_ids: Comma-separated list of auth config IDs to filter triggers by
 
-          connected_account_ids: List of connected account IDs to filter triggers by
+          connected_account_ids: Comma-separated list of connected account IDs to filter triggers by
+
+          deprecated_auth_config_uuids: Comma-separated list of auth config UUIDs to filter triggers by
+
+          deprecated_connected_account_uuids: Comma-separated list of connected account UUIDs to filter triggers by
 
           limit: Number of items to return per page.
 
@@ -88,9 +94,9 @@ class TriggerInstancesResource(SyncAPIResource):
 
           show_disabled: When set to true, includes disabled triggers in the response.
 
-          trigger_ids: List of trigger IDs to filter triggers by
+          trigger_ids: Comma-separated list of trigger IDs to filter triggers by
 
-          trigger_names: List of trigger names to filter triggers by
+          trigger_names: Comma-separated list of trigger names to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -111,6 +117,8 @@ class TriggerInstancesResource(SyncAPIResource):
                     {
                         "auth_config_ids": auth_config_ids,
                         "connected_account_ids": connected_account_ids,
+                        "deprecated_auth_config_uuids": deprecated_auth_config_uuids,
+                        "deprecated_connected_account_uuids": deprecated_connected_account_uuids,
                         "limit": limit,
                         "page": page,
                         "show_disabled": show_disabled,
@@ -268,13 +276,15 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
     async def list_active(
         self,
         *,
-        auth_config_ids: str | List[str] | NotGiven = NOT_GIVEN,
-        connected_account_ids: str | List[str] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        connected_account_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        deprecated_auth_config_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        deprecated_connected_account_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: float | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         show_disabled: Optional[str] | NotGiven = NOT_GIVEN,
-        trigger_ids: str | List[str] | NotGiven = NOT_GIVEN,
-        trigger_names: str | List[str] | NotGiven = NOT_GIVEN,
+        trigger_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        trigger_names: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -284,9 +294,13 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
     ) -> TriggerInstanceListActiveResponse:
         """
         Args:
-          auth_config_ids: List of auth config IDs to filter triggers by
+          auth_config_ids: Comma-separated list of auth config IDs to filter triggers by
 
-          connected_account_ids: List of connected account IDs to filter triggers by
+          connected_account_ids: Comma-separated list of connected account IDs to filter triggers by
+
+          deprecated_auth_config_uuids: Comma-separated list of auth config UUIDs to filter triggers by
+
+          deprecated_connected_account_uuids: Comma-separated list of connected account UUIDs to filter triggers by
 
           limit: Number of items to return per page.
 
@@ -294,9 +308,9 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           show_disabled: When set to true, includes disabled triggers in the response.
 
-          trigger_ids: List of trigger IDs to filter triggers by
+          trigger_ids: Comma-separated list of trigger IDs to filter triggers by
 
-          trigger_names: List of trigger names to filter triggers by
+          trigger_names: Comma-separated list of trigger names to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -317,6 +331,8 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
                     {
                         "auth_config_ids": auth_config_ids,
                         "connected_account_ids": connected_account_ids,
+                        "deprecated_auth_config_uuids": deprecated_auth_config_uuids,
+                        "deprecated_connected_account_uuids": deprecated_connected_account_uuids,
                         "limit": limit,
                         "page": page,
                         "show_disabled": show_disabled,

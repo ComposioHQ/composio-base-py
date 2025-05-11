@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.11 (2025-05-11)
+
+Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
+
+### Bug Fixes
+
+* **package:** support direct resource imports ([91c3084](https://github.com/ComposioHQ/composio-base-py/commit/91c3084272834825372f0891d65fa80375a76f73))
+
+
+### Chores
+
+* **internal:** avoid errors for isinstance checks on proxies ([710ffc4](https://github.com/ComposioHQ/composio-base-py/commit/710ffc453ba1ff1ecee1bfbb727b90eb9b50f6bc))
+* remove custom code ([a0acf91](https://github.com/ComposioHQ/composio-base-py/commit/a0acf9139ffbdacfe7b75d827723e377853f341a))
+
 ## 0.1.0-alpha.10 (2025-05-05)
 
 Full Changelog: [v0.1.0-alpha.9...v0.1.0-alpha.10](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.9...v0.1.0-alpha.10)

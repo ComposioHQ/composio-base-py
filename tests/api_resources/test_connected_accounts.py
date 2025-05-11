@@ -39,6 +39,7 @@ class TestConnectedAccounts:
             connection={
                 "callback_url": "https://example.com",
                 "data": {"foo": "bar"},
+                "deprecated_is_v1_rerouted": True,
                 "redirect_uri": "https://example.com",
                 "user_id": "user_id",
             },
@@ -285,6 +286,7 @@ class TestAsyncConnectedAccounts:
             connection={
                 "callback_url": "https://example.com",
                 "data": {"foo": "bar"},
+                "deprecated_is_v1_rerouted": True,
                 "redirect_uri": "https://example.com",
                 "user_id": "user_id",
             },

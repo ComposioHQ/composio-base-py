@@ -30,13 +30,15 @@ class TestTriggerInstances:
     @parametrize
     def test_method_list_active_with_all_params(self, client: Composio) -> None:
         trigger_instance = client.trigger_instances.list_active(
-            auth_config_ids="authConfigIds",
-            connected_account_ids="connectedAccountIds",
+            auth_config_ids=["string"],
+            connected_account_ids=["string"],
+            deprecated_auth_config_uuids=["string"],
+            deprecated_connected_account_uuids=["string"],
             limit=1,
             page=1,
             show_disabled="showDisabled",
-            trigger_ids="triggerIds",
-            trigger_names="triggerNames",
+            trigger_ids=["string"],
+            trigger_names=["string"],
         )
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
@@ -198,13 +200,15 @@ class TestAsyncTriggerInstances:
     @parametrize
     async def test_method_list_active_with_all_params(self, async_client: AsyncComposio) -> None:
         trigger_instance = await async_client.trigger_instances.list_active(
-            auth_config_ids="authConfigIds",
-            connected_account_ids="connectedAccountIds",
+            auth_config_ids=["string"],
+            connected_account_ids=["string"],
+            deprecated_auth_config_uuids=["string"],
+            deprecated_connected_account_uuids=["string"],
             limit=1,
             page=1,
             show_disabled="showDisabled",
-            trigger_ids="triggerIds",
-            trigger_names="triggerNames",
+            trigger_ids=["string"],
+            trigger_names=["string"],
         )
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
