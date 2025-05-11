@@ -26,6 +26,9 @@ class Connection(TypedDict, total=False):
     data: Dict[str, Optional[object]]
     """Initial data to pass to the connected account"""
 
+    deprecated_is_v1_rerouted: bool
+    """Whether the connection is rerouted"""
+
     redirect_uri: str
     """DEPRECATED: This parameter will be removed in a future version.
 

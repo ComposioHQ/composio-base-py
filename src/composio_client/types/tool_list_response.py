@@ -21,6 +21,9 @@ class ItemDeprecated(BaseModel):
     display_name: str = FieldInfo(alias="displayName")
     """The display name of the tool"""
 
+    is_deprecated: bool
+    """Whether the tool is deprecated"""
+
     toolkit: ItemDeprecatedToolkit
 
     version: str

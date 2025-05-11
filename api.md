@@ -63,17 +63,12 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import (
-    ActionExecutionLogResponse,
-    ActionExecutionRetrieveFieldsResponse,
-    ActionExecutionRetrieveLogResponse,
-)
+from composio_client.types import ActionExecutionLogResponse, ActionExecutionRetrieveLogResponse
 ```
 
 Methods:
 
 - <code title="post /api/v3/internal/action_execution/logs">client.action_execution.<a href="./src/composio_client/resources/action_execution.py">log</a>(\*\*<a href="src/composio_client/types/action_execution_log_params.py">params</a>) -> <a href="./src/composio_client/types/action_execution_log_response.py">ActionExecutionLogResponse</a></code>
-- <code title="get /api/v3/internal/action_execution/fields">client.action_execution.<a href="./src/composio_client/resources/action_execution.py">retrieve_fields</a>() -> <a href="./src/composio_client/types/action_execution_retrieve_fields_response.py">ActionExecutionRetrieveFieldsResponse</a></code>
 - <code title="get /api/v3/internal/action_execution/log/{id}">client.action_execution.<a href="./src/composio_client/resources/action_execution.py">retrieve_log</a>(id) -> <a href="./src/composio_client/types/action_execution_retrieve_log_response.py">ActionExecutionRetrieveLogResponse</a></code>
 
 # Org

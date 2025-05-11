@@ -58,6 +58,8 @@ class ToolkitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitRetrieveResponse:
         """
+        Retrieve detailed information about a specific toolkit using its slug identifier
+
         Args:
           extra_headers: Send extra headers
 
@@ -92,6 +94,9 @@ class ToolkitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitListResponse:
         """
+        Retrieve a list of available toolkits with optional filtering and sorting
+        options
+
         Args:
           is_local: Whether to include local toolkits
 
@@ -133,6 +138,7 @@ class ToolkitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitRetrieveCategoriesResponse:
+        """Retrieve a list of all available toolkit categories for filtering toolkits"""
         return self._get(
             "/api/v3/toolkits/categories",
             options=make_request_options(
@@ -174,6 +180,8 @@ class AsyncToolkitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitRetrieveResponse:
         """
+        Retrieve detailed information about a specific toolkit using its slug identifier
+
         Args:
           extra_headers: Send extra headers
 
@@ -208,6 +216,9 @@ class AsyncToolkitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitListResponse:
         """
+        Retrieve a list of available toolkits with optional filtering and sorting
+        options
+
         Args:
           is_local: Whether to include local toolkits
 
@@ -249,6 +260,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitRetrieveCategoriesResponse:
+        """Retrieve a list of all available toolkit categories for filtering toolkits"""
         return await self._get(
             "/api/v3/toolkits/categories",
             options=make_request_options(

@@ -20,7 +20,6 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.action_execution_log_response import ActionExecutionLogResponse
 from ..types.action_execution_retrieve_log_response import ActionExecutionRetrieveLogResponse
-from ..types.action_execution_retrieve_fields_response import ActionExecutionRetrieveFieldsResponse
 
 __all__ = ["ActionExecutionResource", "AsyncActionExecutionResource"]
 
@@ -100,25 +99,6 @@ class ActionExecutionResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ActionExecutionLogResponse,
-        )
-
-    def retrieve_fields(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ActionExecutionRetrieveFieldsResponse:
-        """Get action log fields for filtering"""
-        return self._get(
-            "/api/v3/internal/action_execution/fields",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ActionExecutionRetrieveFieldsResponse,
         )
 
     def retrieve_log(
@@ -232,25 +212,6 @@ class AsyncActionExecutionResource(AsyncAPIResource):
             cast_to=ActionExecutionLogResponse,
         )
 
-    async def retrieve_fields(
-        self,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ActionExecutionRetrieveFieldsResponse:
-        """Get action log fields for filtering"""
-        return await self._get(
-            "/api/v3/internal/action_execution/fields",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ActionExecutionRetrieveFieldsResponse,
-        )
-
     async def retrieve_log(
         self,
         id: str,
@@ -292,9 +253,6 @@ class ActionExecutionResourceWithRawResponse:
         self.log = to_raw_response_wrapper(
             action_execution.log,
         )
-        self.retrieve_fields = to_raw_response_wrapper(
-            action_execution.retrieve_fields,
-        )
         self.retrieve_log = to_raw_response_wrapper(
             action_execution.retrieve_log,
         )
@@ -306,9 +264,6 @@ class AsyncActionExecutionResourceWithRawResponse:
 
         self.log = async_to_raw_response_wrapper(
             action_execution.log,
-        )
-        self.retrieve_fields = async_to_raw_response_wrapper(
-            action_execution.retrieve_fields,
         )
         self.retrieve_log = async_to_raw_response_wrapper(
             action_execution.retrieve_log,
@@ -322,9 +277,6 @@ class ActionExecutionResourceWithStreamingResponse:
         self.log = to_streamed_response_wrapper(
             action_execution.log,
         )
-        self.retrieve_fields = to_streamed_response_wrapper(
-            action_execution.retrieve_fields,
-        )
         self.retrieve_log = to_streamed_response_wrapper(
             action_execution.retrieve_log,
         )
@@ -336,9 +288,6 @@ class AsyncActionExecutionResourceWithStreamingResponse:
 
         self.log = async_to_streamed_response_wrapper(
             action_execution.log,
-        )
-        self.retrieve_fields = async_to_streamed_response_wrapper(
-            action_execution.retrieve_fields,
         )
         self.retrieve_log = async_to_streamed_response_wrapper(
             action_execution.retrieve_log,

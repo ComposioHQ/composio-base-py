@@ -163,7 +163,7 @@ class TestAuthConfigs:
     def test_method_update_overload_2(self, client: Composio) -> None:
         auth_config = client.auth_configs.update(
             nanoid="nanoid",
-            scopes=["string"],
+            scopes="scopes",
             type="default",
         )
         assert_matches_type(object, auth_config, path=["response"])
@@ -172,7 +172,7 @@ class TestAuthConfigs:
     def test_method_update_with_all_params_overload_2(self, client: Composio) -> None:
         auth_config = client.auth_configs.update(
             nanoid="nanoid",
-            scopes=["string"],
+            scopes="scopes",
             type="default",
             restrict_to_following_tools=["string"],
         )
@@ -182,7 +182,7 @@ class TestAuthConfigs:
     def test_raw_response_update_overload_2(self, client: Composio) -> None:
         response = client.auth_configs.with_raw_response.update(
             nanoid="nanoid",
-            scopes=["string"],
+            scopes="scopes",
             type="default",
         )
 
@@ -195,7 +195,7 @@ class TestAuthConfigs:
     def test_streaming_response_update_overload_2(self, client: Composio) -> None:
         with client.auth_configs.with_streaming_response.update(
             nanoid="nanoid",
-            scopes=["string"],
+            scopes="scopes",
             type="default",
         ) as response:
             assert not response.is_closed
@@ -211,7 +211,7 @@ class TestAuthConfigs:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             client.auth_configs.with_raw_response.update(
                 nanoid="",
-                scopes=["string"],
+                scopes="scopes",
                 type="default",
             )
 
@@ -478,7 +478,7 @@ class TestAsyncAuthConfigs:
     async def test_method_update_overload_2(self, async_client: AsyncComposio) -> None:
         auth_config = await async_client.auth_configs.update(
             nanoid="nanoid",
-            scopes=["string"],
+            scopes="scopes",
             type="default",
         )
         assert_matches_type(object, auth_config, path=["response"])
@@ -487,7 +487,7 @@ class TestAsyncAuthConfigs:
     async def test_method_update_with_all_params_overload_2(self, async_client: AsyncComposio) -> None:
         auth_config = await async_client.auth_configs.update(
             nanoid="nanoid",
-            scopes=["string"],
+            scopes="scopes",
             type="default",
             restrict_to_following_tools=["string"],
         )
@@ -497,7 +497,7 @@ class TestAsyncAuthConfigs:
     async def test_raw_response_update_overload_2(self, async_client: AsyncComposio) -> None:
         response = await async_client.auth_configs.with_raw_response.update(
             nanoid="nanoid",
-            scopes=["string"],
+            scopes="scopes",
             type="default",
         )
 
@@ -510,7 +510,7 @@ class TestAsyncAuthConfigs:
     async def test_streaming_response_update_overload_2(self, async_client: AsyncComposio) -> None:
         async with async_client.auth_configs.with_streaming_response.update(
             nanoid="nanoid",
-            scopes=["string"],
+            scopes="scopes",
             type="default",
         ) as response:
             assert not response.is_closed
@@ -526,7 +526,7 @@ class TestAsyncAuthConfigs:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             await async_client.auth_configs.with_raw_response.update(
                 nanoid="",
-                scopes=["string"],
+                scopes="scopes",
                 type="default",
             )
 

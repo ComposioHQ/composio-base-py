@@ -56,6 +56,8 @@ class MigrationResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MigrationRetrieveNanoidResponse:
         """
+        Convert a legacy UUID to its corresponding NanoId for migration purposes
+
         Args:
           extra_headers: Send extra headers
 
@@ -117,6 +119,8 @@ class AsyncMigrationResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MigrationRetrieveNanoidResponse:
         """
+        Convert a legacy UUID to its corresponding NanoId for migration purposes
+
         Args:
           extra_headers: Send extra headers
 

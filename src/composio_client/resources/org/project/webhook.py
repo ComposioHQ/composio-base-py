@@ -136,6 +136,8 @@ class WebhookResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookDeleteResponse:
         """
+        Remove a webhook URL (trigger or event) from the project configuration
+
         Args:
           type: Type of the webhook
 
@@ -285,6 +287,8 @@ class AsyncWebhookResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookDeleteResponse:
         """
+        Remove a webhook URL (trigger or event) from the project configuration
+
         Args:
           type: Type of the webhook
 

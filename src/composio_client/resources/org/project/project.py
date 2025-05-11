@@ -92,6 +92,8 @@ class ProjectResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectCreateResponse:
         """
+        Create a new project within the organization with the specified name
+
         Args:
           name: Name of the project
 
@@ -124,6 +126,8 @@ class ProjectResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectRetrieveResponse:
         """
+        Retrieve detailed information about a specific project using its ID
+
         Args:
           project_id: Nano ID of the project
 
@@ -155,6 +159,7 @@ class ProjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectListResponse:
+        """Retrieve a list of all projects within the current organization"""
         return self._get(
             "/api/v3/org/project/list",
             options=make_request_options(
@@ -241,6 +246,8 @@ class AsyncProjectResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectCreateResponse:
         """
+        Create a new project within the organization with the specified name
+
         Args:
           name: Name of the project
 
@@ -273,6 +280,8 @@ class AsyncProjectResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectRetrieveResponse:
         """
+        Retrieve detailed information about a specific project using its ID
+
         Args:
           project_id: Nano ID of the project
 
@@ -304,6 +313,7 @@ class AsyncProjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectListResponse:
+        """Retrieve a list of all projects within the current organization"""
         return await self._get(
             "/api/v3/org/project/list",
             options=make_request_options(

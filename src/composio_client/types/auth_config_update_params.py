@@ -17,7 +17,7 @@ class Variant0(TypedDict, total=False):
 
 
 class Variant1(TypedDict, total=False):
-    scopes: Required[List[str]]
+    scopes: Required[str]
 
     type: Required[Literal["default"]]
 
