@@ -26,7 +26,7 @@ class Item(BaseModel):
     url: str
     """The URL of the MCP server"""
 
-    actions: Optional[Dict[str, Optional[object]]] = None
+    actions: Optional[List[str]] = None
     """Actions available for the MCP server"""
 
     auth_configs: Optional[Dict[str, Optional[object]]] = None

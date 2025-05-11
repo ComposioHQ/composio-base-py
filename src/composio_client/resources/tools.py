@@ -60,6 +60,8 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolRetrieveResponse:
         """
+        Retrieve detailed information about a specific tool using its slug identifier
+
         Args:
           extra_headers: Send extra headers
 
@@ -97,6 +99,9 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolListResponse:
         """
+        Retrieve a list of available tools with optional filtering and search
+        capabilities
+
         Args:
           cursor: The cursor to paginate through the results
 
@@ -162,6 +167,8 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolExecuteResponse:
         """
+        Execute a specific tool operation with provided arguments and authentication
+
         Args:
           action: The name of the action
 
@@ -304,6 +311,10 @@ class ToolsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> str:
+        """
+        Retrieve a list of all available tool enumeration values (tool slugs) for the
+        project
+        """
         return self._get(
             "/api/v3/tools/enum",
             options=make_request_options(
@@ -345,6 +356,8 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolRetrieveResponse:
         """
+        Retrieve detailed information about a specific tool using its slug identifier
+
         Args:
           extra_headers: Send extra headers
 
@@ -382,6 +395,9 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolListResponse:
         """
+        Retrieve a list of available tools with optional filtering and search
+        capabilities
+
         Args:
           cursor: The cursor to paginate through the results
 
@@ -447,6 +463,8 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolExecuteResponse:
         """
+        Execute a specific tool operation with provided arguments and authentication
+
         Args:
           action: The name of the action
 
@@ -589,6 +607,10 @@ class AsyncToolsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> str:
+        """
+        Retrieve a list of all available tool enumeration values (tool slugs) for the
+        project
+        """
         return await self._get(
             "/api/v3/tools/enum",
             options=make_request_options(

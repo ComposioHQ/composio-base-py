@@ -13,7 +13,7 @@ class Deprecated(BaseModel):
     display_name: str = FieldInfo(alias="displayName")
     """The display name of the tool"""
 
-    is_action_deprecated: bool = FieldInfo(alias="isActionDeprecated")
+    is_deprecated: bool
     """Whether the action is deprecated"""
 
 

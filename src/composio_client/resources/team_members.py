@@ -59,6 +59,8 @@ class TeamMembersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TeamMemberUpdateResponse:
         """
+        Update the details of an existing team member
+
         Args:
           extra_headers: Send extra headers
 
@@ -96,6 +98,7 @@ class TeamMembersResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TeamMemberListResponse:
+        """Retrieve a list of all team members in the current organization"""
         return self._get(
             "/api/v3/team-members/list",
             options=make_request_options(
@@ -119,6 +122,8 @@ class TeamMembersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TeamMemberInviteResponse:
         """
+        Send an invitation to a new team member to join the organization
+
         Args:
           extra_headers: Send extra headers
 
@@ -157,6 +162,8 @@ class TeamMembersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TeamMemberRemoveResponse:
         """
+        Remove a team member from the organization and revoke their access
+
         Args:
           extra_headers: Send extra headers
 
@@ -212,6 +219,8 @@ class AsyncTeamMembersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TeamMemberUpdateResponse:
         """
+        Update the details of an existing team member
+
         Args:
           extra_headers: Send extra headers
 
@@ -249,6 +258,7 @@ class AsyncTeamMembersResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TeamMemberListResponse:
+        """Retrieve a list of all team members in the current organization"""
         return await self._get(
             "/api/v3/team-members/list",
             options=make_request_options(
@@ -272,6 +282,8 @@ class AsyncTeamMembersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TeamMemberInviteResponse:
         """
+        Send an invitation to a new team member to join the organization
+
         Args:
           extra_headers: Send extra headers
 
@@ -310,6 +322,8 @@ class AsyncTeamMembersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TeamMemberRemoveResponse:
         """
+        Remove a team member from the organization and revoke their access
+
         Args:
           extra_headers: Send extra headers
 

@@ -32,14 +32,6 @@ from .tools import (
     ToolsResourceWithStreamingResponse,
     AsyncToolsResourceWithStreamingResponse,
 )
-from .trigger import (
-    TriggerResource,
-    AsyncTriggerResource,
-    TriggerResourceWithRawResponse,
-    AsyncTriggerResourceWithRawResponse,
-    TriggerResourceWithStreamingResponse,
-    AsyncTriggerResourceWithStreamingResponse,
-)
 from .toolkits import (
     ToolkitsResource,
     AsyncToolkitsResource,
@@ -80,14 +72,6 @@ from .triggers_types import (
     TriggersTypesResourceWithStreamingResponse,
     AsyncTriggersTypesResourceWithStreamingResponse,
 )
-from .action_execution import (
-    ActionExecutionResource,
-    AsyncActionExecutionResource,
-    ActionExecutionResourceWithRawResponse,
-    AsyncActionExecutionResourceWithRawResponse,
-    ActionExecutionResourceWithStreamingResponse,
-    AsyncActionExecutionResourceWithStreamingResponse,
-)
 from .trigger_instances import (
     TriggerInstancesResource,
     AsyncTriggerInstancesResource,
@@ -118,18 +102,6 @@ __all__ = [
     "AsyncConnectedAccountsResourceWithRawResponse",
     "ConnectedAccountsResourceWithStreamingResponse",
     "AsyncConnectedAccountsResourceWithStreamingResponse",
-    "TriggerResource",
-    "AsyncTriggerResource",
-    "TriggerResourceWithRawResponse",
-    "AsyncTriggerResourceWithRawResponse",
-    "TriggerResourceWithStreamingResponse",
-    "AsyncTriggerResourceWithStreamingResponse",
-    "ActionExecutionResource",
-    "AsyncActionExecutionResource",
-    "ActionExecutionResourceWithRawResponse",
-    "AsyncActionExecutionResourceWithRawResponse",
-    "ActionExecutionResourceWithStreamingResponse",
-    "AsyncActionExecutionResourceWithStreamingResponse",
     "OrgResource",
     "AsyncOrgResource",
     "OrgResourceWithRawResponse",
