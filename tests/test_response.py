@@ -6,8 +6,8 @@ import httpx
 import pytest
 import pydantic
 
-from composio.client.generated import Composio, BaseModel, AsyncComposio
-from composio.client.generated._response import (
+from composio_client import Composio, BaseModel, AsyncComposio
+from composio_client._response import (
     APIResponse,
     BaseAPIResponse,
     AsyncAPIResponse,
@@ -15,8 +15,8 @@ from composio.client.generated._response import (
     AsyncBinaryAPIResponse,
     extract_response_type,
 )
-from composio.client.generated._streaming import Stream
-from composio.client.generated._base_client import FinalRequestOptions
+from composio_client._streaming import Stream
+from composio_client._base_client import FinalRequestOptions
 
 
 class ConcreteBaseAPIResponse(APIResponse[bytes]): ...
@@ -37,7 +37,7 @@ def test_extract_response_type_direct_classes() -> None:
 def test_extract_response_type_direct_class_missing_type_arg() -> None:
     with pytest.raises(
         RuntimeError,
-        match="Expected type <class 'composio.client.generated._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
+        match="Expected type <class 'composio_client._response.AsyncAPIResponse'> to have a type argument at index 0 but it did not",
     ):
         extract_response_type(AsyncAPIResponse)
 
@@ -68,7 +68,7 @@ def test_response_parse_mismatched_basemodel(client: Composio) -> None:
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from composio.client.generated import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from composio_client import BaseModel`",
     ):
         response.parse(to=PydanticModel)
 
@@ -86,7 +86,7 @@ async def test_async_response_parse_mismatched_basemodel(async_client: AsyncComp
 
     with pytest.raises(
         TypeError,
-        match="Pydantic models must subclass our base model type, e.g. `from composio.client.generated import BaseModel`",
+        match="Pydantic models must subclass our base model type, e.g. `from composio_client import BaseModel`",
     ):
         await response.parse(to=PydanticModel)
 

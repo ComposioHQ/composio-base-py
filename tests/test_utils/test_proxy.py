@@ -2,7 +2,7 @@ import operator
 from typing import Any
 from typing_extensions import override
 
-from composio.client.generated._utils import LazyProxy
+from composio_client._utils import LazyProxy
 
 
 class RecursiveLazyProxy(LazyProxy[Any]):
