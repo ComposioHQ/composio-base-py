@@ -7,9 +7,9 @@ import pytest
 import pydantic
 from pydantic import Field
 
-from composio.client.generated._utils import PropertyInfo
-from composio.client.generated._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
-from composio.client.generated._models import BaseModel, construct_type
+from composio_client._utils import PropertyInfo
+from composio_client._compat import PYDANTIC_V2, parse_obj, model_dump, model_json
+from composio_client._models import BaseModel, construct_type
 
 
 class BasicModel(BaseModel):
