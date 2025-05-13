@@ -61,6 +61,6 @@
   ],
   "release-type": "python",
   "extra-files": [
-    "src/composio_client/_version.py"
+    "src/composio/client/_version.py"
   ]
 }
