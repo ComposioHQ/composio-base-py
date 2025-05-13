@@ -25,7 +25,7 @@ The full API of this library can be found in [api.md](api.md).
 
 ```python
 import os
-from composio.client import Composio
+from composio.client.generated import Composio
 
 client = Composio(
     api_key=os.environ.get("COMPOSIO_API_KEY"),  # This is the default and can be omitted
@@ -51,7 +51,7 @@ Simply import `AsyncComposio` instead of `Composio` and use `await` with each AP
 ```python
 import os
 import asyncio
-from composio.client import AsyncComposio
+from composio.client.generated import AsyncComposio
 
 client = AsyncComposio(
     api_key=os.environ.get("COMPOSIO_API_KEY"),  # This is the default and can be omitted
@@ -86,7 +86,7 @@ Typed requests and responses provide autocomplete and documentation within your 
 Nested parameters are dictionaries, typed using `TypedDict`, for example:
 
 ```python
-from composio.client import Composio
+from composio.client.generated import Composio
 
 client = Composio()
 
@@ -109,16 +109,16 @@ print(response.custom_auth_params)
 
 ## Handling errors
 
-When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `composio.client.APIConnectionError` is raised.
+When the library is unable to connect to the API (for example, due to network connection problems or a timeout), a subclass of `composio.client.generated.APIConnectionError` is raised.
 
 When the API returns a non-success status code (that is, 4xx or 5xx
-response), a subclass of `composio.client.APIStatusError` is raised, containing `status_code` and `response` properties.
+response), a subclass of `composio.client.generated.APIStatusError` is raised, containing `status_code` and `response` properties.
 
-All errors inherit from `composio.client.APIError`.
+All errors inherit from `composio.client.generated.APIError`.
 
 ```python
-import composio.client
-from composio.client import Composio
+import composio.client.generated
+from composio.client.generated import Composio
 
 client = Composio()
 
@@ -126,12 +126,12 @@ try:
     client.tools.execute(
         action="action",
     )
-except composio.client.APIConnectionError as e:
+except composio.client.generated.APIConnectionError as e:
     print("The server could not be reached")
     print(e.__cause__)  # an underlying Exception, likely raised within httpx.
-except composio.client.RateLimitError as e:
+except composio.client.generated.RateLimitError as e:
     print("A 429 status code was received; we should back off a bit.")
-except composio.client.APIStatusError as e:
+except composio.client.generated.APIStatusError as e:
     print("Another non-200-range status code was received")
     print(e.status_code)
     print(e.response)
@@ -159,7 +159,7 @@ Connection errors (for example, due to a network connectivity problem), 408 Requ
 You can use the `max_retries` option to configure or disable retry settings:
 
 ```python
-from composio.client import Composio
+from composio.client.generated import Composio
 
 # Configure the default for all requests:
 client = Composio(
@@ -179,7 +179,7 @@ By default requests time out after 1 minute. You can configure this with a `time
 which accepts a float or an [`httpx.Timeout`](https://www.python-httpx.org/advanced/#fine-tuning-the-configuration) object:
 
 ```python
-from composio.client import Composio
+from composio.client.generated import Composio
 
 # Configure the default for all requests:
 client = Composio(
@@ -233,7 +233,7 @@ if response.my_field is None:
 The "raw" Response object can be accessed by prefixing `.with_raw_response.` to any HTTP method call, e.g.,
 
 ```py
-from composio.client import Composio
+from composio.client.generated import Composio
 
 client = Composio()
 response = client.tools.with_raw_response.execute(
@@ -245,9 +245,9 @@ tool = response.parse()  # get the object that `tools.execute()` would have retu
 print(tool.log_id)
 ```
 
-These methods return an [`APIResponse`](https://github.com/ComposioHQ/composio-base-py/tree/main/src/composio/client/_response.py) object.
+These methods return an [`APIResponse`](https://github.com/ComposioHQ/composio-base-py/tree/main/src/composio/client/generated/_response.py) object.
 
-The async client returns an [`AsyncAPIResponse`](https://github.com/ComposioHQ/composio-base-py/tree/main/src/composio/client/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
+The async client returns an [`AsyncAPIResponse`](https://github.com/ComposioHQ/composio-base-py/tree/main/src/composio/client/generated/_response.py) with the same structure, the only difference being `await`able methods for reading the response content.
 
 #### `.with_streaming_response`
 
@@ -311,7 +311,7 @@ You can directly override the [httpx client](https://www.python-httpx.org/api/#c
 
 ```python
 import httpx
-from composio.client import Composio, DefaultHttpxClient
+from composio.client.generated import Composio, DefaultHttpxClient
 
 client = Composio(
     # Or use the `COMPOSIO_BASE_URL` env var
@@ -334,7 +334,7 @@ client.with_options(http_client=DefaultHttpxClient(...))
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
 
 ```py
-from composio.client import Composio
+from composio.client.generated import Composio
 
 with Composio() as client:
   # make requests here
@@ -362,8 +362,8 @@ If you've upgraded to the latest version but aren't seeing any new features you 
 You can determine the version that is being used at runtime with:
 
 ```py
-import composio.client
-print(composio.client.__version__)
+import composio.client.generated
+print(composio.client.generated.__version__)
 ```
 
 ## Requirements

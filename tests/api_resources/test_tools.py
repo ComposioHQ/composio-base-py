@@ -8,8 +8,8 @@ from typing import Any, cast
 import pytest
 
 from tests.utils import assert_matches_type
-from composio.client import Composio, AsyncComposio
-from composio.client.types import (
+from composio.client.generated import Composio, AsyncComposio
+from composio.client.generated.types import (
     ToolListResponse,
     ToolProxyResponse,
     ToolExecuteResponse,
