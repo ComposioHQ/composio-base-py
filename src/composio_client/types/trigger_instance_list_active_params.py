@@ -12,18 +12,18 @@ __all__ = ["TriggerInstanceListActiveParams"]
 
 class TriggerInstanceListActiveParams(TypedDict, total=False):
     auth_config_ids: Annotated[Optional[List[str]], PropertyInfo(alias="authConfigIds")]
-    """Comma-separated list of auth config IDs to filter triggers by"""
+    """Array of auth config IDs to filter triggers by"""
 
     connected_account_ids: Annotated[Optional[List[str]], PropertyInfo(alias="connectedAccountIds")]
-    """Comma-separated list of connected account IDs to filter triggers by"""
+    """Array of connected account IDs to filter triggers by"""
 
     deprecated_auth_config_uuids: Annotated[Optional[List[str]], PropertyInfo(alias="deprecatedAuthConfigUuids")]
-    """Comma-separated list of auth config UUIDs to filter triggers by"""
+    """Array of auth config UUIDs to filter triggers by"""
 
     deprecated_connected_account_uuids: Annotated[
         Optional[List[str]], PropertyInfo(alias="deprecatedConnectedAccountUuids")
     ]
-    """Comma-separated list of connected account UUIDs to filter triggers by"""
+    """Array of connected account UUIDs to filter triggers by"""
 
     limit: float
     """Number of items to return per page."""
@@ -35,7 +35,7 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     """When set to true, includes disabled triggers in the response."""
 
     trigger_ids: Annotated[Optional[List[str]], PropertyInfo(alias="triggerIds")]
-    """Comma-separated list of trigger IDs to filter triggers by"""
+    """Array of trigger IDs to filter triggers by"""
 
     trigger_names: Annotated[Optional[List[str]], PropertyInfo(alias="triggerNames")]
-    """Comma-separated list of trigger names to filter triggers by"""
+    """Array of trigger names to filter triggers by"""

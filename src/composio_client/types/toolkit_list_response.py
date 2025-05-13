@@ -28,6 +28,8 @@ class ItemMeta(BaseModel):
 
     updated_at: str
 
+    app_url: Optional[str] = None
+
 
 class Item(BaseModel):
     is_local_toolkit: bool

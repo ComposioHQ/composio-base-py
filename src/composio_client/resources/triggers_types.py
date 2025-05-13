@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import List, Optional
 
 import httpx
 
@@ -83,7 +83,7 @@ class TriggersTypesResource(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit_slugs: str | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -95,7 +95,7 @@ class TriggersTypesResource(SyncAPIResource):
         Retrieve a list of available trigger types with optional filtering by toolkit
 
         Args:
-          toolkit_slugs: Comma separated list of toolkit slugs
+          toolkit_slugs: Array of toolkit slugs
 
           extra_headers: Send extra headers
 
@@ -202,7 +202,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit_slugs: str | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -214,7 +214,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         Retrieve a list of available trigger types with optional filtering by toolkit
 
         Args:
-          toolkit_slugs: Comma separated list of toolkit slugs
+          toolkit_slugs: Array of toolkit slugs
 
           extra_headers: Send extra headers
 
