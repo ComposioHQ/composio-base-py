@@ -74,7 +74,7 @@ class TestTools:
             limit="20",
             search="github actions",
             tags=["string"],
-            tool_slugs="github-actions,github-repos",
+            tool_slugs=["string"],
             toolkit_slug="github",
         )
         assert_matches_type(ToolListResponse, tool, path=["response"])
@@ -345,7 +345,7 @@ class TestAsyncTools:
             limit="20",
             search="github actions",
             tags=["string"],
-            tool_slugs="github-actions,github-repos",
+            tool_slugs=["string"],
             toolkit_slug="github",
         )
         assert_matches_type(ToolListResponse, tool, path=["response"])

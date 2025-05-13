@@ -11,8 +11,6 @@ __all__ = ["TriggerListResponse"]
 class TriggerListResponse(BaseModel):
     id: str
 
-    auto_id: float
-
     created_at: str
 
     deleted: bool

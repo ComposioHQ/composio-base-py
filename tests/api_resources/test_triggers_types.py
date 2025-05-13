@@ -68,7 +68,7 @@ class TestTriggersTypes:
         triggers_type = client.triggers_types.list(
             cursor="cursor",
             limit=0,
-            toolkit_slugs="toolkit_slugs",
+            toolkit_slugs=["string"],
         )
         assert_matches_type(TriggersTypeListResponse, triggers_type, path=["response"])
 
@@ -169,7 +169,7 @@ class TestAsyncTriggersTypes:
         triggers_type = await async_client.triggers_types.list(
             cursor="cursor",
             limit=0,
-            toolkit_slugs="toolkit_slugs",
+            toolkit_slugs=["string"],
         )
         assert_matches_type(TriggersTypeListResponse, triggers_type, path=["response"])
 
