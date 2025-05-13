@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.12 (2025-05-13)
+
+Full Changelog: [v0.1.0-alpha.11...v0.1.0-alpha.12](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.11...v0.1.0-alpha.12)
+
+### Bug Fixes
+
+* try using `composio.client` as package import ([2f1fabc](https://github.com/ComposioHQ/composio-base-py/commit/2f1fabc5560fe6d0bfbb6ed62a11edca77205814))
+
 ## 0.1.0-alpha.11 (2025-05-11)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
