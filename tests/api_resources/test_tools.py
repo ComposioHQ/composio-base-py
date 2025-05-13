@@ -61,11 +61,13 @@ class TestTools:
                 "",
             )
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_method_list(self, client: Composio) -> None:
         tool = client.tools.list()
         assert_matches_type(ToolListResponse, tool, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         tool = client.tools.list(
@@ -79,6 +81,7 @@ class TestTools:
         )
         assert_matches_type(ToolListResponse, tool, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_raw_response_list(self, client: Composio) -> None:
         response = client.tools.with_raw_response.list()
@@ -88,6 +91,7 @@ class TestTools:
         tool = response.parse()
         assert_matches_type(ToolListResponse, tool, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_streaming_response_list(self, client: Composio) -> None:
         with client.tools.with_streaming_response.list() as response:
@@ -332,11 +336,13 @@ class TestAsyncTools:
                 "",
             )
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_method_list(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.list()
         assert_matches_type(ToolListResponse, tool, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.list(
@@ -350,6 +356,7 @@ class TestAsyncTools:
         )
         assert_matches_type(ToolListResponse, tool, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncComposio) -> None:
         response = await async_client.tools.with_raw_response.list()
@@ -359,6 +366,7 @@ class TestAsyncTools:
         tool = await response.parse()
         assert_matches_type(ToolListResponse, tool, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncComposio) -> None:
         async with async_client.tools.with_streaming_response.list() as response:
