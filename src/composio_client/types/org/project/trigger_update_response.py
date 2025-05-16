@@ -11,8 +11,6 @@ __all__ = ["TriggerUpdateResponse"]
 class TriggerUpdateResponse(BaseModel):
     id: str
 
-    auto_id: float
-
     created_at: str
 
     deleted: bool

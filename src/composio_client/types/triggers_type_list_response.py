@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal
 
 from .._models import BaseModel
@@ -15,9 +15,13 @@ class ItemToolkit(BaseModel):
 
 
 class Item(BaseModel):
+    config: Dict[str, Optional[object]]
+
     description: str
 
     name: str
+
+    payload: Dict[str, Optional[object]]
 
     slug: str
 

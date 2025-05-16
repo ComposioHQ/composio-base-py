@@ -24,7 +24,7 @@ class ToolListParams(TypedDict, total=False):
     tags: Optional[List[str]]
     """The tags to filter the tools by"""
 
-    tool_slugs: str
+    tool_slugs: Optional[List[str]]
     """The slugs of the tools to filter by"""
 
     toolkit_slug: str

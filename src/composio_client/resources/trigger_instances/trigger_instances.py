@@ -80,13 +80,13 @@ class TriggerInstancesResource(SyncAPIResource):
     ) -> TriggerInstanceListActiveResponse:
         """
         Args:
-          auth_config_ids: Comma-separated list of auth config IDs to filter triggers by
+          auth_config_ids: Array of auth config IDs to filter triggers by
 
-          connected_account_ids: Comma-separated list of connected account IDs to filter triggers by
+          connected_account_ids: Array of connected account IDs to filter triggers by
 
-          deprecated_auth_config_uuids: Comma-separated list of auth config UUIDs to filter triggers by
+          deprecated_auth_config_uuids: Array of auth config UUIDs to filter triggers by
 
-          deprecated_connected_account_uuids: Comma-separated list of connected account UUIDs to filter triggers by
+          deprecated_connected_account_uuids: Array of connected account UUIDs to filter triggers by
 
           limit: Number of items to return per page.
 
@@ -94,9 +94,9 @@ class TriggerInstancesResource(SyncAPIResource):
 
           show_disabled: When set to true, includes disabled triggers in the response.
 
-          trigger_ids: Comma-separated list of trigger IDs to filter triggers by
+          trigger_ids: Array of trigger IDs to filter triggers by
 
-          trigger_names: Comma-separated list of trigger names to filter triggers by
+          trigger_names: Array of trigger names to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -294,13 +294,13 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
     ) -> TriggerInstanceListActiveResponse:
         """
         Args:
-          auth_config_ids: Comma-separated list of auth config IDs to filter triggers by
+          auth_config_ids: Array of auth config IDs to filter triggers by
 
-          connected_account_ids: Comma-separated list of connected account IDs to filter triggers by
+          connected_account_ids: Array of connected account IDs to filter triggers by
 
-          deprecated_auth_config_uuids: Comma-separated list of auth config UUIDs to filter triggers by
+          deprecated_auth_config_uuids: Array of auth config UUIDs to filter triggers by
 
-          deprecated_connected_account_uuids: Comma-separated list of connected account UUIDs to filter triggers by
+          deprecated_connected_account_uuids: Array of connected account UUIDs to filter triggers by
 
           limit: Number of items to return per page.
 
@@ -308,9 +308,9 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           show_disabled: When set to true, includes disabled triggers in the response.
 
-          trigger_ids: Comma-separated list of trigger IDs to filter triggers by
+          trigger_ids: Array of trigger IDs to filter triggers by
 
-          trigger_names: Comma-separated list of trigger names to filter triggers by
+          trigger_names: Array of trigger names to filter triggers by
 
           extra_headers: Send extra headers
 

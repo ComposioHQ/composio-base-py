@@ -4,18 +4,35 @@ from typing import Dict, List, Optional
 
 from .._models import BaseModel
 
-__all__ = ["McpUpdateResponse"]
+__all__ = ["McpUpdateResponse", "Commands"]
+
+
+class Commands(BaseModel):
+    claude: str
+    """The claude command to connect to the MCP server"""
+
+    cursor: str
+    """The cursor command to connect to the MCP server"""
+
+    windsurf: str
+    """The windsurf command to connect to the MCP server"""
 
 
 class McpUpdateResponse(BaseModel):
     id: str
     """The ID of the MCP server"""
 
-    apps: List[str]
-    """The app IDs associated with the server"""
+    allowed_tools: List[str]
+    """The allowed tools for this server"""
+
+    auth_config_id: str
+    """The auth configuration ID"""
 
     client_id: str
     """Client ID associated with the MCP server"""
+
+    commands: Commands
+    """Command to connect to the MCP server using different clients"""
 
     created_at: str
     """Creation timestamp of the MCP server"""
@@ -23,8 +40,8 @@ class McpUpdateResponse(BaseModel):
     deleted: bool
     """Whether the MCP server is deleted"""
 
-    member_id: str
-    """The member ID who created the server"""
+    mcp_url: str
+    """The SSE URL for the MCP server."""
 
     name: str
     """The name of the MCP server"""
@@ -32,17 +49,17 @@ class McpUpdateResponse(BaseModel):
     updated_at: str
     """Last update timestamp of the MCP server"""
 
-    url: str
-    """The URL of the MCP server"""
-
     actions: Optional[Dict[str, Optional[object]]] = None
     """Actions available for the MCP server"""
 
-    auth_configs: Optional[Dict[str, Optional[object]]] = None
-    """Auth configuration"""
+    apps: Optional[List[str]] = None
+    """App IDs associated with the server"""
+
+    auth_configs: Optional[List[str]] = None
+    """Auth config IDs associated with the server"""
 
     connected_account_ids: Optional[List[str]] = None
-    """Connected account IDs"""
+    """Connected account IDs associated with the server"""
 
     custom_auth_headers: Optional[bool] = None
     """Whether custom auth headers are enabled"""

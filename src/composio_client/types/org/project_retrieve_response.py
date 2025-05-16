@@ -11,8 +11,6 @@ __all__ = ["ProjectRetrieveResponse"]
 class ProjectRetrieveResponse(BaseModel):
     id: str
 
-    auto_id: float
-
     created_at: str
 
     deleted: bool

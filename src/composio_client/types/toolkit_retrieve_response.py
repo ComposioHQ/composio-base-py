@@ -43,6 +43,8 @@ class Meta(BaseModel):
 
     updated_at: str
 
+    app_url: Optional[str] = None
+
 
 class AuthConfigDetailFieldsAuthConfigCreationOptional(BaseModel):
     description: str
