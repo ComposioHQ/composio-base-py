@@ -219,6 +219,7 @@ class AuthConfigsResource(SyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
+        show_disabled: bool | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -238,6 +239,8 @@ class AuthConfigsResource(SyncAPIResource):
           is_composio_managed: Whether to filter by composio managed auth configs
 
           limit: The number of auth configs to return
+
+          show_disabled: Show disabled auth configs
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -263,6 +266,7 @@ class AuthConfigsResource(SyncAPIResource):
                         "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
+                        "show_disabled": show_disabled,
                         "toolkit_slug": toolkit_slug,
                     },
                     auth_config_list_params.AuthConfigListParams,
@@ -534,6 +538,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
+        show_disabled: bool | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -553,6 +558,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
           is_composio_managed: Whether to filter by composio managed auth configs
 
           limit: The number of auth configs to return
+
+          show_disabled: Show disabled auth configs
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -578,6 +585,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                         "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
+                        "show_disabled": show_disabled,
                         "toolkit_slug": toolkit_slug,
                     },
                     auth_config_list_params.AuthConfigListParams,

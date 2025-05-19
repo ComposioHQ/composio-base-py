@@ -228,6 +228,7 @@ class TestAuthConfigs:
             deprecated_status="deprecated_status",
             is_composio_managed="string",
             limit="limit",
+            show_disabled=True,
             toolkit_slug="toolkit_slug",
         )
         assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])
@@ -543,6 +544,7 @@ class TestAsyncAuthConfigs:
             deprecated_status="deprecated_status",
             is_composio_managed="string",
             limit="limit",
+            show_disabled=True,
             toolkit_slug="toolkit_slug",
         )
         assert_matches_type(AuthConfigListResponse, auth_config, path=["response"])

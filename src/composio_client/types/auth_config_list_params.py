@@ -23,5 +23,8 @@ class AuthConfigListParams(TypedDict, total=False):
     limit: str
     """The number of auth configs to return"""
 
+    show_disabled: bool
+    """Show disabled auth configs"""
+
     toolkit_slug: str
     """The slug of the toolkit to filter by"""
