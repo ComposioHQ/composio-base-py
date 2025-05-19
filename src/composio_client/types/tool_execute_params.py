@@ -58,6 +58,6 @@ class CustomAuthParams(TypedDict, total=False):
     body: Dict[str, Optional[object]]
     """The body to be sent to the endpoint for authentication.
 
-    This is a JSON object. Note: This is very rarely neeed and is only required by
+    This is a JSON object. Note: This is very rarely needed and is only required by
     very few apps.
     """

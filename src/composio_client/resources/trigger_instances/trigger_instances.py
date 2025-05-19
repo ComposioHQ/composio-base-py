@@ -180,8 +180,6 @@ class TriggerInstancesResource(SyncAPIResource):
         Args:
           slug: The slug of the trigger instance
 
-          status: The new status of the trigger
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -393,8 +391,6 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         """
         Args:
           slug: The slug of the trigger instance
-
-          status: The new status of the trigger
 
           extra_headers: Send extra headers
 
