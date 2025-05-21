@@ -201,19 +201,12 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import (
-    TriggerInstanceListActiveResponse,
-    TriggerInstanceRemoveUpsertResponse,
-    TriggerInstanceUpdateStatusResponse,
-    TriggerInstanceUpsertResponse,
-)
+from composio_client.types import TriggerInstanceListActiveResponse, TriggerInstanceUpsertResponse
 ```
 
 Methods:
 
 - <code title="get /api/v3/trigger_instances/active">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">list_active</a>(\*\*<a href="src/composio_client/types/trigger_instance_list_active_params.py">params</a>) -> <a href="./src/composio_client/types/trigger_instance_list_active_response.py">TriggerInstanceListActiveResponse</a></code>
-- <code title="delete /api/v3/trigger_instances/{slug}/upsert">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">remove_upsert</a>(slug) -> <a href="./src/composio_client/types/trigger_instance_remove_upsert_response.py">TriggerInstanceRemoveUpsertResponse</a></code>
-- <code title="patch /api/v3/trigger_instances/{slug}/status/{status}">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">update_status</a>(status, \*, slug) -> <a href="./src/composio_client/types/trigger_instance_update_status_response.py">TriggerInstanceUpdateStatusResponse</a></code>
 - <code title="post /api/v3/trigger_instances/{slug}/upsert">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">upsert</a>(slug, \*\*<a href="src/composio_client/types/trigger_instance_upsert_params.py">params</a>) -> <a href="./src/composio_client/types/trigger_instance_upsert_response.py">TriggerInstanceUpsertResponse</a></code>
 
 ## Handle
