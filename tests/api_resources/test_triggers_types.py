@@ -23,14 +23,14 @@ class TestTriggersTypes:
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
         triggers_type = client.triggers_types.retrieve(
-            "slug",
+            "SLACK_NEW_MESSAGE",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.triggers_types.with_raw_response.retrieve(
-            "slug",
+            "SLACK_NEW_MESSAGE",
         )
 
         assert response.is_closed is True
@@ -41,7 +41,7 @@ class TestTriggersTypes:
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.triggers_types.with_streaming_response.retrieve(
-            "slug",
+            "SLACK_NEW_MESSAGE",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -68,9 +68,9 @@ class TestTriggersTypes:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         triggers_type = client.triggers_types.list(
-            cursor="cursor",
-            limit=0,
-            toolkit_slugs=["string"],
+            cursor="ZG9jLTEyMzQ1",
+            limit=20,
+            toolkit_slugs=["slack", "github"],
         )
         assert_matches_type(TriggersTypeListResponse, triggers_type, path=["response"])
 
@@ -128,14 +128,14 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         triggers_type = await async_client.triggers_types.retrieve(
-            "slug",
+            "SLACK_NEW_MESSAGE",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.triggers_types.with_raw_response.retrieve(
-            "slug",
+            "SLACK_NEW_MESSAGE",
         )
 
         assert response.is_closed is True
@@ -146,7 +146,7 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.triggers_types.with_streaming_response.retrieve(
-            "slug",
+            "SLACK_NEW_MESSAGE",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -173,9 +173,9 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         triggers_type = await async_client.triggers_types.list(
-            cursor="cursor",
-            limit=0,
-            toolkit_slugs=["string"],
+            cursor="ZG9jLTEyMzQ1",
+            limit=20,
+            toolkit_slugs=["slack", "github"],
         )
         assert_matches_type(TriggersTypeListResponse, triggers_type, path=["response"])
 

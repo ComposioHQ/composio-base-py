@@ -232,7 +232,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_method_update_status(self, client: Composio) -> None:
         connected_account = client.connected_accounts.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         )
         assert_matches_type(ConnectedAccountUpdateStatusResponse, connected_account, path=["response"])
@@ -240,7 +240,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_raw_response_update_status(self, client: Composio) -> None:
         response = client.connected_accounts.with_raw_response.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         )
 
@@ -252,7 +252,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_streaming_response_update_status(self, client: Composio) -> None:
         with client.connected_accounts.with_streaming_response.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         ) as response:
             assert not response.is_closed
@@ -483,7 +483,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_method_update_status(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         )
         assert_matches_type(ConnectedAccountUpdateStatusResponse, connected_account, path=["response"])
@@ -491,7 +491,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_raw_response_update_status(self, async_client: AsyncComposio) -> None:
         response = await async_client.connected_accounts.with_raw_response.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         )
 
@@ -503,7 +503,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_streaming_response_update_status(self, async_client: AsyncComposio) -> None:
         async with async_client.connected_accounts.with_streaming_response.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         ) as response:
             assert not response.is_closed

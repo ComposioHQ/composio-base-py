@@ -9,7 +9,10 @@ __all__ = ["ToolGetInputResponse"]
 
 class ToolGetInputResponse(BaseModel):
     arguments: Optional[Dict[str, Optional[object]]] = None
-    """The arguments for the action needed to execute the given task."""
+    """
+    Key-value pairs of arguments required by the tool to accomplish the described
+    task
+    """
 
     error: Optional[str] = None
-    """The error message if the arguments were not generated successfully."""
+    """Error message if the arguments could not be generated (null if successful)"""

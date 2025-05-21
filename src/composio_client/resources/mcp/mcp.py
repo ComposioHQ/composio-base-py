@@ -59,10 +59,12 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveResponse:
         """
-        Get MCP server details by ID
+        Retrieves detailed configuration information for a specific Model Control
+        Protocol (MCP) server. The returned data includes connection details, associated
+        applications, enabled tools, and authentication configuration.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
           extra_headers: Send extra headers
 
@@ -97,16 +99,18 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpUpdateResponse:
         """
-        Update MCP server configuration
+        Updates the configuration of an existing Model Control Protocol (MCP) server.
+        You can modify the server name, associated applications, and enabled tools. Only
+        the fields included in the request will be updated.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
-          actions: Actions available for the server
+          actions: List of action identifiers that should be enabled for this server
 
-          apps: App IDs associated with the server
+          apps: List of application identifiers this server should be configured to work with
 
-          name: Name of the MCP server
+          name: Human-readable name to identify this MCP server
 
           extra_headers: Send extra headers
 
@@ -146,10 +150,13 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpDeleteResponse:
         """
-        Delete an MCP server
+        Performs a soft delete on a Model Control Protocol (MCP) server, making it
+        unavailable for future use. This operation is reversible in the database but
+        cannot be undone through the API. Any applications or services connected to this
+        server will lose access after deletion.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
           extra_headers: Send extra headers
 
@@ -186,20 +193,23 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveAppResponse:
         """
-        List MCP servers for a specific app
+        Retrieves a paginated list of Model Control Protocol (MCP) servers that are
+        configured for a specific application or toolkit. This endpoint allows you to
+        find all MCP server instances that have access to a particular application, such
+        as GitHub, Slack, or Jira.
 
         Args:
-          app_key: The key of the app to find MCP servers for
+          app_key: Toolkit or application slug identifier to filter MCP servers by
 
-          auth_config_id: Auth configuration ID to filter by
+          auth_config_id: Filter MCP servers by authentication configuration ID
 
-          limit: Number of items per page
+          limit: Number of items per page (default: 10)
 
-          name: Name of the MCP server to filter by
+          name: Filter MCP servers by name (case-insensitive partial match)
 
-          page_no: Page number for pagination
+          page_no: Page number for pagination (1-based)
 
-          toolkit: Toolkit slug to filter by
+          toolkit: Filter MCP servers by toolkit slug
 
           extra_headers: Send extra headers
 
@@ -245,12 +255,16 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpValidateResponse:
         """
-        Validate MCP server and retrieve connection details
+        Admin-only endpoint that validates a Model Control Protocol (MCP) server and
+        retrieves its complete configuration details, including authentication
+        information. This endpoint is typically used by the MCP service itself to
+        authenticate and authorize connection requests from clients.
 
         Args:
-          uuid: UUID of the MCP server to validate
+          uuid: Unique identifier of the MCP server to validate and retrieve connection details
+              for
 
-          x_composio_admin_token: Admin token
+          x_composio_admin_token: Administrative access token required for validating MCP servers
 
           extra_headers: Send extra headers
 
@@ -304,10 +318,12 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveResponse:
         """
-        Get MCP server details by ID
+        Retrieves detailed configuration information for a specific Model Control
+        Protocol (MCP) server. The returned data includes connection details, associated
+        applications, enabled tools, and authentication configuration.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
           extra_headers: Send extra headers
 
@@ -342,16 +358,18 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpUpdateResponse:
         """
-        Update MCP server configuration
+        Updates the configuration of an existing Model Control Protocol (MCP) server.
+        You can modify the server name, associated applications, and enabled tools. Only
+        the fields included in the request will be updated.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
-          actions: Actions available for the server
+          actions: List of action identifiers that should be enabled for this server
 
-          apps: App IDs associated with the server
+          apps: List of application identifiers this server should be configured to work with
 
-          name: Name of the MCP server
+          name: Human-readable name to identify this MCP server
 
           extra_headers: Send extra headers
 
@@ -391,10 +409,13 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpDeleteResponse:
         """
-        Delete an MCP server
+        Performs a soft delete on a Model Control Protocol (MCP) server, making it
+        unavailable for future use. This operation is reversible in the database but
+        cannot be undone through the API. Any applications or services connected to this
+        server will lose access after deletion.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
           extra_headers: Send extra headers
 
@@ -431,20 +452,23 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveAppResponse:
         """
-        List MCP servers for a specific app
+        Retrieves a paginated list of Model Control Protocol (MCP) servers that are
+        configured for a specific application or toolkit. This endpoint allows you to
+        find all MCP server instances that have access to a particular application, such
+        as GitHub, Slack, or Jira.
 
         Args:
-          app_key: The key of the app to find MCP servers for
+          app_key: Toolkit or application slug identifier to filter MCP servers by
 
-          auth_config_id: Auth configuration ID to filter by
+          auth_config_id: Filter MCP servers by authentication configuration ID
 
-          limit: Number of items per page
+          limit: Number of items per page (default: 10)
 
-          name: Name of the MCP server to filter by
+          name: Filter MCP servers by name (case-insensitive partial match)
 
-          page_no: Page number for pagination
+          page_no: Page number for pagination (1-based)
 
-          toolkit: Toolkit slug to filter by
+          toolkit: Filter MCP servers by toolkit slug
 
           extra_headers: Send extra headers
 
@@ -490,12 +514,16 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpValidateResponse:
         """
-        Validate MCP server and retrieve connection details
+        Admin-only endpoint that validates a Model Control Protocol (MCP) server and
+        retrieves its complete configuration details, including authentication
+        information. This endpoint is typically used by the MCP service itself to
+        authenticate and authorize connection requests from clients.
 
         Args:
-          uuid: UUID of the MCP server to validate
+          uuid: Unique identifier of the MCP server to validate and retrieve connection details
+              for
 
-          x_composio_admin_token: Admin token
+          x_composio_admin_token: Administrative access token required for validating MCP servers
 
           extra_headers: Send extra headers
 

@@ -9,47 +9,50 @@ __all__ = ["McpRetrieveAppResponse", "Item", "ItemCommands"]
 
 class ItemCommands(BaseModel):
     claude: str
-    """The claude command to connect to the MCP server"""
+    """Command line instruction for Claude client setup"""
 
     cursor: str
-    """The cursor command to connect to the MCP server"""
+    """Command line instruction for Cursor client setup"""
 
     windsurf: str
-    """The windsurf command to connect to the MCP server"""
+    """Command line instruction for Windsurf client setup"""
 
 
 class Item(BaseModel):
     id: str
-    """The ID of the MCP server"""
+    """UUID of the MCP server instance"""
 
     allowed_tools: List[str]
-    """The allowed tools for this server"""
+    """Array of tool slugs that this MCP server is allowed to use"""
 
     auth_config_id: str
-    """The auth configuration ID"""
+    """ID reference to the auth configuration used by this server"""
 
     commands: ItemCommands
-    """Command to connect to the MCP server using different clients"""
+    """
+    Set of command line instructions for connecting various clients to this MCP
+    server
+    """
 
     created_at: str
-    """Creation timestamp of the MCP server"""
+    """Date and time when this server was initially created"""
 
     mcp_url: str
-    """The SSE URL for the MCP server."""
+    """URL endpoint for establishing SSE connection to this MCP server"""
 
     name: str
-    """The name of the MCP server"""
+    """User-defined descriptive name for this MCP server"""
 
     updated_at: str
-    """Last update timestamp of the MCP server"""
+    """Date and time when this server configuration was last modified"""
 
 
 class McpRetrieveAppResponse(BaseModel):
     current_page: str
-    """Current page number"""
+    """Current page number being returned"""
 
     items: List[Item]
-    """List of MCP servers"""
+    """Array of MCP server configurations"""
 
     total_pages: str
-    """Total number of pages"""
+    """Total number of pages in the paginated response"""

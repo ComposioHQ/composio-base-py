@@ -92,10 +92,14 @@ class ProjectResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectCreateResponse:
         """
-        Create a new project within the organization with the specified name
+        Creates a new project within the authenticated user's organization using the
+        specified name. Projects are isolated environments within your organization,
+        each with their own API keys, webhook configurations, and resources. Use this
+        endpoint to create additional projects for different environments (e.g.,
+        development, staging, production) or for separate applications.
 
         Args:
-          name: Name of the project
+          name: A unique name for your project that follows the required format rules
 
           extra_headers: Send extra headers
 
@@ -126,10 +130,13 @@ class ProjectResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectRetrieveResponse:
         """
-        Retrieve detailed information about a specific project using its ID
+        Retrieves detailed information about a specific project using its unique
+        identifier. This endpoint provides complete project configuration including
+        webhook URLs, creation and update timestamps, and webhook secrets. Use this
+        endpoint to inspect project settings or verify project configuration.
 
         Args:
-          project_id: Nano ID of the project
+          project_id: Unique identifier (Nano ID) of the project to retrieve
 
           extra_headers: Send extra headers
 
@@ -159,7 +166,12 @@ class ProjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectListResponse:
-        """Retrieve a list of all projects within the current organization"""
+        """
+        Retrieves all projects belonging to the authenticated user's organization.
+        Projects are returned in descending order of creation date (newest first). This
+        endpoint is useful for displaying project selection in dashboards or for
+        integrations that need to list all available projects.
+        """
         return self._get(
             "/api/v3/org/project/list",
             options=make_request_options(
@@ -179,9 +191,16 @@ class ProjectResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectDeleteResponse:
-        """
+        """Soft-deletes a project within the organization by its unique identifier.
+
+        When a
+        project is deleted, it is marked as deleted but not immediately removed from the
+        database. This operation affects all resources associated with the project
+        including API keys, webhook configurations, and connected services. This action
+        cannot be undone through the API.
+
         Args:
-          project_id: Nano ID of the project
+          project_id: Unique identifier (Nano ID) of the project to delete
 
           extra_headers: Send extra headers
 
@@ -246,10 +265,14 @@ class AsyncProjectResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectCreateResponse:
         """
-        Create a new project within the organization with the specified name
+        Creates a new project within the authenticated user's organization using the
+        specified name. Projects are isolated environments within your organization,
+        each with their own API keys, webhook configurations, and resources. Use this
+        endpoint to create additional projects for different environments (e.g.,
+        development, staging, production) or for separate applications.
 
         Args:
-          name: Name of the project
+          name: A unique name for your project that follows the required format rules
 
           extra_headers: Send extra headers
 
@@ -280,10 +303,13 @@ class AsyncProjectResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectRetrieveResponse:
         """
-        Retrieve detailed information about a specific project using its ID
+        Retrieves detailed information about a specific project using its unique
+        identifier. This endpoint provides complete project configuration including
+        webhook URLs, creation and update timestamps, and webhook secrets. Use this
+        endpoint to inspect project settings or verify project configuration.
 
         Args:
-          project_id: Nano ID of the project
+          project_id: Unique identifier (Nano ID) of the project to retrieve
 
           extra_headers: Send extra headers
 
@@ -313,7 +339,12 @@ class AsyncProjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectListResponse:
-        """Retrieve a list of all projects within the current organization"""
+        """
+        Retrieves all projects belonging to the authenticated user's organization.
+        Projects are returned in descending order of creation date (newest first). This
+        endpoint is useful for displaying project selection in dashboards or for
+        integrations that need to list all available projects.
+        """
         return await self._get(
             "/api/v3/org/project/list",
             options=make_request_options(
@@ -333,9 +364,16 @@ class AsyncProjectResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ProjectDeleteResponse:
-        """
+        """Soft-deletes a project within the organization by its unique identifier.
+
+        When a
+        project is deleted, it is marked as deleted but not immediately removed from the
+        database. This operation affects all resources associated with the project
+        including API keys, webhook configurations, and connected services. This action
+        cannot be undone through the API.
+
         Args:
-          project_id: Nano ID of the project
+          project_id: Unique identifier (Nano ID) of the project to delete
 
           extra_headers: Send extra headers
 

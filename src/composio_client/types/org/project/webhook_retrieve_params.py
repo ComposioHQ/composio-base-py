@@ -9,4 +9,4 @@ __all__ = ["WebhookRetrieveParams"]
 
 class WebhookRetrieveParams(TypedDict, total=False):
     type: Required[Literal["trigger", "event"]]
-    """Type of the webhook"""
+    """Type of webhook to retrieve (trigger or event)"""

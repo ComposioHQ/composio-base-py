@@ -56,13 +56,15 @@ class FilesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> FileListResponse:
-        """
-        List files with optional app and action filters
+        """Retrieves a list of files associated with the authenticated project.
+
+        Results can
+        be filtered by toolkit and tool slugs.
 
         Args:
-          tool_slug: Name of the action where this file belongs to.
+          tool_slug: Filter files by action slug. Example: "convert-to-pdf"
 
-          toolkit_slug: Slug of the app where this file belongs to.
+          toolkit_slug: Filter files by app slug. Example: "file-converter"
 
           extra_headers: Send extra headers
 
@@ -105,19 +107,23 @@ class FilesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> FileCreatePresignedURLResponse:
-        """
-        Create presigned URL for request file upload to S3
+        """Generates a presigned URL for uploading a file to S3.
+
+        This endpoint handles
+        deduplication by checking if a file with the same MD5 hash already exists.
 
         Args:
-          filename: Name of the original file.
+          filename: Name of the original file. Example: "photo.jpg"
 
-          md5: MD5 of a file.
+          md5:
+              MD5 hash of the file for deduplication and integrity verification. Example:
+              "d41d8cd98f00b204e9800998ecf8427e"
 
-          mimetype: Mime type of the original file.
+          mimetype: Mime type of the original file. Example: "image/jpeg"
 
-          tool_slug: Slug of the action where this file belongs to.
+          tool_slug: Slug of the action where this file belongs to. Example: "resize-image"
 
-          toolkit_slug: Slug of the app where this file belongs to.
+          toolkit_slug: Slug of the app where this file belongs to. Example: "image-processing"
 
           extra_headers: Send extra headers
 
@@ -183,13 +189,15 @@ class AsyncFilesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> FileListResponse:
-        """
-        List files with optional app and action filters
+        """Retrieves a list of files associated with the authenticated project.
+
+        Results can
+        be filtered by toolkit and tool slugs.
 
         Args:
-          tool_slug: Name of the action where this file belongs to.
+          tool_slug: Filter files by action slug. Example: "convert-to-pdf"
 
-          toolkit_slug: Slug of the app where this file belongs to.
+          toolkit_slug: Filter files by app slug. Example: "file-converter"
 
           extra_headers: Send extra headers
 
@@ -232,19 +240,23 @@ class AsyncFilesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> FileCreatePresignedURLResponse:
-        """
-        Create presigned URL for request file upload to S3
+        """Generates a presigned URL for uploading a file to S3.
+
+        This endpoint handles
+        deduplication by checking if a file with the same MD5 hash already exists.
 
         Args:
-          filename: Name of the original file.
+          filename: Name of the original file. Example: "photo.jpg"
 
-          md5: MD5 of a file.
+          md5:
+              MD5 hash of the file for deduplication and integrity verification. Example:
+              "d41d8cd98f00b204e9800998ecf8427e"
 
-          mimetype: Mime type of the original file.
+          mimetype: Mime type of the original file. Example: "image/jpeg"
 
-          tool_slug: Slug of the action where this file belongs to.
+          tool_slug: Slug of the action where this file belongs to. Example: "resize-image"
 
-          toolkit_slug: Slug of the app where this file belongs to.
+          toolkit_slug: Slug of the app where this file belongs to. Example: "image-processing"
 
           extra_headers: Send extra headers
 

@@ -9,19 +9,26 @@ __all__ = ["FileListResponse", "Item"]
 
 class Item(BaseModel):
     filename: str
-    """Name of the original file."""
+    """Name of the original file. Example: "document.docx" """
 
     md5: str
-    """MD5 of a file."""
+    """MD5 hash of the file for integrity verification.
+
+    Example: "d41d8cd98f00b204e9800998ecf8427e"
+    """
 
     mimetype: str
-    """Mime type of the original file."""
+    """Mime type of the original file.
+
+    Example:
+    "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+    """
 
     tool_slug: str
-    """Name of the action where this file belongs to."""
+    """Slug of the action where this file belongs to. Example: "convert-to-pdf" """
 
     toolkit_slug: str
-    """Slug of the app where this file belongs to."""
+    """Slug of the app where this file belongs to. Example: "file-converter" """
 
 
 class FileListResponse(BaseModel):

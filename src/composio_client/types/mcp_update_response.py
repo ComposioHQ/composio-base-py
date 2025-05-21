@@ -9,60 +9,66 @@ __all__ = ["McpUpdateResponse", "Commands"]
 
 class Commands(BaseModel):
     claude: str
-    """The claude command to connect to the MCP server"""
+    """Command line instruction for Claude client setup"""
 
     cursor: str
-    """The cursor command to connect to the MCP server"""
+    """Command line instruction for Cursor client setup"""
 
     windsurf: str
-    """The windsurf command to connect to the MCP server"""
+    """Command line instruction for Windsurf client setup"""
 
 
 class McpUpdateResponse(BaseModel):
     id: str
-    """The ID of the MCP server"""
+    """UUID of the MCP server instance"""
 
     allowed_tools: List[str]
-    """The allowed tools for this server"""
+    """Array of tool slugs that this MCP server is allowed to use"""
 
     auth_config_id: str
-    """The auth configuration ID"""
+    """ID reference to the auth configuration used by this server"""
 
     client_id: str
-    """Client ID associated with the MCP server"""
+    """Project identifier that owns this MCP server instance"""
 
     commands: Commands
-    """Command to connect to the MCP server using different clients"""
+    """
+    Set of command line instructions for connecting various clients to this MCP
+    server
+    """
 
     created_at: str
-    """Creation timestamp of the MCP server"""
+    """ISO timestamp of when this server was initially created"""
 
     deleted: bool
-    """Whether the MCP server is deleted"""
+    """Flag indicating if this server has been soft-deleted"""
 
     mcp_url: str
-    """The SSE URL for the MCP server."""
+    """URL endpoint for establishing SSE connection to this MCP server"""
 
     name: str
-    """The name of the MCP server"""
+    """User-defined descriptive name for this MCP server"""
 
     updated_at: str
-    """Last update timestamp of the MCP server"""
+    """ISO timestamp of when this server configuration was last modified"""
 
     actions: Optional[Dict[str, Optional[object]]] = None
-    """Actions available for the MCP server"""
+    """
+    Dictionary of action configurations and permissions available for this MCP
+    server
+    """
 
     apps: Optional[List[str]] = None
-    """App IDs associated with the server"""
+    """List of application identifiers this server is configured to work with"""
 
     auth_configs: Optional[List[str]] = None
-    """Auth config IDs associated with the server"""
+    """List of authentication configuration identifiers used by this server"""
 
     connected_account_ids: Optional[List[str]] = None
-    """Connected account IDs associated with the server"""
+    """List of connected account identifiers this server can use for authentication"""
 
     custom_auth_headers: Optional[bool] = None
-    """Whether custom auth headers are enabled"""
+    """Flag indicating if this server uses custom authentication headers"""
 
     entity_ids: Optional[List[str]] = None
-    """Entity IDs associated with the server"""
+    """List of entity identifiers this MCP server can interact with"""

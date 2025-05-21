@@ -53,9 +53,14 @@ class TriggerResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggerUpdateResponse:
-        """
+        """Updates the trigger enablement status for the current project.
+
+        Use this endpoint
+        to enable or disable triggers for automated workflows within a project.
+
         Args:
-          enabled: Enabled
+          enabled: Boolean flag indicating whether triggers should be enabled (true) or disabled
+              (false) for the project
 
           extra_headers: Send extra headers
 
@@ -87,6 +92,11 @@ class TriggerResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggerListResponse:
+        """
+        Retrieves the current project details including its trigger enablement status.
+        Use this endpoint to check whether triggers are currently enabled or disabled
+        for a project.
+        """
         return self._get(
             "/api/v3/org/project/trigger",
             options=make_request_options(
@@ -127,9 +137,14 @@ class AsyncTriggerResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggerUpdateResponse:
-        """
+        """Updates the trigger enablement status for the current project.
+
+        Use this endpoint
+        to enable or disable triggers for automated workflows within a project.
+
         Args:
-          enabled: Enabled
+          enabled: Boolean flag indicating whether triggers should be enabled (true) or disabled
+              (false) for the project
 
           extra_headers: Send extra headers
 
@@ -161,6 +176,11 @@ class AsyncTriggerResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggerListResponse:
+        """
+        Retrieves the current project details including its trigger enablement status.
+        Use this endpoint to check whether triggers are currently enabled or disabled
+        for a project.
+        """
         return await self._get(
             "/api/v3/org/project/trigger",
             options=make_request_options(

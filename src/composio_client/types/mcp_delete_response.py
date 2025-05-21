@@ -7,4 +7,4 @@ __all__ = ["McpDeleteResponse"]
 
 class McpDeleteResponse(BaseModel):
     success: bool
-    """Operation success status"""
+    """Indicates whether the MCP server was successfully deleted"""
