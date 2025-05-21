@@ -71,13 +71,13 @@ class TestTools:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         tool = client.tools.list(
-            cursor="1",
+            cursor="cursor",
             important="true",
-            limit="20",
-            search="github actions",
+            limit="limit",
+            search="search",
             tags=["string"],
-            tool_slugs=["string"],
-            toolkit_slug="github",
+            tool_slugs="tool_slugs",
+            toolkit_slug="toolkit_slug",
         )
         assert_matches_type(ToolListResponse, tool, path=["response"])
 
@@ -114,23 +114,28 @@ class TestTools:
     def test_method_execute_with_all_params(self, client: Composio) -> None:
         tool = client.tools.execute(
             action="action",
-            allow_tracing=True,
-            arguments={"foo": "bar"},
-            connected_account_id="connected_account_id",
+            allow_tracing=False,
+            arguments={
+                "repository": "bar",
+                "workflow_id": "bar",
+                "ref": "bar",
+                "inputs": "bar",
+            },
+            connected_account_id="ca_1a2b3c4d5e6f",
             custom_auth_params={
                 "parameters": [
                     {
-                        "in": "query",
-                        "name": "name",
-                        "value": "string",
+                        "in": "header",
+                        "name": "x-api-key",
+                        "value": "secret-key",
                     }
                 ],
-                "base_url": "base_url",
+                "base_url": "https://api.example.com",
                 "body": {"foo": "bar"},
             },
-            entity_id="entity_id",
-            text="text",
-            version="version",
+            entity_id="repo-123",
+            text="Trigger the main workflow in the octocat/Hello-World repository on the main branch for the production environment",
+            version="latest",
         )
         assert_matches_type(ToolExecuteResponse, tool, path=["response"])
 
@@ -169,7 +174,7 @@ class TestTools:
     def test_method_get_input(self, client: Composio) -> None:
         tool = client.tools.get_input(
             action_name="actionName",
-            text="text",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
         )
         assert_matches_type(ToolGetInputResponse, tool, path=["response"])
 
@@ -177,10 +182,10 @@ class TestTools:
     def test_method_get_input_with_all_params(self, client: Composio) -> None:
         tool = client.tools.get_input(
             action_name="actionName",
-            text="text",
-            custom_description="customDescription",
-            system_prompt="systemPrompt",
-            version="version",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+            custom_description="This tool triggers GitHub Actions workflows in a repository. It requires the repository name, workflow ID, and optional input parameters.",
+            system_prompt="You are an expert assistant that generates precise GitHub Actions workflow parameters. Extract exact repository names, workflow IDs, and input values from user descriptions.",
+            version="latest",
         )
         assert_matches_type(ToolGetInputResponse, tool, path=["response"])
 
@@ -188,7 +193,7 @@ class TestTools:
     def test_raw_response_get_input(self, client: Composio) -> None:
         response = client.tools.with_raw_response.get_input(
             action_name="actionName",
-            text="text",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
         )
 
         assert response.is_closed is True
@@ -200,7 +205,7 @@ class TestTools:
     def test_streaming_response_get_input(self, client: Composio) -> None:
         with client.tools.with_streaming_response.get_input(
             action_name="actionName",
-            text="text",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -215,13 +220,13 @@ class TestTools:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `action_name` but received ''"):
             client.tools.with_raw_response.get_input(
                 action_name="",
-                text="text",
+                text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
             )
 
     @parametrize
     def test_method_proxy(self, client: Composio) -> None:
         tool = client.tools.proxy(
-            endpoint="endpoint",
+            endpoint="/api/v1/resources",
             method="GET",
         )
         assert_matches_type(ToolProxyResponse, tool, path=["response"])
@@ -229,16 +234,24 @@ class TestTools:
     @parametrize
     def test_method_proxy_with_all_params(self, client: Composio) -> None:
         tool = client.tools.proxy(
-            endpoint="endpoint",
+            endpoint="/api/v1/resources",
             method="GET",
-            body={},
-            connected_account_id="connected_account_id",
+            body={
+                "name": "New Resource",
+                "description": "This is a new resource",
+            },
+            connected_account_id="ca_1a2b3c4d5e6f",
             parameters=[
                 {
-                    "name": "name",
+                    "name": "x-api-key",
                     "type": "header",
-                    "value": "value",
-                }
+                    "value": "abc123def456",
+                },
+                {
+                    "name": "filter",
+                    "type": "query",
+                    "value": "active",
+                },
             ],
         )
         assert_matches_type(ToolProxyResponse, tool, path=["response"])
@@ -246,7 +259,7 @@ class TestTools:
     @parametrize
     def test_raw_response_proxy(self, client: Composio) -> None:
         response = client.tools.with_raw_response.proxy(
-            endpoint="endpoint",
+            endpoint="/api/v1/resources",
             method="GET",
         )
 
@@ -258,7 +271,7 @@ class TestTools:
     @parametrize
     def test_streaming_response_proxy(self, client: Composio) -> None:
         with client.tools.with_streaming_response.proxy(
-            endpoint="endpoint",
+            endpoint="/api/v1/resources",
             method="GET",
         ) as response:
             assert not response.is_closed
@@ -346,13 +359,13 @@ class TestAsyncTools:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.list(
-            cursor="1",
+            cursor="cursor",
             important="true",
-            limit="20",
-            search="github actions",
+            limit="limit",
+            search="search",
             tags=["string"],
-            tool_slugs=["string"],
-            toolkit_slug="github",
+            tool_slugs="tool_slugs",
+            toolkit_slug="toolkit_slug",
         )
         assert_matches_type(ToolListResponse, tool, path=["response"])
 
@@ -389,23 +402,28 @@ class TestAsyncTools:
     async def test_method_execute_with_all_params(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.execute(
             action="action",
-            allow_tracing=True,
-            arguments={"foo": "bar"},
-            connected_account_id="connected_account_id",
+            allow_tracing=False,
+            arguments={
+                "repository": "bar",
+                "workflow_id": "bar",
+                "ref": "bar",
+                "inputs": "bar",
+            },
+            connected_account_id="ca_1a2b3c4d5e6f",
             custom_auth_params={
                 "parameters": [
                     {
-                        "in": "query",
-                        "name": "name",
-                        "value": "string",
+                        "in": "header",
+                        "name": "x-api-key",
+                        "value": "secret-key",
                     }
                 ],
-                "base_url": "base_url",
+                "base_url": "https://api.example.com",
                 "body": {"foo": "bar"},
             },
-            entity_id="entity_id",
-            text="text",
-            version="version",
+            entity_id="repo-123",
+            text="Trigger the main workflow in the octocat/Hello-World repository on the main branch for the production environment",
+            version="latest",
         )
         assert_matches_type(ToolExecuteResponse, tool, path=["response"])
 
@@ -444,7 +462,7 @@ class TestAsyncTools:
     async def test_method_get_input(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.get_input(
             action_name="actionName",
-            text="text",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
         )
         assert_matches_type(ToolGetInputResponse, tool, path=["response"])
 
@@ -452,10 +470,10 @@ class TestAsyncTools:
     async def test_method_get_input_with_all_params(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.get_input(
             action_name="actionName",
-            text="text",
-            custom_description="customDescription",
-            system_prompt="systemPrompt",
-            version="version",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+            custom_description="This tool triggers GitHub Actions workflows in a repository. It requires the repository name, workflow ID, and optional input parameters.",
+            system_prompt="You are an expert assistant that generates precise GitHub Actions workflow parameters. Extract exact repository names, workflow IDs, and input values from user descriptions.",
+            version="latest",
         )
         assert_matches_type(ToolGetInputResponse, tool, path=["response"])
 
@@ -463,7 +481,7 @@ class TestAsyncTools:
     async def test_raw_response_get_input(self, async_client: AsyncComposio) -> None:
         response = await async_client.tools.with_raw_response.get_input(
             action_name="actionName",
-            text="text",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
         )
 
         assert response.is_closed is True
@@ -475,7 +493,7 @@ class TestAsyncTools:
     async def test_streaming_response_get_input(self, async_client: AsyncComposio) -> None:
         async with async_client.tools.with_streaming_response.get_input(
             action_name="actionName",
-            text="text",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -490,13 +508,13 @@ class TestAsyncTools:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `action_name` but received ''"):
             await async_client.tools.with_raw_response.get_input(
                 action_name="",
-                text="text",
+                text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
             )
 
     @parametrize
     async def test_method_proxy(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.proxy(
-            endpoint="endpoint",
+            endpoint="/api/v1/resources",
             method="GET",
         )
         assert_matches_type(ToolProxyResponse, tool, path=["response"])
@@ -504,16 +522,24 @@ class TestAsyncTools:
     @parametrize
     async def test_method_proxy_with_all_params(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.proxy(
-            endpoint="endpoint",
+            endpoint="/api/v1/resources",
             method="GET",
-            body={},
-            connected_account_id="connected_account_id",
+            body={
+                "name": "New Resource",
+                "description": "This is a new resource",
+            },
+            connected_account_id="ca_1a2b3c4d5e6f",
             parameters=[
                 {
-                    "name": "name",
+                    "name": "x-api-key",
                     "type": "header",
-                    "value": "value",
-                }
+                    "value": "abc123def456",
+                },
+                {
+                    "name": "filter",
+                    "type": "query",
+                    "value": "active",
+                },
             ],
         )
         assert_matches_type(ToolProxyResponse, tool, path=["response"])
@@ -521,7 +547,7 @@ class TestAsyncTools:
     @parametrize
     async def test_raw_response_proxy(self, async_client: AsyncComposio) -> None:
         response = await async_client.tools.with_raw_response.proxy(
-            endpoint="endpoint",
+            endpoint="/api/v1/resources",
             method="GET",
         )
 
@@ -533,7 +559,7 @@ class TestAsyncTools:
     @parametrize
     async def test_streaming_response_proxy(self, async_client: AsyncComposio) -> None:
         async with async_client.tools.with_streaming_response.proxy(
-            endpoint="endpoint",
+            endpoint="/api/v1/resources",
             method="GET",
         ) as response:
             assert not response.is_closed

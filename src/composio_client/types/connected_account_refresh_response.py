@@ -10,10 +10,13 @@ __all__ = ["ConnectedAccountRefreshResponse"]
 
 class ConnectedAccountRefreshResponse(BaseModel):
     id: str
-    """The id of the connected account"""
+    """The unique identifier of the connected account"""
 
     redirect_url: Optional[str] = None
-    """The redirect URL of the app (previously named redirect_uri)"""
+    """
+    The URL to which the user should be redirected to complete the authentication
+    process (null for auth schemes that do not require redirection)
+    """
 
     status: Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]
-    """The status of the connected account"""
+    """The current status of the connected account (e.g., active, pending, failed)"""

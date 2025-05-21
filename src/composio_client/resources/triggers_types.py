@@ -60,6 +60,8 @@ class TriggersTypesResource(SyncAPIResource):
         identifier
 
         Args:
+          slug: The unique slug identifier for the trigger type
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -92,10 +94,15 @@ class TriggersTypesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggersTypeListResponse:
         """
-        Retrieve a list of available trigger types with optional filtering by toolkit
+        Retrieve a list of available trigger types with optional filtering by toolkit.
+        Results are paginated and can be filtered by toolkit.
 
         Args:
-          toolkit_slugs: Array of toolkit slugs
+          cursor: Pagination cursor for fetching next page of results
+
+          limit: Number of items to return per page
+
+          toolkit_slugs: Array of toolkit slugs to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -134,6 +141,10 @@ class TriggersTypesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> str:
+        """
+        Retrieves a list of all available trigger type enum values that can be used
+        across the API
+        """
         return self._get(
             "/api/v3/triggers_types/list/enum",
             options=make_request_options(
@@ -179,6 +190,8 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         identifier
 
         Args:
+          slug: The unique slug identifier for the trigger type
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -211,10 +224,15 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggersTypeListResponse:
         """
-        Retrieve a list of available trigger types with optional filtering by toolkit
+        Retrieve a list of available trigger types with optional filtering by toolkit.
+        Results are paginated and can be filtered by toolkit.
 
         Args:
-          toolkit_slugs: Array of toolkit slugs
+          cursor: Pagination cursor for fetching next page of results
+
+          limit: Number of items to return per page
+
+          toolkit_slugs: Array of toolkit slugs to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -253,6 +271,10 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> str:
+        """
+        Retrieves a list of all available trigger type enum values that can be used
+        across the API
+        """
         return await self._get(
             "/api/v3/triggers_types/list/enum",
             options=make_request_options(

@@ -24,14 +24,14 @@ class TestToolkits:
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
         toolkit = client.toolkits.retrieve(
-            "slug",
+            "github",
         )
         assert_matches_type(ToolkitRetrieveResponse, toolkit, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.toolkits.with_raw_response.retrieve(
-            "slug",
+            "github",
         )
 
         assert response.is_closed is True
@@ -42,7 +42,7 @@ class TestToolkits:
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.toolkits.with_streaming_response.retrieve(
-            "slug",
+            "github",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,7 +67,7 @@ class TestToolkits:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         toolkit = client.toolkits.list(
-            category="category",
+            category="productivity",
             is_local=True,
             managed_by="composio",
             sort_by="usage",
@@ -100,6 +100,13 @@ class TestToolkits:
         assert_matches_type(ToolkitRetrieveCategoriesResponse, toolkit, path=["response"])
 
     @parametrize
+    def test_method_retrieve_categories_with_all_params(self, client: Composio) -> None:
+        toolkit = client.toolkits.retrieve_categories(
+            cache="1",
+        )
+        assert_matches_type(ToolkitRetrieveCategoriesResponse, toolkit, path=["response"])
+
+    @parametrize
     def test_raw_response_retrieve_categories(self, client: Composio) -> None:
         response = client.toolkits.with_raw_response.retrieve_categories()
 
@@ -126,14 +133,14 @@ class TestAsyncToolkits:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         toolkit = await async_client.toolkits.retrieve(
-            "slug",
+            "github",
         )
         assert_matches_type(ToolkitRetrieveResponse, toolkit, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.toolkits.with_raw_response.retrieve(
-            "slug",
+            "github",
         )
 
         assert response.is_closed is True
@@ -144,7 +151,7 @@ class TestAsyncToolkits:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.toolkits.with_streaming_response.retrieve(
-            "slug",
+            "github",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -169,7 +176,7 @@ class TestAsyncToolkits:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         toolkit = await async_client.toolkits.list(
-            category="category",
+            category="productivity",
             is_local=True,
             managed_by="composio",
             sort_by="usage",
@@ -199,6 +206,13 @@ class TestAsyncToolkits:
     @parametrize
     async def test_method_retrieve_categories(self, async_client: AsyncComposio) -> None:
         toolkit = await async_client.toolkits.retrieve_categories()
+        assert_matches_type(ToolkitRetrieveCategoriesResponse, toolkit, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_categories_with_all_params(self, async_client: AsyncComposio) -> None:
+        toolkit = await async_client.toolkits.retrieve_categories(
+            cache="1",
+        )
         assert_matches_type(ToolkitRetrieveCategoriesResponse, toolkit, path=["response"])
 
     @parametrize

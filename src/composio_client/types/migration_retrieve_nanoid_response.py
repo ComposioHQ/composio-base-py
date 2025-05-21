@@ -7,4 +7,7 @@ __all__ = ["MigrationRetrieveNanoidResponse"]
 
 class MigrationRetrieveNanoidResponse(BaseModel):
     nanoid: str
-    """The NanoId corresponding to the provided UUID."""
+    """The NanoId corresponding to the provided UUID.
+
+    This is the new identifier that should be used in place of the legacy UUID.
+    """

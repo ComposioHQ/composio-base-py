@@ -26,14 +26,14 @@ class TestMcp:
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
         mcp = client.mcp.retrieve(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         )
         assert_matches_type(McpRetrieveResponse, mcp, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.retrieve(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         )
 
         assert response.is_closed is True
@@ -44,7 +44,7 @@ class TestMcp:
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.retrieve(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -64,24 +64,24 @@ class TestMcp:
     @parametrize
     def test_method_update(self, client: Composio) -> None:
         mcp = client.mcp.update(
-            id="id",
+            id="550e8400-e29b-41d4-a716-446655440000",
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
     @parametrize
     def test_method_update_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.update(
-            id="id",
-            actions=["string"],
-            apps=["string"],
-            name="name",
+            id="550e8400-e29b-41d4-a716-446655440000",
+            actions=["github-issues", "github-repos", "github-pull-requests"],
+            apps=["github", "jira"],
+            name="Updated GitHub Integration Server",
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
     @parametrize
     def test_raw_response_update(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.update(
-            id="id",
+            id="550e8400-e29b-41d4-a716-446655440000",
         )
 
         assert response.is_closed is True
@@ -92,7 +92,7 @@ class TestMcp:
     @parametrize
     def test_streaming_response_update(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.update(
-            id="id",
+            id="550e8400-e29b-41d4-a716-446655440000",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -112,14 +112,14 @@ class TestMcp:
     @parametrize
     def test_method_delete(self, client: Composio) -> None:
         mcp = client.mcp.delete(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         )
         assert_matches_type(McpDeleteResponse, mcp, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.delete(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         )
 
         assert response.is_closed is True
@@ -130,7 +130,7 @@ class TestMcp:
     @parametrize
     def test_streaming_response_delete(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.delete(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -150,26 +150,26 @@ class TestMcp:
     @parametrize
     def test_method_retrieve_app(self, client: Composio) -> None:
         mcp = client.mcp.retrieve_app(
-            app_key="appKey",
+            app_key="github",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
     @parametrize
     def test_method_retrieve_app_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.retrieve_app(
-            app_key="appKey",
-            auth_config_id="auth_config_id",
-            limit=0,
-            name="name",
-            page_no=0,
-            toolkit="toolkit",
+            app_key="github",
+            auth_config_id="auth_cfg_abc123def456",
+            limit=10,
+            name="github",
+            page_no=1,
+            toolkit="github",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve_app(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.retrieve_app(
-            app_key="appKey",
+            app_key="github",
         )
 
         assert response.is_closed is True
@@ -180,7 +180,7 @@ class TestMcp:
     @parametrize
     def test_streaming_response_retrieve_app(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.retrieve_app(
-            app_key="appKey",
+            app_key="github",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -200,16 +200,16 @@ class TestMcp:
     @parametrize
     def test_method_validate(self, client: Composio) -> None:
         mcp = client.mcp.validate(
-            uuid="uuid",
-            x_composio_admin_token="x-composio-admin-token",
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
         )
         assert_matches_type(McpValidateResponse, mcp, path=["response"])
 
     @parametrize
     def test_raw_response_validate(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.validate(
-            uuid="uuid",
-            x_composio_admin_token="x-composio-admin-token",
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
         )
 
         assert response.is_closed is True
@@ -220,8 +220,8 @@ class TestMcp:
     @parametrize
     def test_streaming_response_validate(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.validate(
-            uuid="uuid",
-            x_composio_admin_token="x-composio-admin-token",
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -236,7 +236,7 @@ class TestMcp:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `uuid` but received ''"):
             client.mcp.with_raw_response.validate(
                 uuid="",
-                x_composio_admin_token="x-composio-admin-token",
+                x_composio_admin_token="admin_tk_12345abcdef",
             )
 
 
@@ -246,14 +246,14 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.retrieve(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         )
         assert_matches_type(McpRetrieveResponse, mcp, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.retrieve(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         )
 
         assert response.is_closed is True
@@ -264,7 +264,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.retrieve(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -284,24 +284,24 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_update(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.update(
-            id="id",
+            id="550e8400-e29b-41d4-a716-446655440000",
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
     @parametrize
     async def test_method_update_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.update(
-            id="id",
-            actions=["string"],
-            apps=["string"],
-            name="name",
+            id="550e8400-e29b-41d4-a716-446655440000",
+            actions=["github-issues", "github-repos", "github-pull-requests"],
+            apps=["github", "jira"],
+            name="Updated GitHub Integration Server",
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.update(
-            id="id",
+            id="550e8400-e29b-41d4-a716-446655440000",
         )
 
         assert response.is_closed is True
@@ -312,7 +312,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.update(
-            id="id",
+            id="550e8400-e29b-41d4-a716-446655440000",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -332,14 +332,14 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_delete(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.delete(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         )
         assert_matches_type(McpDeleteResponse, mcp, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.delete(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         )
 
         assert response.is_closed is True
@@ -350,7 +350,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.delete(
-            "id",
+            "550e8400-e29b-41d4-a716-446655440000",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -370,26 +370,26 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_retrieve_app(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.retrieve_app(
-            app_key="appKey",
+            app_key="github",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
     @parametrize
     async def test_method_retrieve_app_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.retrieve_app(
-            app_key="appKey",
-            auth_config_id="auth_config_id",
-            limit=0,
-            name="name",
-            page_no=0,
-            toolkit="toolkit",
+            app_key="github",
+            auth_config_id="auth_cfg_abc123def456",
+            limit=10,
+            name="github",
+            page_no=1,
+            toolkit="github",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve_app(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.retrieve_app(
-            app_key="appKey",
+            app_key="github",
         )
 
         assert response.is_closed is True
@@ -400,7 +400,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_streaming_response_retrieve_app(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.retrieve_app(
-            app_key="appKey",
+            app_key="github",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -420,16 +420,16 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_validate(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.validate(
-            uuid="uuid",
-            x_composio_admin_token="x-composio-admin-token",
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
         )
         assert_matches_type(McpValidateResponse, mcp, path=["response"])
 
     @parametrize
     async def test_raw_response_validate(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.validate(
-            uuid="uuid",
-            x_composio_admin_token="x-composio-admin-token",
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
         )
 
         assert response.is_closed is True
@@ -440,8 +440,8 @@ class TestAsyncMcp:
     @parametrize
     async def test_streaming_response_validate(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.validate(
-            uuid="uuid",
-            x_composio_admin_token="x-composio-admin-token",
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -456,5 +456,5 @@ class TestAsyncMcp:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `uuid` but received ''"):
             await async_client.mcp.with_raw_response.validate(
                 uuid="",
-                x_composio_admin_token="x-composio-admin-token",
+                x_composio_admin_token="admin_tk_12345abcdef",
             )

@@ -9,4 +9,4 @@ __all__ = ["WebhookDeleteParams"]
 
 class WebhookDeleteParams(TypedDict, total=False):
     type: Required[Literal["trigger", "event"]]
-    """Type of the webhook"""
+    """Specifies which webhook type to remove from the project configuration"""

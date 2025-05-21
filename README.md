@@ -95,12 +95,12 @@ response = client.tools.execute(
     custom_auth_params={
         "parameters": [
             {
-                "in": "query",
-                "name": "name",
-                "value": "string",
+                "in": "header",
+                "name": "x-api-key",
+                "value": "secret-key",
             }
         ],
-        "base_url": "base_url",
+        "base_url": "https://api.example.com",
         "body": {"foo": "bar"},
     },
 )

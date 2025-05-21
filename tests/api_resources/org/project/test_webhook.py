@@ -57,7 +57,7 @@ class TestWebhook:
     def test_method_update(self, client: Composio) -> None:
         webhook = client.org.project.webhook.update(
             type="trigger",
-            webhook_url="https://example.com",
+            webhook_url="https://example.com/api/webhooks/triggers",
         )
         assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
 
@@ -65,7 +65,7 @@ class TestWebhook:
     def test_raw_response_update(self, client: Composio) -> None:
         response = client.org.project.webhook.with_raw_response.update(
             type="trigger",
-            webhook_url="https://example.com",
+            webhook_url="https://example.com/api/webhooks/triggers",
         )
 
         assert response.is_closed is True
@@ -77,7 +77,7 @@ class TestWebhook:
     def test_streaming_response_update(self, client: Composio) -> None:
         with client.org.project.webhook.with_streaming_response.update(
             type="trigger",
-            webhook_url="https://example.com",
+            webhook_url="https://example.com/api/webhooks/triggers",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -182,7 +182,7 @@ class TestAsyncWebhook:
     async def test_method_update(self, async_client: AsyncComposio) -> None:
         webhook = await async_client.org.project.webhook.update(
             type="trigger",
-            webhook_url="https://example.com",
+            webhook_url="https://example.com/api/webhooks/triggers",
         )
         assert_matches_type(WebhookUpdateResponse, webhook, path=["response"])
 
@@ -190,7 +190,7 @@ class TestAsyncWebhook:
     async def test_raw_response_update(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.webhook.with_raw_response.update(
             type="trigger",
-            webhook_url="https://example.com",
+            webhook_url="https://example.com/api/webhooks/triggers",
         )
 
         assert response.is_closed is True
@@ -202,7 +202,7 @@ class TestAsyncWebhook:
     async def test_streaming_response_update(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.webhook.with_streaming_response.update(
             type="trigger",
-            webhook_url="https://example.com",
+            webhook_url="https://example.com/api/webhooks/triggers",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

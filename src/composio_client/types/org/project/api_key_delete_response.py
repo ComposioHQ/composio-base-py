@@ -7,7 +7,7 @@ __all__ = ["APIKeyDeleteResponse"]
 
 class APIKeyDeleteResponse(BaseModel):
     message: str
-    """Status message"""
+    """Status message providing details about the deletion operation"""
 
     success: bool
-    """Whether the operation was successful"""
+    """Boolean flag indicating if the deletion operation was successful"""

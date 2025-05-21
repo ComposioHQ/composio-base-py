@@ -9,7 +9,7 @@ __all__ = ["WebhookUpdateParams"]
 
 class WebhookUpdateParams(TypedDict, total=False):
     type: Required[Literal["trigger", "event"]]
-    """Type of the webhook"""
+    """Specifies which webhook type to update (trigger or event)"""
 
     webhook_url: Required[str]
-    """Webhook URL"""
+    """Valid URL that will receive webhook payloads. Must include https:// protocol."""
