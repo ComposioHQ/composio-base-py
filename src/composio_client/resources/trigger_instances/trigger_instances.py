@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import Dict, List, Optional
-from typing_extensions import Literal
 
 import httpx
 
@@ -29,8 +28,6 @@ from ..._response import (
 from ..._base_client import make_request_options
 from ...types.trigger_instance_upsert_response import TriggerInstanceUpsertResponse
 from ...types.trigger_instance_list_active_response import TriggerInstanceListActiveResponse
-from ...types.trigger_instance_remove_upsert_response import TriggerInstanceRemoveUpsertResponse
-from ...types.trigger_instance_update_status_response import TriggerInstanceUpdateStatusResponse
 
 __all__ = ["TriggerInstancesResource", "AsyncTriggerInstancesResource"]
 
@@ -131,81 +128,14 @@ class TriggerInstancesResource(SyncAPIResource):
             cast_to=TriggerInstanceListActiveResponse,
         )
 
-    def remove_upsert(
-        self,
-        slug: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TriggerInstanceRemoveUpsertResponse:
-        """
-        Args:
-          slug: The slug of the trigger instance
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not slug:
-            raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
-        return self._delete(
-            f"/api/v3/trigger_instances/{slug}/upsert",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TriggerInstanceRemoveUpsertResponse,
-        )
-
-    def update_status(
-        self,
-        status: Literal["enable", "disable"],
-        *,
-        slug: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TriggerInstanceUpdateStatusResponse:
-        """
-        Args:
-          slug: The slug of the trigger instance
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not slug:
-            raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
-        if not status:
-            raise ValueError(f"Expected a non-empty value for `status` but received {status!r}")
-        return self._patch(
-            f"/api/v3/trigger_instances/{slug}/status/{status}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TriggerInstanceUpdateStatusResponse,
-        )
-
     def upsert(
         self,
         slug: str,
         *,
-        connected_auth_id: str,
-        trigger_config: Dict[str, Optional[object]],
+        connected_account_id: str | NotGiven = NOT_GIVEN,
+        connected_auth_id: str | NotGiven = NOT_GIVEN,
+        body_trigger_config_1: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        body_trigger_config_2: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -217,9 +147,13 @@ class TriggerInstancesResource(SyncAPIResource):
         Args:
           slug: The slug of the trigger instance
 
-          connected_auth_id: Connection ID
+          connected_account_id: Connected account nanoid
 
-          trigger_config: Trigger configuration
+          connected_auth_id: Connected account ID (deprecated)
+
+          body_trigger_config_1: Trigger configuration
+
+          body_trigger_config_2: Trigger configuration (deprecated)
 
           extra_headers: Send extra headers
 
@@ -235,8 +169,10 @@ class TriggerInstancesResource(SyncAPIResource):
             f"/api/v3/trigger_instances/{slug}/upsert",
             body=maybe_transform(
                 {
+                    "connected_account_id": connected_account_id,
                     "connected_auth_id": connected_auth_id,
-                    "trigger_config": trigger_config,
+                    "body_trigger_config_1": body_trigger_config_1,
+                    "body_trigger_config_2": body_trigger_config_2,
                 },
                 trigger_instance_upsert_params.TriggerInstanceUpsertParams,
             ),
@@ -343,81 +279,14 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
             cast_to=TriggerInstanceListActiveResponse,
         )
 
-    async def remove_upsert(
-        self,
-        slug: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TriggerInstanceRemoveUpsertResponse:
-        """
-        Args:
-          slug: The slug of the trigger instance
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not slug:
-            raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
-        return await self._delete(
-            f"/api/v3/trigger_instances/{slug}/upsert",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TriggerInstanceRemoveUpsertResponse,
-        )
-
-    async def update_status(
-        self,
-        status: Literal["enable", "disable"],
-        *,
-        slug: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TriggerInstanceUpdateStatusResponse:
-        """
-        Args:
-          slug: The slug of the trigger instance
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not slug:
-            raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
-        if not status:
-            raise ValueError(f"Expected a non-empty value for `status` but received {status!r}")
-        return await self._patch(
-            f"/api/v3/trigger_instances/{slug}/status/{status}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TriggerInstanceUpdateStatusResponse,
-        )
-
     async def upsert(
         self,
         slug: str,
         *,
-        connected_auth_id: str,
-        trigger_config: Dict[str, Optional[object]],
+        connected_account_id: str | NotGiven = NOT_GIVEN,
+        connected_auth_id: str | NotGiven = NOT_GIVEN,
+        body_trigger_config_1: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        body_trigger_config_2: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -429,9 +298,13 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         Args:
           slug: The slug of the trigger instance
 
-          connected_auth_id: Connection ID
+          connected_account_id: Connected account nanoid
 
-          trigger_config: Trigger configuration
+          connected_auth_id: Connected account ID (deprecated)
+
+          body_trigger_config_1: Trigger configuration
+
+          body_trigger_config_2: Trigger configuration (deprecated)
 
           extra_headers: Send extra headers
 
@@ -447,8 +320,10 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
             f"/api/v3/trigger_instances/{slug}/upsert",
             body=await async_maybe_transform(
                 {
+                    "connected_account_id": connected_account_id,
                     "connected_auth_id": connected_auth_id,
-                    "trigger_config": trigger_config,
+                    "body_trigger_config_1": body_trigger_config_1,
+                    "body_trigger_config_2": body_trigger_config_2,
                 },
                 trigger_instance_upsert_params.TriggerInstanceUpsertParams,
             ),
@@ -466,12 +341,6 @@ class TriggerInstancesResourceWithRawResponse:
         self.list_active = to_raw_response_wrapper(
             trigger_instances.list_active,
         )
-        self.remove_upsert = to_raw_response_wrapper(
-            trigger_instances.remove_upsert,
-        )
-        self.update_status = to_raw_response_wrapper(
-            trigger_instances.update_status,
-        )
         self.upsert = to_raw_response_wrapper(
             trigger_instances.upsert,
         )
@@ -487,12 +356,6 @@ class AsyncTriggerInstancesResourceWithRawResponse:
 
         self.list_active = async_to_raw_response_wrapper(
             trigger_instances.list_active,
-        )
-        self.remove_upsert = async_to_raw_response_wrapper(
-            trigger_instances.remove_upsert,
-        )
-        self.update_status = async_to_raw_response_wrapper(
-            trigger_instances.update_status,
         )
         self.upsert = async_to_raw_response_wrapper(
             trigger_instances.upsert,
@@ -510,12 +373,6 @@ class TriggerInstancesResourceWithStreamingResponse:
         self.list_active = to_streamed_response_wrapper(
             trigger_instances.list_active,
         )
-        self.remove_upsert = to_streamed_response_wrapper(
-            trigger_instances.remove_upsert,
-        )
-        self.update_status = to_streamed_response_wrapper(
-            trigger_instances.update_status,
-        )
         self.upsert = to_streamed_response_wrapper(
             trigger_instances.upsert,
         )
@@ -531,12 +388,6 @@ class AsyncTriggerInstancesResourceWithStreamingResponse:
 
         self.list_active = async_to_streamed_response_wrapper(
             trigger_instances.list_active,
-        )
-        self.remove_upsert = async_to_streamed_response_wrapper(
-            trigger_instances.remove_upsert,
-        )
-        self.update_status = async_to_streamed_response_wrapper(
-            trigger_instances.update_status,
         )
         self.upsert = async_to_streamed_response_wrapper(
             trigger_instances.upsert,
