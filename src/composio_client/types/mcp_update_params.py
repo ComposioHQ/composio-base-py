@@ -16,4 +16,7 @@ class McpUpdateParams(TypedDict, total=False):
     """List of application identifiers this server should be configured to work with"""
 
     name: str
-    """Human-readable name to identify this MCP server"""
+    """
+    Human-readable name to identify this MCP server instance (4-25 characters,
+    alphanumeric and hyphens only)
+    """

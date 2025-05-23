@@ -77,7 +77,7 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     params: Dict[str, Optional[object]]
     """The initialization data of the connection, including configuration parameters"""
 
-    status: Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]
+    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]
     """The status of the connection"""
 
     status_reason: Optional[str] = None

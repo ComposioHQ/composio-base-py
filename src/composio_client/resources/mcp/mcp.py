@@ -110,7 +110,8 @@ class McpResource(SyncAPIResource):
 
           apps: List of application identifiers this server should be configured to work with
 
-          name: Human-readable name to identify this MCP server
+          name: Human-readable name to identify this MCP server instance (4-25 characters,
+              alphanumeric and hyphens only)
 
           extra_headers: Send extra headers
 
@@ -369,7 +370,8 @@ class AsyncMcpResource(AsyncAPIResource):
 
           apps: List of application identifiers this server should be configured to work with
 
-          name: Human-readable name to identify this MCP server
+          name: Human-readable name to identify this MCP server instance (4-25 characters,
+              alphanumeric and hyphens only)
 
           extra_headers: Send extra headers
 
