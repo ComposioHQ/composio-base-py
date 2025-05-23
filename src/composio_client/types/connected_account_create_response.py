@@ -33,5 +33,5 @@ class ConnectedAccountCreateResponse(BaseModel):
     redirect_url: Optional[str] = None
     """The URL to redirect to after connection completion"""
 
-    status: Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]
+    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]
     """The status of the connected account"""

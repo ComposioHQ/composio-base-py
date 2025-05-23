@@ -72,8 +72,8 @@ class TestMcp:
     def test_method_update_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
-            actions=["github-issues", "github-repos", "github-pull-requests"],
-            apps=["github", "jira"],
+            actions=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            apps=["gmail"],
             name="Updated GitHub Integration Server",
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
@@ -292,8 +292,8 @@ class TestAsyncMcp:
     async def test_method_update_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
-            actions=["github-issues", "github-repos", "github-pull-requests"],
-            apps=["github", "jira"],
+            actions=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            apps=["gmail"],
             name="Updated GitHub Integration Server",
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
