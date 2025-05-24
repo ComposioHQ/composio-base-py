@@ -10,21 +10,27 @@ __all__ = ["APIKeyListResponse", "Item"]
 
 class Item(BaseModel):
     id: str
-    """API key ID"""
+    """Unique identifier for the API key record"""
 
     created_at: datetime
-    """Creation timestamp"""
+    """UTC timestamp indicating when the API key was created"""
 
     key: str
-    """API key value"""
+    """The API key string that should be included in API requests for authentication"""
 
     name: str
-    """API key name"""
+    """Descriptive name assigned to the API key for identification purposes"""
 
     last_used: Optional[datetime] = None
-    """Last used timestamp"""
+    """UTC timestamp indicating when the API key was last used for authentication.
+
+    Will be null if the key has never been used.
+    """
 
 
 class APIKeyListResponse(BaseModel):
     items: List[Item]
-    """List of API keys"""
+    """
+    List of all API keys for the specified project, including their properties and
+    usage information
+    """

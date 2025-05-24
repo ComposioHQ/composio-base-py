@@ -170,7 +170,7 @@ Methods:
 
 - <code title="get /api/v3/toolkits/{slug}">client.toolkits.<a href="./src/composio_client/resources/toolkits.py">retrieve</a>(slug) -> <a href="./src/composio_client/types/toolkit_retrieve_response.py">ToolkitRetrieveResponse</a></code>
 - <code title="get /api/v3/toolkits">client.toolkits.<a href="./src/composio_client/resources/toolkits.py">list</a>(\*\*<a href="src/composio_client/types/toolkit_list_params.py">params</a>) -> <a href="./src/composio_client/types/toolkit_list_response.py">ToolkitListResponse</a></code>
-- <code title="get /api/v3/toolkits/categories">client.toolkits.<a href="./src/composio_client/resources/toolkits.py">retrieve_categories</a>() -> <a href="./src/composio_client/types/toolkit_retrieve_categories_response.py">ToolkitRetrieveCategoriesResponse</a></code>
+- <code title="get /api/v3/toolkits/categories">client.toolkits.<a href="./src/composio_client/resources/toolkits.py">retrieve_categories</a>(\*\*<a href="src/composio_client/types/toolkit_retrieve_categories_params.py">params</a>) -> <a href="./src/composio_client/types/toolkit_retrieve_categories_response.py">ToolkitRetrieveCategoriesResponse</a></code>
 
 # Tools
 
@@ -201,19 +201,12 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import (
-    TriggerInstanceListActiveResponse,
-    TriggerInstanceRemoveUpsertResponse,
-    TriggerInstanceUpdateStatusResponse,
-    TriggerInstanceUpsertResponse,
-)
+from composio_client.types import TriggerInstanceListActiveResponse, TriggerInstanceUpsertResponse
 ```
 
 Methods:
 
 - <code title="get /api/v3/trigger_instances/active">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">list_active</a>(\*\*<a href="src/composio_client/types/trigger_instance_list_active_params.py">params</a>) -> <a href="./src/composio_client/types/trigger_instance_list_active_response.py">TriggerInstanceListActiveResponse</a></code>
-- <code title="delete /api/v3/trigger_instances/{slug}/upsert">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">remove_upsert</a>(slug) -> <a href="./src/composio_client/types/trigger_instance_remove_upsert_response.py">TriggerInstanceRemoveUpsertResponse</a></code>
-- <code title="patch /api/v3/trigger_instances/{slug}/status/{status}">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">update_status</a>(status, \*, slug) -> <a href="./src/composio_client/types/trigger_instance_update_status_response.py">TriggerInstanceUpdateStatusResponse</a></code>
 - <code title="post /api/v3/trigger_instances/{slug}/upsert">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">upsert</a>(slug, \*\*<a href="src/composio_client/types/trigger_instance_upsert_params.py">params</a>) -> <a href="./src/composio_client/types/trigger_instance_upsert_response.py">TriggerInstanceUpsertResponse</a></code>
 
 ## Handle
@@ -253,10 +246,8 @@ Types:
 
 ```python
 from composio_client.types import (
-    McpCreateResponse,
     McpRetrieveResponse,
     McpUpdateResponse,
-    McpListResponse,
     McpDeleteResponse,
     McpRetrieveAppResponse,
     McpValidateResponse,
@@ -265,25 +256,11 @@ from composio_client.types import (
 
 Methods:
 
-- <code title="post /api/v3/mcp/create">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">create</a>(\*\*<a href="src/composio_client/types/mcp_create_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_create_response.py">McpCreateResponse</a></code>
 - <code title="get /api/v3/mcp/{id}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">retrieve</a>(id) -> <a href="./src/composio_client/types/mcp_retrieve_response.py">McpRetrieveResponse</a></code>
 - <code title="patch /api/v3/mcp/{id}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">update</a>(id, \*\*<a href="src/composio_client/types/mcp_update_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_update_response.py">McpUpdateResponse</a></code>
-- <code title="get /api/v3/mcp/list">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">list</a>(\*\*<a href="src/composio_client/types/mcp_list_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_list_response.py">McpListResponse</a></code>
 - <code title="delete /api/v3/mcp/{id}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">delete</a>(id) -> <a href="./src/composio_client/types/mcp_delete_response.py">McpDeleteResponse</a></code>
-- <code title="get /api/v3/mcp/app/{appKey}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">retrieve_app</a>(app_key) -> <a href="./src/composio_client/types/mcp_retrieve_app_response.py">McpRetrieveAppResponse</a></code>
+- <code title="get /api/v3/mcp/app/{appKey}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">retrieve_app</a>(app_key, \*\*<a href="src/composio_client/types/mcp_retrieve_app_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_retrieve_app_response.py">McpRetrieveAppResponse</a></code>
 - <code title="get /api/v3/mcp/validate/{uuid}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">validate</a>(uuid) -> <a href="./src/composio_client/types/mcp_validate_response.py">McpValidateResponse</a></code>
-
-## Command
-
-Types:
-
-```python
-from composio_client.types.mcp import CommandGenerateResponse
-```
-
-Methods:
-
-- <code title="post /api/v3/mcp/command/generate">client.mcp.command.<a href="./src/composio_client/resources/mcp/command.py">generate</a>(\*\*<a href="src/composio_client/types/mcp/command_generate_params.py">params</a>) -> <a href="./src/composio_client/types/mcp/command_generate_response.py">CommandGenerateResponse</a></code>
 
 # Files
 

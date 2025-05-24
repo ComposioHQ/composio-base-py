@@ -11,43 +11,50 @@ __all__ = ["McpValidateResponse", "Client", "UserData"]
 
 class Client(BaseModel):
     id: str
-    """The client ID"""
+    """Project identifier that owns this MCP server"""
 
     org_id: str = FieldInfo(alias="orgId")
-    """The organization ID"""
+    """Organization identifier that owns the project"""
 
 
 class UserData(BaseModel):
     id: str
-    """The user ID"""
+    """User identifier for API access"""
 
     api_key: str = FieldInfo(alias="apiKey")
-    """The API key"""
+    """API key for authenticating requests to the Composio API"""
 
     email: str
-    """The user email"""
+    """Email address associated with the API key user"""
 
 
 class McpValidateResponse(BaseModel):
     id: str
-    """The ID of the MCP server"""
+    """Unique identifier of the validated MCP server"""
 
     client: Client
+    """Client information for the MCP server"""
 
     name: str
-    """The name of the MCP server"""
+    """Human-readable name of the MCP server"""
 
     url: str
-    """The URL of the MCP server"""
+    """URL endpoint for connecting to this MCP server"""
 
     user_data: UserData = FieldInfo(alias="userData")
+    """User authentication data for the MCP server"""
 
     actions: Optional[List[str]] = None
+    """List of action identifiers enabled for this server"""
 
     apps: Optional[List[str]] = None
+    """List of application identifiers this server is configured for"""
 
     connected_account_ids: Optional[List[str]] = FieldInfo(alias="connectedAccountIds", default=None)
+    """List of connected account identifiers this server can use for authentication"""
 
     custom_auth_headers: Optional[bool] = FieldInfo(alias="customAuthHeaders", default=None)
+    """Flag indicating if this server uses custom authentication headers"""
 
     entity_ids: Optional[List[str]] = FieldInfo(alias="entityIds", default=None)
+    """List of entity identifiers this MCP server can interact with"""

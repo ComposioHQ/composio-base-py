@@ -110,11 +110,13 @@ class TestConnectedAccounts:
                 "",
             )
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_method_list(self, client: Composio) -> None:
         connected_account = client.connected_accounts.list()
         assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         connected_account = client.connected_accounts.list(
@@ -123,12 +125,13 @@ class TestConnectedAccounts:
             labels=["string"],
             limit=0,
             order_by="created_at",
-            statuses=["ACTIVE"],
+            statuses=["INITIALIZING"],
             toolkit_slugs=["string"],
             user_ids=["string"],
         )
         assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_raw_response_list(self, client: Composio) -> None:
         response = client.connected_accounts.with_raw_response.list()
@@ -138,6 +141,7 @@ class TestConnectedAccounts:
         connected_account = response.parse()
         assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_streaming_response_list(self, client: Composio) -> None:
         with client.connected_accounts.with_streaming_response.list() as response:
@@ -228,7 +232,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_method_update_status(self, client: Composio) -> None:
         connected_account = client.connected_accounts.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         )
         assert_matches_type(ConnectedAccountUpdateStatusResponse, connected_account, path=["response"])
@@ -236,7 +240,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_raw_response_update_status(self, client: Composio) -> None:
         response = client.connected_accounts.with_raw_response.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         )
 
@@ -248,7 +252,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_streaming_response_update_status(self, client: Composio) -> None:
         with client.connected_accounts.with_streaming_response.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         ) as response:
             assert not response.is_closed
@@ -357,11 +361,13 @@ class TestAsyncConnectedAccounts:
                 "",
             )
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_method_list(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.list()
         assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.list(
@@ -370,12 +376,13 @@ class TestAsyncConnectedAccounts:
             labels=["string"],
             limit=0,
             order_by="created_at",
-            statuses=["ACTIVE"],
+            statuses=["INITIALIZING"],
             toolkit_slugs=["string"],
             user_ids=["string"],
         )
         assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncComposio) -> None:
         response = await async_client.connected_accounts.with_raw_response.list()
@@ -385,6 +392,7 @@ class TestAsyncConnectedAccounts:
         connected_account = await response.parse()
         assert_matches_type(ConnectedAccountListResponse, connected_account, path=["response"])
 
+    @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncComposio) -> None:
         async with async_client.connected_accounts.with_streaming_response.list() as response:
@@ -475,7 +483,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_method_update_status(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         )
         assert_matches_type(ConnectedAccountUpdateStatusResponse, connected_account, path=["response"])
@@ -483,7 +491,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_raw_response_update_status(self, async_client: AsyncComposio) -> None:
         response = await async_client.connected_accounts.with_raw_response.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         )
 
@@ -495,7 +503,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_streaming_response_update_status(self, async_client: AsyncComposio) -> None:
         async with async_client.connected_accounts.with_streaming_response.update_status(
-            nano_id="nanoId",
+            nano_id="con_1a2b3c4d5e6f",
             enabled=True,
         ) as response:
             assert not response.is_closed

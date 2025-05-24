@@ -25,14 +25,14 @@ class TestProject:
     @parametrize
     def test_method_create(self, client: Composio) -> None:
         project = client.org.project.create(
-            name="name",
+            name="my-production-api",
         )
         assert_matches_type(ProjectCreateResponse, project, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Composio) -> None:
         response = client.org.project.with_raw_response.create(
-            name="name",
+            name="my-production-api",
         )
 
         assert response.is_closed is True
@@ -43,7 +43,7 @@ class TestProject:
     @parametrize
     def test_streaming_response_create(self, client: Composio) -> None:
         with client.org.project.with_streaming_response.create(
-            name="name",
+            name="my-production-api",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -56,14 +56,14 @@ class TestProject:
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
         project = client.org.project.retrieve(
-            "projectId",
+            "proj_abc123xyz456",
         )
         assert_matches_type(ProjectRetrieveResponse, project, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.org.project.with_raw_response.retrieve(
-            "projectId",
+            "proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -74,7 +74,7 @@ class TestProject:
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.org.project.with_streaming_response.retrieve(
-            "projectId",
+            "proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -119,14 +119,14 @@ class TestProject:
     @parametrize
     def test_method_delete(self, client: Composio) -> None:
         project = client.org.project.delete(
-            "projectId",
+            "proj_abc123xyz456",
         )
         assert_matches_type(ProjectDeleteResponse, project, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: Composio) -> None:
         response = client.org.project.with_raw_response.delete(
-            "projectId",
+            "proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -137,7 +137,7 @@ class TestProject:
     @parametrize
     def test_streaming_response_delete(self, client: Composio) -> None:
         with client.org.project.with_streaming_response.delete(
-            "projectId",
+            "proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -161,14 +161,14 @@ class TestAsyncProject:
     @parametrize
     async def test_method_create(self, async_client: AsyncComposio) -> None:
         project = await async_client.org.project.create(
-            name="name",
+            name="my-production-api",
         )
         assert_matches_type(ProjectCreateResponse, project, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.with_raw_response.create(
-            name="name",
+            name="my-production-api",
         )
 
         assert response.is_closed is True
@@ -179,7 +179,7 @@ class TestAsyncProject:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.with_streaming_response.create(
-            name="name",
+            name="my-production-api",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -192,14 +192,14 @@ class TestAsyncProject:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         project = await async_client.org.project.retrieve(
-            "projectId",
+            "proj_abc123xyz456",
         )
         assert_matches_type(ProjectRetrieveResponse, project, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.with_raw_response.retrieve(
-            "projectId",
+            "proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -210,7 +210,7 @@ class TestAsyncProject:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.with_streaming_response.retrieve(
-            "projectId",
+            "proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -255,14 +255,14 @@ class TestAsyncProject:
     @parametrize
     async def test_method_delete(self, async_client: AsyncComposio) -> None:
         project = await async_client.org.project.delete(
-            "projectId",
+            "proj_abc123xyz456",
         )
         assert_matches_type(ProjectDeleteResponse, project, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.with_raw_response.delete(
-            "projectId",
+            "proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -273,7 +273,7 @@ class TestAsyncProject:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.with_streaming_response.delete(
-            "projectId",
+            "proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

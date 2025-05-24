@@ -7,3 +7,4 @@ __all__ = ["ProjectDeleteResponse"]
 
 class ProjectDeleteResponse(BaseModel):
     status: str
+    """Status of the delete operation"""

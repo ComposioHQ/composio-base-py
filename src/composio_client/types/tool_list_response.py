@@ -11,56 +11,56 @@ __all__ = ["ToolListResponse", "Item", "ItemDeprecated", "ItemDeprecatedToolkit"
 
 class ItemDeprecatedToolkit(BaseModel):
     logo: str
-    """The logo of the toolkit"""
+    """URL to the toolkit logo image"""
 
 
 class ItemDeprecated(BaseModel):
     available_versions: List[str]
-    """The available versions of the tool"""
+    """List of all available versions for this tool"""
 
     display_name: str = FieldInfo(alias="displayName")
     """The display name of the tool"""
 
     is_deprecated: bool
-    """Whether the tool is deprecated"""
+    """Indicates if this tool is deprecated and may be removed in the future"""
 
     toolkit: ItemDeprecatedToolkit
 
     version: str
-    """The version of the tool"""
+    """Current version identifier of the tool"""
 
 
 class ItemToolkit(BaseModel):
     name: str
-    """The name of the toolkit"""
+    """Human-readable name of the parent toolkit"""
 
     slug: str
-    """The slug of the toolkit"""
+    """Unique identifier of the parent toolkit"""
 
 
 class Item(BaseModel):
     deprecated: ItemDeprecated
 
     description: str
-    """The description of the tool"""
+    """Detailed explanation of the tool's functionality and purpose"""
 
     input_parameters: Dict[str, Optional[object]]
-    """The input parameters of the tool"""
+    """Schema definition of required input parameters for the tool"""
 
     name: str
-    """The name of the tool"""
+    """Human-readable display name of the tool"""
 
     no_auth: bool
-    """Whether the tool requires authentication"""
+    """Indicates if the tool can be used without authentication"""
 
     output_parameters: Dict[str, Optional[object]]
-    """The output parameters of the tool"""
+    """Schema definition of return values from the tool"""
 
     slug: str
-    """The slug of the tool"""
+    """Unique identifier for the tool"""
 
     tags: List[str]
-    """The tags of the tool"""
+    """List of tags associated with the tool for categorization and filtering"""
 
     toolkit: ItemToolkit
 

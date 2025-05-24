@@ -9,4 +9,7 @@ __all__ = ["TriggerUpdateParams"]
 
 class TriggerUpdateParams(TypedDict, total=False):
     enabled: Required[bool]
-    """Enabled"""
+    """
+    Boolean flag indicating whether triggers should be enabled (true) or disabled
+    (false) for the project
+    """

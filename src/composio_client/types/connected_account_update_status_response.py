@@ -7,4 +7,4 @@ __all__ = ["ConnectedAccountUpdateStatusResponse"]
 
 class ConnectedAccountUpdateStatusResponse(BaseModel):
     success: bool
-    """The success of the update"""
+    """Indicates whether the connected account status was successfully updated"""

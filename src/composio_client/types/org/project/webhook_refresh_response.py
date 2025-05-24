@@ -7,10 +7,10 @@ __all__ = ["WebhookRefreshResponse"]
 
 class WebhookRefreshResponse(BaseModel):
     message: str
-    """Status message"""
+    """Human-readable description of the refresh operation result"""
 
     success: bool
-    """Whether the operation was successful"""
+    """Indicates if the webhook secret was successfully refreshed"""
 
     webhook_secret: str
-    """Webhook secret"""
+    """The new secret key that should be used to verify incoming webhook payloads"""

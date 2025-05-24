@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.composio.com](https://docs.comp
 
 ```sh
 # install from PyPI
-pip install --pre composio-client
+pip install composio-client
 ```
 
 ## Usage
@@ -95,12 +95,12 @@ response = client.tools.execute(
     custom_auth_params={
         "parameters": [
             {
-                "in": "query",
-                "name": "name",
-                "value": "string",
+                "in": "header",
+                "name": "x-api-key",
+                "value": "secret-key",
             }
         ],
-        "base_url": "base_url",
+        "base_url": "https://api.example.com",
         "body": {"foo": "bar"},
     },
 )

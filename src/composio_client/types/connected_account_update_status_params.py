@@ -9,3 +9,4 @@ __all__ = ["ConnectedAccountUpdateStatusParams"]
 
 class ConnectedAccountUpdateStatusParams(TypedDict, total=False):
     enabled: Required[bool]
+    """Set to true to enable the account or false to disable it"""

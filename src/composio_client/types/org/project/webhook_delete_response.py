@@ -9,3 +9,4 @@ __all__ = ["WebhookDeleteResponse"]
 
 class WebhookDeleteResponse(BaseModel):
     status: Literal["success"]
+    """Indicates the webhook URL was successfully removed"""

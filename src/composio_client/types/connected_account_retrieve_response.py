@@ -69,16 +69,19 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     """The data of the connection"""
 
     is_disabled: bool
-    """Whether the connected account is disabled"""
+    """Whether the connected account is disabled.
+
+    When true, the account cannot be used for API calls
+    """
 
     params: Dict[str, Optional[object]]
-    """The init data of the connection"""
+    """The initialization data of the connection, including configuration parameters"""
 
-    status: Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]
+    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]
     """The status of the connection"""
 
     status_reason: Optional[str] = None
-    """The reason the connected account is disabled"""
+    """The reason why the connected account is disabled, if applicable"""
 
     toolkit: Toolkit
 

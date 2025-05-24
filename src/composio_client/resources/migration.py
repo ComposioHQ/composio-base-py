@@ -55,10 +55,17 @@ class MigrationResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MigrationRetrieveNanoidResponse:
-        """
-        Convert a legacy UUID to its corresponding NanoId for migration purposes
+        """Convert a legacy UUID to its corresponding NanoId for migration purposes.
+
+        This
+        endpoint facilitates the transition from UUID-based identifiers to the more
+        compact NanoId format used in the v3 API.
 
         Args:
+          type: The type of resource that the UUID belongs to
+
+          uuid: The legacy UUID that needs to be converted to a NanoId
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -118,10 +125,17 @@ class AsyncMigrationResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> MigrationRetrieveNanoidResponse:
-        """
-        Convert a legacy UUID to its corresponding NanoId for migration purposes
+        """Convert a legacy UUID to its corresponding NanoId for migration purposes.
+
+        This
+        endpoint facilitates the transition from UUID-based identifiers to the more
+        compact NanoId format used in the v3 API.
 
         Args:
+          type: The type of resource that the UUID belongs to
+
+          uuid: The legacy UUID that needs to be converted to a NanoId
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

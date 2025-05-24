@@ -10,10 +10,13 @@ __all__ = ["McpUpdateParams"]
 
 class McpUpdateParams(TypedDict, total=False):
     actions: List[str]
-    """Actions available for the server"""
+    """List of action identifiers that should be enabled for this server"""
 
     apps: List[str]
-    """App IDs associated with the server"""
+    """List of application identifiers this server should be configured to work with"""
 
     name: str
-    """Name of the MCP server"""
+    """
+    Human-readable name to identify this MCP server instance (4-25 characters,
+    alphanumeric and hyphens only)
+    """

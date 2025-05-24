@@ -7,7 +7,7 @@ __all__ = ["WebhookUpdateResponse"]
 
 class WebhookUpdateResponse(BaseModel):
     message: str
-    """Status message"""
+    """Human-readable description of the update operation result"""
 
     success: bool
-    """Whether the operation was successful"""
+    """Indicates if the webhook URL update was completed successfully"""

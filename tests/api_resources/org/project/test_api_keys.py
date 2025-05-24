@@ -25,16 +25,16 @@ class TestAPIKeys:
     @parametrize
     def test_method_create(self, client: Composio) -> None:
         api_key = client.org.project.api_keys.create(
-            project_id="projectId",
-            name="name",
+            project_id="proj_abc123xyz456",
+            name="Production API Key",
         )
         assert_matches_type(APIKeyCreateResponse, api_key, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Composio) -> None:
         response = client.org.project.api_keys.with_raw_response.create(
-            project_id="projectId",
-            name="name",
+            project_id="proj_abc123xyz456",
+            name="Production API Key",
         )
 
         assert response.is_closed is True
@@ -45,8 +45,8 @@ class TestAPIKeys:
     @parametrize
     def test_streaming_response_create(self, client: Composio) -> None:
         with client.org.project.api_keys.with_streaming_response.create(
-            project_id="projectId",
-            name="name",
+            project_id="proj_abc123xyz456",
+            name="Production API Key",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -61,20 +61,20 @@ class TestAPIKeys:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `project_id` but received ''"):
             client.org.project.api_keys.with_raw_response.create(
                 project_id="",
-                name="name",
+                name="Production API Key",
             )
 
     @parametrize
     def test_method_list(self, client: Composio) -> None:
         api_key = client.org.project.api_keys.list(
-            "projectId",
+            "proj_abc123xyz456",
         )
         assert_matches_type(APIKeyListResponse, api_key, path=["response"])
 
     @parametrize
     def test_raw_response_list(self, client: Composio) -> None:
         response = client.org.project.api_keys.with_raw_response.list(
-            "projectId",
+            "proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -85,7 +85,7 @@ class TestAPIKeys:
     @parametrize
     def test_streaming_response_list(self, client: Composio) -> None:
         with client.org.project.api_keys.with_streaming_response.list(
-            "projectId",
+            "proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -105,16 +105,16 @@ class TestAPIKeys:
     @parametrize
     def test_method_delete(self, client: Composio) -> None:
         api_key = client.org.project.api_keys.delete(
-            id="id",
-            project_id="projectId",
+            id="01H4DKRF5SMP7NQCA3BWT0JYB6",
+            project_id="proj_abc123xyz456",
         )
         assert_matches_type(APIKeyDeleteResponse, api_key, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: Composio) -> None:
         response = client.org.project.api_keys.with_raw_response.delete(
-            id="id",
-            project_id="projectId",
+            id="01H4DKRF5SMP7NQCA3BWT0JYB6",
+            project_id="proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -125,8 +125,8 @@ class TestAPIKeys:
     @parametrize
     def test_streaming_response_delete(self, client: Composio) -> None:
         with client.org.project.api_keys.with_streaming_response.delete(
-            id="id",
-            project_id="projectId",
+            id="01H4DKRF5SMP7NQCA3BWT0JYB6",
+            project_id="proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -140,27 +140,27 @@ class TestAPIKeys:
     def test_path_params_delete(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `project_id` but received ''"):
             client.org.project.api_keys.with_raw_response.delete(
-                id="id",
+                id="01H4DKRF5SMP7NQCA3BWT0JYB6",
                 project_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.org.project.api_keys.with_raw_response.delete(
                 id="",
-                project_id="projectId",
+                project_id="proj_abc123xyz456",
             )
 
     @parametrize
     def test_method_create_api_key(self, client: Composio) -> None:
         api_key = client.org.project.api_keys.create_api_key(
-            "projectId",
+            "proj_abc123xyz456",
         )
         assert_matches_type(APIKeyCreateAPIKeyResponse, api_key, path=["response"])
 
     @parametrize
     def test_raw_response_create_api_key(self, client: Composio) -> None:
         response = client.org.project.api_keys.with_raw_response.create_api_key(
-            "projectId",
+            "proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -171,7 +171,7 @@ class TestAPIKeys:
     @parametrize
     def test_streaming_response_create_api_key(self, client: Composio) -> None:
         with client.org.project.api_keys.with_streaming_response.create_api_key(
-            "projectId",
+            "proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -195,16 +195,16 @@ class TestAsyncAPIKeys:
     @parametrize
     async def test_method_create(self, async_client: AsyncComposio) -> None:
         api_key = await async_client.org.project.api_keys.create(
-            project_id="projectId",
-            name="name",
+            project_id="proj_abc123xyz456",
+            name="Production API Key",
         )
         assert_matches_type(APIKeyCreateResponse, api_key, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.api_keys.with_raw_response.create(
-            project_id="projectId",
-            name="name",
+            project_id="proj_abc123xyz456",
+            name="Production API Key",
         )
 
         assert response.is_closed is True
@@ -215,8 +215,8 @@ class TestAsyncAPIKeys:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.api_keys.with_streaming_response.create(
-            project_id="projectId",
-            name="name",
+            project_id="proj_abc123xyz456",
+            name="Production API Key",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -231,20 +231,20 @@ class TestAsyncAPIKeys:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `project_id` but received ''"):
             await async_client.org.project.api_keys.with_raw_response.create(
                 project_id="",
-                name="name",
+                name="Production API Key",
             )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncComposio) -> None:
         api_key = await async_client.org.project.api_keys.list(
-            "projectId",
+            "proj_abc123xyz456",
         )
         assert_matches_type(APIKeyListResponse, api_key, path=["response"])
 
     @parametrize
     async def test_raw_response_list(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.api_keys.with_raw_response.list(
-            "projectId",
+            "proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -255,7 +255,7 @@ class TestAsyncAPIKeys:
     @parametrize
     async def test_streaming_response_list(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.api_keys.with_streaming_response.list(
-            "projectId",
+            "proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -275,16 +275,16 @@ class TestAsyncAPIKeys:
     @parametrize
     async def test_method_delete(self, async_client: AsyncComposio) -> None:
         api_key = await async_client.org.project.api_keys.delete(
-            id="id",
-            project_id="projectId",
+            id="01H4DKRF5SMP7NQCA3BWT0JYB6",
+            project_id="proj_abc123xyz456",
         )
         assert_matches_type(APIKeyDeleteResponse, api_key, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.api_keys.with_raw_response.delete(
-            id="id",
-            project_id="projectId",
+            id="01H4DKRF5SMP7NQCA3BWT0JYB6",
+            project_id="proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -295,8 +295,8 @@ class TestAsyncAPIKeys:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.api_keys.with_streaming_response.delete(
-            id="id",
-            project_id="projectId",
+            id="01H4DKRF5SMP7NQCA3BWT0JYB6",
+            project_id="proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -310,27 +310,27 @@ class TestAsyncAPIKeys:
     async def test_path_params_delete(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `project_id` but received ''"):
             await async_client.org.project.api_keys.with_raw_response.delete(
-                id="id",
+                id="01H4DKRF5SMP7NQCA3BWT0JYB6",
                 project_id="",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.org.project.api_keys.with_raw_response.delete(
                 id="",
-                project_id="projectId",
+                project_id="proj_abc123xyz456",
             )
 
     @parametrize
     async def test_method_create_api_key(self, async_client: AsyncComposio) -> None:
         api_key = await async_client.org.project.api_keys.create_api_key(
-            "projectId",
+            "proj_abc123xyz456",
         )
         assert_matches_type(APIKeyCreateAPIKeyResponse, api_key, path=["response"])
 
     @parametrize
     async def test_raw_response_create_api_key(self, async_client: AsyncComposio) -> None:
         response = await async_client.org.project.api_keys.with_raw_response.create_api_key(
-            "projectId",
+            "proj_abc123xyz456",
         )
 
         assert response.is_closed is True
@@ -341,7 +341,7 @@ class TestAsyncAPIKeys:
     @parametrize
     async def test_streaming_response_create_api_key(self, async_client: AsyncComposio) -> None:
         async with async_client.org.project.api_keys.with_streaming_response.create_api_key(
-            "projectId",
+            "proj_abc123xyz456",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

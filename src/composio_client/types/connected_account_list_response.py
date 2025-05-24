@@ -78,7 +78,7 @@ class Item(BaseModel):
     is_disabled: bool
     """Whether the connection is disabled"""
 
-    status: Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]
+    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]
     """The status of the connection"""
 
     status_reason: Optional[str] = None

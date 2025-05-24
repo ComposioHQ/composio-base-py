@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import List, Optional
 
 import httpx
 
@@ -60,6 +60,8 @@ class TriggersTypesResource(SyncAPIResource):
         identifier
 
         Args:
+          slug: The unique slug identifier for the trigger type
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -83,7 +85,7 @@ class TriggersTypesResource(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit_slugs: str | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -92,10 +94,15 @@ class TriggersTypesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggersTypeListResponse:
         """
-        Retrieve a list of available trigger types with optional filtering by toolkit
+        Retrieve a list of available trigger types with optional filtering by toolkit.
+        Results are paginated and can be filtered by toolkit.
 
         Args:
-          toolkit_slugs: Comma separated list of toolkit slugs
+          cursor: Pagination cursor for fetching next page of results
+
+          limit: Number of items to return per page
+
+          toolkit_slugs: Array of toolkit slugs to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -134,6 +141,10 @@ class TriggersTypesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> str:
+        """
+        Retrieves a list of all available trigger type enum values that can be used
+        across the API
+        """
         return self._get(
             "/api/v3/triggers_types/list/enum",
             options=make_request_options(
@@ -179,6 +190,8 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         identifier
 
         Args:
+          slug: The unique slug identifier for the trigger type
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -202,7 +215,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit_slugs: str | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -211,10 +224,15 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> TriggersTypeListResponse:
         """
-        Retrieve a list of available trigger types with optional filtering by toolkit
+        Retrieve a list of available trigger types with optional filtering by toolkit.
+        Results are paginated and can be filtered by toolkit.
 
         Args:
-          toolkit_slugs: Comma separated list of toolkit slugs
+          cursor: Pagination cursor for fetching next page of results
+
+          limit: Number of items to return per page
+
+          toolkit_slugs: Array of toolkit slugs to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -253,6 +271,10 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> str:
+        """
+        Retrieves a list of all available trigger type enum values that can be used
+        across the API
+        """
         return await self._get(
             "/api/v3/triggers_types/list/enum",
             options=make_request_options(
