@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.composio.com](https://docs.comp
 
 ```sh
 # install from PyPI
-pip install --pre composio-client
+pip install composio-client
 ```
 
 ## Usage
