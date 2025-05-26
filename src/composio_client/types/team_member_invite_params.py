@@ -2,9 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, Annotated, TypedDict
-
-from .._utils import PropertyInfo
+from typing_extensions import Required, TypedDict
 
 __all__ = ["TeamMemberInviteParams"]
 
@@ -16,4 +14,4 @@ class TeamMemberInviteParams(TypedDict, total=False):
 
     role: Required[str]
 
-    verify_host: Annotated[str, PropertyInfo(alias="verifyHost")]
+    verify_host: str

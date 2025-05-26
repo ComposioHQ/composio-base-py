@@ -180,8 +180,6 @@ Types:
 from composio_client.types import (
     ToolRetrieveResponse,
     ToolListResponse,
-    ToolExecuteResponse,
-    ToolGetInputResponse,
     ToolProxyResponse,
     ToolRetrieveEnumResponse,
 )
@@ -191,8 +189,6 @@ Methods:
 
 - <code title="get /api/v3/tools/{tool_slug}">client.tools.<a href="./src/composio_client/resources/tools.py">retrieve</a>(tool_slug) -> <a href="./src/composio_client/types/tool_retrieve_response.py">ToolRetrieveResponse</a></code>
 - <code title="get /api/v3/tools">client.tools.<a href="./src/composio_client/resources/tools.py">list</a>(\*\*<a href="src/composio_client/types/tool_list_params.py">params</a>) -> <a href="./src/composio_client/types/tool_list_response.py">ToolListResponse</a></code>
-- <code title="post /api/v3/tools/execute/{action}">client.tools.<a href="./src/composio_client/resources/tools.py">execute</a>(action, \*\*<a href="src/composio_client/types/tool_execute_params.py">params</a>) -> <a href="./src/composio_client/types/tool_execute_response.py">ToolExecuteResponse</a></code>
-- <code title="post /api/v3/tools/execute/{actionName}/input">client.tools.<a href="./src/composio_client/resources/tools.py">get_input</a>(action_name, \*\*<a href="src/composio_client/types/tool_get_input_params.py">params</a>) -> <a href="./src/composio_client/types/tool_get_input_response.py">ToolGetInputResponse</a></code>
 - <code title="post /api/v3/tools/execute/proxy">client.tools.<a href="./src/composio_client/resources/tools.py">proxy</a>(\*\*<a href="src/composio_client/types/tool_proxy_params.py">params</a>) -> <a href="./src/composio_client/types/tool_proxy_response.py">ToolProxyResponse</a></code>
 - <code title="get /api/v3/tools/enum">client.tools.<a href="./src/composio_client/resources/tools.py">retrieve_enum</a>() -> str</code>
 
