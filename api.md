@@ -5,12 +5,12 @@
 Types:
 
 ```python
-from composio_client.types.auth import SessionInfoResponse
+from composio_client.types.auth import SessionRetrieveResponse
 ```
 
 Methods:
 
-- <code title="get /api/v3/auth/session/info">client.auth.session.<a href="./src/composio_client/resources/auth/session.py">info</a>() -> <a href="./src/composio_client/types/auth/session_info_response.py">SessionInfoResponse</a></code>
+- <code title="get /api/v3/auth/session/info">client.auth.session.<a href="./src/composio_client/resources/auth/session.py">retrieve</a>() -> <a href="./src/composio_client/types/auth/session_retrieve_response.py">SessionRetrieveResponse</a></code>
 
 # AuthConfigs
 

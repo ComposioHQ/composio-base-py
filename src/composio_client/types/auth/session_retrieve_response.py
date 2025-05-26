@@ -4,7 +4,7 @@ from typing import List, Optional
 
 from ..._models import BaseModel
 
-__all__ = ["SessionInfoResponse", "APIKey", "OrgMember", "Project", "ProjectOrg", "ProjectOrgOrgMember"]
+__all__ = ["SessionRetrieveResponse", "APIKey", "OrgMember", "Project", "ProjectOrg", "ProjectOrgOrgMember"]
 
 
 class APIKey(BaseModel):
@@ -149,7 +149,7 @@ class Project(BaseModel):
     """Endpoint URL for trigger webhook notifications"""
 
 
-class SessionInfoResponse(BaseModel):
+class SessionRetrieveResponse(BaseModel):
     api_key: Optional[APIKey] = None
     """Details of the API key used for authentication (null if using session auth)"""
 
