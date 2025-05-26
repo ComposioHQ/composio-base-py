@@ -14,7 +14,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.auth.session_info_response import SessionInfoResponse
+from ...types.auth.session_retrieve_response import SessionRetrieveResponse
 
 __all__ = ["SessionResource", "AsyncSessionResource"]
 
@@ -39,7 +39,7 @@ class SessionResource(SyncAPIResource):
         """
         return SessionResourceWithStreamingResponse(self)
 
-    def info(
+    def retrieve(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -48,7 +48,7 @@ class SessionResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SessionInfoResponse:
+    ) -> SessionRetrieveResponse:
         """
         Retrieves detailed information about the current authenticated user session,
         including project details, organization membership, and API key information if
@@ -61,7 +61,7 @@ class SessionResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SessionInfoResponse,
+            cast_to=SessionRetrieveResponse,
         )
 
 
@@ -85,7 +85,7 @@ class AsyncSessionResource(AsyncAPIResource):
         """
         return AsyncSessionResourceWithStreamingResponse(self)
 
-    async def info(
+    async def retrieve(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -94,7 +94,7 @@ class AsyncSessionResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SessionInfoResponse:
+    ) -> SessionRetrieveResponse:
         """
         Retrieves detailed information about the current authenticated user session,
         including project details, organization membership, and API key information if
@@ -107,7 +107,7 @@ class AsyncSessionResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SessionInfoResponse,
+            cast_to=SessionRetrieveResponse,
         )
 
 
@@ -115,8 +115,8 @@ class SessionResourceWithRawResponse:
     def __init__(self, session: SessionResource) -> None:
         self._session = session
 
-        self.info = to_raw_response_wrapper(
-            session.info,
+        self.retrieve = to_raw_response_wrapper(
+            session.retrieve,
         )
 
 
@@ -124,8 +124,8 @@ class AsyncSessionResourceWithRawResponse:
     def __init__(self, session: AsyncSessionResource) -> None:
         self._session = session
 
-        self.info = async_to_raw_response_wrapper(
-            session.info,
+        self.retrieve = async_to_raw_response_wrapper(
+            session.retrieve,
         )
 
 
@@ -133,8 +133,8 @@ class SessionResourceWithStreamingResponse:
     def __init__(self, session: SessionResource) -> None:
         self._session = session
 
-        self.info = to_streamed_response_wrapper(
-            session.info,
+        self.retrieve = to_streamed_response_wrapper(
+            session.retrieve,
         )
 
 
@@ -142,6 +142,6 @@ class AsyncSessionResourceWithStreamingResponse:
     def __init__(self, session: AsyncSessionResource) -> None:
         self._session = session
 
-        self.info = async_to_streamed_response_wrapper(
-            session.info,
+        self.retrieve = async_to_streamed_response_wrapper(
+            session.retrieve,
         )

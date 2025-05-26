@@ -9,7 +9,7 @@ import pytest
 
 from tests.utils import assert_matches_type
 from composio_client import Composio, AsyncComposio
-from composio_client.types.auth import SessionInfoResponse
+from composio_client.types.auth import SessionRetrieveResponse
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -18,27 +18,27 @@ class TestSession:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    def test_method_info(self, client: Composio) -> None:
-        session = client.auth.session.info()
-        assert_matches_type(SessionInfoResponse, session, path=["response"])
+    def test_method_retrieve(self, client: Composio) -> None:
+        session = client.auth.session.retrieve()
+        assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
     @parametrize
-    def test_raw_response_info(self, client: Composio) -> None:
-        response = client.auth.session.with_raw_response.info()
+    def test_raw_response_retrieve(self, client: Composio) -> None:
+        response = client.auth.session.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         session = response.parse()
-        assert_matches_type(SessionInfoResponse, session, path=["response"])
+        assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
     @parametrize
-    def test_streaming_response_info(self, client: Composio) -> None:
-        with client.auth.session.with_streaming_response.info() as response:
+    def test_streaming_response_retrieve(self, client: Composio) -> None:
+        with client.auth.session.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             session = response.parse()
-            assert_matches_type(SessionInfoResponse, session, path=["response"])
+            assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -47,26 +47,26 @@ class TestAsyncSession:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
     @parametrize
-    async def test_method_info(self, async_client: AsyncComposio) -> None:
-        session = await async_client.auth.session.info()
-        assert_matches_type(SessionInfoResponse, session, path=["response"])
+    async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
+        session = await async_client.auth.session.retrieve()
+        assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
     @parametrize
-    async def test_raw_response_info(self, async_client: AsyncComposio) -> None:
-        response = await async_client.auth.session.with_raw_response.info()
+    async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
+        response = await async_client.auth.session.with_raw_response.retrieve()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         session = await response.parse()
-        assert_matches_type(SessionInfoResponse, session, path=["response"])
+        assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
     @parametrize
-    async def test_streaming_response_info(self, async_client: AsyncComposio) -> None:
-        async with async_client.auth.session.with_streaming_response.info() as response:
+    async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
+        async with async_client.auth.session.with_streaming_response.retrieve() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             session = await response.parse()
-            assert_matches_type(SessionInfoResponse, session, path=["response"])
+            assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
         assert cast(Any, response.is_closed) is True

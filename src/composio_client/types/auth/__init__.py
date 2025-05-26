@@ -2,4 +2,4 @@
 
 from __future__ import annotations
 
-from .session_info_response import SessionInfoResponse as SessionInfoResponse
+from .session_retrieve_response import SessionRetrieveResponse as SessionRetrieveResponse
