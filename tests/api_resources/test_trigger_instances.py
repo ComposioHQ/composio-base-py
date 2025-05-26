@@ -30,15 +30,20 @@ class TestTriggerInstances:
     @parametrize
     def test_method_list_active_with_all_params(self, client: Composio) -> None:
         trigger_instance = client.trigger_instances.list_active(
-            auth_config_ids=["string"],
-            connected_account_ids=["string"],
+            query_auth_config_ids_1=["string"],
+            query_auth_config_ids_2=["string"],
+            query_connected_account_ids_1=["string"],
+            query_connected_account_ids_2=["string"],
             deprecated_auth_config_uuids=["string"],
             deprecated_connected_account_uuids=["string"],
             limit=1,
             page=1,
-            show_disabled="showDisabled",
-            trigger_ids=["string"],
-            trigger_names=["string"],
+            query_show_disabled_1=True,
+            query_show_disabled_2=True,
+            query_trigger_ids_1=["string"],
+            query_trigger_names_1=["string"],
+            query_trigger_ids_2=["string"],
+            query_trigger_names_2=["string"],
         )
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
@@ -127,15 +132,20 @@ class TestAsyncTriggerInstances:
     @parametrize
     async def test_method_list_active_with_all_params(self, async_client: AsyncComposio) -> None:
         trigger_instance = await async_client.trigger_instances.list_active(
-            auth_config_ids=["string"],
-            connected_account_ids=["string"],
+            query_auth_config_ids_1=["string"],
+            query_auth_config_ids_2=["string"],
+            query_connected_account_ids_1=["string"],
+            query_connected_account_ids_2=["string"],
             deprecated_auth_config_uuids=["string"],
             deprecated_connected_account_uuids=["string"],
             limit=1,
             page=1,
-            show_disabled="showDisabled",
-            trigger_ids=["string"],
-            trigger_names=["string"],
+            query_show_disabled_1=True,
+            query_show_disabled_2=True,
+            query_trigger_ids_1=["string"],
+            query_trigger_names_1=["string"],
+            query_trigger_ids_2=["string"],
+            query_trigger_names_2=["string"],
         )
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 

@@ -227,7 +227,7 @@ class TestAuthConfigs:
             deprecated_app_id="deprecated_app_id",
             deprecated_status="deprecated_status",
             is_composio_managed="string",
-            limit="limit",
+            limit=0,
             show_disabled=True,
             toolkit_slug="toolkit_slug",
         )
@@ -543,7 +543,7 @@ class TestAsyncAuthConfigs:
             deprecated_app_id="deprecated_app_id",
             deprecated_status="deprecated_status",
             is_composio_managed="string",
-            limit="limit",
+            limit=0,
             show_disabled=True,
             toolkit_slug="toolkit_slug",
         )
