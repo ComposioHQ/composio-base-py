@@ -1,36 +1,47 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import List
 
 from .._models import BaseModel
 
-__all__ = ["McpCreateResponse"]
+__all__ = ["McpCreateResponse", "Commands"]
+
+
+class Commands(BaseModel):
+    claude: str
+    """Command line instruction for Claude client setup"""
+
+    cursor: str
+    """Command line instruction for Cursor client setup"""
+
+    windsurf: str
+    """Command line instruction for Windsurf client setup"""
 
 
 class McpCreateResponse(BaseModel):
     id: str
-    """The ID of the MCP server"""
+    """UUID of the MCP server instance"""
 
-    apps: List[str]
-    """The app IDs associated with the server"""
+    allowed_tools: List[str]
+    """Array of tool slugs that this MCP server is allowed to use"""
 
-    member_id: str
-    """The member ID who created the server"""
+    auth_config_id: str
+    """ID reference to the auth configuration used by this server"""
+
+    commands: Commands
+    """
+    Set of command line instructions for connecting various clients to this MCP
+    server
+    """
+
+    created_at: str
+    """Date and time when this server was initially created"""
+
+    mcp_url: str
+    """URL endpoint for establishing SSE connection to this MCP server"""
 
     name: str
-    """The name of the MCP server"""
-
-    signed_url: str
-    """Signed URL for the MCP server"""
+    """User-defined descriptive name for this MCP server"""
 
     updated_at: str
-    """Last update timestamp of the MCP server"""
-
-    url: str
-    """The URL of the MCP server"""
-
-    auth_configs: Optional[Dict[str, Optional[object]]] = None
-    """Auth configuration"""
-
-    connected_account_ids: Optional[List[str]] = None
-    """Connected account IDs"""
+    """Date and time when this server configuration was last modified"""

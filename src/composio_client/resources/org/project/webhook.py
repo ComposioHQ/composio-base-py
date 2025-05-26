@@ -57,11 +57,15 @@ class WebhookResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookRetrieveResponse:
-        """
-        Get the webhook URL for a project
+        """Retrieves the webhook URL and secret for the current project.
+
+        Webhooks come in
+        two types: "trigger" webhooks are used for integration trigger events, while
+        "event" webhooks receive system notifications about project events. The response
+        includes both the URL and the secret key used to verify webhook signatures.
 
         Args:
-          type: Type of the webhook
+          type: Type of webhook to retrieve (trigger or event)
 
           extra_headers: Send extra headers
 
@@ -96,10 +100,16 @@ class WebhookResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookUpdateResponse:
         """
-        Args:
-          type: Type of the webhook
+        Updates the webhook URL for the current project based on the specified type
+        (trigger or event). Webhook URLs are endpoints that receive notifications about
+        events in your project. "Trigger" webhooks receive integration trigger events,
+        while "event" webhooks receive system notifications. This endpoint allows you to
+        set or change these notification destinations.
 
-          webhook_url: Webhook URL
+        Args:
+          type: Specifies which webhook type to update (trigger or event)
+
+          webhook_url: Valid URL that will receive webhook payloads. Must include https:// protocol.
 
           extra_headers: Send extra headers
 
@@ -135,11 +145,15 @@ class WebhookResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookDeleteResponse:
-        """
-        Remove a webhook URL (trigger or event) from the project configuration
+        """Removes a webhook URL (trigger or event) from the project configuration.
+
+        This
+        operation sets the specified webhook URL to null in the database but preserves
+        the webhook secret. After deletion, the project will no longer receive webhook
+        notifications of the specified type until a new URL is configured.
 
         Args:
-          type: Type of the webhook
+          type: Specifies which webhook type to remove from the project configuration
 
           extra_headers: Send extra headers
 
@@ -168,6 +182,13 @@ class WebhookResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookRefreshResponse:
+        """
+        Generates a new webhook secret for the project, invalidating the previous one.
+        Webhook secrets are used to verify the authenticity of incoming webhook payloads
+        through signature verification. This endpoint should be used when you need to
+        rotate your webhook secret for security purposes. After refreshing, you must
+        update your webhook verification logic to use the new secret.
+        """
         return self._post(
             "/api/v3/org/project/webhook/refresh",
             options=make_request_options(
@@ -208,11 +229,15 @@ class AsyncWebhookResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookRetrieveResponse:
-        """
-        Get the webhook URL for a project
+        """Retrieves the webhook URL and secret for the current project.
+
+        Webhooks come in
+        two types: "trigger" webhooks are used for integration trigger events, while
+        "event" webhooks receive system notifications about project events. The response
+        includes both the URL and the secret key used to verify webhook signatures.
 
         Args:
-          type: Type of the webhook
+          type: Type of webhook to retrieve (trigger or event)
 
           extra_headers: Send extra headers
 
@@ -247,10 +272,16 @@ class AsyncWebhookResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookUpdateResponse:
         """
-        Args:
-          type: Type of the webhook
+        Updates the webhook URL for the current project based on the specified type
+        (trigger or event). Webhook URLs are endpoints that receive notifications about
+        events in your project. "Trigger" webhooks receive integration trigger events,
+        while "event" webhooks receive system notifications. This endpoint allows you to
+        set or change these notification destinations.
 
-          webhook_url: Webhook URL
+        Args:
+          type: Specifies which webhook type to update (trigger or event)
+
+          webhook_url: Valid URL that will receive webhook payloads. Must include https:// protocol.
 
           extra_headers: Send extra headers
 
@@ -286,11 +317,15 @@ class AsyncWebhookResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookDeleteResponse:
-        """
-        Remove a webhook URL (trigger or event) from the project configuration
+        """Removes a webhook URL (trigger or event) from the project configuration.
+
+        This
+        operation sets the specified webhook URL to null in the database but preserves
+        the webhook secret. After deletion, the project will no longer receive webhook
+        notifications of the specified type until a new URL is configured.
 
         Args:
-          type: Type of the webhook
+          type: Specifies which webhook type to remove from the project configuration
 
           extra_headers: Send extra headers
 
@@ -319,6 +354,13 @@ class AsyncWebhookResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> WebhookRefreshResponse:
+        """
+        Generates a new webhook secret for the project, invalidating the previous one.
+        Webhook secrets are used to verify the authenticity of incoming webhook payloads
+        through signature verification. This endpoint should be used when you need to
+        rotate your webhook secret for security purposes. After refreshing, you must
+        update your webhook verification logic to use the new secret.
+        """
         return await self._post(
             "/api/v3/org/project/webhook/refresh",
             options=make_request_options(

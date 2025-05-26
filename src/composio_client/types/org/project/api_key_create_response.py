@@ -3,8 +3,6 @@
 from typing import Optional
 from datetime import datetime
 
-from pydantic import Field as FieldInfo
-
 from ...._models import BaseModel
 
 __all__ = ["APIKeyCreateResponse"]
@@ -12,16 +10,22 @@ __all__ = ["APIKeyCreateResponse"]
 
 class APIKeyCreateResponse(BaseModel):
     id: str
-    """API key ID"""
+    """Database record identifier for the API key"""
 
-    created_at: datetime = FieldInfo(alias="createdAt")
-    """Creation timestamp"""
+    created_at: datetime
+    """UTC timestamp indicating when the API key was created"""
 
     key: str
-    """API key value"""
+    """The API key string value that should be included in API requests.
+
+    This value is only shown once at creation time.
+    """
 
     name: str
-    """API key name"""
+    """Descriptive name assigned to help identify the key's purpose"""
 
-    last_used: Optional[datetime] = FieldInfo(alias="lastUsed", default=None)
-    """Last used timestamp"""
+    last_used_at: Optional[datetime] = None
+    """UTC timestamp indicating when the API key was last used for authentication.
+
+    Will be null for newly created keys.
+    """

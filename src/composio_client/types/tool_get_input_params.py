@@ -2,30 +2,29 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, Annotated, TypedDict
-
-from .._utils import PropertyInfo
+from typing_extensions import Required, TypedDict
 
 __all__ = ["ToolGetInputParams"]
 
 
 class ToolGetInputParams(TypedDict, total=False):
     text: Required[str]
+    """Natural language description of what you want to accomplish with this tool"""
+
+    custom_description: str
     """
-    The use-case description for the action, this will give context to LLM to
-    generate the correct inputs for the action.
+    Custom description of the tool to help guide the LLM in generating more accurate
+    inputs
     """
 
-    custom_description: Annotated[str, PropertyInfo(alias="customDescription")]
+    system_prompt: str
     """
-    The custom description for the action, use this to provide customised context
-    about the action to the LLM to suit your use-case.
-    """
-
-    system_prompt: Annotated[str, PropertyInfo(alias="systemPrompt")]
-    """
-    The system prompt to be used by LLM, use this to control and guide the behaviour
-    of the LLM.
+    System prompt to control and guide the behavior of the LLM when generating
+    inputs
     """
 
     version: str
+    """
+    Tool version to use when generating inputs (defaults to "latest" if not
+    specified)
+    """

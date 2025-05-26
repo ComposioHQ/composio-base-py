@@ -1,7 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from pydantic import Field as FieldInfo
-
 from .._models import BaseModel
 
 __all__ = ["TeamMemberInviteResponse"]
@@ -10,7 +8,7 @@ __all__ = ["TeamMemberInviteResponse"]
 class TeamMemberInviteResponse(BaseModel):
     id: str
 
-    created_at: str = FieldInfo(alias="createdAt")
+    created_at: str
 
     email: str
 
@@ -18,4 +16,4 @@ class TeamMemberInviteResponse(BaseModel):
 
     role: str
 
-    updated_at: str = FieldInfo(alias="updatedAt")
+    updated_at: str

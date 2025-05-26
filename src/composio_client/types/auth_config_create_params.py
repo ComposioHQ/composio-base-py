@@ -18,7 +18,7 @@ class AuthConfigCreateParams(TypedDict, total=False):
 
 class Toolkit(TypedDict, total=False):
     slug: Required[str]
-    """List of app unique keys to filter by"""
+    """List of toolkits unique keys to filter by"""
 
 
 class AuthConfigUnionMember0(TypedDict, total=False):

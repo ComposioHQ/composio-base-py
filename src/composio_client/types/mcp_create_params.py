@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["McpCreateParams"]
@@ -10,25 +10,20 @@ __all__ = ["McpCreateParams"]
 
 class McpCreateParams(TypedDict, total=False):
     name: Required[str]
-    """Name of the MCP server"""
+    """
+    Human-readable name to identify this MCP server instance (4-25 characters,
+    alphanumeric and hyphens only)
+    """
 
-    actions: List[str]
-    """Actions available for the server"""
+    allowed_tools: List[str]
+    """List of tool slugs that should be allowed for this server.
 
-    apps: List[str]
-    """App IDs associated with the server"""
+    If not provided, all available tools for the authentication configuration will
+    be enabled.
+    """
 
-    auth_configs: Dict[str, Optional[object]]
-    """Auth configurations"""
-
-    connected_account_ids: List[str]
-    """Connected account IDs"""
-
-    custom_auth_headers: bool
-    """Whether to use custom auth headers"""
-
-    entity_ids: List[str]
-    """Entity IDs"""
+    auth_config_id: str
+    """ID reference to an existing authentication configuration"""
 
     ttl: Literal["1d", "3d", "1 month", "no expiration"]
-    """Time to live for the server"""
+    """Time-to-live duration for this MCP server"""

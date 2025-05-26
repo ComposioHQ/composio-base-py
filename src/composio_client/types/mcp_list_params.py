@@ -2,27 +2,24 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import TypedDict
 
 __all__ = ["McpListParams"]
 
 
 class McpListParams(TypedDict, total=False):
-    app_id: Optional[List[str]]
-    """App IDs to filter by"""
-
-    connected_account_id: Optional[List[str]]
-    """Connected account IDs to filter by"""
-
-    cursor: Optional[float]
-    """Cursor for pagination"""
-
-    entity_id: Optional[List[str]]
-    """Entity IDs to filter by"""
-
-    integration_id: str
-    """Integration ID to filter by"""
+    auth_config_id: str
+    """Filter MCP servers by authentication configuration ID"""
 
     limit: Optional[float]
-    """Limit for pagination"""
+    """Number of items per page (default: 10)"""
+
+    name: str
+    """Filter MCP servers by name (case-insensitive partial match)"""
+
+    page_no: Optional[float]
+    """Page number for pagination (1-based)"""
+
+    toolkit: str
+    """Filter MCP servers by toolkit slug"""

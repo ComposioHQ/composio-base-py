@@ -16,7 +16,7 @@ The REST API documentation can be found on [docs.composio.com](https://docs.comp
 
 ```sh
 # install from PyPI
-pip install --pre composio-client
+pip install composio-client
 ```
 
 ## Usage
@@ -34,7 +34,7 @@ client = Composio(
 )
 
 response = client.tools.execute(
-    action="action",
+    tool_slug="tool_slug",
 )
 print(response.log_id)
 ```
@@ -62,7 +62,7 @@ client = AsyncComposio(
 
 async def main() -> None:
     response = await client.tools.execute(
-        action="action",
+        tool_slug="tool_slug",
     )
     print(response.log_id)
 
@@ -91,16 +91,16 @@ from composio_client import Composio
 client = Composio()
 
 response = client.tools.execute(
-    action="action",
+    tool_slug="tool_slug",
     custom_auth_params={
         "parameters": [
             {
-                "in": "query",
-                "name": "name",
-                "value": "string",
+                "in": "header",
+                "name": "x-api-key",
+                "value": "secret-key",
             }
         ],
-        "base_url": "base_url",
+        "base_url": "https://api.example.com",
         "body": {"foo": "bar"},
     },
 )
@@ -124,7 +124,7 @@ client = Composio()
 
 try:
     client.tools.execute(
-        action="action",
+        tool_slug="tool_slug",
     )
 except composio_client.APIConnectionError as e:
     print("The server could not be reached")
@@ -169,7 +169,7 @@ client = Composio(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).tools.execute(
-    action="action",
+    tool_slug="tool_slug",
 )
 ```
 
@@ -194,7 +194,7 @@ client = Composio(
 
 # Override per-request:
 client.with_options(timeout=5.0).tools.execute(
-    action="action",
+    tool_slug="tool_slug",
 )
 ```
 
@@ -237,7 +237,7 @@ from composio_client import Composio
 
 client = Composio()
 response = client.tools.with_raw_response.execute(
-    action="action",
+    tool_slug="tool_slug",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -257,7 +257,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.tools.with_streaming_response.execute(
-    action="action",
+    tool_slug="tool_slug",
 ) as response:
     print(response.headers.get("X-My-Header"))
 

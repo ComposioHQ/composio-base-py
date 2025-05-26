@@ -2,5 +2,5 @@
 
 from __future__ import annotations
 
-from .command_generate_params import CommandGenerateParams as CommandGenerateParams
-from .command_generate_response import CommandGenerateResponse as CommandGenerateResponse
+from .custom_create_params import CustomCreateParams as CustomCreateParams
+from .custom_create_response import CustomCreateResponse as CustomCreateResponse

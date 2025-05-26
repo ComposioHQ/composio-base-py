@@ -112,7 +112,7 @@ class TestTeamMembers:
             email="dev@stainless.com",
             name="name",
             role="role",
-            verify_host="verifyHost",
+            verify_host="verify_host",
         )
         assert_matches_type(TeamMemberInviteResponse, team_member, path=["response"])
 
@@ -276,7 +276,7 @@ class TestAsyncTeamMembers:
             email="dev@stainless.com",
             name="name",
             role="role",
-            verify_host="verifyHost",
+            verify_host="verify_host",
         )
         assert_matches_type(TeamMemberInviteResponse, team_member, path=["response"])
 

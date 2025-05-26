@@ -50,7 +50,12 @@ class APIKeyResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> APIKeyRetrieveResponse:
-        """Retrieve the API key for the current organization (admin only)"""
+        """Retrieve the API key for the current organization.
+
+        This endpoint is restricted
+        to organization administrators only. The returned API key can be used for
+        authenticating organization-level API requests.
+        """
         return self._get(
             "/api/v3/org/api_key",
             options=make_request_options(
@@ -71,7 +76,8 @@ class APIKeyResource(SyncAPIResource):
     ) -> APIKeyRegenerateResponse:
         """
         Generate a new API key for the organization, invalidating the previous one
-        (admin only)
+        (admin only). This operation cannot be undone and will immediately invalidate
+        the previous API key.
         """
         return self._post(
             "/api/v3/org/api_key/regenerate",
@@ -112,7 +118,12 @@ class AsyncAPIKeyResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> APIKeyRetrieveResponse:
-        """Retrieve the API key for the current organization (admin only)"""
+        """Retrieve the API key for the current organization.
+
+        This endpoint is restricted
+        to organization administrators only. The returned API key can be used for
+        authenticating organization-level API requests.
+        """
         return await self._get(
             "/api/v3/org/api_key",
             options=make_request_options(
@@ -133,7 +144,8 @@ class AsyncAPIKeyResource(AsyncAPIResource):
     ) -> APIKeyRegenerateResponse:
         """
         Generate a new API key for the organization, invalidating the previous one
-        (admin only)
+        (admin only). This operation cannot be undone and will immediately invalidate
+        the previous API key.
         """
         return await self._post(
             "/api/v3/org/api_key/regenerate",

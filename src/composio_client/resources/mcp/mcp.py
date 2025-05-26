@@ -2,20 +2,20 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import List, Optional
 from typing_extensions import Literal
 
 import httpx
 
-from ...types import mcp_list_params, mcp_create_params, mcp_update_params
-from .command import (
-    CommandResource,
-    AsyncCommandResource,
-    CommandResourceWithRawResponse,
-    AsyncCommandResourceWithRawResponse,
-    CommandResourceWithStreamingResponse,
-    AsyncCommandResourceWithStreamingResponse,
+from .custom import (
+    CustomResource,
+    AsyncCustomResource,
+    CustomResourceWithRawResponse,
+    AsyncCustomResourceWithRawResponse,
+    CustomResourceWithStreamingResponse,
+    AsyncCustomResourceWithStreamingResponse,
 )
+from ...types import mcp_list_params, mcp_create_params, mcp_update_params, mcp_retrieve_app_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -32,7 +32,6 @@ from ...types.mcp_create_response import McpCreateResponse
 from ...types.mcp_delete_response import McpDeleteResponse
 from ...types.mcp_update_response import McpUpdateResponse
 from ...types.mcp_retrieve_response import McpRetrieveResponse
-from ...types.mcp_validate_response import McpValidateResponse
 from ...types.mcp_retrieve_app_response import McpRetrieveAppResponse
 
 __all__ = ["McpResource", "AsyncMcpResource"]
@@ -40,8 +39,8 @@ __all__ = ["McpResource", "AsyncMcpResource"]
 
 class McpResource(SyncAPIResource):
     @cached_property
-    def command(self) -> CommandResource:
-        return CommandResource(self._client)
+    def custom(self) -> CustomResource:
+        return CustomResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> McpResourceWithRawResponse:
@@ -66,12 +65,8 @@ class McpResource(SyncAPIResource):
         self,
         *,
         name: str,
-        actions: List[str] | NotGiven = NOT_GIVEN,
-        apps: List[str] | NotGiven = NOT_GIVEN,
-        auth_configs: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
-        connected_account_ids: List[str] | NotGiven = NOT_GIVEN,
-        custom_auth_headers: bool | NotGiven = NOT_GIVEN,
-        entity_ids: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
+        auth_config_id: str | NotGiven = NOT_GIVEN,
         ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -81,24 +76,22 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpCreateResponse:
         """
-        Create a new MCP server
+        Creates a new Model Control Protocol (MCP) server instance for the authenticated
+        project. An MCP server provides a connection point for AI assistants to access
+        your applications and services. The server is configured with specific
+        authentication and tool permissions that determine what actions the connected
+        assistants can perform.
 
         Args:
-          name: Name of the MCP server
+          name: Human-readable name to identify this MCP server instance (4-25 characters,
+              alphanumeric and hyphens only)
 
-          actions: Actions available for the server
+          allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
+              available tools for the authentication configuration will be enabled.
 
-          apps: App IDs associated with the server
+          auth_config_id: ID reference to an existing authentication configuration
 
-          auth_configs: Auth configurations
-
-          connected_account_ids: Connected account IDs
-
-          custom_auth_headers: Whether to use custom auth headers
-
-          entity_ids: Entity IDs
-
-          ttl: Time to live for the server
+          ttl: Time-to-live duration for this MCP server
 
           extra_headers: Send extra headers
 
@@ -109,16 +102,12 @@ class McpResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/mcp/create",
+            "/api/v3/mcp/servers",
             body=maybe_transform(
                 {
                     "name": name,
-                    "actions": actions,
-                    "apps": apps,
-                    "auth_configs": auth_configs,
-                    "connected_account_ids": connected_account_ids,
-                    "custom_auth_headers": custom_auth_headers,
-                    "entity_ids": entity_ids,
+                    "allowed_tools": allowed_tools,
+                    "auth_config_id": auth_config_id,
                     "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
@@ -141,10 +130,12 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveResponse:
         """
-        Get MCP server details by ID
+        Retrieves detailed configuration information for a specific Model Control
+        Protocol (MCP) server. The returned data includes connection details, associated
+        applications, enabled tools, and authentication configuration.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
           extra_headers: Send extra headers
 
@@ -179,16 +170,19 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpUpdateResponse:
         """
-        Update MCP server configuration
+        Updates the configuration of an existing Model Control Protocol (MCP) server.
+        You can modify the server name, associated applications, and enabled tools. Only
+        the fields included in the request will be updated.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
-          actions: Actions available for the server
+          actions: List of action identifiers that should be enabled for this server
 
-          apps: App IDs associated with the server
+          apps: List of application identifiers this server should be configured to work with
 
-          name: Name of the MCP server
+          name: Human-readable name to identify this MCP server instance (4-25 characters,
+              alphanumeric and hyphens only)
 
           extra_headers: Send extra headers
 
@@ -219,12 +213,11 @@ class McpResource(SyncAPIResource):
     def list(
         self,
         *,
-        app_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        connected_account_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        cursor: Optional[float] | NotGiven = NOT_GIVEN,
-        entity_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        integration_id: str | NotGiven = NOT_GIVEN,
+        auth_config_id: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        page_no: Optional[float] | NotGiven = NOT_GIVEN,
+        toolkit: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -233,20 +226,22 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpListResponse:
         """
-        List MCP servers with optional filters
+        Retrieves a paginated list of MCP servers associated with the authenticated
+        project. Results can be filtered by name, toolkit, or authentication
+        configuration ID. MCP servers are used to provide Model Control Protocol
+        integration points for connecting AI assistants to your applications and
+        services.
 
         Args:
-          app_id: App IDs to filter by
+          auth_config_id: Filter MCP servers by authentication configuration ID
 
-          connected_account_id: Connected account IDs to filter by
+          limit: Number of items per page (default: 10)
 
-          cursor: Cursor for pagination
+          name: Filter MCP servers by name (case-insensitive partial match)
 
-          entity_id: Entity IDs to filter by
+          page_no: Page number for pagination (1-based)
 
-          integration_id: Integration ID to filter by
-
-          limit: Limit for pagination
+          toolkit: Filter MCP servers by toolkit slug
 
           extra_headers: Send extra headers
 
@@ -257,7 +252,7 @@ class McpResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/mcp/list",
+            "/api/v3/mcp/servers",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -265,12 +260,11 @@ class McpResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "app_id": app_id,
-                        "connected_account_id": connected_account_id,
-                        "cursor": cursor,
-                        "entity_id": entity_id,
-                        "integration_id": integration_id,
+                        "auth_config_id": auth_config_id,
                         "limit": limit,
+                        "name": name,
+                        "page_no": page_no,
+                        "toolkit": toolkit,
                     },
                     mcp_list_params.McpListParams,
                 ),
@@ -290,10 +284,13 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpDeleteResponse:
         """
-        Delete an MCP server
+        Performs a soft delete on a Model Control Protocol (MCP) server, making it
+        unavailable for future use. This operation is reversible in the database but
+        cannot be undone through the API. Any applications or services connected to this
+        server will lose access after deletion.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
           extra_headers: Send extra headers
 
@@ -317,6 +314,11 @@ class McpResource(SyncAPIResource):
         self,
         app_key: str,
         *,
+        auth_config_id: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        page_no: Optional[float] | NotGiven = NOT_GIVEN,
+        toolkit: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -325,10 +327,23 @@ class McpResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveAppResponse:
         """
-        List MCP servers for a specific app
+        Retrieves a paginated list of Model Control Protocol (MCP) servers that are
+        configured for a specific application or toolkit. This endpoint allows you to
+        find all MCP server instances that have access to a particular application, such
+        as GitHub, Slack, or Jira.
 
         Args:
-          app_key: The key of the app to find MCP servers for
+          app_key: Toolkit or application slug identifier to filter MCP servers by
+
+          auth_config_id: Filter MCP servers by authentication configuration ID
+
+          limit: Number of items per page (default: 10)
+
+          name: Filter MCP servers by name (case-insensitive partial match)
+
+          page_no: Page number for pagination (1-based)
+
+          toolkit: Filter MCP servers by toolkit slug
 
           extra_headers: Send extra headers
 
@@ -343,55 +358,29 @@ class McpResource(SyncAPIResource):
         return self._get(
             f"/api/v3/mcp/app/{app_key}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "auth_config_id": auth_config_id,
+                        "limit": limit,
+                        "name": name,
+                        "page_no": page_no,
+                        "toolkit": toolkit,
+                    },
+                    mcp_retrieve_app_params.McpRetrieveAppParams,
+                ),
             ),
             cast_to=McpRetrieveAppResponse,
-        )
-
-    def validate(
-        self,
-        uuid: str,
-        *,
-        x_composio_admin_token: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> McpValidateResponse:
-        """
-        Validate MCP server and retrieve connection details
-
-        Args:
-          uuid: UUID of the MCP server to validate
-
-          x_composio_admin_token: Admin token
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not uuid:
-            raise ValueError(f"Expected a non-empty value for `uuid` but received {uuid!r}")
-        extra_headers = {"x-composio-admin-token": x_composio_admin_token, **(extra_headers or {})}
-        return self._get(
-            f"/api/v3/mcp/validate/{uuid}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=McpValidateResponse,
         )
 
 
 class AsyncMcpResource(AsyncAPIResource):
     @cached_property
-    def command(self) -> AsyncCommandResource:
-        return AsyncCommandResource(self._client)
+    def custom(self) -> AsyncCustomResource:
+        return AsyncCustomResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncMcpResourceWithRawResponse:
@@ -416,12 +405,8 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        actions: List[str] | NotGiven = NOT_GIVEN,
-        apps: List[str] | NotGiven = NOT_GIVEN,
-        auth_configs: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
-        connected_account_ids: List[str] | NotGiven = NOT_GIVEN,
-        custom_auth_headers: bool | NotGiven = NOT_GIVEN,
-        entity_ids: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
+        auth_config_id: str | NotGiven = NOT_GIVEN,
         ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -431,24 +416,22 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpCreateResponse:
         """
-        Create a new MCP server
+        Creates a new Model Control Protocol (MCP) server instance for the authenticated
+        project. An MCP server provides a connection point for AI assistants to access
+        your applications and services. The server is configured with specific
+        authentication and tool permissions that determine what actions the connected
+        assistants can perform.
 
         Args:
-          name: Name of the MCP server
+          name: Human-readable name to identify this MCP server instance (4-25 characters,
+              alphanumeric and hyphens only)
 
-          actions: Actions available for the server
+          allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
+              available tools for the authentication configuration will be enabled.
 
-          apps: App IDs associated with the server
+          auth_config_id: ID reference to an existing authentication configuration
 
-          auth_configs: Auth configurations
-
-          connected_account_ids: Connected account IDs
-
-          custom_auth_headers: Whether to use custom auth headers
-
-          entity_ids: Entity IDs
-
-          ttl: Time to live for the server
+          ttl: Time-to-live duration for this MCP server
 
           extra_headers: Send extra headers
 
@@ -459,16 +442,12 @@ class AsyncMcpResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/mcp/create",
+            "/api/v3/mcp/servers",
             body=await async_maybe_transform(
                 {
                     "name": name,
-                    "actions": actions,
-                    "apps": apps,
-                    "auth_configs": auth_configs,
-                    "connected_account_ids": connected_account_ids,
-                    "custom_auth_headers": custom_auth_headers,
-                    "entity_ids": entity_ids,
+                    "allowed_tools": allowed_tools,
+                    "auth_config_id": auth_config_id,
                     "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
@@ -491,10 +470,12 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveResponse:
         """
-        Get MCP server details by ID
+        Retrieves detailed configuration information for a specific Model Control
+        Protocol (MCP) server. The returned data includes connection details, associated
+        applications, enabled tools, and authentication configuration.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
           extra_headers: Send extra headers
 
@@ -529,16 +510,19 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpUpdateResponse:
         """
-        Update MCP server configuration
+        Updates the configuration of an existing Model Control Protocol (MCP) server.
+        You can modify the server name, associated applications, and enabled tools. Only
+        the fields included in the request will be updated.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
-          actions: Actions available for the server
+          actions: List of action identifiers that should be enabled for this server
 
-          apps: App IDs associated with the server
+          apps: List of application identifiers this server should be configured to work with
 
-          name: Name of the MCP server
+          name: Human-readable name to identify this MCP server instance (4-25 characters,
+              alphanumeric and hyphens only)
 
           extra_headers: Send extra headers
 
@@ -569,12 +553,11 @@ class AsyncMcpResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        app_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        connected_account_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        cursor: Optional[float] | NotGiven = NOT_GIVEN,
-        entity_id: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        integration_id: str | NotGiven = NOT_GIVEN,
+        auth_config_id: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        page_no: Optional[float] | NotGiven = NOT_GIVEN,
+        toolkit: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -583,20 +566,22 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpListResponse:
         """
-        List MCP servers with optional filters
+        Retrieves a paginated list of MCP servers associated with the authenticated
+        project. Results can be filtered by name, toolkit, or authentication
+        configuration ID. MCP servers are used to provide Model Control Protocol
+        integration points for connecting AI assistants to your applications and
+        services.
 
         Args:
-          app_id: App IDs to filter by
+          auth_config_id: Filter MCP servers by authentication configuration ID
 
-          connected_account_id: Connected account IDs to filter by
+          limit: Number of items per page (default: 10)
 
-          cursor: Cursor for pagination
+          name: Filter MCP servers by name (case-insensitive partial match)
 
-          entity_id: Entity IDs to filter by
+          page_no: Page number for pagination (1-based)
 
-          integration_id: Integration ID to filter by
-
-          limit: Limit for pagination
+          toolkit: Filter MCP servers by toolkit slug
 
           extra_headers: Send extra headers
 
@@ -607,7 +592,7 @@ class AsyncMcpResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/mcp/list",
+            "/api/v3/mcp/servers",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -615,12 +600,11 @@ class AsyncMcpResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "app_id": app_id,
-                        "connected_account_id": connected_account_id,
-                        "cursor": cursor,
-                        "entity_id": entity_id,
-                        "integration_id": integration_id,
+                        "auth_config_id": auth_config_id,
                         "limit": limit,
+                        "name": name,
+                        "page_no": page_no,
+                        "toolkit": toolkit,
                     },
                     mcp_list_params.McpListParams,
                 ),
@@ -640,10 +624,13 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpDeleteResponse:
         """
-        Delete an MCP server
+        Performs a soft delete on a Model Control Protocol (MCP) server, making it
+        unavailable for future use. This operation is reversible in the database but
+        cannot be undone through the API. Any applications or services connected to this
+        server will lose access after deletion.
 
         Args:
-          id: The ID of the MCP server
+          id: Unique identifier of the MCP server to retrieve, update, or delete
 
           extra_headers: Send extra headers
 
@@ -667,6 +654,11 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         app_key: str,
         *,
+        auth_config_id: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
+        name: str | NotGiven = NOT_GIVEN,
+        page_no: Optional[float] | NotGiven = NOT_GIVEN,
+        toolkit: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -675,10 +667,23 @@ class AsyncMcpResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> McpRetrieveAppResponse:
         """
-        List MCP servers for a specific app
+        Retrieves a paginated list of Model Control Protocol (MCP) servers that are
+        configured for a specific application or toolkit. This endpoint allows you to
+        find all MCP server instances that have access to a particular application, such
+        as GitHub, Slack, or Jira.
 
         Args:
-          app_key: The key of the app to find MCP servers for
+          app_key: Toolkit or application slug identifier to filter MCP servers by
+
+          auth_config_id: Filter MCP servers by authentication configuration ID
+
+          limit: Number of items per page (default: 10)
+
+          name: Filter MCP servers by name (case-insensitive partial match)
+
+          page_no: Page number for pagination (1-based)
+
+          toolkit: Filter MCP servers by toolkit slug
 
           extra_headers: Send extra headers
 
@@ -693,48 +698,22 @@ class AsyncMcpResource(AsyncAPIResource):
         return await self._get(
             f"/api/v3/mcp/app/{app_key}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "auth_config_id": auth_config_id,
+                        "limit": limit,
+                        "name": name,
+                        "page_no": page_no,
+                        "toolkit": toolkit,
+                    },
+                    mcp_retrieve_app_params.McpRetrieveAppParams,
+                ),
             ),
             cast_to=McpRetrieveAppResponse,
-        )
-
-    async def validate(
-        self,
-        uuid: str,
-        *,
-        x_composio_admin_token: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> McpValidateResponse:
-        """
-        Validate MCP server and retrieve connection details
-
-        Args:
-          uuid: UUID of the MCP server to validate
-
-          x_composio_admin_token: Admin token
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not uuid:
-            raise ValueError(f"Expected a non-empty value for `uuid` but received {uuid!r}")
-        extra_headers = {"x-composio-admin-token": x_composio_admin_token, **(extra_headers or {})}
-        return await self._get(
-            f"/api/v3/mcp/validate/{uuid}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=McpValidateResponse,
         )
 
 
@@ -760,13 +739,10 @@ class McpResourceWithRawResponse:
         self.retrieve_app = to_raw_response_wrapper(
             mcp.retrieve_app,
         )
-        self.validate = to_raw_response_wrapper(
-            mcp.validate,
-        )
 
     @cached_property
-    def command(self) -> CommandResourceWithRawResponse:
-        return CommandResourceWithRawResponse(self._mcp.command)
+    def custom(self) -> CustomResourceWithRawResponse:
+        return CustomResourceWithRawResponse(self._mcp.custom)
 
 
 class AsyncMcpResourceWithRawResponse:
@@ -791,13 +767,10 @@ class AsyncMcpResourceWithRawResponse:
         self.retrieve_app = async_to_raw_response_wrapper(
             mcp.retrieve_app,
         )
-        self.validate = async_to_raw_response_wrapper(
-            mcp.validate,
-        )
 
     @cached_property
-    def command(self) -> AsyncCommandResourceWithRawResponse:
-        return AsyncCommandResourceWithRawResponse(self._mcp.command)
+    def custom(self) -> AsyncCustomResourceWithRawResponse:
+        return AsyncCustomResourceWithRawResponse(self._mcp.custom)
 
 
 class McpResourceWithStreamingResponse:
@@ -822,13 +795,10 @@ class McpResourceWithStreamingResponse:
         self.retrieve_app = to_streamed_response_wrapper(
             mcp.retrieve_app,
         )
-        self.validate = to_streamed_response_wrapper(
-            mcp.validate,
-        )
 
     @cached_property
-    def command(self) -> CommandResourceWithStreamingResponse:
-        return CommandResourceWithStreamingResponse(self._mcp.command)
+    def custom(self) -> CustomResourceWithStreamingResponse:
+        return CustomResourceWithStreamingResponse(self._mcp.custom)
 
 
 class AsyncMcpResourceWithStreamingResponse:
@@ -853,10 +823,7 @@ class AsyncMcpResourceWithStreamingResponse:
         self.retrieve_app = async_to_streamed_response_wrapper(
             mcp.retrieve_app,
         )
-        self.validate = async_to_streamed_response_wrapper(
-            mcp.validate,
-        )
 
     @cached_property
-    def command(self) -> AsyncCommandResourceWithStreamingResponse:
-        return AsyncCommandResourceWithStreamingResponse(self._mcp.command)
+    def custom(self) -> AsyncCustomResourceWithStreamingResponse:
+        return AsyncCustomResourceWithStreamingResponse(self._mcp.custom)

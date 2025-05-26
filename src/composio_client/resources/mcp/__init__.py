@@ -8,22 +8,22 @@ from .mcp import (
     McpResourceWithStreamingResponse,
     AsyncMcpResourceWithStreamingResponse,
 )
-from .command import (
-    CommandResource,
-    AsyncCommandResource,
-    CommandResourceWithRawResponse,
-    AsyncCommandResourceWithRawResponse,
-    CommandResourceWithStreamingResponse,
-    AsyncCommandResourceWithStreamingResponse,
+from .custom import (
+    CustomResource,
+    AsyncCustomResource,
+    CustomResourceWithRawResponse,
+    AsyncCustomResourceWithRawResponse,
+    CustomResourceWithStreamingResponse,
+    AsyncCustomResourceWithStreamingResponse,
 )
 
 __all__ = [
-    "CommandResource",
-    "AsyncCommandResource",
-    "CommandResourceWithRawResponse",
-    "AsyncCommandResourceWithRawResponse",
-    "CommandResourceWithStreamingResponse",
-    "AsyncCommandResourceWithStreamingResponse",
+    "CustomResource",
+    "AsyncCustomResource",
+    "CustomResourceWithRawResponse",
+    "AsyncCustomResourceWithRawResponse",
+    "CustomResourceWithStreamingResponse",
+    "AsyncCustomResourceWithStreamingResponse",
     "McpResource",
     "AsyncMcpResource",
     "McpResourceWithRawResponse",

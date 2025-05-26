@@ -4,9 +4,9 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["TriggerInstanceRemoveUpsertResponse"]
+__all__ = ["TriggerInstanceDeleteResponse"]
 
 
-class TriggerInstanceRemoveUpsertResponse(BaseModel):
+class TriggerInstanceDeleteResponse(BaseModel):
     trigger_id: str = FieldInfo(alias="triggerId")
-    """ID of the updated trigger"""
+    """The ID of the deleted trigger instance"""

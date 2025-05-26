@@ -9,4 +9,7 @@ __all__ = ["APIKeyCreateParams"]
 
 class APIKeyCreateParams(TypedDict, total=False):
     name: Required[str]
-    """API key name"""
+    """
+    A user-friendly name to identify the API key's purpose (e.g., "Production
+    Server", "Test Environment")
+    """

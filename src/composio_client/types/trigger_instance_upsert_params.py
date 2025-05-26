@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, Optional
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
 
@@ -11,8 +11,17 @@ __all__ = ["TriggerInstanceUpsertParams"]
 
 
 class TriggerInstanceUpsertParams(TypedDict, total=False):
-    connected_auth_id: Required[Annotated[str, PropertyInfo(alias="connectedAuthId")]]
-    """Connection ID"""
+    connected_account_id: str
+    """Connected account nanoid"""
 
-    trigger_config: Required[Annotated[Dict[str, Optional[object]], PropertyInfo(alias="triggerConfig")]]
+    connected_auth_id: Annotated[str, PropertyInfo(alias="connectedAuthId")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use connected_account_id instead.
+    """
+
+    body_trigger_config_1: Annotated[Dict[str, Optional[object]], PropertyInfo(alias="trigger_config")]
     """Trigger configuration"""
+
+    body_trigger_config_2: Annotated[Dict[str, Optional[object]], PropertyInfo(alias="triggerConfig")]
+    """Trigger configuration (deprecated)"""

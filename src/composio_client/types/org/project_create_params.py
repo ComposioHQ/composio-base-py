@@ -9,4 +9,4 @@ __all__ = ["ProjectCreateParams"]
 
 class ProjectCreateParams(TypedDict, total=False):
     name: Required[str]
-    """Name of the project"""
+    """A unique name for your project that follows the required format rules"""

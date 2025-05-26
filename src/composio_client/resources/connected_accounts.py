@@ -104,7 +104,8 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountRetrieveResponse:
         """
-        Get connected account details by ID
+        Retrieves comprehensive details of a connected account, including authentication
+        configuration, connection status, and all parameters needed for API requests.
 
         Args:
           extra_headers: Send extra headers
@@ -133,7 +134,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        statuses: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
+        statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]]]
         | NotGiven = NOT_GIVEN,
         toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -207,8 +208,11 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountDeleteResponse:
-        """
-        Delete a connected account
+        """Soft-deletes a connected account by marking it as deleted in the database.
+
+        This
+        prevents the account from being used for API calls but preserves the record for
+        audit purposes.
 
         Args:
           extra_headers: Send extra headers
@@ -241,7 +245,9 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountRefreshResponse:
         """
-        Refresh authentication for a connected account
+        Initiates a new authentication flow for a connected account when credentials
+        have expired or become invalid. This may generate a new authentication URL for
+        OAuth flows or refresh tokens for other auth schemes.
 
         Args:
           extra_headers: Send extra headers
@@ -275,9 +281,13 @@ class ConnectedAccountsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountUpdateStatusResponse:
         """
-        Enable or disable a connected account
+        Updates the status of a connected account to either enabled (active) or disabled
+        (inactive). Disabled accounts cannot be used for API calls but remain in the
+        database.
 
         Args:
+          enabled: Set to true to enable the account or false to disable it
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -371,7 +381,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountRetrieveResponse:
         """
-        Get connected account details by ID
+        Retrieves comprehensive details of a connected account, including authentication
+        configuration, connection status, and all parameters needed for API requests.
 
         Args:
           extra_headers: Send extra headers
@@ -400,7 +411,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        statuses: Optional[List[Literal["ACTIVE", "INACTIVE", "DELETED", "INITIATED", "EXPIRED", "FAILED"]]]
+        statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]]]
         | NotGiven = NOT_GIVEN,
         toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -474,8 +485,11 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountDeleteResponse:
-        """
-        Delete a connected account
+        """Soft-deletes a connected account by marking it as deleted in the database.
+
+        This
+        prevents the account from being used for API calls but preserves the record for
+        audit purposes.
 
         Args:
           extra_headers: Send extra headers
@@ -508,7 +522,9 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountRefreshResponse:
         """
-        Refresh authentication for a connected account
+        Initiates a new authentication flow for a connected account when credentials
+        have expired or become invalid. This may generate a new authentication URL for
+        OAuth flows or refresh tokens for other auth schemes.
 
         Args:
           extra_headers: Send extra headers
@@ -542,9 +558,13 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ConnectedAccountUpdateStatusResponse:
         """
-        Enable or disable a connected account
+        Updates the status of a connected account to either enabled (active) or disabled
+        (inactive). Disabled accounts cannot be used for API calls but remain in the
+        database.
 
         Args:
+          enabled: Set to true to enable the account or false to disable it
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import toolkit_list_params
+from ..types import toolkit_list_params, toolkit_retrieve_categories_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -58,9 +58,13 @@ class ToolkitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitRetrieveResponse:
         """
-        Retrieve detailed information about a specific toolkit using its slug identifier
+        Retrieves comprehensive information about a specific toolkit using its unique
+        slug identifier. This endpoint provides detailed metadata, authentication
+        configuration options, and feature counts for the requested toolkit.
 
         Args:
+          slug: The unique slug identifier of the toolkit to retrieve
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -94,11 +98,20 @@ class ToolkitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitListResponse:
         """
-        Retrieve a list of available toolkits with optional filtering and sorting
-        options
+        Retrieves a comprehensive list of toolkits that are available to the
+        authenticated project. Toolkits represent integration points with external
+        services and applications, each containing a collection of tools and triggers.
+        This endpoint supports filtering by category, management type, and local
+        availability, as well as different sorting options.
 
         Args:
-          is_local: Whether to include local toolkits
+          category: Filter toolkits by category
+
+          is_local: Whether to include local toolkits in the results
+
+          managed_by: Filter toolkits by who manages them
+
+          sort_by: Sort order for returned toolkits
 
           extra_headers: Send extra headers
 
@@ -131,6 +144,7 @@ class ToolkitsResource(SyncAPIResource):
     def retrieve_categories(
         self,
         *,
+        cache: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -138,11 +152,34 @@ class ToolkitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitRetrieveCategoriesResponse:
-        """Retrieve a list of all available toolkit categories for filtering toolkits"""
+        """Retrieves a comprehensive list of all available toolkit categories.
+
+        These
+        categories can be used to filter toolkits by type or purpose when using the
+        toolkit listing endpoint. Categories help organize toolkits into logical groups
+        based on their functionality or industry focus.
+
+        Args:
+          cache: Cache control parameter
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return self._get(
             "/api/v3/toolkits/categories",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"cache": cache}, toolkit_retrieve_categories_params.ToolkitRetrieveCategoriesParams
+                ),
             ),
             cast_to=ToolkitRetrieveCategoriesResponse,
         )
@@ -180,9 +217,13 @@ class AsyncToolkitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitRetrieveResponse:
         """
-        Retrieve detailed information about a specific toolkit using its slug identifier
+        Retrieves comprehensive information about a specific toolkit using its unique
+        slug identifier. This endpoint provides detailed metadata, authentication
+        configuration options, and feature counts for the requested toolkit.
 
         Args:
+          slug: The unique slug identifier of the toolkit to retrieve
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -216,11 +257,20 @@ class AsyncToolkitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitListResponse:
         """
-        Retrieve a list of available toolkits with optional filtering and sorting
-        options
+        Retrieves a comprehensive list of toolkits that are available to the
+        authenticated project. Toolkits represent integration points with external
+        services and applications, each containing a collection of tools and triggers.
+        This endpoint supports filtering by category, management type, and local
+        availability, as well as different sorting options.
 
         Args:
-          is_local: Whether to include local toolkits
+          category: Filter toolkits by category
+
+          is_local: Whether to include local toolkits in the results
+
+          managed_by: Filter toolkits by who manages them
+
+          sort_by: Sort order for returned toolkits
 
           extra_headers: Send extra headers
 
@@ -253,6 +303,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
     async def retrieve_categories(
         self,
         *,
+        cache: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -260,11 +311,34 @@ class AsyncToolkitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolkitRetrieveCategoriesResponse:
-        """Retrieve a list of all available toolkit categories for filtering toolkits"""
+        """Retrieves a comprehensive list of all available toolkit categories.
+
+        These
+        categories can be used to filter toolkits by type or purpose when using the
+        toolkit listing endpoint. Categories help organize toolkits into logical groups
+        based on their functionality or industry focus.
+
+        Args:
+          cache: Cache control parameter
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
         return await self._get(
             "/api/v3/toolkits/categories",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"cache": cache}, toolkit_retrieve_categories_params.ToolkitRetrieveCategoriesParams
+                ),
             ),
             cast_to=ToolkitRetrieveCategoriesResponse,
         )

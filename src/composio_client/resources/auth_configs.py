@@ -97,9 +97,12 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthConfigRetrieveResponse:
         """
-        Get single authentication configuration by ID
+        Retrieves detailed information about a specific authentication configuration
+        using its unique identifier.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to retrieve
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -134,9 +137,12 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> object:
         """
-        Update an authentication configuration
+        Modifies an existing authentication configuration with new credentials or other
+        settings. Only specified fields will be updated.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to update
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -163,9 +169,12 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> object:
         """
-        Update an authentication configuration
+        Modifies an existing authentication configuration with new credentials or other
+        settings. Only specified fields will be updated.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to update
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -218,7 +227,8 @@ class AuthConfigsResource(SyncAPIResource):
         deprecated_app_id: str | NotGiven = NOT_GIVEN,
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
-        limit: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
+        show_disabled: bool | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -238,6 +248,8 @@ class AuthConfigsResource(SyncAPIResource):
           is_composio_managed: Whether to filter by composio managed auth configs
 
           limit: The number of auth configs to return
+
+          show_disabled: Show disabled auth configs
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -263,6 +275,7 @@ class AuthConfigsResource(SyncAPIResource):
                         "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
+                        "show_disabled": show_disabled,
                         "toolkit_slug": toolkit_slug,
                     },
                     auth_config_list_params.AuthConfigListParams,
@@ -283,9 +296,12 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> object:
         """
-        Delete an authentication configuration
+        Soft-deletes an authentication configuration by marking it as deleted in the
+        database. This operation cannot be undone.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to delete
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -317,9 +333,14 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> object:
         """
-        Enable or disable an authentication configuration
+        Updates the status of an authentication configuration to either enabled or
+        disabled. Disabled configurations cannot be used for new connections.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to update
+
+          status: The new status to set for the auth configuration
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -412,9 +433,12 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> AuthConfigRetrieveResponse:
         """
-        Get single authentication configuration by ID
+        Retrieves detailed information about a specific authentication configuration
+        using its unique identifier.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to retrieve
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -449,9 +473,12 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> object:
         """
-        Update an authentication configuration
+        Modifies an existing authentication configuration with new credentials or other
+        settings. Only specified fields will be updated.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to update
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -478,9 +505,12 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> object:
         """
-        Update an authentication configuration
+        Modifies an existing authentication configuration with new credentials or other
+        settings. Only specified fields will be updated.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to update
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -533,7 +563,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         deprecated_app_id: str | NotGiven = NOT_GIVEN,
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
-        limit: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
+        show_disabled: bool | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -553,6 +584,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
           is_composio_managed: Whether to filter by composio managed auth configs
 
           limit: The number of auth configs to return
+
+          show_disabled: Show disabled auth configs
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -578,6 +611,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                         "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
+                        "show_disabled": show_disabled,
                         "toolkit_slug": toolkit_slug,
                     },
                     auth_config_list_params.AuthConfigListParams,
@@ -598,9 +632,12 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> object:
         """
-        Delete an authentication configuration
+        Soft-deletes an authentication configuration by marking it as deleted in the
+        database. This operation cannot be undone.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to delete
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -632,9 +669,14 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> object:
         """
-        Enable or disable an authentication configuration
+        Updates the status of an authentication configuration to either enabled or
+        disabled. Disabled configurations cannot be used for new connections.
 
         Args:
+          nanoid: The unique identifier of the authentication configuration to update
+
+          status: The new status to set for the auth configuration
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request

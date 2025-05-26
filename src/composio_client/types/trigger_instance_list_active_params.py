@@ -11,19 +11,31 @@ __all__ = ["TriggerInstanceListActiveParams"]
 
 
 class TriggerInstanceListActiveParams(TypedDict, total=False):
-    auth_config_ids: Annotated[Optional[List[str]], PropertyInfo(alias="authConfigIds")]
-    """Comma-separated list of auth config IDs to filter triggers by"""
+    query_auth_config_ids_1: Annotated[Optional[List[str]], PropertyInfo(alias="auth_config_ids")]
+    """Array of auth config IDs to filter triggers by"""
 
-    connected_account_ids: Annotated[Optional[List[str]], PropertyInfo(alias="connectedAccountIds")]
-    """Comma-separated list of connected account IDs to filter triggers by"""
+    query_auth_config_ids_2: Annotated[Optional[List[str]], PropertyInfo(alias="authConfigIds")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use auth_config_ids instead.
+    """
+
+    query_connected_account_ids_1: Annotated[Optional[List[str]], PropertyInfo(alias="connected_account_ids")]
+    """Array of connected account IDs to filter triggers by"""
+
+    query_connected_account_ids_2: Annotated[Optional[List[str]], PropertyInfo(alias="connectedAccountIds")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use connected_account_ids instead.
+    """
 
     deprecated_auth_config_uuids: Annotated[Optional[List[str]], PropertyInfo(alias="deprecatedAuthConfigUuids")]
-    """Comma-separated list of auth config UUIDs to filter triggers by"""
+    """Array of auth config UUIDs to filter triggers by"""
 
     deprecated_connected_account_uuids: Annotated[
         Optional[List[str]], PropertyInfo(alias="deprecatedConnectedAccountUuids")
     ]
-    """Comma-separated list of connected account UUIDs to filter triggers by"""
+    """Array of connected account UUIDs to filter triggers by"""
 
     limit: float
     """Number of items to return per page."""
@@ -31,11 +43,29 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     page: float
     """Page number for pagination. Starts from 1."""
 
-    show_disabled: Annotated[Optional[str], PropertyInfo(alias="showDisabled")]
+    query_show_disabled_1: Annotated[Optional[bool], PropertyInfo(alias="show_disabled")]
     """When set to true, includes disabled triggers in the response."""
 
-    trigger_ids: Annotated[Optional[List[str]], PropertyInfo(alias="triggerIds")]
-    """Comma-separated list of trigger IDs to filter triggers by"""
+    query_show_disabled_2: Annotated[Optional[bool], PropertyInfo(alias="showDisabled")]
+    """DEPRECATED: This parameter will be removed in a future version.
 
-    trigger_names: Annotated[Optional[List[str]], PropertyInfo(alias="triggerNames")]
-    """Comma-separated list of trigger names to filter triggers by"""
+    Please use show_disabled instead.
+    """
+
+    query_trigger_ids_1: Annotated[Optional[List[str]], PropertyInfo(alias="trigger_ids")]
+    """Array of trigger IDs to filter triggers by"""
+
+    query_trigger_names_1: Annotated[Optional[List[str]], PropertyInfo(alias="trigger_names")]
+    """Array of trigger names to filter triggers by"""
+
+    query_trigger_ids_2: Annotated[Optional[List[str]], PropertyInfo(alias="triggerIds")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use trigger_ids instead.
+    """
+
+    query_trigger_names_2: Annotated[Optional[List[str]], PropertyInfo(alias="triggerNames")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use trigger_names instead.
+    """

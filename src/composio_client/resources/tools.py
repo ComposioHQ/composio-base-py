@@ -60,7 +60,9 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolRetrieveResponse:
         """
-        Retrieve detailed information about a specific tool using its slug identifier
+        Retrieve detailed information about a specific tool using its slug identifier.
+        This endpoint returns full metadata about a tool including input/output
+        parameters, versions, and toolkit information.
 
         Args:
           extra_headers: Send extra headers
@@ -85,10 +87,10 @@ class ToolsResource(SyncAPIResource):
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
-        important: str | NotGiven = NOT_GIVEN,
+        important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
-        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tags: List[str] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -99,21 +101,23 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolListResponse:
         """
-        Retrieve a list of available tools with optional filtering and search
-        capabilities
+        Retrieve a paginated list of available tools with comprehensive filtering,
+        sorting and search capabilities. Use query parameters to narrow down results by
+        toolkit, tags, or search terms.
 
         Args:
-          cursor: The cursor to paginate through the results
+          cursor: Pagination cursor for fetching next page of results (base64 encoded)
 
-          important: Whether to filter by important tools
+          important: Filter to only show important/featured tools (set to "true" to enable)
 
-          limit: The number of results to return
+          limit: Maximum number of tools to return per page (defaults to 20, max 100)
 
-          search: The search query to filter by
+          search: Free-text search query to find tools by name, description, or functionality
 
-          tags: The tags to filter the tools by
+          tags: Filter tools by one or more tags (can be specified multiple times)
 
-          tool_slugs: The slugs of the tools to filter by
+          tool_slugs: Comma-separated list of specific tool slugs to retrieve (overrides other
+              filters)
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -150,7 +154,7 @@ class ToolsResource(SyncAPIResource):
 
     def execute(
         self,
-        action: str,
+        tool_slug: str,
         *,
         allow_tracing: bool | NotGiven = NOT_GIVEN,
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
@@ -167,13 +171,28 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolExecuteResponse:
         """
-        Execute a specific tool operation with provided arguments and authentication
+        Execute a specific tool operation with provided arguments and authentication.
+        This is the primary endpoint for integrating with third-party services and
+        executing tools. You can provide structured arguments or use natural language
+        processing by providing a text description of what you want to accomplish.
 
         Args:
-          action: The name of the action
+          allow_tracing: Enable debug tracing for tool execution (useful for debugging)
 
-          custom_auth_params: An optional field for people who want to use their own auth to execute the
-              action.
+          arguments: Key-value pairs of arguments required by the tool (mutually exclusive with text)
+
+          connected_account_id: Unique identifier for the connected account to use for authentication
+
+          custom_auth_params: Custom authentication parameters for tools that support parameterized
+              authentication
+
+          entity_id: Entity identifier for multi-entity connected accounts (e.g. multiple
+              repositories, organizations)
+
+          text: Natural language description of the task to perform (mutually exclusive with
+              arguments)
+
+          version: Tool version to execute (defaults to "latest" if not specified)
 
           extra_headers: Send extra headers
 
@@ -183,10 +202,10 @@ class ToolsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not action:
-            raise ValueError(f"Expected a non-empty value for `action` but received {action!r}")
+        if not tool_slug:
+            raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         return self._post(
-            f"/api/v3/tools/execute/{action}",
+            f"/api/v3/tools/execute/{tool_slug}",
             body=maybe_transform(
                 {
                     "allow_tracing": allow_tracing,
@@ -207,7 +226,7 @@ class ToolsResource(SyncAPIResource):
 
     def get_input(
         self,
-        action_name: str,
+        tool_slug: str,
         *,
         text: str,
         custom_description: str | NotGiven = NOT_GIVEN,
@@ -221,15 +240,22 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolGetInputResponse:
         """
+        Uses AI to translate a natural language description into structured arguments
+        for a specific tool. This endpoint is useful when you want to let users describe
+        what they want to do in plain language instead of providing structured
+        parameters.
+
         Args:
-          text: The use-case description for the action, this will give context to LLM to
-              generate the correct inputs for the action.
+          text: Natural language description of what you want to accomplish with this tool
 
-          custom_description: The custom description for the action, use this to provide customised context
-              about the action to the LLM to suit your use-case.
+          custom_description: Custom description of the tool to help guide the LLM in generating more accurate
+              inputs
 
-          system_prompt: The system prompt to be used by LLM, use this to control and guide the behaviour
-              of the LLM.
+          system_prompt: System prompt to control and guide the behavior of the LLM when generating
+              inputs
+
+          version: Tool version to use when generating inputs (defaults to "latest" if not
+              specified)
 
           extra_headers: Send extra headers
 
@@ -239,10 +265,10 @@ class ToolsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not action_name:
-            raise ValueError(f"Expected a non-empty value for `action_name` but received {action_name!r}")
+        if not tool_slug:
+            raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         return self._post(
-            f"/api/v3/tools/execute/{action_name}/input",
+            f"/api/v3/tools/execute/{tool_slug}/input",
             body=maybe_transform(
                 {
                     "text": text,
@@ -274,7 +300,23 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolProxyResponse:
         """
+        Proxy an HTTP request to a third-party API using connected account credentials.
+        This endpoint allows making authenticated API calls to external services while
+        abstracting away authentication details.
+
         Args:
+          endpoint: The API endpoint to call (absolute URL or path relative to base URL of the
+              connected account)
+
+          method: The HTTP method to use for the request
+
+          body: The request body (for POST, PUT, and PATCH requests)
+
+          connected_account_id: The ID of the connected account to use for authentication (if not provided, will
+              use the default account for the project)
+
+          parameters: Additional HTTP headers or query parameters to include in the request
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -313,7 +355,8 @@ class ToolsResource(SyncAPIResource):
     ) -> str:
         """
         Retrieve a list of all available tool enumeration values (tool slugs) for the
-        project
+        project. This endpoint returns a comma-separated string of tool slugs that can
+        be used in other API calls.
         """
         return self._get(
             "/api/v3/tools/enum",
@@ -356,7 +399,9 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolRetrieveResponse:
         """
-        Retrieve detailed information about a specific tool using its slug identifier
+        Retrieve detailed information about a specific tool using its slug identifier.
+        This endpoint returns full metadata about a tool including input/output
+        parameters, versions, and toolkit information.
 
         Args:
           extra_headers: Send extra headers
@@ -381,10 +426,10 @@ class AsyncToolsResource(AsyncAPIResource):
         self,
         *,
         cursor: str | NotGiven = NOT_GIVEN,
-        important: str | NotGiven = NOT_GIVEN,
+        important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
-        tags: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        tags: List[str] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -395,21 +440,23 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolListResponse:
         """
-        Retrieve a list of available tools with optional filtering and search
-        capabilities
+        Retrieve a paginated list of available tools with comprehensive filtering,
+        sorting and search capabilities. Use query parameters to narrow down results by
+        toolkit, tags, or search terms.
 
         Args:
-          cursor: The cursor to paginate through the results
+          cursor: Pagination cursor for fetching next page of results (base64 encoded)
 
-          important: Whether to filter by important tools
+          important: Filter to only show important/featured tools (set to "true" to enable)
 
-          limit: The number of results to return
+          limit: Maximum number of tools to return per page (defaults to 20, max 100)
 
-          search: The search query to filter by
+          search: Free-text search query to find tools by name, description, or functionality
 
-          tags: The tags to filter the tools by
+          tags: Filter tools by one or more tags (can be specified multiple times)
 
-          tool_slugs: The slugs of the tools to filter by
+          tool_slugs: Comma-separated list of specific tool slugs to retrieve (overrides other
+              filters)
 
           toolkit_slug: The slug of the toolkit to filter by
 
@@ -446,7 +493,7 @@ class AsyncToolsResource(AsyncAPIResource):
 
     async def execute(
         self,
-        action: str,
+        tool_slug: str,
         *,
         allow_tracing: bool | NotGiven = NOT_GIVEN,
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
@@ -463,13 +510,28 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolExecuteResponse:
         """
-        Execute a specific tool operation with provided arguments and authentication
+        Execute a specific tool operation with provided arguments and authentication.
+        This is the primary endpoint for integrating with third-party services and
+        executing tools. You can provide structured arguments or use natural language
+        processing by providing a text description of what you want to accomplish.
 
         Args:
-          action: The name of the action
+          allow_tracing: Enable debug tracing for tool execution (useful for debugging)
 
-          custom_auth_params: An optional field for people who want to use their own auth to execute the
-              action.
+          arguments: Key-value pairs of arguments required by the tool (mutually exclusive with text)
+
+          connected_account_id: Unique identifier for the connected account to use for authentication
+
+          custom_auth_params: Custom authentication parameters for tools that support parameterized
+              authentication
+
+          entity_id: Entity identifier for multi-entity connected accounts (e.g. multiple
+              repositories, organizations)
+
+          text: Natural language description of the task to perform (mutually exclusive with
+              arguments)
+
+          version: Tool version to execute (defaults to "latest" if not specified)
 
           extra_headers: Send extra headers
 
@@ -479,10 +541,10 @@ class AsyncToolsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not action:
-            raise ValueError(f"Expected a non-empty value for `action` but received {action!r}")
+        if not tool_slug:
+            raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         return await self._post(
-            f"/api/v3/tools/execute/{action}",
+            f"/api/v3/tools/execute/{tool_slug}",
             body=await async_maybe_transform(
                 {
                     "allow_tracing": allow_tracing,
@@ -503,7 +565,7 @@ class AsyncToolsResource(AsyncAPIResource):
 
     async def get_input(
         self,
-        action_name: str,
+        tool_slug: str,
         *,
         text: str,
         custom_description: str | NotGiven = NOT_GIVEN,
@@ -517,15 +579,22 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolGetInputResponse:
         """
+        Uses AI to translate a natural language description into structured arguments
+        for a specific tool. This endpoint is useful when you want to let users describe
+        what they want to do in plain language instead of providing structured
+        parameters.
+
         Args:
-          text: The use-case description for the action, this will give context to LLM to
-              generate the correct inputs for the action.
+          text: Natural language description of what you want to accomplish with this tool
 
-          custom_description: The custom description for the action, use this to provide customised context
-              about the action to the LLM to suit your use-case.
+          custom_description: Custom description of the tool to help guide the LLM in generating more accurate
+              inputs
 
-          system_prompt: The system prompt to be used by LLM, use this to control and guide the behaviour
-              of the LLM.
+          system_prompt: System prompt to control and guide the behavior of the LLM when generating
+              inputs
+
+          version: Tool version to use when generating inputs (defaults to "latest" if not
+              specified)
 
           extra_headers: Send extra headers
 
@@ -535,10 +604,10 @@ class AsyncToolsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not action_name:
-            raise ValueError(f"Expected a non-empty value for `action_name` but received {action_name!r}")
+        if not tool_slug:
+            raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         return await self._post(
-            f"/api/v3/tools/execute/{action_name}/input",
+            f"/api/v3/tools/execute/{tool_slug}/input",
             body=await async_maybe_transform(
                 {
                     "text": text,
@@ -570,7 +639,23 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> ToolProxyResponse:
         """
+        Proxy an HTTP request to a third-party API using connected account credentials.
+        This endpoint allows making authenticated API calls to external services while
+        abstracting away authentication details.
+
         Args:
+          endpoint: The API endpoint to call (absolute URL or path relative to base URL of the
+              connected account)
+
+          method: The HTTP method to use for the request
+
+          body: The request body (for POST, PUT, and PATCH requests)
+
+          connected_account_id: The ID of the connected account to use for authentication (if not provided, will
+              use the default account for the project)
+
+          parameters: Additional HTTP headers or query parameters to include in the request
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -609,7 +694,8 @@ class AsyncToolsResource(AsyncAPIResource):
     ) -> str:
         """
         Retrieve a list of all available tool enumeration values (tool slugs) for the
-        project
+        project. This endpoint returns a comma-separated string of tool slugs that can
+        be used in other API calls.
         """
         return await self._get(
             "/api/v3/tools/enum",

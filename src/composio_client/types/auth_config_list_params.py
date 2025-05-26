@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Union, Optional
 from typing_extensions import TypedDict
 
 __all__ = ["AuthConfigListParams"]
@@ -20,8 +20,11 @@ class AuthConfigListParams(TypedDict, total=False):
     is_composio_managed: Union[str, bool]
     """Whether to filter by composio managed auth configs"""
 
-    limit: str
+    limit: Optional[float]
     """The number of auth configs to return"""
+
+    show_disabled: bool
+    """Show disabled auth configs"""
 
     toolkit_slug: str
     """The slug of the toolkit to filter by"""

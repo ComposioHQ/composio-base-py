@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
+from typing import List
 
 import httpx
 
@@ -16,55 +16,60 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.mcp import command_generate_params
+from ...types.mcp import custom_create_params
 from ..._base_client import make_request_options
-from ...types.mcp.command_generate_response import CommandGenerateResponse
+from ...types.mcp.custom_create_response import CustomCreateResponse
 
-__all__ = ["CommandResource", "AsyncCommandResource"]
+__all__ = ["CustomResource", "AsyncCustomResource"]
 
 
-class CommandResource(SyncAPIResource):
+class CustomResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> CommandResourceWithRawResponse:
+    def with_raw_response(self) -> CustomResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#accessing-raw-response-data-eg-headers
         """
-        return CommandResourceWithRawResponse(self)
+        return CustomResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> CommandResourceWithStreamingResponse:
+    def with_streaming_response(self) -> CustomResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
-        return CommandResourceWithStreamingResponse(self)
+        return CustomResourceWithStreamingResponse(self)
 
-    def generate(
+    def create(
         self,
         *,
-        id: str,
-        mcp_client: Literal["cursor", "claude", "windsurf"],
-        ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
+        name: str,
+        toolkits: List[str],
+        custom_tools: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CommandGenerateResponse:
+    ) -> CustomCreateResponse:
         """
-        Generate CLI command to set up MCP server
+        Creates a new Model Control Protocol (MCP) server instance that can integrate
+        with multiple applications or toolkits simultaneously. This endpoint allows you
+        to create a server that can access tools from different applications, making it
+        suitable for complex workflows that span multiple services.
 
         Args:
-          id: The ID of the MCP server
+          name: Human-readable name to identify this custom MCP server (4-25 characters,
+              alphanumeric and hyphens only)
 
-          mcp_client: MCP client to generate command for
+          toolkits: List of application/toolkit identifiers to enable for this server
 
-          ttl: Time to live for the command
+          custom_tools: Additional custom tool identifiers to enable that aren't part of standard
+              toolkits
 
           extra_headers: Send extra headers
 
@@ -75,64 +80,69 @@ class CommandResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/mcp/command/generate",
+            "/api/v3/mcp/servers/custom",
             body=maybe_transform(
                 {
-                    "id": id,
-                    "mcp_client": mcp_client,
-                    "ttl": ttl,
+                    "name": name,
+                    "toolkits": toolkits,
+                    "custom_tools": custom_tools,
                 },
-                command_generate_params.CommandGenerateParams,
+                custom_create_params.CustomCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CommandGenerateResponse,
+            cast_to=CustomCreateResponse,
         )
 
 
-class AsyncCommandResource(AsyncAPIResource):
+class AsyncCustomResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncCommandResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncCustomResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#accessing-raw-response-data-eg-headers
         """
-        return AsyncCommandResourceWithRawResponse(self)
+        return AsyncCustomResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncCommandResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncCustomResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
-        return AsyncCommandResourceWithStreamingResponse(self)
+        return AsyncCustomResourceWithStreamingResponse(self)
 
-    async def generate(
+    async def create(
         self,
         *,
-        id: str,
-        mcp_client: Literal["cursor", "claude", "windsurf"],
-        ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
+        name: str,
+        toolkits: List[str],
+        custom_tools: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CommandGenerateResponse:
+    ) -> CustomCreateResponse:
         """
-        Generate CLI command to set up MCP server
+        Creates a new Model Control Protocol (MCP) server instance that can integrate
+        with multiple applications or toolkits simultaneously. This endpoint allows you
+        to create a server that can access tools from different applications, making it
+        suitable for complex workflows that span multiple services.
 
         Args:
-          id: The ID of the MCP server
+          name: Human-readable name to identify this custom MCP server (4-25 characters,
+              alphanumeric and hyphens only)
 
-          mcp_client: MCP client to generate command for
+          toolkits: List of application/toolkit identifiers to enable for this server
 
-          ttl: Time to live for the command
+          custom_tools: Additional custom tool identifiers to enable that aren't part of standard
+              toolkits
 
           extra_headers: Send extra headers
 
@@ -143,53 +153,53 @@ class AsyncCommandResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/mcp/command/generate",
+            "/api/v3/mcp/servers/custom",
             body=await async_maybe_transform(
                 {
-                    "id": id,
-                    "mcp_client": mcp_client,
-                    "ttl": ttl,
+                    "name": name,
+                    "toolkits": toolkits,
+                    "custom_tools": custom_tools,
                 },
-                command_generate_params.CommandGenerateParams,
+                custom_create_params.CustomCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=CommandGenerateResponse,
+            cast_to=CustomCreateResponse,
         )
 
 
-class CommandResourceWithRawResponse:
-    def __init__(self, command: CommandResource) -> None:
-        self._command = command
+class CustomResourceWithRawResponse:
+    def __init__(self, custom: CustomResource) -> None:
+        self._custom = custom
 
-        self.generate = to_raw_response_wrapper(
-            command.generate,
+        self.create = to_raw_response_wrapper(
+            custom.create,
         )
 
 
-class AsyncCommandResourceWithRawResponse:
-    def __init__(self, command: AsyncCommandResource) -> None:
-        self._command = command
+class AsyncCustomResourceWithRawResponse:
+    def __init__(self, custom: AsyncCustomResource) -> None:
+        self._custom = custom
 
-        self.generate = async_to_raw_response_wrapper(
-            command.generate,
+        self.create = async_to_raw_response_wrapper(
+            custom.create,
         )
 
 
-class CommandResourceWithStreamingResponse:
-    def __init__(self, command: CommandResource) -> None:
-        self._command = command
+class CustomResourceWithStreamingResponse:
+    def __init__(self, custom: CustomResource) -> None:
+        self._custom = custom
 
-        self.generate = to_streamed_response_wrapper(
-            command.generate,
+        self.create = to_streamed_response_wrapper(
+            custom.create,
         )
 
 
-class AsyncCommandResourceWithStreamingResponse:
-    def __init__(self, command: AsyncCommandResource) -> None:
-        self._command = command
+class AsyncCustomResourceWithStreamingResponse:
+    def __init__(self, custom: AsyncCustomResource) -> None:
+        self._custom = custom
 
-        self.generate = async_to_streamed_response_wrapper(
-            command.generate,
+        self.create = async_to_streamed_response_wrapper(
+            custom.create,
         )
