@@ -26,6 +26,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from ...types.trigger_instance_delete_response import TriggerInstanceDeleteResponse
 from ...types.trigger_instance_upsert_response import TriggerInstanceUpsertResponse
 from ...types.trigger_instance_list_active_response import TriggerInstanceListActiveResponse
 
@@ -55,6 +56,39 @@ class TriggerInstancesResource(SyncAPIResource):
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
         return TriggerInstancesResourceWithStreamingResponse(self)
+
+    def delete(
+        self,
+        trigger_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TriggerInstanceDeleteResponse:
+        """
+        Args:
+          trigger_id: The ID of the trigger instance to delete
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not trigger_id:
+            raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
+        return self._delete(
+            f"/api/v3/trigger_instances/delete/{trigger_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TriggerInstanceDeleteResponse,
+        )
 
     def list_active(
         self,
@@ -233,6 +267,39 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         """
         return AsyncTriggerInstancesResourceWithStreamingResponse(self)
 
+    async def delete(
+        self,
+        trigger_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TriggerInstanceDeleteResponse:
+        """
+        Args:
+          trigger_id: The ID of the trigger instance to delete
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not trigger_id:
+            raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
+        return await self._delete(
+            f"/api/v3/trigger_instances/delete/{trigger_id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TriggerInstanceDeleteResponse,
+        )
+
     async def list_active(
         self,
         *,
@@ -390,6 +457,9 @@ class TriggerInstancesResourceWithRawResponse:
     def __init__(self, trigger_instances: TriggerInstancesResource) -> None:
         self._trigger_instances = trigger_instances
 
+        self.delete = to_raw_response_wrapper(
+            trigger_instances.delete,
+        )
         self.list_active = to_raw_response_wrapper(
             trigger_instances.list_active,
         )
@@ -406,6 +476,9 @@ class AsyncTriggerInstancesResourceWithRawResponse:
     def __init__(self, trigger_instances: AsyncTriggerInstancesResource) -> None:
         self._trigger_instances = trigger_instances
 
+        self.delete = async_to_raw_response_wrapper(
+            trigger_instances.delete,
+        )
         self.list_active = async_to_raw_response_wrapper(
             trigger_instances.list_active,
         )
@@ -422,6 +495,9 @@ class TriggerInstancesResourceWithStreamingResponse:
     def __init__(self, trigger_instances: TriggerInstancesResource) -> None:
         self._trigger_instances = trigger_instances
 
+        self.delete = to_streamed_response_wrapper(
+            trigger_instances.delete,
+        )
         self.list_active = to_streamed_response_wrapper(
             trigger_instances.list_active,
         )
@@ -438,6 +514,9 @@ class AsyncTriggerInstancesResourceWithStreamingResponse:
     def __init__(self, trigger_instances: AsyncTriggerInstancesResource) -> None:
         self._trigger_instances = trigger_instances
 
+        self.delete = async_to_streamed_response_wrapper(
+            trigger_instances.delete,
+        )
         self.list_active = async_to_streamed_response_wrapper(
             trigger_instances.list_active,
         )

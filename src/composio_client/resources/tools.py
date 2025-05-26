@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Dict, List, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
 
-from ..types import tool_list_params, tool_proxy_params
+from ..types import tool_list_params, tool_proxy_params, tool_execute_params, tool_get_input_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -21,7 +21,9 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.tool_list_response import ToolListResponse
 from ..types.tool_proxy_response import ToolProxyResponse
+from ..types.tool_execute_response import ToolExecuteResponse
 from ..types.tool_retrieve_response import ToolRetrieveResponse
+from ..types.tool_get_input_response import ToolGetInputResponse
 
 __all__ = ["ToolsResource", "AsyncToolsResource"]
 
@@ -148,6 +150,138 @@ class ToolsResource(SyncAPIResource):
                 ),
             ),
             cast_to=ToolListResponse,
+        )
+
+    def execute(
+        self,
+        tool_slug: str,
+        *,
+        allow_tracing: bool | NotGiven = NOT_GIVEN,
+        arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        connected_account_id: str | NotGiven = NOT_GIVEN,
+        custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        text: str | NotGiven = NOT_GIVEN,
+        version: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ToolExecuteResponse:
+        """
+        Execute a specific tool operation with provided arguments and authentication.
+        This is the primary endpoint for integrating with third-party services and
+        executing tools. You can provide structured arguments or use natural language
+        processing by providing a text description of what you want to accomplish.
+
+        Args:
+          allow_tracing: Enable debug tracing for tool execution (useful for debugging)
+
+          arguments: Key-value pairs of arguments required by the tool (mutually exclusive with text)
+
+          connected_account_id: Unique identifier for the connected account to use for authentication
+
+          custom_auth_params: Custom authentication parameters for tools that support parameterized
+              authentication
+
+          entity_id: Entity identifier for multi-entity connected accounts (e.g. multiple
+              repositories, organizations)
+
+          text: Natural language description of the task to perform (mutually exclusive with
+              arguments)
+
+          version: Tool version to execute (defaults to "latest" if not specified)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not tool_slug:
+            raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
+        return self._post(
+            f"/api/v3/tools/execute/{tool_slug}",
+            body=maybe_transform(
+                {
+                    "allow_tracing": allow_tracing,
+                    "arguments": arguments,
+                    "connected_account_id": connected_account_id,
+                    "custom_auth_params": custom_auth_params,
+                    "entity_id": entity_id,
+                    "text": text,
+                    "version": version,
+                },
+                tool_execute_params.ToolExecuteParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ToolExecuteResponse,
+        )
+
+    def get_input(
+        self,
+        tool_slug: str,
+        *,
+        text: str,
+        custom_description: str | NotGiven = NOT_GIVEN,
+        system_prompt: str | NotGiven = NOT_GIVEN,
+        version: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ToolGetInputResponse:
+        """
+        Uses AI to translate a natural language description into structured arguments
+        for a specific tool. This endpoint is useful when you want to let users describe
+        what they want to do in plain language instead of providing structured
+        parameters.
+
+        Args:
+          text: Natural language description of what you want to accomplish with this tool
+
+          custom_description: Custom description of the tool to help guide the LLM in generating more accurate
+              inputs
+
+          system_prompt: System prompt to control and guide the behavior of the LLM when generating
+              inputs
+
+          version: Tool version to use when generating inputs (defaults to "latest" if not
+              specified)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not tool_slug:
+            raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
+        return self._post(
+            f"/api/v3/tools/execute/{tool_slug}/input",
+            body=maybe_transform(
+                {
+                    "text": text,
+                    "custom_description": custom_description,
+                    "system_prompt": system_prompt,
+                    "version": version,
+                },
+                tool_get_input_params.ToolGetInputParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ToolGetInputResponse,
         )
 
     def proxy(
@@ -357,6 +491,138 @@ class AsyncToolsResource(AsyncAPIResource):
             cast_to=ToolListResponse,
         )
 
+    async def execute(
+        self,
+        tool_slug: str,
+        *,
+        allow_tracing: bool | NotGiven = NOT_GIVEN,
+        arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        connected_account_id: str | NotGiven = NOT_GIVEN,
+        custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
+        text: str | NotGiven = NOT_GIVEN,
+        version: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ToolExecuteResponse:
+        """
+        Execute a specific tool operation with provided arguments and authentication.
+        This is the primary endpoint for integrating with third-party services and
+        executing tools. You can provide structured arguments or use natural language
+        processing by providing a text description of what you want to accomplish.
+
+        Args:
+          allow_tracing: Enable debug tracing for tool execution (useful for debugging)
+
+          arguments: Key-value pairs of arguments required by the tool (mutually exclusive with text)
+
+          connected_account_id: Unique identifier for the connected account to use for authentication
+
+          custom_auth_params: Custom authentication parameters for tools that support parameterized
+              authentication
+
+          entity_id: Entity identifier for multi-entity connected accounts (e.g. multiple
+              repositories, organizations)
+
+          text: Natural language description of the task to perform (mutually exclusive with
+              arguments)
+
+          version: Tool version to execute (defaults to "latest" if not specified)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not tool_slug:
+            raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
+        return await self._post(
+            f"/api/v3/tools/execute/{tool_slug}",
+            body=await async_maybe_transform(
+                {
+                    "allow_tracing": allow_tracing,
+                    "arguments": arguments,
+                    "connected_account_id": connected_account_id,
+                    "custom_auth_params": custom_auth_params,
+                    "entity_id": entity_id,
+                    "text": text,
+                    "version": version,
+                },
+                tool_execute_params.ToolExecuteParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ToolExecuteResponse,
+        )
+
+    async def get_input(
+        self,
+        tool_slug: str,
+        *,
+        text: str,
+        custom_description: str | NotGiven = NOT_GIVEN,
+        system_prompt: str | NotGiven = NOT_GIVEN,
+        version: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> ToolGetInputResponse:
+        """
+        Uses AI to translate a natural language description into structured arguments
+        for a specific tool. This endpoint is useful when you want to let users describe
+        what they want to do in plain language instead of providing structured
+        parameters.
+
+        Args:
+          text: Natural language description of what you want to accomplish with this tool
+
+          custom_description: Custom description of the tool to help guide the LLM in generating more accurate
+              inputs
+
+          system_prompt: System prompt to control and guide the behavior of the LLM when generating
+              inputs
+
+          version: Tool version to use when generating inputs (defaults to "latest" if not
+              specified)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not tool_slug:
+            raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
+        return await self._post(
+            f"/api/v3/tools/execute/{tool_slug}/input",
+            body=await async_maybe_transform(
+                {
+                    "text": text,
+                    "custom_description": custom_description,
+                    "system_prompt": system_prompt,
+                    "version": version,
+                },
+                tool_get_input_params.ToolGetInputParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ToolGetInputResponse,
+        )
+
     async def proxy(
         self,
         *,
@@ -450,6 +716,12 @@ class ToolsResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             tools.list,
         )
+        self.execute = to_raw_response_wrapper(
+            tools.execute,
+        )
+        self.get_input = to_raw_response_wrapper(
+            tools.get_input,
+        )
         self.proxy = to_raw_response_wrapper(
             tools.proxy,
         )
@@ -467,6 +739,12 @@ class AsyncToolsResourceWithRawResponse:
         )
         self.list = async_to_raw_response_wrapper(
             tools.list,
+        )
+        self.execute = async_to_raw_response_wrapper(
+            tools.execute,
+        )
+        self.get_input = async_to_raw_response_wrapper(
+            tools.get_input,
         )
         self.proxy = async_to_raw_response_wrapper(
             tools.proxy,
@@ -486,6 +764,12 @@ class ToolsResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             tools.list,
         )
+        self.execute = to_streamed_response_wrapper(
+            tools.execute,
+        )
+        self.get_input = to_streamed_response_wrapper(
+            tools.get_input,
+        )
         self.proxy = to_streamed_response_wrapper(
             tools.proxy,
         )
@@ -503,6 +787,12 @@ class AsyncToolsResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             tools.list,
+        )
+        self.execute = async_to_streamed_response_wrapper(
+            tools.execute,
+        )
+        self.get_input = async_to_streamed_response_wrapper(
+            tools.get_input,
         )
         self.proxy = async_to_streamed_response_wrapper(
             tools.proxy,
