@@ -1,5 +1,42 @@
 # Changelog
 
+## 1.0.0 (2025-05-26)
+
+Full Changelog: [v0.1.0-alpha.11...v1.0.0](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.11...v1.0.0)
+
+### Features
+
+* **api:** api update ([143ca83](https://github.com/ComposioHQ/composio-base-py/commit/143ca83330f0264c676637e470019827cff59e1a))
+* **api:** api update ([7e2f216](https://github.com/ComposioHQ/composio-base-py/commit/7e2f216890432d0f29a6cd1688e689b87ee9fd84))
+* **api:** api update ([c012681](https://github.com/ComposioHQ/composio-base-py/commit/c0126817a7a1796abe4034dd8f550582949cfcf2))
+* **api:** api update ([4fd7551](https://github.com/ComposioHQ/composio-base-py/commit/4fd755110dd3851e555c2ffa05727645d840a197))
+* **api:** api update ([63a9af3](https://github.com/ComposioHQ/composio-base-py/commit/63a9af3785a0ab3af3f61b06e465447eb7d6e6a8))
+* **api:** api update ([4194a7f](https://github.com/ComposioHQ/composio-base-py/commit/4194a7f25e7f67685b5cb3eb9d9bbc8db33db550))
+* **api:** api update ([b98e08b](https://github.com/ComposioHQ/composio-base-py/commit/b98e08b0989ff3f7a4b5d2389f29f2558ee05aed))
+* **api:** api update ([9c6948c](https://github.com/ComposioHQ/composio-base-py/commit/9c6948c39480d9393ef5f04af429c3555387af4b))
+* **api:** api update ([d257860](https://github.com/ComposioHQ/composio-base-py/commit/d257860a754d94ec113475c2d04eb2b39582d01a))
+* **api:** manual updates ([7eaa909](https://github.com/ComposioHQ/composio-base-py/commit/7eaa909da1c0e0670ce47cc39009ebfb0aa923b8))
+* **api:** manual updates ([324dbab](https://github.com/ComposioHQ/composio-base-py/commit/324dbabf3862201304e6d7c4652fd7e1b18e9abb))
+* **api:** manual updates for mcp and triggers ([bb9a37e](https://github.com/ComposioHQ/composio-base-py/commit/bb9a37e4aeb24d58de45c921f14df12e6b7a7a1e))
+* **api:** remove mcp admin endpoints ([3f1f305](https://github.com/ComposioHQ/composio-base-py/commit/3f1f3059cb7dfe7f315233a08855a94d66eabc2c))
+* reenable auth info endpoiint ([4446f0a](https://github.com/ComposioHQ/composio-base-py/commit/4446f0a1d22b8863fe0f43c4e1a9f88c30c8f8fa))
+
+
+### Bug Fixes
+
+* **tests:** skip broken tests ([b9aaa82](https://github.com/ComposioHQ/composio-base-py/commit/b9aaa8253e59ebb4b028ababfed8882f8d31c7b1))
+* try using `composio.client` as package import ([2f1fabc](https://github.com/ComposioHQ/composio-base-py/commit/2f1fabc5560fe6d0bfbb6ed62a11edca77205814))
+* typos ([3eed6b8](https://github.com/ComposioHQ/composio-base-py/commit/3eed6b8078087ef535a43942cc0bf707373ed5a8))
+
+
+### Chores
+
+* **ci:** fix installation instructions ([48065f8](https://github.com/ComposioHQ/composio-base-py/commit/48065f8e03fee2b4f7faa805d5774a89c7281f93))
+* **ci:** upload sdks to package manager ([9b944eb](https://github.com/ComposioHQ/composio-base-py/commit/9b944eb519e849699c8be730ff3f5ad0ea9cd4fa))
+* **ci:** use --pre flag for prerelease installation instructions ([ebc6f07](https://github.com/ComposioHQ/composio-base-py/commit/ebc6f0771d1f46c419232c9538c3841cef1c62f8))
+* **ci:** use --pre flag for prerelease installation instructions ([2e332c8](https://github.com/ComposioHQ/composio-base-py/commit/2e332c857d1d4022c92e1328b42b2848a81c5c1a))
+* **docs:** grammar improvements ([e4bb9ef](https://github.com/ComposioHQ/composio-base-py/commit/e4bb9ef7127274ee73e7ddc28499cdc605943a45))
+
 ## 0.1.0-alpha.11 (2025-05-11)
 
 Full Changelog: [v0.1.0-alpha.10...v0.1.0-alpha.11](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.10...v0.1.0-alpha.11)
