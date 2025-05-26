@@ -67,6 +67,9 @@ from .trigger_instance_list_active_response import (
 from .connected_account_update_status_params import (
     ConnectedAccountUpdateStatusParams as ConnectedAccountUpdateStatusParams,
 )
+from .trigger_instance_update_status_response import (
+    TriggerInstanceUpdateStatusResponse as TriggerInstanceUpdateStatusResponse,
+)
 from .connected_account_update_status_response import (
     ConnectedAccountUpdateStatusResponse as ConnectedAccountUpdateStatusResponse,
 )

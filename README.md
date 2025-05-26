@@ -33,10 +33,10 @@ client = Composio(
     environment="staging",
 )
 
-auth_config = client.auth_configs.create(
-    toolkit={"slug": "slug"},
+response = client.tools.execute(
+    tool_slug="tool_slug",
 )
-print(auth_config.auth_config)
+print(response.log_id)
 ```
 
 While you can provide an `api_key` keyword argument,
@@ -61,10 +61,10 @@ client = AsyncComposio(
 
 
 async def main() -> None:
-    auth_config = await client.auth_configs.create(
-        toolkit={"slug": "slug"},
+    response = await client.tools.execute(
+        tool_slug="tool_slug",
     )
-    print(auth_config.auth_config)
+    print(response.log_id)
 
 
 asyncio.run(main())
@@ -90,10 +90,21 @@ from composio_client import Composio
 
 client = Composio()
 
-auth_config = client.auth_configs.create(
-    toolkit={"slug": "slug"},
+response = client.tools.execute(
+    tool_slug="tool_slug",
+    custom_auth_params={
+        "parameters": [
+            {
+                "in": "header",
+                "name": "x-api-key",
+                "value": "secret-key",
+            }
+        ],
+        "base_url": "https://api.example.com",
+        "body": {"foo": "bar"},
+    },
 )
-print(auth_config.toolkit)
+print(response.custom_auth_params)
 ```
 
 ## Handling errors
@@ -112,8 +123,8 @@ from composio_client import Composio
 client = Composio()
 
 try:
-    client.auth_configs.create(
-        toolkit={"slug": "slug"},
+    client.tools.execute(
+        tool_slug="tool_slug",
     )
 except composio_client.APIConnectionError as e:
     print("The server could not be reached")
@@ -157,8 +168,8 @@ client = Composio(
 )
 
 # Or, configure per-request:
-client.with_options(max_retries=5).auth_configs.create(
-    toolkit={"slug": "slug"},
+client.with_options(max_retries=5).tools.execute(
+    tool_slug="tool_slug",
 )
 ```
 
@@ -182,8 +193,8 @@ client = Composio(
 )
 
 # Override per-request:
-client.with_options(timeout=5.0).auth_configs.create(
-    toolkit={"slug": "slug"},
+client.with_options(timeout=5.0).tools.execute(
+    tool_slug="tool_slug",
 )
 ```
 
@@ -225,15 +236,13 @@ The "raw" Response object can be accessed by prefixing `.with_raw_response.` to 
 from composio_client import Composio
 
 client = Composio()
-response = client.auth_configs.with_raw_response.create(
-    toolkit={
-        "slug": "slug"
-    },
+response = client.tools.with_raw_response.execute(
+    tool_slug="tool_slug",
 )
 print(response.headers.get('X-My-Header'))
 
-auth_config = response.parse()  # get the object that `auth_configs.create()` would have returned
-print(auth_config.auth_config)
+tool = response.parse()  # get the object that `tools.execute()` would have returned
+print(tool.log_id)
 ```
 
 These methods return an [`APIResponse`](https://github.com/ComposioHQ/composio-base-py/tree/main/src/composio_client/_response.py) object.
@@ -247,8 +256,8 @@ The above interface eagerly reads the full response body when you make the reque
 To stream the response body, use `.with_streaming_response` instead, which requires a context manager and only reads the response body once you call `.read()`, `.text()`, `.json()`, `.iter_bytes()`, `.iter_text()`, `.iter_lines()` or `.parse()`. In the async client, these are async methods.
 
 ```python
-with client.auth_configs.with_streaming_response.create(
-    toolkit={"slug": "slug"},
+with client.tools.with_streaming_response.execute(
+    tool_slug="tool_slug",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
