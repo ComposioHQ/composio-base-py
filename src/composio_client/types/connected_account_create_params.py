@@ -29,11 +29,5 @@ class Connection(TypedDict, total=False):
     deprecated_is_v1_rerouted: bool
     """Whether the connection is rerouted"""
 
-    redirect_uri: str
-    """DEPRECATED: This parameter will be removed in a future version.
-
-    Please use callback_url instead.
-    """
-
     user_id: str
     """The user id of the connected account"""

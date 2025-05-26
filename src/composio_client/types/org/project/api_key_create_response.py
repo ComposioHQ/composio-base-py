@@ -3,8 +3,6 @@
 from typing import Optional
 from datetime import datetime
 
-from pydantic import Field as FieldInfo
-
 from ...._models import BaseModel
 
 __all__ = ["APIKeyCreateResponse"]
@@ -16,12 +14,6 @@ class APIKeyCreateResponse(BaseModel):
 
     created_at: datetime
     """UTC timestamp indicating when the API key was created"""
-
-    created_at: datetime = FieldInfo(alias="createdAt")
-    """UTC timestamp indicating when the API key was created.
-
-    DEPRECATED: Use created_at instead.
-    """
 
     key: str
     """The API key string value that should be included in API requests.
