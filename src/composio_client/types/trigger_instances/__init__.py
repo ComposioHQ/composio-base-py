@@ -2,5 +2,6 @@
 
 from __future__ import annotations
 
+from .manage_delete_response import ManageDeleteResponse as ManageDeleteResponse
 from .handle_execute_response import HandleExecuteResponse as HandleExecuteResponse
 from .handle_retrieve_response import HandleRetrieveResponse as HandleRetrieveResponse

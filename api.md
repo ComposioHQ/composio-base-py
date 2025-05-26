@@ -236,6 +236,18 @@ Methods:
 - <code title="get /api/v3/trigger_instances/{slug}/{projectId}/handle">client.trigger_instances.handle.<a href="./src/composio_client/resources/trigger_instances/handle.py">retrieve</a>(project_id, \*, slug) -> str</code>
 - <code title="post /api/v3/trigger_instances/{slug}/{projectId}/handle">client.trigger_instances.handle.<a href="./src/composio_client/resources/trigger_instances/handle.py">execute</a>(project_id, \*, slug) -> str</code>
 
+## Manage
+
+Types:
+
+```python
+from composio_client.types.trigger_instances import ManageDeleteResponse
+```
+
+Methods:
+
+- <code title="delete /api/v3/trigger_instances/manage/{triggerId}">client.trigger_instances.manage.<a href="./src/composio_client/resources/trigger_instances/manage.py">delete</a>(trigger_id) -> <a href="./src/composio_client/types/trigger_instances/manage_delete_response.py">ManageDeleteResponse</a></code>
+
 # TriggersTypes
 
 Types:

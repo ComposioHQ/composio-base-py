@@ -8,6 +8,14 @@ from .handle import (
     HandleResourceWithStreamingResponse,
     AsyncHandleResourceWithStreamingResponse,
 )
+from .manage import (
+    ManageResource,
+    AsyncManageResource,
+    ManageResourceWithRawResponse,
+    AsyncManageResourceWithRawResponse,
+    ManageResourceWithStreamingResponse,
+    AsyncManageResourceWithStreamingResponse,
+)
 from .trigger_instances import (
     TriggerInstancesResource,
     AsyncTriggerInstancesResource,
@@ -24,6 +32,12 @@ __all__ = [
     "AsyncHandleResourceWithRawResponse",
     "HandleResourceWithStreamingResponse",
     "AsyncHandleResourceWithStreamingResponse",
+    "ManageResource",
+    "AsyncManageResource",
+    "ManageResourceWithRawResponse",
+    "AsyncManageResourceWithRawResponse",
+    "ManageResourceWithStreamingResponse",
+    "AsyncManageResourceWithStreamingResponse",
     "TriggerInstancesResource",
     "AsyncTriggerInstancesResource",
     "TriggerInstancesResourceWithRawResponse",
