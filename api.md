@@ -1,3 +1,17 @@
+# Auth
+
+## Session
+
+Types:
+
+```python
+from composio_client.types.auth import SessionInfoResponse
+```
+
+Methods:
+
+- <code title="get /api/v3/auth/session/info">client.auth.session.<a href="./src/composio_client/resources/auth/session.py">info</a>() -> <a href="./src/composio_client/types/auth/session_info_response.py">SessionInfoResponse</a></code>
+
 # AuthConfigs
 
 Types:
