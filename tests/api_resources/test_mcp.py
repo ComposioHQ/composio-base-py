@@ -15,6 +15,7 @@ from composio_client.types import (
     McpDeleteResponse,
     McpUpdateResponse,
     McpRetrieveResponse,
+    McpValidateResponse,
     McpRetrieveAppResponse,
 )
 
@@ -24,7 +25,6 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 class TestMcp:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="This test fails for unkown reason")
     @parametrize
     def test_method_create(self, client: Composio) -> None:
         mcp = client.mcp.create(
@@ -32,7 +32,6 @@ class TestMcp:
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
-    @pytest.mark.skip(reason="This test fails for unkown reason")
     @parametrize
     def test_method_create_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.create(
@@ -43,7 +42,6 @@ class TestMcp:
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
-    @pytest.mark.skip(reason="This test fails for unkown reason")
     @parametrize
     def test_raw_response_create(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.create(
@@ -55,7 +53,6 @@ class TestMcp:
         mcp = response.parse()
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
-    @pytest.mark.skip(reason="This test fails for unkown reason")
     @parametrize
     def test_streaming_response_create(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.create(
@@ -283,11 +280,52 @@ class TestMcp:
                 app_key="",
             )
 
+    @parametrize
+    def test_method_validate(self, client: Composio) -> None:
+        mcp = client.mcp.validate(
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
+        )
+        assert_matches_type(McpValidateResponse, mcp, path=["response"])
+
+    @parametrize
+    def test_raw_response_validate(self, client: Composio) -> None:
+        response = client.mcp.with_raw_response.validate(
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        mcp = response.parse()
+        assert_matches_type(McpValidateResponse, mcp, path=["response"])
+
+    @parametrize
+    def test_streaming_response_validate(self, client: Composio) -> None:
+        with client.mcp.with_streaming_response.validate(
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            mcp = response.parse()
+            assert_matches_type(McpValidateResponse, mcp, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_validate(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `uuid` but received ''"):
+            client.mcp.with_raw_response.validate(
+                uuid="",
+                x_composio_admin_token="admin_tk_12345abcdef",
+            )
+
 
 class TestAsyncMcp:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
 
-    @pytest.mark.skip(reason="This test fails for unkown reason")
     @parametrize
     async def test_method_create(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.create(
@@ -295,7 +333,6 @@ class TestAsyncMcp:
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
-    @pytest.mark.skip(reason="This test fails for unkown reason")
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.create(
@@ -306,7 +343,6 @@ class TestAsyncMcp:
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
-    @pytest.mark.skip(reason="This test fails for unkown reason")
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.create(
@@ -318,7 +354,6 @@ class TestAsyncMcp:
         mcp = await response.parse()
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
-    @pytest.mark.skip(reason="This test fails for unkown reason")
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.create(
@@ -544,4 +579,46 @@ class TestAsyncMcp:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `app_key` but received ''"):
             await async_client.mcp.with_raw_response.retrieve_app(
                 app_key="",
+            )
+
+    @parametrize
+    async def test_method_validate(self, async_client: AsyncComposio) -> None:
+        mcp = await async_client.mcp.validate(
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
+        )
+        assert_matches_type(McpValidateResponse, mcp, path=["response"])
+
+    @parametrize
+    async def test_raw_response_validate(self, async_client: AsyncComposio) -> None:
+        response = await async_client.mcp.with_raw_response.validate(
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        mcp = await response.parse()
+        assert_matches_type(McpValidateResponse, mcp, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_validate(self, async_client: AsyncComposio) -> None:
+        async with async_client.mcp.with_streaming_response.validate(
+            uuid="550e8400-e29b-41d4-a716-446655440000",
+            x_composio_admin_token="admin_tk_12345abcdef",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            mcp = await response.parse()
+            assert_matches_type(McpValidateResponse, mcp, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_validate(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `uuid` but received ''"):
+            await async_client.mcp.with_raw_response.validate(
+                uuid="",
+                x_composio_admin_token="admin_tk_12345abcdef",
             )

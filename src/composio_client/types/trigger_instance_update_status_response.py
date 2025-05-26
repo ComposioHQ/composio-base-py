@@ -2,11 +2,11 @@
 
 from typing_extensions import Literal
 
-from ..._models import BaseModel
+from .._models import BaseModel
 
-__all__ = ["ManageUpdateResponse"]
+__all__ = ["TriggerInstanceUpdateStatusResponse"]
 
 
-class ManageUpdateResponse(BaseModel):
+class TriggerInstanceUpdateStatusResponse(BaseModel):
     status: Literal["success"]
     """Status of the operation"""
