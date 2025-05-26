@@ -12,6 +12,8 @@ from composio_client import Composio, AsyncComposio
 from composio_client.types import (
     ToolListResponse,
     ToolProxyResponse,
+    ToolExecuteResponse,
+    ToolGetInputResponse,
     ToolRetrieveResponse,
 )
 
@@ -100,6 +102,126 @@ class TestTools:
             assert_matches_type(ToolListResponse, tool, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_execute(self, client: Composio) -> None:
+        tool = client.tools.execute(
+            tool_slug="tool_slug",
+        )
+        assert_matches_type(ToolExecuteResponse, tool, path=["response"])
+
+    @parametrize
+    def test_method_execute_with_all_params(self, client: Composio) -> None:
+        tool = client.tools.execute(
+            tool_slug="tool_slug",
+            allow_tracing=False,
+            arguments={
+                "repository": "bar",
+                "workflow_id": "bar",
+                "ref": "bar",
+                "inputs": "bar",
+            },
+            connected_account_id="ca_1a2b3c4d5e6f",
+            custom_auth_params={
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-api-key",
+                        "value": "secret-key",
+                    }
+                ],
+                "base_url": "https://api.example.com",
+                "body": {"foo": "bar"},
+            },
+            entity_id="repo-123",
+            text="Trigger the main workflow in the octocat/Hello-World repository on the main branch for the production environment",
+            version="latest",
+        )
+        assert_matches_type(ToolExecuteResponse, tool, path=["response"])
+
+    @parametrize
+    def test_raw_response_execute(self, client: Composio) -> None:
+        response = client.tools.with_raw_response.execute(
+            tool_slug="tool_slug",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tool = response.parse()
+        assert_matches_type(ToolExecuteResponse, tool, path=["response"])
+
+    @parametrize
+    def test_streaming_response_execute(self, client: Composio) -> None:
+        with client.tools.with_streaming_response.execute(
+            tool_slug="tool_slug",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tool = response.parse()
+            assert_matches_type(ToolExecuteResponse, tool, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_execute(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `tool_slug` but received ''"):
+            client.tools.with_raw_response.execute(
+                tool_slug="",
+            )
+
+    @parametrize
+    def test_method_get_input(self, client: Composio) -> None:
+        tool = client.tools.get_input(
+            tool_slug="tool_slug",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+        )
+        assert_matches_type(ToolGetInputResponse, tool, path=["response"])
+
+    @parametrize
+    def test_method_get_input_with_all_params(self, client: Composio) -> None:
+        tool = client.tools.get_input(
+            tool_slug="tool_slug",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+            custom_description="This tool triggers GitHub Actions workflows in a repository. It requires the repository name, workflow ID, and optional input parameters.",
+            system_prompt="You are an expert assistant that generates precise GitHub Actions workflow parameters. Extract exact repository names, workflow IDs, and input values from user descriptions.",
+            version="latest",
+        )
+        assert_matches_type(ToolGetInputResponse, tool, path=["response"])
+
+    @parametrize
+    def test_raw_response_get_input(self, client: Composio) -> None:
+        response = client.tools.with_raw_response.get_input(
+            tool_slug="tool_slug",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tool = response.parse()
+        assert_matches_type(ToolGetInputResponse, tool, path=["response"])
+
+    @parametrize
+    def test_streaming_response_get_input(self, client: Composio) -> None:
+        with client.tools.with_streaming_response.get_input(
+            tool_slug="tool_slug",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tool = response.parse()
+            assert_matches_type(ToolGetInputResponse, tool, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_get_input(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `tool_slug` but received ''"):
+            client.tools.with_raw_response.get_input(
+                tool_slug="",
+                text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+            )
 
     @parametrize
     def test_method_proxy(self, client: Composio) -> None:
@@ -268,6 +390,126 @@ class TestAsyncTools:
             assert_matches_type(ToolListResponse, tool, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_execute(self, async_client: AsyncComposio) -> None:
+        tool = await async_client.tools.execute(
+            tool_slug="tool_slug",
+        )
+        assert_matches_type(ToolExecuteResponse, tool, path=["response"])
+
+    @parametrize
+    async def test_method_execute_with_all_params(self, async_client: AsyncComposio) -> None:
+        tool = await async_client.tools.execute(
+            tool_slug="tool_slug",
+            allow_tracing=False,
+            arguments={
+                "repository": "bar",
+                "workflow_id": "bar",
+                "ref": "bar",
+                "inputs": "bar",
+            },
+            connected_account_id="ca_1a2b3c4d5e6f",
+            custom_auth_params={
+                "parameters": [
+                    {
+                        "in": "header",
+                        "name": "x-api-key",
+                        "value": "secret-key",
+                    }
+                ],
+                "base_url": "https://api.example.com",
+                "body": {"foo": "bar"},
+            },
+            entity_id="repo-123",
+            text="Trigger the main workflow in the octocat/Hello-World repository on the main branch for the production environment",
+            version="latest",
+        )
+        assert_matches_type(ToolExecuteResponse, tool, path=["response"])
+
+    @parametrize
+    async def test_raw_response_execute(self, async_client: AsyncComposio) -> None:
+        response = await async_client.tools.with_raw_response.execute(
+            tool_slug="tool_slug",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tool = await response.parse()
+        assert_matches_type(ToolExecuteResponse, tool, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_execute(self, async_client: AsyncComposio) -> None:
+        async with async_client.tools.with_streaming_response.execute(
+            tool_slug="tool_slug",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tool = await response.parse()
+            assert_matches_type(ToolExecuteResponse, tool, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_execute(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `tool_slug` but received ''"):
+            await async_client.tools.with_raw_response.execute(
+                tool_slug="",
+            )
+
+    @parametrize
+    async def test_method_get_input(self, async_client: AsyncComposio) -> None:
+        tool = await async_client.tools.get_input(
+            tool_slug="tool_slug",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+        )
+        assert_matches_type(ToolGetInputResponse, tool, path=["response"])
+
+    @parametrize
+    async def test_method_get_input_with_all_params(self, async_client: AsyncComposio) -> None:
+        tool = await async_client.tools.get_input(
+            tool_slug="tool_slug",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+            custom_description="This tool triggers GitHub Actions workflows in a repository. It requires the repository name, workflow ID, and optional input parameters.",
+            system_prompt="You are an expert assistant that generates precise GitHub Actions workflow parameters. Extract exact repository names, workflow IDs, and input values from user descriptions.",
+            version="latest",
+        )
+        assert_matches_type(ToolGetInputResponse, tool, path=["response"])
+
+    @parametrize
+    async def test_raw_response_get_input(self, async_client: AsyncComposio) -> None:
+        response = await async_client.tools.with_raw_response.get_input(
+            tool_slug="tool_slug",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tool = await response.parse()
+        assert_matches_type(ToolGetInputResponse, tool, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_get_input(self, async_client: AsyncComposio) -> None:
+        async with async_client.tools.with_streaming_response.get_input(
+            tool_slug="tool_slug",
+            text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tool = await response.parse()
+            assert_matches_type(ToolGetInputResponse, tool, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_get_input(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `tool_slug` but received ''"):
+            await async_client.tools.with_raw_response.get_input(
+                tool_slug="",
+                text="I need to trigger the main workflow in the octocat/Hello-World repository to deploy to production",
+            )
 
     @parametrize
     async def test_method_proxy(self, async_client: AsyncComposio) -> None:

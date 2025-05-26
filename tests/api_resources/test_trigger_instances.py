@@ -10,6 +10,7 @@ import pytest
 from tests.utils import assert_matches_type
 from composio_client import Composio, AsyncComposio
 from composio_client.types import (
+    TriggerInstanceDeleteResponse,
     TriggerInstanceUpsertResponse,
     TriggerInstanceListActiveResponse,
 )
@@ -19,6 +20,44 @@ base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 class TestTriggerInstances:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    def test_method_delete(self, client: Composio) -> None:
+        trigger_instance = client.trigger_instances.delete(
+            "triggerId",
+        )
+        assert_matches_type(TriggerInstanceDeleteResponse, trigger_instance, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Composio) -> None:
+        response = client.trigger_instances.with_raw_response.delete(
+            "triggerId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        trigger_instance = response.parse()
+        assert_matches_type(TriggerInstanceDeleteResponse, trigger_instance, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Composio) -> None:
+        with client.trigger_instances.with_streaming_response.delete(
+            "triggerId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            trigger_instance = response.parse()
+            assert_matches_type(TriggerInstanceDeleteResponse, trigger_instance, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `trigger_id` but received ''"):
+            client.trigger_instances.with_raw_response.delete(
+                "",
+            )
 
     @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
@@ -121,6 +160,44 @@ class TestTriggerInstances:
 
 class TestAsyncTriggerInstances:
     parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncComposio) -> None:
+        trigger_instance = await async_client.trigger_instances.delete(
+            "triggerId",
+        )
+        assert_matches_type(TriggerInstanceDeleteResponse, trigger_instance, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
+        response = await async_client.trigger_instances.with_raw_response.delete(
+            "triggerId",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        trigger_instance = await response.parse()
+        assert_matches_type(TriggerInstanceDeleteResponse, trigger_instance, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
+        async with async_client.trigger_instances.with_streaming_response.delete(
+            "triggerId",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            trigger_instance = await response.parse()
+            assert_matches_type(TriggerInstanceDeleteResponse, trigger_instance, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `trigger_id` but received ''"):
+            await async_client.trigger_instances.with_raw_response.delete(
+                "",
+            )
 
     @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
