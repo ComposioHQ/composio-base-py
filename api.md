@@ -241,11 +241,12 @@ Methods:
 Types:
 
 ```python
-from composio_client.types.trigger_instances import ManageDeleteResponse
+from composio_client.types.trigger_instances import ManageUpdateResponse, ManageDeleteResponse
 ```
 
 Methods:
 
+- <code title="patch /api/v3/trigger_instances/manage/{triggerId}">client.trigger_instances.manage.<a href="./src/composio_client/resources/trigger_instances/manage.py">update</a>(trigger_id, \*\*<a href="src/composio_client/types/trigger_instances/manage_update_params.py">params</a>) -> <a href="./src/composio_client/types/trigger_instances/manage_update_response.py">ManageUpdateResponse</a></code>
 - <code title="delete /api/v3/trigger_instances/manage/{triggerId}">client.trigger_instances.manage.<a href="./src/composio_client/resources/trigger_instances/manage.py">delete</a>(trigger_id) -> <a href="./src/composio_client/types/trigger_instances/manage_delete_response.py">ManageDeleteResponse</a></code>
 
 # TriggersTypes
