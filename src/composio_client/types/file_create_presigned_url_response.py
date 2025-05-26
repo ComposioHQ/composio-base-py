@@ -3,8 +3,6 @@
 from typing import Union
 from typing_extensions import Literal, TypeAlias
 
-from pydantic import Field as FieldInfo
-
 from .._models import BaseModel
 
 __all__ = ["FileCreatePresignedURLResponse", "UnionMember0", "UnionMember1", "UnionMember2"]
@@ -18,13 +16,6 @@ class UnionMember0(BaseModel):
     """URL of the existing request file.
 
     Example: "https://storage.example.com/projects/123/files/photo-1234.jpg"
-    """
-
-    existing_url: str = FieldInfo(alias="existingUrl")
-    """[DEPRECATED] Use existing_url instead.
-
-    URL of the existing request file. Example:
-    "https://storage.example.com/projects/123/files/photo-1234.jpg"
     """
 
     key: str
@@ -48,13 +39,6 @@ class UnionMember1(BaseModel):
     "https://storage.example.com/projects/123/files/photo-1234.jpg?X-Amz-Algorithm=..."
     """
 
-    new_presigned_url: str = FieldInfo(alias="newPresignedUrl")
-    """[DEPRECATED] Use new_presigned_url instead.
-
-    Presigned URL for upload. Example:
-    "https://storage.example.com/projects/123/files/photo-1234.jpg?X-Amz-Algorithm=..."
-    """
-
     type: Literal["new"]
     """Indicates this is a new file that needs to be uploaded"""
 
@@ -73,13 +57,6 @@ class UnionMember2(BaseModel):
     """Presigned URL for upload.
 
     Example:
-    "https://storage.example.com/projects/123/files/photo-1234.jpg?X-Amz-Algorithm=..."
-    """
-
-    update_presigned_url: str = FieldInfo(alias="updatePresignedUrl")
-    """[DEPRECATED] Use update_presigned_url instead.
-
-    Presigned URL for upload. Example:
     "https://storage.example.com/projects/123/files/photo-1234.jpg?X-Amz-Algorithm=..."
     """
 
