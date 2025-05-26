@@ -19,6 +19,7 @@ Full Changelog: [v0.1.0-alpha.11...v1.0.0](https://github.com/ComposioHQ/composi
 * **api:** manual updates ([324dbab](https://github.com/ComposioHQ/composio-base-py/commit/324dbabf3862201304e6d7c4652fd7e1b18e9abb))
 * **api:** manual updates for mcp and triggers ([bb9a37e](https://github.com/ComposioHQ/composio-base-py/commit/bb9a37e4aeb24d58de45c921f14df12e6b7a7a1e))
 * **api:** remove mcp admin endpoints ([3f1f305](https://github.com/ComposioHQ/composio-base-py/commit/3f1f3059cb7dfe7f315233a08855a94d66eabc2c))
+* reenable auth info endpoiint ([4446f0a](https://github.com/ComposioHQ/composio-base-py/commit/4446f0a1d22b8863fe0f43c4e1a9f88c30c8f8fa))
 
 
 ### Bug Fixes
