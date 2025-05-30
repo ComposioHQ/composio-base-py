@@ -26,17 +26,14 @@ class ToolExecuteParams(TypedDict, total=False):
     authentication
     """
 
-    entity_id: str
-    """Entity identifier for multi-entity connected accounts (e.g.
-
-    multiple repositories, organizations)
-    """
-
     text: str
     """
     Natural language description of the task to perform (mutually exclusive with
     arguments)
     """
+
+    user_id: str
+    """User id for multi-user connected accounts (e.g. multiple users, organizations)"""
 
     version: str
     """Tool version to execute (defaults to "latest" if not specified)"""
