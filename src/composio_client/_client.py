@@ -32,7 +32,6 @@ from ._base_client import (
 )
 from .resources.mcp import mcp
 from .resources.org import org
-from .resources.auth import auth
 from .resources.trigger_instances import trigger_instances
 
 __all__ = [
@@ -55,7 +54,6 @@ ENVIRONMENTS: Dict[str, str] = {
 
 
 class Composio(SyncAPIClient):
-    auth: auth.AuthResource
     auth_configs: auth_configs.AuthConfigsResource
     connected_accounts: connected_accounts.ConnectedAccountsResource
     org: org.OrgResource
@@ -144,7 +142,6 @@ class Composio(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.auth = auth.AuthResource(self)
         self.auth_configs = auth_configs.AuthConfigsResource(self)
         self.connected_accounts = connected_accounts.ConnectedAccountsResource(self)
         self.org = org.OrgResource(self)
@@ -280,7 +277,6 @@ class Composio(SyncAPIClient):
 
 
 class AsyncComposio(AsyncAPIClient):
-    auth: auth.AsyncAuthResource
     auth_configs: auth_configs.AsyncAuthConfigsResource
     connected_accounts: connected_accounts.AsyncConnectedAccountsResource
     org: org.AsyncOrgResource
@@ -369,7 +365,6 @@ class AsyncComposio(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.auth = auth.AsyncAuthResource(self)
         self.auth_configs = auth_configs.AsyncAuthConfigsResource(self)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResource(self)
         self.org = org.AsyncOrgResource(self)
@@ -506,7 +501,6 @@ class AsyncComposio(AsyncAPIClient):
 
 class ComposioWithRawResponse:
     def __init__(self, client: Composio) -> None:
-        self.auth = auth.AuthResourceWithRawResponse(client.auth)
         self.auth_configs = auth_configs.AuthConfigsResourceWithRawResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithRawResponse(client.connected_accounts)
         self.org = org.OrgResourceWithRawResponse(client.org)
@@ -522,7 +516,6 @@ class ComposioWithRawResponse:
 
 class AsyncComposioWithRawResponse:
     def __init__(self, client: AsyncComposio) -> None:
-        self.auth = auth.AsyncAuthResourceWithRawResponse(client.auth)
         self.auth_configs = auth_configs.AsyncAuthConfigsResourceWithRawResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithRawResponse(
             client.connected_accounts
@@ -542,7 +535,6 @@ class AsyncComposioWithRawResponse:
 
 class ComposioWithStreamedResponse:
     def __init__(self, client: Composio) -> None:
-        self.auth = auth.AuthResourceWithStreamingResponse(client.auth)
         self.auth_configs = auth_configs.AuthConfigsResourceWithStreamingResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithStreamingResponse(
             client.connected_accounts
@@ -562,7 +554,6 @@ class ComposioWithStreamedResponse:
 
 class AsyncComposioWithStreamedResponse:
     def __init__(self, client: AsyncComposio) -> None:
-        self.auth = auth.AsyncAuthResourceWithStreamingResponse(client.auth)
         self.auth_configs = auth_configs.AsyncAuthConfigsResourceWithStreamingResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithStreamingResponse(
             client.connected_accounts

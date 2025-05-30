@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import Dict, List, Optional
-from typing_extensions import Literal
 
 import httpx
 
@@ -27,10 +26,8 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from ...types.trigger_instance_delete_response import TriggerInstanceDeleteResponse
 from ...types.trigger_instance_upsert_response import TriggerInstanceUpsertResponse
 from ...types.trigger_instance_list_active_response import TriggerInstanceListActiveResponse
-from ...types.trigger_instance_update_status_response import TriggerInstanceUpdateStatusResponse
 
 __all__ = ["TriggerInstancesResource", "AsyncTriggerInstancesResource"]
 
@@ -59,56 +56,23 @@ class TriggerInstancesResource(SyncAPIResource):
         """
         return TriggerInstancesResourceWithStreamingResponse(self)
 
-    def delete(
-        self,
-        trigger_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TriggerInstanceDeleteResponse:
-        """
-        Args:
-          trigger_id: The ID of the trigger instance to delete
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not trigger_id:
-            raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
-        return self._delete(
-            f"/api/v3/trigger_instances/delete/{trigger_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TriggerInstanceDeleteResponse,
-        )
-
     def list_active(
         self,
         *,
         query_auth_config_ids_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        query_auth_config_ids_2: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        query_auth_config_ids_2: str | NotGiven = NOT_GIVEN,
         query_connected_account_ids_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        query_connected_account_ids_2: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        query_connected_account_ids_2: str | NotGiven = NOT_GIVEN,
         deprecated_auth_config_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         deprecated_connected_account_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: float | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         query_show_disabled_1: Optional[bool] | NotGiven = NOT_GIVEN,
-        query_show_disabled_2: Optional[bool] | NotGiven = NOT_GIVEN,
+        query_show_disabled_2: str | NotGiven = NOT_GIVEN,
         query_trigger_ids_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
         query_trigger_names_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_ids_2: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_names_2: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        query_trigger_ids_2: str | NotGiven = NOT_GIVEN,
+        query_trigger_names_2: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -120,13 +84,7 @@ class TriggerInstancesResource(SyncAPIResource):
         Args:
           query_auth_config_ids_1: Array of auth config IDs to filter triggers by
 
-          query_auth_config_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              auth_config_ids instead.
-
           query_connected_account_ids_1: Array of connected account IDs to filter triggers by
-
-          query_connected_account_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              connected_account_ids instead.
 
           deprecated_auth_config_uuids: Array of auth config UUIDs to filter triggers by
 
@@ -138,18 +96,9 @@ class TriggerInstancesResource(SyncAPIResource):
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
-          query_show_disabled_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              show_disabled instead.
-
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
           query_trigger_names_1: Array of trigger names to filter triggers by
-
-          query_trigger_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              trigger_ids instead.
-
-          query_trigger_names_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              trigger_names instead.
 
           extra_headers: Send extra headers
 
@@ -189,48 +138,11 @@ class TriggerInstancesResource(SyncAPIResource):
             cast_to=TriggerInstanceListActiveResponse,
         )
 
-    def update_status(
-        self,
-        status: Literal["enable", "disable"],
-        *,
-        trigger_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TriggerInstanceUpdateStatusResponse:
-        """
-        Args:
-          trigger_id: The ID of the trigger instance to update
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not trigger_id:
-            raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
-        if not status:
-            raise ValueError(f"Expected a non-empty value for `status` but received {status!r}")
-        return self._patch(
-            f"/api/v3/trigger_instances/id/{trigger_id}/{status}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TriggerInstanceUpdateStatusResponse,
-        )
-
     def upsert(
         self,
         slug: str,
         *,
         connected_account_id: str | NotGiven = NOT_GIVEN,
-        connected_auth_id: str | NotGiven = NOT_GIVEN,
         body_trigger_config_1: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         body_trigger_config_2: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -245,9 +157,6 @@ class TriggerInstancesResource(SyncAPIResource):
           slug: The slug of the trigger instance
 
           connected_account_id: Connected account nanoid
-
-          connected_auth_id: DEPRECATED: This parameter will be removed in a future version. Please use
-              connected_account_id instead.
 
           body_trigger_config_1: Trigger configuration
 
@@ -268,7 +177,6 @@ class TriggerInstancesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
-                    "connected_auth_id": connected_auth_id,
                     "body_trigger_config_1": body_trigger_config_1,
                     "body_trigger_config_2": body_trigger_config_2,
                 },
@@ -305,56 +213,23 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         """
         return AsyncTriggerInstancesResourceWithStreamingResponse(self)
 
-    async def delete(
-        self,
-        trigger_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TriggerInstanceDeleteResponse:
-        """
-        Args:
-          trigger_id: The ID of the trigger instance to delete
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not trigger_id:
-            raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
-        return await self._delete(
-            f"/api/v3/trigger_instances/delete/{trigger_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TriggerInstanceDeleteResponse,
-        )
-
     async def list_active(
         self,
         *,
         query_auth_config_ids_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        query_auth_config_ids_2: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        query_auth_config_ids_2: str | NotGiven = NOT_GIVEN,
         query_connected_account_ids_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        query_connected_account_ids_2: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        query_connected_account_ids_2: str | NotGiven = NOT_GIVEN,
         deprecated_auth_config_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         deprecated_connected_account_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: float | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         query_show_disabled_1: Optional[bool] | NotGiven = NOT_GIVEN,
-        query_show_disabled_2: Optional[bool] | NotGiven = NOT_GIVEN,
+        query_show_disabled_2: str | NotGiven = NOT_GIVEN,
         query_trigger_ids_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
         query_trigger_names_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_ids_2: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_names_2: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        query_trigger_ids_2: str | NotGiven = NOT_GIVEN,
+        query_trigger_names_2: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -366,13 +241,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         Args:
           query_auth_config_ids_1: Array of auth config IDs to filter triggers by
 
-          query_auth_config_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              auth_config_ids instead.
-
           query_connected_account_ids_1: Array of connected account IDs to filter triggers by
-
-          query_connected_account_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              connected_account_ids instead.
 
           deprecated_auth_config_uuids: Array of auth config UUIDs to filter triggers by
 
@@ -384,18 +253,9 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
-          query_show_disabled_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              show_disabled instead.
-
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
           query_trigger_names_1: Array of trigger names to filter triggers by
-
-          query_trigger_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              trigger_ids instead.
-
-          query_trigger_names_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              trigger_names instead.
 
           extra_headers: Send extra headers
 
@@ -435,48 +295,11 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
             cast_to=TriggerInstanceListActiveResponse,
         )
 
-    async def update_status(
-        self,
-        status: Literal["enable", "disable"],
-        *,
-        trigger_id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> TriggerInstanceUpdateStatusResponse:
-        """
-        Args:
-          trigger_id: The ID of the trigger instance to update
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not trigger_id:
-            raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
-        if not status:
-            raise ValueError(f"Expected a non-empty value for `status` but received {status!r}")
-        return await self._patch(
-            f"/api/v3/trigger_instances/id/{trigger_id}/{status}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=TriggerInstanceUpdateStatusResponse,
-        )
-
     async def upsert(
         self,
         slug: str,
         *,
         connected_account_id: str | NotGiven = NOT_GIVEN,
-        connected_auth_id: str | NotGiven = NOT_GIVEN,
         body_trigger_config_1: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         body_trigger_config_2: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -491,9 +314,6 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
           slug: The slug of the trigger instance
 
           connected_account_id: Connected account nanoid
-
-          connected_auth_id: DEPRECATED: This parameter will be removed in a future version. Please use
-              connected_account_id instead.
 
           body_trigger_config_1: Trigger configuration
 
@@ -514,7 +334,6 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
-                    "connected_auth_id": connected_auth_id,
                     "body_trigger_config_1": body_trigger_config_1,
                     "body_trigger_config_2": body_trigger_config_2,
                 },
@@ -531,14 +350,8 @@ class TriggerInstancesResourceWithRawResponse:
     def __init__(self, trigger_instances: TriggerInstancesResource) -> None:
         self._trigger_instances = trigger_instances
 
-        self.delete = to_raw_response_wrapper(
-            trigger_instances.delete,
-        )
         self.list_active = to_raw_response_wrapper(
             trigger_instances.list_active,
-        )
-        self.update_status = to_raw_response_wrapper(
-            trigger_instances.update_status,
         )
         self.upsert = to_raw_response_wrapper(
             trigger_instances.upsert,
@@ -553,14 +366,8 @@ class AsyncTriggerInstancesResourceWithRawResponse:
     def __init__(self, trigger_instances: AsyncTriggerInstancesResource) -> None:
         self._trigger_instances = trigger_instances
 
-        self.delete = async_to_raw_response_wrapper(
-            trigger_instances.delete,
-        )
         self.list_active = async_to_raw_response_wrapper(
             trigger_instances.list_active,
-        )
-        self.update_status = async_to_raw_response_wrapper(
-            trigger_instances.update_status,
         )
         self.upsert = async_to_raw_response_wrapper(
             trigger_instances.upsert,
@@ -575,14 +382,8 @@ class TriggerInstancesResourceWithStreamingResponse:
     def __init__(self, trigger_instances: TriggerInstancesResource) -> None:
         self._trigger_instances = trigger_instances
 
-        self.delete = to_streamed_response_wrapper(
-            trigger_instances.delete,
-        )
         self.list_active = to_streamed_response_wrapper(
             trigger_instances.list_active,
-        )
-        self.update_status = to_streamed_response_wrapper(
-            trigger_instances.update_status,
         )
         self.upsert = to_streamed_response_wrapper(
             trigger_instances.upsert,
@@ -597,14 +398,8 @@ class AsyncTriggerInstancesResourceWithStreamingResponse:
     def __init__(self, trigger_instances: AsyncTriggerInstancesResource) -> None:
         self._trigger_instances = trigger_instances
 
-        self.delete = async_to_streamed_response_wrapper(
-            trigger_instances.delete,
-        )
         self.list_active = async_to_streamed_response_wrapper(
             trigger_instances.list_active,
-        )
-        self.update_status = async_to_streamed_response_wrapper(
-            trigger_instances.update_status,
         )
         self.upsert = async_to_streamed_response_wrapper(
             trigger_instances.upsert,

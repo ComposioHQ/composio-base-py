@@ -59,7 +59,6 @@ class AuthConfigRetrieveResponse(BaseModel):
         Literal[
             "OAUTH2",
             "OAUTH1",
-            "OAUTH1A",
             "API_KEY",
             "BASIC",
             "BILLCOM_AUTH",

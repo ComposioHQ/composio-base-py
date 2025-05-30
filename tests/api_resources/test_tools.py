@@ -133,8 +133,8 @@ class TestTools:
                 "base_url": "https://api.example.com",
                 "body": {"foo": "bar"},
             },
-            entity_id="repo-123",
             text="Trigger the main workflow in the octocat/Hello-World repository on the main branch for the production environment",
+            user_id="user-123",
             version="latest",
         )
         assert_matches_type(ToolExecuteResponse, tool, path=["response"])
@@ -421,8 +421,8 @@ class TestAsyncTools:
                 "base_url": "https://api.example.com",
                 "body": {"foo": "bar"},
             },
-            entity_id="repo-123",
             text="Trigger the main workflow in the octocat/Hello-World repository on the main branch for the production environment",
+            user_id="user-123",
             version="latest",
         )
         assert_matches_type(ToolExecuteResponse, tool, path=["response"])

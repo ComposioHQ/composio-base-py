@@ -160,8 +160,8 @@ class ToolsResource(SyncAPIResource):
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
         custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
+        user_id: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -186,11 +186,10 @@ class ToolsResource(SyncAPIResource):
           custom_auth_params: Custom authentication parameters for tools that support parameterized
               authentication
 
-          entity_id: Entity identifier for multi-entity connected accounts (e.g. multiple
-              repositories, organizations)
-
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
+
+          user_id: User id for multi-user connected accounts (e.g. multiple users, organizations)
 
           version: Tool version to execute (defaults to "latest" if not specified)
 
@@ -212,8 +211,8 @@ class ToolsResource(SyncAPIResource):
                     "arguments": arguments,
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
-                    "entity_id": entity_id,
                     "text": text,
+                    "user_id": user_id,
                     "version": version,
                 },
                 tool_execute_params.ToolExecuteParams,
@@ -499,8 +498,8 @@ class AsyncToolsResource(AsyncAPIResource):
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
         custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
+        user_id: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -525,11 +524,10 @@ class AsyncToolsResource(AsyncAPIResource):
           custom_auth_params: Custom authentication parameters for tools that support parameterized
               authentication
 
-          entity_id: Entity identifier for multi-entity connected accounts (e.g. multiple
-              repositories, organizations)
-
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
+
+          user_id: User id for multi-user connected accounts (e.g. multiple users, organizations)
 
           version: Tool version to execute (defaults to "latest" if not specified)
 
@@ -551,8 +549,8 @@ class AsyncToolsResource(AsyncAPIResource):
                     "arguments": arguments,
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
-                    "entity_id": entity_id,
                     "text": text,
+                    "user_id": user_id,
                     "version": version,
                 },
                 tool_execute_params.ToolExecuteParams,

@@ -21,6 +21,9 @@ class Item(BaseModel):
     connected_account_id: str
     """ID of the connected account this trigger is associated with"""
 
+    connected_account_uuid: str
+    """UUID of the connected account this trigger is associated with"""
+
     disabled_at: Optional[str] = None
     """ISO 8601 timestamp when the trigger instance was disabled, if applicable"""
 
@@ -35,6 +38,9 @@ class Item(BaseModel):
 
     updated_at: str
     """ISO 8601 timestamp when the trigger instance was updated"""
+
+    user_id: str
+    """ID of the user this trigger is associated with"""
 
     deprecated: Optional[ItemDeprecated] = None
     """Deprecated fields for the trigger instance"""
