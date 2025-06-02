@@ -101,7 +101,6 @@ response = client.tools.execute(
             }
         ],
         "base_url": "https://api.example.com",
-        "body": {"foo": "bar"},
     },
 )
 print(response.custom_auth_params)
