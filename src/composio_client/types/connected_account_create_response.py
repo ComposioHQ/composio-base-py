@@ -497,6 +497,8 @@ class ConnectionDataUnionMember1ValUnionMember1(BaseModel):
 
     version: Optional[str] = None
 
+    webhook_signature: Optional[str] = None
+
     your_server: Optional[str] = None
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
@@ -571,6 +573,8 @@ class ConnectionDataUnionMember1ValUnionMember2(BaseModel):
     subdomain: Optional[str] = None
 
     version: Optional[str] = None
+
+    webhook_signature: Optional[str] = None
 
     your_server: Optional[str] = None
 
