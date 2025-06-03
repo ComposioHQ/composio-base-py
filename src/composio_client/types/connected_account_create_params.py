@@ -502,6 +502,8 @@ class ConnectionStateUnionMember1ValUnionMember1Typed(TypedDict, total=False):
 
     version: str
 
+    webhook_signature: str
+
     your_server: str
 
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
@@ -575,6 +577,8 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
     subdomain: str
 
     version: str
+
+    webhook_signature: str
 
     your_server: str
 
