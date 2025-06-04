@@ -14,6 +14,14 @@ from .handle import (
     HandleResourceWithStreamingResponse,
     AsyncHandleResourceWithStreamingResponse,
 )
+from .manage import (
+    ManageResource,
+    AsyncManageResource,
+    ManageResourceWithRawResponse,
+    AsyncManageResourceWithRawResponse,
+    ManageResourceWithStreamingResponse,
+    AsyncManageResourceWithStreamingResponse,
+)
 from ...types import trigger_instance_upsert_params, trigger_instance_list_active_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
@@ -36,6 +44,10 @@ class TriggerInstancesResource(SyncAPIResource):
     @cached_property
     def handle(self) -> HandleResource:
         return HandleResource(self._client)
+
+    @cached_property
+    def manage(self) -> ManageResource:
+        return ManageResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> TriggerInstancesResourceWithRawResponse:
@@ -193,6 +205,10 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
     @cached_property
     def handle(self) -> AsyncHandleResource:
         return AsyncHandleResource(self._client)
+
+    @cached_property
+    def manage(self) -> AsyncManageResource:
+        return AsyncManageResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncTriggerInstancesResourceWithRawResponse:
@@ -361,6 +377,10 @@ class TriggerInstancesResourceWithRawResponse:
     def handle(self) -> HandleResourceWithRawResponse:
         return HandleResourceWithRawResponse(self._trigger_instances.handle)
 
+    @cached_property
+    def manage(self) -> ManageResourceWithRawResponse:
+        return ManageResourceWithRawResponse(self._trigger_instances.manage)
+
 
 class AsyncTriggerInstancesResourceWithRawResponse:
     def __init__(self, trigger_instances: AsyncTriggerInstancesResource) -> None:
@@ -376,6 +396,10 @@ class AsyncTriggerInstancesResourceWithRawResponse:
     @cached_property
     def handle(self) -> AsyncHandleResourceWithRawResponse:
         return AsyncHandleResourceWithRawResponse(self._trigger_instances.handle)
+
+    @cached_property
+    def manage(self) -> AsyncManageResourceWithRawResponse:
+        return AsyncManageResourceWithRawResponse(self._trigger_instances.manage)
 
 
 class TriggerInstancesResourceWithStreamingResponse:
@@ -393,6 +417,10 @@ class TriggerInstancesResourceWithStreamingResponse:
     def handle(self) -> HandleResourceWithStreamingResponse:
         return HandleResourceWithStreamingResponse(self._trigger_instances.handle)
 
+    @cached_property
+    def manage(self) -> ManageResourceWithStreamingResponse:
+        return ManageResourceWithStreamingResponse(self._trigger_instances.manage)
+
 
 class AsyncTriggerInstancesResourceWithStreamingResponse:
     def __init__(self, trigger_instances: AsyncTriggerInstancesResource) -> None:
@@ -408,3 +436,7 @@ class AsyncTriggerInstancesResourceWithStreamingResponse:
     @cached_property
     def handle(self) -> AsyncHandleResourceWithStreamingResponse:
         return AsyncHandleResourceWithStreamingResponse(self._trigger_instances.handle)
+
+    @cached_property
+    def manage(self) -> AsyncManageResourceWithStreamingResponse:
+        return AsyncManageResourceWithStreamingResponse(self._trigger_instances.manage)
