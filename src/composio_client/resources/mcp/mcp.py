@@ -32,6 +32,7 @@ from ...types.mcp_create_response import McpCreateResponse
 from ...types.mcp_delete_response import McpDeleteResponse
 from ...types.mcp_update_response import McpUpdateResponse
 from ...types.mcp_retrieve_response import McpRetrieveResponse
+from ...types.mcp_validate_response import McpValidateResponse
 from ...types.mcp_retrieve_app_response import McpRetrieveAppResponse
 
 __all__ = ["McpResource", "AsyncMcpResource"]
@@ -376,6 +377,49 @@ class McpResource(SyncAPIResource):
             cast_to=McpRetrieveAppResponse,
         )
 
+    def validate(
+        self,
+        uuid: str,
+        *,
+        x_composio_admin_token: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> McpValidateResponse:
+        """
+        Admin-only endpoint that validates a Model Control Protocol (MCP) server and
+        retrieves its complete configuration details, including authentication
+        information. This endpoint is typically used by the MCP service itself to
+        authenticate and authorize connection requests from clients.
+
+        Args:
+          uuid: Unique identifier of the MCP server to validate and retrieve connection details
+              for
+
+          x_composio_admin_token: Administrative access token required for validating MCP servers
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not uuid:
+            raise ValueError(f"Expected a non-empty value for `uuid` but received {uuid!r}")
+        extra_headers = {"x-composio-admin-token": x_composio_admin_token, **(extra_headers or {})}
+        return self._get(
+            f"/api/v3/mcp/validate/{uuid}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=McpValidateResponse,
+        )
+
 
 class AsyncMcpResource(AsyncAPIResource):
     @cached_property
@@ -716,6 +760,49 @@ class AsyncMcpResource(AsyncAPIResource):
             cast_to=McpRetrieveAppResponse,
         )
 
+    async def validate(
+        self,
+        uuid: str,
+        *,
+        x_composio_admin_token: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> McpValidateResponse:
+        """
+        Admin-only endpoint that validates a Model Control Protocol (MCP) server and
+        retrieves its complete configuration details, including authentication
+        information. This endpoint is typically used by the MCP service itself to
+        authenticate and authorize connection requests from clients.
+
+        Args:
+          uuid: Unique identifier of the MCP server to validate and retrieve connection details
+              for
+
+          x_composio_admin_token: Administrative access token required for validating MCP servers
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not uuid:
+            raise ValueError(f"Expected a non-empty value for `uuid` but received {uuid!r}")
+        extra_headers = {"x-composio-admin-token": x_composio_admin_token, **(extra_headers or {})}
+        return await self._get(
+            f"/api/v3/mcp/validate/{uuid}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=McpValidateResponse,
+        )
+
 
 class McpResourceWithRawResponse:
     def __init__(self, mcp: McpResource) -> None:
@@ -738,6 +825,9 @@ class McpResourceWithRawResponse:
         )
         self.retrieve_app = to_raw_response_wrapper(
             mcp.retrieve_app,
+        )
+        self.validate = to_raw_response_wrapper(
+            mcp.validate,
         )
 
     @cached_property
@@ -767,6 +857,9 @@ class AsyncMcpResourceWithRawResponse:
         self.retrieve_app = async_to_raw_response_wrapper(
             mcp.retrieve_app,
         )
+        self.validate = async_to_raw_response_wrapper(
+            mcp.validate,
+        )
 
     @cached_property
     def custom(self) -> AsyncCustomResourceWithRawResponse:
@@ -795,6 +888,9 @@ class McpResourceWithStreamingResponse:
         self.retrieve_app = to_streamed_response_wrapper(
             mcp.retrieve_app,
         )
+        self.validate = to_streamed_response_wrapper(
+            mcp.validate,
+        )
 
     @cached_property
     def custom(self) -> CustomResourceWithStreamingResponse:
@@ -822,6 +918,9 @@ class AsyncMcpResourceWithStreamingResponse:
         )
         self.retrieve_app = async_to_streamed_response_wrapper(
             mcp.retrieve_app,
+        )
+        self.validate = async_to_streamed_response_wrapper(
+            mcp.validate,
         )
 
     @cached_property

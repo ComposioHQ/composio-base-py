@@ -1,17 +1,3 @@
-# Auth
-
-## Session
-
-Types:
-
-```python
-from composio_client.types.auth import SessionInfoResponse
-```
-
-Methods:
-
-- <code title="get /api/v3/auth/session/info">client.auth.session.<a href="./src/composio_client/resources/auth/session.py">info</a>() -> <a href="./src/composio_client/types/auth/session_info_response.py">SessionInfoResponse</a></code>
-
 # AuthConfigs
 
 Types:
@@ -20,10 +6,7 @@ Types:
 from composio_client.types import (
     AuthConfigCreateResponse,
     AuthConfigRetrieveResponse,
-    AuthConfigUpdateResponse,
     AuthConfigListResponse,
-    AuthConfigDeleteResponse,
-    AuthConfigUpdateStatusResponse,
 )
 ```
 
@@ -31,10 +14,10 @@ Methods:
 
 - <code title="post /api/v3/auth_configs">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">create</a>(\*\*<a href="src/composio_client/types/auth_config_create_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_create_response.py">AuthConfigCreateResponse</a></code>
 - <code title="get /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">retrieve</a>(nanoid) -> <a href="./src/composio_client/types/auth_config_retrieve_response.py">AuthConfigRetrieveResponse</a></code>
-- <code title="patch /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update</a>(nanoid, \*\*<a href="src/composio_client/types/auth_config_update_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_update_response.py">object</a></code>
+- <code title="patch /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update</a>(nanoid, \*\*<a href="src/composio_client/types/auth_config_update_params.py">params</a>) -> object</code>
 - <code title="get /api/v3/auth_configs">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">list</a>(\*\*<a href="src/composio_client/types/auth_config_list_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_list_response.py">AuthConfigListResponse</a></code>
-- <code title="delete /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">delete</a>(nanoid) -> <a href="./src/composio_client/types/auth_config_delete_response.py">object</a></code>
-- <code title="patch /api/v3/auth_configs/{nanoid}/{status}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update_status</a>(status, \*, nanoid) -> <a href="./src/composio_client/types/auth_config_update_status_response.py">object</a></code>
+- <code title="delete /api/v3/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">delete</a>(nanoid) -> object</code>
+- <code title="patch /api/v3/auth_configs/{nanoid}/{status}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update_status</a>(status, \*, nanoid) -> object</code>
 
 # ConnectedAccounts
 
@@ -215,19 +198,12 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import (
-    TriggerInstanceDeleteResponse,
-    TriggerInstanceListActiveResponse,
-    TriggerInstanceUpdateStatusResponse,
-    TriggerInstanceUpsertResponse,
-)
+from composio_client.types import TriggerInstanceListActiveResponse, TriggerInstanceUpsertResponse
 ```
 
 Methods:
 
-- <code title="delete /api/v3/trigger_instances/delete/{triggerId}">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">delete</a>(trigger_id) -> <a href="./src/composio_client/types/trigger_instance_delete_response.py">TriggerInstanceDeleteResponse</a></code>
 - <code title="get /api/v3/trigger_instances/active">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">list_active</a>(\*\*<a href="src/composio_client/types/trigger_instance_list_active_params.py">params</a>) -> <a href="./src/composio_client/types/trigger_instance_list_active_response.py">TriggerInstanceListActiveResponse</a></code>
-- <code title="patch /api/v3/trigger_instances/id/{triggerId}/{status}">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">update_status</a>(status, \*, trigger_id) -> <a href="./src/composio_client/types/trigger_instance_update_status_response.py">TriggerInstanceUpdateStatusResponse</a></code>
 - <code title="post /api/v3/trigger_instances/{slug}/upsert">client.trigger_instances.<a href="./src/composio_client/resources/trigger_instances/trigger_instances.py">upsert</a>(slug, \*\*<a href="src/composio_client/types/trigger_instance_upsert_params.py">params</a>) -> <a href="./src/composio_client/types/trigger_instance_upsert_response.py">TriggerInstanceUpsertResponse</a></code>
 
 ## Handle
@@ -273,6 +249,7 @@ from composio_client.types import (
     McpListResponse,
     McpDeleteResponse,
     McpRetrieveAppResponse,
+    McpValidateResponse,
 )
 ```
 
@@ -284,6 +261,7 @@ Methods:
 - <code title="get /api/v3/mcp/servers">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">list</a>(\*\*<a href="src/composio_client/types/mcp_list_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_list_response.py">McpListResponse</a></code>
 - <code title="delete /api/v3/mcp/{id}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">delete</a>(id) -> <a href="./src/composio_client/types/mcp_delete_response.py">McpDeleteResponse</a></code>
 - <code title="get /api/v3/mcp/app/{appKey}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">retrieve_app</a>(app_key, \*\*<a href="src/composio_client/types/mcp_retrieve_app_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_retrieve_app_response.py">McpRetrieveAppResponse</a></code>
+- <code title="get /api/v3/mcp/validate/{uuid}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">validate</a>(uuid) -> <a href="./src/composio_client/types/mcp_validate_response.py">McpValidateResponse</a></code>
 
 ## Custom
 
