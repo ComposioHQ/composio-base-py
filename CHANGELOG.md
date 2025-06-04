@@ -1,5 +1,35 @@
 # Changelog
 
+## 1.1.0 (2025-06-04)
+
+Full Changelog: [v1.0.0...v1.1.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.0.0...v1.1.0)
+
+### Features
+
+* **api:** api update ([1ccce52](https://github.com/ComposioHQ/composio-base-py/commit/1ccce5223f08967679ec7c2c91df9ff5211bc671))
+* **api:** api update ([df0a8ad](https://github.com/ComposioHQ/composio-base-py/commit/df0a8ad860998371a09988baa86f4bc482cf41de))
+* **api:** api update ([ffa39d1](https://github.com/ComposioHQ/composio-base-py/commit/ffa39d1bc9a0cc8a8a6c1031724adee43184d9af))
+* **api:** api update ([f2587ed](https://github.com/ComposioHQ/composio-base-py/commit/f2587edc4a22b22bd771189d6c64fbf2394efe26))
+* **api:** api update ([b3cfeec](https://github.com/ComposioHQ/composio-base-py/commit/b3cfeec2573ac83dfe01fd34351c9caae25442d0))
+* **api:** api update ([eb2a7c2](https://github.com/ComposioHQ/composio-base-py/commit/eb2a7c2f320180b6213ffbcc01cc37f96ae66e9f))
+* **api:** manual updates ([3fa2f1a](https://github.com/ComposioHQ/composio-base-py/commit/3fa2f1af66231752b0ec613882edf522958c72c9))
+* **api:** manual updates ([5fe12dd](https://github.com/ComposioHQ/composio-base-py/commit/5fe12dd712e7c10c0ff64d4412a9c760e85912e9))
+* **api:** update info to be retrieve ([169a226](https://github.com/ComposioHQ/composio-base-py/commit/169a226eedd7e36f8a5842c27db7d459b1f6f92d))
+* **client:** add follow_redirects request option ([ea12419](https://github.com/ComposioHQ/composio-base-py/commit/ea12419f344be892728eb390990909cb1727f92d))
+
+
+### Bug Fixes
+
+* **api:** skip breaking tests ([caf3c8a](https://github.com/ComposioHQ/composio-base-py/commit/caf3c8a995730a51de3b716ad12f3cb9b1eafbd9))
+* **docs/api:** remove references to nonexistent types ([c2a3d23](https://github.com/ComposioHQ/composio-base-py/commit/c2a3d238afa0c269ade27b10827ab7bab9ce116e))
+* move trigger management to /manage endpoint ([38a7142](https://github.com/ComposioHQ/composio-base-py/commit/38a7142380dff1cd34636fa0fd17c9f4f8bcb6ca))
+
+
+### Chores
+
+* **docs:** remove reference to rye shell ([54ae45b](https://github.com/ComposioHQ/composio-base-py/commit/54ae45ba414810e8e7b4dfa08f41c9dd50abc9a0))
+* **docs:** remove unnecessary param examples ([7bde17c](https://github.com/ComposioHQ/composio-base-py/commit/7bde17cf6f5fe307da202ffe89960487060d7d94))
+
 ## 1.0.0 (2025-05-26)
 
 Full Changelog: [v0.1.0-alpha.11...v1.0.0](https://github.com/ComposioHQ/composio-base-py/compare/v0.1.0-alpha.11...v1.0.0)
