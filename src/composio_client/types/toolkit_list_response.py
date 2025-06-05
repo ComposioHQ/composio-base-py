@@ -2,9 +2,15 @@
 
 from typing import List, Optional
 
+from pydantic import Field as FieldInfo
+
 from .._models import BaseModel
 
-__all__ = ["ToolkitListResponse", "Item", "ItemMeta", "ItemMetaCategory"]
+__all__ = ["ToolkitListResponse", "Item", "ItemDeprecated", "ItemMeta", "ItemMetaCategory"]
+
+
+class ItemDeprecated(BaseModel):
+    toolkit_id: str = FieldInfo(alias="toolkitId")
 
 
 class ItemMetaCategory(BaseModel):
@@ -42,6 +48,9 @@ class ItemMeta(BaseModel):
 
 
 class Item(BaseModel):
+    deprecated: ItemDeprecated
+    """Deprecated toolkit ID"""
+
     is_local_toolkit: bool
     """
     Indicates if this toolkit is specific to the current project or globally
