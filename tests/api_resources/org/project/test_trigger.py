@@ -19,6 +19,11 @@ class TestTrigger:
 
     @parametrize
     def test_method_update(self, client: Composio) -> None:
+        trigger = client.org.project.trigger.update()
+        assert_matches_type(TriggerUpdateResponse, trigger, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Composio) -> None:
         trigger = client.org.project.trigger.update(
             enabled=True,
         )
@@ -26,9 +31,7 @@ class TestTrigger:
 
     @parametrize
     def test_raw_response_update(self, client: Composio) -> None:
-        response = client.org.project.trigger.with_raw_response.update(
-            enabled=True,
-        )
+        response = client.org.project.trigger.with_raw_response.update()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -37,9 +40,7 @@ class TestTrigger:
 
     @parametrize
     def test_streaming_response_update(self, client: Composio) -> None:
-        with client.org.project.trigger.with_streaming_response.update(
-            enabled=True,
-        ) as response:
+        with client.org.project.trigger.with_streaming_response.update() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -79,6 +80,11 @@ class TestAsyncTrigger:
 
     @parametrize
     async def test_method_update(self, async_client: AsyncComposio) -> None:
+        trigger = await async_client.org.project.trigger.update()
+        assert_matches_type(TriggerUpdateResponse, trigger, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncComposio) -> None:
         trigger = await async_client.org.project.trigger.update(
             enabled=True,
         )
@@ -86,9 +92,7 @@ class TestAsyncTrigger:
 
     @parametrize
     async def test_raw_response_update(self, async_client: AsyncComposio) -> None:
-        response = await async_client.org.project.trigger.with_raw_response.update(
-            enabled=True,
-        )
+        response = await async_client.org.project.trigger.with_raw_response.update()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -97,9 +101,7 @@ class TestAsyncTrigger:
 
     @parametrize
     async def test_streaming_response_update(self, async_client: AsyncComposio) -> None:
-        async with async_client.org.project.trigger.with_streaming_response.update(
-            enabled=True,
-        ) as response:
+        async with async_client.org.project.trigger.with_streaming_response.update() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
