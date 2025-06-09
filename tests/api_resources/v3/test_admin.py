@@ -23,22 +23,15 @@ class TestAdmin:
     @parametrize
     def test_method_list_connections(self, client: Composio) -> None:
         admin = client.v3.admin.list_connections(
-            x_composio_admin_token="adm_123456789abcdef",
-        )
-        assert_matches_type(AdminListConnectionsResponse, admin, path=["response"])
-
-    @parametrize
-    def test_method_list_connections_with_all_params(self, client: Composio) -> None:
-        admin = client.v3.admin.list_connections(
-            x_composio_admin_token="adm_123456789abcdef",
             toolkit_slug="google-drive",
-            x_client_auto_id="1234567890",
+            x_composio_admin_token="adm_123456789abcdef",
         )
         assert_matches_type(AdminListConnectionsResponse, admin, path=["response"])
 
     @parametrize
     def test_raw_response_list_connections(self, client: Composio) -> None:
         response = client.v3.admin.with_raw_response.list_connections(
+            toolkit_slug="google-drive",
             x_composio_admin_token="adm_123456789abcdef",
         )
 
@@ -50,6 +43,7 @@ class TestAdmin:
     @parametrize
     def test_streaming_response_list_connections(self, client: Composio) -> None:
         with client.v3.admin.with_streaming_response.list_connections(
+            toolkit_slug="google-drive",
             x_composio_admin_token="adm_123456789abcdef",
         ) as response:
             assert not response.is_closed
@@ -110,22 +104,15 @@ class TestAsyncAdmin:
     @parametrize
     async def test_method_list_connections(self, async_client: AsyncComposio) -> None:
         admin = await async_client.v3.admin.list_connections(
-            x_composio_admin_token="adm_123456789abcdef",
-        )
-        assert_matches_type(AdminListConnectionsResponse, admin, path=["response"])
-
-    @parametrize
-    async def test_method_list_connections_with_all_params(self, async_client: AsyncComposio) -> None:
-        admin = await async_client.v3.admin.list_connections(
-            x_composio_admin_token="adm_123456789abcdef",
             toolkit_slug="google-drive",
-            x_client_auto_id="1234567890",
+            x_composio_admin_token="adm_123456789abcdef",
         )
         assert_matches_type(AdminListConnectionsResponse, admin, path=["response"])
 
     @parametrize
     async def test_raw_response_list_connections(self, async_client: AsyncComposio) -> None:
         response = await async_client.v3.admin.with_raw_response.list_connections(
+            toolkit_slug="google-drive",
             x_composio_admin_token="adm_123456789abcdef",
         )
 
@@ -137,6 +124,7 @@ class TestAsyncAdmin:
     @parametrize
     async def test_streaming_response_list_connections(self, async_client: AsyncComposio) -> None:
         async with async_client.v3.admin.with_streaming_response.list_connections(
+            toolkit_slug="google-drive",
             x_composio_admin_token="adm_123456789abcdef",
         ) as response:
             assert not response.is_closed
