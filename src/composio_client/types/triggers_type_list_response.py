@@ -9,6 +9,9 @@ __all__ = ["TriggersTypeListResponse", "Item", "ItemToolkit"]
 
 
 class ItemToolkit(BaseModel):
+    logo: str
+    """Logo of the toolkit"""
+
     name: str
     """Name of the parent toolkit"""
 
