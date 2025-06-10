@@ -26,6 +26,8 @@ __all__ = [
 class Deprecated(BaseModel):
     toolkit_id: str = FieldInfo(alias="toolkitId")
 
+    get_current_user_endpoint: Optional[str] = FieldInfo(alias="getCurrentUserEndpoint", default=None)
+
 
 class MetaCategory(BaseModel):
     name: str
