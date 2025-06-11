@@ -7,7 +7,7 @@ from typing import List
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import maybe_transform, strip_not_given, async_maybe_transform
 from ..._compat import cached_property
 from ...types.v3 import admin_list_connections_params, admin_refresh_auth_tokens_params
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -47,8 +47,9 @@ class AdminResource(SyncAPIResource):
     def list_connections(
         self,
         *,
-        toolkit_slug: str,
         x_composio_admin_token: str,
+        toolkit_slug: str | NotGiven = NOT_GIVEN,
+        x_client_auto_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -58,14 +59,18 @@ class AdminResource(SyncAPIResource):
     ) -> AdminListConnectionsResponse:
         """
         Administrative endpoint that retrieves all active connections for a given
-        toolkit slug. This is primarily used for token refresh operations and system
-        maintenance. Only includes non-deleted connections with OAuth2 or JWT
-        authentication types.
+        toolkit slug (via query parameter) or project auto ID (via x-client-auto-id
+        header). Exactly one filter must be provided. This is primarily used for token
+        refresh operations and system maintenance. Only includes non-deleted connections
+        with OAuth2 or JWT authentication types.
 
         Args:
+          x_composio_admin_token: Admin authentication token required for administrative operations
+
           toolkit_slug: The unique identifier slug of the toolkit to filter connections by
 
-          x_composio_admin_token: Admin authentication token required for administrative operations
+          x_client_auto_id: When provided, filters connections to only include those for custom apps
+              associated with the specified project auto ID
 
           extra_headers: Send extra headers
 
@@ -75,7 +80,15 @@ class AdminResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-composio-admin-token": x_composio_admin_token, **(extra_headers or {})}
+        extra_headers = {
+            **strip_not_given(
+                {
+                    "x-composio-admin-token": x_composio_admin_token,
+                    "x-client-auto-id": x_client_auto_id,
+                }
+            ),
+            **(extra_headers or {}),
+        }
         return self._get(
             "/api/v3/admin/connections",
             options=make_request_options(
@@ -165,8 +178,9 @@ class AsyncAdminResource(AsyncAPIResource):
     async def list_connections(
         self,
         *,
-        toolkit_slug: str,
         x_composio_admin_token: str,
+        toolkit_slug: str | NotGiven = NOT_GIVEN,
+        x_client_auto_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -176,14 +190,18 @@ class AsyncAdminResource(AsyncAPIResource):
     ) -> AdminListConnectionsResponse:
         """
         Administrative endpoint that retrieves all active connections for a given
-        toolkit slug. This is primarily used for token refresh operations and system
-        maintenance. Only includes non-deleted connections with OAuth2 or JWT
-        authentication types.
+        toolkit slug (via query parameter) or project auto ID (via x-client-auto-id
+        header). Exactly one filter must be provided. This is primarily used for token
+        refresh operations and system maintenance. Only includes non-deleted connections
+        with OAuth2 or JWT authentication types.
 
         Args:
+          x_composio_admin_token: Admin authentication token required for administrative operations
+
           toolkit_slug: The unique identifier slug of the toolkit to filter connections by
 
-          x_composio_admin_token: Admin authentication token required for administrative operations
+          x_client_auto_id: When provided, filters connections to only include those for custom apps
+              associated with the specified project auto ID
 
           extra_headers: Send extra headers
 
@@ -193,7 +211,15 @@ class AsyncAdminResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        extra_headers = {"x-composio-admin-token": x_composio_admin_token, **(extra_headers or {})}
+        extra_headers = {
+            **strip_not_given(
+                {
+                    "x-composio-admin-token": x_composio_admin_token,
+                    "x-client-auto-id": x_client_auto_id,
+                }
+            ),
+            **(extra_headers or {}),
+        }
         return await self._get(
             "/api/v3/admin/connections",
             options=make_request_options(
