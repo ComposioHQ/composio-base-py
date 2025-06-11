@@ -38,7 +38,6 @@ class TestMcp:
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
             auth_config_id="auth_cfg_abc123def456",
-            managed_auth_via_composio=True,
             ttl="1d",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -116,10 +115,9 @@ class TestMcp:
     def test_method_update_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
-            allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
-            managed_auth_via_composio=True,
+            actions=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            apps=["gmail"],
             name="Updated GitHub Integration Server",
-            toolkits=["gmail"],
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
@@ -168,7 +166,7 @@ class TestMcp:
             limit=10,
             name="github",
             page_no=1,
-            toolkits=["gmail", "supabase"],
+            toolkit="github",
         )
         assert_matches_type(McpListResponse, mcp, path=["response"])
 
@@ -247,7 +245,7 @@ class TestMcp:
             limit=10,
             name="github",
             page_no=1,
-            toolkits=["gmail", "supabase"],
+            toolkit="github",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
@@ -341,7 +339,6 @@ class TestAsyncMcp:
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
             auth_config_id="auth_cfg_abc123def456",
-            managed_auth_via_composio=True,
             ttl="1d",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -419,10 +416,9 @@ class TestAsyncMcp:
     async def test_method_update_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
-            allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
-            managed_auth_via_composio=True,
+            actions=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            apps=["gmail"],
             name="Updated GitHub Integration Server",
-            toolkits=["gmail"],
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
@@ -471,7 +467,7 @@ class TestAsyncMcp:
             limit=10,
             name="github",
             page_no=1,
-            toolkits=["gmail", "supabase"],
+            toolkit="github",
         )
         assert_matches_type(McpListResponse, mcp, path=["response"])
 
@@ -550,7 +546,7 @@ class TestAsyncMcp:
             limit=10,
             name="github",
             page_no=1,
-            toolkits=["gmail", "supabase"],
+            toolkit="github",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
