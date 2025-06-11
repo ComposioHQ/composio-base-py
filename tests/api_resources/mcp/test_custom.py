@@ -30,7 +30,9 @@ class TestCustom:
         custom = client.mcp.custom.create(
             name="name",
             toolkits=["github", "jira"],
+            auth_config_id=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             custom_tools=["custom-api-tool", "internal-database-tool"],
+            managed_auth_via_composio=True,
         )
         assert_matches_type(CustomCreateResponse, custom, path=["response"])
 
@@ -77,7 +79,9 @@ class TestAsyncCustom:
         custom = await async_client.mcp.custom.create(
             name="name",
             toolkits=["github", "jira"],
+            auth_config_id=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             custom_tools=["custom-api-tool", "internal-database-tool"],
+            managed_auth_via_composio=True,
         )
         assert_matches_type(CustomCreateResponse, custom, path=["response"])
 

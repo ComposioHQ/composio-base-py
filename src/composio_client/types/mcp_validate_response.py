@@ -44,17 +44,11 @@ class McpValidateResponse(BaseModel):
     user_data: UserData = FieldInfo(alias="userData")
     """User authentication data for the MCP server"""
 
-    actions: Optional[List[str]] = None
+    allowed_tools: Optional[List[str]] = None
     """List of action identifiers enabled for this server"""
-
-    apps: Optional[List[str]] = None
-    """List of application identifiers this server is configured for"""
-
-    connected_account_ids: Optional[List[str]] = FieldInfo(alias="connectedAccountIds", default=None)
-    """List of connected account identifiers this server can use for authentication"""
 
     custom_auth_headers: Optional[bool] = FieldInfo(alias="customAuthHeaders", default=None)
     """Flag indicating if this server uses custom authentication headers"""
 
-    entity_ids: Optional[List[str]] = FieldInfo(alias="entityIds", default=None)
-    """List of entity identifiers this MCP server can interact with"""
+    toolkits: Optional[List[str]] = None
+    """List of application identifiers this server is configured for"""

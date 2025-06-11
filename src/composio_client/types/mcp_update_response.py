@@ -25,8 +25,8 @@ class McpUpdateResponse(BaseModel):
     allowed_tools: List[str]
     """Array of tool slugs that this MCP server is allowed to use"""
 
-    auth_config_id: str
-    """ID reference to the auth configuration used by this server"""
+    auth_config_ids: List[str]
+    """ID references to the auth configurations used by this server"""
 
     commands: Commands
     """
@@ -45,6 +45,9 @@ class McpUpdateResponse(BaseModel):
 
     name: str
     """User-defined descriptive name for this MCP server"""
+
+    toolkits: List[str]
+    """Array of toolkit slugs that this MCP server is allowed to use"""
 
     updated_at: str
     """Date and time when this server configuration was last modified"""
