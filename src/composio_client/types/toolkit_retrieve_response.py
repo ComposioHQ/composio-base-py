@@ -8,6 +8,7 @@ from .._models import BaseModel
 
 __all__ = [
     "ToolkitRetrieveResponse",
+    "Deprecated",
     "Meta",
     "MetaCategory",
     "AuthConfigDetail",
@@ -20,6 +21,12 @@ __all__ = [
     "AuthConfigDetailFieldsConnectedAccountInitiationRequired",
     "AuthConfigDetailProxy",
 ]
+
+
+class Deprecated(BaseModel):
+    toolkit_id: str = FieldInfo(alias="toolkitId")
+
+    get_current_user_endpoint: Optional[str] = FieldInfo(alias="getCurrentUserEndpoint", default=None)
 
 
 class MetaCategory(BaseModel):
@@ -155,6 +162,8 @@ class AuthConfigDetail(BaseModel):
 
 
 class ToolkitRetrieveResponse(BaseModel):
+    deprecated: Deprecated
+
     enabled: bool
     """Indicates if this toolkit is currently enabled and available for use"""
 

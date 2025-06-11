@@ -6,15 +6,28 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ToolRetrieveResponse", "Deprecated", "Toolkit"]
+__all__ = ["ToolRetrieveResponse", "Deprecated", "DeprecatedToolkit", "Toolkit"]
+
+
+class DeprecatedToolkit(BaseModel):
+    logo: str
+    """URL to the toolkit logo image"""
 
 
 class Deprecated(BaseModel):
+    available_versions: List[str]
+    """List of all available versions for this tool"""
+
     display_name: str = FieldInfo(alias="displayName")
     """The display name of the tool"""
 
     is_deprecated: bool
-    """Whether the action is deprecated"""
+    """Indicates if this tool is deprecated and may be removed in the future"""
+
+    toolkit: DeprecatedToolkit
+
+    version: str
+    """Current version identifier of the tool"""
 
 
 class Toolkit(BaseModel):
@@ -35,13 +48,13 @@ class ToolRetrieveResponse(BaseModel):
     deprecated: Deprecated
 
     description: str
-    """Detailed description of what the tool does"""
+    """Detailed explanation of the tool's functionality and purpose"""
 
     input_parameters: Dict[str, Optional[object]]
     """Schema definition of required input parameters for the tool"""
 
     name: str
-    """Human-readable name of the tool"""
+    """Human-readable display name of the tool"""
 
     no_auth: bool
     """Indicates if the tool can be used without authentication"""
@@ -53,7 +66,7 @@ class ToolRetrieveResponse(BaseModel):
     """Unique identifier for the tool"""
 
     tags: List[str]
-    """List of tags associated with the tool for categorization"""
+    """List of tags associated with the tool for categorization and filtering"""
 
     toolkit: Toolkit
 

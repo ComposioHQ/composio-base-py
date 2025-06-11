@@ -31,6 +31,9 @@ class ItemDeprecated(BaseModel):
 
 
 class ItemToolkit(BaseModel):
+    logo: str
+    """URL to the toolkit logo image"""
+
     name: str
     """Human-readable name of the parent toolkit"""
 
@@ -39,6 +42,9 @@ class ItemToolkit(BaseModel):
 
 
 class Item(BaseModel):
+    available_versions: List[str]
+    """List of all available versions for this tool"""
+
     deprecated: ItemDeprecated
 
     description: str
@@ -63,6 +69,9 @@ class Item(BaseModel):
     """List of tags associated with the tool for categorization and filtering"""
 
     toolkit: ItemToolkit
+
+    version: str
+    """Current version of the tool"""
 
 
 class ToolListResponse(BaseModel):

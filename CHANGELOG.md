@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.3.0 (2025-06-11)
+
+Full Changelog: [v1.2.0...v1.3.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.2.0...v1.3.0)
+
+### Features
+
+* **api:** api update ([720b210](https://github.com/ComposioHQ/composio-base-py/commit/720b2106057c99a3777e300c66c0781a402e3d30))
+* **api:** api update ([e3f99ed](https://github.com/ComposioHQ/composio-base-py/commit/e3f99ed944fa89f5539f013ce6ecaa0d5f217340))
+* **api:** api update ([f43c3e2](https://github.com/ComposioHQ/composio-base-py/commit/f43c3e2b4b14622040e4d3cb7ca8f02b5e3072ff))
+* **api:** api update ([00f2610](https://github.com/ComposioHQ/composio-base-py/commit/00f2610daf7432ecb507c6a76ea1f96b087bee95))
+* **api:** api update ([6d7d0d7](https://github.com/ComposioHQ/composio-base-py/commit/6d7d0d7a6b3fd4ca7144b18ca2d12bf7dea185f1))
+* **api:** api update ([61ab860](https://github.com/ComposioHQ/composio-base-py/commit/61ab8601ab98392a35b4d81a204f9f046dae9a85))
+* **api:** api update ([1785cc0](https://github.com/ComposioHQ/composio-base-py/commit/1785cc03b871e45443cae406c65c8cf381afd443))
+* **api:** api update ([db543a4](https://github.com/ComposioHQ/composio-base-py/commit/db543a45fd5998c605ae8b0bedffd2cbece90f4c))
+
 ## 1.2.0 (2025-06-04)
 
 Full Changelog: [v1.1.0...v1.2.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.1.0...v1.2.0)

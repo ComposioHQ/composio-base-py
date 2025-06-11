@@ -9,7 +9,7 @@ __all__ = ["ToolExecuteParams", "CustomAuthParams", "CustomAuthParamsParameter"]
 
 
 class ToolExecuteParams(TypedDict, total=False):
-    allow_tracing: bool
+    allow_tracing: Optional[bool]
     """Enable debug tracing for tool execution (useful for debugging)"""
 
     arguments: Dict[str, Optional[object]]
