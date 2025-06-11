@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List, Union, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -67,7 +67,8 @@ class McpResource(SyncAPIResource):
         *,
         name: str,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -90,7 +91,9 @@ class McpResource(SyncAPIResource):
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
 
-          auth_config_id: ID reference to an existing authentication configuration
+          auth_config_id: ID reference to one or more existing authentication configurations
+
+          managed_auth_via_composio: Whether the MCP server is managed by Composio and not by the user
 
           ttl: Time-to-live duration for this MCP server
 
@@ -109,6 +112,7 @@ class McpResource(SyncAPIResource):
                     "name": name,
                     "allowed_tools": allowed_tools,
                     "auth_config_id": auth_config_id,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
@@ -160,9 +164,10 @@ class McpResource(SyncAPIResource):
         self,
         id: str,
         *,
-        actions: List[str] | NotGiven = NOT_GIVEN,
-        apps: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -178,12 +183,14 @@ class McpResource(SyncAPIResource):
         Args:
           id: Unique identifier of the MCP server to retrieve, update, or delete
 
-          actions: List of action identifiers that should be enabled for this server
+          allowed_tools: List of action identifiers that should be enabled for this server
 
-          apps: List of application identifiers this server should be configured to work with
+          managed_auth_via_composio: Whether the MCP server is managed by Composio and not by the user
 
           name: Human-readable name to identify this MCP server instance (4-25 characters,
               alphanumeric and hyphens only)
+
+          toolkits: List of toolkit slugs this server should be configured to work with
 
           extra_headers: Send extra headers
 
@@ -199,9 +206,10 @@ class McpResource(SyncAPIResource):
             f"/api/v3/mcp/{id}",
             body=maybe_transform(
                 {
-                    "actions": actions,
-                    "apps": apps,
+                    "allowed_tools": allowed_tools,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "name": name,
+                    "toolkits": toolkits,
                 },
                 mcp_update_params.McpUpdateParams,
             ),
@@ -218,7 +226,7 @@ class McpResource(SyncAPIResource):
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit: str | NotGiven = NOT_GIVEN,
+        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -242,7 +250,8 @@ class McpResource(SyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkit: Filter MCP servers by toolkit slug
+          toolkits: Filter MCP servers by toolkit slugs (returns servers matching any of the
+              provided toolkits)
 
           extra_headers: Send extra headers
 
@@ -265,7 +274,7 @@ class McpResource(SyncAPIResource):
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
-                        "toolkit": toolkit,
+                        "toolkits": toolkits,
                     },
                     mcp_list_params.McpListParams,
                 ),
@@ -319,7 +328,7 @@ class McpResource(SyncAPIResource):
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit: str | NotGiven = NOT_GIVEN,
+        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -344,7 +353,8 @@ class McpResource(SyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkit: Filter MCP servers by toolkit slug
+          toolkits: Filter MCP servers by toolkit slugs (returns servers matching any of the
+              provided toolkits)
 
           extra_headers: Send extra headers
 
@@ -369,7 +379,7 @@ class McpResource(SyncAPIResource):
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
-                        "toolkit": toolkit,
+                        "toolkits": toolkits,
                     },
                     mcp_retrieve_app_params.McpRetrieveAppParams,
                 ),
@@ -450,7 +460,8 @@ class AsyncMcpResource(AsyncAPIResource):
         *,
         name: str,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -473,7 +484,9 @@ class AsyncMcpResource(AsyncAPIResource):
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
 
-          auth_config_id: ID reference to an existing authentication configuration
+          auth_config_id: ID reference to one or more existing authentication configurations
+
+          managed_auth_via_composio: Whether the MCP server is managed by Composio and not by the user
 
           ttl: Time-to-live duration for this MCP server
 
@@ -492,6 +505,7 @@ class AsyncMcpResource(AsyncAPIResource):
                     "name": name,
                     "allowed_tools": allowed_tools,
                     "auth_config_id": auth_config_id,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
@@ -543,9 +557,10 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        actions: List[str] | NotGiven = NOT_GIVEN,
-        apps: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -561,12 +576,14 @@ class AsyncMcpResource(AsyncAPIResource):
         Args:
           id: Unique identifier of the MCP server to retrieve, update, or delete
 
-          actions: List of action identifiers that should be enabled for this server
+          allowed_tools: List of action identifiers that should be enabled for this server
 
-          apps: List of application identifiers this server should be configured to work with
+          managed_auth_via_composio: Whether the MCP server is managed by Composio and not by the user
 
           name: Human-readable name to identify this MCP server instance (4-25 characters,
               alphanumeric and hyphens only)
+
+          toolkits: List of toolkit slugs this server should be configured to work with
 
           extra_headers: Send extra headers
 
@@ -582,9 +599,10 @@ class AsyncMcpResource(AsyncAPIResource):
             f"/api/v3/mcp/{id}",
             body=await async_maybe_transform(
                 {
-                    "actions": actions,
-                    "apps": apps,
+                    "allowed_tools": allowed_tools,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "name": name,
+                    "toolkits": toolkits,
                 },
                 mcp_update_params.McpUpdateParams,
             ),
@@ -601,7 +619,7 @@ class AsyncMcpResource(AsyncAPIResource):
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit: str | NotGiven = NOT_GIVEN,
+        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -625,7 +643,8 @@ class AsyncMcpResource(AsyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkit: Filter MCP servers by toolkit slug
+          toolkits: Filter MCP servers by toolkit slugs (returns servers matching any of the
+              provided toolkits)
 
           extra_headers: Send extra headers
 
@@ -648,7 +667,7 @@ class AsyncMcpResource(AsyncAPIResource):
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
-                        "toolkit": toolkit,
+                        "toolkits": toolkits,
                     },
                     mcp_list_params.McpListParams,
                 ),
@@ -702,7 +721,7 @@ class AsyncMcpResource(AsyncAPIResource):
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit: str | NotGiven = NOT_GIVEN,
+        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -727,7 +746,8 @@ class AsyncMcpResource(AsyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkit: Filter MCP servers by toolkit slug
+          toolkits: Filter MCP servers by toolkit slugs (returns servers matching any of the
+              provided toolkits)
 
           extra_headers: Send extra headers
 
@@ -752,7 +772,7 @@ class AsyncMcpResource(AsyncAPIResource):
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
-                        "toolkit": toolkit,
+                        "toolkits": toolkits,
                     },
                     mcp_retrieve_app_params.McpRetrieveAppParams,
                 ),

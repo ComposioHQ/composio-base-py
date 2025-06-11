@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union
 from typing_extensions import Required, TypedDict
 
 __all__ = ["CustomCreateParams"]
@@ -18,8 +18,14 @@ class CustomCreateParams(TypedDict, total=False):
     toolkits: Required[List[str]]
     """List of application/toolkit identifiers to enable for this server"""
 
+    auth_config_id: Union[str, List[str]]
+    """ID reference to one or more existing authentication configurations"""
+
     custom_tools: List[str]
     """
     Additional custom tool identifiers to enable that aren't part of standard
     toolkits
     """
+
+    managed_auth_via_composio: bool
+    """Whether the MCP server is managed by Composio and not by the user"""

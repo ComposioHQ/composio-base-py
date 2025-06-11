@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import List, Optional
 from typing_extensions import TypedDict
 
 __all__ = ["McpListParams"]
@@ -21,5 +21,8 @@ class McpListParams(TypedDict, total=False):
     page_no: Optional[float]
     """Page number for pagination (1-based)"""
 
-    toolkit: str
-    """Filter MCP servers by toolkit slug"""
+    toolkits: Optional[List[str]]
+    """
+    Filter MCP servers by toolkit slugs (returns servers matching any of the
+    provided toolkits)
+    """
