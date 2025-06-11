@@ -25,9 +25,6 @@ class CustomCreateResponse(BaseModel):
     allowed_tools: List[str]
     """List of tool identifiers that are enabled for this server"""
 
-    auth_config_ids: List[str]
-    """ID references to the auth configurations used by this server"""
-
     commands: Commands
     """
     Set of command line instructions for connecting various clients to this MCP

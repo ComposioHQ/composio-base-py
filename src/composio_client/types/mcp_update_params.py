@@ -2,24 +2,21 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 from typing_extensions import TypedDict
 
 __all__ = ["McpUpdateParams"]
 
 
 class McpUpdateParams(TypedDict, total=False):
-    allowed_tools: Optional[List[str]]
+    actions: List[str]
     """List of action identifiers that should be enabled for this server"""
 
-    managed_auth_via_composio: bool
-    """Whether the MCP server is managed by Composio and not by the user"""
+    apps: List[str]
+    """List of application identifiers this server should be configured to work with"""
 
     name: str
     """
     Human-readable name to identify this MCP server instance (4-25 characters,
     alphanumeric and hyphens only)
     """
-
-    toolkits: Optional[List[str]]
-    """List of toolkit slugs this server should be configured to work with"""
