@@ -334,12 +334,11 @@ Methods:
 Types:
 
 ```python
-from composio_client.types.v3 import AdminListConnectionsResponse, AdminRefreshAuthTokensResponse
+from composio_client.types.v3 import AdminRefreshAuthTokensResponse
 ```
 
 Methods:
 
-- <code title="get /api/v3/admin/connections">client.v3.admin.<a href="./src/composio_client/resources/v3/admin.py">list_connections</a>(\*\*<a href="src/composio_client/types/v3/admin_list_connections_params.py">params</a>) -> <a href="./src/composio_client/types/v3/admin_list_connections_response.py">AdminListConnectionsResponse</a></code>
 - <code title="post /api/v3/admin/auth-refresh">client.v3.admin.<a href="./src/composio_client/resources/v3/admin.py">refresh_auth_tokens</a>(\*\*<a href="src/composio_client/types/v3/admin_refresh_auth_tokens_params.py">params</a>) -> <a href="./src/composio_client/types/v3/admin_refresh_auth_tokens_response.py">AdminRefreshAuthTokensResponse</a></code>
 
 ## Cli
