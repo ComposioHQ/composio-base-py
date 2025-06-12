@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List, Optional
 from typing_extensions import Required, TypedDict
 
 __all__ = ["CustomCreateParams"]
@@ -15,13 +15,10 @@ class CustomCreateParams(TypedDict, total=False):
     alphanumeric and hyphens only)
     """
 
-    toolkits: Required[List[str]]
-    """List of application/toolkit identifiers to enable for this server"""
-
-    auth_config_id: Union[str, List[str]]
+    auth_config_ids: Optional[List[str]]
     """ID reference to one or more existing authentication configurations"""
 
-    custom_tools: List[str]
+    custom_tools: Optional[List[str]]
     """
     Additional custom tool identifiers to enable that aren't part of standard
     toolkits
@@ -29,3 +26,6 @@ class CustomCreateParams(TypedDict, total=False):
 
     managed_auth_via_composio: bool
     """Whether to manage authentication via Composio"""
+
+    toolkits: Optional[List[str]]
+    """List of application/toolkit identifiers to enable for this server"""

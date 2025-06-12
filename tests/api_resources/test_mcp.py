@@ -37,7 +37,8 @@ class TestMcp:
         mcp = client.mcp.create(
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids=["auth_cfg_abc123def456"],
+            managed_auth_via_composio=True,
             ttl="1d",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -162,7 +163,7 @@ class TestMcp:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.list(
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             limit=10,
             name="github",
             page_no=1,
@@ -241,7 +242,7 @@ class TestMcp:
     def test_method_retrieve_app_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.retrieve_app(
             app_key="github",
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             limit=10,
             name="github",
             page_no=1,
@@ -338,7 +339,8 @@ class TestAsyncMcp:
         mcp = await async_client.mcp.create(
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids=["auth_cfg_abc123def456"],
+            managed_auth_via_composio=True,
             ttl="1d",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -463,7 +465,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.list(
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             limit=10,
             name="github",
             page_no=1,
@@ -542,7 +544,7 @@ class TestAsyncMcp:
     async def test_method_retrieve_app_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.retrieve_app(
             app_key="github",
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             limit=10,
             name="github",
             page_no=1,
