@@ -165,6 +165,7 @@ class McpResource(SyncAPIResource):
         id: str,
         *,
         allowed_tools: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -183,6 +184,8 @@ class McpResource(SyncAPIResource):
           id: Unique identifier of the MCP server to retrieve, update, or delete
 
           allowed_tools: List of action identifiers that should be enabled for this server
+
+          managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           name: Human-readable name to identify this MCP server instance (4-25 characters,
               alphanumeric and hyphens only)
@@ -204,6 +207,7 @@ class McpResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "allowed_tools": allowed_tools,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "name": name,
                     "toolkits": toolkits,
                 },
@@ -554,6 +558,7 @@ class AsyncMcpResource(AsyncAPIResource):
         id: str,
         *,
         allowed_tools: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -572,6 +577,8 @@ class AsyncMcpResource(AsyncAPIResource):
           id: Unique identifier of the MCP server to retrieve, update, or delete
 
           allowed_tools: List of action identifiers that should be enabled for this server
+
+          managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           name: Human-readable name to identify this MCP server instance (4-25 characters,
               alphanumeric and hyphens only)
@@ -593,6 +600,7 @@ class AsyncMcpResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "allowed_tools": allowed_tools,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "name": name,
                     "toolkits": toolkits,
                 },
