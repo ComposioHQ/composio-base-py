@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import List
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["McpCreateParams"]
@@ -22,8 +22,11 @@ class McpCreateParams(TypedDict, total=False):
     be enabled.
     """
 
-    auth_config_id: Union[str, List[str]]
-    """ID reference to one or more existing authentication configurations"""
+    auth_config_ids: List[str]
+    """ID references to existing authentication configurations"""
+
+    managed_auth_via_composio: bool
+    """Whether the MCP server is managed by Composio"""
 
     ttl: Literal["1d", "3d", "1 month", "no expiration"]
     """Time-to-live duration for this MCP server"""

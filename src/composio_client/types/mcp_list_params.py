@@ -9,8 +9,8 @@ __all__ = ["McpListParams"]
 
 
 class McpListParams(TypedDict, total=False):
-    auth_config_id: str
-    """Filter MCP servers by authentication configuration ID"""
+    auth_config_ids: Optional[List[str]]
+    """Filter MCP servers by authentication configuration IDs"""
 
     limit: Optional[float]
     """Number of items per page (default: 10)"""

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Optional
+from typing import List, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -67,7 +67,8 @@ class McpResource(SyncAPIResource):
         *,
         name: str,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -90,7 +91,9 @@ class McpResource(SyncAPIResource):
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
 
-          auth_config_id: ID reference to one or more existing authentication configurations
+          auth_config_ids: ID references to existing authentication configurations
+
+          managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           ttl: Time-to-live duration for this MCP server
 
@@ -108,7 +111,8 @@ class McpResource(SyncAPIResource):
                 {
                     "name": name,
                     "allowed_tools": allowed_tools,
-                    "auth_config_id": auth_config_id,
+                    "auth_config_ids": auth_config_ids,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
@@ -214,7 +218,7 @@ class McpResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
@@ -234,7 +238,7 @@ class McpResource(SyncAPIResource):
         services.
 
         Args:
-          auth_config_id: Filter MCP servers by authentication configuration ID
+          auth_config_ids: Filter MCP servers by authentication configuration IDs
 
           limit: Number of items per page (default: 10)
 
@@ -262,7 +266,7 @@ class McpResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
@@ -316,7 +320,7 @@ class McpResource(SyncAPIResource):
         self,
         app_key: str,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
@@ -337,7 +341,7 @@ class McpResource(SyncAPIResource):
         Args:
           app_key: Toolkit or application slug identifier to filter MCP servers by
 
-          auth_config_id: Filter MCP servers by authentication configuration ID
+          auth_config_ids: Filter MCP servers by authentication configuration IDs
 
           limit: Number of items per page (default: 10)
 
@@ -367,7 +371,7 @@ class McpResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
@@ -452,7 +456,8 @@ class AsyncMcpResource(AsyncAPIResource):
         *,
         name: str,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_id: Union[str, List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -475,7 +480,9 @@ class AsyncMcpResource(AsyncAPIResource):
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
 
-          auth_config_id: ID reference to one or more existing authentication configurations
+          auth_config_ids: ID references to existing authentication configurations
+
+          managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           ttl: Time-to-live duration for this MCP server
 
@@ -493,7 +500,8 @@ class AsyncMcpResource(AsyncAPIResource):
                 {
                     "name": name,
                     "allowed_tools": allowed_tools,
-                    "auth_config_id": auth_config_id,
+                    "auth_config_ids": auth_config_ids,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
@@ -599,7 +607,7 @@ class AsyncMcpResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
@@ -619,7 +627,7 @@ class AsyncMcpResource(AsyncAPIResource):
         services.
 
         Args:
-          auth_config_id: Filter MCP servers by authentication configuration ID
+          auth_config_ids: Filter MCP servers by authentication configuration IDs
 
           limit: Number of items per page (default: 10)
 
@@ -647,7 +655,7 @@ class AsyncMcpResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
@@ -701,7 +709,7 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         app_key: str,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
@@ -722,7 +730,7 @@ class AsyncMcpResource(AsyncAPIResource):
         Args:
           app_key: Toolkit or application slug identifier to filter MCP servers by
 
-          auth_config_id: Filter MCP servers by authentication configuration ID
+          auth_config_ids: Filter MCP servers by authentication configuration IDs
 
           limit: Number of items per page (default: 10)
 
@@ -752,7 +760,7 @@ class AsyncMcpResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
