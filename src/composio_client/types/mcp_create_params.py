@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Union
 from typing_extensions import Literal, Required, TypedDict
 
 __all__ = ["McpCreateParams"]
@@ -22,8 +22,8 @@ class McpCreateParams(TypedDict, total=False):
     be enabled.
     """
 
-    auth_config_id: str
-    """ID reference to an existing authentication configuration"""
+    auth_config_id: Union[str, List[str]]
+    """ID reference to one or more existing authentication configurations"""
 
     ttl: Literal["1d", "3d", "1 month", "no expiration"]
     """Time-to-live duration for this MCP server"""
