@@ -288,6 +288,18 @@ Methods:
 
 - <code title="post /api/v3/mcp/servers/custom">client.mcp.custom.<a href="./src/composio_client/resources/mcp/custom.py">create</a>(\*\*<a href="src/composio_client/types/mcp/custom_create_params.py">params</a>) -> <a href="./src/composio_client/types/mcp/custom_create_response.py">CustomCreateResponse</a></code>
 
+## Generate
+
+Types:
+
+```python
+from composio_client.types.mcp import GenerateURLResponse
+```
+
+Methods:
+
+- <code title="post /api/v3/mcp/servers/generate">client.mcp.generate.<a href="./src/composio_client/resources/mcp/generate.py">url</a>(\*\*<a href="src/composio_client/types/mcp/generate_url_params.py">params</a>) -> <a href="./src/composio_client/types/mcp/generate_url_response.py">GenerateURLResponse</a></code>
+
 # Files
 
 Types:

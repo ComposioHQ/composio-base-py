@@ -18,6 +18,14 @@ from .custom import (
 from ...types import mcp_list_params, mcp_create_params, mcp_update_params, mcp_retrieve_app_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
+from .generate import (
+    GenerateResource,
+    AsyncGenerateResource,
+    GenerateResourceWithRawResponse,
+    AsyncGenerateResourceWithRawResponse,
+    GenerateResourceWithStreamingResponse,
+    AsyncGenerateResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -42,6 +50,10 @@ class McpResource(SyncAPIResource):
     @cached_property
     def custom(self) -> CustomResource:
         return CustomResource(self._client)
+
+    @cached_property
+    def generate(self) -> GenerateResource:
+        return GenerateResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> McpResourceWithRawResponse:
@@ -435,6 +447,10 @@ class AsyncMcpResource(AsyncAPIResource):
     @cached_property
     def custom(self) -> AsyncCustomResource:
         return AsyncCustomResource(self._client)
+
+    @cached_property
+    def generate(self) -> AsyncGenerateResource:
+        return AsyncGenerateResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncMcpResourceWithRawResponse:
@@ -854,6 +870,10 @@ class McpResourceWithRawResponse:
     def custom(self) -> CustomResourceWithRawResponse:
         return CustomResourceWithRawResponse(self._mcp.custom)
 
+    @cached_property
+    def generate(self) -> GenerateResourceWithRawResponse:
+        return GenerateResourceWithRawResponse(self._mcp.generate)
+
 
 class AsyncMcpResourceWithRawResponse:
     def __init__(self, mcp: AsyncMcpResource) -> None:
@@ -884,6 +904,10 @@ class AsyncMcpResourceWithRawResponse:
     @cached_property
     def custom(self) -> AsyncCustomResourceWithRawResponse:
         return AsyncCustomResourceWithRawResponse(self._mcp.custom)
+
+    @cached_property
+    def generate(self) -> AsyncGenerateResourceWithRawResponse:
+        return AsyncGenerateResourceWithRawResponse(self._mcp.generate)
 
 
 class McpResourceWithStreamingResponse:
@@ -916,6 +940,10 @@ class McpResourceWithStreamingResponse:
     def custom(self) -> CustomResourceWithStreamingResponse:
         return CustomResourceWithStreamingResponse(self._mcp.custom)
 
+    @cached_property
+    def generate(self) -> GenerateResourceWithStreamingResponse:
+        return GenerateResourceWithStreamingResponse(self._mcp.generate)
+
 
 class AsyncMcpResourceWithStreamingResponse:
     def __init__(self, mcp: AsyncMcpResource) -> None:
@@ -946,3 +974,7 @@ class AsyncMcpResourceWithStreamingResponse:
     @cached_property
     def custom(self) -> AsyncCustomResourceWithStreamingResponse:
         return AsyncCustomResourceWithStreamingResponse(self._mcp.custom)
+
+    @cached_property
+    def generate(self) -> AsyncGenerateResourceWithStreamingResponse:
+        return AsyncGenerateResourceWithStreamingResponse(self._mcp.generate)
