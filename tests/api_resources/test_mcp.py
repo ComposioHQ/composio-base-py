@@ -117,6 +117,7 @@ class TestMcp:
         mcp = client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
             allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            managed_auth_via_composio=True,
             name="Updated GitHub Integration Server",
             toolkits=["gmail"],
         )
@@ -419,6 +420,7 @@ class TestAsyncMcp:
         mcp = await async_client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
             allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            managed_auth_via_composio=True,
             name="Updated GitHub Integration Server",
             toolkits=["gmail"],
         )

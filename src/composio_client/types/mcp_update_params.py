@@ -12,6 +12,9 @@ class McpUpdateParams(TypedDict, total=False):
     allowed_tools: Optional[List[str]]
     """List of action identifiers that should be enabled for this server"""
 
+    managed_auth_via_composio: bool
+    """Whether the MCP server is managed by Composio"""
+
     name: str
     """
     Human-readable name to identify this MCP server instance (4-25 characters,
