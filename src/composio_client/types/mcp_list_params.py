@@ -2,15 +2,15 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import TypedDict
 
 __all__ = ["McpListParams"]
 
 
 class McpListParams(TypedDict, total=False):
-    auth_config_ids: Optional[List[str]]
-    """Filter MCP servers by authentication configuration IDs"""
+    auth_config_ids: str
+    """Comma-separated list of auth config IDs to filter servers by"""
 
     limit: Optional[float]
     """Number of items per page (default: 10)"""
@@ -21,8 +21,5 @@ class McpListParams(TypedDict, total=False):
     page_no: Optional[float]
     """Page number for pagination (1-based)"""
 
-    toolkits: Optional[List[str]]
-    """
-    Filter MCP servers by toolkit slugs (returns servers matching any of the
-    provided toolkits)
-    """
+    toolkits: str
+    """Comma-separated list of toolkit slugs to filter servers by"""

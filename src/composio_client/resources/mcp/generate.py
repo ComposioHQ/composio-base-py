@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import List
 
 import httpx
 
@@ -47,9 +47,9 @@ class GenerateResource(SyncAPIResource):
         self,
         *,
         mcp_server_id: str,
-        connected_account_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        connected_account_ids: List[str] | NotGiven = NOT_GIVEN,
         managed_auth_by_composio: bool | NotGiven = NOT_GIVEN,
-        user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        user_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -121,9 +121,9 @@ class AsyncGenerateResource(AsyncAPIResource):
         self,
         *,
         mcp_server_id: str,
-        connected_account_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        connected_account_ids: List[str] | NotGiven = NOT_GIVEN,
         managed_auth_by_composio: bool | NotGiven = NOT_GIVEN,
-        user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        user_ids: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
