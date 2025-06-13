@@ -18,8 +18,14 @@ class CustomCreateParams(TypedDict, total=False):
     toolkits: Required[List[str]]
     """List of application/toolkit identifiers to enable for this server"""
 
+    auth_config_ids: List[str]
+    """ID references to existing authentication configurations"""
+
     custom_tools: List[str]
     """
     Additional custom tool identifiers to enable that aren't part of standard
     toolkits
     """
+
+    managed_auth_via_composio: bool
+    """Whether to manage authentication via Composio"""
