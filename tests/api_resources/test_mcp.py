@@ -164,11 +164,11 @@ class TestMcp:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.list(
-            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
+            auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
             page_no=1,
-            toolkits=["gmail", "supabase"],
+            toolkits="toolkits",
         )
         assert_matches_type(McpListResponse, mcp, path=["response"])
 
@@ -243,11 +243,11 @@ class TestMcp:
     def test_method_retrieve_app_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.retrieve_app(
             app_key="github",
-            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
+            auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
             page_no=1,
-            toolkits=["gmail", "supabase"],
+            toolkits="toolkits",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
@@ -467,11 +467,11 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.list(
-            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
+            auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
             page_no=1,
-            toolkits=["gmail", "supabase"],
+            toolkits="toolkits",
         )
         assert_matches_type(McpListResponse, mcp, path=["response"])
 
@@ -546,11 +546,11 @@ class TestAsyncMcp:
     async def test_method_retrieve_app_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.retrieve_app(
             app_key="github",
-            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
+            auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
             page_no=1,
-            toolkits=["gmail", "supabase"],
+            toolkits="toolkits",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 

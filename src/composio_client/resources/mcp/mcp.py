@@ -176,10 +176,10 @@ class McpResource(SyncAPIResource):
         self,
         id: str,
         *,
-        allowed_tools: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkits: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -234,11 +234,11 @@ class McpResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -254,7 +254,7 @@ class McpResource(SyncAPIResource):
         services.
 
         Args:
-          auth_config_ids: Filter MCP servers by authentication configuration IDs
+          auth_config_ids: Comma-separated list of auth config IDs to filter servers by
 
           limit: Number of items per page (default: 10)
 
@@ -262,8 +262,7 @@ class McpResource(SyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkits: Filter MCP servers by toolkit slugs (returns servers matching any of the
-              provided toolkits)
+          toolkits: Comma-separated list of toolkit slugs to filter servers by
 
           extra_headers: Send extra headers
 
@@ -336,11 +335,11 @@ class McpResource(SyncAPIResource):
         self,
         app_key: str,
         *,
-        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -357,7 +356,7 @@ class McpResource(SyncAPIResource):
         Args:
           app_key: Toolkit or application slug identifier to filter MCP servers by
 
-          auth_config_ids: Filter MCP servers by authentication configuration IDs
+          auth_config_ids: Comma-separated list of auth config IDs to filter servers by
 
           limit: Number of items per page (default: 10)
 
@@ -365,8 +364,7 @@ class McpResource(SyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkits: Filter MCP servers by toolkit slugs (returns servers matching any of the
-              provided toolkits)
+          toolkits: Comma-separated list of toolkit slugs to filter servers by
 
           extra_headers: Send extra headers
 
@@ -573,10 +571,10 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        allowed_tools: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkits: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -631,11 +629,11 @@ class AsyncMcpResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -651,7 +649,7 @@ class AsyncMcpResource(AsyncAPIResource):
         services.
 
         Args:
-          auth_config_ids: Filter MCP servers by authentication configuration IDs
+          auth_config_ids: Comma-separated list of auth config IDs to filter servers by
 
           limit: Number of items per page (default: 10)
 
@@ -659,8 +657,7 @@ class AsyncMcpResource(AsyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkits: Filter MCP servers by toolkit slugs (returns servers matching any of the
-              provided toolkits)
+          toolkits: Comma-separated list of toolkit slugs to filter servers by
 
           extra_headers: Send extra headers
 
@@ -733,11 +730,11 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         app_key: str,
         *,
-        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkits: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -754,7 +751,7 @@ class AsyncMcpResource(AsyncAPIResource):
         Args:
           app_key: Toolkit or application slug identifier to filter MCP servers by
 
-          auth_config_ids: Filter MCP servers by authentication configuration IDs
+          auth_config_ids: Comma-separated list of auth config IDs to filter servers by
 
           limit: Number of items per page (default: 10)
 
@@ -762,8 +759,7 @@ class AsyncMcpResource(AsyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkits: Filter MCP servers by toolkit slugs (returns servers matching any of the
-              provided toolkits)
+          toolkits: Comma-separated list of toolkit slugs to filter servers by
 
           extra_headers: Send extra headers
 
