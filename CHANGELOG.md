@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.4.0 (2025-06-15)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* **api:** api update ([17c494c](https://github.com/ComposioHQ/composio-base-py/commit/17c494caeb8ae1f96663fa3d9724f73f876d7809))
+* **api:** api update ([d6cfa81](https://github.com/ComposioHQ/composio-base-py/commit/d6cfa81b6bb9f83d9f459cecf383321e2421654b))
+* **api:** api update ([e40a3f0](https://github.com/ComposioHQ/composio-base-py/commit/e40a3f0106f5b2dca2835af076c3136a0b438944))
+* **api:** api update ([050529e](https://github.com/ComposioHQ/composio-base-py/commit/050529eb8ab5396069ef6cfa45718fe3745be61f))
+* **api:** api update ([dfc5b2b](https://github.com/ComposioHQ/composio-base-py/commit/dfc5b2b561abca7e2c199d23a67694c0320bc44a))
+* **api:** api update ([34ac3b1](https://github.com/ComposioHQ/composio-base-py/commit/34ac3b13cdadfadfbfaa701c0d598657ed920230))
+* **api:** api update ([24766e7](https://github.com/ComposioHQ/composio-base-py/commit/24766e7d3e01db151619a09e8d46b93fd61b9513))
+* **api:** manual updates ([e97bf58](https://github.com/ComposioHQ/composio-base-py/commit/e97bf581cf5be52a500b5e446a1e4934de2bc671))
+* **api:** manual updates ([c15d00f](https://github.com/ComposioHQ/composio-base-py/commit/c15d00fa62c6e53df59a9161e387178d156f25ad))
+* **api:** manual updates ([a9ed727](https://github.com/ComposioHQ/composio-base-py/commit/a9ed7274b43cb80f6b5b356effa52f10e238e713))
+* **api:** manual updates ([4e67117](https://github.com/ComposioHQ/composio-base-py/commit/4e67117f6964eb027ae46b371100e9e2f71c4880))
+
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([2e59db3](https://github.com/ComposioHQ/composio-base-py/commit/2e59db34cf05918ab62d042921c3ea850d96e45a))
+
+
+### Chores
+
+* **tests:** run tests in parallel ([b970934](https://github.com/ComposioHQ/composio-base-py/commit/b9709345dd74271b5fdfcdff087b0f81190b5ef9))
+
 ## 1.3.0 (2025-06-11)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.2.0...v1.3.0)

@@ -37,7 +37,8 @@ class TestMcp:
         mcp = client.mcp.create(
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids=["auth_cfg_abc123def456"],
+            managed_auth_via_composio=True,
             ttl="1d",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -115,9 +116,10 @@ class TestMcp:
     def test_method_update_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
-            actions=["GMAIL_ADD_LABEL_TO_EMAIL"],
-            apps=["gmail"],
+            allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            managed_auth_via_composio=True,
             name="Updated GitHub Integration Server",
+            toolkits=["gmail"],
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
@@ -162,11 +164,11 @@ class TestMcp:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.list(
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
             page_no=1,
-            toolkit="github",
+            toolkits="toolkits",
         )
         assert_matches_type(McpListResponse, mcp, path=["response"])
 
@@ -241,11 +243,11 @@ class TestMcp:
     def test_method_retrieve_app_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.retrieve_app(
             app_key="github",
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
             page_no=1,
-            toolkit="github",
+            toolkits="toolkits",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
@@ -338,7 +340,8 @@ class TestAsyncMcp:
         mcp = await async_client.mcp.create(
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids=["auth_cfg_abc123def456"],
+            managed_auth_via_composio=True,
             ttl="1d",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -416,9 +419,10 @@ class TestAsyncMcp:
     async def test_method_update_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
-            actions=["GMAIL_ADD_LABEL_TO_EMAIL"],
-            apps=["gmail"],
+            allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            managed_auth_via_composio=True,
             name="Updated GitHub Integration Server",
+            toolkits=["gmail"],
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
@@ -463,11 +467,11 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.list(
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
             page_no=1,
-            toolkit="github",
+            toolkits="toolkits",
         )
         assert_matches_type(McpListResponse, mcp, path=["response"])
 
@@ -542,11 +546,11 @@ class TestAsyncMcp:
     async def test_method_retrieve_app_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.retrieve_app(
             app_key="github",
-            auth_config_id="auth_cfg_abc123def456",
+            auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
             page_no=1,
-            toolkit="github",
+            toolkits="toolkits",
         )
         assert_matches_type(McpRetrieveAppResponse, mcp, path=["response"])
 
