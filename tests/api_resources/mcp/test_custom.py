@@ -20,7 +20,7 @@ class TestCustom:
     @parametrize
     def test_method_create(self, client: Composio) -> None:
         custom = client.mcp.custom.create(
-            name="name",
+            name="Development Integration Server",
             toolkits=["github", "jira"],
         )
         assert_matches_type(CustomCreateResponse, custom, path=["response"])
@@ -28,7 +28,7 @@ class TestCustom:
     @parametrize
     def test_method_create_with_all_params(self, client: Composio) -> None:
         custom = client.mcp.custom.create(
-            name="name",
+            name="Development Integration Server",
             toolkits=["github", "jira"],
             auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             custom_tools=["custom-api-tool", "internal-database-tool"],
@@ -39,7 +39,7 @@ class TestCustom:
     @parametrize
     def test_raw_response_create(self, client: Composio) -> None:
         response = client.mcp.custom.with_raw_response.create(
-            name="name",
+            name="Development Integration Server",
             toolkits=["github", "jira"],
         )
 
@@ -51,7 +51,7 @@ class TestCustom:
     @parametrize
     def test_streaming_response_create(self, client: Composio) -> None:
         with client.mcp.custom.with_streaming_response.create(
-            name="name",
+            name="Development Integration Server",
             toolkits=["github", "jira"],
         ) as response:
             assert not response.is_closed
@@ -69,7 +69,7 @@ class TestAsyncCustom:
     @parametrize
     async def test_method_create(self, async_client: AsyncComposio) -> None:
         custom = await async_client.mcp.custom.create(
-            name="name",
+            name="Development Integration Server",
             toolkits=["github", "jira"],
         )
         assert_matches_type(CustomCreateResponse, custom, path=["response"])
@@ -77,7 +77,7 @@ class TestAsyncCustom:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncComposio) -> None:
         custom = await async_client.mcp.custom.create(
-            name="name",
+            name="Development Integration Server",
             toolkits=["github", "jira"],
             auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             custom_tools=["custom-api-tool", "internal-database-tool"],
@@ -88,7 +88,7 @@ class TestAsyncCustom:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.custom.with_raw_response.create(
-            name="name",
+            name="Development Integration Server",
             toolkits=["github", "jira"],
         )
 
@@ -100,7 +100,7 @@ class TestAsyncCustom:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.custom.with_streaming_response.create(
-            name="name",
+            name="Development Integration Server",
             toolkits=["github", "jira"],
         ) as response:
             assert not response.is_closed

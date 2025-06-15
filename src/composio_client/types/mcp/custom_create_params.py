@@ -11,8 +11,8 @@ __all__ = ["CustomCreateParams"]
 class CustomCreateParams(TypedDict, total=False):
     name: Required[str]
     """
-    Human-readable name to identify this custom MCP server (4-25 characters,
-    alphanumeric and hyphens only)
+    Human-readable name to identify this custom MCP server (4-30 characters,
+    alphanumeric, spaces, and hyphens only)
     """
 
     toolkits: Required[List[str]]

@@ -65,8 +65,8 @@ class CustomResource(SyncAPIResource):
         suitable for complex workflows that span multiple services.
 
         Args:
-          name: Human-readable name to identify this custom MCP server (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this custom MCP server (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           toolkits: List of application/toolkit identifiers to enable for this server
 
@@ -146,8 +146,8 @@ class AsyncCustomResource(AsyncAPIResource):
         suitable for complex workflows that span multiple services.
 
         Args:
-          name: Human-readable name to identify this custom MCP server (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this custom MCP server (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           toolkits: List of application/toolkit identifiers to enable for this server
 

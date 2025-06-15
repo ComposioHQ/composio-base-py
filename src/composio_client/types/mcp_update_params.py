@@ -17,8 +17,8 @@ class McpUpdateParams(TypedDict, total=False):
 
     name: str
     """
-    Human-readable name to identify this MCP server instance (4-25 characters,
-    alphanumeric and hyphens only)
+    Human-readable name to identify this MCP server instance (4-30 characters,
+    alphanumeric, spaces, and hyphens only)
     """
 
     toolkits: List[str]
