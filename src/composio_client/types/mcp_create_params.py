@@ -11,8 +11,8 @@ __all__ = ["McpCreateParams"]
 class McpCreateParams(TypedDict, total=False):
     name: Required[str]
     """
-    Human-readable name to identify this MCP server instance (4-25 characters,
-    alphanumeric and hyphens only)
+    Human-readable name to identify this MCP server instance (4-30 characters,
+    alphanumeric, spaces, and hyphens only)
     """
 
     allowed_tools: List[str]

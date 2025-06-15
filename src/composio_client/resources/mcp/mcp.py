@@ -97,8 +97,8 @@ class McpResource(SyncAPIResource):
         assistants can perform.
 
         Args:
-          name: Human-readable name to identify this MCP server instance (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this MCP server instance (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
@@ -199,8 +199,8 @@ class McpResource(SyncAPIResource):
 
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
-          name: Human-readable name to identify this MCP server instance (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this MCP server instance (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           toolkits: List of toolkit slugs this server should be configured to work with
 
@@ -492,8 +492,8 @@ class AsyncMcpResource(AsyncAPIResource):
         assistants can perform.
 
         Args:
-          name: Human-readable name to identify this MCP server instance (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this MCP server instance (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
@@ -594,8 +594,8 @@ class AsyncMcpResource(AsyncAPIResource):
 
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
-          name: Human-readable name to identify this MCP server instance (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this MCP server instance (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           toolkits: List of toolkit slugs this server should be configured to work with
 
