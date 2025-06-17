@@ -11,8 +11,8 @@ class Toolkit(BaseModel):
     logo: str
     """URL to the toolkit logo image"""
 
-    slug: str
-    """Slug of the toolkit"""
+    name: str
+    """Name of the toolkit that contains this trigger"""
 
     uuid: str
     """Unique identifier for the associated toolkit"""
