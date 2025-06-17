@@ -2845,7 +2845,7 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     state: State
     """The state of the connection"""
 
-    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]
+    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]
     """The status of the connection"""
 
     status_reason: Optional[str] = None

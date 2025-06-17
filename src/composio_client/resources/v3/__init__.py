@@ -24,14 +24,6 @@ from .auth import (
     AuthResourceWithStreamingResponse,
     AsyncAuthResourceWithStreamingResponse,
 )
-from .admin import (
-    AdminResource,
-    AsyncAdminResource,
-    AdminResourceWithRawResponse,
-    AsyncAdminResourceWithRawResponse,
-    AdminResourceWithStreamingResponse,
-    AsyncAdminResourceWithStreamingResponse,
-)
 from .internal import (
     InternalResource,
     AsyncInternalResource,
@@ -48,12 +40,6 @@ __all__ = [
     "AsyncAuthResourceWithRawResponse",
     "AuthResourceWithStreamingResponse",
     "AsyncAuthResourceWithStreamingResponse",
-    "AdminResource",
-    "AsyncAdminResource",
-    "AdminResourceWithRawResponse",
-    "AsyncAdminResourceWithRawResponse",
-    "AdminResourceWithStreamingResponse",
-    "AsyncAdminResourceWithStreamingResponse",
     "CliResource",
     "AsyncCliResource",
     "CliResourceWithRawResponse",
