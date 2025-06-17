@@ -62,6 +62,9 @@ class Item(BaseModel):
     output_parameters: Dict[str, Optional[object]]
     """Schema definition of return values from the tool"""
 
+    scopes: List[str]
+    """List of scopes associated with the tool"""
+
     slug: str
     """Unique identifier for the tool"""
 
