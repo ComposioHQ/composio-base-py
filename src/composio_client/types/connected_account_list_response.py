@@ -2846,7 +2846,7 @@ class Item(BaseModel):
     state: ItemState
     """The state of the connection"""
 
-    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]
+    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]
     """The status of the connection"""
 
     status_reason: Optional[str] = None
