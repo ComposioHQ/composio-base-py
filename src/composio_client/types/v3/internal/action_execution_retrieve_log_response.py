@@ -28,9 +28,9 @@ class App(BaseModel):
 
 
 class Connection(BaseModel):
-    entity: str
+    id: str
 
-    id: Optional[str] = None
+    entity: str
 
 
 class StepLogRequest(BaseModel):
