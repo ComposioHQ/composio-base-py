@@ -134,7 +134,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]]]
+        statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
         | NotGiven = NOT_GIVEN,
         toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -411,7 +411,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED"]]]
+        statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
         | NotGiven = NOT_GIVEN,
         toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
         user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
