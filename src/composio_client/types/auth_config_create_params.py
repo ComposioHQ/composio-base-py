@@ -48,7 +48,6 @@ class AuthConfigUnionMember1(TypedDict, total=False):
                 "BASIC_WITH_JWT",
                 "COMPOSIO_LINK",
                 "CALCOM_AUTH",
-                "SNOWFLAKE",
             ],
             PropertyInfo(alias="authScheme"),
         ]

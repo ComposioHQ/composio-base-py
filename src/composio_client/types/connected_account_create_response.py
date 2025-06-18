@@ -34,24 +34,12 @@ __all__ = [
     "ConnectionDataUnionMember2ValUnionMember4",
     "ConnectionDataUnionMember3",
     "ConnectionDataUnionMember3Val",
-    "ConnectionDataUnionMember3ValUnionMember0",
-    "ConnectionDataUnionMember3ValUnionMember1",
-    "ConnectionDataUnionMember3ValUnionMember2",
     "ConnectionDataUnionMember4",
     "ConnectionDataUnionMember4Val",
-    "ConnectionDataUnionMember4ValUnionMember0",
-    "ConnectionDataUnionMember4ValUnionMember1",
-    "ConnectionDataUnionMember4ValUnionMember2",
     "ConnectionDataUnionMember5",
     "ConnectionDataUnionMember5Val",
-    "ConnectionDataUnionMember5ValUnionMember0",
-    "ConnectionDataUnionMember5ValUnionMember1",
-    "ConnectionDataUnionMember5ValUnionMember2",
     "ConnectionDataUnionMember6",
     "ConnectionDataUnionMember6Val",
-    "ConnectionDataUnionMember6ValUnionMember0",
-    "ConnectionDataUnionMember6ValUnionMember1",
-    "ConnectionDataUnionMember6ValUnionMember2",
     "ConnectionDataUnionMember7",
     "ConnectionDataUnionMember7Val",
     "ConnectionDataUnionMember7ValUnionMember0",
@@ -67,18 +55,13 @@ __all__ = [
     "ConnectionDataUnionMember9ValUnionMember0",
     "ConnectionDataUnionMember9ValUnionMember1",
     "ConnectionDataUnionMember9ValUnionMember2",
+    "ConnectionDataUnionMember9ValUnionMember3",
+    "ConnectionDataUnionMember9ValUnionMember4",
     "ConnectionDataUnionMember10",
     "ConnectionDataUnionMember10Val",
     "ConnectionDataUnionMember10ValUnionMember0",
     "ConnectionDataUnionMember10ValUnionMember1",
     "ConnectionDataUnionMember10ValUnionMember2",
-    "ConnectionDataUnionMember10ValUnionMember3",
-    "ConnectionDataUnionMember10ValUnionMember4",
-    "ConnectionDataUnionMember11",
-    "ConnectionDataUnionMember11Val",
-    "ConnectionDataUnionMember11ValUnionMember0",
-    "ConnectionDataUnionMember11ValUnionMember1",
-    "ConnectionDataUnionMember11ValUnionMember2",
     "Deprecated",
 ]
 
@@ -1009,7 +992,7 @@ class ConnectionDataUnionMember2(BaseModel):
     val: ConnectionDataUnionMember2Val
 
 
-class ConnectionDataUnionMember3ValUnionMember0(BaseModel):
+class ConnectionDataUnionMember3Val(BaseModel):
     api_key: str
 
     status: Literal["ACTIVE"]
@@ -1063,131 +1046,6 @@ class ConnectionDataUnionMember3ValUnionMember0(BaseModel):
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
         # `getattr(obj, '$type')`
         def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember3ValUnionMember1(BaseModel):
-    api_key: str
-
-    status: Literal["FAILED"]
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    error: Optional[str] = None
-
-    error_description: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember3ValUnionMember2(BaseModel):
-    api_key: str
-
-    status: Literal["EXPIRED"]
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    expired_at: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-ConnectionDataUnionMember3Val: TypeAlias = Union[
-    ConnectionDataUnionMember3ValUnionMember0,
-    ConnectionDataUnionMember3ValUnionMember1,
-    ConnectionDataUnionMember3ValUnionMember2,
-]
 
 
 class ConnectionDataUnionMember3(BaseModel):
@@ -1196,7 +1054,7 @@ class ConnectionDataUnionMember3(BaseModel):
     val: ConnectionDataUnionMember3Val
 
 
-class ConnectionDataUnionMember4ValUnionMember0(BaseModel):
+class ConnectionDataUnionMember4Val(BaseModel):
     password: str
 
     status: Literal["ACTIVE"]
@@ -1252,135 +1110,6 @@ class ConnectionDataUnionMember4ValUnionMember0(BaseModel):
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
         # `getattr(obj, '$type')`
         def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember4ValUnionMember1(BaseModel):
-    password: str
-
-    status: Literal["FAILED"]
-
-    username: str
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    error: Optional[str] = None
-
-    error_description: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember4ValUnionMember2(BaseModel):
-    password: str
-
-    status: Literal["EXPIRED"]
-
-    username: str
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    expired_at: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-ConnectionDataUnionMember4Val: TypeAlias = Union[
-    ConnectionDataUnionMember4ValUnionMember0,
-    ConnectionDataUnionMember4ValUnionMember1,
-    ConnectionDataUnionMember4ValUnionMember2,
-]
 
 
 class ConnectionDataUnionMember4(BaseModel):
@@ -1389,7 +1118,7 @@ class ConnectionDataUnionMember4(BaseModel):
     val: ConnectionDataUnionMember4Val
 
 
-class ConnectionDataUnionMember5ValUnionMember0(BaseModel):
+class ConnectionDataUnionMember5Val(BaseModel):
     token: str
 
     status: Literal["ACTIVE"]
@@ -1443,131 +1172,6 @@ class ConnectionDataUnionMember5ValUnionMember0(BaseModel):
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
         # `getattr(obj, '$type')`
         def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember5ValUnionMember1(BaseModel):
-    token: str
-
-    status: Literal["FAILED"]
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    error: Optional[str] = None
-
-    error_description: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember5ValUnionMember2(BaseModel):
-    token: str
-
-    status: Literal["EXPIRED"]
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    expired_at: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-ConnectionDataUnionMember5Val: TypeAlias = Union[
-    ConnectionDataUnionMember5ValUnionMember0,
-    ConnectionDataUnionMember5ValUnionMember1,
-    ConnectionDataUnionMember5ValUnionMember2,
-]
 
 
 class ConnectionDataUnionMember5(BaseModel):
@@ -1576,7 +1180,7 @@ class ConnectionDataUnionMember5(BaseModel):
     val: ConnectionDataUnionMember5Val
 
 
-class ConnectionDataUnionMember6ValUnionMember0(BaseModel):
+class ConnectionDataUnionMember6Val(BaseModel):
     credentials_json: str
 
     status: Literal["ACTIVE"]
@@ -1630,131 +1234,6 @@ class ConnectionDataUnionMember6ValUnionMember0(BaseModel):
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
         # `getattr(obj, '$type')`
         def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember6ValUnionMember1(BaseModel):
-    credentials_json: str
-
-    status: Literal["FAILED"]
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    error: Optional[str] = None
-
-    error_description: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember6ValUnionMember2(BaseModel):
-    credentials_json: str
-
-    status: Literal["EXPIRED"]
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    expired_at: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-ConnectionDataUnionMember6Val: TypeAlias = Union[
-    ConnectionDataUnionMember6ValUnionMember0,
-    ConnectionDataUnionMember6ValUnionMember1,
-    ConnectionDataUnionMember6ValUnionMember2,
-]
 
 
 class ConnectionDataUnionMember6(BaseModel):
@@ -2126,7 +1605,7 @@ class ConnectionDataUnionMember8(BaseModel):
 
 
 class ConnectionDataUnionMember9ValUnionMember0(BaseModel):
-    status: Literal["ACTIVE"]
+    status: Literal["INITIALIZING"]
 
     account_id: Optional[str] = None
 
@@ -2180,6 +1659,120 @@ class ConnectionDataUnionMember9ValUnionMember0(BaseModel):
 
 
 class ConnectionDataUnionMember9ValUnionMember1(BaseModel):
+    redirect_url: str = FieldInfo(alias="redirectUrl")
+
+    status: Literal["INITIATED"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ConnectionDataUnionMember9ValUnionMember2(BaseModel):
+    dev_key: str = FieldInfo(alias="devKey")
+
+    session_id: str = FieldInfo(alias="sessionId")
+
+    status: Literal["ACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ConnectionDataUnionMember9ValUnionMember3(BaseModel):
     status: Literal["FAILED"]
 
     account_id: Optional[str] = None
@@ -2237,7 +1830,7 @@ class ConnectionDataUnionMember9ValUnionMember1(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
-class ConnectionDataUnionMember9ValUnionMember2(BaseModel):
+class ConnectionDataUnionMember9ValUnionMember4(BaseModel):
     status: Literal["EXPIRED"]
 
     account_id: Optional[str] = None
@@ -2297,17 +1890,23 @@ ConnectionDataUnionMember9Val: TypeAlias = Union[
     ConnectionDataUnionMember9ValUnionMember0,
     ConnectionDataUnionMember9ValUnionMember1,
     ConnectionDataUnionMember9ValUnionMember2,
+    ConnectionDataUnionMember9ValUnionMember3,
+    ConnectionDataUnionMember9ValUnionMember4,
 ]
 
 
 class ConnectionDataUnionMember9(BaseModel):
-    auth_scheme: Literal["SNOWFLAKE"] = FieldInfo(alias="authScheme")
+    auth_scheme: Literal["BILLCOM_AUTH"] = FieldInfo(alias="authScheme")
 
     val: ConnectionDataUnionMember9Val
 
 
 class ConnectionDataUnionMember10ValUnionMember0(BaseModel):
-    status: Literal["INITIALIZING"]
+    password: str
+
+    status: Literal["ACTIVE"]
+
+    username: str
 
     account_id: Optional[str] = None
 
@@ -2361,121 +1960,11 @@ class ConnectionDataUnionMember10ValUnionMember0(BaseModel):
 
 
 class ConnectionDataUnionMember10ValUnionMember1(BaseModel):
-    redirect_url: str = FieldInfo(alias="redirectUrl")
+    password: str
 
-    status: Literal["INITIATED"]
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember10ValUnionMember2(BaseModel):
-    dev_key: str = FieldInfo(alias="devKey")
-
-    session_id: str = FieldInfo(alias="sessionId")
-
-    status: Literal["ACTIVE"]
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember10ValUnionMember3(BaseModel):
     status: Literal["FAILED"]
+
+    username: str
 
     account_id: Optional[str] = None
 
@@ -2532,8 +2021,12 @@ class ConnectionDataUnionMember10ValUnionMember3(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
-class ConnectionDataUnionMember10ValUnionMember4(BaseModel):
+class ConnectionDataUnionMember10ValUnionMember2(BaseModel):
+    password: str
+
     status: Literal["EXPIRED"]
+
+    username: str
 
     account_id: Optional[str] = None
 
@@ -2592,208 +2085,13 @@ ConnectionDataUnionMember10Val: TypeAlias = Union[
     ConnectionDataUnionMember10ValUnionMember0,
     ConnectionDataUnionMember10ValUnionMember1,
     ConnectionDataUnionMember10ValUnionMember2,
-    ConnectionDataUnionMember10ValUnionMember3,
-    ConnectionDataUnionMember10ValUnionMember4,
 ]
 
 
 class ConnectionDataUnionMember10(BaseModel):
-    auth_scheme: Literal["BILLCOM_AUTH"] = FieldInfo(alias="authScheme")
-
-    val: ConnectionDataUnionMember10Val
-
-
-class ConnectionDataUnionMember11ValUnionMember0(BaseModel):
-    password: str
-
-    status: Literal["ACTIVE"]
-
-    username: str
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember11ValUnionMember1(BaseModel):
-    password: str
-
-    status: Literal["FAILED"]
-
-    username: str
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    error: Optional[str] = None
-
-    error_description: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-class ConnectionDataUnionMember11ValUnionMember2(BaseModel):
-    password: str
-
-    status: Literal["EXPIRED"]
-
-    username: str
-
-    account_id: Optional[str] = None
-
-    account_url: Optional[str] = None
-
-    api_url: Optional[str] = None
-
-    base_url: Optional[str] = None
-
-    borneo_dashboard_url: Optional[str] = None
-
-    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
-
-    dc: Optional[str] = None
-
-    domain: Optional[str] = None
-
-    expired_at: Optional[str] = None
-
-    extension: Optional[str] = None
-
-    form_api_base_url: Optional[str] = None
-
-    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
-
-    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
-
-    proxy_password: Optional[str] = None
-
-    proxy_username: Optional[str] = None
-
-    region: Optional[str] = None
-
-    server_location: Optional[str] = None
-
-    shop: Optional[str] = None
-
-    site_name: Optional[str] = None
-
-    subdomain: Optional[str] = None
-
-    version: Optional[str] = None
-
-    your_server: Optional[str] = None
-
-    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
-
-    if TYPE_CHECKING:
-        # Stub to indicate that arbitrary properties are accepted.
-        # To access properties that are not valid identifiers you can use `getattr`, e.g.
-        # `getattr(obj, '$type')`
-        def __getattr__(self, attr: str) -> Optional[object]: ...
-
-
-ConnectionDataUnionMember11Val: TypeAlias = Union[
-    ConnectionDataUnionMember11ValUnionMember0,
-    ConnectionDataUnionMember11ValUnionMember1,
-    ConnectionDataUnionMember11ValUnionMember2,
-]
-
-
-class ConnectionDataUnionMember11(BaseModel):
     auth_scheme: Literal["BASIC_WITH_JWT"] = FieldInfo(alias="authScheme")
 
-    val: ConnectionDataUnionMember11Val
+    val: ConnectionDataUnionMember10Val
 
 
 ConnectionData: TypeAlias = Union[
@@ -2808,7 +2106,6 @@ ConnectionData: TypeAlias = Union[
     ConnectionDataUnionMember8,
     ConnectionDataUnionMember9,
     ConnectionDataUnionMember10,
-    ConnectionDataUnionMember11,
 ]
 
 
