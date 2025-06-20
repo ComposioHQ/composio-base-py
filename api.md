@@ -288,6 +288,18 @@ Methods:
 
 - <code title="post /api/v3/mcp/servers/custom">client.mcp.custom.<a href="./src/composio_client/resources/mcp/custom.py">create</a>(\*\*<a href="src/composio_client/types/mcp/custom_create_params.py">params</a>) -> <a href="./src/composio_client/types/mcp/custom_create_response.py">CustomCreateResponse</a></code>
 
+## Generate
+
+Types:
+
+```python
+from composio_client.types.mcp import GenerateURLResponse
+```
+
+Methods:
+
+- <code title="post /api/v3/mcp/servers/generate">client.mcp.generate.<a href="./src/composio_client/resources/mcp/generate.py">url</a>(\*\*<a href="src/composio_client/types/mcp/generate_url_params.py">params</a>) -> <a href="./src/composio_client/types/mcp/generate_url_response.py">GenerateURLResponse</a></code>
+
 # Files
 
 Types:
@@ -328,19 +340,6 @@ from composio_client.types.v3.auth import SessionRetrieveInfoResponse
 Methods:
 
 - <code title="get /api/v3/auth/session/info">client.v3.auth.session.<a href="./src/composio_client/resources/v3/auth/session.py">retrieve_info</a>() -> <a href="./src/composio_client/types/v3/auth/session_retrieve_info_response.py">SessionRetrieveInfoResponse</a></code>
-
-## Admin
-
-Types:
-
-```python
-from composio_client.types.v3 import AdminListConnectionsResponse, AdminRefreshAuthTokensResponse
-```
-
-Methods:
-
-- <code title="get /api/v3/admin/connections">client.v3.admin.<a href="./src/composio_client/resources/v3/admin.py">list_connections</a>(\*\*<a href="src/composio_client/types/v3/admin_list_connections_params.py">params</a>) -> <a href="./src/composio_client/types/v3/admin_list_connections_response.py">AdminListConnectionsResponse</a></code>
-- <code title="post /api/v3/admin/auth-refresh">client.v3.admin.<a href="./src/composio_client/resources/v3/admin.py">refresh_auth_tokens</a>(\*\*<a href="src/composio_client/types/v3/admin_refresh_auth_tokens_params.py">params</a>) -> <a href="./src/composio_client/types/v3/admin_refresh_auth_tokens_response.py">AdminRefreshAuthTokensResponse</a></code>
 
 ## Cli
 

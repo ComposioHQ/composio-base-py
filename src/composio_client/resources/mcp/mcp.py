@@ -18,6 +18,14 @@ from .custom import (
 from ...types import mcp_list_params, mcp_create_params, mcp_update_params, mcp_retrieve_app_params
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import maybe_transform, async_maybe_transform
+from .generate import (
+    GenerateResource,
+    AsyncGenerateResource,
+    GenerateResourceWithRawResponse,
+    AsyncGenerateResourceWithRawResponse,
+    GenerateResourceWithStreamingResponse,
+    AsyncGenerateResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -44,6 +52,10 @@ class McpResource(SyncAPIResource):
         return CustomResource(self._client)
 
     @cached_property
+    def generate(self) -> GenerateResource:
+        return GenerateResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> McpResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -67,7 +79,8 @@ class McpResource(SyncAPIResource):
         *,
         name: str,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -84,13 +97,15 @@ class McpResource(SyncAPIResource):
         assistants can perform.
 
         Args:
-          name: Human-readable name to identify this MCP server instance (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this MCP server instance (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
 
-          auth_config_id: ID reference to an existing authentication configuration
+          auth_config_ids: ID references to existing authentication configurations
+
+          managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           ttl: Time-to-live duration for this MCP server
 
@@ -108,7 +123,8 @@ class McpResource(SyncAPIResource):
                 {
                     "name": name,
                     "allowed_tools": allowed_tools,
-                    "auth_config_id": auth_config_id,
+                    "auth_config_ids": auth_config_ids,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
@@ -160,9 +176,10 @@ class McpResource(SyncAPIResource):
         self,
         id: str,
         *,
-        actions: List[str] | NotGiven = NOT_GIVEN,
-        apps: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        toolkits: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -178,12 +195,14 @@ class McpResource(SyncAPIResource):
         Args:
           id: Unique identifier of the MCP server to retrieve, update, or delete
 
-          actions: List of action identifiers that should be enabled for this server
+          allowed_tools: List of action identifiers that should be enabled for this server
 
-          apps: List of application identifiers this server should be configured to work with
+          managed_auth_via_composio: Whether the MCP server is managed by Composio
 
-          name: Human-readable name to identify this MCP server instance (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this MCP server instance (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
+
+          toolkits: List of toolkit slugs this server should be configured to work with
 
           extra_headers: Send extra headers
 
@@ -199,9 +218,10 @@ class McpResource(SyncAPIResource):
             f"/api/v3/mcp/{id}",
             body=maybe_transform(
                 {
-                    "actions": actions,
-                    "apps": apps,
+                    "allowed_tools": allowed_tools,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "name": name,
+                    "toolkits": toolkits,
                 },
                 mcp_update_params.McpUpdateParams,
             ),
@@ -214,11 +234,11 @@ class McpResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit: str | NotGiven = NOT_GIVEN,
+        toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -234,7 +254,7 @@ class McpResource(SyncAPIResource):
         services.
 
         Args:
-          auth_config_id: Filter MCP servers by authentication configuration ID
+          auth_config_ids: Comma-separated list of auth config IDs to filter servers by
 
           limit: Number of items per page (default: 10)
 
@@ -242,7 +262,7 @@ class McpResource(SyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkit: Filter MCP servers by toolkit slug
+          toolkits: Comma-separated list of toolkit slugs to filter servers by
 
           extra_headers: Send extra headers
 
@@ -261,11 +281,11 @@ class McpResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
-                        "toolkit": toolkit,
+                        "toolkits": toolkits,
                     },
                     mcp_list_params.McpListParams,
                 ),
@@ -315,11 +335,11 @@ class McpResource(SyncAPIResource):
         self,
         app_key: str,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit: str | NotGiven = NOT_GIVEN,
+        toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -336,7 +356,7 @@ class McpResource(SyncAPIResource):
         Args:
           app_key: Toolkit or application slug identifier to filter MCP servers by
 
-          auth_config_id: Filter MCP servers by authentication configuration ID
+          auth_config_ids: Comma-separated list of auth config IDs to filter servers by
 
           limit: Number of items per page (default: 10)
 
@@ -344,7 +364,7 @@ class McpResource(SyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkit: Filter MCP servers by toolkit slug
+          toolkits: Comma-separated list of toolkit slugs to filter servers by
 
           extra_headers: Send extra headers
 
@@ -365,11 +385,11 @@ class McpResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
-                        "toolkit": toolkit,
+                        "toolkits": toolkits,
                     },
                     mcp_retrieve_app_params.McpRetrieveAppParams,
                 ),
@@ -427,6 +447,10 @@ class AsyncMcpResource(AsyncAPIResource):
         return AsyncCustomResource(self._client)
 
     @cached_property
+    def generate(self) -> AsyncGenerateResource:
+        return AsyncGenerateResource(self._client)
+
+    @cached_property
     def with_raw_response(self) -> AsyncMcpResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
@@ -450,7 +474,8 @@ class AsyncMcpResource(AsyncAPIResource):
         *,
         name: str,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -467,13 +492,15 @@ class AsyncMcpResource(AsyncAPIResource):
         assistants can perform.
 
         Args:
-          name: Human-readable name to identify this MCP server instance (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this MCP server instance (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
 
-          auth_config_id: ID reference to an existing authentication configuration
+          auth_config_ids: ID references to existing authentication configurations
+
+          managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           ttl: Time-to-live duration for this MCP server
 
@@ -491,7 +518,8 @@ class AsyncMcpResource(AsyncAPIResource):
                 {
                     "name": name,
                     "allowed_tools": allowed_tools,
-                    "auth_config_id": auth_config_id,
+                    "auth_config_ids": auth_config_ids,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
@@ -543,9 +571,10 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        actions: List[str] | NotGiven = NOT_GIVEN,
-        apps: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        toolkits: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -561,12 +590,14 @@ class AsyncMcpResource(AsyncAPIResource):
         Args:
           id: Unique identifier of the MCP server to retrieve, update, or delete
 
-          actions: List of action identifiers that should be enabled for this server
+          allowed_tools: List of action identifiers that should be enabled for this server
 
-          apps: List of application identifiers this server should be configured to work with
+          managed_auth_via_composio: Whether the MCP server is managed by Composio
 
-          name: Human-readable name to identify this MCP server instance (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this MCP server instance (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
+
+          toolkits: List of toolkit slugs this server should be configured to work with
 
           extra_headers: Send extra headers
 
@@ -582,9 +613,10 @@ class AsyncMcpResource(AsyncAPIResource):
             f"/api/v3/mcp/{id}",
             body=await async_maybe_transform(
                 {
-                    "actions": actions,
-                    "apps": apps,
+                    "allowed_tools": allowed_tools,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                     "name": name,
+                    "toolkits": toolkits,
                 },
                 mcp_update_params.McpUpdateParams,
             ),
@@ -597,11 +629,11 @@ class AsyncMcpResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit: str | NotGiven = NOT_GIVEN,
+        toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -617,7 +649,7 @@ class AsyncMcpResource(AsyncAPIResource):
         services.
 
         Args:
-          auth_config_id: Filter MCP servers by authentication configuration ID
+          auth_config_ids: Comma-separated list of auth config IDs to filter servers by
 
           limit: Number of items per page (default: 10)
 
@@ -625,7 +657,7 @@ class AsyncMcpResource(AsyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkit: Filter MCP servers by toolkit slug
+          toolkits: Comma-separated list of toolkit slugs to filter servers by
 
           extra_headers: Send extra headers
 
@@ -644,11 +676,11 @@ class AsyncMcpResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
-                        "toolkit": toolkit,
+                        "toolkits": toolkits,
                     },
                     mcp_list_params.McpListParams,
                 ),
@@ -698,11 +730,11 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         app_key: str,
         *,
-        auth_config_id: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit: str | NotGiven = NOT_GIVEN,
+        toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -719,7 +751,7 @@ class AsyncMcpResource(AsyncAPIResource):
         Args:
           app_key: Toolkit or application slug identifier to filter MCP servers by
 
-          auth_config_id: Filter MCP servers by authentication configuration ID
+          auth_config_ids: Comma-separated list of auth config IDs to filter servers by
 
           limit: Number of items per page (default: 10)
 
@@ -727,7 +759,7 @@ class AsyncMcpResource(AsyncAPIResource):
 
           page_no: Page number for pagination (1-based)
 
-          toolkit: Filter MCP servers by toolkit slug
+          toolkits: Comma-separated list of toolkit slugs to filter servers by
 
           extra_headers: Send extra headers
 
@@ -748,11 +780,11 @@ class AsyncMcpResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
-                        "auth_config_id": auth_config_id,
+                        "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
                         "page_no": page_no,
-                        "toolkit": toolkit,
+                        "toolkits": toolkits,
                     },
                     mcp_retrieve_app_params.McpRetrieveAppParams,
                 ),
@@ -834,6 +866,10 @@ class McpResourceWithRawResponse:
     def custom(self) -> CustomResourceWithRawResponse:
         return CustomResourceWithRawResponse(self._mcp.custom)
 
+    @cached_property
+    def generate(self) -> GenerateResourceWithRawResponse:
+        return GenerateResourceWithRawResponse(self._mcp.generate)
+
 
 class AsyncMcpResourceWithRawResponse:
     def __init__(self, mcp: AsyncMcpResource) -> None:
@@ -864,6 +900,10 @@ class AsyncMcpResourceWithRawResponse:
     @cached_property
     def custom(self) -> AsyncCustomResourceWithRawResponse:
         return AsyncCustomResourceWithRawResponse(self._mcp.custom)
+
+    @cached_property
+    def generate(self) -> AsyncGenerateResourceWithRawResponse:
+        return AsyncGenerateResourceWithRawResponse(self._mcp.generate)
 
 
 class McpResourceWithStreamingResponse:
@@ -896,6 +936,10 @@ class McpResourceWithStreamingResponse:
     def custom(self) -> CustomResourceWithStreamingResponse:
         return CustomResourceWithStreamingResponse(self._mcp.custom)
 
+    @cached_property
+    def generate(self) -> GenerateResourceWithStreamingResponse:
+        return GenerateResourceWithStreamingResponse(self._mcp.generate)
+
 
 class AsyncMcpResourceWithStreamingResponse:
     def __init__(self, mcp: AsyncMcpResource) -> None:
@@ -926,3 +970,7 @@ class AsyncMcpResourceWithStreamingResponse:
     @cached_property
     def custom(self) -> AsyncCustomResourceWithStreamingResponse:
         return AsyncCustomResourceWithStreamingResponse(self._mcp.custom)
+
+    @cached_property
+    def generate(self) -> AsyncGenerateResourceWithStreamingResponse:
+        return AsyncGenerateResourceWithStreamingResponse(self._mcp.generate)

@@ -48,7 +48,9 @@ class CustomResource(SyncAPIResource):
         *,
         name: str,
         toolkits: List[str],
+        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
         custom_tools: List[str] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -63,13 +65,17 @@ class CustomResource(SyncAPIResource):
         suitable for complex workflows that span multiple services.
 
         Args:
-          name: Human-readable name to identify this custom MCP server (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this custom MCP server (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           toolkits: List of application/toolkit identifiers to enable for this server
 
+          auth_config_ids: ID references to existing authentication configurations
+
           custom_tools: Additional custom tool identifiers to enable that aren't part of standard
               toolkits
+
+          managed_auth_via_composio: Whether to manage authentication via Composio
 
           extra_headers: Send extra headers
 
@@ -85,7 +91,9 @@ class CustomResource(SyncAPIResource):
                 {
                     "name": name,
                     "toolkits": toolkits,
+                    "auth_config_ids": auth_config_ids,
                     "custom_tools": custom_tools,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                 },
                 custom_create_params.CustomCreateParams,
             ),
@@ -121,7 +129,9 @@ class AsyncCustomResource(AsyncAPIResource):
         *,
         name: str,
         toolkits: List[str],
+        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
         custom_tools: List[str] | NotGiven = NOT_GIVEN,
+        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -136,13 +146,17 @@ class AsyncCustomResource(AsyncAPIResource):
         suitable for complex workflows that span multiple services.
 
         Args:
-          name: Human-readable name to identify this custom MCP server (4-25 characters,
-              alphanumeric and hyphens only)
+          name: Human-readable name to identify this custom MCP server (4-30 characters,
+              alphanumeric, spaces, and hyphens only)
 
           toolkits: List of application/toolkit identifiers to enable for this server
 
+          auth_config_ids: ID references to existing authentication configurations
+
           custom_tools: Additional custom tool identifiers to enable that aren't part of standard
               toolkits
+
+          managed_auth_via_composio: Whether to manage authentication via Composio
 
           extra_headers: Send extra headers
 
@@ -158,7 +172,9 @@ class AsyncCustomResource(AsyncAPIResource):
                 {
                     "name": name,
                     "toolkits": toolkits,
+                    "auth_config_ids": auth_config_ids,
                     "custom_tools": custom_tools,
+                    "managed_auth_via_composio": managed_auth_via_composio,
                 },
                 custom_create_params.CustomCreateParams,
             ),

@@ -1,5 +1,48 @@
 # Changelog
 
+## 1.4.0 (2025-06-20)
+
+Full Changelog: [v1.3.0...v1.4.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.3.0...v1.4.0)
+
+### Features
+
+* **api:** api update ([65c6ef6](https://github.com/ComposioHQ/composio-base-py/commit/65c6ef60bcfab15230057719e29cd3fa6c2207a9))
+* **api:** api update ([13ffb4b](https://github.com/ComposioHQ/composio-base-py/commit/13ffb4b2b2e00d259c1b8e37641f4ae3531df485))
+* **api:** api update ([de91131](https://github.com/ComposioHQ/composio-base-py/commit/de91131081162263229594b9e6823b160f84cedb))
+* **api:** api update ([d830072](https://github.com/ComposioHQ/composio-base-py/commit/d830072fbdb034c80439f7f0578781b449425f98))
+* **api:** api update ([17c494c](https://github.com/ComposioHQ/composio-base-py/commit/17c494caeb8ae1f96663fa3d9724f73f876d7809))
+* **api:** api update ([d6cfa81](https://github.com/ComposioHQ/composio-base-py/commit/d6cfa81b6bb9f83d9f459cecf383321e2421654b))
+* **api:** api update ([e40a3f0](https://github.com/ComposioHQ/composio-base-py/commit/e40a3f0106f5b2dca2835af076c3136a0b438944))
+* **api:** api update ([050529e](https://github.com/ComposioHQ/composio-base-py/commit/050529eb8ab5396069ef6cfa45718fe3745be61f))
+* **api:** api update ([dfc5b2b](https://github.com/ComposioHQ/composio-base-py/commit/dfc5b2b561abca7e2c199d23a67694c0320bc44a))
+* **api:** api update ([34ac3b1](https://github.com/ComposioHQ/composio-base-py/commit/34ac3b13cdadfadfbfaa701c0d598657ed920230))
+* **api:** api update ([24766e7](https://github.com/ComposioHQ/composio-base-py/commit/24766e7d3e01db151619a09e8d46b93fd61b9513))
+* **api:** manual updates ([e97bf58](https://github.com/ComposioHQ/composio-base-py/commit/e97bf581cf5be52a500b5e446a1e4934de2bc671))
+* **api:** manual updates ([c15d00f](https://github.com/ComposioHQ/composio-base-py/commit/c15d00fa62c6e53df59a9161e387178d156f25ad))
+* **api:** manual updates ([a9ed727](https://github.com/ComposioHQ/composio-base-py/commit/a9ed7274b43cb80f6b5b356effa52f10e238e713))
+* **api:** manual updates ([4e67117](https://github.com/ComposioHQ/composio-base-py/commit/4e67117f6964eb027ae46b371100e9e2f71c4880))
+* **api:** remove admin endpoints from client ([3ba742f](https://github.com/ComposioHQ/composio-base-py/commit/3ba742f109ad7835c6ad1522c0d8166da22b0faa))
+
+
+### Bug Fixes
+
+* **client:** correctly parse binary response | stream ([2e59db3](https://github.com/ComposioHQ/composio-base-py/commit/2e59db34cf05918ab62d042921c3ea850d96e45a))
+* **tests:** fix: tests which call HTTP endpoints directly with the example parameters ([5030f04](https://github.com/ComposioHQ/composio-base-py/commit/5030f047cf7b81f1fff8c44c6c03c221fb71c20b))
+
+
+### Chores
+
+* **ci:** enable for pull requests ([cd98896](https://github.com/ComposioHQ/composio-base-py/commit/cd98896fb31de4e9751ef54fae35355dfb77d9b3))
+* **internal:** update conftest.py ([97175d6](https://github.com/ComposioHQ/composio-base-py/commit/97175d6908ea17d83a8dc06adb90bb6ec6d40bbb))
+* **readme:** update badges ([0266530](https://github.com/ComposioHQ/composio-base-py/commit/02665306c7dc5e2ef9f9483e4ef3ef1122e56213))
+* **tests:** add tests for httpx client instantiation & proxies ([2170cc0](https://github.com/ComposioHQ/composio-base-py/commit/2170cc0ece492ba00aa712c54d8417811c653271))
+* **tests:** run tests in parallel ([b970934](https://github.com/ComposioHQ/composio-base-py/commit/b9709345dd74271b5fdfcdff087b0f81190b5ef9))
+
+
+### Documentation
+
+* **client:** fix httpx.Timeout documentation reference ([8bacb15](https://github.com/ComposioHQ/composio-base-py/commit/8bacb159d8ad443e0d910e3b3e0002a56c876bc5))
+
 ## 1.3.0 (2025-06-11)
 
 Full Changelog: [v1.2.0...v1.3.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.2.0...v1.3.0)

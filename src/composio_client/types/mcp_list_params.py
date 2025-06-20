@@ -9,8 +9,8 @@ __all__ = ["McpListParams"]
 
 
 class McpListParams(TypedDict, total=False):
-    auth_config_id: str
-    """Filter MCP servers by authentication configuration ID"""
+    auth_config_ids: str
+    """Comma-separated list of auth config IDs to filter servers by"""
 
     limit: Optional[float]
     """Number of items per page (default: 10)"""
@@ -21,5 +21,5 @@ class McpListParams(TypedDict, total=False):
     page_no: Optional[float]
     """Page number for pagination (1-based)"""
 
-    toolkit: str
-    """Filter MCP servers by toolkit slug"""
+    toolkits: str
+    """Comma-separated list of toolkit slugs to filter servers by"""

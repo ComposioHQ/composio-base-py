@@ -89,6 +89,7 @@ class ToolsResource(SyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
+        scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
@@ -111,6 +112,8 @@ class ToolsResource(SyncAPIResource):
           important: Filter to only show important/featured tools (set to "true" to enable)
 
           limit: Maximum number of tools to return per page (defaults to 20, max 100)
+
+          scopes: Array of scopes to filter tools by)
 
           search: Free-text search query to find tools by name, description, or functionality
 
@@ -141,6 +144,7 @@ class ToolsResource(SyncAPIResource):
                         "cursor": cursor,
                         "important": important,
                         "limit": limit,
+                        "scopes": scopes,
                         "search": search,
                         "tags": tags,
                         "tool_slugs": tool_slugs,
@@ -427,6 +431,7 @@ class AsyncToolsResource(AsyncAPIResource):
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
         limit: str | NotGiven = NOT_GIVEN,
+        scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
@@ -449,6 +454,8 @@ class AsyncToolsResource(AsyncAPIResource):
           important: Filter to only show important/featured tools (set to "true" to enable)
 
           limit: Maximum number of tools to return per page (defaults to 20, max 100)
+
+          scopes: Array of scopes to filter tools by)
 
           search: Free-text search query to find tools by name, description, or functionality
 
@@ -479,6 +486,7 @@ class AsyncToolsResource(AsyncAPIResource):
                         "cursor": cursor,
                         "important": important,
                         "limit": limit,
+                        "scopes": scopes,
                         "search": search,
                         "tags": tags,
                         "tool_slugs": tool_slugs,

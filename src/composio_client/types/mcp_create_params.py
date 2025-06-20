@@ -11,8 +11,8 @@ __all__ = ["McpCreateParams"]
 class McpCreateParams(TypedDict, total=False):
     name: Required[str]
     """
-    Human-readable name to identify this MCP server instance (4-25 characters,
-    alphanumeric and hyphens only)
+    Human-readable name to identify this MCP server instance (4-30 characters,
+    alphanumeric, spaces, and hyphens only)
     """
 
     allowed_tools: List[str]
@@ -22,8 +22,11 @@ class McpCreateParams(TypedDict, total=False):
     be enabled.
     """
 
-    auth_config_id: str
-    """ID reference to an existing authentication configuration"""
+    auth_config_ids: List[str]
+    """ID references to existing authentication configurations"""
+
+    managed_auth_via_composio: bool
+    """Whether the MCP server is managed by Composio"""
 
     ttl: Literal["1d", "3d", "1 month", "no expiration"]
     """Time-to-live duration for this MCP server"""

@@ -10,14 +10,6 @@ from .cli import (
     CliResourceWithStreamingResponse,
     AsyncCliResourceWithStreamingResponse,
 )
-from .admin import (
-    AdminResource,
-    AsyncAdminResource,
-    AdminResourceWithRawResponse,
-    AsyncAdminResourceWithRawResponse,
-    AdminResourceWithStreamingResponse,
-    AsyncAdminResourceWithStreamingResponse,
-)
 from ..._compat import cached_property
 from .auth.auth import (
     AuthResource,
@@ -44,10 +36,6 @@ class V3Resource(SyncAPIResource):
     @cached_property
     def auth(self) -> AuthResource:
         return AuthResource(self._client)
-
-    @cached_property
-    def admin(self) -> AdminResource:
-        return AdminResource(self._client)
 
     @cached_property
     def cli(self) -> CliResource:
@@ -81,10 +69,6 @@ class AsyncV3Resource(AsyncAPIResource):
     @cached_property
     def auth(self) -> AsyncAuthResource:
         return AsyncAuthResource(self._client)
-
-    @cached_property
-    def admin(self) -> AsyncAdminResource:
-        return AsyncAdminResource(self._client)
 
     @cached_property
     def cli(self) -> AsyncCliResource:
@@ -123,10 +107,6 @@ class V3ResourceWithRawResponse:
         return AuthResourceWithRawResponse(self._v3.auth)
 
     @cached_property
-    def admin(self) -> AdminResourceWithRawResponse:
-        return AdminResourceWithRawResponse(self._v3.admin)
-
-    @cached_property
     def cli(self) -> CliResourceWithRawResponse:
         return CliResourceWithRawResponse(self._v3.cli)
 
@@ -142,10 +122,6 @@ class AsyncV3ResourceWithRawResponse:
     @cached_property
     def auth(self) -> AsyncAuthResourceWithRawResponse:
         return AsyncAuthResourceWithRawResponse(self._v3.auth)
-
-    @cached_property
-    def admin(self) -> AsyncAdminResourceWithRawResponse:
-        return AsyncAdminResourceWithRawResponse(self._v3.admin)
 
     @cached_property
     def cli(self) -> AsyncCliResourceWithRawResponse:
@@ -165,10 +141,6 @@ class V3ResourceWithStreamingResponse:
         return AuthResourceWithStreamingResponse(self._v3.auth)
 
     @cached_property
-    def admin(self) -> AdminResourceWithStreamingResponse:
-        return AdminResourceWithStreamingResponse(self._v3.admin)
-
-    @cached_property
     def cli(self) -> CliResourceWithStreamingResponse:
         return CliResourceWithStreamingResponse(self._v3.cli)
 
@@ -184,10 +156,6 @@ class AsyncV3ResourceWithStreamingResponse:
     @cached_property
     def auth(self) -> AsyncAuthResourceWithStreamingResponse:
         return AsyncAuthResourceWithStreamingResponse(self._v3.auth)
-
-    @cached_property
-    def admin(self) -> AsyncAdminResourceWithStreamingResponse:
-        return AsyncAdminResourceWithStreamingResponse(self._v3.admin)
 
     @cached_property
     def cli(self) -> AsyncCliResourceWithStreamingResponse:

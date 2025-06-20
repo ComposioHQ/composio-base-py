@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List
+from typing import List, Optional
 from typing_extensions import Literal, TypedDict
 
 __all__ = ["ToolListParams"]
@@ -17,6 +17,9 @@ class ToolListParams(TypedDict, total=False):
 
     limit: str
     """Maximum number of tools to return per page (defaults to 20, max 100)"""
+
+    scopes: Optional[List[str]]
+    """Array of scopes to filter tools by)"""
 
     search: str
     """Free-text search query to find tools by name, description, or functionality"""

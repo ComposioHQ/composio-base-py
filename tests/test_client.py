@@ -23,17 +23,16 @@ from pydantic import ValidationError
 
 from composio_client import Composio, AsyncComposio, APIResponseValidationError
 from composio_client._types import Omit
-from composio_client._utils import maybe_transform
 from composio_client._models import BaseModel, FinalRequestOptions
-from composio_client._constants import RAW_RESPONSE_HEADER
 from composio_client._exceptions import APIStatusError, APITimeoutError, APIResponseValidationError
 from composio_client._base_client import (
     DEFAULT_TIMEOUT,
     HTTPX_DEFAULT_TIMEOUT,
     BaseClient,
+    DefaultHttpxClient,
+    DefaultAsyncHttpxClient,
     make_request_options,
 )
-from composio_client.types.tool_execute_params import ToolExecuteParams
 
 from .utils import update_env
 
@@ -730,34 +729,23 @@ class TestComposio:
 
     @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Composio) -> None:
         respx_mock.post("/api/v3/tools/execute/tool_slug").mock(
             side_effect=httpx.TimeoutException("Test timeout error")
         )
 
         with pytest.raises(APITimeoutError):
-            self.client.post(
-                "/api/v3/tools/execute/tool_slug",
-                body=cast(object, maybe_transform({}, ToolExecuteParams)),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
+            client.tools.with_streaming_response.execute(tool_slug="tool_slug").__enter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Composio) -> None:
         respx_mock.post("/api/v3/tools/execute/tool_slug").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            self.client.post(
-                "/api/v3/tools/execute/tool_slug",
-                body=cast(object, maybe_transform({}, ToolExecuteParams)),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
+            client.tools.with_streaming_response.execute(tool_slug="tool_slug").__enter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -840,6 +828,28 @@ class TestComposio:
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
+
+    def test_proxy_environment_variables(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        # Test that the proxy environment variables are set correctly
+        monkeypatch.setenv("HTTPS_PROXY", "https://example.org")
+
+        client = DefaultHttpxClient()
+
+        mounts = tuple(client._mounts.items())
+        assert len(mounts) == 1
+        assert mounts[0][0].pattern == "https://"
+
+    @pytest.mark.filterwarnings("ignore:.*deprecated.*:DeprecationWarning")
+    def test_default_client_creation(self) -> None:
+        # Ensure that the client can be initialized without any exceptions
+        DefaultHttpxClient(
+            verify=True,
+            cert=None,
+            trust_env=True,
+            http1=True,
+            http2=False,
+            limits=httpx.Limits(max_connections=100, max_keepalive_connections=20),
+        )
 
     @pytest.mark.respx(base_url=base_url)
     def test_follow_redirects(self, respx_mock: MockRouter) -> None:
@@ -1556,34 +1566,27 @@ class TestAsyncComposio:
 
     @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_timeout_errors_doesnt_leak(
+        self, respx_mock: MockRouter, async_client: AsyncComposio
+    ) -> None:
         respx_mock.post("/api/v3/tools/execute/tool_slug").mock(
             side_effect=httpx.TimeoutException("Test timeout error")
         )
 
         with pytest.raises(APITimeoutError):
-            await self.client.post(
-                "/api/v3/tools/execute/tool_slug",
-                body=cast(object, maybe_transform({}, ToolExecuteParams)),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
+            await async_client.tools.with_streaming_response.execute(tool_slug="tool_slug").__aenter__()
 
         assert _get_open_connections(self.client) == 0
 
     @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
-    async def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter) -> None:
+    async def test_retrying_status_errors_doesnt_leak(
+        self, respx_mock: MockRouter, async_client: AsyncComposio
+    ) -> None:
         respx_mock.post("/api/v3/tools/execute/tool_slug").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
-            await self.client.post(
-                "/api/v3/tools/execute/tool_slug",
-                body=cast(object, maybe_transform({}, ToolExecuteParams)),
-                cast_to=httpx.Response,
-                options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
-            )
-
+            await async_client.tools.with_streaming_response.execute(tool_slug="tool_slug").__aenter__()
         assert _get_open_connections(self.client) == 0
 
     @pytest.mark.parametrize("failures_before_success", [0, 2, 4])
@@ -1714,6 +1717,28 @@ class TestAsyncComposio:
                     raise AssertionError("calling get_platform using asyncify resulted in a hung process")
 
                 time.sleep(0.1)
+
+    async def test_proxy_environment_variables(self, monkeypatch: pytest.MonkeyPatch) -> None:
+        # Test that the proxy environment variables are set correctly
+        monkeypatch.setenv("HTTPS_PROXY", "https://example.org")
+
+        client = DefaultAsyncHttpxClient()
+
+        mounts = tuple(client._mounts.items())
+        assert len(mounts) == 1
+        assert mounts[0][0].pattern == "https://"
+
+    @pytest.mark.filterwarnings("ignore:.*deprecated.*:DeprecationWarning")
+    async def test_default_client_creation(self) -> None:
+        # Ensure that the client can be initialized without any exceptions
+        DefaultAsyncHttpxClient(
+            verify=True,
+            cert=None,
+            trust_env=True,
+            http1=True,
+            http2=False,
+            limits=httpx.Limits(max_connections=100, max_keepalive_connections=20),
+        )
 
     @pytest.mark.respx(base_url=base_url)
     async def test_follow_redirects(self, respx_mock: MockRouter) -> None:

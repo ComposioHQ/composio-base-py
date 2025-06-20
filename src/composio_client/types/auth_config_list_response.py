@@ -68,7 +68,6 @@ class Item(BaseModel):
             "BASIC_WITH_JWT",
             "COMPOSIO_LINK",
             "CALCOM_AUTH",
-            "SNOWFLAKE",
         ]
     ] = None
     """The authentication scheme used (e.g., OAuth2, API Key, etc.)"""
