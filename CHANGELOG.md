@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.5.0 (2025-06-20)
+
+Full Changelog: [v1.4.0...v1.5.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.4.0...v1.5.0)
+
+### Features
+
+* **client:** add support for aiohttp ([1808de3](https://github.com/ComposioHQ/composio-base-py/commit/1808de3ac0262c4fd19e147bba7f7bb090a8dc6c))
+
 ## 1.4.0 (2025-06-20)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.3.0...v1.4.0)
