@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.5.0 (2025-06-29)
+
+Full Changelog: [v1.4.0...v1.5.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.4.0...v1.5.0)
+
+### Features
+
+* **api:** api update ([5757104](https://github.com/ComposioHQ/composio-base-py/commit/57571046d447fef67c486ed9ba102b039930558f))
+* **api:** api update ([96c8be9](https://github.com/ComposioHQ/composio-base-py/commit/96c8be92b6e2ce3cc4944a74b11d49ceb519c9d6))
+* **api:** manual updates ([5f749b3](https://github.com/ComposioHQ/composio-base-py/commit/5f749b33db6828479bec5d1fd089efc7a5eb974f))
+* **client:** add support for aiohttp ([1808de3](https://github.com/ComposioHQ/composio-base-py/commit/1808de3ac0262c4fd19e147bba7f7bb090a8dc6c))
+
+
+### Bug Fixes
+
+* **ci:** correct conditional ([0051991](https://github.com/ComposioHQ/composio-base-py/commit/00519912ad0484c274b49fb95d60d542853e37f2))
+* **ci:** release-doctor — report correct token name ([22fd008](https://github.com/ComposioHQ/composio-base-py/commit/22fd008fd52f275999f73b7e7858a0a337c7b2f6))
+
+
+### Chores
+
+* **ci:** only run for pushes and fork pull requests ([851076c](https://github.com/ComposioHQ/composio-base-py/commit/851076c4b8bde30fb4fff27bb1ae8f4df948b00f))
+* remove custom code ([da22ae7](https://github.com/ComposioHQ/composio-base-py/commit/da22ae7a92297b25f4d8baad72b254fc0a692453))
+* **tests:** skip some failing tests on the latest python versions ([3c7cc8c](https://github.com/ComposioHQ/composio-base-py/commit/3c7cc8cbbf00c0ff6ff597204810ce2d82a4e110))
+
 ## 1.4.0 (2025-06-20)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.3.0...v1.4.0)
