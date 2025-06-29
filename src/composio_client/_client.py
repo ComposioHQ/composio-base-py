@@ -30,7 +30,6 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.v3 import v3
 from .resources.mcp import mcp
 from .resources.org import org
 from .resources.trigger_instances import trigger_instances
@@ -66,7 +65,6 @@ class Composio(SyncAPIClient):
     mcp: mcp.McpResource
     files: files.FilesResource
     migration: migration.MigrationResource
-    v3: v3.V3Resource
     with_raw_response: ComposioWithRawResponse
     with_streaming_response: ComposioWithStreamedResponse
 
@@ -155,7 +153,6 @@ class Composio(SyncAPIClient):
         self.mcp = mcp.McpResource(self)
         self.files = files.FilesResource(self)
         self.migration = migration.MigrationResource(self)
-        self.v3 = v3.V3Resource(self)
         self.with_raw_response = ComposioWithRawResponse(self)
         self.with_streaming_response = ComposioWithStreamedResponse(self)
 
@@ -291,7 +288,6 @@ class AsyncComposio(AsyncAPIClient):
     mcp: mcp.AsyncMcpResource
     files: files.AsyncFilesResource
     migration: migration.AsyncMigrationResource
-    v3: v3.AsyncV3Resource
     with_raw_response: AsyncComposioWithRawResponse
     with_streaming_response: AsyncComposioWithStreamedResponse
 
@@ -380,7 +376,6 @@ class AsyncComposio(AsyncAPIClient):
         self.mcp = mcp.AsyncMcpResource(self)
         self.files = files.AsyncFilesResource(self)
         self.migration = migration.AsyncMigrationResource(self)
-        self.v3 = v3.AsyncV3Resource(self)
         self.with_raw_response = AsyncComposioWithRawResponse(self)
         self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
 
@@ -517,7 +512,6 @@ class ComposioWithRawResponse:
         self.mcp = mcp.McpResourceWithRawResponse(client.mcp)
         self.files = files.FilesResourceWithRawResponse(client.files)
         self.migration = migration.MigrationResourceWithRawResponse(client.migration)
-        self.v3 = v3.V3ResourceWithRawResponse(client.v3)
 
 
 class AsyncComposioWithRawResponse:
@@ -537,7 +531,6 @@ class AsyncComposioWithRawResponse:
         self.mcp = mcp.AsyncMcpResourceWithRawResponse(client.mcp)
         self.files = files.AsyncFilesResourceWithRawResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithRawResponse(client.migration)
-        self.v3 = v3.AsyncV3ResourceWithRawResponse(client.v3)
 
 
 class ComposioWithStreamedResponse:
@@ -557,7 +550,6 @@ class ComposioWithStreamedResponse:
         self.mcp = mcp.McpResourceWithStreamingResponse(client.mcp)
         self.files = files.FilesResourceWithStreamingResponse(client.files)
         self.migration = migration.MigrationResourceWithStreamingResponse(client.migration)
-        self.v3 = v3.V3ResourceWithStreamingResponse(client.v3)
 
 
 class AsyncComposioWithStreamedResponse:
@@ -577,7 +569,6 @@ class AsyncComposioWithStreamedResponse:
         self.mcp = mcp.AsyncMcpResourceWithStreamingResponse(client.mcp)
         self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithStreamingResponse(client.migration)
-        self.v3 = v3.AsyncV3ResourceWithStreamingResponse(client.v3)
 
 
 Client = Composio

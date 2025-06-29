@@ -13,7 +13,7 @@ class ItemToolkit(BaseModel):
     """Logo of the toolkit"""
 
     name: str
-    """Name of the parent toolkit"""
+    """Deprecated: Use slug instead"""
 
     slug: str
     """Unique identifier for the parent toolkit"""
@@ -25,6 +25,9 @@ class Item(BaseModel):
 
     description: str
     """Detailed description of what the trigger does"""
+
+    instructions: str
+    """Step-by-step instructions on how to set up and use this trigger"""
 
     name: str
     """Human-readable name of the trigger"""
