@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 from typing import List, Optional
-from typing_extensions import Literal
 
 import httpx
 
@@ -77,11 +76,10 @@ class McpResource(SyncAPIResource):
     def create(
         self,
         *,
+        auth_config_ids: List[str],
         name: str,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
-        ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -97,17 +95,15 @@ class McpResource(SyncAPIResource):
         assistants can perform.
 
         Args:
+          auth_config_ids: ID references to existing authentication configurations
+
           name: Human-readable name to identify this MCP server instance (4-30 characters,
               alphanumeric, spaces, and hyphens only)
 
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
 
-          auth_config_ids: ID references to existing authentication configurations
-
           managed_auth_via_composio: Whether the MCP server is managed by Composio
-
-          ttl: Time-to-live duration for this MCP server
 
           extra_headers: Send extra headers
 
@@ -121,11 +117,10 @@ class McpResource(SyncAPIResource):
             "/api/v3/mcp/servers",
             body=maybe_transform(
                 {
+                    "auth_config_ids": auth_config_ids,
                     "name": name,
                     "allowed_tools": allowed_tools,
-                    "auth_config_ids": auth_config_ids,
                     "managed_auth_via_composio": managed_auth_via_composio,
-                    "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
             ),
@@ -472,11 +467,10 @@ class AsyncMcpResource(AsyncAPIResource):
     async def create(
         self,
         *,
+        auth_config_ids: List[str],
         name: str,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
-        ttl: Literal["1d", "3d", "1 month", "no expiration"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -492,17 +486,15 @@ class AsyncMcpResource(AsyncAPIResource):
         assistants can perform.
 
         Args:
+          auth_config_ids: ID references to existing authentication configurations
+
           name: Human-readable name to identify this MCP server instance (4-30 characters,
               alphanumeric, spaces, and hyphens only)
 
           allowed_tools: List of tool slugs that should be allowed for this server. If not provided, all
               available tools for the authentication configuration will be enabled.
 
-          auth_config_ids: ID references to existing authentication configurations
-
           managed_auth_via_composio: Whether the MCP server is managed by Composio
-
-          ttl: Time-to-live duration for this MCP server
 
           extra_headers: Send extra headers
 
@@ -516,11 +508,10 @@ class AsyncMcpResource(AsyncAPIResource):
             "/api/v3/mcp/servers",
             body=await async_maybe_transform(
                 {
+                    "auth_config_ids": auth_config_ids,
                     "name": name,
                     "allowed_tools": allowed_tools,
-                    "auth_config_ids": auth_config_ids,
                     "managed_auth_via_composio": managed_auth_via_composio,
-                    "ttl": ttl,
                 },
                 mcp_create_params.McpCreateParams,
             ),
