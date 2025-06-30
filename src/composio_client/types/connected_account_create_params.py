@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._utils import PropertyInfo
@@ -197,6 +197,8 @@ ConnectionStateUnionMember0ValUnionMember1: TypeAlias = Union[
 class ConnectionStateUnionMember0ValUnionMember2Typed(TypedDict, total=False):
     oauth_token: Required[str]
 
+    oauth_token_secret: Required[str]
+
     status: Required[Literal["ACTIVE"]]
 
     account_id: str
@@ -226,6 +228,8 @@ class ConnectionStateUnionMember0ValUnionMember2Typed(TypedDict, total=False):
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    oauth_verifier: str
 
     proxy_password: str
 
@@ -508,8 +512,6 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     status: Required[Literal["ACTIVE"]]
 
-    token_type: Required[str]
-
     account_id: str
 
     account_url: str
@@ -529,7 +531,7 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     domain: str
 
-    expires_in: float
+    expires_in: Optional[float]
 
     extension: str
 
@@ -549,7 +551,7 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     region: str
 
-    scope: str
+    scope: Union[str, List[str]]
 
     server_location: str
 
@@ -558,6 +560,8 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
     site_name: str
 
     subdomain: str
+
+    token_type: str
 
     version: str
 

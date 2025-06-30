@@ -10,10 +10,15 @@ __all__ = ["TriggersTypeListParams"]
 
 class TriggersTypeListParams(TypedDict, total=False):
     cursor: str
-    """Pagination cursor for fetching next page of results"""
+    """Cursor for pagination.
+
+    The cursor is a base64 encoded string of the page and limit. The page is the
+    page number and the limit is the number of items per page. The cursor is used to
+    paginate through the items. The cursor is not required for the first page.
+    """
 
     limit: Optional[float]
-    """Number of items to return per page"""
+    """Number of items per page"""
 
     toolkit_slugs: Optional[List[str]]
     """Array of toolkit slugs to filter triggers by"""

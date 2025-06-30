@@ -73,7 +73,7 @@ class TestTools:
         tool = client.tools.list(
             cursor="cursor",
             important="true",
-            limit="limit",
+            limit=0,
             scopes=["string"],
             search="search",
             tags=["string"],
@@ -364,7 +364,7 @@ class TestAsyncTools:
         tool = await async_client.tools.list(
             cursor="cursor",
             important="true",
-            limit="limit",
+            limit=0,
             scopes=["string"],
             search="search",
             tags=["string"],

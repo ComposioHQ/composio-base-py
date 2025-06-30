@@ -56,8 +56,12 @@ class Item(BaseModel):
 
 
 class TriggerInstanceListActiveResponse(BaseModel):
+    current_page: float
+
     items: List[Item]
 
-    next_cursor: Optional[str] = None
+    total_items: float
 
     total_pages: float
+
+    next_cursor: Optional[str] = None

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, cast
+from typing import Any, Optional, cast
 
 import httpx
 
@@ -47,6 +47,8 @@ class FilesResource(SyncAPIResource):
     def list(
         self,
         *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         tool_slug: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -62,6 +64,13 @@ class FilesResource(SyncAPIResource):
         be filtered by toolkit and tool slugs.
 
         Args:
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
+
+          limit: Number of items per page
+
           tool_slug: Filter files by action slug. Example: "convert-to-pdf"
 
           toolkit_slug: Filter files by app slug. Example: "file-converter"
@@ -83,6 +92,8 @@ class FilesResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "cursor": cursor,
+                        "limit": limit,
                         "tool_slug": tool_slug,
                         "toolkit_slug": toolkit_slug,
                     },
@@ -180,6 +191,8 @@ class AsyncFilesResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        cursor: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         tool_slug: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -195,6 +208,13 @@ class AsyncFilesResource(AsyncAPIResource):
         be filtered by toolkit and tool slugs.
 
         Args:
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
+
+          limit: Number of items per page
+
           tool_slug: Filter files by action slug. Example: "convert-to-pdf"
 
           toolkit_slug: Filter files by app slug. Example: "file-converter"
@@ -216,6 +236,8 @@ class AsyncFilesResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "cursor": cursor,
+                        "limit": limit,
                         "tool_slug": tool_slug,
                         "toolkit_slug": toolkit_slug,
                     },

@@ -10,13 +10,18 @@ __all__ = ["ToolListParams"]
 
 class ToolListParams(TypedDict, total=False):
     cursor: str
-    """Pagination cursor for fetching next page of results (base64 encoded)"""
+    """Cursor for pagination.
+
+    The cursor is a base64 encoded string of the page and limit. The page is the
+    page number and the limit is the number of items per page. The cursor is used to
+    paginate through the items. The cursor is not required for the first page.
+    """
 
     important: Literal["true", "false"]
     """Filter to only show important/featured tools (set to "true" to enable)"""
 
-    limit: str
-    """Maximum number of tools to return per page (defaults to 20, max 100)"""
+    limit: Optional[float]
+    """Number of items per page"""
 
     scopes: Optional[List[str]]
     """Array of scopes to filter tools by)"""

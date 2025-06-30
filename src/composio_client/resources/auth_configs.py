@@ -241,13 +241,16 @@ class AuthConfigsResource(SyncAPIResource):
         List authentication configurations with optional filters
 
         Args:
-          cursor: The cursor to paginate through the auth configs
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
           deprecated_app_id: The app id to filter by
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
-          limit: The number of auth configs to return
+          limit: Number of items per page
 
           show_disabled: Show disabled auth configs
 
@@ -577,13 +580,16 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         List authentication configurations with optional filters
 
         Args:
-          cursor: The cursor to paginate through the auth configs
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
           deprecated_app_id: The app id to filter by
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
-          limit: The number of auth configs to return
+          limit: Number of items per page
 
           show_disabled: Show disabled auth configs
 
