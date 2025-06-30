@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, Union, Optional
+from typing import TYPE_CHECKING, List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -187,6 +187,8 @@ class ConnectionDataUnionMember0ValUnionMember1(BaseModel):
 class ConnectionDataUnionMember0ValUnionMember2(BaseModel):
     oauth_token: str
 
+    oauth_token_secret: str
+
     status: Literal["ACTIVE"]
 
     account_id: Optional[str] = None
@@ -216,6 +218,8 @@ class ConnectionDataUnionMember0ValUnionMember2(BaseModel):
     instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    oauth_verifier: Optional[str] = None
 
     proxy_password: Optional[str] = None
 
@@ -504,8 +508,6 @@ class ConnectionDataUnionMember1ValUnionMember2(BaseModel):
 
     status: Literal["ACTIVE"]
 
-    token_type: str
-
     account_id: Optional[str] = None
 
     account_url: Optional[str] = None
@@ -545,7 +547,7 @@ class ConnectionDataUnionMember1ValUnionMember2(BaseModel):
 
     region: Optional[str] = None
 
-    scope: Optional[str] = None
+    scope: Union[str, List[str], None] = None
 
     server_location: Optional[str] = None
 
@@ -554,6 +556,8 @@ class ConnectionDataUnionMember1ValUnionMember2(BaseModel):
     site_name: Optional[str] = None
 
     subdomain: Optional[str] = None
+
+    token_type: Optional[str] = None
 
     version: Optional[str] = None
 

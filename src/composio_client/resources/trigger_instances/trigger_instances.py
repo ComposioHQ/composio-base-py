@@ -75,9 +75,10 @@ class TriggerInstancesResource(SyncAPIResource):
         query_auth_config_ids_2: str | NotGiven = NOT_GIVEN,
         query_connected_account_ids_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
         query_connected_account_ids_2: str | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
         deprecated_auth_config_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         deprecated_connected_account_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        limit: float | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         query_show_disabled_1: Optional[bool] | NotGiven = NOT_GIVEN,
         query_show_disabled_2: str | NotGiven = NOT_GIVEN,
@@ -98,11 +99,16 @@ class TriggerInstancesResource(SyncAPIResource):
 
           query_connected_account_ids_1: Array of connected account IDs to filter triggers by
 
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
+
           deprecated_auth_config_uuids: Array of auth config UUIDs to filter triggers by
 
           deprecated_connected_account_uuids: Array of connected account UUIDs to filter triggers by
 
-          limit: Number of items to return per page.
+          limit: Number of items per page
 
           page: Page number for pagination. Starts from 1.
 
@@ -133,6 +139,7 @@ class TriggerInstancesResource(SyncAPIResource):
                         "query_auth_config_ids_2": query_auth_config_ids_2,
                         "query_connected_account_ids_1": query_connected_account_ids_1,
                         "query_connected_account_ids_2": query_connected_account_ids_2,
+                        "cursor": cursor,
                         "deprecated_auth_config_uuids": deprecated_auth_config_uuids,
                         "deprecated_connected_account_uuids": deprecated_connected_account_uuids,
                         "limit": limit,
@@ -236,9 +243,10 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         query_auth_config_ids_2: str | NotGiven = NOT_GIVEN,
         query_connected_account_ids_1: Optional[List[str]] | NotGiven = NOT_GIVEN,
         query_connected_account_ids_2: str | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
         deprecated_auth_config_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         deprecated_connected_account_uuids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        limit: float | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         query_show_disabled_1: Optional[bool] | NotGiven = NOT_GIVEN,
         query_show_disabled_2: str | NotGiven = NOT_GIVEN,
@@ -259,11 +267,16 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           query_connected_account_ids_1: Array of connected account IDs to filter triggers by
 
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
+
           deprecated_auth_config_uuids: Array of auth config UUIDs to filter triggers by
 
           deprecated_connected_account_uuids: Array of connected account UUIDs to filter triggers by
 
-          limit: Number of items to return per page.
+          limit: Number of items per page
 
           page: Page number for pagination. Starts from 1.
 
@@ -294,6 +307,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
                         "query_auth_config_ids_2": query_auth_config_ids_2,
                         "query_connected_account_ids_1": query_connected_account_ids_1,
                         "query_connected_account_ids_2": query_connected_account_ids_2,
+                        "cursor": cursor,
                         "deprecated_auth_config_uuids": deprecated_auth_config_uuids,
                         "deprecated_connected_account_uuids": deprecated_connected_account_uuids,
                         "limit": limit,

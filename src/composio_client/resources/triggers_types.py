@@ -98,9 +98,12 @@ class TriggersTypesResource(SyncAPIResource):
         Results are paginated and can be filtered by toolkit.
 
         Args:
-          cursor: Pagination cursor for fetching next page of results
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
-          limit: Number of items to return per page
+          limit: Number of items per page
 
           toolkit_slugs: Array of toolkit slugs to filter triggers by
 
@@ -228,9 +231,12 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         Results are paginated and can be filtered by toolkit.
 
         Args:
-          cursor: Pagination cursor for fetching next page of results
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
-          limit: Number of items to return per page
+          limit: Number of items per page
 
           toolkit_slugs: Array of toolkit slugs to filter triggers by
 

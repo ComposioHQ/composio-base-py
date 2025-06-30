@@ -10,6 +10,7 @@ import httpx
 from ..types import (
     connected_account_list_params,
     connected_account_create_params,
+    connected_account_refresh_params,
     connected_account_update_status_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -237,6 +238,8 @@ class ConnectedAccountsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
+        query_redirect_url: str | NotGiven = NOT_GIVEN,
+        body_redirect_url: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -262,8 +265,18 @@ class ConnectedAccountsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._post(
             f"/api/v3/connected_accounts/{nanoid}/refresh",
+            body=maybe_transform(
+                {"body_redirect_url": body_redirect_url}, connected_account_refresh_params.ConnectedAccountRefreshParams
+            ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"query_redirect_url": query_redirect_url},
+                    connected_account_refresh_params.ConnectedAccountRefreshParams,
+                ),
             ),
             cast_to=ConnectedAccountRefreshResponse,
         )
@@ -514,6 +527,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
+        query_redirect_url: str | NotGiven = NOT_GIVEN,
+        body_redirect_url: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -539,8 +554,18 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._post(
             f"/api/v3/connected_accounts/{nanoid}/refresh",
+            body=await async_maybe_transform(
+                {"body_redirect_url": body_redirect_url}, connected_account_refresh_params.ConnectedAccountRefreshParams
+            ),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"query_redirect_url": query_redirect_url},
+                    connected_account_refresh_params.ConnectedAccountRefreshParams,
+                ),
             ),
             cast_to=ConnectedAccountRefreshResponse,
         )

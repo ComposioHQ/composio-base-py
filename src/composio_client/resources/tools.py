@@ -88,7 +88,7 @@ class ToolsResource(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
-        limit: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -107,11 +107,14 @@ class ToolsResource(SyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
-          cursor: Pagination cursor for fetching next page of results (base64 encoded)
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
           important: Filter to only show important/featured tools (set to "true" to enable)
 
-          limit: Maximum number of tools to return per page (defaults to 20, max 100)
+          limit: Number of items per page
 
           scopes: Array of scopes to filter tools by)
 
@@ -430,7 +433,7 @@ class AsyncToolsResource(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
-        limit: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -449,11 +452,14 @@ class AsyncToolsResource(AsyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
-          cursor: Pagination cursor for fetching next page of results (base64 encoded)
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
           important: Filter to only show important/featured tools (set to "true" to enable)
 
-          limit: Maximum number of tools to return per page (defaults to 20, max 100)
+          limit: Number of items per page
 
           scopes: Array of scopes to filter tools by)
 
