@@ -28,6 +28,7 @@ class TestMcp:
     @parametrize
     def test_method_create(self, client: Composio) -> None:
         mcp = client.mcp.create(
+            auth_config_ids=["auth_cfg_abc123def456"],
             name="GitHub Integration Server",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -35,17 +36,17 @@ class TestMcp:
     @parametrize
     def test_method_create_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.create(
+            auth_config_ids=["auth_cfg_abc123def456"],
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
-            auth_config_ids=["auth_cfg_abc123def456"],
             managed_auth_via_composio=True,
-            ttl="1d",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
     @parametrize
     def test_raw_response_create(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.create(
+            auth_config_ids=["auth_cfg_abc123def456"],
             name="GitHub Integration Server",
         )
 
@@ -57,6 +58,7 @@ class TestMcp:
     @parametrize
     def test_streaming_response_create(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.create(
+            auth_config_ids=["auth_cfg_abc123def456"],
             name="GitHub Integration Server",
         ) as response:
             assert not response.is_closed
@@ -333,6 +335,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_create(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.create(
+            auth_config_ids=["auth_cfg_abc123def456"],
             name="GitHub Integration Server",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -340,17 +343,17 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.create(
+            auth_config_ids=["auth_cfg_abc123def456"],
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
-            auth_config_ids=["auth_cfg_abc123def456"],
             managed_auth_via_composio=True,
-            ttl="1d",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.create(
+            auth_config_ids=["auth_cfg_abc123def456"],
             name="GitHub Integration Server",
         )
 
@@ -362,6 +365,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.create(
+            auth_config_ids=["auth_cfg_abc123def456"],
             name="GitHub Integration Server",
         ) as response:
             assert not response.is_closed
