@@ -19,6 +19,7 @@ __all__ = [
     "ConnectionStateUnionMember0ValUnionMember2",
     "ConnectionStateUnionMember0ValUnionMember3",
     "ConnectionStateUnionMember0ValUnionMember4",
+    "ConnectionStateUnionMember0ValUnionMember5",
     "ConnectionStateUnionMember1",
     "ConnectionStateUnionMember1Val",
     "ConnectionStateUnionMember1ValUnionMember0",
@@ -370,12 +371,78 @@ ConnectionStateUnionMember0ValUnionMember4: TypeAlias = Union[
     ConnectionStateUnionMember0ValUnionMember4Typed, Dict[str, Optional[object]]
 ]
 
+
+class ConnectionStateUnionMember0ValUnionMember5Typed(TypedDict, total=False):
+    oauth_token: Required[str]
+
+    oauth_token_secret: Required[str]
+
+    status: Required[Literal["INACTIVE"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    callback_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    consumer_key: str
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    oauth_verifier: str
+
+    proxy_password: str
+
+    proxy_username: str
+
+    redirect_url: Annotated[str, PropertyInfo(alias="redirectUrl")]
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember0ValUnionMember5: TypeAlias = Union[
+    ConnectionStateUnionMember0ValUnionMember5Typed, Dict[str, Optional[object]]
+]
+
 ConnectionStateUnionMember0Val: TypeAlias = Union[
     ConnectionStateUnionMember0ValUnionMember0,
     ConnectionStateUnionMember0ValUnionMember1,
     ConnectionStateUnionMember0ValUnionMember2,
     ConnectionStateUnionMember0ValUnionMember3,
     ConnectionStateUnionMember0ValUnionMember4,
+    ConnectionStateUnionMember0ValUnionMember5,
 ]
 
 
@@ -412,6 +479,9 @@ class ConnectionStateUnionMember1ValUnionMember0Typed(TypedDict, total=False):
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
 
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: str
 
     proxy_username: str
@@ -423,6 +493,9 @@ class ConnectionStateUnionMember1ValUnionMember0Typed(TypedDict, total=False):
     shop: str
 
     site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
 
     subdomain: str
 
@@ -473,6 +546,9 @@ class ConnectionStateUnionMember1ValUnionMember1Typed(TypedDict, total=False):
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
 
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: str
 
     proxy_username: str
@@ -484,6 +560,9 @@ class ConnectionStateUnionMember1ValUnionMember1Typed(TypedDict, total=False):
     shop: str
 
     site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
 
     subdomain: str
 
@@ -543,6 +622,9 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
 
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: str
 
     proxy_username: str
@@ -558,6 +640,9 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
     shop: str
 
     site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
 
     subdomain: str
 
@@ -608,6 +693,9 @@ class ConnectionStateUnionMember1ValUnionMember3Typed(TypedDict, total=False):
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
 
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: str
 
     proxy_username: str
@@ -619,6 +707,9 @@ class ConnectionStateUnionMember1ValUnionMember3Typed(TypedDict, total=False):
     shop: str
 
     site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
 
     subdomain: str
 
@@ -663,6 +754,9 @@ class ConnectionStateUnionMember1ValUnionMember4Typed(TypedDict, total=False):
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
 
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: str
 
     proxy_username: str
@@ -674,6 +768,9 @@ class ConnectionStateUnionMember1ValUnionMember4Typed(TypedDict, total=False):
     shop: str
 
     site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
 
     subdomain: str
 
