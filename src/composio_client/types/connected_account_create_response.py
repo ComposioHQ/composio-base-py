@@ -17,6 +17,7 @@ __all__ = [
     "ConnectionDataUnionMember0ValUnionMember2",
     "ConnectionDataUnionMember0ValUnionMember3",
     "ConnectionDataUnionMember0ValUnionMember4",
+    "ConnectionDataUnionMember0ValUnionMember5",
     "ConnectionDataUnionMember1",
     "ConnectionDataUnionMember1Val",
     "ConnectionDataUnionMember1ValUnionMember0",
@@ -364,12 +365,79 @@ class ConnectionDataUnionMember0ValUnionMember4(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
+class ConnectionDataUnionMember0ValUnionMember5(BaseModel):
+    oauth_token: str
+
+    oauth_token_secret: str
+
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    callback_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    consumer_key: Optional[str] = None
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    oauth_verifier: Optional[str] = None
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    redirect_url: Optional[str] = FieldInfo(alias="redirectUrl", default=None)
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
 ConnectionDataUnionMember0Val: TypeAlias = Union[
     ConnectionDataUnionMember0ValUnionMember0,
     ConnectionDataUnionMember0ValUnionMember1,
     ConnectionDataUnionMember0ValUnionMember2,
     ConnectionDataUnionMember0ValUnionMember3,
     ConnectionDataUnionMember0ValUnionMember4,
+    ConnectionDataUnionMember0ValUnionMember5,
 ]
 
 
@@ -406,6 +474,9 @@ class ConnectionDataUnionMember1ValUnionMember0(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -417,6 +488,9 @@ class ConnectionDataUnionMember1ValUnionMember0(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 
@@ -468,6 +542,9 @@ class ConnectionDataUnionMember1ValUnionMember1(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -479,6 +556,9 @@ class ConnectionDataUnionMember1ValUnionMember1(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 
@@ -539,6 +619,9 @@ class ConnectionDataUnionMember1ValUnionMember2(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -554,6 +637,9 @@ class ConnectionDataUnionMember1ValUnionMember2(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 
@@ -605,6 +691,9 @@ class ConnectionDataUnionMember1ValUnionMember3(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -616,6 +705,9 @@ class ConnectionDataUnionMember1ValUnionMember3(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 
@@ -661,6 +753,9 @@ class ConnectionDataUnionMember1ValUnionMember4(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -672,6 +767,9 @@ class ConnectionDataUnionMember1ValUnionMember4(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 

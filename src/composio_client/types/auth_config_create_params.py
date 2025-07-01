@@ -7,7 +7,14 @@ from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["AuthConfigCreateParams", "Toolkit", "AuthConfig", "AuthConfigUnionMember0", "AuthConfigUnionMember1"]
+__all__ = [
+    "AuthConfigCreateParams",
+    "Toolkit",
+    "AuthConfig",
+    "AuthConfigUnionMember0",
+    "AuthConfigUnionMember1",
+    "AuthConfigUnionMember1ProxyConfig",
+]
 
 
 class AuthConfigCreateParams(TypedDict, total=False):
@@ -31,6 +38,14 @@ class AuthConfigUnionMember0(TypedDict, total=False):
 
     restrict_to_following_tools: List[str]
     """The actions that the user can perform on the auth config"""
+
+
+class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
+    proxy_url: Required[str]
+    """The url of the auth proxy"""
+
+    proxy_auth_key: str
+    """The auth key for the auth proxy"""
 
 
 class AuthConfigUnionMember1(TypedDict, total=False):
@@ -59,6 +74,8 @@ class AuthConfigUnionMember1(TypedDict, total=False):
 
     name: str
     """The name of the integration"""
+
+    proxy_config: AuthConfigUnionMember1ProxyConfig
 
     restrict_to_following_tools: List[str]
     """The actions that the user can perform on the auth config"""
