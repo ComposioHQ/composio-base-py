@@ -548,7 +548,7 @@ class StateUnionMember1ValUnionMember2(BaseModel):
 
     domain: Optional[str] = None
 
-    expires_in: Optional[float] = None
+    expires_in: Union[float, str, None] = None
 
     extension: Optional[str] = None
 

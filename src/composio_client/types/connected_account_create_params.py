@@ -531,7 +531,7 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     domain: str
 
-    expires_in: Optional[float]
+    expires_in: Union[float, str, None]
 
     extension: str
 
