@@ -1,5 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
+from .cli import (
+    CliResource,
+    AsyncCliResource,
+    CliResourceWithRawResponse,
+    AsyncCliResourceWithRawResponse,
+    CliResourceWithStreamingResponse,
+    AsyncCliResourceWithStreamingResponse,
+)
 from .mcp import (
     McpResource,
     AsyncMcpResource,
@@ -156,4 +164,10 @@ __all__ = [
     "AsyncMigrationResourceWithRawResponse",
     "MigrationResourceWithStreamingResponse",
     "AsyncMigrationResourceWithStreamingResponse",
+    "CliResource",
+    "AsyncCliResource",
+    "CliResourceWithRawResponse",
+    "AsyncCliResourceWithRawResponse",
+    "CliResourceWithStreamingResponse",
+    "AsyncCliResourceWithStreamingResponse",
 ]

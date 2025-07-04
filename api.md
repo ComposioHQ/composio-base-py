@@ -324,3 +324,21 @@ from composio_client.types import MigrationRetrieveNanoidResponse
 Methods:
 
 - <code title="get /api/v3/migration/get-nanoid">client.migration.<a href="./src/composio_client/resources/migration.py">retrieve_nanoid</a>(\*\*<a href="src/composio_client/types/migration_retrieve_nanoid_params.py">params</a>) -> <a href="./src/composio_client/types/migration_retrieve_nanoid_response.py">MigrationRetrieveNanoidResponse</a></code>
+
+# Cli
+
+Types:
+
+```python
+from composio_client.types import (
+    CliCreateSessionResponse,
+    CliGetSessionResponse,
+    CliLinkSessionResponse,
+)
+```
+
+Methods:
+
+- <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli.py">create_session</a>() -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
+- <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/composio_client/resources/cli.py">get_session</a>(\*\*<a href="src/composio_client/types/cli_get_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_get_session_response.py">CliGetSessionResponse</a></code>
+- <code title="put /api/v3/cli/link-session">client.cli.<a href="./src/composio_client/resources/cli.py">link_session</a>(\*\*<a href="src/composio_client/types/cli_link_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_link_session_response.py">CliLinkSessionResponse</a></code>
