@@ -188,5 +188,11 @@ class ToolkitRetrieveResponse(BaseModel):
     auth_config_details: Optional[List[AuthConfigDetail]] = None
     """Complete authentication configuration details for each supported auth method"""
 
+    base_url: Optional[str] = None
+    """
+    If evaluation of base URL needs some connection info (like shopify), please
+    create the connection and get the base URL from there
+    """
+
     composio_managed_auth_schemes: Optional[List[str]] = None
     """List of authentication methods that Composio manages for this toolkit"""
