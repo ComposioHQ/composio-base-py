@@ -1,4 +1,4 @@
 configured_endpoints: 65
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/composio-alt-glitch%2Fcomposio-sdk-e9bd0f1bf51ad6189b040a0c58cef87bcde4ac4bef90b1c85d868d99d2e42ed2.yml
-openapi_spec_hash: 2fc4b5be3c9de8c67e6fe5674f3a6e6b
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/composio-alt-glitch%2Fcomposio-sdk-20e7c04ec6165c781f29e4279c1f8061c8370b8f8cda849777e37760304779d9.yml
+openapi_spec_hash: 8c04b59bb6706cf7d30ef921f5f5540d
 config_hash: 4afa0a81ae82fc9361b736bda89c95b5

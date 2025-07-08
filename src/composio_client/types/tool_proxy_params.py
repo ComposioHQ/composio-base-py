@@ -15,7 +15,7 @@ class ToolProxyParams(TypedDict, total=False):
     connected account)
     """
 
-    method: Required[Literal["GET", "POST", "PUT", "DELETE", "PATCH"]]
+    method: Required[Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"]]
     """The HTTP method to use for the request"""
 
     body: object
