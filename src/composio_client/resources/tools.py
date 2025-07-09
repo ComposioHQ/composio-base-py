@@ -86,6 +86,7 @@ class ToolsResource(SyncAPIResource):
     def list(
         self,
         *,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
@@ -107,6 +108,8 @@ class ToolsResource(SyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
+          auth_config_ids: Filter tools by auth config id
+
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
               limit. The page is the page number and the limit is the number of items per
               page. The cursor is used to paginate through the items. The cursor is not
@@ -144,6 +147,7 @@ class ToolsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
                         "important": important,
                         "limit": limit,
@@ -431,6 +435,7 @@ class AsyncToolsResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        auth_config_ids: str | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
@@ -452,6 +457,8 @@ class AsyncToolsResource(AsyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
+          auth_config_ids: Filter tools by auth config id
+
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
               limit. The page is the page number and the limit is the number of items per
               page. The cursor is used to paginate through the items. The cursor is not
@@ -489,6 +496,7 @@ class AsyncToolsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
                         "important": important,
                         "limit": limit,
