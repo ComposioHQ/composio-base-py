@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, overload
 
 import httpx
@@ -128,7 +128,7 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         credentials: Dict[str, Optional[object]],
         type: Literal["custom"],
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -158,9 +158,9 @@ class AuthConfigsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
+        scopes: str,
         type: Literal["default"],
-        scopes: str | NotGiven = NOT_GIVEN,
-        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -185,14 +185,14 @@ class AuthConfigsResource(SyncAPIResource):
         """
         ...
 
-    @required_args(["credentials", "type"], ["type"])
+    @required_args(["credentials", "type"], ["scopes", "type"])
     def update(
         self,
         nanoid: str,
         *,
         credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
         scopes: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -209,7 +209,7 @@ class AuthConfigsResource(SyncAPIResource):
                 {
                     "credentials": credentials,
                     "type": type,
-                    "tool_access_config": tool_access_config,
+                    "restrict_to_following_tools": restrict_to_following_tools,
                     "scopes": scopes,
                 },
                 auth_config_update_params.AuthConfigUpdateParams,
@@ -228,7 +228,7 @@ class AuthConfigsResource(SyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
+        show_disabled: bool | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -467,7 +467,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         credentials: Dict[str, Optional[object]],
         type: Literal["custom"],
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -497,9 +497,9 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
+        scopes: str,
         type: Literal["default"],
-        scopes: str | NotGiven = NOT_GIVEN,
-        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -524,14 +524,14 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         """
         ...
 
-    @required_args(["credentials", "type"], ["type"])
+    @required_args(["credentials", "type"], ["scopes", "type"])
     async def update(
         self,
         nanoid: str,
         *,
         credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
+        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
         scopes: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -548,7 +548,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                 {
                     "credentials": credentials,
                     "type": type,
-                    "tool_access_config": tool_access_config,
+                    "restrict_to_following_tools": restrict_to_following_tools,
                     "scopes": scopes,
                 },
                 auth_config_update_params.AuthConfigUpdateParams,
@@ -567,7 +567,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
+        show_disabled: bool | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

@@ -28,7 +28,7 @@ class AuthConfigListParams(TypedDict, total=False):
     limit: Optional[float]
     """Number of items per page"""
 
-    show_disabled: Optional[bool]
+    show_disabled: bool
     """Show disabled auth configs"""
 
     toolkit_slug: str

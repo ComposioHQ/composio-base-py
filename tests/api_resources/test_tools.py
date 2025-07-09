@@ -71,7 +71,6 @@ class TestTools:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         tool = client.tools.list(
-            auth_config_ids="123",
             cursor="cursor",
             important="true",
             limit=0,
@@ -363,7 +362,6 @@ class TestAsyncTools:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.list(
-            auth_config_ids="123",
             cursor="cursor",
             important="true",
             limit=0,

@@ -12,10 +12,8 @@ __all__ = [
     "Toolkit",
     "AuthConfig",
     "AuthConfigUnionMember0",
-    "AuthConfigUnionMember0ToolAccessConfig",
     "AuthConfigUnionMember1",
     "AuthConfigUnionMember1ProxyConfig",
-    "AuthConfigUnionMember1ToolAccessConfig",
 ]
 
 
@@ -30,14 +28,6 @@ class Toolkit(TypedDict, total=False):
     """Toolkit slug to create auth config for"""
 
 
-class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
-    tools_for_connected_account_creation: List[str]
-    """
-    Tools used to generate the minimum required scopes for the auth config (only
-    valid for OAuth). If passed, this will update the scopes.
-    """
-
-
 class AuthConfigUnionMember0(TypedDict, total=False):
     type: Required[Literal["use_composio_managed_auth"]]
 
@@ -46,7 +36,8 @@ class AuthConfigUnionMember0(TypedDict, total=False):
     name: str
     """The name of the integration"""
 
-    tool_access_config: AuthConfigUnionMember0ToolAccessConfig
+    restrict_to_following_tools: List[str]
+    """The actions that the user can perform on the auth config"""
 
 
 class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
@@ -55,14 +46,6 @@ class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
 
     proxy_auth_key: str
     """The auth key for the auth proxy"""
-
-
-class AuthConfigUnionMember1ToolAccessConfig(TypedDict, total=False):
-    tools_for_connected_account_creation: List[str]
-    """
-    Tools used to generate the minimum required scopes for the auth config (only
-    valid for OAuth). If passed, this will update the scopes.
-    """
 
 
 class AuthConfigUnionMember1(TypedDict, total=False):
@@ -94,7 +77,8 @@ class AuthConfigUnionMember1(TypedDict, total=False):
 
     proxy_config: AuthConfigUnionMember1ProxyConfig
 
-    tool_access_config: AuthConfigUnionMember1ToolAccessConfig
+    restrict_to_following_tools: List[str]
+    """The actions that the user can perform on the auth config"""
 
 
 AuthConfig: TypeAlias = Union[AuthConfigUnionMember0, AuthConfigUnionMember1]
