@@ -9,6 +9,9 @@ __all__ = ["ToolListParams"]
 
 
 class ToolListParams(TypedDict, total=False):
+    auth_config_ids: Optional[List[str]]
+    """Filter tools by auth config id"""
+
     cursor: str
     """Cursor for pagination.
 
