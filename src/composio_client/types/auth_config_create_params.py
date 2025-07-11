@@ -7,7 +7,16 @@ from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._utils import PropertyInfo
 
-__all__ = ["AuthConfigCreateParams", "Toolkit", "AuthConfig", "AuthConfigUnionMember0", "AuthConfigUnionMember1"]
+__all__ = [
+    "AuthConfigCreateParams",
+    "Toolkit",
+    "AuthConfig",
+    "AuthConfigUnionMember0",
+    "AuthConfigUnionMember0ToolAccessConfig",
+    "AuthConfigUnionMember1",
+    "AuthConfigUnionMember1ProxyConfig",
+    "AuthConfigUnionMember1ToolAccessConfig",
+]
 
 
 class AuthConfigCreateParams(TypedDict, total=False):
@@ -18,7 +27,15 @@ class AuthConfigCreateParams(TypedDict, total=False):
 
 class Toolkit(TypedDict, total=False):
     slug: Required[str]
-    """List of toolkits unique keys to filter by"""
+    """Toolkit slug to create auth config for"""
+
+
+class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
+    tools_for_connected_account_creation: List[str]
+    """
+    Tools used to generate the minimum required scopes for the auth config (only
+    valid for OAuth). If passed, this will update the scopes.
+    """
 
 
 class AuthConfigUnionMember0(TypedDict, total=False):
@@ -29,8 +46,23 @@ class AuthConfigUnionMember0(TypedDict, total=False):
     name: str
     """The name of the integration"""
 
-    restrict_to_following_tools: List[str]
-    """The actions that the user can perform on the auth config"""
+    tool_access_config: AuthConfigUnionMember0ToolAccessConfig
+
+
+class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
+    proxy_url: Required[str]
+    """The url of the auth proxy"""
+
+    proxy_auth_key: str
+    """The auth key for the auth proxy"""
+
+
+class AuthConfigUnionMember1ToolAccessConfig(TypedDict, total=False):
+    tools_for_connected_account_creation: List[str]
+    """
+    Tools used to generate the minimum required scopes for the auth config (only
+    valid for OAuth). If passed, this will update the scopes.
+    """
 
 
 class AuthConfigUnionMember1(TypedDict, total=False):
@@ -60,8 +92,9 @@ class AuthConfigUnionMember1(TypedDict, total=False):
     name: str
     """The name of the integration"""
 
-    restrict_to_following_tools: List[str]
-    """The actions that the user can perform on the auth config"""
+    proxy_config: AuthConfigUnionMember1ProxyConfig
+
+    tool_access_config: AuthConfigUnionMember1ToolAccessConfig
 
 
 AuthConfig: TypeAlias = Union[AuthConfigUnionMember0, AuthConfigUnionMember1]

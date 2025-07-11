@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["AuthConfigRetrieveResponse", "DeprecatedParams", "Toolkit"]
+__all__ = ["AuthConfigRetrieveResponse", "DeprecatedParams", "ToolAccessConfig", "Toolkit"]
 
 
 class DeprecatedParams(BaseModel):
@@ -20,6 +20,21 @@ class DeprecatedParams(BaseModel):
 
     toolkit_id: Optional[str] = None
     """Deprecated: Toolkit ID"""
+
+
+class ToolAccessConfig(BaseModel):
+    tools_available_for_execution: Optional[List[str]] = None
+    """The actions that the user can perform on the auth config.
+
+    If passed, this will update the actions that the user can perform on the auth
+    config.
+    """
+
+    tools_for_connected_account_creation: Optional[List[str]] = None
+    """
+    Tools used to generate the minimum required scopes for the auth config (only
+    valid for OAuth). If passed, this will update the scopes.
+    """
 
 
 class Toolkit(BaseModel):
@@ -45,6 +60,8 @@ class AuthConfigRetrieveResponse(BaseModel):
 
     status: Literal["ENABLED", "DISABLED"]
     """Current status of the authentication configuration"""
+
+    tool_access_config: ToolAccessConfig
 
     toolkit: Toolkit
     """Information about the associated integration"""
@@ -92,6 +109,3 @@ class AuthConfigRetrieveResponse(BaseModel):
 
     last_updated_at: Optional[str] = None
     """ISO 8601 date-time when the auth config was last updated"""
-
-    restrict_to_following_tools: Optional[List[str]] = None
-    """List of tool IDs this auth config is restricted to use with"""

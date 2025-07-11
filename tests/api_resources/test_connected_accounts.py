@@ -146,7 +146,7 @@ class TestConnectedAccounts:
     def test_method_list_with_all_params(self, client: Composio) -> None:
         connected_account = client.connected_accounts.list(
             auth_config_ids=["string"],
-            cursor=0,
+            cursor="cursor",
             labels=["string"],
             limit=0,
             order_by="created_at",
@@ -219,14 +219,23 @@ class TestConnectedAccounts:
     @parametrize
     def test_method_refresh(self, client: Composio) -> None:
         connected_account = client.connected_accounts.refresh(
-            "nanoid",
+            nanoid="con_1a2b3c4d5e6f",
+        )
+        assert_matches_type(ConnectedAccountRefreshResponse, connected_account, path=["response"])
+
+    @parametrize
+    def test_method_refresh_with_all_params(self, client: Composio) -> None:
+        connected_account = client.connected_accounts.refresh(
+            nanoid="con_1a2b3c4d5e6f",
+            query_redirect_url="redirect_url",
+            body_redirect_url="redirect_url",
         )
         assert_matches_type(ConnectedAccountRefreshResponse, connected_account, path=["response"])
 
     @parametrize
     def test_raw_response_refresh(self, client: Composio) -> None:
         response = client.connected_accounts.with_raw_response.refresh(
-            "nanoid",
+            nanoid="con_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -237,7 +246,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_streaming_response_refresh(self, client: Composio) -> None:
         with client.connected_accounts.with_streaming_response.refresh(
-            "nanoid",
+            nanoid="con_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -251,7 +260,7 @@ class TestConnectedAccounts:
     def test_path_params_refresh(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             client.connected_accounts.with_raw_response.refresh(
-                "",
+                nanoid="",
             )
 
     @parametrize
@@ -298,7 +307,9 @@ class TestConnectedAccounts:
 
 
 class TestAsyncConnectedAccounts:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_create(self, async_client: AsyncComposio) -> None:
@@ -422,7 +433,7 @@ class TestAsyncConnectedAccounts:
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.list(
             auth_config_ids=["string"],
-            cursor=0,
+            cursor="cursor",
             labels=["string"],
             limit=0,
             order_by="created_at",
@@ -495,14 +506,23 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_method_refresh(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.refresh(
-            "nanoid",
+            nanoid="con_1a2b3c4d5e6f",
+        )
+        assert_matches_type(ConnectedAccountRefreshResponse, connected_account, path=["response"])
+
+    @parametrize
+    async def test_method_refresh_with_all_params(self, async_client: AsyncComposio) -> None:
+        connected_account = await async_client.connected_accounts.refresh(
+            nanoid="con_1a2b3c4d5e6f",
+            query_redirect_url="redirect_url",
+            body_redirect_url="redirect_url",
         )
         assert_matches_type(ConnectedAccountRefreshResponse, connected_account, path=["response"])
 
     @parametrize
     async def test_raw_response_refresh(self, async_client: AsyncComposio) -> None:
         response = await async_client.connected_accounts.with_raw_response.refresh(
-            "nanoid",
+            nanoid="con_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -513,7 +533,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_streaming_response_refresh(self, async_client: AsyncComposio) -> None:
         async with async_client.connected_accounts.with_streaming_response.refresh(
-            "nanoid",
+            nanoid="con_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -527,7 +547,7 @@ class TestAsyncConnectedAccounts:
     async def test_path_params_refresh(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             await async_client.connected_accounts.with_raw_response.refresh(
-                "",
+                nanoid="",
             )
 
     @parametrize

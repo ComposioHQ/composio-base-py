@@ -34,9 +34,10 @@ class TestTriggerInstances:
             query_auth_config_ids_2="authConfigIds",
             query_connected_account_ids_1=["string"],
             query_connected_account_ids_2="connectedAccountIds",
+            cursor="cursor",
             deprecated_auth_config_uuids=["string"],
             deprecated_connected_account_uuids=["string"],
-            limit=1,
+            limit=0,
             page=1,
             query_show_disabled_1=True,
             query_show_disabled_2="showDisabled",
@@ -119,7 +120,9 @@ class TestTriggerInstances:
 
 
 class TestAsyncTriggerInstances:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
@@ -135,9 +138,10 @@ class TestAsyncTriggerInstances:
             query_auth_config_ids_2="authConfigIds",
             query_connected_account_ids_1=["string"],
             query_connected_account_ids_2="connectedAccountIds",
+            cursor="cursor",
             deprecated_auth_config_uuids=["string"],
             deprecated_connected_account_uuids=["string"],
-            limit=1,
+            limit=0,
             page=1,
             query_show_disabled_1=True,
             query_show_disabled_2="showDisabled",

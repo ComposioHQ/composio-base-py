@@ -4,10 +4,10 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["CliRetrieveSessionParams"]
+__all__ = ["CliGetSessionParams"]
 
 
-class CliRetrieveSessionParams(TypedDict, total=False):
+class CliGetSessionParams(TypedDict, total=False):
     id: Required[str]
     """CLI session ID (UUID format) or 6-character code to check.
 

@@ -20,6 +20,7 @@ __all__ = [
     "ItemStateUnionMember0ValUnionMember2",
     "ItemStateUnionMember0ValUnionMember3",
     "ItemStateUnionMember0ValUnionMember4",
+    "ItemStateUnionMember0ValUnionMember5",
     "ItemStateUnionMember1",
     "ItemStateUnionMember1Val",
     "ItemStateUnionMember1ValUnionMember0",
@@ -27,7 +28,9 @@ __all__ = [
     "ItemStateUnionMember1ValUnionMember2",
     "ItemStateUnionMember1ValUnionMember2AuthedUser",
     "ItemStateUnionMember1ValUnionMember3",
+    "ItemStateUnionMember1ValUnionMember3AuthedUser",
     "ItemStateUnionMember1ValUnionMember4",
+    "ItemStateUnionMember1ValUnionMember5",
     "ItemStateUnionMember2",
     "ItemStateUnionMember2Val",
     "ItemStateUnionMember2ValUnionMember0",
@@ -35,24 +38,35 @@ __all__ = [
     "ItemStateUnionMember2ValUnionMember2",
     "ItemStateUnionMember2ValUnionMember3",
     "ItemStateUnionMember2ValUnionMember4",
+    "ItemStateUnionMember2ValUnionMember5",
     "ItemStateUnionMember3",
     "ItemStateUnionMember3Val",
+    "ItemStateUnionMember3ValUnionMember0",
+    "ItemStateUnionMember3ValUnionMember1",
     "ItemStateUnionMember4",
     "ItemStateUnionMember4Val",
+    "ItemStateUnionMember4ValUnionMember0",
+    "ItemStateUnionMember4ValUnionMember1",
     "ItemStateUnionMember5",
     "ItemStateUnionMember5Val",
+    "ItemStateUnionMember5ValUnionMember0",
+    "ItemStateUnionMember5ValUnionMember1",
     "ItemStateUnionMember6",
     "ItemStateUnionMember6Val",
+    "ItemStateUnionMember6ValUnionMember0",
+    "ItemStateUnionMember6ValUnionMember1",
     "ItemStateUnionMember7",
     "ItemStateUnionMember7Val",
     "ItemStateUnionMember7ValUnionMember0",
     "ItemStateUnionMember7ValUnionMember1",
     "ItemStateUnionMember7ValUnionMember2",
+    "ItemStateUnionMember7ValUnionMember3",
     "ItemStateUnionMember8",
     "ItemStateUnionMember8Val",
     "ItemStateUnionMember8ValUnionMember0",
     "ItemStateUnionMember8ValUnionMember1",
     "ItemStateUnionMember8ValUnionMember2",
+    "ItemStateUnionMember8ValUnionMember3",
     "ItemStateUnionMember9",
     "ItemStateUnionMember9Val",
     "ItemStateUnionMember9ValUnionMember0",
@@ -60,11 +74,13 @@ __all__ = [
     "ItemStateUnionMember9ValUnionMember2",
     "ItemStateUnionMember9ValUnionMember3",
     "ItemStateUnionMember9ValUnionMember4",
+    "ItemStateUnionMember9ValUnionMember5",
     "ItemStateUnionMember10",
     "ItemStateUnionMember10Val",
     "ItemStateUnionMember10ValUnionMember0",
     "ItemStateUnionMember10ValUnionMember1",
     "ItemStateUnionMember10ValUnionMember2",
+    "ItemStateUnionMember10ValUnionMember3",
     "ItemToolkit",
     "ItemDeprecated",
 ]
@@ -209,6 +225,8 @@ class ItemStateUnionMember0ValUnionMember1(BaseModel):
 class ItemStateUnionMember0ValUnionMember2(BaseModel):
     oauth_token: str
 
+    oauth_token_secret: str
+
     status: Literal["ACTIVE"]
 
     account_id: Optional[str] = None
@@ -238,6 +256,8 @@ class ItemStateUnionMember0ValUnionMember2(BaseModel):
     instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    oauth_verifier: Optional[str] = None
 
     proxy_password: Optional[str] = None
 
@@ -382,12 +402,79 @@ class ItemStateUnionMember0ValUnionMember4(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
+class ItemStateUnionMember0ValUnionMember5(BaseModel):
+    oauth_token: str
+
+    oauth_token_secret: str
+
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    callback_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    consumer_key: Optional[str] = None
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    oauth_verifier: Optional[str] = None
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    redirect_url: Optional[str] = FieldInfo(alias="redirectUrl", default=None)
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
 ItemStateUnionMember0Val: TypeAlias = Union[
     ItemStateUnionMember0ValUnionMember0,
     ItemStateUnionMember0ValUnionMember1,
     ItemStateUnionMember0ValUnionMember2,
     ItemStateUnionMember0ValUnionMember3,
     ItemStateUnionMember0ValUnionMember4,
+    ItemStateUnionMember0ValUnionMember5,
 ]
 
 
@@ -424,6 +511,9 @@ class ItemStateUnionMember1ValUnionMember0(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -435,6 +525,9 @@ class ItemStateUnionMember1ValUnionMember0(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 
@@ -486,6 +579,9 @@ class ItemStateUnionMember1ValUnionMember1(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -497,6 +593,9 @@ class ItemStateUnionMember1ValUnionMember1(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 
@@ -526,8 +625,6 @@ class ItemStateUnionMember1ValUnionMember2(BaseModel):
 
     status: Literal["ACTIVE"]
 
-    token_type: str
-
     account_id: Optional[str] = None
 
     account_url: Optional[str] = None
@@ -547,7 +644,7 @@ class ItemStateUnionMember1ValUnionMember2(BaseModel):
 
     domain: Optional[str] = None
 
-    expires_in: Optional[float] = None
+    expires_in: Union[float, str, None] = None
 
     extension: Optional[str] = None
 
@@ -559,6 +656,9 @@ class ItemStateUnionMember1ValUnionMember2(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -567,7 +667,7 @@ class ItemStateUnionMember1ValUnionMember2(BaseModel):
 
     region: Optional[str] = None
 
-    scope: Optional[str] = None
+    scope: Union[str, List[str], None] = None
 
     server_location: Optional[str] = None
 
@@ -575,7 +675,12 @@ class ItemStateUnionMember1ValUnionMember2(BaseModel):
 
     site_name: Optional[str] = None
 
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
+
     subdomain: Optional[str] = None
+
+    token_type: Optional[str] = None
 
     version: Optional[str] = None
 
@@ -592,7 +697,90 @@ class ItemStateUnionMember1ValUnionMember2(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
+class ItemStateUnionMember1ValUnionMember3AuthedUser(BaseModel):
+    access_token: Optional[str] = None
+
+    scope: Optional[str] = None
+
+
 class ItemStateUnionMember1ValUnionMember3(BaseModel):
+    access_token: str
+
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    authed_user: Optional[ItemStateUnionMember1ValUnionMember3AuthedUser] = None
+    """for slack user scopes"""
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    expires_in: Union[float, str, None] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    id_token: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    refresh_token: Optional[str] = None
+
+    region: Optional[str] = None
+
+    scope: Union[str, List[str], None] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: Optional[str] = None
+
+    token_type: Optional[str] = None
+
+    version: Optional[str] = None
+
+    webhook_signature: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ItemStateUnionMember1ValUnionMember4(BaseModel):
     status: Literal["FAILED"]
 
     account_id: Optional[str] = None
@@ -623,6 +811,9 @@ class ItemStateUnionMember1ValUnionMember3(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -634,6 +825,9 @@ class ItemStateUnionMember1ValUnionMember3(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 
@@ -650,7 +844,7 @@ class ItemStateUnionMember1ValUnionMember3(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
-class ItemStateUnionMember1ValUnionMember4(BaseModel):
+class ItemStateUnionMember1ValUnionMember5(BaseModel):
     status: Literal["EXPIRED"]
 
     account_id: Optional[str] = None
@@ -679,6 +873,9 @@ class ItemStateUnionMember1ValUnionMember4(BaseModel):
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
 
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: Optional[str] = None
 
     proxy_username: Optional[str] = None
@@ -690,6 +887,9 @@ class ItemStateUnionMember1ValUnionMember4(BaseModel):
     shop: Optional[str] = None
 
     site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
 
     subdomain: Optional[str] = None
 
@@ -712,6 +912,7 @@ ItemStateUnionMember1Val: TypeAlias = Union[
     ItemStateUnionMember1ValUnionMember2,
     ItemStateUnionMember1ValUnionMember3,
     ItemStateUnionMember1ValUnionMember4,
+    ItemStateUnionMember1ValUnionMember5,
 ]
 
 
@@ -886,6 +1087,60 @@ class ItemStateUnionMember2ValUnionMember2(BaseModel):
 
 
 class ItemStateUnionMember2ValUnionMember3(BaseModel):
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ItemStateUnionMember2ValUnionMember4(BaseModel):
     status: Literal["FAILED"]
 
     account_id: Optional[str] = None
@@ -943,7 +1198,7 @@ class ItemStateUnionMember2ValUnionMember3(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
-class ItemStateUnionMember2ValUnionMember4(BaseModel):
+class ItemStateUnionMember2ValUnionMember5(BaseModel):
     status: Literal["EXPIRED"]
 
     account_id: Optional[str] = None
@@ -1005,6 +1260,7 @@ ItemStateUnionMember2Val: TypeAlias = Union[
     ItemStateUnionMember2ValUnionMember2,
     ItemStateUnionMember2ValUnionMember3,
     ItemStateUnionMember2ValUnionMember4,
+    ItemStateUnionMember2ValUnionMember5,
 ]
 
 
@@ -1014,18 +1270,22 @@ class ItemStateUnionMember2(BaseModel):
     val: ItemStateUnionMember2Val
 
 
-class ItemStateUnionMember3Val(BaseModel):
-    api_key: str
-
+class ItemStateUnionMember3ValUnionMember0(BaseModel):
     status: Literal["ACTIVE"]
 
     account_id: Optional[str] = None
 
     account_url: Optional[str] = None
 
+    api_key: Optional[str] = None
+
     api_url: Optional[str] = None
 
     base_url: Optional[str] = None
+
+    basic_encoded: Optional[str] = None
+
+    bearer_token: Optional[str] = None
 
     borneo_dashboard_url: Optional[str] = None
 
@@ -1038,6 +1298,8 @@ class ItemStateUnionMember3Val(BaseModel):
     extension: Optional[str] = None
 
     form_api_base_url: Optional[str] = None
+
+    generic_api_key: Optional[str] = None
 
     instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
 
@@ -1070,13 +1332,78 @@ class ItemStateUnionMember3Val(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
+class ItemStateUnionMember3ValUnionMember1(BaseModel):
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_key: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    basic_encoded: Optional[str] = None
+
+    bearer_token: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    generic_api_key: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+ItemStateUnionMember3Val: TypeAlias = Union[ItemStateUnionMember3ValUnionMember0, ItemStateUnionMember3ValUnionMember1]
+
+
 class ItemStateUnionMember3(BaseModel):
     auth_scheme: Literal["API_KEY"] = FieldInfo(alias="authScheme")
 
     val: ItemStateUnionMember3Val
 
 
-class ItemStateUnionMember4Val(BaseModel):
+class ItemStateUnionMember4ValUnionMember0(BaseModel):
     password: str
 
     status: Literal["ACTIVE"]
@@ -1134,13 +1461,74 @@ class ItemStateUnionMember4Val(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
+class ItemStateUnionMember4ValUnionMember1(BaseModel):
+    password: str
+
+    status: Literal["INACTIVE"]
+
+    username: str
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+ItemStateUnionMember4Val: TypeAlias = Union[ItemStateUnionMember4ValUnionMember0, ItemStateUnionMember4ValUnionMember1]
+
+
 class ItemStateUnionMember4(BaseModel):
     auth_scheme: Literal["BASIC"] = FieldInfo(alias="authScheme")
 
     val: ItemStateUnionMember4Val
 
 
-class ItemStateUnionMember5Val(BaseModel):
+class ItemStateUnionMember5ValUnionMember0(BaseModel):
     token: str
 
     status: Literal["ACTIVE"]
@@ -1196,13 +1584,72 @@ class ItemStateUnionMember5Val(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
+class ItemStateUnionMember5ValUnionMember1(BaseModel):
+    token: str
+
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+ItemStateUnionMember5Val: TypeAlias = Union[ItemStateUnionMember5ValUnionMember0, ItemStateUnionMember5ValUnionMember1]
+
+
 class ItemStateUnionMember5(BaseModel):
     auth_scheme: Literal["BEARER_TOKEN"] = FieldInfo(alias="authScheme")
 
     val: ItemStateUnionMember5Val
 
 
-class ItemStateUnionMember6Val(BaseModel):
+class ItemStateUnionMember6ValUnionMember0(BaseModel):
     credentials_json: str
 
     status: Literal["ACTIVE"]
@@ -1256,6 +1703,65 @@ class ItemStateUnionMember6Val(BaseModel):
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
         # `getattr(obj, '$type')`
         def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ItemStateUnionMember6ValUnionMember1(BaseModel):
+    credentials_json: str
+
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+ItemStateUnionMember6Val: TypeAlias = Union[ItemStateUnionMember6ValUnionMember0, ItemStateUnionMember6ValUnionMember1]
 
 
 class ItemStateUnionMember6(BaseModel):
@@ -1319,6 +1825,60 @@ class ItemStateUnionMember7ValUnionMember0(BaseModel):
 
 
 class ItemStateUnionMember7ValUnionMember1(BaseModel):
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ItemStateUnionMember7ValUnionMember2(BaseModel):
     status: Literal["FAILED"]
 
     account_id: Optional[str] = None
@@ -1376,7 +1936,7 @@ class ItemStateUnionMember7ValUnionMember1(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
-class ItemStateUnionMember7ValUnionMember2(BaseModel):
+class ItemStateUnionMember7ValUnionMember3(BaseModel):
     status: Literal["EXPIRED"]
 
     account_id: Optional[str] = None
@@ -1433,7 +1993,10 @@ class ItemStateUnionMember7ValUnionMember2(BaseModel):
 
 
 ItemStateUnionMember7Val: TypeAlias = Union[
-    ItemStateUnionMember7ValUnionMember0, ItemStateUnionMember7ValUnionMember1, ItemStateUnionMember7ValUnionMember2
+    ItemStateUnionMember7ValUnionMember0,
+    ItemStateUnionMember7ValUnionMember1,
+    ItemStateUnionMember7ValUnionMember2,
+    ItemStateUnionMember7ValUnionMember3,
 ]
 
 
@@ -1498,6 +2061,60 @@ class ItemStateUnionMember8ValUnionMember0(BaseModel):
 
 
 class ItemStateUnionMember8ValUnionMember1(BaseModel):
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ItemStateUnionMember8ValUnionMember2(BaseModel):
     status: Literal["FAILED"]
 
     account_id: Optional[str] = None
@@ -1555,7 +2172,7 @@ class ItemStateUnionMember8ValUnionMember1(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
-class ItemStateUnionMember8ValUnionMember2(BaseModel):
+class ItemStateUnionMember8ValUnionMember3(BaseModel):
     status: Literal["EXPIRED"]
 
     account_id: Optional[str] = None
@@ -1612,7 +2229,10 @@ class ItemStateUnionMember8ValUnionMember2(BaseModel):
 
 
 ItemStateUnionMember8Val: TypeAlias = Union[
-    ItemStateUnionMember8ValUnionMember0, ItemStateUnionMember8ValUnionMember1, ItemStateUnionMember8ValUnionMember2
+    ItemStateUnionMember8ValUnionMember0,
+    ItemStateUnionMember8ValUnionMember1,
+    ItemStateUnionMember8ValUnionMember2,
+    ItemStateUnionMember8ValUnionMember3,
 ]
 
 
@@ -1791,6 +2411,64 @@ class ItemStateUnionMember9ValUnionMember2(BaseModel):
 
 
 class ItemStateUnionMember9ValUnionMember3(BaseModel):
+    dev_key: str = FieldInfo(alias="devKey")
+
+    session_id: str = FieldInfo(alias="sessionId")
+
+    status: Literal["INACTIVE"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ItemStateUnionMember9ValUnionMember4(BaseModel):
     status: Literal["FAILED"]
 
     account_id: Optional[str] = None
@@ -1848,7 +2526,7 @@ class ItemStateUnionMember9ValUnionMember3(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
-class ItemStateUnionMember9ValUnionMember4(BaseModel):
+class ItemStateUnionMember9ValUnionMember5(BaseModel):
     status: Literal["EXPIRED"]
 
     account_id: Optional[str] = None
@@ -1910,6 +2588,7 @@ ItemStateUnionMember9Val: TypeAlias = Union[
     ItemStateUnionMember9ValUnionMember2,
     ItemStateUnionMember9ValUnionMember3,
     ItemStateUnionMember9ValUnionMember4,
+    ItemStateUnionMember9ValUnionMember5,
 ]
 
 
@@ -1980,6 +2659,64 @@ class ItemStateUnionMember10ValUnionMember0(BaseModel):
 class ItemStateUnionMember10ValUnionMember1(BaseModel):
     password: str
 
+    status: Literal["INACTIVE"]
+
+    username: str
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+
+
+class ItemStateUnionMember10ValUnionMember2(BaseModel):
+    password: str
+
     status: Literal["FAILED"]
 
     username: str
@@ -2039,7 +2776,7 @@ class ItemStateUnionMember10ValUnionMember1(BaseModel):
         def __getattr__(self, attr: str) -> Optional[object]: ...
 
 
-class ItemStateUnionMember10ValUnionMember2(BaseModel):
+class ItemStateUnionMember10ValUnionMember3(BaseModel):
     password: str
 
     status: Literal["EXPIRED"]
@@ -2100,7 +2837,10 @@ class ItemStateUnionMember10ValUnionMember2(BaseModel):
 
 
 ItemStateUnionMember10Val: TypeAlias = Union[
-    ItemStateUnionMember10ValUnionMember0, ItemStateUnionMember10ValUnionMember1, ItemStateUnionMember10ValUnionMember2
+    ItemStateUnionMember10ValUnionMember0,
+    ItemStateUnionMember10ValUnionMember1,
+    ItemStateUnionMember10ValUnionMember2,
+    ItemStateUnionMember10ValUnionMember3,
 ]
 
 
@@ -2171,8 +2911,12 @@ class Item(BaseModel):
 
 
 class ConnectedAccountListResponse(BaseModel):
+    current_page: float
+
     items: List[Item]
 
-    next_cursor: Optional[str] = None
+    total_items: float
 
     total_pages: float
+
+    next_cursor: Optional[str] = None

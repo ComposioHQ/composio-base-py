@@ -13,7 +13,6 @@ from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
     Omit,
-    Headers,
     Timeout,
     NotGiven,
     Transport,
@@ -22,7 +21,17 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import files, tools, toolkits, migration, auth_configs, team_members, triggers_types, connected_accounts
+from .resources import (
+    cli,
+    files,
+    tools,
+    toolkits,
+    migration,
+    auth_configs,
+    team_members,
+    triggers_types,
+    connected_accounts,
+)
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -30,7 +39,6 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.v3 import v3
 from .resources.mcp import mcp
 from .resources.org import org
 from .resources.trigger_instances import trigger_instances
@@ -66,7 +74,7 @@ class Composio(SyncAPIClient):
     mcp: mcp.McpResource
     files: files.FilesResource
     migration: migration.MigrationResource
-    v3: v3.V3Resource
+    cli: cli.CliResource
     with_raw_response: ComposioWithRawResponse
     with_streaming_response: ComposioWithStreamedResponse
 
@@ -155,7 +163,7 @@ class Composio(SyncAPIClient):
         self.mcp = mcp.McpResource(self)
         self.files = files.FilesResource(self)
         self.migration = migration.MigrationResource(self)
-        self.v3 = v3.V3Resource(self)
+        self.cli = cli.CliResource(self)
         self.with_raw_response = ComposioWithRawResponse(self)
         self.with_streaming_response = ComposioWithStreamedResponse(self)
 
@@ -180,17 +188,6 @@ class Composio(SyncAPIClient):
             "X-Stainless-Async": "false",
             **self._custom_headers,
         }
-
-    @override
-    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
-        if self.api_key and headers.get("x-api-key"):
-            return
-        if isinstance(custom_headers.get("x-api-key"), Omit):
-            return
-
-        raise TypeError(
-            '"Could not resolve authentication method. Expected the api_key to be set. Or for the `x-api-key` headers to be explicitly omitted"'
-        )
 
     def copy(
         self,
@@ -291,7 +288,7 @@ class AsyncComposio(AsyncAPIClient):
     mcp: mcp.AsyncMcpResource
     files: files.AsyncFilesResource
     migration: migration.AsyncMigrationResource
-    v3: v3.AsyncV3Resource
+    cli: cli.AsyncCliResource
     with_raw_response: AsyncComposioWithRawResponse
     with_streaming_response: AsyncComposioWithStreamedResponse
 
@@ -380,7 +377,7 @@ class AsyncComposio(AsyncAPIClient):
         self.mcp = mcp.AsyncMcpResource(self)
         self.files = files.AsyncFilesResource(self)
         self.migration = migration.AsyncMigrationResource(self)
-        self.v3 = v3.AsyncV3Resource(self)
+        self.cli = cli.AsyncCliResource(self)
         self.with_raw_response = AsyncComposioWithRawResponse(self)
         self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
 
@@ -405,17 +402,6 @@ class AsyncComposio(AsyncAPIClient):
             "X-Stainless-Async": f"async:{get_async_library()}",
             **self._custom_headers,
         }
-
-    @override
-    def _validate_headers(self, headers: Headers, custom_headers: Headers) -> None:
-        if self.api_key and headers.get("x-api-key"):
-            return
-        if isinstance(custom_headers.get("x-api-key"), Omit):
-            return
-
-        raise TypeError(
-            '"Could not resolve authentication method. Expected the api_key to be set. Or for the `x-api-key` headers to be explicitly omitted"'
-        )
 
     def copy(
         self,
@@ -517,7 +503,7 @@ class ComposioWithRawResponse:
         self.mcp = mcp.McpResourceWithRawResponse(client.mcp)
         self.files = files.FilesResourceWithRawResponse(client.files)
         self.migration = migration.MigrationResourceWithRawResponse(client.migration)
-        self.v3 = v3.V3ResourceWithRawResponse(client.v3)
+        self.cli = cli.CliResourceWithRawResponse(client.cli)
 
 
 class AsyncComposioWithRawResponse:
@@ -537,7 +523,7 @@ class AsyncComposioWithRawResponse:
         self.mcp = mcp.AsyncMcpResourceWithRawResponse(client.mcp)
         self.files = files.AsyncFilesResourceWithRawResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithRawResponse(client.migration)
-        self.v3 = v3.AsyncV3ResourceWithRawResponse(client.v3)
+        self.cli = cli.AsyncCliResourceWithRawResponse(client.cli)
 
 
 class ComposioWithStreamedResponse:
@@ -557,7 +543,7 @@ class ComposioWithStreamedResponse:
         self.mcp = mcp.McpResourceWithStreamingResponse(client.mcp)
         self.files = files.FilesResourceWithStreamingResponse(client.files)
         self.migration = migration.MigrationResourceWithStreamingResponse(client.migration)
-        self.v3 = v3.V3ResourceWithStreamingResponse(client.v3)
+        self.cli = cli.CliResourceWithStreamingResponse(client.cli)
 
 
 class AsyncComposioWithStreamedResponse:
@@ -577,7 +563,7 @@ class AsyncComposioWithStreamedResponse:
         self.mcp = mcp.AsyncMcpResourceWithStreamingResponse(client.mcp)
         self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithStreamingResponse(client.migration)
-        self.v3 = v3.AsyncV3ResourceWithStreamingResponse(client.v3)
+        self.cli = cli.AsyncCliResourceWithStreamingResponse(client.cli)
 
 
 Client = Composio

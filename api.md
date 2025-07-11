@@ -40,7 +40,7 @@ Methods:
 - <code title="get /api/v3/connected_accounts/{nanoid}">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">retrieve</a>(nanoid) -> <a href="./src/composio_client/types/connected_account_retrieve_response.py">ConnectedAccountRetrieveResponse</a></code>
 - <code title="get /api/v3/connected_accounts">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">list</a>(\*\*<a href="src/composio_client/types/connected_account_list_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_list_response.py">ConnectedAccountListResponse</a></code>
 - <code title="delete /api/v3/connected_accounts/{nanoid}">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">delete</a>(nanoid) -> <a href="./src/composio_client/types/connected_account_delete_response.py">ConnectedAccountDeleteResponse</a></code>
-- <code title="post /api/v3/connected_accounts/{nanoid}/refresh">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">refresh</a>(nanoid) -> <a href="./src/composio_client/types/connected_account_refresh_response.py">ConnectedAccountRefreshResponse</a></code>
+- <code title="post /api/v3/connected_accounts/{nanoid}/refresh">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">refresh</a>(nanoid, \*\*<a href="src/composio_client/types/connected_account_refresh_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_refresh_response.py">ConnectedAccountRefreshResponse</a></code>
 - <code title="patch /api/v3/connected_accounts/{nanoId}/status">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">update_status</a>(nano_id, \*\*<a href="src/composio_client/types/connected_account_update_status_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_update_status_response.py">ConnectedAccountUpdateStatusResponse</a></code>
 
 # Org
@@ -325,66 +325,20 @@ Methods:
 
 - <code title="get /api/v3/migration/get-nanoid">client.migration.<a href="./src/composio_client/resources/migration.py">retrieve_nanoid</a>(\*\*<a href="src/composio_client/types/migration_retrieve_nanoid_params.py">params</a>) -> <a href="./src/composio_client/types/migration_retrieve_nanoid_response.py">MigrationRetrieveNanoidResponse</a></code>
 
-# V3
-
-## Auth
-
-### Session
+# Cli
 
 Types:
 
 ```python
-from composio_client.types.v3.auth import SessionRetrieveInfoResponse
-```
-
-Methods:
-
-- <code title="get /api/v3/auth/session/info">client.v3.auth.session.<a href="./src/composio_client/resources/v3/auth/session.py">retrieve_info</a>() -> <a href="./src/composio_client/types/v3/auth/session_retrieve_info_response.py">SessionRetrieveInfoResponse</a></code>
-
-## Cli
-
-Types:
-
-```python
-from composio_client.types.v3 import (
+from composio_client.types import (
     CliCreateSessionResponse,
+    CliGetSessionResponse,
     CliLinkSessionResponse,
-    CliRetrieveSessionResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /api/v3/cli/create-session">client.v3.cli.<a href="./src/composio_client/resources/v3/cli.py">create_session</a>() -> <a href="./src/composio_client/types/v3/cli_create_session_response.py">CliCreateSessionResponse</a></code>
-- <code title="put /api/v3/cli/link-session">client.v3.cli.<a href="./src/composio_client/resources/v3/cli.py">link_session</a>(\*\*<a href="src/composio_client/types/v3/cli_link_session_params.py">params</a>) -> <a href="./src/composio_client/types/v3/cli_link_session_response.py">CliLinkSessionResponse</a></code>
-- <code title="get /api/v3/cli/get-session">client.v3.cli.<a href="./src/composio_client/resources/v3/cli.py">retrieve_session</a>(\*\*<a href="src/composio_client/types/v3/cli_retrieve_session_params.py">params</a>) -> <a href="./src/composio_client/types/v3/cli_retrieve_session_response.py">CliRetrieveSessionResponse</a></code>
-
-## Internal
-
-### Trigger
-
-Types:
-
-```python
-from composio_client.types.v3.internal import TriggerSearchLogsResponse
-```
-
-Methods:
-
-- <code title="post /api/v3/internal/trigger/logs">client.v3.internal.trigger.<a href="./src/composio_client/resources/v3/internal/trigger.py">search_logs</a>(\*\*<a href="src/composio_client/types/v3/internal/trigger_search_logs_params.py">params</a>) -> <a href="./src/composio_client/types/v3/internal/trigger_search_logs_response.py">TriggerSearchLogsResponse</a></code>
-
-### ActionExecution
-
-Types:
-
-```python
-from composio_client.types.v3.internal import (
-    ActionExecutionRetrieveLogResponse,
-    ActionExecutionSearchLogsResponse,
-)
-```
-
-Methods:
-
-- <code title="get /api/v3/internal/action_execution/log/{id}">client.v3.internal.action_execution.<a href="./src/composio_client/resources/v3/internal/action_execution.py">retrieve_log</a>(id) -> <a href="./src/composio_client/types/v3/internal/action_execution_retrieve_log_response.py">ActionExecutionRetrieveLogResponse</a></code>
-- <code title="post /api/v3/internal/action_execution/logs">client.v3.internal.action_execution.<a href="./src/composio_client/resources/v3/internal/action_execution.py">search_logs</a>(\*\*<a href="src/composio_client/types/v3/internal/action_execution_search_logs_params.py">params</a>) -> <a href="./src/composio_client/types/v3/internal/action_execution_search_logs_response.py">ActionExecutionSearchLogsResponse</a></code>
+- <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli.py">create_session</a>() -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
+- <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/composio_client/resources/cli.py">get_session</a>(\*\*<a href="src/composio_client/types/cli_get_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_get_session_response.py">CliGetSessionResponse</a></code>
+- <code title="put /api/v3/cli/link-session">client.cli.<a href="./src/composio_client/resources/cli.py">link_session</a>(\*\*<a href="src/composio_client/types/cli_link_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_link_session_response.py">CliLinkSessionResponse</a></code>

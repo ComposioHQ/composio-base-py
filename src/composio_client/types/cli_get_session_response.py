@@ -5,9 +5,9 @@ from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
-from ..._models import BaseModel
+from .._models import BaseModel
 
-__all__ = ["CliRetrieveSessionResponse", "Account"]
+__all__ = ["CliGetSessionResponse", "Account"]
 
 
 class Account(BaseModel):
@@ -21,7 +21,7 @@ class Account(BaseModel):
     """The display name of the linked account"""
 
 
-class CliRetrieveSessionResponse(BaseModel):
+class CliGetSessionResponse(BaseModel):
     id: str
     """The unique identifier for the CLI session"""
 

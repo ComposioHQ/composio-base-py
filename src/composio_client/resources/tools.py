@@ -86,9 +86,10 @@ class ToolsResource(SyncAPIResource):
     def list(
         self,
         *,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
-        limit: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -107,11 +108,16 @@ class ToolsResource(SyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
-          cursor: Pagination cursor for fetching next page of results (base64 encoded)
+          auth_config_ids: Filter tools by auth config id
+
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
           important: Filter to only show important/featured tools (set to "true" to enable)
 
-          limit: Maximum number of tools to return per page (defaults to 20, max 100)
+          limit: Number of items per page
 
           scopes: Array of scopes to filter tools by)
 
@@ -141,6 +147,7 @@ class ToolsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
                         "important": important,
                         "limit": limit,
@@ -291,7 +298,7 @@ class ToolsResource(SyncAPIResource):
         self,
         *,
         endpoint: str,
-        method: Literal["GET", "POST", "PUT", "DELETE", "PATCH"],
+        method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
         body: object | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
         parameters: Iterable[tool_proxy_params.Parameter] | NotGiven = NOT_GIVEN,
@@ -428,9 +435,10 @@ class AsyncToolsResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
-        limit: str | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
         tags: List[str] | NotGiven = NOT_GIVEN,
@@ -449,11 +457,16 @@ class AsyncToolsResource(AsyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
-          cursor: Pagination cursor for fetching next page of results (base64 encoded)
+          auth_config_ids: Filter tools by auth config id
+
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
           important: Filter to only show important/featured tools (set to "true" to enable)
 
-          limit: Maximum number of tools to return per page (defaults to 20, max 100)
+          limit: Number of items per page
 
           scopes: Array of scopes to filter tools by)
 
@@ -483,6 +496,7 @@ class AsyncToolsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
                         "important": important,
                         "limit": limit,
@@ -633,7 +647,7 @@ class AsyncToolsResource(AsyncAPIResource):
         self,
         *,
         endpoint: str,
-        method: Literal["GET", "POST", "PUT", "DELETE", "PATCH"],
+        method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
         body: object | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
         parameters: Iterable[tool_proxy_params.Parameter] | NotGiven = NOT_GIVEN,

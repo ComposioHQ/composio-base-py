@@ -1,5 +1,47 @@
 # Changelog
 
+## 1.5.0 (2025-07-10)
+
+Full Changelog: [v1.4.0...v1.5.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.4.0...v1.5.0)
+
+### Features
+
+* **api:** api update ([248781a](https://github.com/ComposioHQ/composio-base-py/commit/248781a2c3fb5d2bf53be39a1afe799b89925be0))
+* **api:** api update ([7ad3578](https://github.com/ComposioHQ/composio-base-py/commit/7ad3578cf61c5d99b8dd890e0a64aa9f769df0a5))
+* **api:** api update ([a2fb831](https://github.com/ComposioHQ/composio-base-py/commit/a2fb831670d2bd347f75b1073a51b3e52867b4b2))
+* **api:** api update ([596dfc6](https://github.com/ComposioHQ/composio-base-py/commit/596dfc6a947104b1bb1e4d55637dde32cc5a4264))
+* **api:** api update ([f113c11](https://github.com/ComposioHQ/composio-base-py/commit/f113c11db158466b91ef5f15ffdc7d191dfaa862))
+* **api:** api update ([23dff66](https://github.com/ComposioHQ/composio-base-py/commit/23dff668da7bcf86c063c954a6148c4232b2ec84))
+* **api:** api update ([b5ebfa2](https://github.com/ComposioHQ/composio-base-py/commit/b5ebfa2575f82567396865861c6cb7b8ddc58859))
+* **api:** api update ([28af562](https://github.com/ComposioHQ/composio-base-py/commit/28af56263fdd93df18a7a9213235b368f8511849))
+* **api:** api update ([364615c](https://github.com/ComposioHQ/composio-base-py/commit/364615c061464c78e48b5bb2425dbfb42ecec232))
+* **api:** api update ([3629e43](https://github.com/ComposioHQ/composio-base-py/commit/3629e432f4ba96474f65944694fc1384edb20235))
+* **api:** api update ([d5f770c](https://github.com/ComposioHQ/composio-base-py/commit/d5f770c37b4588a1bf21edb172fa910d80a1a779))
+* **api:** api update ([d3fec8d](https://github.com/ComposioHQ/composio-base-py/commit/d3fec8d866b51e5e509bc460826c5e7d3735564c))
+* **api:** api update ([5757104](https://github.com/ComposioHQ/composio-base-py/commit/57571046d447fef67c486ed9ba102b039930558f))
+* **api:** api update ([96c8be9](https://github.com/ComposioHQ/composio-base-py/commit/96c8be92b6e2ce3cc4944a74b11d49ceb519c9d6))
+* **api:** manual updates ([100199b](https://github.com/ComposioHQ/composio-base-py/commit/100199b44b81f46900dc7a2e6c27179375ec79a4))
+* **api:** manual updates ([5f749b3](https://github.com/ComposioHQ/composio-base-py/commit/5f749b33db6828479bec5d1fd089efc7a5eb974f))
+* **client:** add support for aiohttp ([1808de3](https://github.com/ComposioHQ/composio-base-py/commit/1808de3ac0262c4fd19e147bba7f7bb090a8dc6c))
+
+
+### Bug Fixes
+
+* **ci:** correct conditional ([0051991](https://github.com/ComposioHQ/composio-base-py/commit/00519912ad0484c274b49fb95d60d542853e37f2))
+* **ci:** release-doctor — report correct token name ([22fd008](https://github.com/ComposioHQ/composio-base-py/commit/22fd008fd52f275999f73b7e7858a0a337c7b2f6))
+* **parsing:** correctly handle nested discriminated unions ([2c7f2b7](https://github.com/ComposioHQ/composio-base-py/commit/2c7f2b72bae0f259707766ad0b216fbad17ce0e8))
+
+
+### Chores
+
+* **ci:** change upload type ([99f51b8](https://github.com/ComposioHQ/composio-base-py/commit/99f51b81bbd5eb2890930497868d7f93be032408))
+* **ci:** only run for pushes and fork pull requests ([851076c](https://github.com/ComposioHQ/composio-base-py/commit/851076c4b8bde30fb4fff27bb1ae8f4df948b00f))
+* **internal:** bump pinned h11 dep ([5aa8b21](https://github.com/ComposioHQ/composio-base-py/commit/5aa8b2158796c0a623330a349857207c70406619))
+* **package:** mark python 3.13 as supported ([8b04cc6](https://github.com/ComposioHQ/composio-base-py/commit/8b04cc694efa7cd75d283dfad2b2c74e1ae04ca3))
+* **readme:** fix version rendering on pypi ([b6acc62](https://github.com/ComposioHQ/composio-base-py/commit/b6acc622c8fbf0c6a6f7944f21622947cf7b6217))
+* remove custom code ([da22ae7](https://github.com/ComposioHQ/composio-base-py/commit/da22ae7a92297b25f4d8baad72b254fc0a692453))
+* **tests:** skip some failing tests on the latest python versions ([3c7cc8c](https://github.com/ComposioHQ/composio-base-py/commit/3c7cc8cbbf00c0ff6ff597204810ce2d82a4e110))
+
 ## 1.4.0 (2025-06-20)
 
 Full Changelog: [v1.3.0...v1.4.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.3.0...v1.4.0)

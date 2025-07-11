@@ -4,21 +4,21 @@ from __future__ import annotations
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
-from ..._utils import maybe_transform, async_maybe_transform
-from ..._compat import cached_property
-from ...types.v3 import cli_link_session_params, cli_retrieve_session_params
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from ..types import cli_get_session_params, cli_link_session_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._utils import maybe_transform, async_maybe_transform
+from .._compat import cached_property
+from .._resource import SyncAPIResource, AsyncAPIResource
+from .._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.v3.cli_link_session_response import CliLinkSessionResponse
-from ...types.v3.cli_create_session_response import CliCreateSessionResponse
-from ...types.v3.cli_retrieve_session_response import CliRetrieveSessionResponse
+from .._base_client import make_request_options
+from ..types.cli_get_session_response import CliGetSessionResponse
+from ..types.cli_link_session_response import CliLinkSessionResponse
+from ..types.cli_create_session_response import CliCreateSessionResponse
 
 __all__ = ["CliResource", "AsyncCliResource"]
 
@@ -68,6 +68,47 @@ class CliResource(SyncAPIResource):
             cast_to=CliCreateSessionResponse,
         )
 
+    def get_session(
+        self,
+        *,
+        id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CliGetSessionResponse:
+        """
+        Retrieves the current state of a CLI session using either the session ID (UUID)
+        or the 6-character code. This endpoint is used by both the CLI client to check
+        if the session has been linked, and by the web interface to display session
+        details before linking.
+
+        Args:
+          id: CLI session ID (UUID format) or 6-character code to check. Both formats are
+              supported for flexibility in client implementations.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get(
+            "/api/v3/cli/get-session",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"id": id}, cli_get_session_params.CliGetSessionParams),
+            ),
+            cast_to=CliGetSessionResponse,
+        )
+
     def link_session(
         self,
         *,
@@ -104,47 +145,6 @@ class CliResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=CliLinkSessionResponse,
-        )
-
-    def retrieve_session(
-        self,
-        *,
-        id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CliRetrieveSessionResponse:
-        """
-        Retrieves the current state of a CLI session using either the session ID (UUID)
-        or the 6-character code. This endpoint is used by both the CLI client to check
-        if the session has been linked, and by the web interface to display session
-        details before linking.
-
-        Args:
-          id: CLI session ID (UUID format) or 6-character code to check. Both formats are
-              supported for flexibility in client implementations.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/api/v3/cli/get-session",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform({"id": id}, cli_retrieve_session_params.CliRetrieveSessionParams),
-            ),
-            cast_to=CliRetrieveSessionResponse,
         )
 
 
@@ -193,6 +193,47 @@ class AsyncCliResource(AsyncAPIResource):
             cast_to=CliCreateSessionResponse,
         )
 
+    async def get_session(
+        self,
+        *,
+        id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> CliGetSessionResponse:
+        """
+        Retrieves the current state of a CLI session using either the session ID (UUID)
+        or the 6-character code. This endpoint is used by both the CLI client to check
+        if the session has been linked, and by the web interface to display session
+        details before linking.
+
+        Args:
+          id: CLI session ID (UUID format) or 6-character code to check. Both formats are
+              supported for flexibility in client implementations.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._get(
+            "/api/v3/cli/get-session",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"id": id}, cli_get_session_params.CliGetSessionParams),
+            ),
+            cast_to=CliGetSessionResponse,
+        )
+
     async def link_session(
         self,
         *,
@@ -231,47 +272,6 @@ class AsyncCliResource(AsyncAPIResource):
             cast_to=CliLinkSessionResponse,
         )
 
-    async def retrieve_session(
-        self,
-        *,
-        id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CliRetrieveSessionResponse:
-        """
-        Retrieves the current state of a CLI session using either the session ID (UUID)
-        or the 6-character code. This endpoint is used by both the CLI client to check
-        if the session has been linked, and by the web interface to display session
-        details before linking.
-
-        Args:
-          id: CLI session ID (UUID format) or 6-character code to check. Both formats are
-              supported for flexibility in client implementations.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/api/v3/cli/get-session",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform({"id": id}, cli_retrieve_session_params.CliRetrieveSessionParams),
-            ),
-            cast_to=CliRetrieveSessionResponse,
-        )
-
 
 class CliResourceWithRawResponse:
     def __init__(self, cli: CliResource) -> None:
@@ -280,11 +280,11 @@ class CliResourceWithRawResponse:
         self.create_session = to_raw_response_wrapper(
             cli.create_session,
         )
+        self.get_session = to_raw_response_wrapper(
+            cli.get_session,
+        )
         self.link_session = to_raw_response_wrapper(
             cli.link_session,
-        )
-        self.retrieve_session = to_raw_response_wrapper(
-            cli.retrieve_session,
         )
 
 
@@ -295,11 +295,11 @@ class AsyncCliResourceWithRawResponse:
         self.create_session = async_to_raw_response_wrapper(
             cli.create_session,
         )
+        self.get_session = async_to_raw_response_wrapper(
+            cli.get_session,
+        )
         self.link_session = async_to_raw_response_wrapper(
             cli.link_session,
-        )
-        self.retrieve_session = async_to_raw_response_wrapper(
-            cli.retrieve_session,
         )
 
 
@@ -310,11 +310,11 @@ class CliResourceWithStreamingResponse:
         self.create_session = to_streamed_response_wrapper(
             cli.create_session,
         )
+        self.get_session = to_streamed_response_wrapper(
+            cli.get_session,
+        )
         self.link_session = to_streamed_response_wrapper(
             cli.link_session,
-        )
-        self.retrieve_session = to_streamed_response_wrapper(
-            cli.retrieve_session,
         )
 
 
@@ -325,9 +325,9 @@ class AsyncCliResourceWithStreamingResponse:
         self.create_session = async_to_streamed_response_wrapper(
             cli.create_session,
         )
+        self.get_session = async_to_streamed_response_wrapper(
+            cli.get_session,
+        )
         self.link_session = async_to_streamed_response_wrapper(
             cli.link_session,
-        )
-        self.retrieve_session = async_to_streamed_response_wrapper(
-            cli.retrieve_session,
         )

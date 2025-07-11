@@ -27,6 +27,9 @@ class Item(BaseModel):
     disabled_at: Optional[str] = None
     """ISO 8601 timestamp when the trigger instance was disabled, if applicable"""
 
+    disabled_at: Optional[str] = FieldInfo(alias="disabledAt", default=None)
+    """ID of the user who disabled the trigger instance, if applicable"""
+
     state: Dict[str, Optional[object]]
     """State of the trigger instance"""
 
@@ -53,8 +56,12 @@ class Item(BaseModel):
 
 
 class TriggerInstanceListActiveResponse(BaseModel):
+    current_page: float
+
     items: List[Item]
 
-    next_cursor: Optional[str] = None
+    total_items: float
 
     total_pages: float
+
+    next_cursor: Optional[str] = None

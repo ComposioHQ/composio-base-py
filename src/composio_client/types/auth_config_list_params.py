@@ -10,7 +10,12 @@ __all__ = ["AuthConfigListParams"]
 
 class AuthConfigListParams(TypedDict, total=False):
     cursor: str
-    """The cursor to paginate through the auth configs"""
+    """Cursor for pagination.
+
+    The cursor is a base64 encoded string of the page and limit. The page is the
+    page number and the limit is the number of items per page. The cursor is used to
+    paginate through the items. The cursor is not required for the first page.
+    """
 
     deprecated_app_id: str
     """The app id to filter by"""
@@ -21,9 +26,9 @@ class AuthConfigListParams(TypedDict, total=False):
     """Whether to filter by composio managed auth configs"""
 
     limit: Optional[float]
-    """The number of auth configs to return"""
+    """Number of items per page"""
 
-    show_disabled: bool
+    show_disabled: Optional[bool]
     """Show disabled auth configs"""
 
     toolkit_slug: str

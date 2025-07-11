@@ -54,11 +54,11 @@ class Item(BaseModel):
 
 
 class McpListResponse(BaseModel):
-    current_page: str
+    current_page: float
     """Current page number being returned"""
 
     items: List[Item]
     """Array of MCP server configurations"""
 
-    total_pages: str
+    total_pages: float
     """Total number of pages in the paginated response"""

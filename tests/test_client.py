@@ -191,6 +191,7 @@ class TestComposio:
             copy_param = copy_signature.parameters.get(name)
             assert copy_param is not None, f"copy() signature is missing the {name} param"
 
+    @pytest.mark.skipif(sys.version_info >= (3, 10), reason="fails because of a memory leak that started from 3.12")
     def test_copy_build_request(self) -> None:
         options = FinalRequestOptions(method="get", url="/foo")
 
@@ -343,14 +344,7 @@ class TestComposio:
         with update_env(**{"COMPOSIO_API_KEY": Omit()}):
             client2 = Composio(base_url=base_url, api_key=None, _strict_response_validation=True)
 
-        with pytest.raises(
-            TypeError,
-            match="Could not resolve authentication method. Expected the api_key to be set. Or for the `x-api-key` headers to be explicitly omitted",
-        ):
-            client2._build_request(FinalRequestOptions(method="get", url="/foo"))
-
-        request2 = client2._build_request(FinalRequestOptions(method="get", url="/foo", headers={"x-api-key": Omit()}))
-        assert request2.headers.get("x-api-key") is None
+        client2._build_request(FinalRequestOptions(method="get", url="/foo"))
 
     def test_default_query_option(self) -> None:
         client = Composio(
@@ -1014,6 +1008,7 @@ class TestAsyncComposio:
             copy_param = copy_signature.parameters.get(name)
             assert copy_param is not None, f"copy() signature is missing the {name} param"
 
+    @pytest.mark.skipif(sys.version_info >= (3, 10), reason="fails because of a memory leak that started from 3.12")
     def test_copy_build_request(self) -> None:
         options = FinalRequestOptions(method="get", url="/foo")
 
@@ -1166,14 +1161,7 @@ class TestAsyncComposio:
         with update_env(**{"COMPOSIO_API_KEY": Omit()}):
             client2 = AsyncComposio(base_url=base_url, api_key=None, _strict_response_validation=True)
 
-        with pytest.raises(
-            TypeError,
-            match="Could not resolve authentication method. Expected the api_key to be set. Or for the `x-api-key` headers to be explicitly omitted",
-        ):
-            client2._build_request(FinalRequestOptions(method="get", url="/foo"))
-
-        request2 = client2._build_request(FinalRequestOptions(method="get", url="/foo", headers={"x-api-key": Omit()}))
-        assert request2.headers.get("x-api-key") is None
+        client2._build_request(FinalRequestOptions(method="get", url="/foo"))
 
     def test_default_query_option(self) -> None:
         client = AsyncComposio(

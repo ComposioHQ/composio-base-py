@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, overload
 
 import httpx
@@ -128,7 +128,7 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         credentials: Dict[str, Optional[object]],
         type: Literal["custom"],
-        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -158,9 +158,9 @@ class AuthConfigsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
-        scopes: str,
         type: Literal["default"],
-        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        scopes: str | NotGiven = NOT_GIVEN,
+        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -185,14 +185,14 @@ class AuthConfigsResource(SyncAPIResource):
         """
         ...
 
-    @required_args(["credentials", "type"], ["scopes", "type"])
+    @required_args(["credentials", "type"], ["type"])
     def update(
         self,
         nanoid: str,
         *,
         credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
-        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         scopes: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -209,7 +209,7 @@ class AuthConfigsResource(SyncAPIResource):
                 {
                     "credentials": credentials,
                     "type": type,
-                    "restrict_to_following_tools": restrict_to_following_tools,
+                    "tool_access_config": tool_access_config,
                     "scopes": scopes,
                 },
                 auth_config_update_params.AuthConfigUpdateParams,
@@ -228,7 +228,7 @@ class AuthConfigsResource(SyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        show_disabled: bool | NotGiven = NOT_GIVEN,
+        show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -241,13 +241,16 @@ class AuthConfigsResource(SyncAPIResource):
         List authentication configurations with optional filters
 
         Args:
-          cursor: The cursor to paginate through the auth configs
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
           deprecated_app_id: The app id to filter by
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
-          limit: The number of auth configs to return
+          limit: Number of items per page
 
           show_disabled: Show disabled auth configs
 
@@ -464,7 +467,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         credentials: Dict[str, Optional[object]],
         type: Literal["custom"],
-        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -494,9 +497,9 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
-        scopes: str,
         type: Literal["default"],
-        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        scopes: str | NotGiven = NOT_GIVEN,
+        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -521,14 +524,14 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         """
         ...
 
-    @required_args(["credentials", "type"], ["scopes", "type"])
+    @required_args(["credentials", "type"], ["type"])
     async def update(
         self,
         nanoid: str,
         *,
         credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
-        restrict_to_following_tools: List[str] | NotGiven = NOT_GIVEN,
+        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         scopes: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -545,7 +548,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                 {
                     "credentials": credentials,
                     "type": type,
-                    "restrict_to_following_tools": restrict_to_following_tools,
+                    "tool_access_config": tool_access_config,
                     "scopes": scopes,
                 },
                 auth_config_update_params.AuthConfigUpdateParams,
@@ -564,7 +567,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        show_disabled: bool | NotGiven = NOT_GIVEN,
+        show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -577,13 +580,16 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         List authentication configurations with optional filters
 
         Args:
-          cursor: The cursor to paginate through the auth configs
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
 
           deprecated_app_id: The app id to filter by
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
-          limit: The number of auth configs to return
+          limit: Number of items per page
 
           show_disabled: Show disabled auth configs
 

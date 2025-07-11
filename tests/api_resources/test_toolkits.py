@@ -68,7 +68,9 @@ class TestToolkits:
     def test_method_list_with_all_params(self, client: Composio) -> None:
         toolkit = client.toolkits.list(
             category="productivity",
+            cursor="cursor",
             is_local=True,
+            limit=0,
             managed_by="composio",
             sort_by="usage",
         )
@@ -128,7 +130,9 @@ class TestToolkits:
 
 
 class TestAsyncToolkits:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
@@ -177,7 +181,9 @@ class TestAsyncToolkits:
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         toolkit = await async_client.toolkits.list(
             category="productivity",
+            cursor="cursor",
             is_local=True,
+            limit=0,
             managed_by="composio",
             sort_by="usage",
         )

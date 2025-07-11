@@ -21,6 +21,14 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
 
     query_connected_account_ids_2: Annotated[str, PropertyInfo(alias="connectedAccountIds")]
 
+    cursor: str
+    """Cursor for pagination.
+
+    The cursor is a base64 encoded string of the page and limit. The page is the
+    page number and the limit is the number of items per page. The cursor is used to
+    paginate through the items. The cursor is not required for the first page.
+    """
+
     deprecated_auth_config_uuids: Annotated[Optional[List[str]], PropertyInfo(alias="deprecatedAuthConfigUuids")]
     """Array of auth config UUIDs to filter triggers by"""
 
@@ -29,8 +37,8 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     ]
     """Array of connected account UUIDs to filter triggers by"""
 
-    limit: float
-    """Number of items to return per page."""
+    limit: Optional[float]
+    """Number of items per page"""
 
     page: float
     """Page number for pagination. Starts from 1."""

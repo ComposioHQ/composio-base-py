@@ -87,7 +87,9 @@ class ToolkitsResource(SyncAPIResource):
         self,
         *,
         category: str | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
         is_local: Optional[bool] | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         managed_by: Literal["composio", "all", "project"] | NotGiven = NOT_GIVEN,
         sort_by: Literal["usage", "alphabetically"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -107,7 +109,14 @@ class ToolkitsResource(SyncAPIResource):
         Args:
           category: Filter toolkits by category
 
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
+
           is_local: Whether to include local toolkits in the results
+
+          limit: Number of items per page
 
           managed_by: Filter toolkits by who manages them
 
@@ -131,7 +140,9 @@ class ToolkitsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "category": category,
+                        "cursor": cursor,
                         "is_local": is_local,
+                        "limit": limit,
                         "managed_by": managed_by,
                         "sort_by": sort_by,
                     },
@@ -246,7 +257,9 @@ class AsyncToolkitsResource(AsyncAPIResource):
         self,
         *,
         category: str | NotGiven = NOT_GIVEN,
+        cursor: str | NotGiven = NOT_GIVEN,
         is_local: Optional[bool] | NotGiven = NOT_GIVEN,
+        limit: Optional[float] | NotGiven = NOT_GIVEN,
         managed_by: Literal["composio", "all", "project"] | NotGiven = NOT_GIVEN,
         sort_by: Literal["usage", "alphabetically"] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -266,7 +279,14 @@ class AsyncToolkitsResource(AsyncAPIResource):
         Args:
           category: Filter toolkits by category
 
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
+
           is_local: Whether to include local toolkits in the results
+
+          limit: Number of items per page
 
           managed_by: Filter toolkits by who manages them
 
@@ -290,7 +310,9 @@ class AsyncToolkitsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "category": category,
+                        "cursor": cursor,
                         "is_local": is_local,
+                        "limit": limit,
                         "managed_by": managed_by,
                         "sort_by": sort_by,
                     },

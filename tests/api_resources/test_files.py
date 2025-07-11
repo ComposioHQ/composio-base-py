@@ -28,6 +28,8 @@ class TestFiles:
     @parametrize
     def test_method_list_with_all_params(self, client: Composio) -> None:
         file = client.files.list(
+            cursor="cursor",
+            limit=0,
             tool_slug="tool_slug",
             toolkit_slug="toolkit_slug",
         )
@@ -98,7 +100,9 @@ class TestFiles:
 
 
 class TestAsyncFiles:
-    parametrize = pytest.mark.parametrize("async_client", [False, True], indirect=True, ids=["loose", "strict"])
+    parametrize = pytest.mark.parametrize(
+        "async_client", [False, True, {"http_client": "aiohttp"}], indirect=True, ids=["loose", "strict", "aiohttp"]
+    )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncComposio) -> None:
@@ -108,6 +112,8 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         file = await async_client.files.list(
+            cursor="cursor",
+            limit=0,
             tool_slug="tool_slug",
             toolkit_slug="toolkit_slug",
         )

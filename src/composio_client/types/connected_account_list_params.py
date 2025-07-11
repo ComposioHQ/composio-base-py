@@ -12,7 +12,7 @@ class ConnectedAccountListParams(TypedDict, total=False):
     auth_config_ids: Optional[List[str]]
     """The auth config ids of the connected accounts"""
 
-    cursor: Optional[float]
+    cursor: Optional[str]
     """The cursor to paginate through the connected accounts"""
 
     labels: Optional[List[str]]
