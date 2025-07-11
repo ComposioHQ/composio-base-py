@@ -76,6 +76,8 @@ class AuthConfigDetailFieldsAuthConfigCreationOptional(BaseModel):
 
     default: Optional[str] = None
 
+    legacy_template_name: Optional[str] = None
+
 
 class AuthConfigDetailFieldsAuthConfigCreationRequired(BaseModel):
     description: str
@@ -89,6 +91,8 @@ class AuthConfigDetailFieldsAuthConfigCreationRequired(BaseModel):
     type: str
 
     default: Optional[str] = None
+
+    legacy_template_name: Optional[str] = None
 
 
 class AuthConfigDetailFieldsAuthConfigCreation(BaseModel):
@@ -110,6 +114,8 @@ class AuthConfigDetailFieldsConnectedAccountInitiationOptional(BaseModel):
 
     default: Optional[str] = None
 
+    legacy_template_name: Optional[str] = None
+
 
 class AuthConfigDetailFieldsConnectedAccountInitiationRequired(BaseModel):
     description: str
@@ -123,6 +129,8 @@ class AuthConfigDetailFieldsConnectedAccountInitiationRequired(BaseModel):
     type: str
 
     default: Optional[str] = None
+
+    legacy_template_name: Optional[str] = None
 
 
 class AuthConfigDetailFieldsConnectedAccountInitiation(BaseModel):
