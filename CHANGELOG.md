@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.6.0 (2025-07-11)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* **api:** api update ([2ff54e9](https://github.com/ComposioHQ/composio-base-py/commit/2ff54e99c467eda377c48cf432542630ff17a384))
+* **api:** api update ([4eb2b6c](https://github.com/ComposioHQ/composio-base-py/commit/4eb2b6c73885bba1a552f3ba6b1ba68e6ddca540))
+
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([49a3224](https://github.com/ComposioHQ/composio-base-py/commit/49a3224f719fe78a9093be020e0556f31acfcfe7))
+
 ## 1.5.0 (2025-07-10)
 
 Full Changelog: [v1.4.0...v1.5.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.4.0...v1.5.0)
