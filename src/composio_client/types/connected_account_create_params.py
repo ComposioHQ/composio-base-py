@@ -644,7 +644,7 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     proxy_username: str
 
-    refresh_token: str
+    refresh_token: Optional[str]
 
     region: str
 
@@ -726,7 +726,7 @@ class ConnectionStateUnionMember1ValUnionMember3Typed(TypedDict, total=False):
 
     proxy_username: str
 
-    refresh_token: str
+    refresh_token: Optional[str]
 
     region: str
 
