@@ -230,6 +230,9 @@ class TestAuthConfigs:
             deprecated_status="deprecated_status",
             is_composio_managed="string",
             limit=0,
+            order_by="created_at",
+            order_direction="asc",
+            search="search",
             show_disabled=True,
             toolkit_slug="toolkit_slug",
         )
@@ -550,6 +553,9 @@ class TestAsyncAuthConfigs:
             deprecated_status="deprecated_status",
             is_composio_managed="string",
             limit=0,
+            order_by="created_at",
+            order_direction="asc",
+            search="search",
             show_disabled=True,
             toolkit_slug="toolkit_slug",
         )
