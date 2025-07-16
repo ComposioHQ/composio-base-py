@@ -228,8 +228,6 @@ class AuthConfigsResource(SyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        order_by: Literal["created_at", "updated_at", "no_of_connections"] | NotGiven = NOT_GIVEN,
-        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
         show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
@@ -254,10 +252,6 @@ class AuthConfigsResource(SyncAPIResource):
           is_composio_managed: Whether to filter by composio managed auth configs
 
           limit: Number of items per page
-
-          order_by: Field to order auth configs by
-
-          order_direction: Direction to order auth configs
 
           search: Search auth configs by name
 
@@ -287,8 +281,6 @@ class AuthConfigsResource(SyncAPIResource):
                         "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
-                        "order_by": order_by,
-                        "order_direction": order_direction,
                         "search": search,
                         "show_disabled": show_disabled,
                         "toolkit_slug": toolkit_slug,
@@ -579,8 +571,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        order_by: Literal["created_at", "updated_at", "no_of_connections"] | NotGiven = NOT_GIVEN,
-        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
         show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
@@ -605,10 +595,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
           is_composio_managed: Whether to filter by composio managed auth configs
 
           limit: Number of items per page
-
-          order_by: Field to order auth configs by
-
-          order_direction: Direction to order auth configs
 
           search: Search auth configs by name
 
@@ -638,8 +624,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                         "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
-                        "order_by": order_by,
-                        "order_direction": order_direction,
                         "search": search,
                         "show_disabled": show_disabled,
                         "toolkit_slug": toolkit_slug,
