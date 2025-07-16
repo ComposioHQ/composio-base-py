@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Union, Optional
-from typing_extensions import Literal, TypedDict
+from typing_extensions import TypedDict
 
 __all__ = ["AuthConfigListParams"]
 
@@ -27,12 +27,6 @@ class AuthConfigListParams(TypedDict, total=False):
 
     limit: Optional[float]
     """Number of items per page"""
-
-    order_by: Literal["created_at", "updated_at", "no_of_connections"]
-    """Field to order auth configs by"""
-
-    order_direction: Literal["asc", "desc"]
-    """Direction to order auth configs"""
 
     search: str
     """Search auth configs by name"""

@@ -204,3 +204,6 @@ class ToolkitRetrieveResponse(BaseModel):
 
     composio_managed_auth_schemes: Optional[List[str]] = None
     """List of authentication methods that Composio manages for this toolkit"""
+
+    get_current_user_endpoint: Optional[str] = None
+    """Endpoint to get the current user"""
