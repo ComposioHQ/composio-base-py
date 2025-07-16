@@ -41,4 +41,4 @@ class AuthConfigListParams(TypedDict, total=False):
     """Show disabled auth configs"""
 
     toolkit_slug: str
-    """The slug of the toolkit to filter by"""
+    """Comma-separated list of toolkit slugs to filter auth configs by"""

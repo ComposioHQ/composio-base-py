@@ -263,7 +263,7 @@ class AuthConfigsResource(SyncAPIResource):
 
           show_disabled: Show disabled auth configs
 
-          toolkit_slug: The slug of the toolkit to filter by
+          toolkit_slug: Comma-separated list of toolkit slugs to filter auth configs by
 
           extra_headers: Send extra headers
 
@@ -614,7 +614,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           show_disabled: Show disabled auth configs
 
-          toolkit_slug: The slug of the toolkit to filter by
+          toolkit_slug: Comma-separated list of toolkit slugs to filter auth configs by
 
           extra_headers: Send extra headers
 
