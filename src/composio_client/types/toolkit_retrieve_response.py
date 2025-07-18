@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 
 from pydantic import Field as FieldInfo
 
@@ -24,6 +24,8 @@ __all__ = [
 
 
 class Deprecated(BaseModel):
+    raw_proxy_info_by_auth_schemes: List[Dict[str, Optional[object]]] = FieldInfo(alias="rawProxyInfoByAuthSchemes")
+
     toolkit_id: str = FieldInfo(alias="toolkitId")
 
     get_current_user_endpoint: Optional[str] = FieldInfo(alias="getCurrentUserEndpoint", default=None)

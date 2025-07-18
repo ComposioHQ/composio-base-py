@@ -127,6 +127,7 @@ client = Composio()
 response = client.tools.execute(
     tool_slug="tool_slug",
     custom_auth_params={
+        "base_url": "https://api.example.com",
         "parameters": [
             {
                 "in": "header",
@@ -134,7 +135,6 @@ response = client.tools.execute(
                 "value": "secret-key",
             }
         ],
-        "base_url": "https://api.example.com",
     },
 )
 print(response.custom_auth_params)
