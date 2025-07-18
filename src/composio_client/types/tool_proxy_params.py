@@ -48,7 +48,7 @@ class ToolProxyParams(TypedDict, total=False):
     use the default account for the project)
     """
 
-    custom_connection_data: Annotated[CustomConnectionData, PropertyInfo(alias="customConnectionData")]
+    custom_connection_data: CustomConnectionData
 
     parameters: Iterable[Parameter]
     """Additional HTTP headers or query parameters to include in the request"""
