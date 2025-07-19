@@ -87,7 +87,6 @@ pip install composio-client[aiohttp]
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
 
 ```python
-import os
 import asyncio
 from composio_client import DefaultAioHttpClient
 from composio_client import AsyncComposio
@@ -95,7 +94,7 @@ from composio_client import AsyncComposio
 
 async def main() -> None:
     async with AsyncComposio(
-        api_key=os.environ.get("COMPOSIO_API_KEY"),  # This is the default and can be omitted
+        api_key="My API Key",
         http_client=DefaultAioHttpClient(),
     ) as client:
         response = await client.tools.execute(
@@ -128,6 +127,7 @@ client = Composio()
 response = client.tools.execute(
     tool_slug="tool_slug",
     custom_auth_params={
+        "base_url": "https://api.example.com",
         "parameters": [
             {
                 "in": "header",
@@ -135,7 +135,6 @@ response = client.tools.execute(
                 "value": "secret-key",
             }
         ],
-        "base_url": "https://api.example.com",
     },
 )
 print(response.custom_auth_params)

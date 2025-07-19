@@ -171,6 +171,7 @@ class ToolsResource(SyncAPIResource):
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
         custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
+        custom_connection_data: tool_execute_params.CustomConnectionData | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         user_id: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -197,6 +198,8 @@ class ToolsResource(SyncAPIResource):
           custom_auth_params: Custom authentication parameters for tools that support parameterized
               authentication
 
+          custom_connection_data: Custom connection data for tools that support custom connection data
+
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
 
@@ -222,6 +225,7 @@ class ToolsResource(SyncAPIResource):
                     "arguments": arguments,
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
+                    "custom_connection_data": custom_connection_data,
                     "text": text,
                     "user_id": user_id,
                     "version": version,
@@ -301,6 +305,7 @@ class ToolsResource(SyncAPIResource):
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
         body: object | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
+        custom_connection_data: tool_proxy_params.CustomConnectionData | NotGiven = NOT_GIVEN,
         parameters: Iterable[tool_proxy_params.Parameter] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -343,6 +348,7 @@ class ToolsResource(SyncAPIResource):
                     "method": method,
                     "body": body,
                     "connected_account_id": connected_account_id,
+                    "custom_connection_data": custom_connection_data,
                     "parameters": parameters,
                 },
                 tool_proxy_params.ToolProxyParams,
@@ -520,6 +526,7 @@ class AsyncToolsResource(AsyncAPIResource):
         arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
         custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
+        custom_connection_data: tool_execute_params.CustomConnectionData | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         user_id: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -546,6 +553,8 @@ class AsyncToolsResource(AsyncAPIResource):
           custom_auth_params: Custom authentication parameters for tools that support parameterized
               authentication
 
+          custom_connection_data: Custom connection data for tools that support custom connection data
+
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
 
@@ -571,6 +580,7 @@ class AsyncToolsResource(AsyncAPIResource):
                     "arguments": arguments,
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
+                    "custom_connection_data": custom_connection_data,
                     "text": text,
                     "user_id": user_id,
                     "version": version,
@@ -650,6 +660,7 @@ class AsyncToolsResource(AsyncAPIResource):
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
         body: object | NotGiven = NOT_GIVEN,
         connected_account_id: str | NotGiven = NOT_GIVEN,
+        custom_connection_data: tool_proxy_params.CustomConnectionData | NotGiven = NOT_GIVEN,
         parameters: Iterable[tool_proxy_params.Parameter] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -692,6 +703,7 @@ class AsyncToolsResource(AsyncAPIResource):
                     "method": method,
                     "body": body,
                     "connected_account_id": connected_account_id,
+                    "custom_connection_data": custom_connection_data,
                     "parameters": parameters,
                 },
                 tool_proxy_params.ToolProxyParams,

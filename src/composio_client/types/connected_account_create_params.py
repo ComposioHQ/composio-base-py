@@ -644,11 +644,11 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     proxy_username: str
 
-    refresh_token: str
+    refresh_token: Optional[str]
 
     region: str
 
-    scope: Union[str, List[str]]
+    scope: Union[str, List[str], None]
 
     server_location: str
 
@@ -726,11 +726,11 @@ class ConnectionStateUnionMember1ValUnionMember3Typed(TypedDict, total=False):
 
     proxy_username: str
 
-    refresh_token: str
+    refresh_token: Optional[str]
 
     region: str
 
-    scope: Union[str, List[str]]
+    scope: Union[str, List[str], None]
 
     server_location: str
 

@@ -228,6 +228,7 @@ class AuthConfigsResource(SyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
+        search: str | NotGiven = NOT_GIVEN,
         show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -252,9 +253,11 @@ class AuthConfigsResource(SyncAPIResource):
 
           limit: Number of items per page
 
+          search: Search auth configs by name
+
           show_disabled: Show disabled auth configs
 
-          toolkit_slug: The slug of the toolkit to filter by
+          toolkit_slug: Comma-separated list of toolkit slugs to filter auth configs by
 
           extra_headers: Send extra headers
 
@@ -278,6 +281,7 @@ class AuthConfigsResource(SyncAPIResource):
                         "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
+                        "search": search,
                         "show_disabled": show_disabled,
                         "toolkit_slug": toolkit_slug,
                     },
@@ -567,6 +571,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         deprecated_status: str | NotGiven = NOT_GIVEN,
         is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
+        search: str | NotGiven = NOT_GIVEN,
         show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -591,9 +596,11 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           limit: Number of items per page
 
+          search: Search auth configs by name
+
           show_disabled: Show disabled auth configs
 
-          toolkit_slug: The slug of the toolkit to filter by
+          toolkit_slug: Comma-separated list of toolkit slugs to filter auth configs by
 
           extra_headers: Send extra headers
 
@@ -617,6 +624,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                         "deprecated_status": deprecated_status,
                         "is_composio_managed": is_composio_managed,
                         "limit": limit,
+                        "search": search,
                         "show_disabled": show_disabled,
                         "toolkit_slug": toolkit_slug,
                     },

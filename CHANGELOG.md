@@ -1,5 +1,26 @@
 # Changelog
 
+## 1.6.0 (2025-07-19)
+
+Full Changelog: [v1.5.0...v1.6.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.5.0...v1.6.0)
+
+### Features
+
+* **api:** api update ([27429d4](https://github.com/ComposioHQ/composio-base-py/commit/27429d4f45fbdfa9badbca7529de0e675004d3af))
+* **api:** api update ([721cff0](https://github.com/ComposioHQ/composio-base-py/commit/721cff0c155dabf7a4aec06f17cfc1683844f5d9))
+* **api:** api update ([da2fd5f](https://github.com/ComposioHQ/composio-base-py/commit/da2fd5faff2d4d7d398e60894310787c3edff532))
+* **api:** api update ([9b5e00b](https://github.com/ComposioHQ/composio-base-py/commit/9b5e00b048febd1286eda2cce60ccea999a22723))
+* **api:** api update ([b85cc0a](https://github.com/ComposioHQ/composio-base-py/commit/b85cc0af34ebc6ef3cc7cf724957d113f2478f7b))
+* **api:** api update ([9570303](https://github.com/ComposioHQ/composio-base-py/commit/9570303dff66a67d25b569fbad1673edd22bf924))
+* **api:** api update ([2ff54e9](https://github.com/ComposioHQ/composio-base-py/commit/2ff54e99c467eda377c48cf432542630ff17a384))
+* **api:** api update ([4eb2b6c](https://github.com/ComposioHQ/composio-base-py/commit/4eb2b6c73885bba1a552f3ba6b1ba68e6ddca540))
+* clean up environment call outs ([25c62c2](https://github.com/ComposioHQ/composio-base-py/commit/25c62c2f9ff1d8548a827b22fa4f38f65569b4de))
+
+
+### Bug Fixes
+
+* **client:** don't send Content-Type header on GET requests ([49a3224](https://github.com/ComposioHQ/composio-base-py/commit/49a3224f719fe78a9093be020e0556f31acfcfe7))
+
 ## 1.5.0 (2025-07-10)
 
 Full Changelog: [v1.4.0...v1.5.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.4.0...v1.5.0)

@@ -28,8 +28,11 @@ class AuthConfigListParams(TypedDict, total=False):
     limit: Optional[float]
     """Number of items per page"""
 
+    search: str
+    """Search auth configs by name"""
+
     show_disabled: Optional[bool]
     """Show disabled auth configs"""
 
     toolkit_slug: str
-    """The slug of the toolkit to filter by"""
+    """Comma-separated list of toolkit slugs to filter auth configs by"""
