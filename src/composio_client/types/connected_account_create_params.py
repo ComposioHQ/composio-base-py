@@ -648,7 +648,7 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     region: str
 
-    scope: Union[str, List[str]]
+    scope: Union[str, List[str], None]
 
     server_location: str
 
@@ -730,7 +730,7 @@ class ConnectionStateUnionMember1ValUnionMember3Typed(TypedDict, total=False):
 
     region: str
 
-    scope: Union[str, List[str]]
+    scope: Union[str, List[str], None]
 
     server_location: str
 

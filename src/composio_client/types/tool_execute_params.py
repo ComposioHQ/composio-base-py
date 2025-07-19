@@ -150,7 +150,7 @@ class CustomConnectionDataUnionMember0ValTyped(TypedDict, total=False):
 
     region: str
 
-    scope: Union[str, List[str]]
+    scope: Union[str, List[str], None]
 
     server_location: str
 
