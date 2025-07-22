@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import TYPE_CHECKING, List, Union, Optional
+from typing import TYPE_CHECKING, Dict, List, Union, Optional
 from typing_extensions import Literal, TypeAlias
 
 from pydantic import Field as FieldInfo
@@ -151,6 +151,7 @@ class ItemStateUnionMember0ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -215,6 +216,7 @@ class ItemStateUnionMember0ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -281,6 +283,7 @@ class ItemStateUnionMember0ValUnionMember2(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -339,6 +342,7 @@ class ItemStateUnionMember0ValUnionMember3(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -395,6 +399,7 @@ class ItemStateUnionMember0ValUnionMember4(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -461,6 +466,7 @@ class ItemStateUnionMember0ValUnionMember5(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -537,6 +543,7 @@ class ItemStateUnionMember1ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -607,6 +614,7 @@ class ItemStateUnionMember1ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -690,6 +698,7 @@ class ItemStateUnionMember1ValUnionMember2(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -773,6 +782,7 @@ class ItemStateUnionMember1ValUnionMember3(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -837,6 +847,7 @@ class ItemStateUnionMember1ValUnionMember4(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -899,6 +910,7 @@ class ItemStateUnionMember1ValUnionMember5(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -969,6 +981,7 @@ class ItemStateUnionMember2ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1025,6 +1038,7 @@ class ItemStateUnionMember2ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1079,6 +1093,7 @@ class ItemStateUnionMember2ValUnionMember2(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1133,6 +1148,7 @@ class ItemStateUnionMember2ValUnionMember3(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1191,6 +1207,7 @@ class ItemStateUnionMember2ValUnionMember4(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1247,6 +1264,7 @@ class ItemStateUnionMember2ValUnionMember5(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1325,6 +1343,7 @@ class ItemStateUnionMember3ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1387,6 +1406,7 @@ class ItemStateUnionMember3ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1454,6 +1474,7 @@ class ItemStateUnionMember4ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1512,6 +1533,7 @@ class ItemStateUnionMember4ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1577,6 +1599,7 @@ class ItemStateUnionMember5ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1633,6 +1656,7 @@ class ItemStateUnionMember5ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1698,6 +1722,7 @@ class ItemStateUnionMember6ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1754,6 +1779,7 @@ class ItemStateUnionMember6ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1817,6 +1843,7 @@ class ItemStateUnionMember7ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1871,6 +1898,7 @@ class ItemStateUnionMember7ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1929,6 +1957,7 @@ class ItemStateUnionMember7ValUnionMember2(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -1985,6 +2014,7 @@ class ItemStateUnionMember7ValUnionMember3(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2053,6 +2083,7 @@ class ItemStateUnionMember8ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2107,6 +2138,7 @@ class ItemStateUnionMember8ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2165,6 +2197,7 @@ class ItemStateUnionMember8ValUnionMember2(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2221,6 +2254,7 @@ class ItemStateUnionMember8ValUnionMember3(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2289,6 +2323,7 @@ class ItemStateUnionMember9ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2345,6 +2380,7 @@ class ItemStateUnionMember9ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2403,6 +2439,7 @@ class ItemStateUnionMember9ValUnionMember2(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2461,6 +2498,7 @@ class ItemStateUnionMember9ValUnionMember3(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2519,6 +2557,7 @@ class ItemStateUnionMember9ValUnionMember4(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2575,6 +2614,7 @@ class ItemStateUnionMember9ValUnionMember5(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2649,6 +2689,7 @@ class ItemStateUnionMember10ValUnionMember0(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2707,6 +2748,7 @@ class ItemStateUnionMember10ValUnionMember1(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2769,6 +2811,7 @@ class ItemStateUnionMember10ValUnionMember2(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
@@ -2829,6 +2872,7 @@ class ItemStateUnionMember10ValUnionMember3(BaseModel):
 
     your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
 
+    __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
     if TYPE_CHECKING:
         # Stub to indicate that arbitrary properties are accepted.
         # To access properties that are not valid identifiers you can use `getattr`, e.g.
