@@ -131,10 +131,12 @@ class ConnectedAccountsResource(SyncAPIResource):
         self,
         *,
         auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        connected_account_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
+        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
         | NotGiven = NOT_GIVEN,
         toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -152,6 +154,8 @@ class ConnectedAccountsResource(SyncAPIResource):
         Args:
           auth_config_ids: The auth config ids of the connected accounts
 
+          connected_account_ids: The connected account ids to filter by
+
           cursor: The cursor to paginate through the connected accounts
 
           labels: The labels of the connected accounts
@@ -159,6 +163,8 @@ class ConnectedAccountsResource(SyncAPIResource):
           limit: The limit of the connected accounts to return
 
           order_by: The order by of the connected accounts
+
+          order_direction: The order direction of the connected accounts
 
           statuses: The status of the connected account
 
@@ -184,10 +190,12 @@ class ConnectedAccountsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "auth_config_ids": auth_config_ids,
+                        "connected_account_ids": connected_account_ids,
                         "cursor": cursor,
                         "labels": labels,
                         "limit": limit,
                         "order_by": order_by,
+                        "order_direction": order_direction,
                         "statuses": statuses,
                         "toolkit_slugs": toolkit_slugs,
                         "user_ids": user_ids,
@@ -420,10 +428,12 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         self,
         *,
         auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        connected_account_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
         labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
+        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
         | NotGiven = NOT_GIVEN,
         toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
@@ -441,6 +451,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         Args:
           auth_config_ids: The auth config ids of the connected accounts
 
+          connected_account_ids: The connected account ids to filter by
+
           cursor: The cursor to paginate through the connected accounts
 
           labels: The labels of the connected accounts
@@ -448,6 +460,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
           limit: The limit of the connected accounts to return
 
           order_by: The order by of the connected accounts
+
+          order_direction: The order direction of the connected accounts
 
           statuses: The status of the connected account
 
@@ -473,10 +487,12 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "auth_config_ids": auth_config_ids,
+                        "connected_account_ids": connected_account_ids,
                         "cursor": cursor,
                         "labels": labels,
                         "limit": limit,
                         "order_by": order_by,
+                        "order_direction": order_direction,
                         "statuses": statuses,
                         "toolkit_slugs": toolkit_slugs,
                         "user_ids": user_ids,

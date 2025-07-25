@@ -76,8 +76,7 @@ class APIKeyResource(SyncAPIResource):
     ) -> APIKeyRegenerateResponse:
         """
         Generate a new API key for the organization, invalidating the previous one
-        (admin only). This operation cannot be undone and will immediately invalidate
-        the previous API key.
+        (admin only).
         """
         return self._post(
             "/api/v3/org/api_key/regenerate",
@@ -144,8 +143,7 @@ class AsyncAPIKeyResource(AsyncAPIResource):
     ) -> APIKeyRegenerateResponse:
         """
         Generate a new API key for the organization, invalidating the previous one
-        (admin only). This operation cannot be undone and will immediately invalidate
-        the previous API key.
+        (admin only).
         """
         return await self._post(
             "/api/v3/org/api_key/regenerate",

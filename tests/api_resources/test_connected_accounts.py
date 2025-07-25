@@ -146,10 +146,12 @@ class TestConnectedAccounts:
     def test_method_list_with_all_params(self, client: Composio) -> None:
         connected_account = client.connected_accounts.list(
             auth_config_ids=["string"],
+            connected_account_ids=["string"],
             cursor="cursor",
             labels=["string"],
             limit=0,
             order_by="created_at",
+            order_direction="asc",
             statuses=["INITIALIZING"],
             toolkit_slugs=["string"],
             user_ids=["string"],
@@ -433,10 +435,12 @@ class TestAsyncConnectedAccounts:
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.list(
             auth_config_ids=["string"],
+            connected_account_ids=["string"],
             cursor="cursor",
             labels=["string"],
             limit=0,
             order_by="created_at",
+            order_direction="asc",
             statuses=["INITIALIZING"],
             toolkit_slugs=["string"],
             user_ids=["string"],

@@ -12,6 +12,9 @@ class ConnectedAccountListParams(TypedDict, total=False):
     auth_config_ids: Optional[List[str]]
     """The auth config ids of the connected accounts"""
 
+    connected_account_ids: Optional[List[str]]
+    """The connected account ids to filter by"""
+
     cursor: Optional[str]
     """The cursor to paginate through the connected accounts"""
 
@@ -23,6 +26,9 @@ class ConnectedAccountListParams(TypedDict, total=False):
 
     order_by: Literal["created_at", "updated_at"]
     """The order by of the connected accounts"""
+
+    order_direction: Literal["asc", "desc"]
+    """The order direction of the connected accounts"""
 
     statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
     """The status of the connected account"""

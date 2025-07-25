@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.7.0 (2025-07-25)
+
+Full Changelog: [v1.6.0...v1.7.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.6.0...v1.7.0)
+
+### Features
+
+* **api:** api update ([7126a7b](https://github.com/ComposioHQ/composio-base-py/commit/7126a7b3a449d9f6041f30badb5da169da64793c))
+* **api:** api update ([5f0f39e](https://github.com/ComposioHQ/composio-base-py/commit/5f0f39ec410cfc3ed5e4d3af98dce5a243d7e047))
+
+
+### Bug Fixes
+
+* **parsing:** ignore empty metadata ([2ecf1a9](https://github.com/ComposioHQ/composio-base-py/commit/2ecf1a9b398be90a140d897a6c91d07acbc341f3))
+* **parsing:** parse extra field types ([223b96c](https://github.com/ComposioHQ/composio-base-py/commit/223b96cc5ea4ca673e2d226cf1494eba6febedfc))
+
+
+### Chores
+
+* **project:** add settings file for vscode ([68ad365](https://github.com/ComposioHQ/composio-base-py/commit/68ad3659c1dfd07fdfbef522a9e1cb59123ff4d1))
+
 ## 1.6.0 (2025-07-19)
 
 Full Changelog: [v1.5.0...v1.6.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.5.0...v1.6.0)

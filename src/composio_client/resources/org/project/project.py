@@ -43,7 +43,6 @@ from ...._base_client import make_request_options
 from ....types.org.project_list_response import ProjectListResponse
 from ....types.org.project_create_response import ProjectCreateResponse
 from ....types.org.project_delete_response import ProjectDeleteResponse
-from ....types.org.project_retrieve_response import ProjectRetrieveResponse
 
 __all__ = ["ProjectResource", "AsyncProjectResource"]
 
@@ -116,44 +115,6 @@ class ProjectResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ProjectCreateResponse,
-        )
-
-    def retrieve(
-        self,
-        project_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ProjectRetrieveResponse:
-        """
-        Retrieves detailed information about a specific project using its unique
-        identifier. This endpoint provides complete project configuration including
-        webhook URLs, creation and update timestamps, and webhook secrets. Use this
-        endpoint to inspect project settings or verify project configuration.
-
-        Args:
-          project_id: Unique identifier (Nano ID) of the project to retrieve
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not project_id:
-            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
-        return self._get(
-            f"/api/v3/org/project/{project_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ProjectRetrieveResponse,
         )
 
     def list(
@@ -291,44 +252,6 @@ class AsyncProjectResource(AsyncAPIResource):
             cast_to=ProjectCreateResponse,
         )
 
-    async def retrieve(
-        self,
-        project_id: str,
-        *,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> ProjectRetrieveResponse:
-        """
-        Retrieves detailed information about a specific project using its unique
-        identifier. This endpoint provides complete project configuration including
-        webhook URLs, creation and update timestamps, and webhook secrets. Use this
-        endpoint to inspect project settings or verify project configuration.
-
-        Args:
-          project_id: Unique identifier (Nano ID) of the project to retrieve
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        if not project_id:
-            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
-        return await self._get(
-            f"/api/v3/org/project/{project_id}",
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=ProjectRetrieveResponse,
-        )
-
     async def list(
         self,
         *,
@@ -401,9 +324,6 @@ class ProjectResourceWithRawResponse:
         self.create = to_raw_response_wrapper(
             project.create,
         )
-        self.retrieve = to_raw_response_wrapper(
-            project.retrieve,
-        )
         self.list = to_raw_response_wrapper(
             project.list,
         )
@@ -430,9 +350,6 @@ class AsyncProjectResourceWithRawResponse:
 
         self.create = async_to_raw_response_wrapper(
             project.create,
-        )
-        self.retrieve = async_to_raw_response_wrapper(
-            project.retrieve,
         )
         self.list = async_to_raw_response_wrapper(
             project.list,
@@ -461,9 +378,6 @@ class ProjectResourceWithStreamingResponse:
         self.create = to_streamed_response_wrapper(
             project.create,
         )
-        self.retrieve = to_streamed_response_wrapper(
-            project.retrieve,
-        )
         self.list = to_streamed_response_wrapper(
             project.list,
         )
@@ -490,9 +404,6 @@ class AsyncProjectResourceWithStreamingResponse:
 
         self.create = async_to_streamed_response_wrapper(
             project.create,
-        )
-        self.retrieve = async_to_streamed_response_wrapper(
-            project.retrieve,
         )
         self.list = async_to_streamed_response_wrapper(
             project.list,
