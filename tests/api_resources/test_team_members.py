@@ -26,9 +26,16 @@ class TestTeamMembers:
     def test_method_update(self, client: Composio) -> None:
         team_member = client.team_members.update(
             id="tm_123456",
+        )
+        assert_matches_type(TeamMemberUpdateResponse, team_member, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Composio) -> None:
+        team_member = client.team_members.update(
+            id="tm_123456",
             email="dev@stainless.com",
             name="name",
-            role="role",
+            role="ADMIN",
         )
         assert_matches_type(TeamMemberUpdateResponse, team_member, path=["response"])
 
@@ -36,9 +43,6 @@ class TestTeamMembers:
     def test_raw_response_update(self, client: Composio) -> None:
         response = client.team_members.with_raw_response.update(
             id="tm_123456",
-            email="dev@stainless.com",
-            name="name",
-            role="role",
         )
 
         assert response.is_closed is True
@@ -50,9 +54,6 @@ class TestTeamMembers:
     def test_streaming_response_update(self, client: Composio) -> None:
         with client.team_members.with_streaming_response.update(
             id="tm_123456",
-            email="dev@stainless.com",
-            name="name",
-            role="role",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -67,9 +68,6 @@ class TestTeamMembers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             client.team_members.with_raw_response.update(
                 id="",
-                email="dev@stainless.com",
-                name="name",
-                role="role",
             )
 
     @parametrize
@@ -192,9 +190,16 @@ class TestAsyncTeamMembers:
     async def test_method_update(self, async_client: AsyncComposio) -> None:
         team_member = await async_client.team_members.update(
             id="tm_123456",
+        )
+        assert_matches_type(TeamMemberUpdateResponse, team_member, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncComposio) -> None:
+        team_member = await async_client.team_members.update(
+            id="tm_123456",
             email="dev@stainless.com",
             name="name",
-            role="role",
+            role="ADMIN",
         )
         assert_matches_type(TeamMemberUpdateResponse, team_member, path=["response"])
 
@@ -202,9 +207,6 @@ class TestAsyncTeamMembers:
     async def test_raw_response_update(self, async_client: AsyncComposio) -> None:
         response = await async_client.team_members.with_raw_response.update(
             id="tm_123456",
-            email="dev@stainless.com",
-            name="name",
-            role="role",
         )
 
         assert response.is_closed is True
@@ -216,9 +218,6 @@ class TestAsyncTeamMembers:
     async def test_streaming_response_update(self, async_client: AsyncComposio) -> None:
         async with async_client.team_members.with_streaming_response.update(
             id="tm_123456",
-            email="dev@stainless.com",
-            name="name",
-            role="role",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -233,9 +232,6 @@ class TestAsyncTeamMembers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
             await async_client.team_members.with_raw_response.update(
                 id="",
-                email="dev@stainless.com",
-                name="name",
-                role="role",
             )
 
     @parametrize
