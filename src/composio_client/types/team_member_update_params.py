@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["TeamMemberUpdateParams"]
 
 
 class TeamMemberUpdateParams(TypedDict, total=False):
-    email: Required[str]
+    email: str
 
-    name: Required[str]
+    name: str
 
-    role: Required[str]
+    role: Literal["ADMIN", "DEVELOPER"]
