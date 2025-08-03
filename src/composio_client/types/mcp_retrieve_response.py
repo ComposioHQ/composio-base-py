@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List
+from typing import Dict, List
 
 from .._models import BaseModel
 
@@ -48,6 +48,9 @@ class McpRetrieveResponse(BaseModel):
 
     name: str
     """User-defined descriptive name for this MCP server"""
+
+    toolkit_icons: Dict[str, str]
+    """Object mapping each toolkit slug to its icon/logo URL for display purposes"""
 
     toolkits: List[str]
     """Array of toolkit slugs that this MCP server is allowed to use"""
