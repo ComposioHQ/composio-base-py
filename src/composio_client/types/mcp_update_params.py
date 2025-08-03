@@ -12,6 +12,12 @@ class McpUpdateParams(TypedDict, total=False):
     allowed_tools: List[str]
     """List of action identifiers that should be enabled for this server"""
 
+    auth_config_ids: List[str]
+    """List of auth config IDs to use for this MCP server.
+
+    Can include multiple different toolkits.
+    """
+
     managed_auth_via_composio: bool
     """Whether the MCP server is managed by Composio"""
 
@@ -22,4 +28,7 @@ class McpUpdateParams(TypedDict, total=False):
     """
 
     toolkits: List[str]
-    """List of toolkit slugs this server should be configured to work with"""
+    """List of toolkit slugs this server should be configured to work with.
+
+    Must have the same count and order as auth_config_ids.
+    """

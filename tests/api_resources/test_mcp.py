@@ -119,9 +119,10 @@ class TestMcp:
         mcp = client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
             allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             managed_auth_via_composio=True,
             name="Updated GitHub Integration Server",
-            toolkits=["gmail"],
+            toolkits=["gmail", "notion"],
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
@@ -169,6 +170,8 @@ class TestMcp:
             auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
+            order_by="updated_at",
+            order_direction="desc",
             page_no=1,
             toolkits="toolkits",
         )
@@ -248,6 +251,8 @@ class TestMcp:
             auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
+            order_by="updated_at",
+            order_direction="desc",
             page_no=1,
             toolkits="toolkits",
         )
@@ -426,9 +431,10 @@ class TestAsyncMcp:
         mcp = await async_client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
             allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             managed_auth_via_composio=True,
             name="Updated GitHub Integration Server",
-            toolkits=["gmail"],
+            toolkits=["gmail", "notion"],
         )
         assert_matches_type(McpUpdateResponse, mcp, path=["response"])
 
@@ -476,6 +482,8 @@ class TestAsyncMcp:
             auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
+            order_by="updated_at",
+            order_direction="desc",
             page_no=1,
             toolkits="toolkits",
         )
@@ -555,6 +563,8 @@ class TestAsyncMcp:
             auth_config_ids="auth_config_ids",
             limit=10,
             name="github",
+            order_by="updated_at",
+            order_direction="desc",
             page_no=1,
             toolkits="toolkits",
         )
