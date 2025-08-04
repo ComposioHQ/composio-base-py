@@ -49,6 +49,9 @@ class McpRetrieveResponse(BaseModel):
     name: str
     """User-defined descriptive name for this MCP server"""
 
+    server_instance_count: float
+    """Total count of active user instances connected to this server"""
+
     toolkit_icons: Dict[str, str]
     """Object mapping each toolkit slug to its icon/logo URL for display purposes"""
 
