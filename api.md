@@ -75,7 +75,7 @@ Methods:
 
 - <code title="post /api/v3/org/project/new">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">create</a>(\*\*<a href="src/composio_client/types/org/project_create_params.py">params</a>) -> <a href="./src/composio_client/types/org/project_create_response.py">ProjectCreateResponse</a></code>
 - <code title="get /api/v3/org/project/{projectId}">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">retrieve</a>(project_id) -> <a href="./src/composio_client/types/org/project_retrieve_response.py">ProjectRetrieveResponse</a></code>
-- <code title="get /api/v3/org/project/list">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">list</a>() -> <a href="./src/composio_client/types/org/project_list_response.py">ProjectListResponse</a></code>
+- <code title="get /api/v3/org/project/list">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">list</a>(\*\*<a href="src/composio_client/types/org/project_list_params.py">params</a>) -> <a href="./src/composio_client/types/org/project_list_response.py">ProjectListResponse</a></code>
 - <code title="delete /api/v3/org/project/delete/{projectId}">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">delete</a>(project_id) -> <a href="./src/composio_client/types/org/project_delete_response.py">ProjectDeleteResponse</a></code>
 
 ### APIKeys
