@@ -97,6 +97,13 @@ class TestProject:
         assert_matches_type(ProjectListResponse, project, path=["response"])
 
     @parametrize
+    def test_method_list_with_all_params(self, client: Composio) -> None:
+        project = client.org.project.list(
+            list_all_org_projects=True,
+        )
+        assert_matches_type(ProjectListResponse, project, path=["response"])
+
+    @parametrize
     def test_raw_response_list(self, client: Composio) -> None:
         response = client.org.project.with_raw_response.list()
 
@@ -232,6 +239,13 @@ class TestAsyncProject:
     @parametrize
     async def test_method_list(self, async_client: AsyncComposio) -> None:
         project = await async_client.org.project.list()
+        assert_matches_type(ProjectListResponse, project, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
+        project = await async_client.org.project.list(
+            list_all_org_projects=True,
+        )
         assert_matches_type(ProjectListResponse, project, path=["response"])
 
     @parametrize
