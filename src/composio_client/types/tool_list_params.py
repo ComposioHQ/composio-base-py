@@ -23,6 +23,9 @@ class ToolListParams(TypedDict, total=False):
     important: Literal["true", "false"]
     """Filter to only show important/featured tools (set to "true" to enable)"""
 
+    include_deprecated: bool
+    """Include deprecated tools in the response"""
+
     limit: Optional[float]
     """Number of items per page"""
 
