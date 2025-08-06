@@ -89,7 +89,6 @@ class ToolsResource(SyncAPIResource):
         auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
-        include_deprecated: bool | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
@@ -117,8 +116,6 @@ class ToolsResource(SyncAPIResource):
               required for the first page.
 
           important: Filter to only show important/featured tools (set to "true" to enable)
-
-          include_deprecated: Include deprecated tools in the response
 
           limit: Number of items per page
 
@@ -153,7 +150,6 @@ class ToolsResource(SyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
                         "important": important,
-                        "include_deprecated": include_deprecated,
                         "limit": limit,
                         "scopes": scopes,
                         "search": search,
@@ -448,7 +444,6 @@ class AsyncToolsResource(AsyncAPIResource):
         auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
-        include_deprecated: bool | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
@@ -476,8 +471,6 @@ class AsyncToolsResource(AsyncAPIResource):
               required for the first page.
 
           important: Filter to only show important/featured tools (set to "true" to enable)
-
-          include_deprecated: Include deprecated tools in the response
 
           limit: Number of items per page
 
@@ -512,7 +505,6 @@ class AsyncToolsResource(AsyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
                         "important": important,
-                        "include_deprecated": include_deprecated,
                         "limit": limit,
                         "scopes": scopes,
                         "search": search,
