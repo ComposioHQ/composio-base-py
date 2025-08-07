@@ -8,10 +8,4 @@ __all__ = ["TeamMemberInviteParams"]
 
 
 class TeamMemberInviteParams(TypedDict, total=False):
-    email: Required[str]
-
-    name: Required[str]
-
-    role: Required[str]
-
-    verify_host: str
+    message: Required[str]
