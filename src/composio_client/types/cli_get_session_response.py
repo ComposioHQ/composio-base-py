@@ -31,7 +31,7 @@ class CliGetSessionResponse(BaseModel):
     Null if the session status is "pending".
     """
 
-    api_key: str
+    api_key: Optional[str] = None
     """The API key for the linked account"""
 
     code: str
