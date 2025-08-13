@@ -34,7 +34,6 @@ from .auth_config_list_response import AuthConfigListResponse as AuthConfigListR
 from .auth_config_update_params import AuthConfigUpdateParams as AuthConfigUpdateParams
 from .cli_link_session_response import CliLinkSessionResponse as CliLinkSessionResponse
 from .mcp_retrieve_app_response import McpRetrieveAppResponse as McpRetrieveAppResponse
-from .team_member_invite_params import TeamMemberInviteParams as TeamMemberInviteParams
 from .team_member_list_response import TeamMemberListResponse as TeamMemberListResponse
 from .team_member_update_params import TeamMemberUpdateParams as TeamMemberUpdateParams
 from .toolkit_retrieve_response import ToolkitRetrieveResponse as ToolkitRetrieveResponse

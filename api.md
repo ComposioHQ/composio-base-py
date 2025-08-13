@@ -147,7 +147,7 @@ Methods:
 
 - <code title="put /api/v3/team-members/update/{id}">client.team_members.<a href="./src/composio_client/resources/team_members.py">update</a>(id, \*\*<a href="src/composio_client/types/team_member_update_params.py">params</a>) -> <a href="./src/composio_client/types/team_member_update_response.py">TeamMemberUpdateResponse</a></code>
 - <code title="get /api/v3/team-members/list">client.team_members.<a href="./src/composio_client/resources/team_members.py">list</a>() -> <a href="./src/composio_client/types/team_member_list_response.py">TeamMemberListResponse</a></code>
-- <code title="post /api/v3/team-members/invite">client.team_members.<a href="./src/composio_client/resources/team_members.py">invite</a>(\*\*<a href="src/composio_client/types/team_member_invite_params.py">params</a>) -> None</code>
+- <code title="post /api/v3/team-members/invite">client.team_members.<a href="./src/composio_client/resources/team_members.py">invite</a>() -> None</code>
 - <code title="delete /api/v3/team-members/remove/{id}">client.team_members.<a href="./src/composio_client/resources/team_members.py">remove</a>(id) -> <a href="./src/composio_client/types/team_member_remove_response.py">TeamMemberRemoveResponse</a></code>
 
 # Toolkits
