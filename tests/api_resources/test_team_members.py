@@ -96,16 +96,12 @@ class TestTeamMembers:
 
     @parametrize
     def test_method_invite(self, client: Composio) -> None:
-        team_member = client.team_members.invite(
-            message="message",
-        )
+        team_member = client.team_members.invite()
         assert team_member is None
 
     @parametrize
     def test_raw_response_invite(self, client: Composio) -> None:
-        response = client.team_members.with_raw_response.invite(
-            message="message",
-        )
+        response = client.team_members.with_raw_response.invite()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -114,9 +110,7 @@ class TestTeamMembers:
 
     @parametrize
     def test_streaming_response_invite(self, client: Composio) -> None:
-        with client.team_members.with_streaming_response.invite(
-            message="message",
-        ) as response:
+        with client.team_members.with_streaming_response.invite() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
@@ -244,16 +238,12 @@ class TestAsyncTeamMembers:
 
     @parametrize
     async def test_method_invite(self, async_client: AsyncComposio) -> None:
-        team_member = await async_client.team_members.invite(
-            message="message",
-        )
+        team_member = await async_client.team_members.invite()
         assert team_member is None
 
     @parametrize
     async def test_raw_response_invite(self, async_client: AsyncComposio) -> None:
-        response = await async_client.team_members.with_raw_response.invite(
-            message="message",
-        )
+        response = await async_client.team_members.with_raw_response.invite()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -262,9 +252,7 @@ class TestAsyncTeamMembers:
 
     @parametrize
     async def test_streaming_response_invite(self, async_client: AsyncComposio) -> None:
-        async with async_client.team_members.with_streaming_response.invite(
-            message="message",
-        ) as response:
+        async with async_client.team_members.with_streaming_response.invite() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
