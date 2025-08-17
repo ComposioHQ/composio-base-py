@@ -363,6 +363,29 @@ class ToolsResource(SyncAPIResource):
             cast_to=ToolProxyResponse,
         )
 
+    def retrieve_enum(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Retrieve a list of all available tool enumeration values (tool slugs) for the
+        project. This endpoint returns a comma-separated string of tool slugs that can
+        be used in other API calls.
+        """
+        return self._get(
+            "/api/v3/tools/enum",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=str,
+        )
+
 
 class AsyncToolsResource(AsyncAPIResource):
     @cached_property
@@ -699,6 +722,29 @@ class AsyncToolsResource(AsyncAPIResource):
             cast_to=ToolProxyResponse,
         )
 
+    async def retrieve_enum(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Retrieve a list of all available tool enumeration values (tool slugs) for the
+        project. This endpoint returns a comma-separated string of tool slugs that can
+        be used in other API calls.
+        """
+        return await self._get(
+            "/api/v3/tools/enum",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=str,
+        )
+
 
 class ToolsResourceWithRawResponse:
     def __init__(self, tools: ToolsResource) -> None:
@@ -718,6 +764,9 @@ class ToolsResourceWithRawResponse:
         )
         self.proxy = to_raw_response_wrapper(
             tools.proxy,
+        )
+        self.retrieve_enum = to_raw_response_wrapper(
+            tools.retrieve_enum,
         )
 
 
@@ -740,6 +789,9 @@ class AsyncToolsResourceWithRawResponse:
         self.proxy = async_to_raw_response_wrapper(
             tools.proxy,
         )
+        self.retrieve_enum = async_to_raw_response_wrapper(
+            tools.retrieve_enum,
+        )
 
 
 class ToolsResourceWithStreamingResponse:
@@ -761,6 +813,9 @@ class ToolsResourceWithStreamingResponse:
         self.proxy = to_streamed_response_wrapper(
             tools.proxy,
         )
+        self.retrieve_enum = to_streamed_response_wrapper(
+            tools.retrieve_enum,
+        )
 
 
 class AsyncToolsResourceWithStreamingResponse:
@@ -781,4 +836,7 @@ class AsyncToolsResourceWithStreamingResponse:
         )
         self.proxy = async_to_streamed_response_wrapper(
             tools.proxy,
+        )
+        self.retrieve_enum = async_to_streamed_response_wrapper(
+            tools.retrieve_enum,
         )
