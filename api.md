@@ -179,6 +179,7 @@ from composio_client.types import (
     ToolExecuteResponse,
     ToolGetInputResponse,
     ToolProxyResponse,
+    ToolRetrieveEnumResponse,
 )
 ```
 
@@ -189,6 +190,7 @@ Methods:
 - <code title="post /api/v3/tools/execute/{tool_slug}">client.tools.<a href="./src/composio_client/resources/tools.py">execute</a>(tool_slug, \*\*<a href="src/composio_client/types/tool_execute_params.py">params</a>) -> <a href="./src/composio_client/types/tool_execute_response.py">ToolExecuteResponse</a></code>
 - <code title="post /api/v3/tools/execute/{tool_slug}/input">client.tools.<a href="./src/composio_client/resources/tools.py">get_input</a>(tool_slug, \*\*<a href="src/composio_client/types/tool_get_input_params.py">params</a>) -> <a href="./src/composio_client/types/tool_get_input_response.py">ToolGetInputResponse</a></code>
 - <code title="post /api/v3/tools/execute/proxy">client.tools.<a href="./src/composio_client/resources/tools.py">proxy</a>(\*\*<a href="src/composio_client/types/tool_proxy_params.py">params</a>) -> <a href="./src/composio_client/types/tool_proxy_response.py">ToolProxyResponse</a></code>
+- <code title="get /api/v3/tools/enum">client.tools.<a href="./src/composio_client/resources/tools.py">retrieve_enum</a>() -> str</code>
 
 # TriggerInstances
 
@@ -234,13 +236,18 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import TriggersTypeRetrieveResponse, TriggersTypeListResponse
+from composio_client.types import (
+    TriggersTypeRetrieveResponse,
+    TriggersTypeListResponse,
+    TriggersTypeRetrieveEnumResponse,
+)
 ```
 
 Methods:
 
 - <code title="get /api/v3/triggers_types/{slug}">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve</a>(slug) -> <a href="./src/composio_client/types/triggers_type_retrieve_response.py">TriggersTypeRetrieveResponse</a></code>
 - <code title="get /api/v3/triggers_types">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">list</a>(\*\*<a href="src/composio_client/types/triggers_type_list_params.py">params</a>) -> <a href="./src/composio_client/types/triggers_type_list_response.py">TriggersTypeListResponse</a></code>
+- <code title="get /api/v3/triggers_types/list/enum">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve_enum</a>() -> str</code>
 
 # Mcp
 

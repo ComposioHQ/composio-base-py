@@ -134,6 +134,28 @@ class TriggersTypesResource(SyncAPIResource):
             cast_to=TriggersTypeListResponse,
         )
 
+    def retrieve_enum(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Retrieves a list of all available trigger type enum values that can be used
+        across the API
+        """
+        return self._get(
+            "/api/v3/triggers_types/list/enum",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=str,
+        )
+
 
 class AsyncTriggersTypesResource(AsyncAPIResource):
     @cached_property
@@ -245,6 +267,28 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
             cast_to=TriggersTypeListResponse,
         )
 
+    async def retrieve_enum(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> str:
+        """
+        Retrieves a list of all available trigger type enum values that can be used
+        across the API
+        """
+        return await self._get(
+            "/api/v3/triggers_types/list/enum",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=str,
+        )
+
 
 class TriggersTypesResourceWithRawResponse:
     def __init__(self, triggers_types: TriggersTypesResource) -> None:
@@ -255,6 +299,9 @@ class TriggersTypesResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             triggers_types.list,
+        )
+        self.retrieve_enum = to_raw_response_wrapper(
+            triggers_types.retrieve_enum,
         )
 
 
@@ -268,6 +315,9 @@ class AsyncTriggersTypesResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             triggers_types.list,
         )
+        self.retrieve_enum = async_to_raw_response_wrapper(
+            triggers_types.retrieve_enum,
+        )
 
 
 class TriggersTypesResourceWithStreamingResponse:
@@ -280,6 +330,9 @@ class TriggersTypesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             triggers_types.list,
         )
+        self.retrieve_enum = to_streamed_response_wrapper(
+            triggers_types.retrieve_enum,
+        )
 
 
 class AsyncTriggersTypesResourceWithStreamingResponse:
@@ -291,4 +344,7 @@ class AsyncTriggersTypesResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             triggers_types.list,
+        )
+        self.retrieve_enum = async_to_streamed_response_wrapper(
+            triggers_types.retrieve_enum,
         )

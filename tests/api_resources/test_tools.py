@@ -367,6 +367,31 @@ class TestTools:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_retrieve_enum(self, client: Composio) -> None:
+        tool = client.tools.retrieve_enum()
+        assert_matches_type(str, tool, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve_enum(self, client: Composio) -> None:
+        response = client.tools.with_raw_response.retrieve_enum()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tool = response.parse()
+        assert_matches_type(str, tool, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve_enum(self, client: Composio) -> None:
+        with client.tools.with_streaming_response.retrieve_enum() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tool = response.parse()
+            assert_matches_type(str, tool, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncTools:
     parametrize = pytest.mark.parametrize(
@@ -714,5 +739,30 @@ class TestAsyncTools:
 
             tool = await response.parse()
             assert_matches_type(ToolProxyResponse, tool, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_retrieve_enum(self, async_client: AsyncComposio) -> None:
+        tool = await async_client.tools.retrieve_enum()
+        assert_matches_type(str, tool, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve_enum(self, async_client: AsyncComposio) -> None:
+        response = await async_client.tools.with_raw_response.retrieve_enum()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        tool = await response.parse()
+        assert_matches_type(str, tool, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve_enum(self, async_client: AsyncComposio) -> None:
+        async with async_client.tools.with_streaming_response.retrieve_enum() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            tool = await response.parse()
+            assert_matches_type(str, tool, path=["response"])
 
         assert cast(Any, response.is_closed) is True
