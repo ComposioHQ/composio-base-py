@@ -24,6 +24,7 @@ from ..types.tool_proxy_response import ToolProxyResponse
 from ..types.tool_execute_response import ToolExecuteResponse
 from ..types.tool_retrieve_response import ToolRetrieveResponse
 from ..types.tool_get_input_response import ToolGetInputResponse
+from ..types.tool_retrieve_enum_response import ToolRetrieveEnumResponse
 
 __all__ = ["ToolsResource", "AsyncToolsResource"]
 
@@ -372,7 +373,7 @@ class ToolsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
+    ) -> ToolRetrieveEnumResponse:
         """
         Retrieve a list of all available tool enumeration values (tool slugs) for the
         project. This endpoint returns a comma-separated string of tool slugs that can
@@ -383,7 +384,7 @@ class ToolsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=str,
+            cast_to=ToolRetrieveEnumResponse,
         )
 
 
@@ -731,7 +732,7 @@ class AsyncToolsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
+    ) -> ToolRetrieveEnumResponse:
         """
         Retrieve a list of all available tool enumeration values (tool slugs) for the
         project. This endpoint returns a comma-separated string of tool slugs that can
@@ -742,7 +743,7 @@ class AsyncToolsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=str,
+            cast_to=ToolRetrieveEnumResponse,
         )
 
 
