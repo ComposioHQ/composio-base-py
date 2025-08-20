@@ -5,7 +5,14 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["AuthConfigListResponse", "Item", "ItemDeprecatedParams", "ItemToolAccessConfig", "ItemToolkit"]
+__all__ = [
+    "AuthConfigListResponse",
+    "Item",
+    "ItemDeprecatedParams",
+    "ItemToolAccessConfig",
+    "ItemToolkit",
+    "ItemProxyConfig",
+]
 
 
 class ItemDeprecatedParams(BaseModel):
@@ -43,6 +50,14 @@ class ItemToolkit(BaseModel):
 
     slug: str
     """The unique identifier of the integration app"""
+
+
+class ItemProxyConfig(BaseModel):
+    proxy_url: str
+    """The url of the auth proxy"""
+
+    proxy_auth_key: Optional[str] = None
+    """The auth key for the auth proxy"""
 
 
 class Item(BaseModel):
@@ -109,6 +124,8 @@ class Item(BaseModel):
 
     last_updated_at: Optional[str] = None
     """ISO 8601 date-time when the auth config was last updated"""
+
+    proxy_config: Optional[ItemProxyConfig] = None
 
 
 class AuthConfigListResponse(BaseModel):

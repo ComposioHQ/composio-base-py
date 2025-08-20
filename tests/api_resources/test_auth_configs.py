@@ -118,6 +118,10 @@ class TestAuthConfigs:
             nanoid="nanoid",
             credentials={"foo": "bar"},
             type="custom",
+            proxy_config={
+                "proxy_url": "proxy_url",
+                "proxy_auth_key": "proxy_auth_key",
+            },
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
@@ -439,6 +443,10 @@ class TestAsyncAuthConfigs:
             nanoid="nanoid",
             credentials={"foo": "bar"},
             type="custom",
+            proxy_config={
+                "proxy_url": "proxy_url",
+                "proxy_auth_key": "proxy_auth_key",
+            },
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],

@@ -5,7 +5,14 @@ from __future__ import annotations
 from typing import Dict, List, Union, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
-__all__ = ["AuthConfigUpdateParams", "Variant0", "Variant0ToolAccessConfig", "Variant1", "Variant1ToolAccessConfig"]
+__all__ = [
+    "AuthConfigUpdateParams",
+    "Variant0",
+    "Variant0ProxyConfig",
+    "Variant0ToolAccessConfig",
+    "Variant1",
+    "Variant1ToolAccessConfig",
+]
 
 
 class Variant0(TypedDict, total=False):
@@ -13,7 +20,17 @@ class Variant0(TypedDict, total=False):
 
     type: Required[Literal["custom"]]
 
+    proxy_config: Variant0ProxyConfig
+
     tool_access_config: Variant0ToolAccessConfig
+
+
+class Variant0ProxyConfig(TypedDict, total=False):
+    proxy_url: Required[str]
+    """The url of the auth proxy"""
+
+    proxy_auth_key: str
+    """The auth key for the auth proxy"""
 
 
 class Variant0ToolAccessConfig(TypedDict, total=False):
