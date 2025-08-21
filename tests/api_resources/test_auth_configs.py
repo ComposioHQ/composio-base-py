@@ -119,7 +119,7 @@ class TestAuthConfigs:
             credentials={"foo": "bar"},
             type="custom",
             proxy_config={
-                "proxy_url": "proxy_url",
+                "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
             },
             tool_access_config={
@@ -444,7 +444,7 @@ class TestAsyncAuthConfigs:
             credentials={"foo": "bar"},
             type="custom",
             proxy_config={
-                "proxy_url": "proxy_url",
+                "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
             },
             tool_access_config={
