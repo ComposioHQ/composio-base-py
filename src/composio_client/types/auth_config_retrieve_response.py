@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["AuthConfigRetrieveResponse", "DeprecatedParams", "ToolAccessConfig", "Toolkit"]
+__all__ = ["AuthConfigRetrieveResponse", "DeprecatedParams", "ToolAccessConfig", "Toolkit", "ProxyConfig"]
 
 
 class DeprecatedParams(BaseModel):
@@ -43,6 +43,14 @@ class Toolkit(BaseModel):
 
     slug: str
     """The unique identifier of the integration app"""
+
+
+class ProxyConfig(BaseModel):
+    proxy_url: str
+    """The url of the auth proxy"""
+
+    proxy_auth_key: Optional[str] = None
+    """The auth key for the auth proxy"""
 
 
 class AuthConfigRetrieveResponse(BaseModel):
@@ -109,3 +117,5 @@ class AuthConfigRetrieveResponse(BaseModel):
 
     last_updated_at: Optional[str] = None
     """ISO 8601 date-time when the auth config was last updated"""
+
+    proxy_config: Optional[ProxyConfig] = None

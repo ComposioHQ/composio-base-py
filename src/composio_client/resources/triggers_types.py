@@ -20,6 +20,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.triggers_type_list_response import TriggersTypeListResponse
 from ..types.triggers_type_retrieve_response import TriggersTypeRetrieveResponse
+from ..types.triggers_type_retrieve_enum_response import TriggersTypeRetrieveEnumResponse
 
 __all__ = ["TriggersTypesResource", "AsyncTriggersTypesResource"]
 
@@ -143,7 +144,7 @@ class TriggersTypesResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
+    ) -> TriggersTypeRetrieveEnumResponse:
         """
         Retrieves a list of all available trigger type enum values that can be used
         across the API
@@ -153,7 +154,7 @@ class TriggersTypesResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=str,
+            cast_to=TriggersTypeRetrieveEnumResponse,
         )
 
 
@@ -276,7 +277,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
+    ) -> TriggersTypeRetrieveEnumResponse:
         """
         Retrieves a list of all available trigger type enum values that can be used
         across the API
@@ -286,7 +287,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=str,
+            cast_to=TriggersTypeRetrieveEnumResponse,
         )
 
 

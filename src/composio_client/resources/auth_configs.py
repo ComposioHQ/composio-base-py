@@ -128,6 +128,7 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         credentials: Dict[str, Optional[object]],
         type: Literal["custom"],
+        proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -192,6 +193,7 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
+        proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         scopes: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -209,6 +211,7 @@ class AuthConfigsResource(SyncAPIResource):
                 {
                     "credentials": credentials,
                     "type": type,
+                    "proxy_config": proxy_config,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
                 },
@@ -471,6 +474,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         credentials: Dict[str, Optional[object]],
         type: Literal["custom"],
+        proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -535,6 +539,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
+        proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         scopes: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -552,6 +557,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                 {
                     "credentials": credentials,
                     "type": type,
+                    "proxy_config": proxy_config,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
                 },

@@ -31,6 +31,9 @@ class CliGetSessionResponse(BaseModel):
     Null if the session status is "pending".
     """
 
+    api_key: Optional[str] = None
+    """The API key for the linked account"""
+
     code: str
     """The 6-character hexadecimal code used for CLI login"""
 

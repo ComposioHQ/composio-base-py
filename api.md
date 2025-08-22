@@ -75,7 +75,7 @@ Methods:
 
 - <code title="post /api/v3/org/project/new">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">create</a>(\*\*<a href="src/composio_client/types/org/project_create_params.py">params</a>) -> <a href="./src/composio_client/types/org/project_create_response.py">ProjectCreateResponse</a></code>
 - <code title="get /api/v3/org/project/{projectId}">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">retrieve</a>(project_id) -> <a href="./src/composio_client/types/org/project_retrieve_response.py">ProjectRetrieveResponse</a></code>
-- <code title="get /api/v3/org/project/list">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">list</a>() -> <a href="./src/composio_client/types/org/project_list_response.py">ProjectListResponse</a></code>
+- <code title="get /api/v3/org/project/list">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">list</a>(\*\*<a href="src/composio_client/types/org/project_list_params.py">params</a>) -> <a href="./src/composio_client/types/org/project_list_response.py">ProjectListResponse</a></code>
 - <code title="delete /api/v3/org/project/delete/{projectId}">client.org.project.<a href="./src/composio_client/resources/org/project/project.py">delete</a>(project_id) -> <a href="./src/composio_client/types/org/project_delete_response.py">ProjectDeleteResponse</a></code>
 
 ### APIKeys
@@ -139,7 +139,6 @@ Types:
 from composio_client.types import (
     TeamMemberUpdateResponse,
     TeamMemberListResponse,
-    TeamMemberInviteResponse,
     TeamMemberRemoveResponse,
 )
 ```
@@ -148,7 +147,7 @@ Methods:
 
 - <code title="put /api/v3/team-members/update/{id}">client.team_members.<a href="./src/composio_client/resources/team_members.py">update</a>(id, \*\*<a href="src/composio_client/types/team_member_update_params.py">params</a>) -> <a href="./src/composio_client/types/team_member_update_response.py">TeamMemberUpdateResponse</a></code>
 - <code title="get /api/v3/team-members/list">client.team_members.<a href="./src/composio_client/resources/team_members.py">list</a>() -> <a href="./src/composio_client/types/team_member_list_response.py">TeamMemberListResponse</a></code>
-- <code title="post /api/v3/team-members/invite">client.team_members.<a href="./src/composio_client/resources/team_members.py">invite</a>(\*\*<a href="src/composio_client/types/team_member_invite_params.py">params</a>) -> <a href="./src/composio_client/types/team_member_invite_response.py">TeamMemberInviteResponse</a></code>
+- <code title="post /api/v3/team-members/invite">client.team_members.<a href="./src/composio_client/resources/team_members.py">invite</a>() -> None</code>
 - <code title="delete /api/v3/team-members/remove/{id}">client.team_members.<a href="./src/composio_client/resources/team_members.py">remove</a>(id) -> <a href="./src/composio_client/types/team_member_remove_response.py">TeamMemberRemoveResponse</a></code>
 
 # Toolkits
@@ -191,7 +190,7 @@ Methods:
 - <code title="post /api/v3/tools/execute/{tool_slug}">client.tools.<a href="./src/composio_client/resources/tools.py">execute</a>(tool_slug, \*\*<a href="src/composio_client/types/tool_execute_params.py">params</a>) -> <a href="./src/composio_client/types/tool_execute_response.py">ToolExecuteResponse</a></code>
 - <code title="post /api/v3/tools/execute/{tool_slug}/input">client.tools.<a href="./src/composio_client/resources/tools.py">get_input</a>(tool_slug, \*\*<a href="src/composio_client/types/tool_get_input_params.py">params</a>) -> <a href="./src/composio_client/types/tool_get_input_response.py">ToolGetInputResponse</a></code>
 - <code title="post /api/v3/tools/execute/proxy">client.tools.<a href="./src/composio_client/resources/tools.py">proxy</a>(\*\*<a href="src/composio_client/types/tool_proxy_params.py">params</a>) -> <a href="./src/composio_client/types/tool_proxy_response.py">ToolProxyResponse</a></code>
-- <code title="get /api/v3/tools/enum">client.tools.<a href="./src/composio_client/resources/tools.py">retrieve_enum</a>() -> str</code>
+- <code title="get /api/v3/tools/enum">client.tools.<a href="./src/composio_client/resources/tools.py">retrieve_enum</a>() -> <a href="./src/composio_client/types/tool_retrieve_enum_response.py">ToolRetrieveEnumResponse</a></code>
 
 # TriggerInstances
 
@@ -248,7 +247,7 @@ Methods:
 
 - <code title="get /api/v3/triggers_types/{slug}">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve</a>(slug) -> <a href="./src/composio_client/types/triggers_type_retrieve_response.py">TriggersTypeRetrieveResponse</a></code>
 - <code title="get /api/v3/triggers_types">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">list</a>(\*\*<a href="src/composio_client/types/triggers_type_list_params.py">params</a>) -> <a href="./src/composio_client/types/triggers_type_list_response.py">TriggersTypeListResponse</a></code>
-- <code title="get /api/v3/triggers_types/list/enum">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve_enum</a>() -> str</code>
+- <code title="get /api/v3/triggers_types/list/enum">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve_enum</a>() -> <a href="./src/composio_client/types/triggers_type_retrieve_enum_response.py">TriggersTypeRetrieveEnumResponse</a></code>
 
 # Mcp
 

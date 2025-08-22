@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from typing import List, Optional
+from typing_extensions import Literal
 
 import httpx
 
@@ -172,6 +173,7 @@ class McpResource(SyncAPIResource):
         id: str,
         *,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
+        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         toolkits: List[str] | NotGiven = NOT_GIVEN,
@@ -192,12 +194,16 @@ class McpResource(SyncAPIResource):
 
           allowed_tools: List of action identifiers that should be enabled for this server
 
+          auth_config_ids: List of auth config IDs to use for this MCP server. Can include multiple
+              different toolkits.
+
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           name: Human-readable name to identify this MCP server instance (4-30 characters,
               alphanumeric, spaces, and hyphens only)
 
-          toolkits: List of toolkit slugs this server should be configured to work with
+          toolkits: List of toolkit slugs this server should be configured to work with. Must have
+              the same count and order as auth_config_ids.
 
           extra_headers: Send extra headers
 
@@ -214,6 +220,7 @@ class McpResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "allowed_tools": allowed_tools,
+                    "auth_config_ids": auth_config_ids,
                     "managed_auth_via_composio": managed_auth_via_composio,
                     "name": name,
                     "toolkits": toolkits,
@@ -232,6 +239,8 @@ class McpResource(SyncAPIResource):
         auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
+        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
         toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -254,6 +263,10 @@ class McpResource(SyncAPIResource):
           limit: Number of items per page (default: 10)
 
           name: Filter MCP servers by name (case-insensitive partial match)
+
+          order_by: Field to order results by
+
+          order_direction: Direction of ordering
 
           page_no: Page number for pagination (1-based)
 
@@ -279,6 +292,8 @@ class McpResource(SyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
+                        "order_by": order_by,
+                        "order_direction": order_direction,
                         "page_no": page_no,
                         "toolkits": toolkits,
                     },
@@ -333,6 +348,8 @@ class McpResource(SyncAPIResource):
         auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
+        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
         toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -356,6 +373,10 @@ class McpResource(SyncAPIResource):
           limit: Number of items per page (default: 10)
 
           name: Filter MCP servers by name (case-insensitive partial match)
+
+          order_by: Field to order results by
+
+          order_direction: Direction of ordering
 
           page_no: Page number for pagination (1-based)
 
@@ -383,6 +404,8 @@ class McpResource(SyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
+                        "order_by": order_by,
+                        "order_direction": order_direction,
                         "page_no": page_no,
                         "toolkits": toolkits,
                     },
@@ -563,6 +586,7 @@ class AsyncMcpResource(AsyncAPIResource):
         id: str,
         *,
         allowed_tools: List[str] | NotGiven = NOT_GIVEN,
+        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
         toolkits: List[str] | NotGiven = NOT_GIVEN,
@@ -583,12 +607,16 @@ class AsyncMcpResource(AsyncAPIResource):
 
           allowed_tools: List of action identifiers that should be enabled for this server
 
+          auth_config_ids: List of auth config IDs to use for this MCP server. Can include multiple
+              different toolkits.
+
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           name: Human-readable name to identify this MCP server instance (4-30 characters,
               alphanumeric, spaces, and hyphens only)
 
-          toolkits: List of toolkit slugs this server should be configured to work with
+          toolkits: List of toolkit slugs this server should be configured to work with. Must have
+              the same count and order as auth_config_ids.
 
           extra_headers: Send extra headers
 
@@ -605,6 +633,7 @@ class AsyncMcpResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "allowed_tools": allowed_tools,
+                    "auth_config_ids": auth_config_ids,
                     "managed_auth_via_composio": managed_auth_via_composio,
                     "name": name,
                     "toolkits": toolkits,
@@ -623,6 +652,8 @@ class AsyncMcpResource(AsyncAPIResource):
         auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
+        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
         toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -645,6 +676,10 @@ class AsyncMcpResource(AsyncAPIResource):
           limit: Number of items per page (default: 10)
 
           name: Filter MCP servers by name (case-insensitive partial match)
+
+          order_by: Field to order results by
+
+          order_direction: Direction of ordering
 
           page_no: Page number for pagination (1-based)
 
@@ -670,6 +705,8 @@ class AsyncMcpResource(AsyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
+                        "order_by": order_by,
+                        "order_direction": order_direction,
                         "page_no": page_no,
                         "toolkits": toolkits,
                     },
@@ -724,6 +761,8 @@ class AsyncMcpResource(AsyncAPIResource):
         auth_config_ids: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
+        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
+        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         page_no: Optional[float] | NotGiven = NOT_GIVEN,
         toolkits: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -747,6 +786,10 @@ class AsyncMcpResource(AsyncAPIResource):
           limit: Number of items per page (default: 10)
 
           name: Filter MCP servers by name (case-insensitive partial match)
+
+          order_by: Field to order results by
+
+          order_direction: Direction of ordering
 
           page_no: Page number for pagination (1-based)
 
@@ -774,6 +817,8 @@ class AsyncMcpResource(AsyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "limit": limit,
                         "name": name,
+                        "order_by": order_by,
+                        "order_direction": order_direction,
                         "page_no": page_no,
                         "toolkits": toolkits,
                     },

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Optional
+
 import httpx
 
 from .trigger import (
@@ -38,7 +40,7 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ....types.org import project_create_params
+from ....types.org import project_list_params, project_create_params
 from ...._base_client import make_request_options
 from ....types.org.project_list_response import ProjectListResponse
 from ....types.org.project_create_response import ProjectCreateResponse
@@ -159,6 +161,7 @@ class ProjectResource(SyncAPIResource):
     def list(
         self,
         *,
+        list_all_org_projects: Optional[bool] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -171,11 +174,26 @@ class ProjectResource(SyncAPIResource):
         Projects are returned in descending order of creation date (newest first). This
         endpoint is useful for displaying project selection in dashboards or for
         integrations that need to list all available projects.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/api/v3/org/project/list",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"list_all_org_projects": list_all_org_projects}, project_list_params.ProjectListParams
+                ),
             ),
             cast_to=ProjectListResponse,
         )
@@ -332,6 +350,7 @@ class AsyncProjectResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        list_all_org_projects: Optional[bool] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -344,11 +363,26 @@ class AsyncProjectResource(AsyncAPIResource):
         Projects are returned in descending order of creation date (newest first). This
         endpoint is useful for displaying project selection in dashboards or for
         integrations that need to list all available projects.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/api/v3/org/project/list",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"list_all_org_projects": list_all_org_projects}, project_list_params.ProjectListParams
+                ),
             ),
             cast_to=ProjectListResponse,
         )

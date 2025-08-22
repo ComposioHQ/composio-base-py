@@ -24,6 +24,7 @@ from ..types.tool_proxy_response import ToolProxyResponse
 from ..types.tool_execute_response import ToolExecuteResponse
 from ..types.tool_retrieve_response import ToolRetrieveResponse
 from ..types.tool_get_input_response import ToolGetInputResponse
+from ..types.tool_retrieve_enum_response import ToolRetrieveEnumResponse
 
 __all__ = ["ToolsResource", "AsyncToolsResource"]
 
@@ -89,6 +90,7 @@ class ToolsResource(SyncAPIResource):
         auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
+        include_deprecated: bool | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
@@ -116,6 +118,8 @@ class ToolsResource(SyncAPIResource):
               required for the first page.
 
           important: Filter to only show important/featured tools (set to "true" to enable)
+
+          include_deprecated: Include deprecated tools in the response
 
           limit: Number of items per page
 
@@ -150,6 +154,7 @@ class ToolsResource(SyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
                         "important": important,
+                        "include_deprecated": include_deprecated,
                         "limit": limit,
                         "scopes": scopes,
                         "search": search,
@@ -368,7 +373,7 @@ class ToolsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
+    ) -> ToolRetrieveEnumResponse:
         """
         Retrieve a list of all available tool enumeration values (tool slugs) for the
         project. This endpoint returns a comma-separated string of tool slugs that can
@@ -379,7 +384,7 @@ class ToolsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=str,
+            cast_to=ToolRetrieveEnumResponse,
         )
 
 
@@ -444,6 +449,7 @@ class AsyncToolsResource(AsyncAPIResource):
         auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
+        include_deprecated: bool | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
@@ -471,6 +477,8 @@ class AsyncToolsResource(AsyncAPIResource):
               required for the first page.
 
           important: Filter to only show important/featured tools (set to "true" to enable)
+
+          include_deprecated: Include deprecated tools in the response
 
           limit: Number of items per page
 
@@ -505,6 +513,7 @@ class AsyncToolsResource(AsyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
                         "important": important,
+                        "include_deprecated": include_deprecated,
                         "limit": limit,
                         "scopes": scopes,
                         "search": search,
@@ -723,7 +732,7 @@ class AsyncToolsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
+    ) -> ToolRetrieveEnumResponse:
         """
         Retrieve a list of all available tool enumeration values (tool slugs) for the
         project. This endpoint returns a comma-separated string of tool slugs that can
@@ -734,7 +743,7 @@ class AsyncToolsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=str,
+            cast_to=ToolRetrieveEnumResponse,
         )
 
 

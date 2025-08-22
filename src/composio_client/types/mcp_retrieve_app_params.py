@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Optional
-from typing_extensions import TypedDict
+from typing_extensions import Literal, TypedDict
 
 __all__ = ["McpRetrieveAppParams"]
 
@@ -17,6 +17,12 @@ class McpRetrieveAppParams(TypedDict, total=False):
 
     name: str
     """Filter MCP servers by name (case-insensitive partial match)"""
+
+    order_by: Literal["created_at", "updated_at"]
+    """Field to order results by"""
+
+    order_direction: Literal["asc", "desc"]
+    """Direction of ordering"""
 
     page_no: Optional[float]
     """Page number for pagination (1-based)"""

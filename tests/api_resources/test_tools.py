@@ -15,6 +15,7 @@ from composio_client.types import (
     ToolExecuteResponse,
     ToolGetInputResponse,
     ToolRetrieveResponse,
+    ToolRetrieveEnumResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -74,6 +75,7 @@ class TestTools:
             auth_config_ids=["string"],
             cursor="cursor",
             important="true",
+            include_deprecated=True,
             limit=0,
             scopes=["string"],
             search="search",
@@ -369,7 +371,7 @@ class TestTools:
     @parametrize
     def test_method_retrieve_enum(self, client: Composio) -> None:
         tool = client.tools.retrieve_enum()
-        assert_matches_type(str, tool, path=["response"])
+        assert_matches_type(ToolRetrieveEnumResponse, tool, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve_enum(self, client: Composio) -> None:
@@ -378,7 +380,7 @@ class TestTools:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         tool = response.parse()
-        assert_matches_type(str, tool, path=["response"])
+        assert_matches_type(ToolRetrieveEnumResponse, tool, path=["response"])
 
     @parametrize
     def test_streaming_response_retrieve_enum(self, client: Composio) -> None:
@@ -387,7 +389,7 @@ class TestTools:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tool = response.parse()
-            assert_matches_type(str, tool, path=["response"])
+            assert_matches_type(ToolRetrieveEnumResponse, tool, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -448,6 +450,7 @@ class TestAsyncTools:
             auth_config_ids=["string"],
             cursor="cursor",
             important="true",
+            include_deprecated=True,
             limit=0,
             scopes=["string"],
             search="search",
@@ -743,7 +746,7 @@ class TestAsyncTools:
     @parametrize
     async def test_method_retrieve_enum(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.retrieve_enum()
-        assert_matches_type(str, tool, path=["response"])
+        assert_matches_type(ToolRetrieveEnumResponse, tool, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve_enum(self, async_client: AsyncComposio) -> None:
@@ -752,7 +755,7 @@ class TestAsyncTools:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         tool = await response.parse()
-        assert_matches_type(str, tool, path=["response"])
+        assert_matches_type(ToolRetrieveEnumResponse, tool, path=["response"])
 
     @parametrize
     async def test_streaming_response_retrieve_enum(self, async_client: AsyncComposio) -> None:
@@ -761,6 +764,6 @@ class TestAsyncTools:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             tool = await response.parse()
-            assert_matches_type(str, tool, path=["response"])
+            assert_matches_type(ToolRetrieveEnumResponse, tool, path=["response"])
 
         assert cast(Any, response.is_closed) is True
