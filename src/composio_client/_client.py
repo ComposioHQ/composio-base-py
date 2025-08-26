@@ -21,17 +21,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import (
-    cli,
-    files,
-    tools,
-    toolkits,
-    migration,
-    auth_configs,
-    team_members,
-    triggers_types,
-    connected_accounts,
-)
+from .resources import files, tools, toolkits, migration, auth_configs, team_members, triggers_types, connected_accounts
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -74,7 +64,6 @@ class Composio(SyncAPIClient):
     mcp: mcp.McpResource
     files: files.FilesResource
     migration: migration.MigrationResource
-    cli: cli.CliResource
     with_raw_response: ComposioWithRawResponse
     with_streaming_response: ComposioWithStreamedResponse
 
@@ -163,7 +152,6 @@ class Composio(SyncAPIClient):
         self.mcp = mcp.McpResource(self)
         self.files = files.FilesResource(self)
         self.migration = migration.MigrationResource(self)
-        self.cli = cli.CliResource(self)
         self.with_raw_response = ComposioWithRawResponse(self)
         self.with_streaming_response = ComposioWithStreamedResponse(self)
 
@@ -288,7 +276,6 @@ class AsyncComposio(AsyncAPIClient):
     mcp: mcp.AsyncMcpResource
     files: files.AsyncFilesResource
     migration: migration.AsyncMigrationResource
-    cli: cli.AsyncCliResource
     with_raw_response: AsyncComposioWithRawResponse
     with_streaming_response: AsyncComposioWithStreamedResponse
 
@@ -377,7 +364,6 @@ class AsyncComposio(AsyncAPIClient):
         self.mcp = mcp.AsyncMcpResource(self)
         self.files = files.AsyncFilesResource(self)
         self.migration = migration.AsyncMigrationResource(self)
-        self.cli = cli.AsyncCliResource(self)
         self.with_raw_response = AsyncComposioWithRawResponse(self)
         self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
 
@@ -503,7 +489,6 @@ class ComposioWithRawResponse:
         self.mcp = mcp.McpResourceWithRawResponse(client.mcp)
         self.files = files.FilesResourceWithRawResponse(client.files)
         self.migration = migration.MigrationResourceWithRawResponse(client.migration)
-        self.cli = cli.CliResourceWithRawResponse(client.cli)
 
 
 class AsyncComposioWithRawResponse:
@@ -523,7 +508,6 @@ class AsyncComposioWithRawResponse:
         self.mcp = mcp.AsyncMcpResourceWithRawResponse(client.mcp)
         self.files = files.AsyncFilesResourceWithRawResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithRawResponse(client.migration)
-        self.cli = cli.AsyncCliResourceWithRawResponse(client.cli)
 
 
 class ComposioWithStreamedResponse:
@@ -543,7 +527,6 @@ class ComposioWithStreamedResponse:
         self.mcp = mcp.McpResourceWithStreamingResponse(client.mcp)
         self.files = files.FilesResourceWithStreamingResponse(client.files)
         self.migration = migration.MigrationResourceWithStreamingResponse(client.migration)
-        self.cli = cli.CliResourceWithStreamingResponse(client.cli)
 
 
 class AsyncComposioWithStreamedResponse:
@@ -563,7 +546,6 @@ class AsyncComposioWithStreamedResponse:
         self.mcp = mcp.AsyncMcpResourceWithStreamingResponse(client.mcp)
         self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithStreamingResponse(client.migration)
-        self.cli = cli.AsyncCliResourceWithStreamingResponse(client.cli)
 
 
 Client = Composio

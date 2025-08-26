@@ -16,14 +16,6 @@ from .trigger import (
     TriggerResourceWithStreamingResponse,
     AsyncTriggerResourceWithStreamingResponse,
 )
-from .webhook import (
-    WebhookResource,
-    AsyncWebhookResource,
-    WebhookResourceWithRawResponse,
-    AsyncWebhookResourceWithRawResponse,
-    WebhookResourceWithStreamingResponse,
-    AsyncWebhookResourceWithStreamingResponse,
-)
 from .api_keys import (
     APIKeysResource,
     AsyncAPIKeysResource,
@@ -40,12 +32,6 @@ __all__ = [
     "AsyncAPIKeysResourceWithRawResponse",
     "APIKeysResourceWithStreamingResponse",
     "AsyncAPIKeysResourceWithStreamingResponse",
-    "WebhookResource",
-    "AsyncWebhookResource",
-    "WebhookResourceWithRawResponse",
-    "AsyncWebhookResourceWithRawResponse",
-    "WebhookResourceWithStreamingResponse",
-    "AsyncWebhookResourceWithStreamingResponse",
     "TriggerResource",
     "AsyncTriggerResource",
     "TriggerResourceWithRawResponse",
