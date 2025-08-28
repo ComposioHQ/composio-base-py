@@ -18,6 +18,8 @@ from ...._base_client import make_request_options
 from ....types.org.project import api_key_create_params
 from ....types.org.project.api_key_list_response import APIKeyListResponse
 from ....types.org.project.api_key_create_response import APIKeyCreateResponse
+from ....types.org.project.api_key_delete_response import APIKeyDeleteResponse
+from ....types.org.project.api_key_create_api_key_response import APIKeyCreateAPIKeyResponse
 
 __all__ = ["APIKeysResource", "AsyncAPIKeysResource"]
 
@@ -126,6 +128,89 @@ class APIKeysResource(SyncAPIResource):
             cast_to=APIKeyListResponse,
         )
 
+    def delete(
+        self,
+        id: str,
+        *,
+        project_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> APIKeyDeleteResponse:
+        """Permanently deletes an API key from the specified project.
+
+        Once deleted, the API
+        key can no longer be used for authentication and any services using it will need
+        to be updated with a new key. This operation cannot be undone, so it should be
+        used with caution.
+
+        Args:
+          project_id: The project Nano ID that owns the API key to be deleted
+
+          id: The database ID of the API key record to be deleted
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not project_id:
+            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._delete(
+            f"/api/v3/org/project/{project_id}/api_keys/remove/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=APIKeyDeleteResponse,
+        )
+
+    def create_api_key(
+        self,
+        project_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> APIKeyCreateAPIKeyResponse:
+        """
+        Retrieves an existing API key for the project or creates a new one if none
+        exists. This endpoint is useful for ensuring a project always has at least one
+        API key without the risk of creating duplicates. If an API key already exists,
+        it returns the existing key. If no API keys exist for the project, it creates a
+        new one with an automatically generated name.
+
+        Args:
+          project_id: The project Nano ID for which to retrieve or create an API key
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not project_id:
+            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
+        return self._post(
+            f"/api/v3/org/project/{project_id}/api_keys/create-api-key",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=APIKeyCreateAPIKeyResponse,
+        )
+
 
 class AsyncAPIKeysResource(AsyncAPIResource):
     @cached_property
@@ -231,6 +316,89 @@ class AsyncAPIKeysResource(AsyncAPIResource):
             cast_to=APIKeyListResponse,
         )
 
+    async def delete(
+        self,
+        id: str,
+        *,
+        project_id: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> APIKeyDeleteResponse:
+        """Permanently deletes an API key from the specified project.
+
+        Once deleted, the API
+        key can no longer be used for authentication and any services using it will need
+        to be updated with a new key. This operation cannot be undone, so it should be
+        used with caution.
+
+        Args:
+          project_id: The project Nano ID that owns the API key to be deleted
+
+          id: The database ID of the API key record to be deleted
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not project_id:
+            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._delete(
+            f"/api/v3/org/project/{project_id}/api_keys/remove/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=APIKeyDeleteResponse,
+        )
+
+    async def create_api_key(
+        self,
+        project_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> APIKeyCreateAPIKeyResponse:
+        """
+        Retrieves an existing API key for the project or creates a new one if none
+        exists. This endpoint is useful for ensuring a project always has at least one
+        API key without the risk of creating duplicates. If an API key already exists,
+        it returns the existing key. If no API keys exist for the project, it creates a
+        new one with an automatically generated name.
+
+        Args:
+          project_id: The project Nano ID for which to retrieve or create an API key
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not project_id:
+            raise ValueError(f"Expected a non-empty value for `project_id` but received {project_id!r}")
+        return await self._post(
+            f"/api/v3/org/project/{project_id}/api_keys/create-api-key",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=APIKeyCreateAPIKeyResponse,
+        )
+
 
 class APIKeysResourceWithRawResponse:
     def __init__(self, api_keys: APIKeysResource) -> None:
@@ -241,6 +409,12 @@ class APIKeysResourceWithRawResponse:
         )
         self.list = to_raw_response_wrapper(
             api_keys.list,
+        )
+        self.delete = to_raw_response_wrapper(
+            api_keys.delete,
+        )
+        self.create_api_key = to_raw_response_wrapper(
+            api_keys.create_api_key,
         )
 
 
@@ -254,6 +428,12 @@ class AsyncAPIKeysResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             api_keys.list,
         )
+        self.delete = async_to_raw_response_wrapper(
+            api_keys.delete,
+        )
+        self.create_api_key = async_to_raw_response_wrapper(
+            api_keys.create_api_key,
+        )
 
 
 class APIKeysResourceWithStreamingResponse:
@@ -266,6 +446,12 @@ class APIKeysResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             api_keys.list,
         )
+        self.delete = to_streamed_response_wrapper(
+            api_keys.delete,
+        )
+        self.create_api_key = to_streamed_response_wrapper(
+            api_keys.create_api_key,
+        )
 
 
 class AsyncAPIKeysResourceWithStreamingResponse:
@@ -277,4 +463,10 @@ class AsyncAPIKeysResourceWithStreamingResponse:
         )
         self.list = async_to_streamed_response_wrapper(
             api_keys.list,
+        )
+        self.delete = async_to_streamed_response_wrapper(
+            api_keys.delete,
+        )
+        self.create_api_key = async_to_streamed_response_wrapper(
+            api_keys.create_api_key,
         )

@@ -18,6 +18,7 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.org.project import trigger_update_params
+from ....types.org.project.trigger_list_response import TriggerListResponse
 from ....types.org.project.trigger_update_response import TriggerUpdateResponse
 
 __all__ = ["TriggerResource", "AsyncTriggerResource"]
@@ -83,6 +84,29 @@ class TriggerResource(SyncAPIResource):
             cast_to=TriggerUpdateResponse,
         )
 
+    def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TriggerListResponse:
+        """
+        Retrieves the current project details including its trigger enablement status.
+        Use this endpoint to check whether triggers are currently enabled or disabled
+        for a project.
+        """
+        return self._get(
+            "/api/v3/org/project/trigger",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TriggerListResponse,
+        )
+
 
 class AsyncTriggerResource(AsyncAPIResource):
     @cached_property
@@ -144,6 +168,29 @@ class AsyncTriggerResource(AsyncAPIResource):
             cast_to=TriggerUpdateResponse,
         )
 
+    async def list(
+        self,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> TriggerListResponse:
+        """
+        Retrieves the current project details including its trigger enablement status.
+        Use this endpoint to check whether triggers are currently enabled or disabled
+        for a project.
+        """
+        return await self._get(
+            "/api/v3/org/project/trigger",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TriggerListResponse,
+        )
+
 
 class TriggerResourceWithRawResponse:
     def __init__(self, trigger: TriggerResource) -> None:
@@ -151,6 +198,9 @@ class TriggerResourceWithRawResponse:
 
         self.update = to_raw_response_wrapper(
             trigger.update,
+        )
+        self.list = to_raw_response_wrapper(
+            trigger.list,
         )
 
 
@@ -161,6 +211,9 @@ class AsyncTriggerResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             trigger.update,
         )
+        self.list = async_to_raw_response_wrapper(
+            trigger.list,
+        )
 
 
 class TriggerResourceWithStreamingResponse:
@@ -170,6 +223,9 @@ class TriggerResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             trigger.update,
         )
+        self.list = to_streamed_response_wrapper(
+            trigger.list,
+        )
 
 
 class AsyncTriggerResourceWithStreamingResponse:
@@ -178,4 +234,7 @@ class AsyncTriggerResourceWithStreamingResponse:
 
         self.update = async_to_streamed_response_wrapper(
             trigger.update,
+        )
+        self.list = async_to_streamed_response_wrapper(
+            trigger.list,
         )
