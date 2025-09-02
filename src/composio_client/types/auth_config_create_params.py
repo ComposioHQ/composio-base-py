@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union
+from typing import Dict, Union
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -31,7 +32,7 @@ class Toolkit(TypedDict, total=False):
 
 
 class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
-    tools_for_connected_account_creation: List[str]
+    tools_for_connected_account_creation: SequenceNotStr[str]
     """
     Tools used to generate the minimum required scopes for the auth config (only
     valid for OAuth). If passed, this will update the scopes.
@@ -58,7 +59,7 @@ class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
 
 
 class AuthConfigUnionMember1ToolAccessConfig(TypedDict, total=False):
-    tools_for_connected_account_creation: List[str]
+    tools_for_connected_account_creation: SequenceNotStr[str]
     """
     Tools used to generate the minimum required scopes for the auth config (only
     valid for OAuth). If passed, this will update the scopes.

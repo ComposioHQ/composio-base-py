@@ -2,17 +2,18 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["McpUpdateParams"]
 
 
 class McpUpdateParams(TypedDict, total=False):
-    allowed_tools: List[str]
+    allowed_tools: SequenceNotStr[str]
     """List of action identifiers that should be enabled for this server"""
 
-    auth_config_ids: List[str]
+    auth_config_ids: SequenceNotStr[str]
     """List of auth config IDs to use for this MCP server.
 
     Can include multiple different toolkits.
@@ -27,7 +28,7 @@ class McpUpdateParams(TypedDict, total=False):
     alphanumeric, spaces, and hyphens only)
     """
 
-    toolkits: List[str]
+    toolkits: SequenceNotStr[str]
     """List of toolkit slugs this server should be configured to work with.
 
     Must have the same count and order as auth_config_ids.

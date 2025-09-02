@@ -2,14 +2,15 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["McpCreateParams"]
 
 
 class McpCreateParams(TypedDict, total=False):
-    auth_config_ids: Required[List[str]]
+    auth_config_ids: Required[SequenceNotStr[str]]
     """ID references to existing authentication configurations"""
 
     name: Required[str]
@@ -18,7 +19,7 @@ class McpCreateParams(TypedDict, total=False):
     alphanumeric, spaces, and hyphens only)
     """
 
-    allowed_tools: List[str]
+    allowed_tools: SequenceNotStr[str]
     """List of tool slugs that should be allowed for this server.
 
     If not provided, all available tools for the authentication configuration will
