@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -648,7 +649,7 @@ class ConnectionStateUnionMember1ValUnionMember2Typed(TypedDict, total=False):
 
     region: str
 
-    scope: Union[str, List[str], None]
+    scope: Union[str, SequenceNotStr[str], None]
 
     server_location: str
 
@@ -730,7 +731,7 @@ class ConnectionStateUnionMember1ValUnionMember3Typed(TypedDict, total=False):
 
     region: str
 
-    scope: Union[str, List[str], None]
+    scope: Union[str, SequenceNotStr[str], None]
 
     server_location: str
 

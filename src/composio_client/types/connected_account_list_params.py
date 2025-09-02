@@ -5,20 +5,22 @@ from __future__ import annotations
 from typing import List, Optional
 from typing_extensions import Literal, TypedDict
 
+from .._types import SequenceNotStr
+
 __all__ = ["ConnectedAccountListParams"]
 
 
 class ConnectedAccountListParams(TypedDict, total=False):
-    auth_config_ids: Optional[List[str]]
+    auth_config_ids: Optional[SequenceNotStr[str]]
     """The auth config ids of the connected accounts"""
 
-    connected_account_ids: Optional[List[str]]
+    connected_account_ids: Optional[SequenceNotStr[str]]
     """The connected account ids to filter by"""
 
     cursor: Optional[str]
     """The cursor to paginate through the connected accounts"""
 
-    labels: Optional[List[str]]
+    labels: Optional[SequenceNotStr[str]]
     """The labels of the connected accounts"""
 
     limit: Optional[float]
@@ -33,8 +35,8 @@ class ConnectedAccountListParams(TypedDict, total=False):
     statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
     """The status of the connected account"""
 
-    toolkit_slugs: Optional[List[str]]
+    toolkit_slugs: Optional[SequenceNotStr[str]]
     """The toolkit slugs of the connected accounts"""
 
-    user_ids: Optional[List[str]]
+    user_ids: Optional[SequenceNotStr[str]]
     """The user ids of the connected accounts"""

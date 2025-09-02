@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Iterable, Optional
+from typing import Dict, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
 
 from ..types import tool_list_params, tool_proxy_params, tool_execute_params, tool_get_input_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -87,14 +87,14 @@ class ToolsResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
         include_deprecated: bool | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        scopes: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -446,14 +446,14 @@ class AsyncToolsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
         include_deprecated: bool | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        scopes: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        scopes: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         search: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

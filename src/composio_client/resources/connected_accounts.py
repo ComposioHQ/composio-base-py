@@ -13,7 +13,7 @@ from ..types import (
     connected_account_refresh_params,
     connected_account_update_status_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -130,17 +130,17 @@ class ConnectedAccountsResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        connected_account_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        connected_account_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        labels: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
         order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
         | NotGiven = NOT_GIVEN,
-        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        user_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -427,17 +427,17 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        connected_account_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        connected_account_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        labels: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        labels: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
         order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
         statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
         | NotGiven = NOT_GIVEN,
-        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
-        user_ids: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        user_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
