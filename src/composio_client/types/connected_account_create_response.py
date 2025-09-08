@@ -3354,12 +3354,3 @@ class ConnectedAccountCreateResponse(BaseModel):
     """The connection data of the connected account"""
 
     deprecated: Deprecated
-
-    redirect_uri: Optional[str] = None
-    """DEPRECATED: This field will be removed in a future version"""
-
-    redirect_url: Optional[str] = None
-    """DEPRECATED: This field will be removed in a future version"""
-
-    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]
-    """DEPRECATED: This field will be removed in a future version"""

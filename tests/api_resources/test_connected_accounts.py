@@ -38,9 +38,6 @@ class TestConnectedAccounts:
             auth_config={"id": "id"},
             connection={
                 "callback_url": "https://example.com",
-                "data": {"foo": "bar"},
-                "deprecated_is_v1_rerouted": True,
-                "redirect_uri": "https://example.com",
                 "state": {
                     "auth_scheme": "OAUTH1",
                     "val": {
@@ -330,9 +327,6 @@ class TestAsyncConnectedAccounts:
             auth_config={"id": "id"},
             connection={
                 "callback_url": "https://example.com",
-                "data": {"foo": "bar"},
-                "deprecated_is_v1_rerouted": True,
-                "redirect_uri": "https://example.com",
                 "state": {
                     "auth_scheme": "OAUTH1",
                     "val": {

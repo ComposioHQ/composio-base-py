@@ -194,7 +194,6 @@ class ToolsResource(SyncAPIResource):
         connected_account_id: str | NotGiven = NOT_GIVEN,
         custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
         custom_connection_data: tool_execute_params.CustomConnectionData | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         user_id: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -223,9 +222,6 @@ class ToolsResource(SyncAPIResource):
 
           custom_connection_data: Custom connection data for tools that support custom connection data
 
-          entity_id: Deprecated: please use user_id instead. Entity identifier for multi-entity
-              connected accounts (e.g. multiple repositories, organizations)
-
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
 
@@ -252,7 +248,6 @@ class ToolsResource(SyncAPIResource):
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
                     "custom_connection_data": custom_connection_data,
-                    "entity_id": entity_id,
                     "text": text,
                     "user_id": user_id,
                     "version": version,
@@ -569,7 +564,6 @@ class AsyncToolsResource(AsyncAPIResource):
         connected_account_id: str | NotGiven = NOT_GIVEN,
         custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
         custom_connection_data: tool_execute_params.CustomConnectionData | NotGiven = NOT_GIVEN,
-        entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         user_id: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -598,9 +592,6 @@ class AsyncToolsResource(AsyncAPIResource):
 
           custom_connection_data: Custom connection data for tools that support custom connection data
 
-          entity_id: Deprecated: please use user_id instead. Entity identifier for multi-entity
-              connected accounts (e.g. multiple repositories, organizations)
-
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
 
@@ -627,7 +618,6 @@ class AsyncToolsResource(AsyncAPIResource):
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
                     "custom_connection_data": custom_connection_data,
-                    "entity_id": entity_id,
                     "text": text,
                     "user_id": user_id,
                     "version": version,

@@ -25,9 +25,6 @@ class Variant0(TypedDict, total=False):
 
     proxy_config: Variant0ProxyConfig
 
-    restrict_to_following_tools: SequenceNotStr[str]
-    """Use tool_access_config instead. This field will be deprecated in the future."""
-
     tool_access_config: Variant0ToolAccessConfig
 
 
@@ -62,9 +59,6 @@ class Variant0ToolAccessConfig(TypedDict, total=False):
 
 class Variant1(TypedDict, total=False):
     type: Required[Literal["default"]]
-
-    restrict_to_following_tools: SequenceNotStr[str]
-    """Use tool_access_config instead. This field will be deprecated in the future."""
 
     scopes: Union[str, SequenceNotStr[str]]
 

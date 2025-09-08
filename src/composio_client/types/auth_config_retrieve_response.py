@@ -118,6 +118,3 @@ class AuthConfigRetrieveResponse(BaseModel):
     """ISO 8601 date-time when the auth config was last updated"""
 
     proxy_config: Optional[ProxyConfig] = None
-
-    restrict_to_following_tools: Optional[List[str]] = None
-    """Use tool_access_config instead. This field will be deprecated in the future."""

@@ -31,20 +31,20 @@ class TestTriggerInstances:
     def test_method_list_active_with_all_params(self, client: Composio) -> None:
         trigger_instance = client.trigger_instances.list_active(
             query_auth_config_ids_1=["string"],
-            query_auth_config_ids_2=["string"],
+            query_auth_config_ids_2="authConfigIds",
             query_connected_account_ids_1=["string"],
-            query_connected_account_ids_2=["string"],
+            query_connected_account_ids_2="connectedAccountIds",
             cursor="cursor",
             deprecated_auth_config_uuids=["string"],
             deprecated_connected_account_uuids=["string"],
             limit=0,
             page=1,
             query_show_disabled_1=True,
-            query_show_disabled_2=True,
+            query_show_disabled_2="showDisabled",
             query_trigger_ids_1=["string"],
             query_trigger_names_1=["string"],
-            query_trigger_ids_2=["string"],
-            query_trigger_names_2=["string"],
+            query_trigger_ids_2="triggerIds",
+            query_trigger_names_2="triggerNames",
         )
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
@@ -82,7 +82,6 @@ class TestTriggerInstances:
         trigger_instance = client.trigger_instances.upsert(
             slug="slug",
             connected_account_id="connected_account_id",
-            connected_auth_id="connectedAuthId",
             body_trigger_config_1={"foo": "bar"},
             body_trigger_config_2={"foo": "bar"},
         )
@@ -136,20 +135,20 @@ class TestAsyncTriggerInstances:
     async def test_method_list_active_with_all_params(self, async_client: AsyncComposio) -> None:
         trigger_instance = await async_client.trigger_instances.list_active(
             query_auth_config_ids_1=["string"],
-            query_auth_config_ids_2=["string"],
+            query_auth_config_ids_2="authConfigIds",
             query_connected_account_ids_1=["string"],
-            query_connected_account_ids_2=["string"],
+            query_connected_account_ids_2="connectedAccountIds",
             cursor="cursor",
             deprecated_auth_config_uuids=["string"],
             deprecated_connected_account_uuids=["string"],
             limit=0,
             page=1,
             query_show_disabled_1=True,
-            query_show_disabled_2=True,
+            query_show_disabled_2="showDisabled",
             query_trigger_ids_1=["string"],
             query_trigger_names_1=["string"],
-            query_trigger_ids_2=["string"],
-            query_trigger_names_2=["string"],
+            query_trigger_ids_2="triggerIds",
+            query_trigger_names_2="triggerNames",
         )
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
@@ -187,7 +186,6 @@ class TestAsyncTriggerInstances:
         trigger_instance = await async_client.trigger_instances.upsert(
             slug="slug",
             connected_account_id="connected_account_id",
-            connected_auth_id="connectedAuthId",
             body_trigger_config_1={"foo": "bar"},
             body_trigger_config_2={"foo": "bar"},
         )

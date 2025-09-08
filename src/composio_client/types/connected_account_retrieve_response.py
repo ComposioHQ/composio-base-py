@@ -100,20 +100,6 @@ class AuthConfig(BaseModel):
     id: str
     """The id of the auth config"""
 
-    auth_scheme: Literal[
-        "OAUTH2",
-        "OAUTH1",
-        "API_KEY",
-        "BASIC",
-        "BILLCOM_AUTH",
-        "BEARER_TOKEN",
-        "GOOGLE_SERVICE_ACCOUNT",
-        "NO_AUTH",
-        "BASIC_WITH_JWT",
-        "CALCOM_AUTH",
-    ]
-    """the authScheme is part of the connection state use it there"""
-
     is_composio_managed: bool
     """Whether the auth config is managed by Composio"""
 
@@ -3395,14 +3381,8 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     created_at: str
     """The created at of the connection"""
 
-    data: Dict[str, Optional[object]]
-    """This is deprecated, use `state` instead"""
-
     is_disabled: bool
     """Whether the connection is disabled"""
-
-    params: Dict[str, Optional[object]]
-    """The initialization data of the connection, including configuration parameters"""
 
     state: State
     """The state of the connection"""
@@ -3417,12 +3397,6 @@ class ConnectedAccountRetrieveResponse(BaseModel):
 
     updated_at: str
     """The updated at of the connection"""
-
-    user_id: str
-    """
-    This is deprecated, we will not be providing userId from this api anymore, you
-    will only be able to read via userId not get it back
-    """
 
     deprecated: Optional[Deprecated] = None
 
