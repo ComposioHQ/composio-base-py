@@ -5,10 +5,10 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["LinkSubmitInputResponse"]
+__all__ = ["LinkSubmitResponse"]
 
 
-class LinkSubmitInputResponse(BaseModel):
+class LinkSubmitResponse(BaseModel):
     status: Literal["ACTIVE", "FAILED"]
     """The status of the connection attempt"""
 

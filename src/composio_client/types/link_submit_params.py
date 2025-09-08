@@ -5,9 +5,9 @@ from __future__ import annotations
 from typing import Dict, Optional
 from typing_extensions import Required, TypedDict
 
-__all__ = ["LinkSubmitInputParams"]
+__all__ = ["LinkSubmitParams"]
 
 
-class LinkSubmitInputParams(TypedDict, total=False):
+class LinkSubmitParams(TypedDict, total=False):
     input: Required[Dict[str, Optional[object]]]
     """The input fields for authentication"""

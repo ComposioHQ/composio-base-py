@@ -10,6 +10,8 @@ from .mcp_list_response import McpListResponse as McpListResponse
 from .mcp_update_params import McpUpdateParams as McpUpdateParams
 from .tool_proxy_params import ToolProxyParams as ToolProxyParams
 from .file_list_response import FileListResponse as FileListResponse
+from .link_create_params import LinkCreateParams as LinkCreateParams
+from .link_submit_params import LinkSubmitParams as LinkSubmitParams
 from .tool_list_response import ToolListResponse as ToolListResponse
 from .mcp_create_response import McpCreateResponse as McpCreateResponse
 from .mcp_delete_response import McpDeleteResponse as McpDeleteResponse
@@ -17,6 +19,8 @@ from .mcp_update_response import McpUpdateResponse as McpUpdateResponse
 from .tool_execute_params import ToolExecuteParams as ToolExecuteParams
 from .tool_proxy_response import ToolProxyResponse as ToolProxyResponse
 from .toolkit_list_params import ToolkitListParams as ToolkitListParams
+from .link_create_response import LinkCreateResponse as LinkCreateResponse
+from .link_submit_response import LinkSubmitResponse as LinkSubmitResponse
 from .tool_retrieve_params import ToolRetrieveParams as ToolRetrieveParams
 from .mcp_retrieve_response import McpRetrieveResponse as McpRetrieveResponse
 from .mcp_validate_response import McpValidateResponse as McpValidateResponse
@@ -31,7 +35,6 @@ from .cli_link_session_params import CliLinkSessionParams as CliLinkSessionParam
 from .mcp_retrieve_app_params import McpRetrieveAppParams as McpRetrieveAppParams
 from .tool_get_input_response import ToolGetInputResponse as ToolGetInputResponse
 from .cli_get_session_response import CliGetSessionResponse as CliGetSessionResponse
-from .link_submit_input_params import LinkSubmitInputParams as LinkSubmitInputParams
 from .auth_config_create_params import AuthConfigCreateParams as AuthConfigCreateParams
 from .auth_config_list_response import AuthConfigListResponse as AuthConfigListResponse
 from .auth_config_update_params import AuthConfigUpdateParams as AuthConfigUpdateParams
@@ -41,7 +44,6 @@ from .team_member_list_response import TeamMemberListResponse as TeamMemberListR
 from .team_member_update_params import TeamMemberUpdateParams as TeamMemberUpdateParams
 from .toolkit_retrieve_response import ToolkitRetrieveResponse as ToolkitRetrieveResponse
 from .triggers_type_list_params import TriggersTypeListParams as TriggersTypeListParams
-from .link_submit_input_response import LinkSubmitInputResponse as LinkSubmitInputResponse
 from .auth_config_create_response import AuthConfigCreateResponse as AuthConfigCreateResponse
 from .cli_create_session_response import CliCreateSessionResponse as CliCreateSessionResponse
 from .team_member_remove_response import TeamMemberRemoveResponse as TeamMemberRemoveResponse

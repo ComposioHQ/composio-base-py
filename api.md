@@ -48,13 +48,14 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import LinkRetrieveResponse, LinkSubmitInputResponse
+from composio_client.types import LinkCreateResponse, LinkRetrieveResponse, LinkSubmitResponse
 ```
 
 Methods:
 
+- <code title="post /api/v3/connected_accounts/link">client.link.<a href="./src/composio_client/resources/link.py">create</a>(\*\*<a href="src/composio_client/types/link_create_params.py">params</a>) -> <a href="./src/composio_client/types/link_create_response.py">LinkCreateResponse</a></code>
 - <code title="get /api/v3/internal/connected_accounts/link/{token}">client.link.<a href="./src/composio_client/resources/link.py">retrieve</a>(token) -> <a href="./src/composio_client/types/link_retrieve_response.py">LinkRetrieveResponse</a></code>
-- <code title="post /api/v3/internal/connected_accounts/link/{token}">client.link.<a href="./src/composio_client/resources/link.py">submit_input</a>(token, \*\*<a href="src/composio_client/types/link_submit_input_params.py">params</a>) -> <a href="./src/composio_client/types/link_submit_input_response.py">LinkSubmitInputResponse</a></code>
+- <code title="post /api/v3/internal/connected_accounts/link/{token}">client.link.<a href="./src/composio_client/resources/link.py">submit</a>(token, \*\*<a href="src/composio_client/types/link_submit_params.py">params</a>) -> <a href="./src/composio_client/types/link_submit_response.py">LinkSubmitResponse</a></code>
 
 # Org
 
