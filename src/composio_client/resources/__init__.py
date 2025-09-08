@@ -24,6 +24,14 @@ from .org import (
     OrgResourceWithStreamingResponse,
     AsyncOrgResourceWithStreamingResponse,
 )
+from .link import (
+    LinkResource,
+    AsyncLinkResource,
+    LinkResourceWithRawResponse,
+    AsyncLinkResourceWithRawResponse,
+    LinkResourceWithStreamingResponse,
+    AsyncLinkResourceWithStreamingResponse,
+)
 from .files import (
     FilesResource,
     AsyncFilesResource,
@@ -110,6 +118,12 @@ __all__ = [
     "AsyncConnectedAccountsResourceWithRawResponse",
     "ConnectedAccountsResourceWithStreamingResponse",
     "AsyncConnectedAccountsResourceWithStreamingResponse",
+    "LinkResource",
+    "AsyncLinkResource",
+    "LinkResourceWithRawResponse",
+    "AsyncLinkResourceWithRawResponse",
+    "LinkResourceWithStreamingResponse",
+    "AsyncLinkResourceWithStreamingResponse",
     "OrgResource",
     "AsyncOrgResource",
     "OrgResourceWithRawResponse",

@@ -43,6 +43,19 @@ Methods:
 - <code title="post /api/v3/connected_accounts/{nanoid}/refresh">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">refresh</a>(nanoid, \*\*<a href="src/composio_client/types/connected_account_refresh_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_refresh_response.py">ConnectedAccountRefreshResponse</a></code>
 - <code title="patch /api/v3/connected_accounts/{nanoId}/status">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">update_status</a>(nano_id, \*\*<a href="src/composio_client/types/connected_account_update_status_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_update_status_response.py">ConnectedAccountUpdateStatusResponse</a></code>
 
+# Link
+
+Types:
+
+```python
+from composio_client.types import LinkRetrieveResponse, LinkSubmitInputResponse
+```
+
+Methods:
+
+- <code title="get /api/v3/internal/connected_accounts/link/{token}">client.link.<a href="./src/composio_client/resources/link.py">retrieve</a>(token) -> <a href="./src/composio_client/types/link_retrieve_response.py">LinkRetrieveResponse</a></code>
+- <code title="post /api/v3/internal/connected_accounts/link/{token}">client.link.<a href="./src/composio_client/resources/link.py">submit_input</a>(token, \*\*<a href="src/composio_client/types/link_submit_input_params.py">params</a>) -> <a href="./src/composio_client/types/link_submit_input_response.py">LinkSubmitInputResponse</a></code>
+
 # Org
 
 ## APIKey

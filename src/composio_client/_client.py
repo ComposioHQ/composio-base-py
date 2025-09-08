@@ -23,6 +23,7 @@ from ._utils import is_given, get_async_library
 from ._version import __version__
 from .resources import (
     cli,
+    link,
     files,
     tools,
     toolkits,
@@ -65,6 +66,7 @@ ENVIRONMENTS: Dict[str, str] = {
 class Composio(SyncAPIClient):
     auth_configs: auth_configs.AuthConfigsResource
     connected_accounts: connected_accounts.ConnectedAccountsResource
+    link: link.LinkResource
     org: org.OrgResource
     team_members: team_members.TeamMembersResource
     toolkits: toolkits.ToolkitsResource
@@ -154,6 +156,7 @@ class Composio(SyncAPIClient):
 
         self.auth_configs = auth_configs.AuthConfigsResource(self)
         self.connected_accounts = connected_accounts.ConnectedAccountsResource(self)
+        self.link = link.LinkResource(self)
         self.org = org.OrgResource(self)
         self.team_members = team_members.TeamMembersResource(self)
         self.toolkits = toolkits.ToolkitsResource(self)
@@ -279,6 +282,7 @@ class Composio(SyncAPIClient):
 class AsyncComposio(AsyncAPIClient):
     auth_configs: auth_configs.AsyncAuthConfigsResource
     connected_accounts: connected_accounts.AsyncConnectedAccountsResource
+    link: link.AsyncLinkResource
     org: org.AsyncOrgResource
     team_members: team_members.AsyncTeamMembersResource
     toolkits: toolkits.AsyncToolkitsResource
@@ -368,6 +372,7 @@ class AsyncComposio(AsyncAPIClient):
 
         self.auth_configs = auth_configs.AsyncAuthConfigsResource(self)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResource(self)
+        self.link = link.AsyncLinkResource(self)
         self.org = org.AsyncOrgResource(self)
         self.team_members = team_members.AsyncTeamMembersResource(self)
         self.toolkits = toolkits.AsyncToolkitsResource(self)
@@ -494,6 +499,7 @@ class ComposioWithRawResponse:
     def __init__(self, client: Composio) -> None:
         self.auth_configs = auth_configs.AuthConfigsResourceWithRawResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithRawResponse(client.connected_accounts)
+        self.link = link.LinkResourceWithRawResponse(client.link)
         self.org = org.OrgResourceWithRawResponse(client.org)
         self.team_members = team_members.TeamMembersResourceWithRawResponse(client.team_members)
         self.toolkits = toolkits.ToolkitsResourceWithRawResponse(client.toolkits)
@@ -512,6 +518,7 @@ class AsyncComposioWithRawResponse:
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithRawResponse(
             client.connected_accounts
         )
+        self.link = link.AsyncLinkResourceWithRawResponse(client.link)
         self.org = org.AsyncOrgResourceWithRawResponse(client.org)
         self.team_members = team_members.AsyncTeamMembersResourceWithRawResponse(client.team_members)
         self.toolkits = toolkits.AsyncToolkitsResourceWithRawResponse(client.toolkits)
@@ -532,6 +539,7 @@ class ComposioWithStreamedResponse:
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithStreamingResponse(
             client.connected_accounts
         )
+        self.link = link.LinkResourceWithStreamingResponse(client.link)
         self.org = org.OrgResourceWithStreamingResponse(client.org)
         self.team_members = team_members.TeamMembersResourceWithStreamingResponse(client.team_members)
         self.toolkits = toolkits.ToolkitsResourceWithStreamingResponse(client.toolkits)
@@ -552,6 +560,7 @@ class AsyncComposioWithStreamedResponse:
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithStreamingResponse(
             client.connected_accounts
         )
+        self.link = link.AsyncLinkResourceWithStreamingResponse(client.link)
         self.org = org.AsyncOrgResourceWithStreamingResponse(client.org)
         self.team_members = team_members.AsyncTeamMembersResourceWithStreamingResponse(client.team_members)
         self.toolkits = toolkits.AsyncToolkitsResourceWithStreamingResponse(client.toolkits)
