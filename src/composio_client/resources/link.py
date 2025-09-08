@@ -6,7 +6,7 @@ from typing import Dict, Optional
 
 import httpx
 
-from ..types import link_submit_input_params
+from ..types import link_create_params, link_submit_params
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -18,8 +18,9 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
+from ..types.link_create_response import LinkCreateResponse
+from ..types.link_submit_response import LinkSubmitResponse
 from ..types.link_retrieve_response import LinkRetrieveResponse
-from ..types.link_submit_input_response import LinkSubmitInputResponse
 
 __all__ = ["LinkResource", "AsyncLinkResource"]
 
@@ -43,6 +44,54 @@ class LinkResource(SyncAPIResource):
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
         return LinkResourceWithStreamingResponse(self)
+
+    def create(
+        self,
+        *,
+        auth_config_id: str,
+        user_id: str,
+        callback_url: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> LinkCreateResponse:
+        """
+        Creates a new authentication link session that users can use to connect their
+        accounts
+
+        Args:
+          auth_config_id: The auth config id to create a link for
+
+          user_id: The user id to create a link for
+
+          callback_url: The callback url to create a link for
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/api/v3/connected_accounts/link",
+            body=maybe_transform(
+                {
+                    "auth_config_id": auth_config_id,
+                    "user_id": user_id,
+                    "callback_url": callback_url,
+                },
+                link_create_params.LinkCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=LinkCreateResponse,
+        )
 
     def retrieve(
         self,
@@ -79,7 +128,7 @@ class LinkResource(SyncAPIResource):
             cast_to=LinkRetrieveResponse,
         )
 
-    def submit_input(
+    def submit(
         self,
         token: str,
         *,
@@ -90,7 +139,7 @@ class LinkResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkSubmitInputResponse:
+    ) -> LinkSubmitResponse:
         """
         Submits authentication input for a link session
 
@@ -111,11 +160,11 @@ class LinkResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `token` but received {token!r}")
         return self._post(
             f"/api/v3/internal/connected_accounts/link/{token}",
-            body=maybe_transform({"input": input}, link_submit_input_params.LinkSubmitInputParams),
+            body=maybe_transform({"input": input}, link_submit_params.LinkSubmitParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LinkSubmitInputResponse,
+            cast_to=LinkSubmitResponse,
         )
 
 
@@ -138,6 +187,54 @@ class AsyncLinkResource(AsyncAPIResource):
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
         return AsyncLinkResourceWithStreamingResponse(self)
+
+    async def create(
+        self,
+        *,
+        auth_config_id: str,
+        user_id: str,
+        callback_url: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> LinkCreateResponse:
+        """
+        Creates a new authentication link session that users can use to connect their
+        accounts
+
+        Args:
+          auth_config_id: The auth config id to create a link for
+
+          user_id: The user id to create a link for
+
+          callback_url: The callback url to create a link for
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/api/v3/connected_accounts/link",
+            body=await async_maybe_transform(
+                {
+                    "auth_config_id": auth_config_id,
+                    "user_id": user_id,
+                    "callback_url": callback_url,
+                },
+                link_create_params.LinkCreateParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=LinkCreateResponse,
+        )
 
     async def retrieve(
         self,
@@ -174,7 +271,7 @@ class AsyncLinkResource(AsyncAPIResource):
             cast_to=LinkRetrieveResponse,
         )
 
-    async def submit_input(
+    async def submit(
         self,
         token: str,
         *,
@@ -185,7 +282,7 @@ class AsyncLinkResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> LinkSubmitInputResponse:
+    ) -> LinkSubmitResponse:
         """
         Submits authentication input for a link session
 
@@ -206,11 +303,11 @@ class AsyncLinkResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `token` but received {token!r}")
         return await self._post(
             f"/api/v3/internal/connected_accounts/link/{token}",
-            body=await async_maybe_transform({"input": input}, link_submit_input_params.LinkSubmitInputParams),
+            body=await async_maybe_transform({"input": input}, link_submit_params.LinkSubmitParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LinkSubmitInputResponse,
+            cast_to=LinkSubmitResponse,
         )
 
 
@@ -218,11 +315,14 @@ class LinkResourceWithRawResponse:
     def __init__(self, link: LinkResource) -> None:
         self._link = link
 
+        self.create = to_raw_response_wrapper(
+            link.create,
+        )
         self.retrieve = to_raw_response_wrapper(
             link.retrieve,
         )
-        self.submit_input = to_raw_response_wrapper(
-            link.submit_input,
+        self.submit = to_raw_response_wrapper(
+            link.submit,
         )
 
 
@@ -230,11 +330,14 @@ class AsyncLinkResourceWithRawResponse:
     def __init__(self, link: AsyncLinkResource) -> None:
         self._link = link
 
+        self.create = async_to_raw_response_wrapper(
+            link.create,
+        )
         self.retrieve = async_to_raw_response_wrapper(
             link.retrieve,
         )
-        self.submit_input = async_to_raw_response_wrapper(
-            link.submit_input,
+        self.submit = async_to_raw_response_wrapper(
+            link.submit,
         )
 
 
@@ -242,11 +345,14 @@ class LinkResourceWithStreamingResponse:
     def __init__(self, link: LinkResource) -> None:
         self._link = link
 
+        self.create = to_streamed_response_wrapper(
+            link.create,
+        )
         self.retrieve = to_streamed_response_wrapper(
             link.retrieve,
         )
-        self.submit_input = to_streamed_response_wrapper(
-            link.submit_input,
+        self.submit = to_streamed_response_wrapper(
+            link.submit,
         )
 
 
@@ -254,9 +360,12 @@ class AsyncLinkResourceWithStreamingResponse:
     def __init__(self, link: AsyncLinkResource) -> None:
         self._link = link
 
+        self.create = async_to_streamed_response_wrapper(
+            link.create,
+        )
         self.retrieve = async_to_streamed_response_wrapper(
             link.retrieve,
         )
-        self.submit_input = async_to_streamed_response_wrapper(
-            link.submit_input,
+        self.submit = async_to_streamed_response_wrapper(
+            link.submit,
         )
