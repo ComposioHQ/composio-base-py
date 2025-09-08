@@ -52,6 +52,13 @@ class ToolExecuteParams(TypedDict, total=False):
     custom_connection_data: CustomConnectionData
     """Custom connection data for tools that support custom connection data"""
 
+    entity_id: str
+    """Deprecated: please use user_id instead.
+
+    Entity identifier for multi-entity connected accounts (e.g. multiple
+    repositories, organizations)
+    """
+
     text: str
     """
     Natural language description of the task to perform (mutually exclusive with

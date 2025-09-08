@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Union
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
@@ -10,6 +10,7 @@ from .._types import SequenceNotStr
 __all__ = [
     "AuthConfigUpdateParams",
     "Variant0",
+    "Variant0Credentials",
     "Variant0ProxyConfig",
     "Variant0ToolAccessConfig",
     "Variant1",
@@ -18,13 +19,22 @@ __all__ = [
 
 
 class Variant0(TypedDict, total=False):
-    credentials: Required[Dict[str, Optional[object]]]
+    credentials: Required[Variant0Credentials]
 
     type: Required[Literal["custom"]]
 
     proxy_config: Variant0ProxyConfig
 
+    restrict_to_following_tools: SequenceNotStr[str]
+    """Use tool_access_config instead. This field will be deprecated in the future."""
+
     tool_access_config: Variant0ToolAccessConfig
+
+
+class Variant0Credentials(TypedDict, total=False):
+    scopes: Union[str, SequenceNotStr[str]]
+
+    user_scopes: Union[str, SequenceNotStr[str]]
 
 
 class Variant0ProxyConfig(TypedDict, total=False):
@@ -53,7 +63,10 @@ class Variant0ToolAccessConfig(TypedDict, total=False):
 class Variant1(TypedDict, total=False):
     type: Required[Literal["default"]]
 
-    scopes: str
+    restrict_to_following_tools: SequenceNotStr[str]
+    """Use tool_access_config instead. This field will be deprecated in the future."""
+
+    scopes: Union[str, SequenceNotStr[str]]
 
     tool_access_config: Variant1ToolAccessConfig
 

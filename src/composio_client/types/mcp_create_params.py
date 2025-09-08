@@ -28,3 +28,6 @@ class McpCreateParams(TypedDict, total=False):
 
     managed_auth_via_composio: bool
     """Whether the MCP server is managed by Composio"""
+
+    no_auth_apps: SequenceNotStr[str]
+    """List of NO_AUTH apps to enable for this MCP server"""

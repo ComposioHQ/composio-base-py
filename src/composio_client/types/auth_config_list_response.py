@@ -98,7 +98,6 @@ class Item(BaseModel):
             "GOOGLE_SERVICE_ACCOUNT",
             "NO_AUTH",
             "BASIC_WITH_JWT",
-            "COMPOSIO_LINK",
             "CALCOM_AUTH",
         ]
     ] = None
@@ -126,6 +125,9 @@ class Item(BaseModel):
     """ISO 8601 date-time when the auth config was last updated"""
 
     proxy_config: Optional[ItemProxyConfig] = None
+
+    restrict_to_following_tools: Optional[List[str]] = None
+    """Use tool_access_config instead. This field will be deprecated in the future."""
 
 
 class AuthConfigListResponse(BaseModel):

@@ -2,12 +2,18 @@
 
 from __future__ import annotations
 
-from typing import Dict, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
 
-from ..types import tool_list_params, tool_proxy_params, tool_execute_params, tool_get_input_params
+from ..types import (
+    tool_list_params,
+    tool_proxy_params,
+    tool_execute_params,
+    tool_retrieve_params,
+    tool_get_input_params,
+)
 from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -53,6 +59,7 @@ class ToolsResource(SyncAPIResource):
         self,
         tool_slug: str,
         *,
+        version: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -66,6 +73,8 @@ class ToolsResource(SyncAPIResource):
         parameters, versions, and toolkit information.
 
         Args:
+          version: Optional version of the tool to retrieve
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -79,7 +88,11 @@ class ToolsResource(SyncAPIResource):
         return self._get(
             f"/api/v3/tools/{tool_slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"version": version}, tool_retrieve_params.ToolRetrieveParams),
             ),
             cast_to=ToolRetrieveResponse,
         )
@@ -97,6 +110,7 @@ class ToolsResource(SyncAPIResource):
         tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
+        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -134,6 +148,8 @@ class ToolsResource(SyncAPIResource):
 
           toolkit_slug: The slug of the toolkit to filter by
 
+          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -161,6 +177,7 @@ class ToolsResource(SyncAPIResource):
                         "tags": tags,
                         "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
+                        "toolkit_versions": toolkit_versions,
                     },
                     tool_list_params.ToolListParams,
                 ),
@@ -177,6 +194,7 @@ class ToolsResource(SyncAPIResource):
         connected_account_id: str | NotGiven = NOT_GIVEN,
         custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
         custom_connection_data: tool_execute_params.CustomConnectionData | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         user_id: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -205,6 +223,9 @@ class ToolsResource(SyncAPIResource):
 
           custom_connection_data: Custom connection data for tools that support custom connection data
 
+          entity_id: Deprecated: please use user_id instead. Entity identifier for multi-entity
+              connected accounts (e.g. multiple repositories, organizations)
+
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
 
@@ -231,6 +252,7 @@ class ToolsResource(SyncAPIResource):
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
                     "custom_connection_data": custom_connection_data,
+                    "entity_id": entity_id,
                     "text": text,
                     "user_id": user_id,
                     "version": version,
@@ -412,6 +434,7 @@ class AsyncToolsResource(AsyncAPIResource):
         self,
         tool_slug: str,
         *,
+        version: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -425,6 +448,8 @@ class AsyncToolsResource(AsyncAPIResource):
         parameters, versions, and toolkit information.
 
         Args:
+          version: Optional version of the tool to retrieve
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -438,7 +463,11 @@ class AsyncToolsResource(AsyncAPIResource):
         return await self._get(
             f"/api/v3/tools/{tool_slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"version": version}, tool_retrieve_params.ToolRetrieveParams),
             ),
             cast_to=ToolRetrieveResponse,
         )
@@ -456,6 +485,7 @@ class AsyncToolsResource(AsyncAPIResource):
         tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tool_slugs: str | NotGiven = NOT_GIVEN,
         toolkit_slug: str | NotGiven = NOT_GIVEN,
+        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -493,6 +523,8 @@ class AsyncToolsResource(AsyncAPIResource):
 
           toolkit_slug: The slug of the toolkit to filter by
 
+          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -520,6 +552,7 @@ class AsyncToolsResource(AsyncAPIResource):
                         "tags": tags,
                         "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
+                        "toolkit_versions": toolkit_versions,
                     },
                     tool_list_params.ToolListParams,
                 ),
@@ -536,6 +569,7 @@ class AsyncToolsResource(AsyncAPIResource):
         connected_account_id: str | NotGiven = NOT_GIVEN,
         custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
         custom_connection_data: tool_execute_params.CustomConnectionData | NotGiven = NOT_GIVEN,
+        entity_id: str | NotGiven = NOT_GIVEN,
         text: str | NotGiven = NOT_GIVEN,
         user_id: str | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
@@ -564,6 +598,9 @@ class AsyncToolsResource(AsyncAPIResource):
 
           custom_connection_data: Custom connection data for tools that support custom connection data
 
+          entity_id: Deprecated: please use user_id instead. Entity identifier for multi-entity
+              connected accounts (e.g. multiple repositories, organizations)
+
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
 
@@ -590,6 +627,7 @@ class AsyncToolsResource(AsyncAPIResource):
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
                     "custom_connection_data": custom_connection_data,
+                    "entity_id": entity_id,
                     "text": text,
                     "user_id": user_id,
                     "version": version,

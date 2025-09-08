@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union
+from typing import Union
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
@@ -13,8 +13,10 @@ __all__ = [
     "Toolkit",
     "AuthConfig",
     "AuthConfigUnionMember0",
+    "AuthConfigUnionMember0Credentials",
     "AuthConfigUnionMember0ToolAccessConfig",
     "AuthConfigUnionMember1",
+    "AuthConfigUnionMember1Credentials",
     "AuthConfigUnionMember1ProxyConfig",
     "AuthConfigUnionMember1ToolAccessConfig",
 ]
@@ -31,6 +33,12 @@ class Toolkit(TypedDict, total=False):
     """Toolkit slug to create auth config for"""
 
 
+class AuthConfigUnionMember0Credentials(TypedDict, total=False):
+    scopes: Union[str, SequenceNotStr[str]]
+
+    user_scopes: Union[str, SequenceNotStr[str]]
+
+
 class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
     tools_for_connected_account_creation: SequenceNotStr[str]
     """
@@ -42,12 +50,21 @@ class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
 class AuthConfigUnionMember0(TypedDict, total=False):
     type: Required[Literal["use_composio_managed_auth"]]
 
-    credentials: Dict[str, Union[str, bool, float]]
+    credentials: AuthConfigUnionMember0Credentials
 
     name: str
     """The name of the integration"""
 
+    restrict_to_following_tools: SequenceNotStr[str]
+    """Use tool_access_config instead. This field will be deprecated in the future."""
+
     tool_access_config: AuthConfigUnionMember0ToolAccessConfig
+
+
+class AuthConfigUnionMember1Credentials(TypedDict, total=False):
+    scopes: Union[str, SequenceNotStr[str]]
+
+    user_scopes: Union[str, SequenceNotStr[str]]
 
 
 class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
@@ -79,21 +96,23 @@ class AuthConfigUnionMember1(TypedDict, total=False):
                 "GOOGLE_SERVICE_ACCOUNT",
                 "NO_AUTH",
                 "BASIC_WITH_JWT",
-                "COMPOSIO_LINK",
                 "CALCOM_AUTH",
             ],
             PropertyInfo(alias="authScheme"),
         ]
     ]
 
-    credentials: Required[Dict[str, Union[str, bool, float]]]
-
     type: Required[Literal["use_custom_auth"]]
+
+    credentials: AuthConfigUnionMember1Credentials
 
     name: str
     """The name of the integration"""
 
     proxy_config: AuthConfigUnionMember1ProxyConfig
+
+    restrict_to_following_tools: SequenceNotStr[str]
+    """Use tool_access_config instead. This field will be deprecated in the future."""
 
     tool_access_config: AuthConfigUnionMember1ToolAccessConfig
 

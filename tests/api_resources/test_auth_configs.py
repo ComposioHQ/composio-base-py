@@ -34,8 +34,12 @@ class TestAuthConfigs:
             toolkit={"slug": "slug"},
             auth_config={
                 "type": "use_composio_managed_auth",
-                "credentials": {"foo": "string"},
+                "credentials": {
+                    "scopes": "string",
+                    "user_scopes": "string",
+                },
                 "name": "name",
+                "restrict_to_following_tools": ["string"],
                 "tool_access_config": {"tools_for_connected_account_creation": ["string"]},
             },
         )
@@ -107,7 +111,7 @@ class TestAuthConfigs:
     def test_method_update_overload_1(self, client: Composio) -> None:
         auth_config = client.auth_configs.update(
             nanoid="nanoid",
-            credentials={"foo": "bar"},
+            credentials={},
             type="custom",
         )
         assert_matches_type(object, auth_config, path=["response"])
@@ -116,12 +120,16 @@ class TestAuthConfigs:
     def test_method_update_with_all_params_overload_1(self, client: Composio) -> None:
         auth_config = client.auth_configs.update(
             nanoid="nanoid",
-            credentials={"foo": "bar"},
+            credentials={
+                "scopes": "string",
+                "user_scopes": "string",
+            },
             type="custom",
             proxy_config={
                 "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
             },
+            restrict_to_following_tools=["string"],
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
@@ -133,7 +141,7 @@ class TestAuthConfigs:
     def test_raw_response_update_overload_1(self, client: Composio) -> None:
         response = client.auth_configs.with_raw_response.update(
             nanoid="nanoid",
-            credentials={"foo": "bar"},
+            credentials={},
             type="custom",
         )
 
@@ -146,7 +154,7 @@ class TestAuthConfigs:
     def test_streaming_response_update_overload_1(self, client: Composio) -> None:
         with client.auth_configs.with_streaming_response.update(
             nanoid="nanoid",
-            credentials={"foo": "bar"},
+            credentials={},
             type="custom",
         ) as response:
             assert not response.is_closed
@@ -162,7 +170,7 @@ class TestAuthConfigs:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             client.auth_configs.with_raw_response.update(
                 nanoid="",
-                credentials={"foo": "bar"},
+                credentials={},
                 type="custom",
             )
 
@@ -179,7 +187,8 @@ class TestAuthConfigs:
         auth_config = client.auth_configs.update(
             nanoid="nanoid",
             type="default",
-            scopes="scopes",
+            restrict_to_following_tools=["string"],
+            scopes="string",
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
@@ -359,8 +368,12 @@ class TestAsyncAuthConfigs:
             toolkit={"slug": "slug"},
             auth_config={
                 "type": "use_composio_managed_auth",
-                "credentials": {"foo": "string"},
+                "credentials": {
+                    "scopes": "string",
+                    "user_scopes": "string",
+                },
                 "name": "name",
+                "restrict_to_following_tools": ["string"],
                 "tool_access_config": {"tools_for_connected_account_creation": ["string"]},
             },
         )
@@ -432,7 +445,7 @@ class TestAsyncAuthConfigs:
     async def test_method_update_overload_1(self, async_client: AsyncComposio) -> None:
         auth_config = await async_client.auth_configs.update(
             nanoid="nanoid",
-            credentials={"foo": "bar"},
+            credentials={},
             type="custom",
         )
         assert_matches_type(object, auth_config, path=["response"])
@@ -441,12 +454,16 @@ class TestAsyncAuthConfigs:
     async def test_method_update_with_all_params_overload_1(self, async_client: AsyncComposio) -> None:
         auth_config = await async_client.auth_configs.update(
             nanoid="nanoid",
-            credentials={"foo": "bar"},
+            credentials={
+                "scopes": "string",
+                "user_scopes": "string",
+            },
             type="custom",
             proxy_config={
                 "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
             },
+            restrict_to_following_tools=["string"],
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
@@ -458,7 +475,7 @@ class TestAsyncAuthConfigs:
     async def test_raw_response_update_overload_1(self, async_client: AsyncComposio) -> None:
         response = await async_client.auth_configs.with_raw_response.update(
             nanoid="nanoid",
-            credentials={"foo": "bar"},
+            credentials={},
             type="custom",
         )
 
@@ -471,7 +488,7 @@ class TestAsyncAuthConfigs:
     async def test_streaming_response_update_overload_1(self, async_client: AsyncComposio) -> None:
         async with async_client.auth_configs.with_streaming_response.update(
             nanoid="nanoid",
-            credentials={"foo": "bar"},
+            credentials={},
             type="custom",
         ) as response:
             assert not response.is_closed
@@ -487,7 +504,7 @@ class TestAsyncAuthConfigs:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             await async_client.auth_configs.with_raw_response.update(
                 nanoid="",
-                credentials={"foo": "bar"},
+                credentials={},
                 type="custom",
             )
 
@@ -504,7 +521,8 @@ class TestAsyncAuthConfigs:
         auth_config = await async_client.auth_configs.update(
             nanoid="nanoid",
             type="default",
-            scopes="scopes",
+            restrict_to_following_tools=["string"],
+            scopes="string",
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
