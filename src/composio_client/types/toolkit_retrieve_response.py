@@ -19,7 +19,6 @@ __all__ = [
     "AuthConfigDetailFieldsConnectedAccountInitiation",
     "AuthConfigDetailFieldsConnectedAccountInitiationOptional",
     "AuthConfigDetailFieldsConnectedAccountInitiationRequired",
-    "AuthConfigDetailDeprecatedAuthProviderDetails",
     "AuthConfigDetailProxy",
 ]
 
@@ -153,12 +152,6 @@ class AuthConfigDetailFields(BaseModel):
     """
 
 
-class AuthConfigDetailDeprecatedAuthProviderDetails(BaseModel):
-    authorization_url: Optional[str] = None
-
-    token_url: Optional[str] = None
-
-
 class AuthConfigDetailProxy(BaseModel):
     base_url: str
     """URL to which authentication requests will be proxied"""
@@ -173,13 +166,6 @@ class AuthConfigDetail(BaseModel):
 
     name: str
     """Display name for this authentication method"""
-
-    deprecated_auth_provider_details: Optional[AuthConfigDetailDeprecatedAuthProviderDetails] = None
-    """Authentication URL fields for OAuth 2.0 and OAuth 1.0.
-
-    We don't recommend using this field for authentication and might break post Aug
-    31 2025.
-    """
 
     proxy: Optional[AuthConfigDetailProxy] = None
     """Configuration for proxying authentication requests to external services"""

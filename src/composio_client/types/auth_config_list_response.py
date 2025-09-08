@@ -126,9 +126,6 @@ class Item(BaseModel):
 
     proxy_config: Optional[ItemProxyConfig] = None
 
-    restrict_to_following_tools: Optional[List[str]] = None
-    """Use tool_access_config instead. This field will be deprecated in the future."""
-
 
 class AuthConfigListResponse(BaseModel):
     current_page: float

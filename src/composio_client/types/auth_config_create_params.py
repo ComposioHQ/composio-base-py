@@ -55,9 +55,6 @@ class AuthConfigUnionMember0(TypedDict, total=False):
     name: str
     """The name of the integration"""
 
-    restrict_to_following_tools: SequenceNotStr[str]
-    """Use tool_access_config instead. This field will be deprecated in the future."""
-
     tool_access_config: AuthConfigUnionMember0ToolAccessConfig
 
 
@@ -110,9 +107,6 @@ class AuthConfigUnionMember1(TypedDict, total=False):
     """The name of the integration"""
 
     proxy_config: AuthConfigUnionMember1ProxyConfig
-
-    restrict_to_following_tools: SequenceNotStr[str]
-    """Use tool_access_config instead. This field will be deprecated in the future."""
 
     tool_access_config: AuthConfigUnionMember1ToolAccessConfig
 

@@ -3241,21 +3241,6 @@ class Connection(TypedDict, total=False):
     callback_url: str
     """The URL to redirect to after connection completion"""
 
-    data: Dict[str, Optional[object]]
-    """DEPRECATED: This parameter will be removed in a future version.
-
-    Please use state instead.
-    """
-
-    deprecated_is_v1_rerouted: bool
-    """DEPRECATED: This parameter will be removed in a future version."""
-
-    redirect_uri: str
-    """DEPRECATED: This parameter will be removed in a future version.
-
-    Please use callback_url instead.
-    """
-
     state: ConnectionState
     """The state of the connected account"""
 

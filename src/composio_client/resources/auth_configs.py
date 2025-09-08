@@ -129,7 +129,6 @@ class AuthConfigsResource(SyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
-        restrict_to_following_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -144,8 +143,6 @@ class AuthConfigsResource(SyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
-
-          restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           extra_headers: Send extra headers
 
@@ -163,7 +160,6 @@ class AuthConfigsResource(SyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
-        restrict_to_following_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -179,8 +175,6 @@ class AuthConfigsResource(SyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
-
-          restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           extra_headers: Send extra headers
 
@@ -200,7 +194,6 @@ class AuthConfigsResource(SyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
-        restrict_to_following_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -219,7 +212,6 @@ class AuthConfigsResource(SyncAPIResource):
                     "credentials": credentials,
                     "type": type,
                     "proxy_config": proxy_config,
-                    "restrict_to_following_tools": restrict_to_following_tools,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
                 },
@@ -483,7 +475,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
-        restrict_to_following_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -498,8 +489,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
-
-          restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           extra_headers: Send extra headers
 
@@ -517,7 +506,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
-        restrict_to_following_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -533,8 +521,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
-
-          restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           extra_headers: Send extra headers
 
@@ -554,7 +540,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
-        restrict_to_following_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
         scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -573,7 +558,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                     "credentials": credentials,
                     "type": type,
                     "proxy_config": proxy_config,
-                    "restrict_to_following_tools": restrict_to_following_tools,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
                 },
