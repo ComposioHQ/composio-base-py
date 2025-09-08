@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.8.0 (2025-09-08)
+
+Full Changelog: [v1.7.0...v1.8.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.7.0...v1.8.0)
+
+### Features
+
+* **api:** add link endpoints ([fc4065a](https://github.com/ComposioHQ/composio-base-py/commit/fc4065a42c6e60d7b50625bf55715b91090b7858))
+* **api:** api update ([7bdbf99](https://github.com/ComposioHQ/composio-base-py/commit/7bdbf99cdbc6384fdc176112f0f06d4968d8055d))
+* **api:** api update ([0f337a5](https://github.com/ComposioHQ/composio-base-py/commit/0f337a59ff40cae1ae6585fbd5eab9c4a6dc9ff2))
+* **api:** api update ([3ebb8de](https://github.com/ComposioHQ/composio-base-py/commit/3ebb8de3330d61258b9f04f999bffaf6b48fa263))
+* **api:** fix error conditions ([f08bc37](https://github.com/ComposioHQ/composio-base-py/commit/f08bc37f0e8876ca173a414ce2e01907ee0b3006))
+* **api:** fix link methods ([2b0c9b0](https://github.com/ComposioHQ/composio-base-py/commit/2b0c9b0d7b078c83b23f337ccabb7bba4356eae5))
+* improve future compat with pydantic v3 ([4ce7e50](https://github.com/ComposioHQ/composio-base-py/commit/4ce7e50e13c7766d958e70ad1815536e54684042))
+* **types:** replace List[str] with SequenceNotStr in params ([b410b55](https://github.com/ComposioHQ/composio-base-py/commit/b410b5561af1f8f1b8ab5a63a52da61ac8f98a72))
+
+
+### Bug Fixes
+
+* avoid newer type syntax ([70c8bc6](https://github.com/ComposioHQ/composio-base-py/commit/70c8bc65afb61d7bd994a154f502584fdbdf8da6))
+
+
+### Chores
+
+* **internal:** add Sequence related utils ([bb8b92e](https://github.com/ComposioHQ/composio-base-py/commit/bb8b92eecb1fee5fc4db6419366ffff6913ab2c6))
+* **internal:** change ci workflow machines ([3871e00](https://github.com/ComposioHQ/composio-base-py/commit/3871e001a487768389f2453e1d2173a08a1df348))
+* **internal:** move mypy configurations to `pyproject.toml` file ([2d5144b](https://github.com/ComposioHQ/composio-base-py/commit/2d5144b3674f781d6c3e4ab9ce77069e2a33fe10))
+* **internal:** update pyright exclude list ([dabf444](https://github.com/ComposioHQ/composio-base-py/commit/dabf44478b8c6586438128435924c183c9b72554))
+
 ## 1.7.0 (2025-08-21)
 
 Full Changelog: [v1.6.0...v1.7.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.6.0...v1.7.0)
