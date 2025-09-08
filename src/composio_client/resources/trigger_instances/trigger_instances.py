@@ -72,20 +72,20 @@ class TriggerInstancesResource(SyncAPIResource):
         self,
         *,
         query_auth_config_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_auth_config_ids_2: str | NotGiven = NOT_GIVEN,
+        query_auth_config_ids_2: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         query_connected_account_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_connected_account_ids_2: str | NotGiven = NOT_GIVEN,
+        query_connected_account_ids_2: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         deprecated_auth_config_uuids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         deprecated_connected_account_uuids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         query_show_disabled_1: Optional[bool] | NotGiven = NOT_GIVEN,
-        query_show_disabled_2: str | NotGiven = NOT_GIVEN,
+        query_show_disabled_2: Optional[bool] | NotGiven = NOT_GIVEN,
         query_trigger_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         query_trigger_names_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_ids_2: str | NotGiven = NOT_GIVEN,
-        query_trigger_names_2: str | NotGiven = NOT_GIVEN,
+        query_trigger_ids_2: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        query_trigger_names_2: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -97,7 +97,13 @@ class TriggerInstancesResource(SyncAPIResource):
         Args:
           query_auth_config_ids_1: Array of auth config IDs to filter triggers by
 
+          query_auth_config_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              auth_config_ids instead.
+
           query_connected_account_ids_1: Array of connected account IDs to filter triggers by
+
+          query_connected_account_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              connected_account_ids instead.
 
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
               limit. The page is the page number and the limit is the number of items per
@@ -114,9 +120,18 @@ class TriggerInstancesResource(SyncAPIResource):
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
+          query_show_disabled_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              show_disabled instead.
+
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
           query_trigger_names_1: Array of trigger names to filter triggers by
+
+          query_trigger_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              trigger_ids instead.
+
+          query_trigger_names_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              trigger_names instead.
 
           extra_headers: Send extra headers
 
@@ -162,6 +177,7 @@ class TriggerInstancesResource(SyncAPIResource):
         slug: str,
         *,
         connected_account_id: str | NotGiven = NOT_GIVEN,
+        connected_auth_id: str | NotGiven = NOT_GIVEN,
         body_trigger_config_1: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         body_trigger_config_2: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -176,6 +192,9 @@ class TriggerInstancesResource(SyncAPIResource):
           slug: The slug of the trigger instance
 
           connected_account_id: Connected account nanoid
+
+          connected_auth_id: DEPRECATED: This parameter will be removed in a future version. Please use
+              connected_account_id instead.
 
           body_trigger_config_1: Trigger configuration
 
@@ -196,6 +215,7 @@ class TriggerInstancesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
+                    "connected_auth_id": connected_auth_id,
                     "body_trigger_config_1": body_trigger_config_1,
                     "body_trigger_config_2": body_trigger_config_2,
                 },
@@ -240,20 +260,20 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         self,
         *,
         query_auth_config_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_auth_config_ids_2: str | NotGiven = NOT_GIVEN,
+        query_auth_config_ids_2: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         query_connected_account_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_connected_account_ids_2: str | NotGiven = NOT_GIVEN,
+        query_connected_account_ids_2: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         cursor: str | NotGiven = NOT_GIVEN,
         deprecated_auth_config_uuids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         deprecated_connected_account_uuids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
         page: float | NotGiven = NOT_GIVEN,
         query_show_disabled_1: Optional[bool] | NotGiven = NOT_GIVEN,
-        query_show_disabled_2: str | NotGiven = NOT_GIVEN,
+        query_show_disabled_2: Optional[bool] | NotGiven = NOT_GIVEN,
         query_trigger_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         query_trigger_names_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_ids_2: str | NotGiven = NOT_GIVEN,
-        query_trigger_names_2: str | NotGiven = NOT_GIVEN,
+        query_trigger_ids_2: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        query_trigger_names_2: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -265,7 +285,13 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         Args:
           query_auth_config_ids_1: Array of auth config IDs to filter triggers by
 
+          query_auth_config_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              auth_config_ids instead.
+
           query_connected_account_ids_1: Array of connected account IDs to filter triggers by
+
+          query_connected_account_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              connected_account_ids instead.
 
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
               limit. The page is the page number and the limit is the number of items per
@@ -282,9 +308,18 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
+          query_show_disabled_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              show_disabled instead.
+
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
           query_trigger_names_1: Array of trigger names to filter triggers by
+
+          query_trigger_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              trigger_ids instead.
+
+          query_trigger_names_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              trigger_names instead.
 
           extra_headers: Send extra headers
 
@@ -330,6 +365,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         slug: str,
         *,
         connected_account_id: str | NotGiven = NOT_GIVEN,
+        connected_auth_id: str | NotGiven = NOT_GIVEN,
         body_trigger_config_1: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         body_trigger_config_2: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -344,6 +380,9 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
           slug: The slug of the trigger instance
 
           connected_account_id: Connected account nanoid
+
+          connected_auth_id: DEPRECATED: This parameter will be removed in a future version. Please use
+              connected_account_id instead.
 
           body_trigger_config_1: Trigger configuration
 
@@ -364,6 +403,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
+                    "connected_auth_id": connected_auth_id,
                     "body_trigger_config_1": body_trigger_config_1,
                     "body_trigger_config_2": body_trigger_config_2,
                 },

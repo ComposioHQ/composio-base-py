@@ -81,6 +81,7 @@ class McpResource(SyncAPIResource):
         name: str,
         allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
+        no_auth_apps: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,6 +107,8 @@ class McpResource(SyncAPIResource):
 
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
+          no_auth_apps: List of NO_AUTH apps to enable for this MCP server
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -122,6 +125,7 @@ class McpResource(SyncAPIResource):
                     "name": name,
                     "allowed_tools": allowed_tools,
                     "managed_auth_via_composio": managed_auth_via_composio,
+                    "no_auth_apps": no_auth_apps,
                 },
                 mcp_create_params.McpCreateParams,
             ),
@@ -494,6 +498,7 @@ class AsyncMcpResource(AsyncAPIResource):
         name: str,
         allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
+        no_auth_apps: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -519,6 +524,8 @@ class AsyncMcpResource(AsyncAPIResource):
 
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
+          no_auth_apps: List of NO_AUTH apps to enable for this MCP server
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -535,6 +542,7 @@ class AsyncMcpResource(AsyncAPIResource):
                     "name": name,
                     "allowed_tools": allowed_tools,
                     "managed_auth_via_composio": managed_auth_via_composio,
+                    "no_auth_apps": no_auth_apps,
                 },
                 mcp_create_params.McpCreateParams,
             ),

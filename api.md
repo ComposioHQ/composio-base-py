@@ -87,7 +87,6 @@ from composio_client.types.org.project import (
     APIKeyCreateResponse,
     APIKeyListResponse,
     APIKeyDeleteResponse,
-    APIKeyCreateAPIKeyResponse,
 )
 ```
 
@@ -96,7 +95,6 @@ Methods:
 - <code title="post /api/v3/org/project/{projectId}/api_keys/create">client.org.project.api_keys.<a href="./src/composio_client/resources/org/project/api_keys.py">create</a>(project_id, \*\*<a href="src/composio_client/types/org/project/api_key_create_params.py">params</a>) -> <a href="./src/composio_client/types/org/project/api_key_create_response.py">APIKeyCreateResponse</a></code>
 - <code title="get /api/v3/org/project/{projectId}/api_keys/list">client.org.project.api_keys.<a href="./src/composio_client/resources/org/project/api_keys.py">list</a>(project_id) -> <a href="./src/composio_client/types/org/project/api_key_list_response.py">APIKeyListResponse</a></code>
 - <code title="delete /api/v3/org/project/{projectId}/api_keys/remove/{id}">client.org.project.api_keys.<a href="./src/composio_client/resources/org/project/api_keys.py">delete</a>(id, \*, project_id) -> <a href="./src/composio_client/types/org/project/api_key_delete_response.py">APIKeyDeleteResponse</a></code>
-- <code title="post /api/v3/org/project/{projectId}/api_keys/create-api-key">client.org.project.api_keys.<a href="./src/composio_client/resources/org/project/api_keys.py">create_api_key</a>(project_id) -> <a href="./src/composio_client/types/org/project/api_key_create_api_key_response.py">APIKeyCreateAPIKeyResponse</a></code>
 
 ### Webhook
 
@@ -185,7 +183,7 @@ from composio_client.types import (
 
 Methods:
 
-- <code title="get /api/v3/tools/{tool_slug}">client.tools.<a href="./src/composio_client/resources/tools.py">retrieve</a>(tool_slug) -> <a href="./src/composio_client/types/tool_retrieve_response.py">ToolRetrieveResponse</a></code>
+- <code title="get /api/v3/tools/{tool_slug}">client.tools.<a href="./src/composio_client/resources/tools.py">retrieve</a>(tool_slug, \*\*<a href="src/composio_client/types/tool_retrieve_params.py">params</a>) -> <a href="./src/composio_client/types/tool_retrieve_response.py">ToolRetrieveResponse</a></code>
 - <code title="get /api/v3/tools">client.tools.<a href="./src/composio_client/resources/tools.py">list</a>(\*\*<a href="src/composio_client/types/tool_list_params.py">params</a>) -> <a href="./src/composio_client/types/tool_list_response.py">ToolListResponse</a></code>
 - <code title="post /api/v3/tools/execute/{tool_slug}">client.tools.<a href="./src/composio_client/resources/tools.py">execute</a>(tool_slug, \*\*<a href="src/composio_client/types/tool_execute_params.py">params</a>) -> <a href="./src/composio_client/types/tool_execute_response.py">ToolExecuteResponse</a></code>
 - <code title="post /api/v3/tools/execute/{tool_slug}/input">client.tools.<a href="./src/composio_client/resources/tools.py">get_input</a>(tool_slug, \*\*<a href="src/composio_client/types/tool_get_input_params.py">params</a>) -> <a href="./src/composio_client/types/tool_get_input_response.py">ToolGetInputResponse</a></code>
@@ -245,7 +243,7 @@ from composio_client.types import (
 
 Methods:
 
-- <code title="get /api/v3/triggers_types/{slug}">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve</a>(slug) -> <a href="./src/composio_client/types/triggers_type_retrieve_response.py">TriggersTypeRetrieveResponse</a></code>
+- <code title="get /api/v3/triggers_types/{slug}">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve</a>(slug, \*\*<a href="src/composio_client/types/triggers_type_retrieve_params.py">params</a>) -> <a href="./src/composio_client/types/triggers_type_retrieve_response.py">TriggersTypeRetrieveResponse</a></code>
 - <code title="get /api/v3/triggers_types">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">list</a>(\*\*<a href="src/composio_client/types/triggers_type_list_params.py">params</a>) -> <a href="./src/composio_client/types/triggers_type_list_response.py">TriggersTypeListResponse</a></code>
 - <code title="get /api/v3/triggers_types/list/enum">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve_enum</a>() -> <a href="./src/composio_client/types/triggers_type_retrieve_enum_response.py">TriggersTypeRetrieveEnumResponse</a></code>
 
