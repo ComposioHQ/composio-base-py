@@ -2,8 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, TypedDict
+
+from ..._types import SequenceNotStr
 
 __all__ = ["CustomCreateParams"]
 
@@ -15,13 +16,13 @@ class CustomCreateParams(TypedDict, total=False):
     alphanumeric, spaces, and hyphens only)
     """
 
-    toolkits: Required[List[str]]
+    toolkits: Required[SequenceNotStr[str]]
     """List of application/toolkit identifiers to enable for this server"""
 
-    auth_config_ids: List[str]
+    auth_config_ids: SequenceNotStr[str]
     """ID references to existing authentication configurations"""
 
-    custom_tools: List[str]
+    custom_tools: SequenceNotStr[str]
     """
     Additional custom tool identifiers to enable that aren't part of standard
     toolkits

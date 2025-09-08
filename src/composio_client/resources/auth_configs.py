@@ -2,13 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Union, Optional
 from typing_extensions import Literal, overload
 
 import httpx
 
 from ..types import auth_config_list_params, auth_config_create_params, auth_config_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import required_args, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -126,7 +126,7 @@ class AuthConfigsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
-        credentials: Dict[str, Optional[object]],
+        credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
@@ -160,7 +160,7 @@ class AuthConfigsResource(SyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
-        scopes: str | NotGiven = NOT_GIVEN,
+        scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -191,11 +191,11 @@ class AuthConfigsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
-        credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        credentials: auth_config_update_params.Variant0Credentials | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
-        scopes: str | NotGiven = NOT_GIVEN,
+        scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -472,7 +472,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
-        credentials: Dict[str, Optional[object]],
+        credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
@@ -506,7 +506,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
-        scopes: str | NotGiven = NOT_GIVEN,
+        scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -537,11 +537,11 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
-        credentials: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        credentials: auth_config_update_params.Variant0Credentials | NotGiven = NOT_GIVEN,
         type: Literal["custom"] | Literal["default"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
-        scopes: str | NotGiven = NOT_GIVEN,
+        scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

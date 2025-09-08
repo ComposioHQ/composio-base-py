@@ -2,21 +2,22 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["TriggerInstanceListActiveParams"]
 
 
 class TriggerInstanceListActiveParams(TypedDict, total=False):
-    query_auth_config_ids_1: Annotated[Optional[List[str]], PropertyInfo(alias="auth_config_ids")]
+    query_auth_config_ids_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="auth_config_ids")]
     """Array of auth config IDs to filter triggers by"""
 
     query_auth_config_ids_2: Annotated[str, PropertyInfo(alias="authConfigIds")]
 
-    query_connected_account_ids_1: Annotated[Optional[List[str]], PropertyInfo(alias="connected_account_ids")]
+    query_connected_account_ids_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="connected_account_ids")]
     """Array of connected account IDs to filter triggers by"""
 
     query_connected_account_ids_2: Annotated[str, PropertyInfo(alias="connectedAccountIds")]
@@ -29,11 +30,13 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     paginate through the items. The cursor is not required for the first page.
     """
 
-    deprecated_auth_config_uuids: Annotated[Optional[List[str]], PropertyInfo(alias="deprecatedAuthConfigUuids")]
+    deprecated_auth_config_uuids: Annotated[
+        Optional[SequenceNotStr[str]], PropertyInfo(alias="deprecatedAuthConfigUuids")
+    ]
     """Array of auth config UUIDs to filter triggers by"""
 
     deprecated_connected_account_uuids: Annotated[
-        Optional[List[str]], PropertyInfo(alias="deprecatedConnectedAccountUuids")
+        Optional[SequenceNotStr[str]], PropertyInfo(alias="deprecatedConnectedAccountUuids")
     ]
     """Array of connected account UUIDs to filter triggers by"""
 
@@ -48,10 +51,10 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
 
     query_show_disabled_2: Annotated[str, PropertyInfo(alias="showDisabled")]
 
-    query_trigger_ids_1: Annotated[Optional[List[str]], PropertyInfo(alias="trigger_ids")]
+    query_trigger_ids_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="trigger_ids")]
     """Array of trigger IDs to filter triggers by"""
 
-    query_trigger_names_1: Annotated[Optional[List[str]], PropertyInfo(alias="trigger_names")]
+    query_trigger_names_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="trigger_names")]
     """Array of trigger names to filter triggers by"""
 
     query_trigger_ids_2: Annotated[str, PropertyInfo(alias="triggerIds")]

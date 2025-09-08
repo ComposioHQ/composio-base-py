@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -150,7 +151,7 @@ class CustomConnectionDataUnionMember0ValTyped(TypedDict, total=False):
 
     region: str
 
-    scope: Union[str, List[str], None]
+    scope: Union[str, SequenceNotStr[str], None]
 
     server_location: str
 

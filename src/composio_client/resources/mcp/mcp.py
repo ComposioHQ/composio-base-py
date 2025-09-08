@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Optional
 from typing_extensions import Literal
 
 import httpx
@@ -16,7 +16,7 @@ from .custom import (
     AsyncCustomResourceWithStreamingResponse,
 )
 from ...types import mcp_list_params, mcp_create_params, mcp_update_params, mcp_retrieve_app_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from .generate import (
     GenerateResource,
@@ -77,10 +77,11 @@ class McpResource(SyncAPIResource):
     def create(
         self,
         *,
-        auth_config_ids: List[str],
+        auth_config_ids: SequenceNotStr[str],
         name: str,
-        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
+        no_auth_apps: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,6 +107,8 @@ class McpResource(SyncAPIResource):
 
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
+          no_auth_apps: List of NO_AUTH apps to enable for this MCP server
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -122,6 +125,7 @@ class McpResource(SyncAPIResource):
                     "name": name,
                     "allowed_tools": allowed_tools,
                     "managed_auth_via_composio": managed_auth_via_composio,
+                    "no_auth_apps": no_auth_apps,
                 },
                 mcp_create_params.McpCreateParams,
             ),
@@ -172,11 +176,11 @@ class McpResource(SyncAPIResource):
         self,
         id: str,
         *,
-        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        auth_config_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        toolkits: List[str] | NotGiven = NOT_GIVEN,
+        toolkits: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -490,10 +494,11 @@ class AsyncMcpResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        auth_config_ids: List[str],
+        auth_config_ids: SequenceNotStr[str],
         name: str,
-        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
+        no_auth_apps: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -519,6 +524,8 @@ class AsyncMcpResource(AsyncAPIResource):
 
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
+          no_auth_apps: List of NO_AUTH apps to enable for this MCP server
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -535,6 +542,7 @@ class AsyncMcpResource(AsyncAPIResource):
                     "name": name,
                     "allowed_tools": allowed_tools,
                     "managed_auth_via_composio": managed_auth_via_composio,
+                    "no_auth_apps": no_auth_apps,
                 },
                 mcp_create_params.McpCreateParams,
             ),
@@ -585,11 +593,11 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        allowed_tools: List[str] | NotGiven = NOT_GIVEN,
-        auth_config_ids: List[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        auth_config_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
         name: str | NotGiven = NOT_GIVEN,
-        toolkits: List[str] | NotGiven = NOT_GIVEN,
+        toolkits: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

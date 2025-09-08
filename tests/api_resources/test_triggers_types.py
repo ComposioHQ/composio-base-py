@@ -24,14 +24,22 @@ class TestTriggersTypes:
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
         triggers_type = client.triggers_types.retrieve(
-            "SLACK_NEW_MESSAGE",
+            slug="SLACK_NEW_MESSAGE",
+        )
+        assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
+
+    @parametrize
+    def test_method_retrieve_with_all_params(self, client: Composio) -> None:
+        triggers_type = client.triggers_types.retrieve(
+            slug="SLACK_NEW_MESSAGE",
+            version="version",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.triggers_types.with_raw_response.retrieve(
-            "SLACK_NEW_MESSAGE",
+            slug="SLACK_NEW_MESSAGE",
         )
 
         assert response.is_closed is True
@@ -42,7 +50,7 @@ class TestTriggersTypes:
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.triggers_types.with_streaming_response.retrieve(
-            "SLACK_NEW_MESSAGE",
+            slug="SLACK_NEW_MESSAGE",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -56,7 +64,7 @@ class TestTriggersTypes:
     def test_path_params_retrieve(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             client.triggers_types.with_raw_response.retrieve(
-                "",
+                slug="",
             )
 
     @pytest.mark.skip(reason="no prism support for query param arrays")
@@ -72,6 +80,7 @@ class TestTriggersTypes:
             cursor="cursor",
             limit=0,
             toolkit_slugs=["slack", "github"],
+            toolkit_versions="string",
         )
         assert_matches_type(TriggersTypeListResponse, triggers_type, path=["response"])
 
@@ -131,14 +140,22 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         triggers_type = await async_client.triggers_types.retrieve(
-            "SLACK_NEW_MESSAGE",
+            slug="SLACK_NEW_MESSAGE",
+        )
+        assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
+
+    @parametrize
+    async def test_method_retrieve_with_all_params(self, async_client: AsyncComposio) -> None:
+        triggers_type = await async_client.triggers_types.retrieve(
+            slug="SLACK_NEW_MESSAGE",
+            version="version",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.triggers_types.with_raw_response.retrieve(
-            "SLACK_NEW_MESSAGE",
+            slug="SLACK_NEW_MESSAGE",
         )
 
         assert response.is_closed is True
@@ -149,7 +166,7 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.triggers_types.with_streaming_response.retrieve(
-            "SLACK_NEW_MESSAGE",
+            slug="SLACK_NEW_MESSAGE",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -163,7 +180,7 @@ class TestAsyncTriggersTypes:
     async def test_path_params_retrieve(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `slug` but received ''"):
             await async_client.triggers_types.with_raw_response.retrieve(
-                "",
+                slug="",
             )
 
     @pytest.mark.skip(reason="no prism support for query param arrays")
@@ -179,6 +196,7 @@ class TestAsyncTriggersTypes:
             cursor="cursor",
             limit=0,
             toolkit_slugs=["slack", "github"],
+            toolkit_versions="string",
         )
         assert_matches_type(TriggersTypeListResponse, triggers_type, path=["response"])
 

@@ -2,14 +2,16 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["ToolListParams"]
 
 
 class ToolListParams(TypedDict, total=False):
-    auth_config_ids: Optional[List[str]]
+    auth_config_ids: Optional[SequenceNotStr[str]]
     """Filter tools by auth config id"""
 
     cursor: str
@@ -29,13 +31,13 @@ class ToolListParams(TypedDict, total=False):
     limit: Optional[float]
     """Number of items per page"""
 
-    scopes: Optional[List[str]]
+    scopes: Optional[SequenceNotStr[str]]
     """Array of scopes to filter tools by)"""
 
     search: str
     """Free-text search query to find tools by name, description, or functionality"""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """Filter tools by one or more tags (can be specified multiple times)"""
 
     tool_slugs: str
@@ -46,3 +48,6 @@ class ToolListParams(TypedDict, total=False):
 
     toolkit_slug: str
     """The slug of the toolkit to filter by"""
+
+    toolkit_versions: Union[str, Dict[str, str]]
+    """Can be omitted, null, a string, or an object mapping toolkit names to versions"""

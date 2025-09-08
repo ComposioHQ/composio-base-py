@@ -2,9 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union
+from typing import Union
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -12,8 +13,10 @@ __all__ = [
     "Toolkit",
     "AuthConfig",
     "AuthConfigUnionMember0",
+    "AuthConfigUnionMember0Credentials",
     "AuthConfigUnionMember0ToolAccessConfig",
     "AuthConfigUnionMember1",
+    "AuthConfigUnionMember1Credentials",
     "AuthConfigUnionMember1ProxyConfig",
     "AuthConfigUnionMember1ToolAccessConfig",
 ]
@@ -30,8 +33,14 @@ class Toolkit(TypedDict, total=False):
     """Toolkit slug to create auth config for"""
 
 
+class AuthConfigUnionMember0Credentials(TypedDict, total=False):
+    scopes: Union[str, SequenceNotStr[str]]
+
+    user_scopes: Union[str, SequenceNotStr[str]]
+
+
 class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
-    tools_for_connected_account_creation: List[str]
+    tools_for_connected_account_creation: SequenceNotStr[str]
     """
     Tools used to generate the minimum required scopes for the auth config (only
     valid for OAuth). If passed, this will update the scopes.
@@ -41,12 +50,18 @@ class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
 class AuthConfigUnionMember0(TypedDict, total=False):
     type: Required[Literal["use_composio_managed_auth"]]
 
-    credentials: Dict[str, Union[str, bool, float]]
+    credentials: AuthConfigUnionMember0Credentials
 
     name: str
     """The name of the integration"""
 
     tool_access_config: AuthConfigUnionMember0ToolAccessConfig
+
+
+class AuthConfigUnionMember1Credentials(TypedDict, total=False):
+    scopes: Union[str, SequenceNotStr[str]]
+
+    user_scopes: Union[str, SequenceNotStr[str]]
 
 
 class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
@@ -58,7 +73,7 @@ class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
 
 
 class AuthConfigUnionMember1ToolAccessConfig(TypedDict, total=False):
-    tools_for_connected_account_creation: List[str]
+    tools_for_connected_account_creation: SequenceNotStr[str]
     """
     Tools used to generate the minimum required scopes for the auth config (only
     valid for OAuth). If passed, this will update the scopes.
@@ -78,16 +93,15 @@ class AuthConfigUnionMember1(TypedDict, total=False):
                 "GOOGLE_SERVICE_ACCOUNT",
                 "NO_AUTH",
                 "BASIC_WITH_JWT",
-                "COMPOSIO_LINK",
                 "CALCOM_AUTH",
             ],
             PropertyInfo(alias="authScheme"),
         ]
     ]
 
-    credentials: Required[Dict[str, Union[str, bool, float]]]
-
     type: Required[Literal["use_custom_auth"]]
+
+    credentials: AuthConfigUnionMember1Credentials
 
     name: str
     """The name of the integration"""

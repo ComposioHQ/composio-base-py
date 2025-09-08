@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import TypedDict
+
+from .._types import SequenceNotStr
 
 __all__ = ["TriggersTypeListParams"]
 
@@ -20,5 +22,8 @@ class TriggersTypeListParams(TypedDict, total=False):
     limit: Optional[float]
     """Number of items per page"""
 
-    toolkit_slugs: Optional[List[str]]
+    toolkit_slugs: Optional[SequenceNotStr[str]]
     """Array of toolkit slugs to filter triggers by"""
+
+    toolkit_versions: Union[str, Dict[str, str]]
+    """Can be omitted, null, a string, or an object mapping toolkit names to versions"""

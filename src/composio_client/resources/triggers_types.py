@@ -2,12 +2,12 @@
 
 from __future__ import annotations
 
-from typing import List, Optional
+from typing import Dict, Union, Optional
 
 import httpx
 
-from ..types import triggers_type_list_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ..types import triggers_type_list_params, triggers_type_retrieve_params
+from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -49,6 +49,7 @@ class TriggersTypesResource(SyncAPIResource):
         self,
         slug: str,
         *,
+        version: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -63,6 +64,8 @@ class TriggersTypesResource(SyncAPIResource):
         Args:
           slug: The unique slug identifier for the trigger type
 
+          version: Optional version of the trigger type to retrieve
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -76,7 +79,11 @@ class TriggersTypesResource(SyncAPIResource):
         return self._get(
             f"/api/v3/triggers_types/{slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"version": version}, triggers_type_retrieve_params.TriggersTypeRetrieveParams),
             ),
             cast_to=TriggersTypeRetrieveResponse,
         )
@@ -86,7 +93,8 @@ class TriggersTypesResource(SyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -108,6 +116,8 @@ class TriggersTypesResource(SyncAPIResource):
 
           toolkit_slugs: Array of toolkit slugs to filter triggers by
 
+          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -128,6 +138,7 @@ class TriggersTypesResource(SyncAPIResource):
                         "cursor": cursor,
                         "limit": limit,
                         "toolkit_slugs": toolkit_slugs,
+                        "toolkit_versions": toolkit_versions,
                     },
                     triggers_type_list_params.TriggersTypeListParams,
                 ),
@@ -182,6 +193,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         self,
         slug: str,
         *,
+        version: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -196,6 +208,8 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         Args:
           slug: The unique slug identifier for the trigger type
 
+          version: Optional version of the trigger type to retrieve
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -209,7 +223,13 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         return await self._get(
             f"/api/v3/triggers_types/{slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"version": version}, triggers_type_retrieve_params.TriggersTypeRetrieveParams
+                ),
             ),
             cast_to=TriggersTypeRetrieveResponse,
         )
@@ -219,7 +239,8 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         *,
         cursor: str | NotGiven = NOT_GIVEN,
         limit: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit_slugs: Optional[List[str]] | NotGiven = NOT_GIVEN,
+        toolkit_slugs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -241,6 +262,8 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
 
           toolkit_slugs: Array of toolkit slugs to filter triggers by
 
+          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -261,6 +284,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
                         "cursor": cursor,
                         "limit": limit,
                         "toolkit_slugs": toolkit_slugs,
+                        "toolkit_versions": toolkit_versions,
                     },
                     triggers_type_list_params.TriggersTypeListParams,
                 ),

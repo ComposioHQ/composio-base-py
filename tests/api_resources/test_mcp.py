@@ -40,6 +40,7 @@ class TestMcp:
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
             managed_auth_via_composio=True,
+            no_auth_apps=["exa", "codeinterpreter", "composio", "composio_search"],
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 
@@ -352,6 +353,7 @@ class TestAsyncMcp:
             name="GitHub Integration Server",
             allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
             managed_auth_via_composio=True,
+            no_auth_apps=["exa", "codeinterpreter", "composio", "composio_search"],
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
 

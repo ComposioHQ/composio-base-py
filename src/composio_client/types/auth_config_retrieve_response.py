@@ -91,7 +91,6 @@ class AuthConfigRetrieveResponse(BaseModel):
             "GOOGLE_SERVICE_ACCOUNT",
             "NO_AUTH",
             "BASIC_WITH_JWT",
-            "COMPOSIO_LINK",
             "CALCOM_AUTH",
         ]
     ] = None
