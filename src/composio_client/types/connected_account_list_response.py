@@ -1301,8 +1301,6 @@ class ItemStateUnionMember3ValUnionMember1(BaseModel):
 
 
 class ItemStateUnionMember3ValUnionMember2(BaseModel):
-    password: str
-
     status: Literal["ACTIVE"]
 
     username: str
@@ -1330,6 +1328,8 @@ class ItemStateUnionMember3ValUnionMember2(BaseModel):
     instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    password: Optional[str] = None
 
     proxy_password: Optional[str] = None
 
@@ -1360,8 +1360,6 @@ class ItemStateUnionMember3ValUnionMember2(BaseModel):
 
 
 class ItemStateUnionMember3ValUnionMember3(BaseModel):
-    password: str
-
     status: Literal["INACTIVE"]
 
     username: str
@@ -1389,6 +1387,8 @@ class ItemStateUnionMember3ValUnionMember3(BaseModel):
     instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
 
     instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    password: Optional[str] = None
 
     proxy_password: Optional[str] = None
 
