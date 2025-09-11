@@ -59,6 +59,7 @@ class ToolsResource(SyncAPIResource):
         self,
         tool_slug: str,
         *,
+        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -73,6 +74,8 @@ class ToolsResource(SyncAPIResource):
         parameters, versions, and toolkit information.
 
         Args:
+          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+
           version: Optional version of the tool to retrieve
 
           extra_headers: Send extra headers
@@ -92,7 +95,13 @@ class ToolsResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"version": version}, tool_retrieve_params.ToolRetrieveParams),
+                query=maybe_transform(
+                    {
+                        "toolkit_versions": toolkit_versions,
+                        "version": version,
+                    },
+                    tool_retrieve_params.ToolRetrieveParams,
+                ),
             ),
             cast_to=ToolRetrieveResponse,
         )
@@ -429,6 +438,7 @@ class AsyncToolsResource(AsyncAPIResource):
         self,
         tool_slug: str,
         *,
+        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
         version: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -443,6 +453,8 @@ class AsyncToolsResource(AsyncAPIResource):
         parameters, versions, and toolkit information.
 
         Args:
+          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+
           version: Optional version of the tool to retrieve
 
           extra_headers: Send extra headers
@@ -462,7 +474,13 @@ class AsyncToolsResource(AsyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform({"version": version}, tool_retrieve_params.ToolRetrieveParams),
+                query=await async_maybe_transform(
+                    {
+                        "toolkit_versions": toolkit_versions,
+                        "version": version,
+                    },
+                    tool_retrieve_params.ToolRetrieveParams,
+                ),
             ),
             cast_to=ToolRetrieveResponse,
         )
