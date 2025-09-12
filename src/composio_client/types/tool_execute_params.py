@@ -319,8 +319,6 @@ class CustomConnectionDataUnionMember2(TypedDict, total=False):
 
 
 class CustomConnectionDataUnionMember3ValTyped(TypedDict, total=False):
-    password: Required[str]
-
     username: Required[str]
 
     account_id: str
@@ -346,6 +344,8 @@ class CustomConnectionDataUnionMember3ValTyped(TypedDict, total=False):
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    password: str
 
     proxy_password: str
 

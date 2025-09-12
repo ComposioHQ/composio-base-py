@@ -35,6 +35,7 @@ class TestTools:
     def test_method_retrieve_with_all_params(self, client: Composio) -> None:
         tool = client.tools.retrieve(
             tool_slug="tool_slug",
+            toolkit_versions="string",
             version="version",
         )
         assert_matches_type(ToolRetrieveResponse, tool, path=["response"])
@@ -419,6 +420,7 @@ class TestAsyncTools:
     async def test_method_retrieve_with_all_params(self, async_client: AsyncComposio) -> None:
         tool = await async_client.tools.retrieve(
             tool_slug="tool_slug",
+            toolkit_versions="string",
             version="version",
         )
         assert_matches_type(ToolRetrieveResponse, tool, path=["response"])

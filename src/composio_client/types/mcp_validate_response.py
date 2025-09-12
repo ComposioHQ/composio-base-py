@@ -1,12 +1,13 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["McpValidateResponse", "Client", "UserData"]
+__all__ = ["McpValidateResponse", "Client", "Org", "UserData"]
 
 
 class Client(BaseModel):
@@ -15,6 +16,12 @@ class Client(BaseModel):
 
     org_id: str = FieldInfo(alias="orgId")
     """Organization identifier that owns the project"""
+
+
+class Org(BaseModel):
+    id: str
+
+    plan: Literal["HOBBY", "STARTER", "GROWTH", "ENTERPRISE"]
 
 
 class UserData(BaseModel):
@@ -37,6 +44,8 @@ class McpValidateResponse(BaseModel):
 
     name: str
     """Human-readable name of the MCP server"""
+
+    org: Org
 
     url: str
     """URL endpoint for connecting to this MCP server"""

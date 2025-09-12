@@ -1253,8 +1253,6 @@ ConnectionStateUnionMember3ValUnionMember1: TypeAlias = Union[
 
 
 class ConnectionStateUnionMember3ValUnionMember2Typed(TypedDict, total=False):
-    password: Required[str]
-
     status: Required[Literal["ACTIVE"]]
 
     username: Required[str]
@@ -1283,6 +1281,8 @@ class ConnectionStateUnionMember3ValUnionMember2Typed(TypedDict, total=False):
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
 
+    password: str
+
     proxy_password: str
 
     proxy_username: str
@@ -1310,8 +1310,6 @@ ConnectionStateUnionMember3ValUnionMember2: TypeAlias = Union[
 
 
 class ConnectionStateUnionMember3ValUnionMember3Typed(TypedDict, total=False):
-    password: Required[str]
-
     status: Required[Literal["INACTIVE"]]
 
     username: Required[str]
@@ -1339,6 +1337,8 @@ class ConnectionStateUnionMember3ValUnionMember3Typed(TypedDict, total=False):
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    password: str
 
     proxy_password: str
 

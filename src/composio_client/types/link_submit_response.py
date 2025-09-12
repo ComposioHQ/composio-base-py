@@ -9,8 +9,14 @@ __all__ = ["LinkSubmitResponse"]
 
 
 class LinkSubmitResponse(BaseModel):
-    status: Literal["ACTIVE", "FAILED"]
+    status: Literal["ACTIVE", "FAILED", "INITIATED"]
     """The status of the connection attempt"""
 
-    user_callback_url: Optional[str] = None
+    callback_url: Optional[str] = None
     """The user callback URL if applicable"""
+
+    redirect_url: Optional[str] = None
+    """The OAuth provider redirect URL if applicable.
+
+    If initiated, redirect to this URL
+    """
