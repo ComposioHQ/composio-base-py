@@ -1,5 +1,25 @@
 # Changelog
 
+## 1.9.0 (2025-09-12)
+
+Full Changelog: [v1.8.0...v1.9.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.8.0...v1.9.0)
+
+### Features
+
+* **api:** api update ([b7f2080](https://github.com/ComposioHQ/composio-base-py/commit/b7f2080298ac90dc7c7d6bd199ab9f9d83ce5bbf))
+* **api:** api update ([8eea39d](https://github.com/ComposioHQ/composio-base-py/commit/8eea39dc58fcf7da5ca1f0a0e331d12a756ad389))
+* **api:** api update ([701e27b](https://github.com/ComposioHQ/composio-base-py/commit/701e27bde2a8cf9c107bd2eba7be6d5aed5135d7))
+
+
+### Bug Fixes
+
+* **types:** add missing types to method arguments ([c17d568](https://github.com/ComposioHQ/composio-base-py/commit/c17d56829b1019459c9cc9edaa78dd1cb643253f))
+
+
+### Chores
+
+* **internal:** codegen related update ([09e37e5](https://github.com/ComposioHQ/composio-base-py/commit/09e37e5cf29740c13db45d71925d7b90a6d7236d))
+
 ## 1.8.0 (2025-09-08)
 
 Full Changelog: [v1.7.0...v1.8.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.7.0...v1.8.0)
