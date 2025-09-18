@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import team_member_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -49,15 +49,15 @@ class TeamMembersResource(SyncAPIResource):
         self,
         id: str,
         *,
-        email: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        role: Literal["ADMIN", "DEVELOPER"] | NotGiven = NOT_GIVEN,
+        email: str | Omit = omit,
+        name: str | Omit = omit,
+        role: Literal["ADMIN", "DEVELOPER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TeamMemberUpdateResponse:
         """
         Update the details of an existing team member
@@ -97,7 +97,7 @@ class TeamMembersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TeamMemberListResponse:
         """Retrieve a list of all team members in the current organization"""
         return self._get(
@@ -116,7 +116,7 @@ class TeamMembersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Send an invitation to a new team member to join the organization"""
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
@@ -137,7 +137,7 @@ class TeamMembersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TeamMemberRemoveResponse:
         """
         Remove a team member from the organization and revoke their access
@@ -186,15 +186,15 @@ class AsyncTeamMembersResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        email: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        role: Literal["ADMIN", "DEVELOPER"] | NotGiven = NOT_GIVEN,
+        email: str | Omit = omit,
+        name: str | Omit = omit,
+        role: Literal["ADMIN", "DEVELOPER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TeamMemberUpdateResponse:
         """
         Update the details of an existing team member
@@ -234,7 +234,7 @@ class AsyncTeamMembersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TeamMemberListResponse:
         """Retrieve a list of all team members in the current organization"""
         return await self._get(
@@ -253,7 +253,7 @@ class AsyncTeamMembersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Send an invitation to a new team member to join the organization"""
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
@@ -274,7 +274,7 @@ class AsyncTeamMembersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TeamMemberRemoveResponse:
         """
         Remove a team member from the organization and revoke their access

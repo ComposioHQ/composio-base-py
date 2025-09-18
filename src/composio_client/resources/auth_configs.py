@@ -8,7 +8,7 @@ from typing_extensions import Literal, overload
 import httpx
 
 from ..types import auth_config_list_params, auth_config_create_params, auth_config_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import required_args, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -50,13 +50,13 @@ class AuthConfigsResource(SyncAPIResource):
         self,
         *,
         toolkit: auth_config_create_params.Toolkit,
-        auth_config: auth_config_create_params.AuthConfig | NotGiven = NOT_GIVEN,
+        auth_config: auth_config_create_params.AuthConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigCreateResponse:
         """
         Create new authentication configuration
@@ -94,7 +94,7 @@ class AuthConfigsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigRetrieveResponse:
         """
         Retrieves detailed information about a specific authentication configuration
@@ -128,14 +128,14 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
-        proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
+        proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Modifies an existing authentication configuration with new credentials or other
@@ -160,14 +160,14 @@ class AuthConfigsResource(SyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
-        scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
+        scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
+        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Modifies an existing authentication configuration with new credentials or other
@@ -191,19 +191,19 @@ class AuthConfigsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
-        credentials: auth_config_update_params.Variant0Credentials | NotGiven = NOT_GIVEN,
+        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
         type: Literal["custom"] | Literal["default"],
-        proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
+        proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
         | auth_config_update_params.Variant1ToolAccessConfig
-        | NotGiven = NOT_GIVEN,
-        scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
@@ -228,20 +228,20 @@ class AuthConfigsResource(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        deprecated_app_id: str | NotGiven = NOT_GIVEN,
-        deprecated_status: str | NotGiven = NOT_GIVEN,
-        is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        search: str | NotGiven = NOT_GIVEN,
-        show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
-        toolkit_slug: str | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        deprecated_app_id: str | Omit = omit,
+        deprecated_status: str | Omit = omit,
+        is_composio_managed: Union[str, bool] | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        search: str | Omit = omit,
+        show_disabled: Optional[bool] | Omit = omit,
+        toolkit_slug: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigListResponse:
         """
         List authentication configurations with optional filters
@@ -305,7 +305,7 @@ class AuthConfigsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Soft-deletes an authentication configuration by marking it as deleted in the
@@ -342,7 +342,7 @@ class AuthConfigsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Updates the status of an authentication configuration to either enabled or
@@ -398,13 +398,13 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         self,
         *,
         toolkit: auth_config_create_params.Toolkit,
-        auth_config: auth_config_create_params.AuthConfig | NotGiven = NOT_GIVEN,
+        auth_config: auth_config_create_params.AuthConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigCreateResponse:
         """
         Create new authentication configuration
@@ -442,7 +442,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigRetrieveResponse:
         """
         Retrieves detailed information about a specific authentication configuration
@@ -476,14 +476,14 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
-        proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | NotGiven = NOT_GIVEN,
+        proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Modifies an existing authentication configuration with new credentials or other
@@ -508,14 +508,14 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
-        scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | NotGiven = NOT_GIVEN,
+        scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
+        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Modifies an existing authentication configuration with new credentials or other
@@ -539,19 +539,19 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
-        credentials: auth_config_update_params.Variant0Credentials | NotGiven = NOT_GIVEN,
+        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
         type: Literal["custom"] | Literal["default"],
-        proxy_config: auth_config_update_params.Variant0ProxyConfig | NotGiven = NOT_GIVEN,
+        proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
         | auth_config_update_params.Variant1ToolAccessConfig
-        | NotGiven = NOT_GIVEN,
-        scopes: Union[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
@@ -576,20 +576,20 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        deprecated_app_id: str | NotGiven = NOT_GIVEN,
-        deprecated_status: str | NotGiven = NOT_GIVEN,
-        is_composio_managed: Union[str, bool] | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        search: str | NotGiven = NOT_GIVEN,
-        show_disabled: Optional[bool] | NotGiven = NOT_GIVEN,
-        toolkit_slug: str | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        deprecated_app_id: str | Omit = omit,
+        deprecated_status: str | Omit = omit,
+        is_composio_managed: Union[str, bool] | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        search: str | Omit = omit,
+        show_disabled: Optional[bool] | Omit = omit,
+        toolkit_slug: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigListResponse:
         """
         List authentication configurations with optional filters
@@ -653,7 +653,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Soft-deletes an authentication configuration by marking it as deleted in the
@@ -690,7 +690,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> object:
         """
         Updates the status of an authentication configuration to either enabled or

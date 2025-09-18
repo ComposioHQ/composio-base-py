@@ -13,7 +13,7 @@ from ..types import (
     connected_account_refresh_params,
     connected_account_update_status_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -64,7 +64,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountCreateResponse:
         """
         Create a new connected account
@@ -102,7 +102,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountRetrieveResponse:
         """
         Retrieves comprehensive details of a connected account, including authentication
@@ -130,23 +130,23 @@ class ConnectedAccountsResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        connected_account_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        labels: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        connected_account_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        labels: Optional[SequenceNotStr[str]] | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        order_by: Literal["created_at", "updated_at"] | Omit = omit,
+        order_direction: Literal["asc", "desc"] | Omit = omit,
         statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
-        | NotGiven = NOT_GIVEN,
-        toolkit_slugs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        user_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        toolkit_slugs: Optional[SequenceNotStr[str]] | Omit = omit,
+        user_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountListResponse:
         """
         List connected accounts with optional filters
@@ -215,7 +215,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountDeleteResponse:
         """Soft-deletes a connected account by marking it as deleted in the database.
 
@@ -246,14 +246,14 @@ class ConnectedAccountsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
-        query_redirect_url: str | NotGiven = NOT_GIVEN,
-        body_redirect_url: str | NotGiven = NOT_GIVEN,
+        query_redirect_url: str | Omit = omit,
+        body_redirect_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountRefreshResponse:
         """
         Initiates a new authentication flow for a connected account when credentials
@@ -299,7 +299,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountUpdateStatusResponse:
         """
         Updates the status of a connected account to either enabled (active) or disabled
@@ -361,7 +361,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountCreateResponse:
         """
         Create a new connected account
@@ -399,7 +399,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountRetrieveResponse:
         """
         Retrieves comprehensive details of a connected account, including authentication
@@ -427,23 +427,23 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        connected_account_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        cursor: Optional[str] | NotGiven = NOT_GIVEN,
-        labels: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        connected_account_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        cursor: Optional[str] | Omit = omit,
+        labels: Optional[SequenceNotStr[str]] | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        order_by: Literal["created_at", "updated_at"] | Omit = omit,
+        order_direction: Literal["asc", "desc"] | Omit = omit,
         statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
-        | NotGiven = NOT_GIVEN,
-        toolkit_slugs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        user_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        toolkit_slugs: Optional[SequenceNotStr[str]] | Omit = omit,
+        user_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountListResponse:
         """
         List connected accounts with optional filters
@@ -512,7 +512,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountDeleteResponse:
         """Soft-deletes a connected account by marking it as deleted in the database.
 
@@ -543,14 +543,14 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
-        query_redirect_url: str | NotGiven = NOT_GIVEN,
-        body_redirect_url: str | NotGiven = NOT_GIVEN,
+        query_redirect_url: str | Omit = omit,
+        body_redirect_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountRefreshResponse:
         """
         Initiates a new authentication flow for a connected account when credentials
@@ -596,7 +596,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountUpdateStatusResponse:
         """
         Updates the status of a connected account to either enabled (active) or disabled
