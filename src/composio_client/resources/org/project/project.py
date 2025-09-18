@@ -30,7 +30,7 @@ from .api_keys import (
     APIKeysResourceWithStreamingResponse,
     AsyncAPIKeysResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -91,7 +91,7 @@ class ProjectResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProjectCreateResponse:
         """
         Creates a new project within the authenticated user's organization using the
@@ -129,7 +129,7 @@ class ProjectResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProjectRetrieveResponse:
         """
         Retrieves detailed information about a specific project using its unique
@@ -161,13 +161,13 @@ class ProjectResource(SyncAPIResource):
     def list(
         self,
         *,
-        list_all_org_projects: Optional[bool] | NotGiven = NOT_GIVEN,
+        list_all_org_projects: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProjectListResponse:
         """
         Retrieves all projects belonging to the authenticated user's organization.
@@ -207,7 +207,7 @@ class ProjectResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProjectDeleteResponse:
         """Soft-deletes a project within the organization by its unique identifier.
 
@@ -280,7 +280,7 @@ class AsyncProjectResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProjectCreateResponse:
         """
         Creates a new project within the authenticated user's organization using the
@@ -318,7 +318,7 @@ class AsyncProjectResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProjectRetrieveResponse:
         """
         Retrieves detailed information about a specific project using its unique
@@ -350,13 +350,13 @@ class AsyncProjectResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        list_all_org_projects: Optional[bool] | NotGiven = NOT_GIVEN,
+        list_all_org_projects: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProjectListResponse:
         """
         Retrieves all projects belonging to the authenticated user's organization.
@@ -396,7 +396,7 @@ class AsyncProjectResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ProjectDeleteResponse:
         """Soft-deletes a project within the organization by its unique identifier.
 

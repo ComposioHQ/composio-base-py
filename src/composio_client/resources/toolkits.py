@@ -8,7 +8,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import toolkit_list_params, toolkit_retrieve_categories_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven
+from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -55,7 +55,7 @@ class ToolkitsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitRetrieveResponse:
         """
         Retrieves comprehensive information about a specific toolkit using its unique
@@ -86,18 +86,18 @@ class ToolkitsResource(SyncAPIResource):
     def list(
         self,
         *,
-        category: str | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        is_local: Optional[bool] | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        managed_by: Literal["composio", "all", "project"] | NotGiven = NOT_GIVEN,
-        sort_by: Literal["usage", "alphabetically"] | NotGiven = NOT_GIVEN,
+        category: str | Omit = omit,
+        cursor: str | Omit = omit,
+        is_local: Optional[bool] | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        managed_by: Literal["composio", "all", "project"] | Omit = omit,
+        sort_by: Literal["usage", "alphabetically"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitListResponse:
         """
         Retrieves a comprehensive list of toolkits that are available to the
@@ -155,13 +155,13 @@ class ToolkitsResource(SyncAPIResource):
     def retrieve_categories(
         self,
         *,
-        cache: str | NotGiven = NOT_GIVEN,
+        cache: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitRetrieveCategoriesResponse:
         """Retrieves a comprehensive list of all available toolkit categories.
 
@@ -225,7 +225,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitRetrieveResponse:
         """
         Retrieves comprehensive information about a specific toolkit using its unique
@@ -256,18 +256,18 @@ class AsyncToolkitsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        category: str | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        is_local: Optional[bool] | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        managed_by: Literal["composio", "all", "project"] | NotGiven = NOT_GIVEN,
-        sort_by: Literal["usage", "alphabetically"] | NotGiven = NOT_GIVEN,
+        category: str | Omit = omit,
+        cursor: str | Omit = omit,
+        is_local: Optional[bool] | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        managed_by: Literal["composio", "all", "project"] | Omit = omit,
+        sort_by: Literal["usage", "alphabetically"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitListResponse:
         """
         Retrieves a comprehensive list of toolkits that are available to the
@@ -325,13 +325,13 @@ class AsyncToolkitsResource(AsyncAPIResource):
     async def retrieve_categories(
         self,
         *,
-        cache: str | NotGiven = NOT_GIVEN,
+        cache: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitRetrieveCategoriesResponse:
         """Retrieves a comprehensive list of all available toolkit categories.
 

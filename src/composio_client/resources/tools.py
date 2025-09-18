@@ -14,7 +14,7 @@ from ..types import (
     tool_retrieve_params,
     tool_get_input_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -59,14 +59,14 @@ class ToolsResource(SyncAPIResource):
         self,
         tool_slug: str,
         *,
-        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
-        version: str | NotGiven = NOT_GIVEN,
+        toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRetrieveResponse:
         """
         Retrieve detailed information about a specific tool using its slug identifier.
@@ -109,23 +109,23 @@ class ToolsResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
-        include_deprecated: bool | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        scopes: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        search: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        tool_slugs: str | NotGiven = NOT_GIVEN,
-        toolkit_slug: str | NotGiven = NOT_GIVEN,
-        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        cursor: str | Omit = omit,
+        important: Literal["true", "false"] | Omit = omit,
+        include_deprecated: bool | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        scopes: Optional[SequenceNotStr[str]] | Omit = omit,
+        search: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        tool_slugs: str | Omit = omit,
+        toolkit_slug: str | Omit = omit,
+        toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolListResponse:
         """
         Retrieve a paginated list of available tools with comprehensive filtering,
@@ -198,20 +198,20 @@ class ToolsResource(SyncAPIResource):
         self,
         tool_slug: str,
         *,
-        allow_tracing: Optional[bool] | NotGiven = NOT_GIVEN,
-        arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
-        connected_account_id: str | NotGiven = NOT_GIVEN,
-        custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
-        custom_connection_data: tool_execute_params.CustomConnectionData | NotGiven = NOT_GIVEN,
-        text: str | NotGiven = NOT_GIVEN,
-        user_id: str | NotGiven = NOT_GIVEN,
-        version: str | NotGiven = NOT_GIVEN,
+        allow_tracing: Optional[bool] | Omit = omit,
+        arguments: Dict[str, Optional[object]] | Omit = omit,
+        connected_account_id: str | Omit = omit,
+        custom_auth_params: tool_execute_params.CustomAuthParams | Omit = omit,
+        custom_connection_data: tool_execute_params.CustomConnectionData | Omit = omit,
+        text: str | Omit = omit,
+        user_id: str | Omit = omit,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolExecuteResponse:
         """
         Execute a specific tool operation with provided arguments and authentication.
@@ -274,15 +274,15 @@ class ToolsResource(SyncAPIResource):
         tool_slug: str,
         *,
         text: str,
-        custom_description: str | NotGiven = NOT_GIVEN,
-        system_prompt: str | NotGiven = NOT_GIVEN,
-        version: str | NotGiven = NOT_GIVEN,
+        custom_description: str | Omit = omit,
+        system_prompt: str | Omit = omit,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolGetInputResponse:
         """
         Uses AI to translate a natural language description into structured arguments
@@ -334,16 +334,16 @@ class ToolsResource(SyncAPIResource):
         *,
         endpoint: str,
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
-        body: object | NotGiven = NOT_GIVEN,
-        connected_account_id: str | NotGiven = NOT_GIVEN,
-        custom_connection_data: tool_proxy_params.CustomConnectionData | NotGiven = NOT_GIVEN,
-        parameters: Iterable[tool_proxy_params.Parameter] | NotGiven = NOT_GIVEN,
+        body: object | Omit = omit,
+        connected_account_id: str | Omit = omit,
+        custom_connection_data: tool_proxy_params.CustomConnectionData | Omit = omit,
+        parameters: Iterable[tool_proxy_params.Parameter] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolProxyResponse:
         """
         Proxy an HTTP request to a third-party API using connected account credentials.
@@ -398,7 +398,7 @@ class ToolsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRetrieveEnumResponse:
         """
         Retrieve a list of all available tool enumeration values (tool slugs) for the
@@ -438,14 +438,14 @@ class AsyncToolsResource(AsyncAPIResource):
         self,
         tool_slug: str,
         *,
-        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
-        version: str | NotGiven = NOT_GIVEN,
+        toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRetrieveResponse:
         """
         Retrieve detailed information about a specific tool using its slug identifier.
@@ -488,23 +488,23 @@ class AsyncToolsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_ids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        important: Literal["true", "false"] | NotGiven = NOT_GIVEN,
-        include_deprecated: bool | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        scopes: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        search: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        tool_slugs: str | NotGiven = NOT_GIVEN,
-        toolkit_slug: str | NotGiven = NOT_GIVEN,
-        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
+        auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        cursor: str | Omit = omit,
+        important: Literal["true", "false"] | Omit = omit,
+        include_deprecated: bool | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        scopes: Optional[SequenceNotStr[str]] | Omit = omit,
+        search: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        tool_slugs: str | Omit = omit,
+        toolkit_slug: str | Omit = omit,
+        toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolListResponse:
         """
         Retrieve a paginated list of available tools with comprehensive filtering,
@@ -577,20 +577,20 @@ class AsyncToolsResource(AsyncAPIResource):
         self,
         tool_slug: str,
         *,
-        allow_tracing: Optional[bool] | NotGiven = NOT_GIVEN,
-        arguments: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
-        connected_account_id: str | NotGiven = NOT_GIVEN,
-        custom_auth_params: tool_execute_params.CustomAuthParams | NotGiven = NOT_GIVEN,
-        custom_connection_data: tool_execute_params.CustomConnectionData | NotGiven = NOT_GIVEN,
-        text: str | NotGiven = NOT_GIVEN,
-        user_id: str | NotGiven = NOT_GIVEN,
-        version: str | NotGiven = NOT_GIVEN,
+        allow_tracing: Optional[bool] | Omit = omit,
+        arguments: Dict[str, Optional[object]] | Omit = omit,
+        connected_account_id: str | Omit = omit,
+        custom_auth_params: tool_execute_params.CustomAuthParams | Omit = omit,
+        custom_connection_data: tool_execute_params.CustomConnectionData | Omit = omit,
+        text: str | Omit = omit,
+        user_id: str | Omit = omit,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolExecuteResponse:
         """
         Execute a specific tool operation with provided arguments and authentication.
@@ -653,15 +653,15 @@ class AsyncToolsResource(AsyncAPIResource):
         tool_slug: str,
         *,
         text: str,
-        custom_description: str | NotGiven = NOT_GIVEN,
-        system_prompt: str | NotGiven = NOT_GIVEN,
-        version: str | NotGiven = NOT_GIVEN,
+        custom_description: str | Omit = omit,
+        system_prompt: str | Omit = omit,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolGetInputResponse:
         """
         Uses AI to translate a natural language description into structured arguments
@@ -713,16 +713,16 @@ class AsyncToolsResource(AsyncAPIResource):
         *,
         endpoint: str,
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
-        body: object | NotGiven = NOT_GIVEN,
-        connected_account_id: str | NotGiven = NOT_GIVEN,
-        custom_connection_data: tool_proxy_params.CustomConnectionData | NotGiven = NOT_GIVEN,
-        parameters: Iterable[tool_proxy_params.Parameter] | NotGiven = NOT_GIVEN,
+        body: object | Omit = omit,
+        connected_account_id: str | Omit = omit,
+        custom_connection_data: tool_proxy_params.CustomConnectionData | Omit = omit,
+        parameters: Iterable[tool_proxy_params.Parameter] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolProxyResponse:
         """
         Proxy an HTTP request to a third-party API using connected account credentials.
@@ -777,7 +777,7 @@ class AsyncToolsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRetrieveEnumResponse:
         """
         Retrieve a list of all available tool enumeration values (tool slugs) for the
