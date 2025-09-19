@@ -23,7 +23,7 @@ from .manage import (
     AsyncManageResourceWithStreamingResponse,
 )
 from ...types import trigger_instance_upsert_params, trigger_instance_list_active_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -71,27 +71,27 @@ class TriggerInstancesResource(SyncAPIResource):
     def list_active(
         self,
         *,
-        query_auth_config_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_auth_config_ids_2: str | NotGiven = NOT_GIVEN,
-        query_connected_account_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_connected_account_ids_2: str | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        deprecated_auth_config_uuids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        deprecated_connected_account_uuids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        page: float | NotGiven = NOT_GIVEN,
-        query_show_disabled_1: Optional[bool] | NotGiven = NOT_GIVEN,
-        query_show_disabled_2: str | NotGiven = NOT_GIVEN,
-        query_trigger_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_names_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_ids_2: str | NotGiven = NOT_GIVEN,
-        query_trigger_names_2: str | NotGiven = NOT_GIVEN,
+        query_auth_config_ids_1: Optional[SequenceNotStr[str]] | Omit = omit,
+        query_auth_config_ids_2: str | Omit = omit,
+        query_connected_account_ids_1: Optional[SequenceNotStr[str]] | Omit = omit,
+        query_connected_account_ids_2: str | Omit = omit,
+        cursor: str | Omit = omit,
+        deprecated_auth_config_uuids: Optional[SequenceNotStr[str]] | Omit = omit,
+        deprecated_connected_account_uuids: Optional[SequenceNotStr[str]] | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        page: float | Omit = omit,
+        query_show_disabled_1: Optional[bool] | Omit = omit,
+        query_show_disabled_2: str | Omit = omit,
+        query_trigger_ids_1: Optional[SequenceNotStr[str]] | Omit = omit,
+        query_trigger_names_1: Optional[SequenceNotStr[str]] | Omit = omit,
+        query_trigger_ids_2: str | Omit = omit,
+        query_trigger_names_2: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceListActiveResponse:
         """
         Args:
@@ -161,15 +161,15 @@ class TriggerInstancesResource(SyncAPIResource):
         self,
         slug: str,
         *,
-        connected_account_id: str | NotGiven = NOT_GIVEN,
-        body_trigger_config_1: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
-        body_trigger_config_2: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        connected_account_id: str | Omit = omit,
+        body_trigger_config_1: Dict[str, Optional[object]] | Omit = omit,
+        body_trigger_config_2: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceUpsertResponse:
         """
         Args:
@@ -239,27 +239,27 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
     async def list_active(
         self,
         *,
-        query_auth_config_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_auth_config_ids_2: str | NotGiven = NOT_GIVEN,
-        query_connected_account_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_connected_account_ids_2: str | NotGiven = NOT_GIVEN,
-        cursor: str | NotGiven = NOT_GIVEN,
-        deprecated_auth_config_uuids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        deprecated_connected_account_uuids: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        page: float | NotGiven = NOT_GIVEN,
-        query_show_disabled_1: Optional[bool] | NotGiven = NOT_GIVEN,
-        query_show_disabled_2: str | NotGiven = NOT_GIVEN,
-        query_trigger_ids_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_names_1: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        query_trigger_ids_2: str | NotGiven = NOT_GIVEN,
-        query_trigger_names_2: str | NotGiven = NOT_GIVEN,
+        query_auth_config_ids_1: Optional[SequenceNotStr[str]] | Omit = omit,
+        query_auth_config_ids_2: str | Omit = omit,
+        query_connected_account_ids_1: Optional[SequenceNotStr[str]] | Omit = omit,
+        query_connected_account_ids_2: str | Omit = omit,
+        cursor: str | Omit = omit,
+        deprecated_auth_config_uuids: Optional[SequenceNotStr[str]] | Omit = omit,
+        deprecated_connected_account_uuids: Optional[SequenceNotStr[str]] | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        page: float | Omit = omit,
+        query_show_disabled_1: Optional[bool] | Omit = omit,
+        query_show_disabled_2: str | Omit = omit,
+        query_trigger_ids_1: Optional[SequenceNotStr[str]] | Omit = omit,
+        query_trigger_names_1: Optional[SequenceNotStr[str]] | Omit = omit,
+        query_trigger_ids_2: str | Omit = omit,
+        query_trigger_names_2: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceListActiveResponse:
         """
         Args:
@@ -329,15 +329,15 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         self,
         slug: str,
         *,
-        connected_account_id: str | NotGiven = NOT_GIVEN,
-        body_trigger_config_1: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
-        body_trigger_config_2: Dict[str, Optional[object]] | NotGiven = NOT_GIVEN,
+        connected_account_id: str | Omit = omit,
+        body_trigger_config_1: Dict[str, Optional[object]] | Omit = omit,
+        body_trigger_config_2: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceUpsertResponse:
         """
         Args:

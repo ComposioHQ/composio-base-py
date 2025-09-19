@@ -16,7 +16,7 @@ from .custom import (
     AsyncCustomResourceWithStreamingResponse,
 )
 from ...types import mcp_list_params, mcp_create_params, mcp_update_params, mcp_retrieve_app_params
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from .generate import (
     GenerateResource,
@@ -79,15 +79,15 @@ class McpResource(SyncAPIResource):
         *,
         auth_config_ids: SequenceNotStr[str],
         name: str,
-        allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
-        no_auth_apps: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: SequenceNotStr[str] | Omit = omit,
+        managed_auth_via_composio: bool | Omit = omit,
+        no_auth_apps: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpCreateResponse:
         """
         Creates a new Model Control Protocol (MCP) server instance for the authenticated
@@ -144,7 +144,7 @@ class McpResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpRetrieveResponse:
         """
         Retrieves detailed configuration information for a specific Model Control
@@ -176,17 +176,17 @@ class McpResource(SyncAPIResource):
         self,
         id: str,
         *,
-        allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        auth_config_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        toolkits: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: SequenceNotStr[str] | Omit = omit,
+        auth_config_ids: SequenceNotStr[str] | Omit = omit,
+        managed_auth_via_composio: bool | Omit = omit,
+        name: str | Omit = omit,
+        toolkits: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpUpdateResponse:
         """
         Updates the configuration of an existing Model Control Protocol (MCP) server.
@@ -240,19 +240,19 @@ class McpResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_ids: str | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
-        page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkits: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        name: str | Omit = omit,
+        order_by: Literal["created_at", "updated_at"] | Omit = omit,
+        order_direction: Literal["asc", "desc"] | Omit = omit,
+        page_no: Optional[float] | Omit = omit,
+        toolkits: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpListResponse:
         """
         Retrieves a paginated list of MCP servers associated with the authenticated
@@ -316,7 +316,7 @@ class McpResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpDeleteResponse:
         """
         Performs a soft delete on a Model Control Protocol (MCP) server, making it
@@ -349,19 +349,19 @@ class McpResource(SyncAPIResource):
         self,
         app_key: str,
         *,
-        auth_config_ids: str | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
-        page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkits: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        name: str | Omit = omit,
+        order_by: Literal["created_at", "updated_at"] | Omit = omit,
+        order_direction: Literal["asc", "desc"] | Omit = omit,
+        page_no: Optional[float] | Omit = omit,
+        toolkits: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpRetrieveAppResponse:
         """
         Retrieves a paginated list of Model Control Protocol (MCP) servers that are
@@ -429,7 +429,7 @@ class McpResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpValidateResponse:
         """
         Admin-only endpoint that validates a Model Control Protocol (MCP) server and
@@ -496,15 +496,15 @@ class AsyncMcpResource(AsyncAPIResource):
         *,
         auth_config_ids: SequenceNotStr[str],
         name: str,
-        allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
-        no_auth_apps: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: SequenceNotStr[str] | Omit = omit,
+        managed_auth_via_composio: bool | Omit = omit,
+        no_auth_apps: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpCreateResponse:
         """
         Creates a new Model Control Protocol (MCP) server instance for the authenticated
@@ -561,7 +561,7 @@ class AsyncMcpResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpRetrieveResponse:
         """
         Retrieves detailed configuration information for a specific Model Control
@@ -593,17 +593,17 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        allowed_tools: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        auth_config_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        managed_auth_via_composio: bool | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        toolkits: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        allowed_tools: SequenceNotStr[str] | Omit = omit,
+        auth_config_ids: SequenceNotStr[str] | Omit = omit,
+        managed_auth_via_composio: bool | Omit = omit,
+        name: str | Omit = omit,
+        toolkits: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpUpdateResponse:
         """
         Updates the configuration of an existing Model Control Protocol (MCP) server.
@@ -657,19 +657,19 @@ class AsyncMcpResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_ids: str | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
-        page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkits: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        name: str | Omit = omit,
+        order_by: Literal["created_at", "updated_at"] | Omit = omit,
+        order_direction: Literal["asc", "desc"] | Omit = omit,
+        page_no: Optional[float] | Omit = omit,
+        toolkits: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpListResponse:
         """
         Retrieves a paginated list of MCP servers associated with the authenticated
@@ -733,7 +733,7 @@ class AsyncMcpResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpDeleteResponse:
         """
         Performs a soft delete on a Model Control Protocol (MCP) server, making it
@@ -766,19 +766,19 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         app_key: str,
         *,
-        auth_config_ids: str | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        order_by: Literal["created_at", "updated_at"] | NotGiven = NOT_GIVEN,
-        order_direction: Literal["asc", "desc"] | NotGiven = NOT_GIVEN,
-        page_no: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkits: str | NotGiven = NOT_GIVEN,
+        auth_config_ids: str | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        name: str | Omit = omit,
+        order_by: Literal["created_at", "updated_at"] | Omit = omit,
+        order_direction: Literal["asc", "desc"] | Omit = omit,
+        page_no: Optional[float] | Omit = omit,
+        toolkits: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpRetrieveAppResponse:
         """
         Retrieves a paginated list of Model Control Protocol (MCP) servers that are
@@ -846,7 +846,7 @@ class AsyncMcpResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> McpValidateResponse:
         """
         Admin-only endpoint that validates a Model Control Protocol (MCP) server and

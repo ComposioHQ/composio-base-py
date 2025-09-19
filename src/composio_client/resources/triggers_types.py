@@ -7,7 +7,7 @@ from typing import Dict, Union, Optional
 import httpx
 
 from ..types import triggers_type_list_params, triggers_type_retrieve_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -49,13 +49,13 @@ class TriggersTypesResource(SyncAPIResource):
         self,
         slug: str,
         *,
-        version: str | NotGiven = NOT_GIVEN,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggersTypeRetrieveResponse:
         """
         Retrieve detailed information about a specific trigger type using its slug
@@ -91,16 +91,16 @@ class TriggersTypesResource(SyncAPIResource):
     def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit_slugs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        toolkit_slugs: Optional[SequenceNotStr[str]] | Omit = omit,
+        toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggersTypeListResponse:
         """
         Retrieve a list of available trigger types with optional filtering by toolkit.
@@ -154,7 +154,7 @@ class TriggersTypesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggersTypeRetrieveEnumResponse:
         """
         Retrieves a list of all available trigger type enum values that can be used
@@ -193,13 +193,13 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         self,
         slug: str,
         *,
-        version: str | NotGiven = NOT_GIVEN,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggersTypeRetrieveResponse:
         """
         Retrieve detailed information about a specific trigger type using its slug
@@ -237,16 +237,16 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        cursor: str | NotGiven = NOT_GIVEN,
-        limit: Optional[float] | NotGiven = NOT_GIVEN,
-        toolkit_slugs: Optional[SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        toolkit_versions: Union[str, Dict[str, str]] | NotGiven = NOT_GIVEN,
+        cursor: str | Omit = omit,
+        limit: Optional[float] | Omit = omit,
+        toolkit_slugs: Optional[SequenceNotStr[str]] | Omit = omit,
+        toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggersTypeListResponse:
         """
         Retrieve a list of available trigger types with optional filtering by toolkit.
@@ -300,7 +300,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggersTypeRetrieveEnumResponse:
         """
         Retrieves a list of all available trigger type enum values that can be used
