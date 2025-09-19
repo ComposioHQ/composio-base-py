@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.10.0 (2025-09-19)
+
+Full Changelog: [v1.9.1...v1.10.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.9.1...v1.10.0)
+
+### Features
+
+* **api:** api update ([075ef78](https://github.com/ComposioHQ/composio-base-py/commit/075ef780f4310ddbef1f8ce108b23de6fefe76b2))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([b81e2f3](https://github.com/ComposioHQ/composio-base-py/commit/b81e2f397d18d399af1f66ae1da7bb6b1649d51f))
+
 ## 1.9.1 (2025-09-19)
 
 Full Changelog: [v1.9.0...v1.9.1](https://github.com/ComposioHQ/composio-base-py/compare/v1.9.0...v1.9.1)
