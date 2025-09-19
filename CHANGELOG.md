@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.9.1 (2025-09-19)
+
+Full Changelog: [v1.9.0...v1.9.1](https://github.com/ComposioHQ/composio-base-py/compare/v1.9.0...v1.9.1)
+
+### Chores
+
+* **internal:** update pydantic dependency ([f52ecc9](https://github.com/ComposioHQ/composio-base-py/commit/f52ecc9b0e178db2785a99a6d6a8adbadfbde78e))
+* **types:** change optional parameter type from NotGiven to Omit ([b65ae47](https://github.com/ComposioHQ/composio-base-py/commit/b65ae47d20107c756bb550fa702256bfb819ed8a))
+
 ## 1.9.0 (2025-09-12)
 
 Full Changelog: [v1.8.0...v1.9.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.8.0...v1.9.0)
