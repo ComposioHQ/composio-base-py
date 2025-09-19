@@ -94,6 +94,7 @@ class AuthConfigUnionMember1(TypedDict, total=False):
                 "NO_AUTH",
                 "BASIC_WITH_JWT",
                 "CALCOM_AUTH",
+                "SERVICE_ACCOUNT",
             ],
             PropertyInfo(alias="authScheme"),
         ]

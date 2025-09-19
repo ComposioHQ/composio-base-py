@@ -41,6 +41,7 @@ class ConnectedAccount(BaseModel):
         "NO_AUTH",
         "BASIC_WITH_JWT",
         "CALCOM_AUTH",
+        "SERVICE_ACCOUNT",
     ]
 
     status: Literal["INITIATED", "ACTIVE", "FAILED"]
