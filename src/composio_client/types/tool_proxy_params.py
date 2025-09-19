@@ -26,6 +26,8 @@ __all__ = [
     "CustomConnectionDataUnionMember5Val",
     "CustomConnectionDataUnionMember6",
     "CustomConnectionDataUnionMember6Val",
+    "CustomConnectionDataUnionMember7",
+    "CustomConnectionDataUnionMember7Val",
     "Parameter",
 ]
 
@@ -527,6 +529,71 @@ class CustomConnectionDataUnionMember6(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember6Val]
 
 
+class CustomConnectionDataUnionMember7ValTyped(TypedDict, total=False):
+    application_id: Required[str]
+
+    installation_id: Required[str]
+
+    private_key: Required[str]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+CustomConnectionDataUnionMember7Val: TypeAlias = Union[
+    CustomConnectionDataUnionMember7ValTyped, Dict[str, Optional[object]]
+]
+
+
+class CustomConnectionDataUnionMember7(TypedDict, total=False):
+    auth_scheme: Required[Annotated[Literal["SERVICE_ACCOUNT"], PropertyInfo(alias="authScheme")]]
+
+    toolkit_slug: Required[Annotated[str, PropertyInfo(alias="toolkitSlug")]]
+
+    val: Required[CustomConnectionDataUnionMember7Val]
+
+
 CustomConnectionData: TypeAlias = Union[
     CustomConnectionDataUnionMember0,
     CustomConnectionDataUnionMember1,
@@ -535,6 +602,7 @@ CustomConnectionData: TypeAlias = Union[
     CustomConnectionDataUnionMember4,
     CustomConnectionDataUnionMember5,
     CustomConnectionDataUnionMember6,
+    CustomConnectionDataUnionMember7,
 ]
 
 

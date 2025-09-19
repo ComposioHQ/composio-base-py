@@ -92,6 +92,7 @@ class AuthConfigRetrieveResponse(BaseModel):
             "NO_AUTH",
             "BASIC_WITH_JWT",
             "CALCOM_AUTH",
+            "SERVICE_ACCOUNT",
         ]
     ] = None
     """The authentication scheme used (e.g., OAuth2, API Key, etc.)"""
