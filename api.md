@@ -149,7 +149,9 @@ Types:
 from composio_client.types import (
     McpCreateResponse,
     McpRetrieveResponse,
+    McpUpdateResponse,
     McpListResponse,
+    McpDeleteResponse,
     McpRetrieveAppResponse,
     McpValidateResponse,
 )
@@ -159,7 +161,9 @@ Methods:
 
 - <code title="post /api/v3/mcp/servers">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">create</a>(\*\*<a href="src/composio_client/types/mcp_create_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_create_response.py">McpCreateResponse</a></code>
 - <code title="get /api/v3/mcp/{id}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">retrieve</a>(id) -> <a href="./src/composio_client/types/mcp_retrieve_response.py">McpRetrieveResponse</a></code>
+- <code title="patch /api/v3/mcp/{id}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">update</a>(id, \*\*<a href="src/composio_client/types/mcp_update_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_update_response.py">McpUpdateResponse</a></code>
 - <code title="get /api/v3/mcp/servers">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">list</a>(\*\*<a href="src/composio_client/types/mcp_list_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_list_response.py">McpListResponse</a></code>
+- <code title="delete /api/v3/mcp/{id}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">delete</a>(id) -> <a href="./src/composio_client/types/mcp_delete_response.py">McpDeleteResponse</a></code>
 - <code title="get /api/v3/mcp/app/{appKey}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">retrieve_app</a>(app_key, \*\*<a href="src/composio_client/types/mcp_retrieve_app_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_retrieve_app_response.py">McpRetrieveAppResponse</a></code>
 - <code title="get /api/v3/mcp/validate/{uuid}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">validate</a>(uuid) -> <a href="./src/composio_client/types/mcp_validate_response.py">McpValidateResponse</a></code>
 
@@ -174,6 +178,18 @@ from composio_client.types.mcp import CustomCreateResponse
 Methods:
 
 - <code title="post /api/v3/mcp/servers/custom">client.mcp.custom.<a href="./src/composio_client/resources/mcp/custom.py">create</a>(\*\*<a href="src/composio_client/types/mcp/custom_create_params.py">params</a>) -> <a href="./src/composio_client/types/mcp/custom_create_response.py">CustomCreateResponse</a></code>
+
+## Generate
+
+Types:
+
+```python
+from composio_client.types.mcp import GenerateURLResponse
+```
+
+Methods:
+
+- <code title="post /api/v3/mcp/servers/generate">client.mcp.generate.<a href="./src/composio_client/resources/mcp/generate.py">url</a>(\*\*<a href="src/composio_client/types/mcp/generate_url_params.py">params</a>) -> <a href="./src/composio_client/types/mcp/generate_url_response.py">GenerateURLResponse</a></code>
 
 # Files
 
