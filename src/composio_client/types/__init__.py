@@ -7,11 +7,14 @@ from .file_list_params import FileListParams as FileListParams
 from .tool_list_params import ToolListParams as ToolListParams
 from .mcp_create_params import McpCreateParams as McpCreateParams
 from .mcp_list_response import McpListResponse as McpListResponse
+from .mcp_update_params import McpUpdateParams as McpUpdateParams
 from .tool_proxy_params import ToolProxyParams as ToolProxyParams
 from .file_list_response import FileListResponse as FileListResponse
 from .link_create_params import LinkCreateParams as LinkCreateParams
 from .tool_list_response import ToolListResponse as ToolListResponse
 from .mcp_create_response import McpCreateResponse as McpCreateResponse
+from .mcp_delete_response import McpDeleteResponse as McpDeleteResponse
+from .mcp_update_response import McpUpdateResponse as McpUpdateResponse
 from .tool_execute_params import ToolExecuteParams as ToolExecuteParams
 from .tool_proxy_response import ToolProxyResponse as ToolProxyResponse
 from .toolkit_list_params import ToolkitListParams as ToolkitListParams

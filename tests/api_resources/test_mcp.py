@@ -12,6 +12,8 @@ from composio_client import Composio, AsyncComposio
 from composio_client.types import (
     McpListResponse,
     McpCreateResponse,
+    McpDeleteResponse,
+    McpUpdateResponse,
     McpRetrieveResponse,
     McpValidateResponse,
     McpRetrieveAppResponse,
@@ -106,6 +108,56 @@ class TestMcp:
                 "",
             )
 
+    @parametrize
+    def test_method_update(self, client: Composio) -> None:
+        mcp = client.mcp.update(
+            id="550e8400-e29b-41d4-a716-446655440000",
+        )
+        assert_matches_type(McpUpdateResponse, mcp, path=["response"])
+
+    @parametrize
+    def test_method_update_with_all_params(self, client: Composio) -> None:
+        mcp = client.mcp.update(
+            id="550e8400-e29b-41d4-a716-446655440000",
+            allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
+            managed_auth_via_composio=True,
+            name="Updated GitHub Integration Server",
+            toolkits=["gmail", "notion"],
+        )
+        assert_matches_type(McpUpdateResponse, mcp, path=["response"])
+
+    @parametrize
+    def test_raw_response_update(self, client: Composio) -> None:
+        response = client.mcp.with_raw_response.update(
+            id="550e8400-e29b-41d4-a716-446655440000",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        mcp = response.parse()
+        assert_matches_type(McpUpdateResponse, mcp, path=["response"])
+
+    @parametrize
+    def test_streaming_response_update(self, client: Composio) -> None:
+        with client.mcp.with_streaming_response.update(
+            id="550e8400-e29b-41d4-a716-446655440000",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            mcp = response.parse()
+            assert_matches_type(McpUpdateResponse, mcp, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_update(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.mcp.with_raw_response.update(
+                id="",
+            )
+
     @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     def test_method_list(self, client: Composio) -> None:
@@ -147,6 +199,44 @@ class TestMcp:
             assert_matches_type(McpListResponse, mcp, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_delete(self, client: Composio) -> None:
+        mcp = client.mcp.delete(
+            "550e8400-e29b-41d4-a716-446655440000",
+        )
+        assert_matches_type(McpDeleteResponse, mcp, path=["response"])
+
+    @parametrize
+    def test_raw_response_delete(self, client: Composio) -> None:
+        response = client.mcp.with_raw_response.delete(
+            "550e8400-e29b-41d4-a716-446655440000",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        mcp = response.parse()
+        assert_matches_type(McpDeleteResponse, mcp, path=["response"])
+
+    @parametrize
+    def test_streaming_response_delete(self, client: Composio) -> None:
+        with client.mcp.with_streaming_response.delete(
+            "550e8400-e29b-41d4-a716-446655440000",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            mcp = response.parse()
+            assert_matches_type(McpDeleteResponse, mcp, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_delete(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            client.mcp.with_raw_response.delete(
+                "",
+            )
 
     @parametrize
     def test_method_retrieve_app(self, client: Composio) -> None:
@@ -331,6 +421,56 @@ class TestAsyncMcp:
                 "",
             )
 
+    @parametrize
+    async def test_method_update(self, async_client: AsyncComposio) -> None:
+        mcp = await async_client.mcp.update(
+            id="550e8400-e29b-41d4-a716-446655440000",
+        )
+        assert_matches_type(McpUpdateResponse, mcp, path=["response"])
+
+    @parametrize
+    async def test_method_update_with_all_params(self, async_client: AsyncComposio) -> None:
+        mcp = await async_client.mcp.update(
+            id="550e8400-e29b-41d4-a716-446655440000",
+            allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
+            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
+            managed_auth_via_composio=True,
+            name="Updated GitHub Integration Server",
+            toolkits=["gmail", "notion"],
+        )
+        assert_matches_type(McpUpdateResponse, mcp, path=["response"])
+
+    @parametrize
+    async def test_raw_response_update(self, async_client: AsyncComposio) -> None:
+        response = await async_client.mcp.with_raw_response.update(
+            id="550e8400-e29b-41d4-a716-446655440000",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        mcp = await response.parse()
+        assert_matches_type(McpUpdateResponse, mcp, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_update(self, async_client: AsyncComposio) -> None:
+        async with async_client.mcp.with_streaming_response.update(
+            id="550e8400-e29b-41d4-a716-446655440000",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            mcp = await response.parse()
+            assert_matches_type(McpUpdateResponse, mcp, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_update(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.mcp.with_raw_response.update(
+                id="",
+            )
+
     @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
     async def test_method_list(self, async_client: AsyncComposio) -> None:
@@ -372,6 +512,44 @@ class TestAsyncMcp:
             assert_matches_type(McpListResponse, mcp, path=["response"])
 
         assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_delete(self, async_client: AsyncComposio) -> None:
+        mcp = await async_client.mcp.delete(
+            "550e8400-e29b-41d4-a716-446655440000",
+        )
+        assert_matches_type(McpDeleteResponse, mcp, path=["response"])
+
+    @parametrize
+    async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
+        response = await async_client.mcp.with_raw_response.delete(
+            "550e8400-e29b-41d4-a716-446655440000",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        mcp = await response.parse()
+        assert_matches_type(McpDeleteResponse, mcp, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
+        async with async_client.mcp.with_streaming_response.delete(
+            "550e8400-e29b-41d4-a716-446655440000",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            mcp = await response.parse()
+            assert_matches_type(McpDeleteResponse, mcp, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_delete(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+            await async_client.mcp.with_raw_response.delete(
+                "",
+            )
 
     @parametrize
     async def test_method_retrieve_app(self, async_client: AsyncComposio) -> None:
