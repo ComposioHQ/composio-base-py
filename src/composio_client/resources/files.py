@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Optional
+from typing import Any, Optional, cast
 
 import httpx
 
-from ..types import file_list_params
+from ..types import file_list_params, file_create_presigned_url_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -19,6 +19,7 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.file_list_response import FileListResponse
+from ..types.file_create_presigned_url_response import FileCreatePresignedURLResponse
 
 __all__ = ["FilesResource", "AsyncFilesResource"]
 
@@ -102,6 +103,70 @@ class FilesResource(SyncAPIResource):
             cast_to=FileListResponse,
         )
 
+    def create_presigned_url(
+        self,
+        *,
+        filename: str,
+        md5: str,
+        mimetype: str,
+        tool_slug: str,
+        toolkit_slug: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FileCreatePresignedURLResponse:
+        """Generates a presigned URL for uploading a file to S3.
+
+        This endpoint handles
+        deduplication by checking if a file with the same MD5 hash already exists.
+
+        Args:
+          filename: Name of the original file. Example: "photo.jpg"
+
+          md5:
+              MD5 hash of the file for deduplication and integrity verification. Example:
+              "d41d8cd98f00b204e9800998ecf8427e"
+
+          mimetype: Mime type of the original file. Example: "image/jpeg"
+
+          tool_slug: Slug of the action where this file belongs to. Example: "resize-image"
+
+          toolkit_slug: Slug of the app where this file belongs to. Example: "image-processing"
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return cast(
+            FileCreatePresignedURLResponse,
+            self._post(
+                "/api/v3/files/upload/request",
+                body=maybe_transform(
+                    {
+                        "filename": filename,
+                        "md5": md5,
+                        "mimetype": mimetype,
+                        "tool_slug": tool_slug,
+                        "toolkit_slug": toolkit_slug,
+                    },
+                    file_create_presigned_url_params.FileCreatePresignedURLParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, FileCreatePresignedURLResponse
+                ),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
 
 class AsyncFilesResource(AsyncAPIResource):
     @cached_property
@@ -182,6 +247,70 @@ class AsyncFilesResource(AsyncAPIResource):
             cast_to=FileListResponse,
         )
 
+    async def create_presigned_url(
+        self,
+        *,
+        filename: str,
+        md5: str,
+        mimetype: str,
+        tool_slug: str,
+        toolkit_slug: str,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> FileCreatePresignedURLResponse:
+        """Generates a presigned URL for uploading a file to S3.
+
+        This endpoint handles
+        deduplication by checking if a file with the same MD5 hash already exists.
+
+        Args:
+          filename: Name of the original file. Example: "photo.jpg"
+
+          md5:
+              MD5 hash of the file for deduplication and integrity verification. Example:
+              "d41d8cd98f00b204e9800998ecf8427e"
+
+          mimetype: Mime type of the original file. Example: "image/jpeg"
+
+          tool_slug: Slug of the action where this file belongs to. Example: "resize-image"
+
+          toolkit_slug: Slug of the app where this file belongs to. Example: "image-processing"
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return cast(
+            FileCreatePresignedURLResponse,
+            await self._post(
+                "/api/v3/files/upload/request",
+                body=await async_maybe_transform(
+                    {
+                        "filename": filename,
+                        "md5": md5,
+                        "mimetype": mimetype,
+                        "tool_slug": tool_slug,
+                        "toolkit_slug": toolkit_slug,
+                    },
+                    file_create_presigned_url_params.FileCreatePresignedURLParams,
+                ),
+                options=make_request_options(
+                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                ),
+                cast_to=cast(
+                    Any, FileCreatePresignedURLResponse
+                ),  # Union types cannot be passed in as arguments in the type system
+            ),
+        )
+
 
 class FilesResourceWithRawResponse:
     def __init__(self, files: FilesResource) -> None:
@@ -189,6 +318,9 @@ class FilesResourceWithRawResponse:
 
         self.list = to_raw_response_wrapper(
             files.list,
+        )
+        self.create_presigned_url = to_raw_response_wrapper(
+            files.create_presigned_url,
         )
 
 
@@ -199,6 +331,9 @@ class AsyncFilesResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             files.list,
         )
+        self.create_presigned_url = async_to_raw_response_wrapper(
+            files.create_presigned_url,
+        )
 
 
 class FilesResourceWithStreamingResponse:
@@ -208,6 +343,9 @@ class FilesResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             files.list,
         )
+        self.create_presigned_url = to_streamed_response_wrapper(
+            files.create_presigned_url,
+        )
 
 
 class AsyncFilesResourceWithStreamingResponse:
@@ -216,4 +354,7 @@ class AsyncFilesResourceWithStreamingResponse:
 
         self.list = async_to_streamed_response_wrapper(
             files.list,
+        )
+        self.create_presigned_url = async_to_streamed_response_wrapper(
+            files.create_presigned_url,
         )
