@@ -16,14 +16,6 @@ from .mcp import (
     McpResourceWithStreamingResponse,
     AsyncMcpResourceWithStreamingResponse,
 )
-from .org import (
-    OrgResource,
-    AsyncOrgResource,
-    OrgResourceWithRawResponse,
-    AsyncOrgResourceWithRawResponse,
-    OrgResourceWithStreamingResponse,
-    AsyncOrgResourceWithStreamingResponse,
-)
 from .link import (
     LinkResource,
     AsyncLinkResource,
@@ -72,14 +64,6 @@ from .auth_configs import (
     AuthConfigsResourceWithStreamingResponse,
     AsyncAuthConfigsResourceWithStreamingResponse,
 )
-from .team_members import (
-    TeamMembersResource,
-    AsyncTeamMembersResource,
-    TeamMembersResourceWithRawResponse,
-    AsyncTeamMembersResourceWithRawResponse,
-    TeamMembersResourceWithStreamingResponse,
-    AsyncTeamMembersResourceWithStreamingResponse,
-)
 from .triggers_types import (
     TriggersTypesResource,
     AsyncTriggersTypesResource,
@@ -124,18 +108,6 @@ __all__ = [
     "AsyncLinkResourceWithRawResponse",
     "LinkResourceWithStreamingResponse",
     "AsyncLinkResourceWithStreamingResponse",
-    "OrgResource",
-    "AsyncOrgResource",
-    "OrgResourceWithRawResponse",
-    "AsyncOrgResourceWithRawResponse",
-    "OrgResourceWithStreamingResponse",
-    "AsyncOrgResourceWithStreamingResponse",
-    "TeamMembersResource",
-    "AsyncTeamMembersResource",
-    "TeamMembersResourceWithRawResponse",
-    "AsyncTeamMembersResourceWithRawResponse",
-    "TeamMembersResourceWithStreamingResponse",
-    "AsyncTeamMembersResourceWithStreamingResponse",
     "ToolkitsResource",
     "AsyncToolkitsResource",
     "ToolkitsResourceWithRawResponse",

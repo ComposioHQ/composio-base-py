@@ -16,14 +16,6 @@ from .custom import (
     CustomResourceWithStreamingResponse,
     AsyncCustomResourceWithStreamingResponse,
 )
-from .generate import (
-    GenerateResource,
-    AsyncGenerateResource,
-    GenerateResourceWithRawResponse,
-    AsyncGenerateResourceWithRawResponse,
-    GenerateResourceWithStreamingResponse,
-    AsyncGenerateResourceWithStreamingResponse,
-)
 
 __all__ = [
     "CustomResource",
@@ -32,12 +24,6 @@ __all__ = [
     "AsyncCustomResourceWithRawResponse",
     "CustomResourceWithStreamingResponse",
     "AsyncCustomResourceWithStreamingResponse",
-    "GenerateResource",
-    "AsyncGenerateResource",
-    "GenerateResourceWithRawResponse",
-    "AsyncGenerateResourceWithRawResponse",
-    "GenerateResourceWithStreamingResponse",
-    "AsyncGenerateResourceWithStreamingResponse",
     "McpResource",
     "AsyncMcpResource",
     "McpResourceWithRawResponse",
