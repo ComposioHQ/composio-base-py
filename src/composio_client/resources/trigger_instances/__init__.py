@@ -1,13 +1,5 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from .handle import (
-    HandleResource,
-    AsyncHandleResource,
-    HandleResourceWithRawResponse,
-    AsyncHandleResourceWithRawResponse,
-    HandleResourceWithStreamingResponse,
-    AsyncHandleResourceWithStreamingResponse,
-)
 from .manage import (
     ManageResource,
     AsyncManageResource,
@@ -26,12 +18,6 @@ from .trigger_instances import (
 )
 
 __all__ = [
-    "HandleResource",
-    "AsyncHandleResource",
-    "HandleResourceWithRawResponse",
-    "AsyncHandleResourceWithRawResponse",
-    "HandleResourceWithStreamingResponse",
-    "AsyncHandleResourceWithStreamingResponse",
     "ManageResource",
     "AsyncManageResource",
     "ManageResourceWithRawResponse",
