@@ -12,6 +12,7 @@ from composio_client import Composio, AsyncComposio
 from composio_client.types import (
     TriggersTypeListResponse,
     TriggersTypeRetrieveResponse,
+    TriggersTypeRetrieveEnumResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -105,6 +106,31 @@ class TestTriggersTypes:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_retrieve_enum(self, client: Composio) -> None:
+        triggers_type = client.triggers_types.retrieve_enum()
+        assert_matches_type(TriggersTypeRetrieveEnumResponse, triggers_type, path=["response"])
+
+    @parametrize
+    def test_raw_response_retrieve_enum(self, client: Composio) -> None:
+        response = client.triggers_types.with_raw_response.retrieve_enum()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        triggers_type = response.parse()
+        assert_matches_type(TriggersTypeRetrieveEnumResponse, triggers_type, path=["response"])
+
+    @parametrize
+    def test_streaming_response_retrieve_enum(self, client: Composio) -> None:
+        with client.triggers_types.with_streaming_response.retrieve_enum() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            triggers_type = response.parse()
+            assert_matches_type(TriggersTypeRetrieveEnumResponse, triggers_type, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncTriggersTypes:
     parametrize = pytest.mark.parametrize(
@@ -193,5 +219,30 @@ class TestAsyncTriggersTypes:
 
             triggers_type = await response.parse()
             assert_matches_type(TriggersTypeListResponse, triggers_type, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_retrieve_enum(self, async_client: AsyncComposio) -> None:
+        triggers_type = await async_client.triggers_types.retrieve_enum()
+        assert_matches_type(TriggersTypeRetrieveEnumResponse, triggers_type, path=["response"])
+
+    @parametrize
+    async def test_raw_response_retrieve_enum(self, async_client: AsyncComposio) -> None:
+        response = await async_client.triggers_types.with_raw_response.retrieve_enum()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        triggers_type = await response.parse()
+        assert_matches_type(TriggersTypeRetrieveEnumResponse, triggers_type, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_retrieve_enum(self, async_client: AsyncComposio) -> None:
+        async with async_client.triggers_types.with_streaming_response.retrieve_enum() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            triggers_type = await response.parse()
+            assert_matches_type(TriggersTypeRetrieveEnumResponse, triggers_type, path=["response"])
 
         assert cast(Any, response.is_closed) is True

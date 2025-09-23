@@ -128,25 +128,38 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import TriggersTypeRetrieveResponse, TriggersTypeListResponse
+from composio_client.types import (
+    TriggersTypeRetrieveResponse,
+    TriggersTypeListResponse,
+    TriggersTypeRetrieveEnumResponse,
+)
 ```
 
 Methods:
 
 - <code title="get /api/v3/triggers_types/{slug}">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve</a>(slug, \*\*<a href="src/composio_client/types/triggers_type_retrieve_params.py">params</a>) -> <a href="./src/composio_client/types/triggers_type_retrieve_response.py">TriggersTypeRetrieveResponse</a></code>
 - <code title="get /api/v3/triggers_types">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">list</a>(\*\*<a href="src/composio_client/types/triggers_type_list_params.py">params</a>) -> <a href="./src/composio_client/types/triggers_type_list_response.py">TriggersTypeListResponse</a></code>
+- <code title="get /api/v3/triggers_types/list/enum">client.triggers_types.<a href="./src/composio_client/resources/triggers_types.py">retrieve_enum</a>() -> <a href="./src/composio_client/types/triggers_type_retrieve_enum_response.py">TriggersTypeRetrieveEnumResponse</a></code>
 
 # Mcp
 
 Types:
 
 ```python
-from composio_client.types import McpRetrieveResponse, McpRetrieveAppResponse, McpValidateResponse
+from composio_client.types import (
+    McpCreateResponse,
+    McpRetrieveResponse,
+    McpListResponse,
+    McpRetrieveAppResponse,
+    McpValidateResponse,
+)
 ```
 
 Methods:
 
+- <code title="post /api/v3/mcp/servers">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">create</a>(\*\*<a href="src/composio_client/types/mcp_create_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_create_response.py">McpCreateResponse</a></code>
 - <code title="get /api/v3/mcp/{id}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">retrieve</a>(id) -> <a href="./src/composio_client/types/mcp_retrieve_response.py">McpRetrieveResponse</a></code>
+- <code title="get /api/v3/mcp/servers">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">list</a>(\*\*<a href="src/composio_client/types/mcp_list_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_list_response.py">McpListResponse</a></code>
 - <code title="get /api/v3/mcp/app/{appKey}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">retrieve_app</a>(app_key, \*\*<a href="src/composio_client/types/mcp_retrieve_app_params.py">params</a>) -> <a href="./src/composio_client/types/mcp_retrieve_app_response.py">McpRetrieveAppResponse</a></code>
 - <code title="get /api/v3/mcp/validate/{uuid}">client.mcp.<a href="./src/composio_client/resources/mcp/mcp.py">validate</a>(uuid) -> <a href="./src/composio_client/types/mcp_validate_response.py">McpValidateResponse</a></code>
 
@@ -167,12 +180,13 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import FileListResponse
+from composio_client.types import FileListResponse, FileCreatePresignedURLResponse
 ```
 
 Methods:
 
 - <code title="get /api/v3/files/list">client.files.<a href="./src/composio_client/resources/files.py">list</a>(\*\*<a href="src/composio_client/types/file_list_params.py">params</a>) -> <a href="./src/composio_client/types/file_list_response.py">FileListResponse</a></code>
+- <code title="post /api/v3/files/upload/request">client.files.<a href="./src/composio_client/resources/files.py">create_presigned_url</a>(\*\*<a href="src/composio_client/types/file_create_presigned_url_params.py">params</a>) -> <a href="./src/composio_client/types/file_create_presigned_url_response.py">FileCreatePresignedURLResponse</a></code>
 
 # Migration
 
@@ -191,9 +205,10 @@ Methods:
 Types:
 
 ```python
-from composio_client.types import CliCreateSessionResponse
+from composio_client.types import CliCreateSessionResponse, CliGetSessionResponse
 ```
 
 Methods:
 
 - <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli.py">create_session</a>() -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
+- <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/composio_client/resources/cli.py">get_session</a>(\*\*<a href="src/composio_client/types/cli_get_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_get_session_response.py">CliGetSessionResponse</a></code>
