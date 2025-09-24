@@ -57,8 +57,6 @@ class ManageResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManageUpdateResponse:
         """
-        API Endpoint
-
         Args:
           trigger_id: The ID of the trigger instance to update
 
@@ -93,8 +91,6 @@ class ManageResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManageDeleteResponse:
         """
-        API Endpoint
-
         Args:
           trigger_id: The ID of the trigger instance to delete
 
@@ -150,8 +146,6 @@ class AsyncManageResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManageUpdateResponse:
         """
-        API Endpoint
-
         Args:
           trigger_id: The ID of the trigger instance to update
 
@@ -186,8 +180,6 @@ class AsyncManageResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManageDeleteResponse:
         """
-        API Endpoint
-
         Args:
           trigger_id: The ID of the trigger instance to delete
 
