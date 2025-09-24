@@ -82,8 +82,6 @@ class TriggerInstancesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceListActiveResponse:
         """
-        API Endpoint
-
         Args:
           query_auth_config_ids_1: Array of auth config IDs to filter triggers by
 
@@ -162,8 +160,6 @@ class TriggerInstancesResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceUpsertResponse:
         """
-        API Endpoint
-
         Args:
           slug: The slug of the trigger instance
 
@@ -250,8 +246,6 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceListActiveResponse:
         """
-        API Endpoint
-
         Args:
           query_auth_config_ids_1: Array of auth config IDs to filter triggers by
 
@@ -330,8 +324,6 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceUpsertResponse:
         """
-        API Endpoint
-
         Args:
           slug: The slug of the trigger instance
 
