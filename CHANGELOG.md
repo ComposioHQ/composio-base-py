@@ -1,5 +1,33 @@
 # Changelog
 
+## 1.10.0 (2025-09-25)
+
+Full Changelog: [v1.9.1...v1.10.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.9.1...v1.10.0)
+
+### Features
+
+* **api:** api update ([19dd0ce](https://github.com/ComposioHQ/composio-base-py/commit/19dd0ce959de9c7e7a904380065ddded566ed427))
+* **api:** api update ([284c71b](https://github.com/ComposioHQ/composio-base-py/commit/284c71bb7224877f3e3f3f50bec7923e3fb46f71))
+* **api:** api update ([d925d88](https://github.com/ComposioHQ/composio-base-py/commit/d925d886f9abdd40c6b4a6ea409846658e289e0d))
+* **api:** api update ([4d4be9f](https://github.com/ComposioHQ/composio-base-py/commit/4d4be9feab38e9e25d7e94c8369186e3fd9a682d))
+* **api:** api update ([434a8d2](https://github.com/ComposioHQ/composio-base-py/commit/434a8d25d5b11c3d7f1be6930077466f8c110522))
+* **api:** api update ([bad8742](https://github.com/ComposioHQ/composio-base-py/commit/bad8742425034d9bcf02c2c1ddf3452377c974cd))
+* **api:** api update ([075ef78](https://github.com/ComposioHQ/composio-base-py/commit/075ef780f4310ddbef1f8ce108b23de6fefe76b2))
+* **api:** create tool router session ([51cbaec](https://github.com/ComposioHQ/composio-base-py/commit/51cbaecbc572d2aee5d5a40180104e7037041888))
+* **api:** manual updates, remove broken links ([aeb8560](https://github.com/ComposioHQ/composio-base-py/commit/aeb8560234eb9d60f0a0c8b919b8dfb64e334823))
+* **api:** rename endpoints ([6856ebc](https://github.com/ComposioHQ/composio-base-py/commit/6856ebc5db219bee70af6025646d3ee0362c6c4e))
+
+
+### Bug Fixes
+
+* **compat:** compat with `pydantic&lt;2.8.0` when using additional fields ([493e855](https://github.com/ComposioHQ/composio-base-py/commit/493e8551f4dfb6810c3bc3ac72c400479e42a226))
+
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([b81e2f3](https://github.com/ComposioHQ/composio-base-py/commit/b81e2f397d18d399af1f66ae1da7bb6b1649d51f))
+* improve example values ([f6f4e6c](https://github.com/ComposioHQ/composio-base-py/commit/f6f4e6cfcc6a0c3fdce9216d8aa0c08e22866238))
+
 ## 1.9.1 (2025-09-19)
 
 Full Changelog: [v1.9.0...v1.9.1](https://github.com/ComposioHQ/composio-base-py/compare/v1.9.0...v1.9.1)
