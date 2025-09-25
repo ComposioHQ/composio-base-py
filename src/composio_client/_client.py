@@ -21,7 +21,18 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import cli, link, files, tools, toolkits, migration, auth_configs, triggers_types, connected_accounts
+from .resources import (
+    cli,
+    link,
+    files,
+    tools,
+    toolkits,
+    migration,
+    tool_router,
+    auth_configs,
+    triggers_types,
+    connected_accounts,
+)
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -30,7 +41,6 @@ from ._base_client import (
     AsyncAPIClient,
 )
 from .resources.mcp import mcp
-from .resources.labs import labs
 from .resources.trigger_instances import trigger_instances
 
 __all__ = [
@@ -64,7 +74,7 @@ class Composio(SyncAPIClient):
     files: files.FilesResource
     migration: migration.MigrationResource
     cli: cli.CliResource
-    labs: labs.LabsResource
+    tool_router: tool_router.ToolRouterResource
     with_raw_response: ComposioWithRawResponse
     with_streaming_response: ComposioWithStreamedResponse
 
@@ -153,7 +163,7 @@ class Composio(SyncAPIClient):
         self.files = files.FilesResource(self)
         self.migration = migration.MigrationResource(self)
         self.cli = cli.CliResource(self)
-        self.labs = labs.LabsResource(self)
+        self.tool_router = tool_router.ToolRouterResource(self)
         self.with_raw_response = ComposioWithRawResponse(self)
         self.with_streaming_response = ComposioWithStreamedResponse(self)
 
@@ -278,7 +288,7 @@ class AsyncComposio(AsyncAPIClient):
     files: files.AsyncFilesResource
     migration: migration.AsyncMigrationResource
     cli: cli.AsyncCliResource
-    labs: labs.AsyncLabsResource
+    tool_router: tool_router.AsyncToolRouterResource
     with_raw_response: AsyncComposioWithRawResponse
     with_streaming_response: AsyncComposioWithStreamedResponse
 
@@ -367,7 +377,7 @@ class AsyncComposio(AsyncAPIClient):
         self.files = files.AsyncFilesResource(self)
         self.migration = migration.AsyncMigrationResource(self)
         self.cli = cli.AsyncCliResource(self)
-        self.labs = labs.AsyncLabsResource(self)
+        self.tool_router = tool_router.AsyncToolRouterResource(self)
         self.with_raw_response = AsyncComposioWithRawResponse(self)
         self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
 
@@ -493,7 +503,7 @@ class ComposioWithRawResponse:
         self.files = files.FilesResourceWithRawResponse(client.files)
         self.migration = migration.MigrationResourceWithRawResponse(client.migration)
         self.cli = cli.CliResourceWithRawResponse(client.cli)
-        self.labs = labs.LabsResourceWithRawResponse(client.labs)
+        self.tool_router = tool_router.ToolRouterResourceWithRawResponse(client.tool_router)
 
 
 class AsyncComposioWithRawResponse:
@@ -513,7 +523,7 @@ class AsyncComposioWithRawResponse:
         self.files = files.AsyncFilesResourceWithRawResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithRawResponse(client.migration)
         self.cli = cli.AsyncCliResourceWithRawResponse(client.cli)
-        self.labs = labs.AsyncLabsResourceWithRawResponse(client.labs)
+        self.tool_router = tool_router.AsyncToolRouterResourceWithRawResponse(client.tool_router)
 
 
 class ComposioWithStreamedResponse:
@@ -533,7 +543,7 @@ class ComposioWithStreamedResponse:
         self.files = files.FilesResourceWithStreamingResponse(client.files)
         self.migration = migration.MigrationResourceWithStreamingResponse(client.migration)
         self.cli = cli.CliResourceWithStreamingResponse(client.cli)
-        self.labs = labs.LabsResourceWithStreamingResponse(client.labs)
+        self.tool_router = tool_router.ToolRouterResourceWithStreamingResponse(client.tool_router)
 
 
 class AsyncComposioWithStreamedResponse:
@@ -553,7 +563,7 @@ class AsyncComposioWithStreamedResponse:
         self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithStreamingResponse(client.migration)
         self.cli = cli.AsyncCliResourceWithStreamingResponse(client.cli)
-        self.labs = labs.AsyncLabsResourceWithStreamingResponse(client.labs)
+        self.tool_router = tool_router.AsyncToolRouterResourceWithStreamingResponse(client.tool_router)
 
 
 Client = Composio
