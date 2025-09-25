@@ -69,7 +69,7 @@ from composio_client.types import (
 
 Methods:
 
-- <code title="get /api/v3/toolkits/{slug}">client.toolkits.<a href="./src/composio_client/resources/toolkits.py">retrieve</a>(slug) -> <a href="./src/composio_client/types/toolkit_retrieve_response.py">ToolkitRetrieveResponse</a></code>
+- <code title="get /api/v3/toolkits/{slug}">client.toolkits.<a href="./src/composio_client/resources/toolkits.py">retrieve</a>(slug, \*\*<a href="src/composio_client/types/toolkit_retrieve_params.py">params</a>) -> <a href="./src/composio_client/types/toolkit_retrieve_response.py">ToolkitRetrieveResponse</a></code>
 - <code title="get /api/v3/toolkits">client.toolkits.<a href="./src/composio_client/resources/toolkits.py">list</a>(\*\*<a href="src/composio_client/types/toolkit_list_params.py">params</a>) -> <a href="./src/composio_client/types/toolkit_list_response.py">ToolkitListResponse</a></code>
 - <code title="get /api/v3/toolkits/categories">client.toolkits.<a href="./src/composio_client/resources/toolkits.py">retrieve_categories</a>(\*\*<a href="src/composio_client/types/toolkit_retrieve_categories_params.py">params</a>) -> <a href="./src/composio_client/types/toolkit_retrieve_categories_response.py">ToolkitRetrieveCategoriesResponse</a></code>
 
