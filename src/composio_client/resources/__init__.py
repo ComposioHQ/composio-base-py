@@ -16,14 +16,6 @@ from .mcp import (
     McpResourceWithStreamingResponse,
     AsyncMcpResourceWithStreamingResponse,
 )
-from .labs import (
-    LabsResource,
-    AsyncLabsResource,
-    LabsResourceWithRawResponse,
-    AsyncLabsResourceWithRawResponse,
-    LabsResourceWithStreamingResponse,
-    AsyncLabsResourceWithStreamingResponse,
-)
 from .link import (
     LinkResource,
     AsyncLinkResource,
@@ -63,6 +55,14 @@ from .migration import (
     AsyncMigrationResourceWithRawResponse,
     MigrationResourceWithStreamingResponse,
     AsyncMigrationResourceWithStreamingResponse,
+)
+from .tool_router import (
+    ToolRouterResource,
+    AsyncToolRouterResource,
+    ToolRouterResourceWithRawResponse,
+    AsyncToolRouterResourceWithRawResponse,
+    ToolRouterResourceWithStreamingResponse,
+    AsyncToolRouterResourceWithStreamingResponse,
 )
 from .auth_configs import (
     AuthConfigsResource,
@@ -164,10 +164,10 @@ __all__ = [
     "AsyncCliResourceWithRawResponse",
     "CliResourceWithStreamingResponse",
     "AsyncCliResourceWithStreamingResponse",
-    "LabsResource",
-    "AsyncLabsResource",
-    "LabsResourceWithRawResponse",
-    "AsyncLabsResourceWithRawResponse",
-    "LabsResourceWithStreamingResponse",
-    "AsyncLabsResourceWithStreamingResponse",
+    "ToolRouterResource",
+    "AsyncToolRouterResource",
+    "ToolRouterResourceWithRawResponse",
+    "AsyncToolRouterResourceWithRawResponse",
+    "ToolRouterResourceWithStreamingResponse",
+    "AsyncToolRouterResourceWithStreamingResponse",
 ]
