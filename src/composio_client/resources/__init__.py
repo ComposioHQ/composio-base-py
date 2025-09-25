@@ -16,14 +16,6 @@ from .mcp import (
     McpResourceWithStreamingResponse,
     AsyncMcpResourceWithStreamingResponse,
 )
-from .org import (
-    OrgResource,
-    AsyncOrgResource,
-    OrgResourceWithRawResponse,
-    AsyncOrgResourceWithRawResponse,
-    OrgResourceWithStreamingResponse,
-    AsyncOrgResourceWithStreamingResponse,
-)
 from .link import (
     LinkResource,
     AsyncLinkResource,
@@ -64,6 +56,14 @@ from .migration import (
     MigrationResourceWithStreamingResponse,
     AsyncMigrationResourceWithStreamingResponse,
 )
+from .tool_router import (
+    ToolRouterResource,
+    AsyncToolRouterResource,
+    ToolRouterResourceWithRawResponse,
+    AsyncToolRouterResourceWithRawResponse,
+    ToolRouterResourceWithStreamingResponse,
+    AsyncToolRouterResourceWithStreamingResponse,
+)
 from .auth_configs import (
     AuthConfigsResource,
     AsyncAuthConfigsResource,
@@ -71,14 +71,6 @@ from .auth_configs import (
     AsyncAuthConfigsResourceWithRawResponse,
     AuthConfigsResourceWithStreamingResponse,
     AsyncAuthConfigsResourceWithStreamingResponse,
-)
-from .team_members import (
-    TeamMembersResource,
-    AsyncTeamMembersResource,
-    TeamMembersResourceWithRawResponse,
-    AsyncTeamMembersResourceWithRawResponse,
-    TeamMembersResourceWithStreamingResponse,
-    AsyncTeamMembersResourceWithStreamingResponse,
 )
 from .triggers_types import (
     TriggersTypesResource,
@@ -124,18 +116,6 @@ __all__ = [
     "AsyncLinkResourceWithRawResponse",
     "LinkResourceWithStreamingResponse",
     "AsyncLinkResourceWithStreamingResponse",
-    "OrgResource",
-    "AsyncOrgResource",
-    "OrgResourceWithRawResponse",
-    "AsyncOrgResourceWithRawResponse",
-    "OrgResourceWithStreamingResponse",
-    "AsyncOrgResourceWithStreamingResponse",
-    "TeamMembersResource",
-    "AsyncTeamMembersResource",
-    "TeamMembersResourceWithRawResponse",
-    "AsyncTeamMembersResourceWithRawResponse",
-    "TeamMembersResourceWithStreamingResponse",
-    "AsyncTeamMembersResourceWithStreamingResponse",
     "ToolkitsResource",
     "AsyncToolkitsResource",
     "ToolkitsResourceWithRawResponse",
@@ -184,4 +164,10 @@ __all__ = [
     "AsyncCliResourceWithRawResponse",
     "CliResourceWithStreamingResponse",
     "AsyncCliResourceWithStreamingResponse",
+    "ToolRouterResource",
+    "AsyncToolRouterResource",
+    "ToolRouterResourceWithRawResponse",
+    "AsyncToolRouterResourceWithRawResponse",
+    "ToolRouterResourceWithStreamingResponse",
+    "AsyncToolRouterResourceWithStreamingResponse",
 ]

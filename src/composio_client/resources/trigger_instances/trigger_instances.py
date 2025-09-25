@@ -6,14 +6,6 @@ from typing import Dict, Optional
 
 import httpx
 
-from .handle import (
-    HandleResource,
-    AsyncHandleResource,
-    HandleResourceWithRawResponse,
-    AsyncHandleResourceWithRawResponse,
-    HandleResourceWithStreamingResponse,
-    AsyncHandleResourceWithStreamingResponse,
-)
 from .manage import (
     ManageResource,
     AsyncManageResource,
@@ -41,10 +33,6 @@ __all__ = ["TriggerInstancesResource", "AsyncTriggerInstancesResource"]
 
 
 class TriggerInstancesResource(SyncAPIResource):
-    @cached_property
-    def handle(self) -> HandleResource:
-        return HandleResource(self._client)
-
     @cached_property
     def manage(self) -> ManageResource:
         return ManageResource(self._client)
@@ -209,10 +197,6 @@ class TriggerInstancesResource(SyncAPIResource):
 
 
 class AsyncTriggerInstancesResource(AsyncAPIResource):
-    @cached_property
-    def handle(self) -> AsyncHandleResource:
-        return AsyncHandleResource(self._client)
-
     @cached_property
     def manage(self) -> AsyncManageResource:
         return AsyncManageResource(self._client)
@@ -388,10 +372,6 @@ class TriggerInstancesResourceWithRawResponse:
         )
 
     @cached_property
-    def handle(self) -> HandleResourceWithRawResponse:
-        return HandleResourceWithRawResponse(self._trigger_instances.handle)
-
-    @cached_property
     def manage(self) -> ManageResourceWithRawResponse:
         return ManageResourceWithRawResponse(self._trigger_instances.manage)
 
@@ -406,10 +386,6 @@ class AsyncTriggerInstancesResourceWithRawResponse:
         self.upsert = async_to_raw_response_wrapper(
             trigger_instances.upsert,
         )
-
-    @cached_property
-    def handle(self) -> AsyncHandleResourceWithRawResponse:
-        return AsyncHandleResourceWithRawResponse(self._trigger_instances.handle)
 
     @cached_property
     def manage(self) -> AsyncManageResourceWithRawResponse:
@@ -428,10 +404,6 @@ class TriggerInstancesResourceWithStreamingResponse:
         )
 
     @cached_property
-    def handle(self) -> HandleResourceWithStreamingResponse:
-        return HandleResourceWithStreamingResponse(self._trigger_instances.handle)
-
-    @cached_property
     def manage(self) -> ManageResourceWithStreamingResponse:
         return ManageResourceWithStreamingResponse(self._trigger_instances.manage)
 
@@ -446,10 +418,6 @@ class AsyncTriggerInstancesResourceWithStreamingResponse:
         self.upsert = async_to_streamed_response_wrapper(
             trigger_instances.upsert,
         )
-
-    @cached_property
-    def handle(self) -> AsyncHandleResourceWithStreamingResponse:
-        return AsyncHandleResourceWithStreamingResponse(self._trigger_instances.handle)
 
     @cached_property
     def manage(self) -> AsyncManageResourceWithStreamingResponse:

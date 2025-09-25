@@ -61,6 +61,9 @@ class Meta(BaseModel):
     updated_at: str
     """Last modification date and time of the toolkit"""
 
+    version: str
+    """Version of the toolkit"""
+
     app_url: Optional[str] = None
     """Link to the toolkit's main application or service website"""
 

@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import toolkit_list_params, toolkit_retrieve_categories_params
+from ..types import toolkit_list_params, toolkit_retrieve_params, toolkit_retrieve_categories_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -50,6 +50,7 @@ class ToolkitsResource(SyncAPIResource):
         self,
         slug: str,
         *,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -65,6 +66,8 @@ class ToolkitsResource(SyncAPIResource):
         Args:
           slug: The unique slug identifier of the toolkit to retrieve
 
+          version: Version of the toolkit
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -78,7 +81,11 @@ class ToolkitsResource(SyncAPIResource):
         return self._get(
             f"/api/v3/toolkits/{slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform({"version": version}, toolkit_retrieve_params.ToolkitRetrieveParams),
             ),
             cast_to=ToolkitRetrieveResponse,
         )
@@ -220,6 +227,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
         self,
         slug: str,
         *,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -235,6 +243,8 @@ class AsyncToolkitsResource(AsyncAPIResource):
         Args:
           slug: The unique slug identifier of the toolkit to retrieve
 
+          version: Version of the toolkit
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -248,7 +258,11 @@ class AsyncToolkitsResource(AsyncAPIResource):
         return await self._get(
             f"/api/v3/toolkits/{slug}",
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform({"version": version}, toolkit_retrieve_params.ToolkitRetrieveParams),
             ),
             cast_to=ToolkitRetrieveResponse,
         )

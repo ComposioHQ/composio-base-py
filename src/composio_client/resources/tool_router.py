@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import link_create_params
+from ..types import tool_router_create_session_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -16,54 +16,54 @@ from .._response import (
     async_to_streamed_response_wrapper,
 )
 from .._base_client import make_request_options
-from ..types.link_create_response import LinkCreateResponse
+from ..types.tool_router_create_session_response import ToolRouterCreateSessionResponse
 
-__all__ = ["LinkResource", "AsyncLinkResource"]
+__all__ = ["ToolRouterResource", "AsyncToolRouterResource"]
 
 
-class LinkResource(SyncAPIResource):
+class ToolRouterResource(SyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> LinkResourceWithRawResponse:
+    def with_raw_response(self) -> ToolRouterResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#accessing-raw-response-data-eg-headers
         """
-        return LinkResourceWithRawResponse(self)
+        return ToolRouterResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> LinkResourceWithStreamingResponse:
+    def with_streaming_response(self) -> ToolRouterResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
-        return LinkResourceWithStreamingResponse(self)
+        return ToolRouterResourceWithStreamingResponse(self)
 
-    def create(
+    def create_session(
         self,
         *,
-        auth_config_id: str,
         user_id: str,
-        callback_url: str | Omit = omit,
+        config: tool_router_create_session_params.Config | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> LinkCreateResponse:
-        """
-        Creates a new authentication link session that users can use to connect their
-        accounts
+    ) -> ToolRouterCreateSessionResponse:
+        """Creates a new session for the tool router lab feature.
+
+        This endpoint initializes
+        a new session with specified toolkits and their authentication configurations.
+        The session provides an isolated environment for testing and managing tool
+        routing logic with scoped MCP server access.
 
         Args:
-          auth_config_id: The auth config id to create a link for
+          user_id: Unique user identifier for the session owner
 
-          user_id: The user id to create a link for
-
-          callback_url: The callback url to create a link for
+          config: Session configuration including enabled toolkits and their auth configs
 
           extra_headers: Send extra headers
 
@@ -74,65 +74,64 @@ class LinkResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/connected_accounts/link",
+            "/api/v3/labs/tool_router/session",
             body=maybe_transform(
                 {
-                    "auth_config_id": auth_config_id,
                     "user_id": user_id,
-                    "callback_url": callback_url,
+                    "config": config,
                 },
-                link_create_params.LinkCreateParams,
+                tool_router_create_session_params.ToolRouterCreateSessionParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LinkCreateResponse,
+            cast_to=ToolRouterCreateSessionResponse,
         )
 
 
-class AsyncLinkResource(AsyncAPIResource):
+class AsyncToolRouterResource(AsyncAPIResource):
     @cached_property
-    def with_raw_response(self) -> AsyncLinkResourceWithRawResponse:
+    def with_raw_response(self) -> AsyncToolRouterResourceWithRawResponse:
         """
         This property can be used as a prefix for any HTTP method call to return
         the raw response object instead of the parsed content.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#accessing-raw-response-data-eg-headers
         """
-        return AsyncLinkResourceWithRawResponse(self)
+        return AsyncToolRouterResourceWithRawResponse(self)
 
     @cached_property
-    def with_streaming_response(self) -> AsyncLinkResourceWithStreamingResponse:
+    def with_streaming_response(self) -> AsyncToolRouterResourceWithStreamingResponse:
         """
         An alternative to `.with_raw_response` that doesn't eagerly read the response body.
 
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
-        return AsyncLinkResourceWithStreamingResponse(self)
+        return AsyncToolRouterResourceWithStreamingResponse(self)
 
-    async def create(
+    async def create_session(
         self,
         *,
-        auth_config_id: str,
         user_id: str,
-        callback_url: str | Omit = omit,
+        config: tool_router_create_session_params.Config | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> LinkCreateResponse:
-        """
-        Creates a new authentication link session that users can use to connect their
-        accounts
+    ) -> ToolRouterCreateSessionResponse:
+        """Creates a new session for the tool router lab feature.
+
+        This endpoint initializes
+        a new session with specified toolkits and their authentication configurations.
+        The session provides an isolated environment for testing and managing tool
+        routing logic with scoped MCP server access.
 
         Args:
-          auth_config_id: The auth config id to create a link for
+          user_id: Unique user identifier for the session owner
 
-          user_id: The user id to create a link for
-
-          callback_url: The callback url to create a link for
+          config: Session configuration including enabled toolkits and their auth configs
 
           extra_headers: Send extra headers
 
@@ -143,53 +142,52 @@ class AsyncLinkResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/connected_accounts/link",
+            "/api/v3/labs/tool_router/session",
             body=await async_maybe_transform(
                 {
-                    "auth_config_id": auth_config_id,
                     "user_id": user_id,
-                    "callback_url": callback_url,
+                    "config": config,
                 },
-                link_create_params.LinkCreateParams,
+                tool_router_create_session_params.ToolRouterCreateSessionParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=LinkCreateResponse,
+            cast_to=ToolRouterCreateSessionResponse,
         )
 
 
-class LinkResourceWithRawResponse:
-    def __init__(self, link: LinkResource) -> None:
-        self._link = link
+class ToolRouterResourceWithRawResponse:
+    def __init__(self, tool_router: ToolRouterResource) -> None:
+        self._tool_router = tool_router
 
-        self.create = to_raw_response_wrapper(
-            link.create,
+        self.create_session = to_raw_response_wrapper(
+            tool_router.create_session,
         )
 
 
-class AsyncLinkResourceWithRawResponse:
-    def __init__(self, link: AsyncLinkResource) -> None:
-        self._link = link
+class AsyncToolRouterResourceWithRawResponse:
+    def __init__(self, tool_router: AsyncToolRouterResource) -> None:
+        self._tool_router = tool_router
 
-        self.create = async_to_raw_response_wrapper(
-            link.create,
+        self.create_session = async_to_raw_response_wrapper(
+            tool_router.create_session,
         )
 
 
-class LinkResourceWithStreamingResponse:
-    def __init__(self, link: LinkResource) -> None:
-        self._link = link
+class ToolRouterResourceWithStreamingResponse:
+    def __init__(self, tool_router: ToolRouterResource) -> None:
+        self._tool_router = tool_router
 
-        self.create = to_streamed_response_wrapper(
-            link.create,
+        self.create_session = to_streamed_response_wrapper(
+            tool_router.create_session,
         )
 
 
-class AsyncLinkResourceWithStreamingResponse:
-    def __init__(self, link: AsyncLinkResource) -> None:
-        self._link = link
+class AsyncToolRouterResourceWithStreamingResponse:
+    def __init__(self, tool_router: AsyncToolRouterResource) -> None:
+        self._tool_router = tool_router
 
-        self.create = async_to_streamed_response_wrapper(
-            link.create,
+        self.create_session = async_to_streamed_response_wrapper(
+            tool_router.create_session,
         )

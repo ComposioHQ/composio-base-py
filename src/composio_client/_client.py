@@ -28,8 +28,8 @@ from .resources import (
     tools,
     toolkits,
     migration,
+    tool_router,
     auth_configs,
-    team_members,
     triggers_types,
     connected_accounts,
 )
@@ -41,7 +41,6 @@ from ._base_client import (
     AsyncAPIClient,
 )
 from .resources.mcp import mcp
-from .resources.org import org
 from .resources.trigger_instances import trigger_instances
 
 __all__ = [
@@ -67,8 +66,6 @@ class Composio(SyncAPIClient):
     auth_configs: auth_configs.AuthConfigsResource
     connected_accounts: connected_accounts.ConnectedAccountsResource
     link: link.LinkResource
-    org: org.OrgResource
-    team_members: team_members.TeamMembersResource
     toolkits: toolkits.ToolkitsResource
     tools: tools.ToolsResource
     trigger_instances: trigger_instances.TriggerInstancesResource
@@ -77,6 +74,7 @@ class Composio(SyncAPIClient):
     files: files.FilesResource
     migration: migration.MigrationResource
     cli: cli.CliResource
+    tool_router: tool_router.ToolRouterResource
     with_raw_response: ComposioWithRawResponse
     with_streaming_response: ComposioWithStreamedResponse
 
@@ -157,8 +155,6 @@ class Composio(SyncAPIClient):
         self.auth_configs = auth_configs.AuthConfigsResource(self)
         self.connected_accounts = connected_accounts.ConnectedAccountsResource(self)
         self.link = link.LinkResource(self)
-        self.org = org.OrgResource(self)
-        self.team_members = team_members.TeamMembersResource(self)
         self.toolkits = toolkits.ToolkitsResource(self)
         self.tools = tools.ToolsResource(self)
         self.trigger_instances = trigger_instances.TriggerInstancesResource(self)
@@ -167,6 +163,7 @@ class Composio(SyncAPIClient):
         self.files = files.FilesResource(self)
         self.migration = migration.MigrationResource(self)
         self.cli = cli.CliResource(self)
+        self.tool_router = tool_router.ToolRouterResource(self)
         self.with_raw_response = ComposioWithRawResponse(self)
         self.with_streaming_response = ComposioWithStreamedResponse(self)
 
@@ -283,8 +280,6 @@ class AsyncComposio(AsyncAPIClient):
     auth_configs: auth_configs.AsyncAuthConfigsResource
     connected_accounts: connected_accounts.AsyncConnectedAccountsResource
     link: link.AsyncLinkResource
-    org: org.AsyncOrgResource
-    team_members: team_members.AsyncTeamMembersResource
     toolkits: toolkits.AsyncToolkitsResource
     tools: tools.AsyncToolsResource
     trigger_instances: trigger_instances.AsyncTriggerInstancesResource
@@ -293,6 +288,7 @@ class AsyncComposio(AsyncAPIClient):
     files: files.AsyncFilesResource
     migration: migration.AsyncMigrationResource
     cli: cli.AsyncCliResource
+    tool_router: tool_router.AsyncToolRouterResource
     with_raw_response: AsyncComposioWithRawResponse
     with_streaming_response: AsyncComposioWithStreamedResponse
 
@@ -373,8 +369,6 @@ class AsyncComposio(AsyncAPIClient):
         self.auth_configs = auth_configs.AsyncAuthConfigsResource(self)
         self.connected_accounts = connected_accounts.AsyncConnectedAccountsResource(self)
         self.link = link.AsyncLinkResource(self)
-        self.org = org.AsyncOrgResource(self)
-        self.team_members = team_members.AsyncTeamMembersResource(self)
         self.toolkits = toolkits.AsyncToolkitsResource(self)
         self.tools = tools.AsyncToolsResource(self)
         self.trigger_instances = trigger_instances.AsyncTriggerInstancesResource(self)
@@ -383,6 +377,7 @@ class AsyncComposio(AsyncAPIClient):
         self.files = files.AsyncFilesResource(self)
         self.migration = migration.AsyncMigrationResource(self)
         self.cli = cli.AsyncCliResource(self)
+        self.tool_router = tool_router.AsyncToolRouterResource(self)
         self.with_raw_response = AsyncComposioWithRawResponse(self)
         self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
 
@@ -500,8 +495,6 @@ class ComposioWithRawResponse:
         self.auth_configs = auth_configs.AuthConfigsResourceWithRawResponse(client.auth_configs)
         self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithRawResponse(client.connected_accounts)
         self.link = link.LinkResourceWithRawResponse(client.link)
-        self.org = org.OrgResourceWithRawResponse(client.org)
-        self.team_members = team_members.TeamMembersResourceWithRawResponse(client.team_members)
         self.toolkits = toolkits.ToolkitsResourceWithRawResponse(client.toolkits)
         self.tools = tools.ToolsResourceWithRawResponse(client.tools)
         self.trigger_instances = trigger_instances.TriggerInstancesResourceWithRawResponse(client.trigger_instances)
@@ -510,6 +503,7 @@ class ComposioWithRawResponse:
         self.files = files.FilesResourceWithRawResponse(client.files)
         self.migration = migration.MigrationResourceWithRawResponse(client.migration)
         self.cli = cli.CliResourceWithRawResponse(client.cli)
+        self.tool_router = tool_router.ToolRouterResourceWithRawResponse(client.tool_router)
 
 
 class AsyncComposioWithRawResponse:
@@ -519,8 +513,6 @@ class AsyncComposioWithRawResponse:
             client.connected_accounts
         )
         self.link = link.AsyncLinkResourceWithRawResponse(client.link)
-        self.org = org.AsyncOrgResourceWithRawResponse(client.org)
-        self.team_members = team_members.AsyncTeamMembersResourceWithRawResponse(client.team_members)
         self.toolkits = toolkits.AsyncToolkitsResourceWithRawResponse(client.toolkits)
         self.tools = tools.AsyncToolsResourceWithRawResponse(client.tools)
         self.trigger_instances = trigger_instances.AsyncTriggerInstancesResourceWithRawResponse(
@@ -531,6 +523,7 @@ class AsyncComposioWithRawResponse:
         self.files = files.AsyncFilesResourceWithRawResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithRawResponse(client.migration)
         self.cli = cli.AsyncCliResourceWithRawResponse(client.cli)
+        self.tool_router = tool_router.AsyncToolRouterResourceWithRawResponse(client.tool_router)
 
 
 class ComposioWithStreamedResponse:
@@ -540,8 +533,6 @@ class ComposioWithStreamedResponse:
             client.connected_accounts
         )
         self.link = link.LinkResourceWithStreamingResponse(client.link)
-        self.org = org.OrgResourceWithStreamingResponse(client.org)
-        self.team_members = team_members.TeamMembersResourceWithStreamingResponse(client.team_members)
         self.toolkits = toolkits.ToolkitsResourceWithStreamingResponse(client.toolkits)
         self.tools = tools.ToolsResourceWithStreamingResponse(client.tools)
         self.trigger_instances = trigger_instances.TriggerInstancesResourceWithStreamingResponse(
@@ -552,6 +543,7 @@ class ComposioWithStreamedResponse:
         self.files = files.FilesResourceWithStreamingResponse(client.files)
         self.migration = migration.MigrationResourceWithStreamingResponse(client.migration)
         self.cli = cli.CliResourceWithStreamingResponse(client.cli)
+        self.tool_router = tool_router.ToolRouterResourceWithStreamingResponse(client.tool_router)
 
 
 class AsyncComposioWithStreamedResponse:
@@ -561,8 +553,6 @@ class AsyncComposioWithStreamedResponse:
             client.connected_accounts
         )
         self.link = link.AsyncLinkResourceWithStreamingResponse(client.link)
-        self.org = org.AsyncOrgResourceWithStreamingResponse(client.org)
-        self.team_members = team_members.AsyncTeamMembersResourceWithStreamingResponse(client.team_members)
         self.toolkits = toolkits.AsyncToolkitsResourceWithStreamingResponse(client.toolkits)
         self.tools = tools.AsyncToolsResourceWithStreamingResponse(client.tools)
         self.trigger_instances = trigger_instances.AsyncTriggerInstancesResourceWithStreamingResponse(
@@ -573,6 +563,7 @@ class AsyncComposioWithStreamedResponse:
         self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
         self.migration = migration.AsyncMigrationResourceWithStreamingResponse(client.migration)
         self.cli = cli.AsyncCliResourceWithStreamingResponse(client.cli)
+        self.tool_router = tool_router.AsyncToolRouterResourceWithStreamingResponse(client.tool_router)
 
 
 Client = Composio

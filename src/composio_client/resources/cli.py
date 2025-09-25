@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import cli_get_session_params, cli_link_session_params
+from ..types import cli_get_session_params
 from .._types import Body, Query, Headers, NotGiven, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -17,7 +17,6 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.cli_get_session_response import CliGetSessionResponse
-from ..types.cli_link_session_response import CliLinkSessionResponse
 from ..types.cli_create_session_response import CliCreateSessionResponse
 
 __all__ = ["CliResource", "AsyncCliResource"]
@@ -109,44 +108,6 @@ class CliResource(SyncAPIResource):
             cast_to=CliGetSessionResponse,
         )
 
-    def link_session(
-        self,
-        *,
-        id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CliLinkSessionResponse:
-        """Links a pending CLI session to the currently authenticated user.
-
-        This is the
-        final step in the CLI authentication flow, where the user enters the code in the
-        web interface and their account is associated with the CLI session, allowing the
-        CLI to act on their behalf.
-
-        Args:
-          id: The CLI session ID or code to link to the current user
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._put(
-            "/api/v3/cli/link-session",
-            body=maybe_transform({"id": id}, cli_link_session_params.CliLinkSessionParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CliLinkSessionResponse,
-        )
-
 
 class AsyncCliResource(AsyncAPIResource):
     @cached_property
@@ -234,44 +195,6 @@ class AsyncCliResource(AsyncAPIResource):
             cast_to=CliGetSessionResponse,
         )
 
-    async def link_session(
-        self,
-        *,
-        id: str,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> CliLinkSessionResponse:
-        """Links a pending CLI session to the currently authenticated user.
-
-        This is the
-        final step in the CLI authentication flow, where the user enters the code in the
-        web interface and their account is associated with the CLI session, allowing the
-        CLI to act on their behalf.
-
-        Args:
-          id: The CLI session ID or code to link to the current user
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._put(
-            "/api/v3/cli/link-session",
-            body=await async_maybe_transform({"id": id}, cli_link_session_params.CliLinkSessionParams),
-            options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-            ),
-            cast_to=CliLinkSessionResponse,
-        )
-
 
 class CliResourceWithRawResponse:
     def __init__(self, cli: CliResource) -> None:
@@ -282,9 +205,6 @@ class CliResourceWithRawResponse:
         )
         self.get_session = to_raw_response_wrapper(
             cli.get_session,
-        )
-        self.link_session = to_raw_response_wrapper(
-            cli.link_session,
         )
 
 
@@ -298,9 +218,6 @@ class AsyncCliResourceWithRawResponse:
         self.get_session = async_to_raw_response_wrapper(
             cli.get_session,
         )
-        self.link_session = async_to_raw_response_wrapper(
-            cli.link_session,
-        )
 
 
 class CliResourceWithStreamingResponse:
@@ -313,9 +230,6 @@ class CliResourceWithStreamingResponse:
         self.get_session = to_streamed_response_wrapper(
             cli.get_session,
         )
-        self.link_session = to_streamed_response_wrapper(
-            cli.link_session,
-        )
 
 
 class AsyncCliResourceWithStreamingResponse:
@@ -327,7 +241,4 @@ class AsyncCliResourceWithStreamingResponse:
         )
         self.get_session = async_to_streamed_response_wrapper(
             cli.get_session,
-        )
-        self.link_session = async_to_streamed_response_wrapper(
-            cli.link_session,
         )

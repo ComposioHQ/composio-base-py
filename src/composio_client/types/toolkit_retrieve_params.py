@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import TypedDict
 
-__all__ = ["ProjectListParams"]
+__all__ = ["ToolkitRetrieveParams"]
 
 
-class ProjectListParams(TypedDict, total=False):
-    list_all_org_projects: Optional[bool]
+class ToolkitRetrieveParams(TypedDict, total=False):
+    version: str
+    """Version of the toolkit"""
