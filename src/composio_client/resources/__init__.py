@@ -16,6 +16,14 @@ from .mcp import (
     McpResourceWithStreamingResponse,
     AsyncMcpResourceWithStreamingResponse,
 )
+from .labs import (
+    LabsResource,
+    AsyncLabsResource,
+    LabsResourceWithRawResponse,
+    AsyncLabsResourceWithRawResponse,
+    LabsResourceWithStreamingResponse,
+    AsyncLabsResourceWithStreamingResponse,
+)
 from .link import (
     LinkResource,
     AsyncLinkResource,
@@ -156,4 +164,10 @@ __all__ = [
     "AsyncCliResourceWithRawResponse",
     "CliResourceWithStreamingResponse",
     "AsyncCliResourceWithStreamingResponse",
+    "LabsResource",
+    "AsyncLabsResource",
+    "LabsResourceWithRawResponse",
+    "AsyncLabsResourceWithRawResponse",
+    "LabsResourceWithStreamingResponse",
+    "AsyncLabsResourceWithStreamingResponse",
 ]
