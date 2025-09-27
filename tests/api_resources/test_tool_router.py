@@ -29,7 +29,7 @@ class TestToolRouter:
         tool_router = client.tool_router.create_session(
             user_id="user_123456789",
             config={
-                "manually_manage_connections": True,
+                "manually_manage_connections": False,
                 "toolkits": [
                     {
                         "toolkit": "gmail",
@@ -90,7 +90,7 @@ class TestAsyncToolRouter:
         tool_router = await async_client.tool_router.create_session(
             user_id="user_123456789",
             config={
-                "manually_manage_connections": True,
+                "manually_manage_connections": False,
                 "toolkits": [
                     {
                         "toolkit": "gmail",
