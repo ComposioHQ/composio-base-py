@@ -47,6 +47,7 @@ class LinkResource(SyncAPIResource):
         auth_config_id: str,
         user_id: str,
         callback_url: str | Omit = omit,
+        connection_data: link_create_params.ConnectionData | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -65,6 +66,8 @@ class LinkResource(SyncAPIResource):
 
           callback_url: The callback url to create a link for
 
+          connection_data: Optional data to pre-fill connection fields with default values
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -80,6 +83,7 @@ class LinkResource(SyncAPIResource):
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
                     "callback_url": callback_url,
+                    "connection_data": connection_data,
                 },
                 link_create_params.LinkCreateParams,
             ),
@@ -116,6 +120,7 @@ class AsyncLinkResource(AsyncAPIResource):
         auth_config_id: str,
         user_id: str,
         callback_url: str | Omit = omit,
+        connection_data: link_create_params.ConnectionData | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -134,6 +139,8 @@ class AsyncLinkResource(AsyncAPIResource):
 
           callback_url: The callback url to create a link for
 
+          connection_data: Optional data to pre-fill connection fields with default values
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -149,6 +156,7 @@ class AsyncLinkResource(AsyncAPIResource):
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
                     "callback_url": callback_url,
+                    "connection_data": connection_data,
                 },
                 link_create_params.LinkCreateParams,
             ),
