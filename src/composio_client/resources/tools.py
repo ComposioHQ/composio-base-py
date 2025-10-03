@@ -74,7 +74,8 @@ class ToolsResource(SyncAPIResource):
         parameters, versions, and toolkit information.
 
         Args:
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           version: Optional version of the tool to retrieve
 
@@ -157,7 +158,8 @@ class ToolsResource(SyncAPIResource):
 
           toolkit_slug: The slug of the toolkit to filter by
 
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           extra_headers: Send extra headers
 
@@ -453,7 +455,8 @@ class AsyncToolsResource(AsyncAPIResource):
         parameters, versions, and toolkit information.
 
         Args:
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           version: Optional version of the tool to retrieve
 
@@ -536,7 +539,8 @@ class AsyncToolsResource(AsyncAPIResource):
 
           toolkit_slug: The slug of the toolkit to filter by
 
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           extra_headers: Send extra headers
 
