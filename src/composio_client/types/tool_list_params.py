@@ -50,4 +50,8 @@ class ToolListParams(TypedDict, total=False):
     """The slug of the toolkit to filter by"""
 
     toolkit_versions: Union[str, Dict[str, str]]
-    """Can be omitted, null, a string, or an object mapping toolkit names to versions"""
+    """Toolkit version specification.
+
+    Use "latest" for latest versions or bracket notation for specific versions per
+    toolkit.
+    """

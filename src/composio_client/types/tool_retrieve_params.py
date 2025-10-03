@@ -10,7 +10,11 @@ __all__ = ["ToolRetrieveParams"]
 
 class ToolRetrieveParams(TypedDict, total=False):
     toolkit_versions: Union[str, Dict[str, str]]
-    """Can be omitted, null, a string, or an object mapping toolkit names to versions"""
+    """Toolkit version specification.
+
+    Use "latest" for latest versions or bracket notation for specific versions per
+    toolkit.
+    """
 
     version: str
     """Optional version of the tool to retrieve"""
