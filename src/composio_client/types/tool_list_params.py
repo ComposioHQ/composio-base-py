@@ -11,8 +11,8 @@ __all__ = ["ToolListParams"]
 
 
 class ToolListParams(TypedDict, total=False):
-    auth_config_ids: Optional[SequenceNotStr[str]]
-    """Filter tools by auth config id"""
+    auth_config_ids: Union[str, SequenceNotStr[str]]
+    """Comma-separated list of auth config IDs to filter tools by"""
 
     cursor: str
     """Cursor for pagination.
