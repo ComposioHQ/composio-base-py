@@ -110,7 +110,7 @@ class ToolsResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        auth_config_ids: Union[str, SequenceNotStr[str]] | Omit = omit,
         cursor: str | Omit = omit,
         important: Literal["true", "false"] | Omit = omit,
         include_deprecated: bool | Omit = omit,
@@ -134,7 +134,7 @@ class ToolsResource(SyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
-          auth_config_ids: Filter tools by auth config id
+          auth_config_ids: Comma-separated list of auth config IDs to filter tools by
 
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
               limit. The page is the page number and the limit is the number of items per
@@ -491,7 +491,7 @@ class AsyncToolsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        auth_config_ids: Union[str, SequenceNotStr[str]] | Omit = omit,
         cursor: str | Omit = omit,
         important: Literal["true", "false"] | Omit = omit,
         include_deprecated: bool | Omit = omit,
@@ -515,7 +515,7 @@ class AsyncToolsResource(AsyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
-          auth_config_ids: Filter tools by auth config id
+          auth_config_ids: Comma-separated list of auth config IDs to filter tools by
 
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
               limit. The page is the page number and the limit is the number of items per
