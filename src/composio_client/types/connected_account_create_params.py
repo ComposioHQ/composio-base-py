@@ -101,6 +101,12 @@ class ConnectedAccountCreateParams(TypedDict, total=False):
 
     connection: Required[Connection]
 
+    validate_credentials: bool
+    """
+    [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
+    API Key Auth scheme
+    """
+
 
 class AuthConfig(TypedDict, total=False):
     id: Required[str]
