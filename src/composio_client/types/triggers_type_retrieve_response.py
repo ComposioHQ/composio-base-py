@@ -43,3 +43,6 @@ class TriggersTypeRetrieveResponse(BaseModel):
 
     type: Literal["webhook", "poll"]
     """The trigger mechanism - either webhook (event-based) or poll (scheduled check)"""
+
+    version: str
+    """Version of the trigger type"""
