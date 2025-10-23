@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
@@ -24,6 +24,9 @@ class Variant0(TypedDict, total=False):
     type: Required[Literal["custom"]]
 
     proxy_config: Variant0ProxyConfig
+
+    shared_credentials: Dict[str, Optional[object]]
+    """Shared credentials that will be inherited by connected accounts"""
 
     tool_access_config: Variant0ToolAccessConfig
 
@@ -61,6 +64,9 @@ class Variant1(TypedDict, total=False):
     type: Required[Literal["default"]]
 
     scopes: Union[str, SequenceNotStr[str]]
+
+    shared_credentials: Dict[str, Optional[object]]
+    """Shared credentials that will be inherited by connected accounts"""
 
     tool_access_config: Variant1ToolAccessConfig
 

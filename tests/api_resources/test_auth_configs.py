@@ -39,6 +39,7 @@ class TestAuthConfigs:
                     "user_scopes": "string",
                 },
                 "name": "name",
+                "shared_credentials": {"foo": "bar"},
                 "tool_access_config": {"tools_for_connected_account_creation": ["string"]},
             },
         )
@@ -128,6 +129,7 @@ class TestAuthConfigs:
                 "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
             },
+            shared_credentials={"foo": "bar"},
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
@@ -186,6 +188,7 @@ class TestAuthConfigs:
             nanoid="nanoid",
             type="default",
             scopes="string",
+            shared_credentials={"foo": "bar"},
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
@@ -370,6 +373,7 @@ class TestAsyncAuthConfigs:
                     "user_scopes": "string",
                 },
                 "name": "name",
+                "shared_credentials": {"foo": "bar"},
                 "tool_access_config": {"tools_for_connected_account_creation": ["string"]},
             },
         )
@@ -459,6 +463,7 @@ class TestAsyncAuthConfigs:
                 "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
             },
+            shared_credentials={"foo": "bar"},
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
@@ -517,6 +522,7 @@ class TestAsyncAuthConfigs:
             nanoid="nanoid",
             type="default",
             scopes="string",
+            shared_credentials={"foo": "bar"},
             tool_access_config={
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
