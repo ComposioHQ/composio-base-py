@@ -127,12 +127,6 @@ class Item(BaseModel):
 
     proxy_config: Optional[ItemProxyConfig] = None
 
-    shared_credentials: Optional[Dict[str, Optional[object]]] = None
-    """
-    [EXPERIMENTAL] Shared credentials that will be inherited by all connected
-    accounts using this auth config
-    """
-
 
 class AuthConfigListResponse(BaseModel):
     current_page: float
