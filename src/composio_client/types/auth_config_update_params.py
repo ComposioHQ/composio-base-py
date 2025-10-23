@@ -26,7 +26,6 @@ class Variant0(TypedDict, total=False):
     proxy_config: Variant0ProxyConfig
 
     shared_credentials: Dict[str, Optional[object]]
-    """Shared credentials that will be inherited by connected accounts"""
 
     tool_access_config: Variant0ToolAccessConfig
 
@@ -66,7 +65,6 @@ class Variant1(TypedDict, total=False):
     scopes: Union[str, SequenceNotStr[str]]
 
     shared_credentials: Dict[str, Optional[object]]
-    """Shared credentials that will be inherited by connected accounts"""
 
     tool_access_config: Variant1ToolAccessConfig
 

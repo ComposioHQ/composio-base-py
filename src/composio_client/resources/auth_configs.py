@@ -145,8 +145,6 @@ class AuthConfigsResource(SyncAPIResource):
         Args:
           nanoid: The unique identifier of the authentication configuration to update
 
-          shared_credentials: Shared credentials that will be inherited by connected accounts
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -179,8 +177,6 @@ class AuthConfigsResource(SyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
-
-          shared_credentials: Shared credentials that will be inherited by connected accounts
 
           extra_headers: Send extra headers
 
@@ -501,8 +497,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         Args:
           nanoid: The unique identifier of the authentication configuration to update
 
-          shared_credentials: Shared credentials that will be inherited by connected accounts
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -535,8 +529,6 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
-
-          shared_credentials: Shared credentials that will be inherited by connected accounts
 
           extra_headers: Send extra headers
 

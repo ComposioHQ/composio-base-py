@@ -119,9 +119,3 @@ class AuthConfigRetrieveResponse(BaseModel):
     """ISO 8601 date-time when the auth config was last updated"""
 
     proxy_config: Optional[ProxyConfig] = None
-
-    shared_credentials: Optional[Dict[str, Optional[object]]] = None
-    """
-    [EXPERIMENTAL] Shared credentials that will be inherited by all connected
-    accounts using this auth config
-    """
