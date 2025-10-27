@@ -96,7 +96,7 @@ class TriggerInstancesResource(SyncAPIResource):
 
           deprecated_connected_account_uuids: Array of connected account UUIDs to filter triggers by
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           page: Page number for pagination. Starts from 1.
 
@@ -260,7 +260,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           deprecated_connected_account_uuids: Array of connected account UUIDs to filter triggers by
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           page: Page number for pagination. Starts from 1.
 

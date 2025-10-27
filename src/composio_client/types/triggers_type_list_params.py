@@ -20,7 +20,7 @@ class TriggersTypeListParams(TypedDict, total=False):
     """
 
     limit: Optional[float]
-    """Number of items per page"""
+    """Number of items per page, max allowed is 1000"""
 
     toolkit_slugs: Optional[SequenceNotStr[str]]
     """Array of toolkit slugs to filter triggers by"""

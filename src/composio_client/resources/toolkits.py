@@ -123,7 +123,7 @@ class ToolkitsResource(SyncAPIResource):
 
           is_local: Whether to include local toolkits in the results
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           managed_by: Filter toolkits by who manages them
 
@@ -300,7 +300,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
 
           is_local: Whether to include local toolkits in the results
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           managed_by: Filter toolkits by who manages them
 

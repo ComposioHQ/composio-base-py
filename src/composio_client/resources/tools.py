@@ -145,7 +145,7 @@ class ToolsResource(SyncAPIResource):
 
           include_deprecated: Include deprecated tools in the response
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           scopes: Array of scopes to filter tools by)
 
@@ -526,7 +526,7 @@ class AsyncToolsResource(AsyncAPIResource):
 
           include_deprecated: Include deprecated tools in the response
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           scopes: Array of scopes to filter tools by)
 
