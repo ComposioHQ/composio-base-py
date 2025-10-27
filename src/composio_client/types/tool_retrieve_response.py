@@ -53,6 +53,9 @@ class ToolRetrieveResponse(BaseModel):
     input_parameters: Dict[str, Optional[object]]
     """Schema definition of required input parameters for the tool"""
 
+    is_deprecated: bool
+    """Indicates if this tool is deprecated and may be removed in the future"""
+
     name: str
     """Human-readable display name of the tool"""
 

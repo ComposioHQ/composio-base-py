@@ -29,7 +29,7 @@ class ToolListParams(TypedDict, total=False):
     """Include deprecated tools in the response"""
 
     limit: Optional[float]
-    """Number of items per page"""
+    """Number of items per page, max allowed is 1000"""
 
     scopes: Optional[SequenceNotStr[str]]
     """Array of scopes to filter tools by)"""

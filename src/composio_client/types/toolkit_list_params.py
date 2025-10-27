@@ -24,7 +24,7 @@ class ToolkitListParams(TypedDict, total=False):
     """Whether to include local toolkits in the results"""
 
     limit: Optional[float]
-    """Number of items per page"""
+    """Number of items per page, max allowed is 1000"""
 
     managed_by: Literal["composio", "all", "project"]
     """Filter toolkits by who manages them"""
