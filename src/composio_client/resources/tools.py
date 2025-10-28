@@ -131,8 +131,7 @@ class ToolsResource(SyncAPIResource):
         """
         Retrieve a paginated list of available tools with comprehensive filtering,
         sorting and search capabilities. Use query parameters to narrow down results by
-        toolkit, tags, or search terms. Unfiltered queries will be rejected as the list
-        can be too big.
+        toolkit, tags, or search terms.
 
         Args:
           auth_config_ids: Comma-separated list of auth config IDs to filter tools by
@@ -513,8 +512,7 @@ class AsyncToolsResource(AsyncAPIResource):
         """
         Retrieve a paginated list of available tools with comprehensive filtering,
         sorting and search capabilities. Use query parameters to narrow down results by
-        toolkit, tags, or search terms. Unfiltered queries will be rejected as the list
-        can be too big.
+        toolkit, tags, or search terms.
 
         Args:
           auth_config_ids: Comma-separated list of auth config IDs to filter tools by
