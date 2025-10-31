@@ -41,7 +41,7 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     """Array of connected account UUIDs to filter triggers by"""
 
     limit: Optional[float]
-    """Number of items per page"""
+    """Number of items per page, max allowed is 1000"""
 
     page: float
     """Page number for pagination. Starts from 1."""

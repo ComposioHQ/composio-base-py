@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, overload
 
 import httpx
@@ -129,6 +129,7 @@ class AuthConfigsResource(SyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -161,6 +162,7 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         type: Literal["default"],
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
+        shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -194,6 +196,7 @@ class AuthConfigsResource(SyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
         type: Literal["custom"] | Literal["default"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
         | auth_config_update_params.Variant1ToolAccessConfig
         | Omit = omit,
@@ -214,6 +217,7 @@ class AuthConfigsResource(SyncAPIResource):
                     "credentials": credentials,
                     "type": type,
                     "proxy_config": proxy_config,
+                    "shared_credentials": shared_credentials,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
                 },
@@ -256,7 +260,7 @@ class AuthConfigsResource(SyncAPIResource):
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           search: Search auth configs by name
 
@@ -477,6 +481,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -509,6 +514,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         type: Literal["default"],
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
+        shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -542,6 +548,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
         type: Literal["custom"] | Literal["default"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
         | auth_config_update_params.Variant1ToolAccessConfig
         | Omit = omit,
@@ -562,6 +569,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                     "credentials": credentials,
                     "type": type,
                     "proxy_config": proxy_config,
+                    "shared_credentials": shared_credentials,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
                 },
@@ -604,7 +612,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           search: Search auth configs by name
 

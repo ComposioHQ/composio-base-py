@@ -18,7 +18,7 @@ class FileListParams(TypedDict, total=False):
     """
 
     limit: Optional[float]
-    """Number of items per page"""
+    """Number of items per page, max allowed is 1000"""
 
     tool_slug: str
     """Filter files by action slug. Example: "convert-to-pdf" """

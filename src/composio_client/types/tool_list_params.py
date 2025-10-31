@@ -11,8 +11,8 @@ __all__ = ["ToolListParams"]
 
 
 class ToolListParams(TypedDict, total=False):
-    auth_config_ids: Optional[SequenceNotStr[str]]
-    """Filter tools by auth config id"""
+    auth_config_ids: Union[str, SequenceNotStr[str]]
+    """Comma-separated list of auth config IDs to filter tools by"""
 
     cursor: str
     """Cursor for pagination.
@@ -29,7 +29,7 @@ class ToolListParams(TypedDict, total=False):
     """Include deprecated tools in the response"""
 
     limit: Optional[float]
-    """Number of items per page"""
+    """Number of items per page, max allowed is 1000"""
 
     scopes: Optional[SequenceNotStr[str]]
     """Array of scopes to filter tools by)"""
@@ -50,4 +50,8 @@ class ToolListParams(TypedDict, total=False):
     """The slug of the toolkit to filter by"""
 
     toolkit_versions: Union[str, Dict[str, str]]
-    """Can be omitted, null, a string, or an object mapping toolkit names to versions"""
+    """Toolkit version specification.
+
+    Use "latest" for latest versions or bracket notation for specific versions per
+    toolkit.
+    """

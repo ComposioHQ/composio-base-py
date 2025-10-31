@@ -112,11 +112,12 @@ class TriggersTypesResource(SyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           toolkit_slugs: Array of toolkit slugs to filter triggers by
 
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           extra_headers: Send extra headers
 
@@ -258,11 +259,12 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           toolkit_slugs: Array of toolkit slugs to filter triggers by
 
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           extra_headers: Send extra headers
 

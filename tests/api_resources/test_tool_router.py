@@ -29,19 +29,19 @@ class TestToolRouter:
         tool_router = client.tool_router.create_session(
             user_id="user_123456789",
             config={
-                "manually_manage_connections": True,
+                "manually_manage_connections": False,
                 "toolkits": [
                     {
                         "toolkit": "gmail",
-                        "auth_config": "auth_config_123",
+                        "auth_config_id": "auth_config_123",
                     },
                     {
                         "toolkit": "slack",
-                        "auth_config": "auth_config_456",
+                        "auth_config_id": "auth_config_456",
                     },
                     {
                         "toolkit": "github",
-                        "auth_config": "auth_config_123",
+                        "auth_config_id": "auth_config_123",
                     },
                 ],
             },
@@ -90,19 +90,19 @@ class TestAsyncToolRouter:
         tool_router = await async_client.tool_router.create_session(
             user_id="user_123456789",
             config={
-                "manually_manage_connections": True,
+                "manually_manage_connections": False,
                 "toolkits": [
                     {
                         "toolkit": "gmail",
-                        "auth_config": "auth_config_123",
+                        "auth_config_id": "auth_config_123",
                     },
                     {
                         "toolkit": "slack",
-                        "auth_config": "auth_config_456",
+                        "auth_config_id": "auth_config_456",
                     },
                     {
                         "toolkit": "github",
-                        "auth_config": "auth_config_123",
+                        "auth_config_id": "auth_config_123",
                     },
                 ],
             },

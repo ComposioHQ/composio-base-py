@@ -20,7 +20,7 @@ class ConfigToolkit(TypedDict, total=False):
     toolkit: Required[str]
     """Toolkit identifier (e.g., gmail, slack, github)"""
 
-    auth_config: str
+    auth_config_id: str
     """Specific auth configuration ID for this toolkit"""
 
 

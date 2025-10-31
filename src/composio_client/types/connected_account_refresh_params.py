@@ -13,3 +13,9 @@ class ConnectedAccountRefreshParams(TypedDict, total=False):
     query_redirect_url: Annotated[str, PropertyInfo(alias="redirect_url")]
 
     body_redirect_url: Annotated[str, PropertyInfo(alias="redirect_url")]
+
+    validate_credentials: bool
+    """
+    [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
+    API Key Auth scheme
+    """

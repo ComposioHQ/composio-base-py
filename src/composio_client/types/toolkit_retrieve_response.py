@@ -40,6 +40,9 @@ class MetaCategory(BaseModel):
 
 
 class Meta(BaseModel):
+    available_versions: List[str]
+    """Available versions of the toolkit"""
+
     categories: List[MetaCategory]
     """List of categories associated with this toolkit"""
 

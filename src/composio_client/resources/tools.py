@@ -74,7 +74,8 @@ class ToolsResource(SyncAPIResource):
         parameters, versions, and toolkit information.
 
         Args:
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           version: Optional version of the tool to retrieve
 
@@ -109,7 +110,7 @@ class ToolsResource(SyncAPIResource):
     def list(
         self,
         *,
-        auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        auth_config_ids: Union[str, SequenceNotStr[str]] | Omit = omit,
         cursor: str | Omit = omit,
         important: Literal["true", "false"] | Omit = omit,
         include_deprecated: bool | Omit = omit,
@@ -133,7 +134,7 @@ class ToolsResource(SyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
-          auth_config_ids: Filter tools by auth config id
+          auth_config_ids: Comma-separated list of auth config IDs to filter tools by
 
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
               limit. The page is the page number and the limit is the number of items per
@@ -144,7 +145,7 @@ class ToolsResource(SyncAPIResource):
 
           include_deprecated: Include deprecated tools in the response
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           scopes: Array of scopes to filter tools by)
 
@@ -157,7 +158,8 @@ class ToolsResource(SyncAPIResource):
 
           toolkit_slug: The slug of the toolkit to filter by
 
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           extra_headers: Send extra headers
 
@@ -453,7 +455,8 @@ class AsyncToolsResource(AsyncAPIResource):
         parameters, versions, and toolkit information.
 
         Args:
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           version: Optional version of the tool to retrieve
 
@@ -488,7 +491,7 @@ class AsyncToolsResource(AsyncAPIResource):
     async def list(
         self,
         *,
-        auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
+        auth_config_ids: Union[str, SequenceNotStr[str]] | Omit = omit,
         cursor: str | Omit = omit,
         important: Literal["true", "false"] | Omit = omit,
         include_deprecated: bool | Omit = omit,
@@ -512,7 +515,7 @@ class AsyncToolsResource(AsyncAPIResource):
         toolkit, tags, or search terms.
 
         Args:
-          auth_config_ids: Filter tools by auth config id
+          auth_config_ids: Comma-separated list of auth config IDs to filter tools by
 
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
               limit. The page is the page number and the limit is the number of items per
@@ -523,7 +526,7 @@ class AsyncToolsResource(AsyncAPIResource):
 
           include_deprecated: Include deprecated tools in the response
 
-          limit: Number of items per page
+          limit: Number of items per page, max allowed is 1000
 
           scopes: Array of scopes to filter tools by)
 
@@ -536,7 +539,8 @@ class AsyncToolsResource(AsyncAPIResource):
 
           toolkit_slug: The slug of the toolkit to filter by
 
-          toolkit_versions: Can be omitted, null, a string, or an object mapping toolkit names to versions
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           extra_headers: Send extra headers
 

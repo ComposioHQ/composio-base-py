@@ -1,5 +1,38 @@
 # Changelog
 
+## 1.11.0 (2025-10-30)
+
+Full Changelog: [v1.10.0...v1.11.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.10.0...v1.11.0)
+
+### Features
+
+* **api:** api update ([fb3ec20](https://github.com/ComposioHQ/composio-base-py/commit/fb3ec207f6e9b7bfc45f9f8a8e19facc45fd6d58))
+* **api:** api update ([1020bd9](https://github.com/ComposioHQ/composio-base-py/commit/1020bd9630d14258ca7485401c4188bf95d6c97d))
+* **api:** api update ([a5c671b](https://github.com/ComposioHQ/composio-base-py/commit/a5c671be0aa3154d47c4c473fdbf6ca89054caa1))
+* **api:** api update ([199e68e](https://github.com/ComposioHQ/composio-base-py/commit/199e68e8a7c63a9c4733daf4afc6d9c131f09bb1))
+* **api:** api update ([9ba3a5e](https://github.com/ComposioHQ/composio-base-py/commit/9ba3a5e6d79d2bd8c28cca7ab9ecd501baf36e16))
+* **api:** api update ([19b7cb9](https://github.com/ComposioHQ/composio-base-py/commit/19b7cb96bff0601c669038579b713e7ae3e03a18))
+* **api:** api update ([92e4ace](https://github.com/ComposioHQ/composio-base-py/commit/92e4ace6ff3c10e830e8359f408b93c7fad797d7))
+* **api:** api update ([ff03586](https://github.com/ComposioHQ/composio-base-py/commit/ff03586aaddeda9778b2573f48db98a3ea115744))
+* **api:** api update ([894af4d](https://github.com/ComposioHQ/composio-base-py/commit/894af4d5cf8ee6c2441b42e366b87218a95cebd7))
+* **api:** api update ([9ba0e9a](https://github.com/ComposioHQ/composio-base-py/commit/9ba0e9ab3432a3ad62160e0ea4e6caaefe5785e7))
+* **api:** api update ([b888851](https://github.com/ComposioHQ/composio-base-py/commit/b88885121a54da70a7597ae9bb721e524fa490e4))
+* **api:** api update ([2369a35](https://github.com/ComposioHQ/composio-base-py/commit/2369a35e9bfdb2f7cb8700322fd30ff6cdfaf10a))
+* **api:** api update ([0de1b68](https://github.com/ComposioHQ/composio-base-py/commit/0de1b68014415a3459a25e091775e72d52d6429d))
+* **api:** api update ([96d3e51](https://github.com/ComposioHQ/composio-base-py/commit/96d3e51ca088beed3c08c0214a7533b8e2cf8763))
+
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([45bd44a](https://github.com/ComposioHQ/composio-base-py/commit/45bd44a1c2ac4feded3e62b09bb04ff742421ec3))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([26fb133](https://github.com/ComposioHQ/composio-base-py/commit/26fb1332ef7e2ca966866c7a821debe13a918bdb))
+* **internal/tests:** avoid race condition with implicit client cleanup ([ff59bd7](https://github.com/ComposioHQ/composio-base-py/commit/ff59bd7bbe9f17457deda9e45bd28f9197244976))
+* **internal:** detect missing future annotations with ruff ([57d4425](https://github.com/ComposioHQ/composio-base-py/commit/57d4425c479c890d21621d13bf7ac7de7c2658d8))
+
 ## 1.10.0 (2025-09-25)
 
 Full Changelog: [v1.9.1...v1.10.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.9.1...v1.10.0)
