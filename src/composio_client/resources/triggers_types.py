@@ -49,6 +49,7 @@ class TriggersTypesResource(SyncAPIResource):
         self,
         slug: str,
         *,
+        toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
         version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -63,6 +64,9 @@ class TriggersTypesResource(SyncAPIResource):
 
         Args:
           slug: The unique slug identifier for the trigger type
+
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           version: Optional version of the trigger type to retrieve
 
@@ -83,7 +87,13 @@ class TriggersTypesResource(SyncAPIResource):
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform({"version": version}, triggers_type_retrieve_params.TriggersTypeRetrieveParams),
+                query=maybe_transform(
+                    {
+                        "toolkit_versions": toolkit_versions,
+                        "version": version,
+                    },
+                    triggers_type_retrieve_params.TriggersTypeRetrieveParams,
+                ),
             ),
             cast_to=TriggersTypeRetrieveResponse,
         )
@@ -194,6 +204,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         self,
         slug: str,
         *,
+        toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
         version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -208,6 +219,9 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
 
         Args:
           slug: The unique slug identifier for the trigger type
+
+          toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
+              notation for specific versions per toolkit.
 
           version: Optional version of the trigger type to retrieve
 
@@ -229,7 +243,11 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {"version": version}, triggers_type_retrieve_params.TriggersTypeRetrieveParams
+                    {
+                        "toolkit_versions": toolkit_versions,
+                        "version": version,
+                    },
+                    triggers_type_retrieve_params.TriggersTypeRetrieveParams,
                 ),
             ),
             cast_to=TriggersTypeRetrieveResponse,
