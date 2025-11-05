@@ -1,5 +1,18 @@
 # Changelog
 
+## 1.12.0 (2025-11-04)
+
+Full Changelog: [v1.11.0...v1.12.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.11.0...v1.12.0)
+
+### Features
+
+* **api:** api update ([1c65a68](https://github.com/ComposioHQ/composio-base-py/commit/1c65a68006e91c5706d436a4d95c79f6eb1a6be8))
+
+
+### Chores
+
+* **internal:** grammar fix (it's -&gt; its) ([818ec81](https://github.com/ComposioHQ/composio-base-py/commit/818ec81ab68e541cba46f0112b6636631f757667))
+
 ## 1.11.0 (2025-10-30)
 
 Full Changelog: [v1.10.0...v1.11.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.10.0...v1.11.0)
