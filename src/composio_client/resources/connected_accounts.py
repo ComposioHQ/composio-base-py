@@ -195,7 +195,7 @@ class ConnectedAccountsResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "auth_config_ids": auth_config_ids,
-                        "connected_account_ids": connected_account_ids,
+                        "connected_account_ids": connected_account_ids if connected_account_ids != [] else "none",
                         "cursor": cursor,
                         "labels": labels,
                         "limit": limit,
