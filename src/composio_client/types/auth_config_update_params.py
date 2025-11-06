@@ -26,6 +26,11 @@ class Variant0(TypedDict, total=False):
     proxy_config: Variant0ProxyConfig
 
     shared_credentials: Dict[str, Optional[object]]
+    """Shared credentials that will be inherited by connected accounts.
+
+    For eg: this can be used to share the API key for a tool with all connected
+    accounts using this auth config.
+    """
 
     tool_access_config: Variant0ToolAccessConfig
 
@@ -65,6 +70,11 @@ class Variant1(TypedDict, total=False):
     scopes: Union[str, SequenceNotStr[str]]
 
     shared_credentials: Dict[str, Optional[object]]
+    """Shared credentials that will be inherited by connected accounts.
+
+    For eg: this can be used to share the API key for a tool with all connected
+    accounts using this auth config.
+    """
 
     tool_access_config: Variant1ToolAccessConfig
 
