@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
@@ -54,6 +54,12 @@ class AuthConfigUnionMember0(TypedDict, total=False):
 
     name: str
     """The name of the integration"""
+
+    shared_credentials: Dict[str, Optional[object]]
+    """
+    [EXPERIMENTAL] Shared credentials that will be inherited by all connected
+    accounts using this auth config
+    """
 
     tool_access_config: AuthConfigUnionMember0ToolAccessConfig
 
@@ -108,6 +114,12 @@ class AuthConfigUnionMember1(TypedDict, total=False):
     """The name of the integration"""
 
     proxy_config: AuthConfigUnionMember1ProxyConfig
+
+    shared_credentials: Dict[str, Optional[object]]
+    """
+    [EXPERIMENTAL] Shared credentials that will be inherited by all connected
+    accounts using this auth config
+    """
 
     tool_access_config: AuthConfigUnionMember1ToolAccessConfig
 

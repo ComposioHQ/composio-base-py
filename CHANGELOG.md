@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.13.0 (2025-11-10)
+
+Full Changelog: [v1.12.0...v1.13.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.12.0...v1.13.0)
+
+### Features
+
+* **api:** api update ([6b8ec42](https://github.com/ComposioHQ/composio-base-py/commit/6b8ec42ba709b042bcd51e50b998dd8809ed3f27))
+* **api:** api update ([2189e7b](https://github.com/ComposioHQ/composio-base-py/commit/2189e7bd8fc8ead5de4d97088827302b107205ed))
+* **api:** api update ([bbb6da6](https://github.com/ComposioHQ/composio-base-py/commit/bbb6da6ce44e28711164e929e87febacf6d27b4b))
+
+
+### Chores
+
+* **package:** drop Python 3.8 support ([eccf48c](https://github.com/ComposioHQ/composio-base-py/commit/eccf48c9b3e042c4620199153368860ea6bcd8de))
+
 ## 1.12.0 (2025-11-04)
 
 Full Changelog: [v1.11.0...v1.12.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.11.0...v1.12.0)

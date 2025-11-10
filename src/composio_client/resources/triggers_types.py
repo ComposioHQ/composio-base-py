@@ -169,7 +169,7 @@ class TriggersTypesResource(SyncAPIResource):
     ) -> TriggersTypeRetrieveEnumResponse:
         """
         Retrieves a list of all available trigger type enum values that can be used
-        across the API
+        across the API from latest versions of the toolkit only
         """
         return self._get(
             "/api/v3/triggers_types/list/enum",
@@ -324,7 +324,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
     ) -> TriggersTypeRetrieveEnumResponse:
         """
         Retrieves a list of all available trigger type enum values that can be used
-        across the API
+        across the API from latest versions of the toolkit only
         """
         return await self._get(
             "/api/v3/triggers_types/list/enum",

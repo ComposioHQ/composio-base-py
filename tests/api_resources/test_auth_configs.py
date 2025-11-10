@@ -39,6 +39,7 @@ class TestAuthConfigs:
                     "user_scopes": "string",
                 },
                 "name": "name",
+                "shared_credentials": {"foo": "bar"},
                 "tool_access_config": {"tools_for_connected_account_creation": ["string"]},
             },
         )
@@ -372,6 +373,7 @@ class TestAsyncAuthConfigs:
                     "user_scopes": "string",
                 },
                 "name": "name",
+                "shared_credentials": {"foo": "bar"},
                 "tool_access_config": {"tools_for_connected_account_creation": ["string"]},
             },
         )
