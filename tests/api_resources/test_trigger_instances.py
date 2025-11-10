@@ -82,8 +82,10 @@ class TestTriggerInstances:
         trigger_instance = client.trigger_instances.upsert(
             slug="slug",
             connected_account_id="connected_account_id",
+            toolkit_versions="latest",
             body_trigger_config_1={"foo": "bar"},
             body_trigger_config_2={"foo": "bar"},
+            version="latest",
         )
         assert_matches_type(TriggerInstanceUpsertResponse, trigger_instance, path=["response"])
 
@@ -186,8 +188,10 @@ class TestAsyncTriggerInstances:
         trigger_instance = await async_client.trigger_instances.upsert(
             slug="slug",
             connected_account_id="connected_account_id",
+            toolkit_versions="latest",
             body_trigger_config_1={"foo": "bar"},
             body_trigger_config_2={"foo": "bar"},
+            version="latest",
         )
         assert_matches_type(TriggerInstanceUpsertResponse, trigger_instance, path=["response"])
 

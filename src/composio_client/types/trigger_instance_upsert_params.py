@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -14,8 +14,17 @@ class TriggerInstanceUpsertParams(TypedDict, total=False):
     connected_account_id: str
     """Connected account nanoid"""
 
+    toolkit_versions: Union[str, Dict[str, str], None]
+    """Toolkit version specification.
+
+    Supports "latest" string or a record mapping toolkit slugs to specific versions.
+    """
+
     body_trigger_config_1: Annotated[Dict[str, Optional[object]], PropertyInfo(alias="trigger_config")]
     """Trigger configuration"""
 
     body_trigger_config_2: Annotated[Dict[str, Optional[object]], PropertyInfo(alias="triggerConfig")]
     """Trigger configuration (deprecated)"""
+
+    version: str
+    """Optional version of the trigger type to retrieve"""
