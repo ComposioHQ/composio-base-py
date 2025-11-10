@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, Union, Optional
 
 import httpx
 
@@ -150,8 +150,10 @@ class TriggerInstancesResource(SyncAPIResource):
         slug: str,
         *,
         connected_account_id: str | Omit = omit,
+        toolkit_versions: Union[str, Dict[str, str], None] | Omit = omit,
         body_trigger_config_1: Dict[str, Optional[object]] | Omit = omit,
         body_trigger_config_2: Dict[str, Optional[object]] | Omit = omit,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -165,9 +167,14 @@ class TriggerInstancesResource(SyncAPIResource):
 
           connected_account_id: Connected account nanoid
 
+          toolkit_versions: Toolkit version specification. Supports "latest" string or a record mapping
+              toolkit slugs to specific versions.
+
           body_trigger_config_1: Trigger configuration
 
           body_trigger_config_2: Trigger configuration (deprecated)
+
+          version: Optional version of the trigger type to retrieve
 
           extra_headers: Send extra headers
 
@@ -184,8 +191,10 @@ class TriggerInstancesResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
+                    "toolkit_versions": toolkit_versions,
                     "body_trigger_config_1": body_trigger_config_1,
                     "body_trigger_config_2": body_trigger_config_2,
+                    "version": version,
                 },
                 trigger_instance_upsert_params.TriggerInstanceUpsertParams,
             ),
@@ -314,8 +323,10 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         slug: str,
         *,
         connected_account_id: str | Omit = omit,
+        toolkit_versions: Union[str, Dict[str, str], None] | Omit = omit,
         body_trigger_config_1: Dict[str, Optional[object]] | Omit = omit,
         body_trigger_config_2: Dict[str, Optional[object]] | Omit = omit,
+        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -329,9 +340,14 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           connected_account_id: Connected account nanoid
 
+          toolkit_versions: Toolkit version specification. Supports "latest" string or a record mapping
+              toolkit slugs to specific versions.
+
           body_trigger_config_1: Trigger configuration
 
           body_trigger_config_2: Trigger configuration (deprecated)
+
+          version: Optional version of the trigger type to retrieve
 
           extra_headers: Send extra headers
 
@@ -348,8 +364,10 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
+                    "toolkit_versions": toolkit_versions,
                     "body_trigger_config_1": body_trigger_config_1,
                     "body_trigger_config_2": body_trigger_config_2,
+                    "version": version,
                 },
                 trigger_instance_upsert_params.TriggerInstanceUpsertParams,
             ),
