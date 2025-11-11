@@ -112,12 +112,10 @@ class ToolsResource(SyncAPIResource):
         *,
         auth_config_ids: Union[str, SequenceNotStr[str]] | Omit = omit,
         cursor: str | Omit = omit,
-        important: Literal["true", "false"] | Omit = omit,
         include_deprecated: bool | Omit = omit,
         limit: Optional[float] | Omit = omit,
         scopes: Optional[SequenceNotStr[str]] | Omit = omit,
         search: str | Omit = omit,
-        tags: SequenceNotStr[str] | Omit = omit,
         tool_slugs: str | Omit = omit,
         toolkit_slug: str | Omit = omit,
         toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
@@ -141,8 +139,6 @@ class ToolsResource(SyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          important: Filter to only show important/featured tools (set to "true" to enable)
-
           include_deprecated: Include deprecated tools in the response
 
           limit: Number of items per page, max allowed is 1000
@@ -150,8 +146,6 @@ class ToolsResource(SyncAPIResource):
           scopes: Array of scopes to filter tools by)
 
           search: Free-text search query to find tools by name, description, or functionality
-
-          tags: Filter tools by one or more tags (can be specified multiple times)
 
           tool_slugs: Comma-separated list of specific tool slugs to retrieve (overrides other
               filters)
@@ -180,12 +174,10 @@ class ToolsResource(SyncAPIResource):
                     {
                         "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
-                        "important": important,
                         "include_deprecated": include_deprecated,
                         "limit": limit,
                         "scopes": scopes,
                         "search": search,
-                        "tags": tags,
                         "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
                         "toolkit_versions": toolkit_versions,
@@ -493,12 +485,10 @@ class AsyncToolsResource(AsyncAPIResource):
         *,
         auth_config_ids: Union[str, SequenceNotStr[str]] | Omit = omit,
         cursor: str | Omit = omit,
-        important: Literal["true", "false"] | Omit = omit,
         include_deprecated: bool | Omit = omit,
         limit: Optional[float] | Omit = omit,
         scopes: Optional[SequenceNotStr[str]] | Omit = omit,
         search: str | Omit = omit,
-        tags: SequenceNotStr[str] | Omit = omit,
         tool_slugs: str | Omit = omit,
         toolkit_slug: str | Omit = omit,
         toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
@@ -522,8 +512,6 @@ class AsyncToolsResource(AsyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          important: Filter to only show important/featured tools (set to "true" to enable)
-
           include_deprecated: Include deprecated tools in the response
 
           limit: Number of items per page, max allowed is 1000
@@ -531,8 +519,6 @@ class AsyncToolsResource(AsyncAPIResource):
           scopes: Array of scopes to filter tools by)
 
           search: Free-text search query to find tools by name, description, or functionality
-
-          tags: Filter tools by one or more tags (can be specified multiple times)
 
           tool_slugs: Comma-separated list of specific tool slugs to retrieve (overrides other
               filters)
@@ -561,12 +547,10 @@ class AsyncToolsResource(AsyncAPIResource):
                     {
                         "auth_config_ids": auth_config_ids,
                         "cursor": cursor,
-                        "important": important,
                         "include_deprecated": include_deprecated,
                         "limit": limit,
                         "scopes": scopes,
                         "search": search,
-                        "tags": tags,
                         "tool_slugs": tool_slugs,
                         "toolkit_slug": toolkit_slug,
                         "toolkit_versions": toolkit_versions,

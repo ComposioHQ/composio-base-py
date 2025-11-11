@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, Union, Optional
-from typing_extensions import Literal, TypedDict
+from typing_extensions import TypedDict
 
 from .._types import SequenceNotStr
 
@@ -22,9 +22,6 @@ class ToolListParams(TypedDict, total=False):
     paginate through the items. The cursor is not required for the first page.
     """
 
-    important: Literal["true", "false"]
-    """Filter to only show important/featured tools (set to "true" to enable)"""
-
     include_deprecated: bool
     """Include deprecated tools in the response"""
 
@@ -36,9 +33,6 @@ class ToolListParams(TypedDict, total=False):
 
     search: str
     """Free-text search query to find tools by name, description, or functionality"""
-
-    tags: SequenceNotStr[str]
-    """Filter tools by one or more tags (can be specified multiple times)"""
 
     tool_slugs: str
     """
