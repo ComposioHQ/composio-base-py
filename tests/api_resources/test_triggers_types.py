@@ -33,7 +33,6 @@ class TestTriggersTypes:
         triggers_type = client.triggers_types.retrieve(
             slug="SLACK_NEW_MESSAGE",
             toolkit_versions="string",
-            version="version",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
 
@@ -150,7 +149,6 @@ class TestAsyncTriggersTypes:
         triggers_type = await async_client.triggers_types.retrieve(
             slug="SLACK_NEW_MESSAGE",
             toolkit_versions="string",
-            version="version",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
 

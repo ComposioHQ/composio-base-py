@@ -15,6 +15,3 @@ class TriggersTypeRetrieveParams(TypedDict, total=False):
     Use "latest" for latest versions or bracket notation for specific versions per
     toolkit.
     """
-
-    version: str
-    """Optional version of the trigger type to retrieve"""
