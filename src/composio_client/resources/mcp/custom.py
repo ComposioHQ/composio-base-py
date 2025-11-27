@@ -45,10 +45,11 @@ class CustomResource(SyncAPIResource):
         self,
         *,
         name: str,
-        toolkits: SequenceNotStr[str],
+        allowed_tools: SequenceNotStr[str] | Omit = omit,
         auth_config_ids: SequenceNotStr[str] | Omit = omit,
         custom_tools: SequenceNotStr[str] | Omit = omit,
         managed_auth_via_composio: bool | Omit = omit,
+        toolkits: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -66,14 +67,16 @@ class CustomResource(SyncAPIResource):
           name: Human-readable name to identify this custom MCP server (4-30 characters,
               alphanumeric, spaces, and hyphens only)
 
-          toolkits: List of application/toolkit identifiers to enable for this server
+          allowed_tools: Tool identifiers to enable that aren't part of standard toolkits
 
           auth_config_ids: ID references to existing authentication configurations
 
-          custom_tools: Additional custom tool identifiers to enable that aren't part of standard
-              toolkits
+          custom_tools: DEPRECATED: Use allowed_tools instead. Tool identifiers to enable that aren't
+              part of standard toolkits
 
           managed_auth_via_composio: Whether to manage authentication via Composio
+
+          toolkits: List of application/toolkit identifiers to enable for this server
 
           extra_headers: Send extra headers
 
@@ -88,10 +91,11 @@ class CustomResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "name": name,
-                    "toolkits": toolkits,
+                    "allowed_tools": allowed_tools,
                     "auth_config_ids": auth_config_ids,
                     "custom_tools": custom_tools,
                     "managed_auth_via_composio": managed_auth_via_composio,
+                    "toolkits": toolkits,
                 },
                 custom_create_params.CustomCreateParams,
             ),
@@ -126,10 +130,11 @@ class AsyncCustomResource(AsyncAPIResource):
         self,
         *,
         name: str,
-        toolkits: SequenceNotStr[str],
+        allowed_tools: SequenceNotStr[str] | Omit = omit,
         auth_config_ids: SequenceNotStr[str] | Omit = omit,
         custom_tools: SequenceNotStr[str] | Omit = omit,
         managed_auth_via_composio: bool | Omit = omit,
+        toolkits: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -147,14 +152,16 @@ class AsyncCustomResource(AsyncAPIResource):
           name: Human-readable name to identify this custom MCP server (4-30 characters,
               alphanumeric, spaces, and hyphens only)
 
-          toolkits: List of application/toolkit identifiers to enable for this server
+          allowed_tools: Tool identifiers to enable that aren't part of standard toolkits
 
           auth_config_ids: ID references to existing authentication configurations
 
-          custom_tools: Additional custom tool identifiers to enable that aren't part of standard
-              toolkits
+          custom_tools: DEPRECATED: Use allowed_tools instead. Tool identifiers to enable that aren't
+              part of standard toolkits
 
           managed_auth_via_composio: Whether to manage authentication via Composio
+
+          toolkits: List of application/toolkit identifiers to enable for this server
 
           extra_headers: Send extra headers
 
@@ -169,10 +176,11 @@ class AsyncCustomResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "name": name,
-                    "toolkits": toolkits,
+                    "allowed_tools": allowed_tools,
                     "auth_config_ids": auth_config_ids,
                     "custom_tools": custom_tools,
                     "managed_auth_via_composio": managed_auth_via_composio,
+                    "toolkits": toolkits,
                 },
                 custom_create_params.CustomCreateParams,
             ),

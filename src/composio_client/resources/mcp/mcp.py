@@ -197,16 +197,14 @@ class McpResource(SyncAPIResource):
 
           allowed_tools: List of action identifiers that should be enabled for this server
 
-          auth_config_ids: List of auth config IDs to use for this MCP server. Can include multiple
-              different toolkits.
+          auth_config_ids: List of auth config IDs to use for this MCP server.
 
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           name: Human-readable name to identify this MCP server instance (4-30 characters,
               alphanumeric, spaces, and hyphens only)
 
-          toolkits: List of toolkit slugs this server should be configured to work with. Must have
-              the same count and order as auth_config_ids.
+          toolkits: List of toolkit slugs this server should be configured to work with.
 
           extra_headers: Send extra headers
 
@@ -571,16 +569,14 @@ class AsyncMcpResource(AsyncAPIResource):
 
           allowed_tools: List of action identifiers that should be enabled for this server
 
-          auth_config_ids: List of auth config IDs to use for this MCP server. Can include multiple
-              different toolkits.
+          auth_config_ids: List of auth config IDs to use for this MCP server.
 
           managed_auth_via_composio: Whether the MCP server is managed by Composio
 
           name: Human-readable name to identify this MCP server instance (4-30 characters,
               alphanumeric, spaces, and hyphens only)
 
-          toolkits: List of toolkit slugs this server should be configured to work with. Must have
-              the same count and order as auth_config_ids.
+          toolkits: List of toolkit slugs this server should be configured to work with.
 
           extra_headers: Send extra headers
 

@@ -35,10 +35,7 @@ class CustomCreateResponse(BaseModel):
     """
 
     mcp_url: str
-    """
-    URL endpoint for establishing Server-Sent Events (SSE) connection to this MCP
-    server
-    """
+    """URL endpoint for establishing connection to this MCP server"""
 
     name: str
     """Human-readable name of the custom MCP server"""
