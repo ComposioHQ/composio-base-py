@@ -4,24 +4,36 @@ from __future__ import annotations
 
 import httpx
 
-from ..types import tool_router_create_session_params
-from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ...types import tool_router_create_session_params
+from .session import (
+    SessionResource,
+    AsyncSessionResource,
+    SessionResourceWithRawResponse,
+    AsyncSessionResourceWithRawResponse,
+    SessionResourceWithStreamingResponse,
+    AsyncSessionResourceWithStreamingResponse,
+)
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.tool_router_create_session_response import ToolRouterCreateSessionResponse
+from ..._base_client import make_request_options
+from ...types.tool_router_create_session_response import ToolRouterCreateSessionResponse
 
 __all__ = ["ToolRouterResource", "AsyncToolRouterResource"]
 
 
 class ToolRouterResource(SyncAPIResource):
+    @cached_property
+    def session(self) -> SessionResource:
+        return SessionResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> ToolRouterResourceWithRawResponse:
         """
@@ -90,6 +102,10 @@ class ToolRouterResource(SyncAPIResource):
 
 
 class AsyncToolRouterResource(AsyncAPIResource):
+    @cached_property
+    def session(self) -> AsyncSessionResource:
+        return AsyncSessionResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncToolRouterResourceWithRawResponse:
         """
@@ -165,6 +181,10 @@ class ToolRouterResourceWithRawResponse:
             tool_router.create_session,
         )
 
+    @cached_property
+    def session(self) -> SessionResourceWithRawResponse:
+        return SessionResourceWithRawResponse(self._tool_router.session)
+
 
 class AsyncToolRouterResourceWithRawResponse:
     def __init__(self, tool_router: AsyncToolRouterResource) -> None:
@@ -173,6 +193,10 @@ class AsyncToolRouterResourceWithRawResponse:
         self.create_session = async_to_raw_response_wrapper(
             tool_router.create_session,
         )
+
+    @cached_property
+    def session(self) -> AsyncSessionResourceWithRawResponse:
+        return AsyncSessionResourceWithRawResponse(self._tool_router.session)
 
 
 class ToolRouterResourceWithStreamingResponse:
@@ -183,6 +207,10 @@ class ToolRouterResourceWithStreamingResponse:
             tool_router.create_session,
         )
 
+    @cached_property
+    def session(self) -> SessionResourceWithStreamingResponse:
+        return SessionResourceWithStreamingResponse(self._tool_router.session)
+
 
 class AsyncToolRouterResourceWithStreamingResponse:
     def __init__(self, tool_router: AsyncToolRouterResource) -> None:
@@ -191,3 +219,7 @@ class AsyncToolRouterResourceWithStreamingResponse:
         self.create_session = async_to_streamed_response_wrapper(
             tool_router.create_session,
         )
+
+    @cached_property
+    def session(self) -> AsyncSessionResourceWithStreamingResponse:
+        return AsyncSessionResourceWithStreamingResponse(self._tool_router.session)
