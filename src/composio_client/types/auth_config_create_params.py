@@ -101,6 +101,8 @@ class AuthConfigUnionMember1(TypedDict, total=False):
                 "BASIC_WITH_JWT",
                 "CALCOM_AUTH",
                 "SERVICE_ACCOUNT",
+                "SAML",
+                "DCR_OAUTH",
             ],
             PropertyInfo(alias="authScheme"),
         ]

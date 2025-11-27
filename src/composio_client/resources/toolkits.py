@@ -107,11 +107,11 @@ class ToolkitsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitListResponse:
         """
-        Retrieves a comprehensive list of toolkits that are available to the
-        authenticated project. Toolkits represent integration points with external
-        services and applications, each containing a collection of tools and triggers.
-        This endpoint supports filtering by category, management type, and local
-        availability, as well as different sorting options.
+        Retrieves a comprehensive list of toolkits of their latest versions that are
+        available to the authenticated project. Toolkits represent integration points
+        with external services and applications, each containing a collection of tools
+        and triggers. This endpoint supports filtering by category, management type, and
+        local availability, as well as different sorting options.
 
         Args:
           category: Filter toolkits by category
@@ -170,12 +170,11 @@ class ToolkitsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitRetrieveCategoriesResponse:
-        """Retrieves a comprehensive list of all available toolkit categories.
-
-        These
-        categories can be used to filter toolkits by type or purpose when using the
-        toolkit listing endpoint. Categories help organize toolkits into logical groups
-        based on their functionality or industry focus.
+        """
+        Retrieves a comprehensive list of all available toolkit categories from their
+        latest versions. These categories can be used to filter toolkits by type or
+        purpose when using the toolkit listing endpoint. Categories help organize
+        toolkits into logical groups based on their functionality or industry focus.
 
         Args:
           cache: Cache control parameter
@@ -284,11 +283,11 @@ class AsyncToolkitsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitListResponse:
         """
-        Retrieves a comprehensive list of toolkits that are available to the
-        authenticated project. Toolkits represent integration points with external
-        services and applications, each containing a collection of tools and triggers.
-        This endpoint supports filtering by category, management type, and local
-        availability, as well as different sorting options.
+        Retrieves a comprehensive list of toolkits of their latest versions that are
+        available to the authenticated project. Toolkits represent integration points
+        with external services and applications, each containing a collection of tools
+        and triggers. This endpoint supports filtering by category, management type, and
+        local availability, as well as different sorting options.
 
         Args:
           category: Filter toolkits by category
@@ -347,12 +346,11 @@ class AsyncToolkitsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolkitRetrieveCategoriesResponse:
-        """Retrieves a comprehensive list of all available toolkit categories.
-
-        These
-        categories can be used to filter toolkits by type or purpose when using the
-        toolkit listing endpoint. Categories help organize toolkits into logical groups
-        based on their functionality or industry focus.
+        """
+        Retrieves a comprehensive list of all available toolkit categories from their
+        latest versions. These categories can be used to filter toolkits by type or
+        purpose when using the toolkit listing endpoint. Categories help organize
+        toolkits into logical groups based on their functionality or industry focus.
 
         Args:
           cache: Cache control parameter
