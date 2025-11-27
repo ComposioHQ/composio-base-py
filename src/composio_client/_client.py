@@ -21,18 +21,7 @@ from ._types import (
 )
 from ._utils import is_given, get_async_library
 from ._version import __version__
-from .resources import (
-    cli,
-    link,
-    files,
-    tools,
-    toolkits,
-    migration,
-    tool_router,
-    auth_configs,
-    triggers_types,
-    connected_accounts,
-)
+from .resources import cli, link, files, tools, toolkits, migration, auth_configs, triggers_types, connected_accounts
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -41,6 +30,7 @@ from ._base_client import (
     AsyncAPIClient,
 )
 from .resources.mcp import mcp
+from .resources.tool_router import tool_router
 from .resources.trigger_instances import trigger_instances
 
 __all__ = [
