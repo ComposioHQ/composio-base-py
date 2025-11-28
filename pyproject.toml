@@ -5,7 +5,7 @@ description = "The official Python library for the composio API"
 dynamic = ["readme"]
 license = "Apache-2.0"
 authors = [
-{ name = "Composio", email = "tech@composio.com" },
+{ name = "Composio", email = "tech@composio.dev" },
 ]
 dependencies = [
     "httpx>=0.23.0, <1",
