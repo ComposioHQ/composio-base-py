@@ -338,7 +338,6 @@ class ToolsResource(SyncAPIResource):
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
         body: object | Omit = omit,
         connected_account_id: str | Omit = omit,
-        custom_connection_data: tool_proxy_params.CustomConnectionData | Omit = omit,
         parameters: Iterable[tool_proxy_params.Parameter] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -381,7 +380,6 @@ class ToolsResource(SyncAPIResource):
                     "method": method,
                     "body": body,
                     "connected_account_id": connected_account_id,
-                    "custom_connection_data": custom_connection_data,
                     "parameters": parameters,
                 },
                 tool_proxy_params.ToolProxyParams,
@@ -719,7 +717,6 @@ class AsyncToolsResource(AsyncAPIResource):
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
         body: object | Omit = omit,
         connected_account_id: str | Omit = omit,
-        custom_connection_data: tool_proxy_params.CustomConnectionData | Omit = omit,
         parameters: Iterable[tool_proxy_params.Parameter] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -762,7 +759,6 @@ class AsyncToolsResource(AsyncAPIResource):
                     "method": method,
                     "body": body,
                     "connected_account_id": connected_account_id,
-                    "custom_connection_data": custom_connection_data,
                     "parameters": parameters,
                 },
                 tool_proxy_params.ToolProxyParams,

@@ -20,7 +20,7 @@ or products provided by Composio, please follow the respective company's securit
 
 ### Composio Terms and Policies
 
-Please contact tech@composio.com for any questions or concerns regarding the security of our services.
+Please contact tech@composio.dev for any questions or concerns regarding the security of our services.
 
 ---
 

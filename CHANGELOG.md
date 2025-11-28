@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.15.0 (2025-11-28)
+
+Full Changelog: [v1.14.0...v1.15.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.14.0...v1.15.0)
+
+### Features
+
+* **api:** Fix api doc URL ([8f3a873](https://github.com/ComposioHQ/composio-base-py/commit/8f3a8735aa3cd0559118b5ee4a4dab8935f36aef))
+
 ## 1.14.0 (2025-11-27)
 
 Full Changelog: [v1.13.0...v1.14.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.13.0...v1.14.0)
