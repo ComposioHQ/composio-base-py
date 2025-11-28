@@ -50,7 +50,6 @@ class TriggersTypesResource(SyncAPIResource):
         slug: str,
         *,
         toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
-        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -67,8 +66,6 @@ class TriggersTypesResource(SyncAPIResource):
 
           toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
               notation for specific versions per toolkit.
-
-          version: Optional version of the trigger type to retrieve
 
           extra_headers: Send extra headers
 
@@ -88,11 +85,7 @@ class TriggersTypesResource(SyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=maybe_transform(
-                    {
-                        "toolkit_versions": toolkit_versions,
-                        "version": version,
-                    },
-                    triggers_type_retrieve_params.TriggersTypeRetrieveParams,
+                    {"toolkit_versions": toolkit_versions}, triggers_type_retrieve_params.TriggersTypeRetrieveParams
                 ),
             ),
             cast_to=TriggersTypeRetrieveResponse,
@@ -205,7 +198,6 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         slug: str,
         *,
         toolkit_versions: Union[str, Dict[str, str]] | Omit = omit,
-        version: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -222,8 +214,6 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
 
           toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
               notation for specific versions per toolkit.
-
-          version: Optional version of the trigger type to retrieve
 
           extra_headers: Send extra headers
 
@@ -243,11 +233,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
                 extra_body=extra_body,
                 timeout=timeout,
                 query=await async_maybe_transform(
-                    {
-                        "toolkit_versions": toolkit_versions,
-                        "version": version,
-                    },
-                    triggers_type_retrieve_params.TriggersTypeRetrieveParams,
+                    {"toolkit_versions": toolkit_versions}, triggers_type_retrieve_params.TriggersTypeRetrieveParams
                 ),
             ),
             cast_to=TriggersTypeRetrieveResponse,

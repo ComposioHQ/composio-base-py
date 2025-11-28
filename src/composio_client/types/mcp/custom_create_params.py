@@ -16,17 +16,20 @@ class CustomCreateParams(TypedDict, total=False):
     alphanumeric, spaces, and hyphens only)
     """
 
-    toolkits: Required[SequenceNotStr[str]]
-    """List of application/toolkit identifiers to enable for this server"""
+    allowed_tools: SequenceNotStr[str]
+    """Tool identifiers to enable that aren't part of standard toolkits"""
 
     auth_config_ids: SequenceNotStr[str]
     """ID references to existing authentication configurations"""
 
     custom_tools: SequenceNotStr[str]
-    """
-    Additional custom tool identifiers to enable that aren't part of standard
-    toolkits
+    """DEPRECATED: Use allowed_tools instead.
+
+    Tool identifiers to enable that aren't part of standard toolkits
     """
 
     managed_auth_via_composio: bool
     """Whether to manage authentication via Composio"""
+
+    toolkits: SequenceNotStr[str]
+    """List of application/toolkit identifiers to enable for this server"""

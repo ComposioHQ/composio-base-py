@@ -238,7 +238,7 @@ class ToolsResource(SyncAPIResource):
 
           user_id: User id for multi-user connected accounts (e.g. multiple users, organizations)
 
-          version: Tool version to execute (defaults to "latest" if not specified)
+          version: Tool version to execute (defaults to "00000000_00" if not specified)
 
           extra_headers: Send extra headers
 
@@ -403,9 +403,9 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRetrieveEnumResponse:
         """
-        Retrieve a list of all available tool enumeration values (tool slugs) for the
-        project. This endpoint returns a comma-separated string of tool slugs that can
-        be used in other API calls.
+        Retrieve a list of all available tool enumeration values (tool slugs) from
+        latest version of each toolkit. This endpoint returns a comma-separated string
+        of tool slugs that can be used in other API calls.
         """
         return self._get(
             "/api/v3/tools/enum",
@@ -619,7 +619,7 @@ class AsyncToolsResource(AsyncAPIResource):
 
           user_id: User id for multi-user connected accounts (e.g. multiple users, organizations)
 
-          version: Tool version to execute (defaults to "latest" if not specified)
+          version: Tool version to execute (defaults to "00000000_00" if not specified)
 
           extra_headers: Send extra headers
 
@@ -784,9 +784,9 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRetrieveEnumResponse:
         """
-        Retrieve a list of all available tool enumeration values (tool slugs) for the
-        project. This endpoint returns a comma-separated string of tool slugs that can
-        be used in other API calls.
+        Retrieve a list of all available tool enumeration values (tool slugs) from
+        latest version of each toolkit. This endpoint returns a comma-separated string
+        of tool slugs that can be used in other API calls.
         """
         return await self._get(
             "/api/v3/tools/enum",

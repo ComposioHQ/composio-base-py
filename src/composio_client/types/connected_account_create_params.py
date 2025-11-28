@@ -93,6 +93,22 @@ __all__ = [
     "ConnectionStateUnionMember10ValUnionMember1",
     "ConnectionStateUnionMember10ValUnionMember2",
     "ConnectionStateUnionMember10ValUnionMember3",
+    "ConnectionStateUnionMember11",
+    "ConnectionStateUnionMember11Val",
+    "ConnectionStateUnionMember11ValUnionMember0",
+    "ConnectionStateUnionMember11ValUnionMember1",
+    "ConnectionStateUnionMember11ValUnionMember2",
+    "ConnectionStateUnionMember11ValUnionMember3",
+    "ConnectionStateUnionMember11ValUnionMember4",
+    "ConnectionStateUnionMember11ValUnionMember5",
+    "ConnectionStateUnionMember12",
+    "ConnectionStateUnionMember12Val",
+    "ConnectionStateUnionMember12ValUnionMember0",
+    "ConnectionStateUnionMember12ValUnionMember1",
+    "ConnectionStateUnionMember12ValUnionMember2",
+    "ConnectionStateUnionMember12ValUnionMember3",
+    "ConnectionStateUnionMember12ValUnionMember4",
+    "ConnectionStateUnionMember12ValUnionMember5",
 ]
 
 
@@ -3472,6 +3488,780 @@ class ConnectionStateUnionMember10(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember10Val]
 
 
+class ConnectionStateUnionMember11ValUnionMember0Typed(TypedDict, total=False):
+    status: Required[Literal["INITIALIZING"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember11ValUnionMember0: TypeAlias = Union[
+    ConnectionStateUnionMember11ValUnionMember0Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember11ValUnionMember1Typed(TypedDict, total=False):
+    status: Required[Literal["INITIATED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember11ValUnionMember1: TypeAlias = Union[
+    ConnectionStateUnionMember11ValUnionMember1Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember11ValUnionMember2Typed(TypedDict, total=False):
+    status: Required[Literal["ACTIVE"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember11ValUnionMember2: TypeAlias = Union[
+    ConnectionStateUnionMember11ValUnionMember2Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember11ValUnionMember3Typed(TypedDict, total=False):
+    status: Required[Literal["INACTIVE"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember11ValUnionMember3: TypeAlias = Union[
+    ConnectionStateUnionMember11ValUnionMember3Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember11ValUnionMember4Typed(TypedDict, total=False):
+    status: Required[Literal["FAILED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    error: str
+
+    error_description: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember11ValUnionMember4: TypeAlias = Union[
+    ConnectionStateUnionMember11ValUnionMember4Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember11ValUnionMember5Typed(TypedDict, total=False):
+    status: Required[Literal["EXPIRED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expired_at: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember11ValUnionMember5: TypeAlias = Union[
+    ConnectionStateUnionMember11ValUnionMember5Typed, Dict[str, Optional[object]]
+]
+
+ConnectionStateUnionMember11Val: TypeAlias = Union[
+    ConnectionStateUnionMember11ValUnionMember0,
+    ConnectionStateUnionMember11ValUnionMember1,
+    ConnectionStateUnionMember11ValUnionMember2,
+    ConnectionStateUnionMember11ValUnionMember3,
+    ConnectionStateUnionMember11ValUnionMember4,
+    ConnectionStateUnionMember11ValUnionMember5,
+]
+
+
+class ConnectionStateUnionMember11(TypedDict, total=False):
+    auth_scheme: Required[Annotated[Literal["SAML"], PropertyInfo(alias="authScheme")]]
+
+    val: Required[ConnectionStateUnionMember11Val]
+
+
+class ConnectionStateUnionMember12ValUnionMember0Typed(TypedDict, total=False):
+    status: Required[Literal["INITIALIZING"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember12ValUnionMember0: TypeAlias = Union[
+    ConnectionStateUnionMember12ValUnionMember0Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember12ValUnionMember1Typed(TypedDict, total=False):
+    client_id: Required[str]
+    """Dynamically registered client ID"""
+
+    client_secret: Required[str]
+    """Dynamically registered client secret"""
+
+    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
+
+    status: Required[Literal["INITIATED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    callback_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    final_redirect_uri: Annotated[str, PropertyInfo(alias="finalRedirectUri")]
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    registration_access_token: str
+    """Token for managing the registered client"""
+
+    registration_client_uri: str
+    """URI for managing the registered client"""
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember12ValUnionMember1: TypeAlias = Union[
+    ConnectionStateUnionMember12ValUnionMember1Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember12ValUnionMember2Typed(TypedDict, total=False):
+    access_token: Required[str]
+
+    client_id: Required[str]
+    """Dynamically registered client ID"""
+
+    status: Required[Literal["ACTIVE"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    client_secret: str
+    """Dynamically registered client secret"""
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expires_in: Union[float, str, None]
+
+    extension: str
+
+    form_api_base_url: str
+
+    id_token: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: str
+
+    proxy_username: str
+
+    refresh_token: Optional[str]
+
+    region: str
+
+    registration_access_token: str
+    """Token for managing the registered client"""
+
+    scope: Union[str, SequenceNotStr[str], None]
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: str
+
+    token_type: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember12ValUnionMember2: TypeAlias = Union[
+    ConnectionStateUnionMember12ValUnionMember2Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember12ValUnionMember3Typed(TypedDict, total=False):
+    access_token: Required[str]
+
+    client_id: Required[str]
+    """Dynamically registered client ID"""
+
+    status: Required[Literal["INACTIVE"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    client_secret: str
+    """Dynamically registered client secret"""
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expires_in: Union[float, str, None]
+
+    extension: str
+
+    form_api_base_url: str
+
+    id_token: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: str
+
+    proxy_username: str
+
+    refresh_token: Optional[str]
+
+    region: str
+
+    registration_access_token: str
+    """Token for managing the registered client"""
+
+    scope: Union[str, SequenceNotStr[str], None]
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: str
+
+    token_type: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember12ValUnionMember3: TypeAlias = Union[
+    ConnectionStateUnionMember12ValUnionMember3Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember12ValUnionMember4Typed(TypedDict, total=False):
+    status: Required[Literal["FAILED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    error: str
+
+    error_description: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember12ValUnionMember4: TypeAlias = Union[
+    ConnectionStateUnionMember12ValUnionMember4Typed, Dict[str, Optional[object]]
+]
+
+
+class ConnectionStateUnionMember12ValUnionMember5Typed(TypedDict, total=False):
+    status: Required[Literal["EXPIRED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expired_at: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember12ValUnionMember5: TypeAlias = Union[
+    ConnectionStateUnionMember12ValUnionMember5Typed, Dict[str, Optional[object]]
+]
+
+ConnectionStateUnionMember12Val: TypeAlias = Union[
+    ConnectionStateUnionMember12ValUnionMember0,
+    ConnectionStateUnionMember12ValUnionMember1,
+    ConnectionStateUnionMember12ValUnionMember2,
+    ConnectionStateUnionMember12ValUnionMember3,
+    ConnectionStateUnionMember12ValUnionMember4,
+    ConnectionStateUnionMember12ValUnionMember5,
+]
+
+
+class ConnectionStateUnionMember12(TypedDict, total=False):
+    auth_scheme: Required[Annotated[Literal["DCR_OAUTH"], PropertyInfo(alias="authScheme")]]
+
+    val: Required[ConnectionStateUnionMember12Val]
+
+
 ConnectionState: TypeAlias = Union[
     ConnectionStateUnionMember0,
     ConnectionStateUnionMember1,
@@ -3484,6 +4274,8 @@ ConnectionState: TypeAlias = Union[
     ConnectionStateUnionMember8,
     ConnectionStateUnionMember9,
     ConnectionStateUnionMember10,
+    ConnectionStateUnionMember11,
+    ConnectionStateUnionMember12,
 ]
 
 

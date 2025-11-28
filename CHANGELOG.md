@@ -1,5 +1,29 @@
 # Changelog
 
+## 1.14.0 (2025-11-27)
+
+Full Changelog: [v1.13.0...v1.14.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.13.0...v1.14.0)
+
+### Features
+
+* **api:** Add tool router endpoints ([2a00588](https://github.com/ComposioHQ/composio-base-py/commit/2a005880cbf527a433796ec47a728a6e5dd8f0d2))
+* **api:** api update ([0c4d079](https://github.com/ComposioHQ/composio-base-py/commit/0c4d0797e1cf020f6d8763c2c80e55a272cd9a86))
+* **api:** api update ([fd0790a](https://github.com/ComposioHQ/composio-base-py/commit/fd0790ac58b51e6391d56f37943c6f4386997224))
+* **api:** api update ([48761e9](https://github.com/ComposioHQ/composio-base-py/commit/48761e97e3e6efc9fbf94642e975b02706b5836c))
+
+
+### Bug Fixes
+
+* compat with Python 3.14 ([4b4008e](https://github.com/ComposioHQ/composio-base-py/commit/4b4008e71592a8502ae297f2e320dc7fc72dfd63))
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([79fa860](https://github.com/ComposioHQ/composio-base-py/commit/79fa860a8169dd895fc4afac17513fd2feae0ead))
+* ensure streams are always closed ([b4026ba](https://github.com/ComposioHQ/composio-base-py/commit/b4026ba2d9f4cc7c583af9af91d9dfa89e6aa8a6))
+
+
+### Chores
+
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([8c1098a](https://github.com/ComposioHQ/composio-base-py/commit/8c1098af8fc1d100a9c82f019f335b0870469e9e))
+* **internal:** codegen related update ([2c9c7e8](https://github.com/ComposioHQ/composio-base-py/commit/2c9c7e8e0d3849169e9aa6b4dc592ee90e2077d8))
+
 ## 1.13.0 (2025-11-10)
 
 Full Changelog: [v1.12.0...v1.13.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.12.0...v1.13.0)

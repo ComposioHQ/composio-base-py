@@ -21,7 +21,6 @@ class TestCustom:
     def test_method_create(self, client: Composio) -> None:
         custom = client.mcp.custom.create(
             name="Development Integration Server",
-            toolkits=["github", "jira"],
         )
         assert_matches_type(CustomCreateResponse, custom, path=["response"])
 
@@ -29,10 +28,11 @@ class TestCustom:
     def test_method_create_with_all_params(self, client: Composio) -> None:
         custom = client.mcp.custom.create(
             name="Development Integration Server",
-            toolkits=["github", "jira"],
+            allowed_tools=["custom-api-tool", "internal-database-tool"],
             auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             custom_tools=["custom-api-tool", "internal-database-tool"],
             managed_auth_via_composio=True,
+            toolkits=["github", "jira"],
         )
         assert_matches_type(CustomCreateResponse, custom, path=["response"])
 
@@ -40,7 +40,6 @@ class TestCustom:
     def test_raw_response_create(self, client: Composio) -> None:
         response = client.mcp.custom.with_raw_response.create(
             name="Development Integration Server",
-            toolkits=["github", "jira"],
         )
 
         assert response.is_closed is True
@@ -52,7 +51,6 @@ class TestCustom:
     def test_streaming_response_create(self, client: Composio) -> None:
         with client.mcp.custom.with_streaming_response.create(
             name="Development Integration Server",
-            toolkits=["github", "jira"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -72,7 +70,6 @@ class TestAsyncCustom:
     async def test_method_create(self, async_client: AsyncComposio) -> None:
         custom = await async_client.mcp.custom.create(
             name="Development Integration Server",
-            toolkits=["github", "jira"],
         )
         assert_matches_type(CustomCreateResponse, custom, path=["response"])
 
@@ -80,10 +77,11 @@ class TestAsyncCustom:
     async def test_method_create_with_all_params(self, async_client: AsyncComposio) -> None:
         custom = await async_client.mcp.custom.create(
             name="Development Integration Server",
-            toolkits=["github", "jira"],
+            allowed_tools=["custom-api-tool", "internal-database-tool"],
             auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
             custom_tools=["custom-api-tool", "internal-database-tool"],
             managed_auth_via_composio=True,
+            toolkits=["github", "jira"],
         )
         assert_matches_type(CustomCreateResponse, custom, path=["response"])
 
@@ -91,7 +89,6 @@ class TestAsyncCustom:
     async def test_raw_response_create(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.custom.with_raw_response.create(
             name="Development Integration Server",
-            toolkits=["github", "jira"],
         )
 
         assert response.is_closed is True
@@ -103,7 +100,6 @@ class TestAsyncCustom:
     async def test_streaming_response_create(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.custom.with_streaming_response.create(
             name="Development Integration Server",
-            toolkits=["github", "jira"],
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

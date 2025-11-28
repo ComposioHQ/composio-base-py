@@ -237,4 +237,26 @@ from composio_client.types import ToolRouterCreateSessionResponse
 
 Methods:
 
-- <code title="post /api/v3/labs/tool_router/session">client.tool_router.<a href="./src/composio_client/resources/tool_router.py">create_session</a>(\*\*<a href="src/composio_client/types/tool_router_create_session_params.py">params</a>) -> <a href="./src/composio_client/types/tool_router_create_session_response.py">ToolRouterCreateSessionResponse</a></code>
+- <code title="post /api/v3/labs/tool_router/session">client.tool_router.<a href="./src/composio_client/resources/tool_router/tool_router.py">create_session</a>(\*\*<a href="src/composio_client/types/tool_router_create_session_params.py">params</a>) -> <a href="./src/composio_client/types/tool_router_create_session_response.py">ToolRouterCreateSessionResponse</a></code>
+
+## Session
+
+Types:
+
+```python
+from composio_client.types.tool_router import (
+    SessionCreateResponse,
+    SessionRetrieveResponse,
+    SessionExecuteResponse,
+    SessionLinkResponse,
+    SessionToolkitsResponse,
+)
+```
+
+Methods:
+
+- <code title="post /api/v3/tool_router/session">client.tool_router.session.<a href="./src/composio_client/resources/tool_router/session.py">create</a>(\*\*<a href="src/composio_client/types/tool_router/session_create_params.py">params</a>) -> <a href="./src/composio_client/types/tool_router/session_create_response.py">SessionCreateResponse</a></code>
+- <code title="get /api/v3/tool_router/session/{session_id}">client.tool_router.session.<a href="./src/composio_client/resources/tool_router/session.py">retrieve</a>(session_id) -> <a href="./src/composio_client/types/tool_router/session_retrieve_response.py">SessionRetrieveResponse</a></code>
+- <code title="post /api/v3/tool_router/session/{session_id}/execute">client.tool_router.session.<a href="./src/composio_client/resources/tool_router/session.py">execute</a>(session_id, \*\*<a href="src/composio_client/types/tool_router/session_execute_params.py">params</a>) -> <a href="./src/composio_client/types/tool_router/session_execute_response.py">SessionExecuteResponse</a></code>
+- <code title="post /api/v3/tool_router/session/{session_id}/link">client.tool_router.session.<a href="./src/composio_client/resources/tool_router/session.py">link</a>(session_id, \*\*<a href="src/composio_client/types/tool_router/session_link_params.py">params</a>) -> <a href="./src/composio_client/types/tool_router/session_link_response.py">SessionLinkResponse</a></code>
+- <code title="get /api/v3/tool_router/session/{session_id}/toolkits">client.tool_router.session.<a href="./src/composio_client/resources/tool_router/session.py">toolkits</a>(session_id, \*\*<a href="src/composio_client/types/tool_router/session_toolkits_params.py">params</a>) -> <a href="./src/composio_client/types/tool_router/session_toolkits_response.py">SessionToolkitsResponse</a></code>
