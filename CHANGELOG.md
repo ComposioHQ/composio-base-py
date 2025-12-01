@@ -1,5 +1,14 @@
 # Changelog
 
+## 1.16.0 (2025-12-01)
+
+Full Changelog: [v1.15.0...v1.16.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.15.0...v1.16.0)
+
+### Features
+
+* **api:** api update ([2264354](https://github.com/ComposioHQ/composio-base-py/commit/22643545739c0319467aadbb5bdb8536fcca95ec))
+* **api:** manual update ([213128d](https://github.com/ComposioHQ/composio-base-py/commit/213128d48a9c554f9ceb32ebd568d8b8ff921907))
+
 ## 1.15.0 (2025-11-28)
 
 Full Changelog: [v1.14.0...v1.15.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.14.0...v1.15.0)
