@@ -4337,9 +4337,6 @@ class ItemStateUnionMember12ValUnionMember1(BaseModel):
     client_id: str
     """Dynamically registered client ID"""
 
-    client_secret: str
-    """Dynamically registered client secret"""
-
     redirect_url: str = FieldInfo(alias="redirectUrl")
 
     status: Literal["INITIATED"]
@@ -4355,6 +4352,15 @@ class ItemStateUnionMember12ValUnionMember1(BaseModel):
     borneo_dashboard_url: Optional[str] = None
 
     callback_url: Optional[str] = None
+
+    client_id_issued_at: Optional[float] = None
+
+    client_secret: Optional[str] = None
+    """Dynamically registered client secret"""
+
+    client_secret_expires_at: Optional[float] = None
+
+    code_verifier: Optional[str] = None
 
     companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
 
@@ -4380,12 +4386,6 @@ class ItemStateUnionMember12ValUnionMember1(BaseModel):
     proxy_username: Optional[str] = None
 
     region: Optional[str] = None
-
-    registration_access_token: Optional[str] = None
-    """Token for managing the registered client"""
-
-    registration_client_uri: Optional[str] = None
-    """URI for managing the registered client"""
 
     server_location: Optional[str] = None
 
@@ -4435,8 +4435,12 @@ class ItemStateUnionMember12ValUnionMember2(BaseModel):
 
     borneo_dashboard_url: Optional[str] = None
 
+    client_id_issued_at: Optional[float] = None
+
     client_secret: Optional[str] = None
     """Dynamically registered client secret"""
+
+    client_secret_expires_at: Optional[float] = None
 
     companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
 
@@ -4466,9 +4470,6 @@ class ItemStateUnionMember12ValUnionMember2(BaseModel):
     refresh_token: Optional[str] = None
 
     region: Optional[str] = None
-
-    registration_access_token: Optional[str] = None
-    """Token for managing the registered client"""
 
     scope: Union[str, List[str], None] = None
 
@@ -4522,8 +4523,12 @@ class ItemStateUnionMember12ValUnionMember3(BaseModel):
 
     borneo_dashboard_url: Optional[str] = None
 
+    client_id_issued_at: Optional[float] = None
+
     client_secret: Optional[str] = None
     """Dynamically registered client secret"""
+
+    client_secret_expires_at: Optional[float] = None
 
     companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
 
@@ -4553,9 +4558,6 @@ class ItemStateUnionMember12ValUnionMember3(BaseModel):
     refresh_token: Optional[str] = None
 
     region: Optional[str] = None
-
-    registration_access_token: Optional[str] = None
-    """Token for managing the registered client"""
 
     scope: Union[str, List[str], None] = None
 
