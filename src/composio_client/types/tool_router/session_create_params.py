@@ -30,8 +30,22 @@ class SessionCreateParams(TypedDict, total=False):
     identifier from your database like a user ID or email address
     """
 
+    auth_configs: Dict[str, str]
+    """The auth configs to use for the session.
+
+    This will override the default behavior and use the given auth config when
+    specific toolkits are being executed
+    """
+
+    connected_accounts: Dict[str, str]
+    """The connected accounts to use for the session.
+
+    This will override the default behaviour and use the given connected account
+    when specific toolkits are being executed
+    """
+
     connections: Connections
-    """Configuration for authentication and connected account management"""
+    """Configuration for connection management settings"""
 
     execution: Execution
     """
@@ -50,13 +64,6 @@ class SessionCreateParams(TypedDict, total=False):
 
 
 class Connections(TypedDict, total=False):
-    auth_config_overrides: Dict[str, str]
-    """The auth configs to use for the session.
-
-    This will override the default behavior and use the given auth config when
-    specific toolkits are being executed
-    """
-
     auto_manage_connections: Optional[bool]
     """Whether to enable the connection manager for automatic connection handling.
 
@@ -69,13 +76,6 @@ class Connections(TypedDict, total=False):
     """
     The URI to redirect to after a user completes authentication for a connected
     account. This allows you to handle the auth callback in your own application.
-    """
-
-    connected_account_overrides: Dict[str, str]
-    """The connected accounts to use for the session.
-
-    This will override the default behaviour and use the given connected account
-    when specific toolkits are being executed
     """
 
     infer_scopes_from_tools: Optional[bool]
