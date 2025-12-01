@@ -24,17 +24,11 @@ __all__ = [
 
 
 class ConfigConnections(BaseModel):
-    auth_config_overrides: Optional[Dict[str, str]] = None
-    """Auth config overrides per toolkit"""
-
     auto_manage_connections: Optional[bool] = None
     """Whether to enable the connection manager for automatic connection handling"""
 
     callback_uri: Optional[str] = None
     """Custom callback URI for connected account auth flows"""
-
-    connected_account_overrides: Optional[Dict[str, str]] = None
-    """Connected account overrides per toolkit"""
 
     infer_scopes_from_tools: Optional[bool] = None
     """Whether to auto-infer auth scopes from tools"""
@@ -94,6 +88,12 @@ class ConfigTools(BaseModel):
 class Config(BaseModel):
     user_id: str
     """User identifier for this session"""
+
+    auth_configs: Optional[Dict[str, str]] = None
+    """Auth config overrides per toolkit"""
+
+    connected_accounts: Optional[Dict[str, str]] = None
+    """Connected account overrides per toolkit"""
 
     connections: Optional[ConfigConnections] = None
     """Connections configuration"""

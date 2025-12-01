@@ -32,6 +32,8 @@ __all__ = [
     "CustomConnectionDataUnionMember7Val",
     "CustomConnectionDataUnionMember8",
     "CustomConnectionDataUnionMember8Val",
+    "CustomConnectionDataUnionMember9",
+    "CustomConnectionDataUnionMember9Val",
 ]
 
 
@@ -727,6 +729,67 @@ class CustomConnectionDataUnionMember8(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember8Val]
 
 
+class CustomConnectionDataUnionMember9ValTyped(TypedDict, total=False):
+    credentials_json: Required[str]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+CustomConnectionDataUnionMember9Val: TypeAlias = Union[
+    CustomConnectionDataUnionMember9ValTyped, Dict[str, Optional[object]]
+]
+
+
+class CustomConnectionDataUnionMember9(TypedDict, total=False):
+    auth_scheme: Required[Annotated[Literal["GOOGLE_SERVICE_ACCOUNT"], PropertyInfo(alias="authScheme")]]
+
+    toolkit_slug: Required[Annotated[str, PropertyInfo(alias="toolkitSlug")]]
+
+    val: Required[CustomConnectionDataUnionMember9Val]
+
+
 CustomConnectionData: TypeAlias = Union[
     CustomConnectionDataUnionMember0,
     CustomConnectionDataUnionMember1,
@@ -737,4 +800,5 @@ CustomConnectionData: TypeAlias = Union[
     CustomConnectionDataUnionMember6,
     CustomConnectionDataUnionMember7,
     CustomConnectionDataUnionMember8,
+    CustomConnectionDataUnionMember9,
 ]
