@@ -34,21 +34,21 @@ class TestSession:
     def test_method_create_with_all_params(self, client: Composio) -> None:
         session = client.tool_router.session.create(
             user_id="user_123456789",
+            auth_configs={
+                "gmail": "ac_1223434343",
+                "slack": "ac_23343434343434",
+            },
+            connected_accounts={"github": "ca_34454545454545"},
             connections={
-                "auth_config_overrides": {
-                    "gmail": "ac_1223434343",
-                    "slack": "ac_23343434343434",
-                },
                 "auto_manage_connections": True,
                 "callback_uri": "https://your-app.com/auth/callback",
-                "connected_account_overrides": {"github": "ca_34454545454545"},
                 "infer_scopes_from_tools": True,
             },
             execution={
                 "proxy_execution_enabled": True,
                 "timeout_seconds": 600,
             },
-            toolkits={"enabled": ["gmail", "slack"]},
+            toolkits={"enabled": ["gmail", "slack", "github"]},
             tools={
                 "filters": {
                     "tags": {
@@ -299,21 +299,21 @@ class TestAsyncSession:
     async def test_method_create_with_all_params(self, async_client: AsyncComposio) -> None:
         session = await async_client.tool_router.session.create(
             user_id="user_123456789",
+            auth_configs={
+                "gmail": "ac_1223434343",
+                "slack": "ac_23343434343434",
+            },
+            connected_accounts={"github": "ca_34454545454545"},
             connections={
-                "auth_config_overrides": {
-                    "gmail": "ac_1223434343",
-                    "slack": "ac_23343434343434",
-                },
                 "auto_manage_connections": True,
                 "callback_uri": "https://your-app.com/auth/callback",
-                "connected_account_overrides": {"github": "ca_34454545454545"},
                 "infer_scopes_from_tools": True,
             },
             execution={
                 "proxy_execution_enabled": True,
                 "timeout_seconds": 600,
             },
-            toolkits={"enabled": ["gmail", "slack"]},
+            toolkits={"enabled": ["gmail", "slack", "github"]},
             tools={
                 "filters": {
                     "tags": {

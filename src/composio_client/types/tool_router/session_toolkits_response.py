@@ -32,9 +32,6 @@ class ItemConnectedAccount(BaseModel):
     status: str
     """Connection status"""
 
-    updated_at: datetime
-    """Last update timestamp"""
-
     user_id: str
     """User identifier"""
 

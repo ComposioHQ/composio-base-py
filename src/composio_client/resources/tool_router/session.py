@@ -56,6 +56,8 @@ class SessionResource(SyncAPIResource):
         self,
         *,
         user_id: str,
+        auth_configs: Dict[str, str] | Omit = omit,
+        connected_accounts: Dict[str, str] | Omit = omit,
         connections: session_create_params.Connections | Omit = omit,
         execution: session_create_params.Execution | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
@@ -78,7 +80,14 @@ class SessionResource(SyncAPIResource):
           user_id: The identifier of the user who is initiating the session, ideally a unique
               identifier from your database like a user ID or email address
 
-          connections: Configuration for authentication and connected account management
+          auth_configs: The auth configs to use for the session. This will override the default behavior
+              and use the given auth config when specific toolkits are being executed
+
+          connected_accounts: The connected accounts to use for the session. This will override the default
+              behaviour and use the given connected account when specific toolkits are being
+              executed
+
+          connections: Configuration for connection management settings
 
           execution: Configuration for workbench behavior including security restrictions and
               execution limits
@@ -101,6 +110,8 @@ class SessionResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "user_id": user_id,
+                    "auth_configs": auth_configs,
+                    "connected_accounts": connected_accounts,
                     "connections": connections,
                     "execution": execution,
                     "toolkits": toolkits,
@@ -346,6 +357,8 @@ class AsyncSessionResource(AsyncAPIResource):
         self,
         *,
         user_id: str,
+        auth_configs: Dict[str, str] | Omit = omit,
+        connected_accounts: Dict[str, str] | Omit = omit,
         connections: session_create_params.Connections | Omit = omit,
         execution: session_create_params.Execution | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
@@ -368,7 +381,14 @@ class AsyncSessionResource(AsyncAPIResource):
           user_id: The identifier of the user who is initiating the session, ideally a unique
               identifier from your database like a user ID or email address
 
-          connections: Configuration for authentication and connected account management
+          auth_configs: The auth configs to use for the session. This will override the default behavior
+              and use the given auth config when specific toolkits are being executed
+
+          connected_accounts: The connected accounts to use for the session. This will override the default
+              behaviour and use the given connected account when specific toolkits are being
+              executed
+
+          connections: Configuration for connection management settings
 
           execution: Configuration for workbench behavior including security restrictions and
               execution limits
@@ -391,6 +411,8 @@ class AsyncSessionResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "user_id": user_id,
+                    "auth_configs": auth_configs,
+                    "connected_accounts": connected_accounts,
                     "connections": connections,
                     "execution": execution,
                     "toolkits": toolkits,
