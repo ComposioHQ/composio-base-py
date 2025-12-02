@@ -129,6 +129,7 @@ class AuthConfigsResource(SyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -144,6 +145,8 @@ class AuthConfigsResource(SyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
+
+          restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
               can be used to share the API key for a tool with all connected accounts using
@@ -165,6 +168,7 @@ class AuthConfigsResource(SyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
+        restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
@@ -181,6 +185,8 @@ class AuthConfigsResource(SyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
+
+          restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
               can be used to share the API key for a tool with all connected accounts using
@@ -204,6 +210,7 @@ class AuthConfigsResource(SyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
         type: Literal["custom"] | Literal["default"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
         | auth_config_update_params.Variant1ToolAccessConfig
@@ -225,6 +232,7 @@ class AuthConfigsResource(SyncAPIResource):
                     "credentials": credentials,
                     "type": type,
                     "proxy_config": proxy_config,
+                    "restrict_to_following_tools": restrict_to_following_tools,
                     "shared_credentials": shared_credentials,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
@@ -489,6 +497,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -504,6 +513,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
+
+          restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
               can be used to share the API key for a tool with all connected accounts using
@@ -525,6 +536,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
+        restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
@@ -541,6 +553,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
+
+          restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
               can be used to share the API key for a tool with all connected accounts using
@@ -564,6 +578,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
         type: Literal["custom"] | Literal["default"],
         proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
         | auth_config_update_params.Variant1ToolAccessConfig
@@ -585,6 +600,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                     "credentials": credentials,
                     "type": type,
                     "proxy_config": proxy_config,
+                    "restrict_to_following_tools": restrict_to_following_tools,
                     "shared_credentials": shared_credentials,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,

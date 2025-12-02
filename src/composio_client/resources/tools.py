@@ -205,6 +205,7 @@ class ToolsResource(SyncAPIResource):
         connected_account_id: str | Omit = omit,
         custom_auth_params: tool_execute_params.CustomAuthParams | Omit = omit,
         custom_connection_data: tool_execute_params.CustomConnectionData | Omit = omit,
+        entity_id: str | Omit = omit,
         text: str | Omit = omit,
         user_id: str | Omit = omit,
         version: str | Omit = omit,
@@ -233,6 +234,9 @@ class ToolsResource(SyncAPIResource):
 
           custom_connection_data: Custom connection data for tools that support custom connection data
 
+          entity_id: Deprecated: please use user_id instead. Entity identifier for multi-entity
+              connected accounts (e.g. multiple repositories, organizations)
+
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
 
@@ -259,6 +263,7 @@ class ToolsResource(SyncAPIResource):
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
                     "custom_connection_data": custom_connection_data,
+                    "entity_id": entity_id,
                     "text": text,
                     "user_id": user_id,
                     "version": version,
@@ -338,6 +343,7 @@ class ToolsResource(SyncAPIResource):
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
         body: object | Omit = omit,
         connected_account_id: str | Omit = omit,
+        custom_connection_data: tool_proxy_params.CustomConnectionData | Omit = omit,
         parameters: Iterable[tool_proxy_params.Parameter] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -380,6 +386,7 @@ class ToolsResource(SyncAPIResource):
                     "method": method,
                     "body": body,
                     "connected_account_id": connected_account_id,
+                    "custom_connection_data": custom_connection_data,
                     "parameters": parameters,
                 },
                 tool_proxy_params.ToolProxyParams,
@@ -584,6 +591,7 @@ class AsyncToolsResource(AsyncAPIResource):
         connected_account_id: str | Omit = omit,
         custom_auth_params: tool_execute_params.CustomAuthParams | Omit = omit,
         custom_connection_data: tool_execute_params.CustomConnectionData | Omit = omit,
+        entity_id: str | Omit = omit,
         text: str | Omit = omit,
         user_id: str | Omit = omit,
         version: str | Omit = omit,
@@ -612,6 +620,9 @@ class AsyncToolsResource(AsyncAPIResource):
 
           custom_connection_data: Custom connection data for tools that support custom connection data
 
+          entity_id: Deprecated: please use user_id instead. Entity identifier for multi-entity
+              connected accounts (e.g. multiple repositories, organizations)
+
           text: Natural language description of the task to perform (mutually exclusive with
               arguments)
 
@@ -638,6 +649,7 @@ class AsyncToolsResource(AsyncAPIResource):
                     "connected_account_id": connected_account_id,
                     "custom_auth_params": custom_auth_params,
                     "custom_connection_data": custom_connection_data,
+                    "entity_id": entity_id,
                     "text": text,
                     "user_id": user_id,
                     "version": version,
@@ -717,6 +729,7 @@ class AsyncToolsResource(AsyncAPIResource):
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
         body: object | Omit = omit,
         connected_account_id: str | Omit = omit,
+        custom_connection_data: tool_proxy_params.CustomConnectionData | Omit = omit,
         parameters: Iterable[tool_proxy_params.Parameter] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -759,6 +772,7 @@ class AsyncToolsResource(AsyncAPIResource):
                     "method": method,
                     "body": body,
                     "connected_account_id": connected_account_id,
+                    "custom_connection_data": custom_connection_data,
                     "parameters": parameters,
                 },
                 tool_proxy_params.ToolProxyParams,
