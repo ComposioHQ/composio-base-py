@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.17.1 (2025-12-02)
+
+Full Changelog: [v1.17.0...v1.17.1](https://github.com/ComposioHQ/composio-base-py/compare/v1.17.0...v1.17.1)
+
+### Bug Fixes
+
+* preserve deprecated fields ([989de88](https://github.com/ComposioHQ/composio-base-py/commit/989de8855a4a0ddb700fa51a4575c933d929dfe3))
+
 ## 1.17.0 (2025-12-02)
 
 Full Changelog: [v1.16.0...v1.17.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.16.0...v1.17.0)
