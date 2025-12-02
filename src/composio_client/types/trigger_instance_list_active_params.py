@@ -15,12 +15,20 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     query_auth_config_ids_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="auth_config_ids")]
     """Array of auth config IDs to filter triggers by"""
 
-    query_auth_config_ids_2: Annotated[str, PropertyInfo(alias="authConfigIds")]
+    query_auth_config_ids_2: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="authConfigIds")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use auth_config_ids instead.
+    """
 
     query_connected_account_ids_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="connected_account_ids")]
     """Array of connected account IDs to filter triggers by"""
 
-    query_connected_account_ids_2: Annotated[str, PropertyInfo(alias="connectedAccountIds")]
+    query_connected_account_ids_2: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="connectedAccountIds")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use connected_account_ids instead.
+    """
 
     cursor: str
     """Cursor for pagination.
@@ -49,7 +57,11 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     query_show_disabled_1: Annotated[Optional[bool], PropertyInfo(alias="show_disabled")]
     """When set to true, includes disabled triggers in the response."""
 
-    query_show_disabled_2: Annotated[str, PropertyInfo(alias="showDisabled")]
+    query_show_disabled_2: Annotated[Optional[bool], PropertyInfo(alias="showDisabled")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use show_disabled instead.
+    """
 
     query_trigger_ids_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="trigger_ids")]
     """Array of trigger IDs to filter triggers by"""
@@ -57,6 +69,14 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     query_trigger_names_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="trigger_names")]
     """Array of trigger names to filter triggers by"""
 
-    query_trigger_ids_2: Annotated[str, PropertyInfo(alias="triggerIds")]
+    query_trigger_ids_2: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="triggerIds")]
+    """DEPRECATED: This parameter will be removed in a future version.
 
-    query_trigger_names_2: Annotated[str, PropertyInfo(alias="triggerNames")]
+    Please use trigger_ids instead.
+    """
+
+    query_trigger_names_2: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="triggerNames")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use trigger_names instead.
+    """

@@ -14,6 +14,12 @@ class TriggerInstanceUpsertParams(TypedDict, total=False):
     connected_account_id: str
     """Connected account nanoid"""
 
+    connected_auth_id: Annotated[str, PropertyInfo(alias="connectedAuthId")]
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use connected_account_id instead.
+    """
+
     toolkit_versions: Union[str, Dict[str, str], None]
     """Toolkit version specification.
 

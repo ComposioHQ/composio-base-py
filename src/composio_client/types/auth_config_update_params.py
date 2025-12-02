@@ -25,6 +25,9 @@ class Variant0(TypedDict, total=False):
 
     proxy_config: Variant0ProxyConfig
 
+    restrict_to_following_tools: SequenceNotStr[str]
+    """Use tool_access_config instead. This field will be deprecated in the future."""
+
     shared_credentials: Dict[str, Optional[object]]
     """Shared credentials that will be inherited by connected accounts.
 
@@ -66,6 +69,9 @@ class Variant0ToolAccessConfig(TypedDict, total=False):
 
 class Variant1(TypedDict, total=False):
     type: Required[Literal["default"]]
+
+    restrict_to_following_tools: SequenceNotStr[str]
+    """Use tool_access_config instead. This field will be deprecated in the future."""
 
     scopes: Union[str, SequenceNotStr[str]]
 
