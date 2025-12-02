@@ -210,8 +210,12 @@ class CustomConnectionDataUnionMember1ValTyped(TypedDict, total=False):
 
     borneo_dashboard_url: str
 
+    client_id_issued_at: float
+
     client_secret: str
     """Dynamically registered client secret"""
+
+    client_secret_expires_at: float
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
@@ -241,9 +245,6 @@ class CustomConnectionDataUnionMember1ValTyped(TypedDict, total=False):
     refresh_token: Optional[str]
 
     region: str
-
-    registration_access_token: str
-    """Token for managing the registered client"""
 
     scope: Union[str, SequenceNotStr[str], None]
 

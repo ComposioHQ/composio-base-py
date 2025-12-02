@@ -3890,9 +3890,6 @@ class ConnectionStateUnionMember12ValUnionMember1Typed(TypedDict, total=False):
     client_id: Required[str]
     """Dynamically registered client ID"""
 
-    client_secret: Required[str]
-    """Dynamically registered client secret"""
-
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     status: Required[Literal["INITIATED"]]
@@ -3908,6 +3905,15 @@ class ConnectionStateUnionMember12ValUnionMember1Typed(TypedDict, total=False):
     borneo_dashboard_url: str
 
     callback_url: str
+
+    client_id_issued_at: float
+
+    client_secret: str
+    """Dynamically registered client secret"""
+
+    client_secret_expires_at: float
+
+    code_verifier: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
@@ -3933,12 +3939,6 @@ class ConnectionStateUnionMember12ValUnionMember1Typed(TypedDict, total=False):
     proxy_username: str
 
     region: str
-
-    registration_access_token: str
-    """Token for managing the registered client"""
-
-    registration_client_uri: str
-    """URI for managing the registered client"""
 
     server_location: str
 
@@ -3981,8 +3981,12 @@ class ConnectionStateUnionMember12ValUnionMember2Typed(TypedDict, total=False):
 
     borneo_dashboard_url: str
 
+    client_id_issued_at: float
+
     client_secret: str
     """Dynamically registered client secret"""
+
+    client_secret_expires_at: float
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
@@ -4012,9 +4016,6 @@ class ConnectionStateUnionMember12ValUnionMember2Typed(TypedDict, total=False):
     refresh_token: Optional[str]
 
     region: str
-
-    registration_access_token: str
-    """Token for managing the registered client"""
 
     scope: Union[str, SequenceNotStr[str], None]
 
@@ -4061,8 +4062,12 @@ class ConnectionStateUnionMember12ValUnionMember3Typed(TypedDict, total=False):
 
     borneo_dashboard_url: str
 
+    client_id_issued_at: float
+
     client_secret: str
     """Dynamically registered client secret"""
+
+    client_secret_expires_at: float
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
@@ -4092,9 +4097,6 @@ class ConnectionStateUnionMember12ValUnionMember3Typed(TypedDict, total=False):
     refresh_token: Optional[str]
 
     region: str
-
-    registration_access_token: str
-    """Token for managing the registered client"""
 
     scope: Union[str, SequenceNotStr[str], None]
 
