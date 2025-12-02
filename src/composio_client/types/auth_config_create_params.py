@@ -55,6 +55,9 @@ class AuthConfigUnionMember0(TypedDict, total=False):
     name: str
     """The name of the integration"""
 
+    restrict_to_following_tools: SequenceNotStr[str]
+    """Use tool_access_config instead. This field will be deprecated in the future."""
+
     shared_credentials: Dict[str, Optional[object]]
     """
     [EXPERIMENTAL] Shared credentials that will be inherited by all connected
@@ -116,6 +119,9 @@ class AuthConfigUnionMember1(TypedDict, total=False):
     """The name of the integration"""
 
     proxy_config: AuthConfigUnionMember1ProxyConfig
+
+    restrict_to_following_tools: SequenceNotStr[str]
+    """Use tool_access_config instead. This field will be deprecated in the future."""
 
     shared_credentials: Dict[str, Optional[object]]
     """

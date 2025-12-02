@@ -39,6 +39,7 @@ class TestAuthConfigs:
                     "user_scopes": "string",
                 },
                 "name": "name",
+                "restrict_to_following_tools": ["string"],
                 "shared_credentials": {"foo": "bar"},
                 "tool_access_config": {"tools_for_connected_account_creation": ["string"]},
             },
@@ -129,6 +130,7 @@ class TestAuthConfigs:
                 "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
             },
+            restrict_to_following_tools=["string"],
             shared_credentials={"foo": "bar"},
             tool_access_config={
                 "tools_available_for_execution": ["string"],
@@ -187,6 +189,7 @@ class TestAuthConfigs:
         auth_config = client.auth_configs.update(
             nanoid="nanoid",
             type="default",
+            restrict_to_following_tools=["string"],
             scopes="string",
             shared_credentials={"foo": "bar"},
             tool_access_config={
@@ -373,6 +376,7 @@ class TestAsyncAuthConfigs:
                     "user_scopes": "string",
                 },
                 "name": "name",
+                "restrict_to_following_tools": ["string"],
                 "shared_credentials": {"foo": "bar"},
                 "tool_access_config": {"tools_for_connected_account_creation": ["string"]},
             },
@@ -463,6 +467,7 @@ class TestAsyncAuthConfigs:
                 "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
             },
+            restrict_to_following_tools=["string"],
             shared_credentials={"foo": "bar"},
             tool_access_config={
                 "tools_available_for_execution": ["string"],
@@ -521,6 +526,7 @@ class TestAsyncAuthConfigs:
         auth_config = await async_client.auth_configs.update(
             nanoid="nanoid",
             type="default",
+            restrict_to_following_tools=["string"],
             scopes="string",
             shared_credentials={"foo": "bar"},
             tool_access_config={

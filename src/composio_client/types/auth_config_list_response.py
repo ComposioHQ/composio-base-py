@@ -129,6 +129,9 @@ class Item(BaseModel):
 
     proxy_config: Optional[ItemProxyConfig] = None
 
+    restrict_to_following_tools: Optional[List[str]] = None
+    """Use tool_access_config instead. This field will be deprecated in the future."""
+
     shared_credentials: Optional[Dict[str, Optional[object]]] = None
     """
     [EXPERIMENTAL] Shared credentials that will be inherited by all connected
