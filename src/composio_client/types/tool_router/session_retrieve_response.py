@@ -27,8 +27,8 @@ class ConfigConnections(BaseModel):
     auto_manage_connections: Optional[bool] = None
     """Whether to enable the connection manager for automatic connection handling"""
 
-    callback_uri: Optional[str] = None
-    """Custom callback URI for connected account auth flows"""
+    callback_url: Optional[str] = None
+    """Custom callback URL for connected account auth flows"""
 
     infer_scopes_from_tools: Optional[bool] = None
     """Whether to auto-infer auth scopes from tools"""
@@ -132,6 +132,7 @@ class SessionRetrieveResponse(BaseModel):
             "COMPOSIO_MANAGE_CONNECTIONS",
             "COMPOSIO_REMOTE_WORKBENCH",
             "COMPOSIO_REMOTE_BASH_TOOL",
+            "COMPOSIO_GET_TOOL_SCHEMAS",
         ]
     ]
     """List of available tools in this session"""
