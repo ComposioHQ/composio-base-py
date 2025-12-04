@@ -72,9 +72,9 @@ class Connections(TypedDict, total=False):
     connections manually.
     """
 
-    callback_uri: str
+    callback_url: str
     """
-    The URI to redirect to after a user completes authentication for a connected
+    The URL to redirect to after a user completes authentication for a connected
     account. This allows you to handle the auth callback in your own application.
     """
 

@@ -19,6 +19,12 @@ class SessionToolkitsParams(TypedDict, total=False):
     paginate through the items. The cursor is not required for the first page.
     """
 
+    is_connected: Optional[bool]
+    """Whether to filter by connected toolkits.
+
+    If provided, only connected toolkits will be returned.
+    """
+
     limit: Optional[float]
     """Number of items per page, max allowed is 1000"""
 
