@@ -276,6 +276,7 @@ class SessionResource(SyncAPIResource):
         session_id: str,
         *,
         cursor: str | Omit = omit,
+        is_connected: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         toolkits: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -297,6 +298,9 @@ class SessionResource(SyncAPIResource):
               limit. The page is the page number and the limit is the number of items per
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
+
+          is_connected: Whether to filter by connected toolkits. If provided, only connected toolkits
+              will be returned.
 
           limit: Number of items per page, max allowed is 1000
 
@@ -323,6 +327,7 @@ class SessionResource(SyncAPIResource):
                 query=maybe_transform(
                     {
                         "cursor": cursor,
+                        "is_connected": is_connected,
                         "limit": limit,
                         "toolkits": toolkits,
                     },
@@ -577,6 +582,7 @@ class AsyncSessionResource(AsyncAPIResource):
         session_id: str,
         *,
         cursor: str | Omit = omit,
+        is_connected: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         toolkits: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -598,6 +604,9 @@ class AsyncSessionResource(AsyncAPIResource):
               limit. The page is the page number and the limit is the number of items per
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
+
+          is_connected: Whether to filter by connected toolkits. If provided, only connected toolkits
+              will be returned.
 
           limit: Number of items per page, max allowed is 1000
 
@@ -624,6 +633,7 @@ class AsyncSessionResource(AsyncAPIResource):
                 query=await async_maybe_transform(
                     {
                         "cursor": cursor,
+                        "is_connected": is_connected,
                         "limit": limit,
                         "toolkits": toolkits,
                     },

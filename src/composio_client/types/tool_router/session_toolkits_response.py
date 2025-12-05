@@ -54,6 +54,9 @@ class Item(BaseModel):
     enabled: bool
     """Whether the toolkit is enabled"""
 
+    is_no_auth: bool
+    """Whether the toolkit is no-auth"""
+
     meta: ItemMeta
     """Toolkit metadata"""
 

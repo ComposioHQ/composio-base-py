@@ -41,7 +41,7 @@ class TestSession:
             connected_accounts={"github": "ca_34454545454545"},
             connections={
                 "auto_manage_connections": True,
-                "callback_uri": "https://your-app.com/auth/callback",
+                "callback_url": "https://your-app.com/auth/callback",
                 "infer_scopes_from_tools": True,
             },
             execution={
@@ -246,6 +246,7 @@ class TestSession:
         session = client.tool_router.session.toolkits(
             session_id="trs_123456789",
             cursor="cursor",
+            is_connected=True,
             limit=0,
             toolkits=["string"],
         )
@@ -306,7 +307,7 @@ class TestAsyncSession:
             connected_accounts={"github": "ca_34454545454545"},
             connections={
                 "auto_manage_connections": True,
-                "callback_uri": "https://your-app.com/auth/callback",
+                "callback_url": "https://your-app.com/auth/callback",
                 "infer_scopes_from_tools": True,
             },
             execution={
@@ -511,6 +512,7 @@ class TestAsyncSession:
         session = await async_client.tool_router.session.toolkits(
             session_id="trs_123456789",
             cursor="cursor",
+            is_connected=True,
             limit=0,
             toolkits=["string"],
         )
