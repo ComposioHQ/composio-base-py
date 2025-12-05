@@ -109,7 +109,7 @@ class Config(BaseModel):
 
 
 class Mcp(BaseModel):
-    type: Literal["HTTP"]
+    type: Literal["http"]
     """The type of the MCP server. Can be http"""
 
     url: str
