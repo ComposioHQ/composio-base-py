@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.18.0 (2025-12-05)
+
+Full Changelog: [v1.17.1...v1.18.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.17.1...v1.18.0)
+
+### Features
+
+* **api:** api update ([2a724f8](https://github.com/ComposioHQ/composio-base-py/commit/2a724f853c42a11e6a9a2d97c40683cbb1618488))
+* **api:** api update ([3fbd8f6](https://github.com/ComposioHQ/composio-base-py/commit/3fbd8f6097fcdb2074b344beac13d8299e31e93a))
+
+
+### Chores
+
+* **docs:** use environment variables for authentication in code snippets ([ac6217c](https://github.com/ComposioHQ/composio-base-py/commit/ac6217c92fdd66a5601197b7dff8e12ebb664e0d))
+* update lockfile ([e3e399b](https://github.com/ComposioHQ/composio-base-py/commit/e3e399bc6686c8f818c4cb96a85cb9e47810ab5b))
+
 ## 1.17.1 (2025-12-02)
 
 Full Changelog: [v1.17.0...v1.17.1](https://github.com/ComposioHQ/composio-base-py/compare/v1.17.0...v1.17.1)
