@@ -25,6 +25,8 @@ class ConfigToolkit(TypedDict, total=False):
 
 
 class Config(TypedDict, total=False):
+    """Session configuration including enabled toolkits and their auth configs"""
+
     manually_manage_connections: Optional[bool]
     """Whether to manually manage connections"""
 

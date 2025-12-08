@@ -6,6 +6,8 @@ __all__ = ["McpDeleteResponse"]
 
 
 class McpDeleteResponse(BaseModel):
+    """Response indicating the success of the delete operation"""
+
     id: str
     """Unique identifier of the MCP server to retrieve, update, or delete"""
 

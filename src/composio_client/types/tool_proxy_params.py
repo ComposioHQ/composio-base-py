@@ -62,6 +62,8 @@ class ToolProxyParams(TypedDict, total=False):
 
 
 class CustomConnectionDataUnionMember0ValAuthedUser(TypedDict, total=False):
+    """for slack user scopes"""
+
     access_token: str
 
     scope: str

@@ -553,6 +553,8 @@ ConnectionDataUnionMember7: TypeAlias = Union[ConnectionDataUnionMember7Typed, D
 
 
 class ConnectionDataUnionMember8AuthedUser(TypedDict, total=False):
+    """for slack user scopes"""
+
     access_token: str
 
     scope: str
@@ -631,6 +633,8 @@ ConnectionDataUnionMember8: TypeAlias = Union[ConnectionDataUnionMember8Typed, D
 
 
 class ConnectionDataUnionMember9AuthedUser(TypedDict, total=False):
+    """for slack user scopes"""
+
     access_token: str
 
     scope: str

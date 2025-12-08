@@ -10,6 +10,8 @@ __all__ = ["TriggerInstanceListActiveResponse", "Item", "ItemDeprecated"]
 
 
 class ItemDeprecated(BaseModel):
+    """Deprecated fields for the trigger instance"""
+
     created_at: str = FieldInfo(alias="createdAt")
     """Deprecated created_at for the trigger instance"""
 

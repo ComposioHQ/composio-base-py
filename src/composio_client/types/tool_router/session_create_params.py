@@ -64,6 +64,8 @@ class SessionCreateParams(TypedDict, total=False):
 
 
 class Connections(TypedDict, total=False):
+    """Configuration for connection management settings"""
+
     auto_manage_connections: Optional[bool]
     """Whether to enable the connection manager for automatic connection handling.
 
@@ -87,6 +89,10 @@ class Connections(TypedDict, total=False):
 
 
 class Execution(TypedDict, total=False):
+    """
+    Configuration for workbench behavior including security restrictions and execution limits
+    """
+
     proxy_execution_enabled: Optional[bool]
     """Whether to allow proxy execute calls in the workbench.
 
@@ -101,11 +107,15 @@ class Execution(TypedDict, total=False):
 
 
 class ToolkitsEnabled(TypedDict, total=False):
+    """Enable only specific toolkits (allowlist)"""
+
     enabled: Required[SequenceNotStr[str]]
     """Only these specific toolkits will be enabled"""
 
 
 class ToolkitsDisabled(TypedDict, total=False):
+    """Disable specific toolkits (denylist)"""
+
     disabled: Required[SequenceNotStr[str]]
     """These specific toolkits will be disabled"""
 
@@ -114,6 +124,10 @@ Toolkits: TypeAlias = Union[ToolkitsEnabled, ToolkitsDisabled]
 
 
 class ToolsFiltersTags(TypedDict, total=False):
+    """
+    Filter tools by tags such as read_only_hint, non_destructive_hint, open_world_hint, idempotent_hint. Use include to only show tools with specific tags, or exclude to hide tools with specific tags.
+    """
+
     exclude: SequenceNotStr[str]
     """Exclude tools that have any of these tags.
 
@@ -128,6 +142,8 @@ class ToolsFiltersTags(TypedDict, total=False):
 
 
 class ToolsFilters(TypedDict, total=False):
+    """Configuration for filtering available tools based on tags and characteristics"""
+
     tags: ToolsFiltersTags
     """
     Filter tools by tags such as read_only_hint, non_destructive_hint,
@@ -150,6 +166,8 @@ ToolsOverrides: TypeAlias = Union[ToolsOverridesEnabled, ToolsOverridesDisabled]
 
 
 class Tools(TypedDict, total=False):
+    """Configuration for tool overrides and filtering"""
+
     filters: ToolsFilters
     """Configuration for filtering available tools based on tags and characteristics"""
 

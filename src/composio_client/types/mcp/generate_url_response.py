@@ -8,6 +8,8 @@ __all__ = ["GenerateURLResponse"]
 
 
 class GenerateURLResponse(BaseModel):
+    """Response containing the generated MCP URLs"""
+
     connected_account_urls: List[str]
     """List of URLs generated for each connected account ID"""
 

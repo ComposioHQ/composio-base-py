@@ -16,6 +16,8 @@ __all__ = [
 
 
 class ItemDeprecatedParams(BaseModel):
+    """Deprecated parameters maintained for backward compatibility"""
+
     default_connector_id: Optional[str] = None
     """Deprecated: Default connector ID"""
 
@@ -45,6 +47,8 @@ class ItemToolAccessConfig(BaseModel):
 
 
 class ItemToolkit(BaseModel):
+    """Information about the associated integration"""
+
     logo: str
     """The URL to the integration app's logo image"""
 
