@@ -96,6 +96,10 @@ class CustomAuthParamsParameter(_CustomAuthParamsParameterReservedKeywords, tota
 
 
 class CustomAuthParams(TypedDict, total=False):
+    """
+    Custom authentication parameters for tools that support parameterized authentication
+    """
+
     base_url: str
     """
     The base URL (root address) what you should use while making http requests to
@@ -114,6 +118,8 @@ class CustomAuthParams(TypedDict, total=False):
 
 
 class CustomConnectionDataUnionMember0ValAuthedUser(TypedDict, total=False):
+    """for slack user scopes"""
+
     access_token: str
 
     scope: str

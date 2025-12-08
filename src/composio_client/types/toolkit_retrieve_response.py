@@ -41,6 +41,10 @@ class MetaCategory(BaseModel):
 
 
 class Meta(BaseModel):
+    """
+    Comprehensive metadata for the toolkit including dates, descriptions, and statistics
+    """
+
     available_versions: List[str]
     """Available versions of the toolkit"""
 
@@ -105,6 +109,8 @@ class AuthConfigDetailFieldsAuthConfigCreationRequired(BaseModel):
 
 
 class AuthConfigDetailFieldsAuthConfigCreation(BaseModel):
+    """Form fields needed when creating an authentication configuration"""
+
     optional: List[AuthConfigDetailFieldsAuthConfigCreationOptional]
 
     required: List[AuthConfigDetailFieldsAuthConfigCreationRequired]
@@ -143,12 +149,18 @@ class AuthConfigDetailFieldsConnectedAccountInitiationRequired(BaseModel):
 
 
 class AuthConfigDetailFieldsConnectedAccountInitiation(BaseModel):
+    """
+    Form fields needed when connecting a user account with this authentication method
+    """
+
     optional: List[AuthConfigDetailFieldsConnectedAccountInitiationOptional]
 
     required: List[AuthConfigDetailFieldsConnectedAccountInitiationRequired]
 
 
 class AuthConfigDetailFields(BaseModel):
+    """Field groups required for different authentication stages"""
+
     auth_config_creation: AuthConfigDetailFieldsAuthConfigCreation
     """Form fields needed when creating an authentication configuration"""
 
@@ -160,17 +172,26 @@ class AuthConfigDetailFields(BaseModel):
 
 
 class AuthConfigDetailDeprecatedAuthProviderDetails(BaseModel):
+    """Authentication URL fields for OAuth 2.0 and OAuth 1.0.
+
+    We don't recommend using this field for authentication and might break post Aug 31 2025.
+    """
+
     authorization_url: Optional[str] = None
 
     token_url: Optional[str] = None
 
 
 class AuthConfigDetailProxy(BaseModel):
+    """Configuration for proxying authentication requests to external services"""
+
     base_url: str
     """URL to which authentication requests will be proxied"""
 
 
 class AuthConfigDetail(BaseModel):
+    """Detailed configuration for an authentication method"""
+
     fields: AuthConfigDetailFields
     """Field groups required for different authentication stages"""
 
@@ -192,6 +213,8 @@ class AuthConfigDetail(BaseModel):
 
 
 class ToolkitRetrieveResponse(BaseModel):
+    """Detailed information about a single toolkit"""
+
     deprecated: Deprecated
 
     enabled: bool

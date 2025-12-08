@@ -11,6 +11,11 @@ __all__ = ["CliGetSessionResponse", "Account"]
 
 
 class Account(BaseModel):
+    """Information about the linked account, if any.
+
+    Null if the session status is "pending".
+    """
+
     id: str
     """The ID of the linked account"""
 

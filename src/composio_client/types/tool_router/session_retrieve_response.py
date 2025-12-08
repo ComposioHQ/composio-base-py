@@ -24,6 +24,8 @@ __all__ = [
 
 
 class ConfigConnections(BaseModel):
+    """Connections configuration"""
+
     auto_manage_connections: Optional[bool] = None
     """Whether to enable the connection manager for automatic connection handling"""
 
@@ -35,6 +37,8 @@ class ConfigConnections(BaseModel):
 
 
 class ConfigExecution(BaseModel):
+    """Execution configuration"""
+
     proxy_execution_enabled: Optional[bool] = None
     """Whether to allow proxy execute calls in the workbench"""
 
@@ -54,6 +58,8 @@ ConfigToolkits: TypeAlias = Union[ConfigToolkitsEnabled, ConfigToolkitsDisabled]
 
 
 class ConfigToolsFiltersTags(BaseModel):
+    """Filter tools by specific tags"""
+
     exclude: Optional[List[str]] = None
     """Exclude tools that have these tags"""
 
@@ -62,6 +68,8 @@ class ConfigToolsFiltersTags(BaseModel):
 
 
 class ConfigToolsFilters(BaseModel):
+    """Tool filtering configuration"""
+
     tags: Optional[ConfigToolsFiltersTags] = None
     """Filter tools by specific tags"""
 
@@ -78,6 +86,8 @@ ConfigToolsOverrides: TypeAlias = Union[ConfigToolsOverridesEnabled, ConfigTools
 
 
 class ConfigTools(BaseModel):
+    """Tools configuration"""
+
     filters: Optional[ConfigToolsFilters] = None
     """Tool filtering configuration"""
 
@@ -86,6 +96,8 @@ class ConfigTools(BaseModel):
 
 
 class Config(BaseModel):
+    """The session configuration including user, toolkits, and overrides"""
+
     user_id: str
     """User identifier for this session"""
 

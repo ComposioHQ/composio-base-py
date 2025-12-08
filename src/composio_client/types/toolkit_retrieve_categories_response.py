@@ -8,6 +8,8 @@ __all__ = ["ToolkitRetrieveCategoriesResponse", "Item"]
 
 
 class Item(BaseModel):
+    """Information about a single toolkit category"""
+
     id: str
     """URL-friendly unique identifier for the category, used for filtering toolkits"""
 

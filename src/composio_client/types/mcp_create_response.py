@@ -8,6 +8,10 @@ __all__ = ["McpCreateResponse", "Commands"]
 
 
 class Commands(BaseModel):
+    """
+    Set of command line instructions for connecting various clients to this MCP server
+    """
+
     claude: str
     """Command line instruction for Claude client setup"""
 
@@ -19,6 +23,8 @@ class Commands(BaseModel):
 
 
 class McpCreateResponse(BaseModel):
+    """MCP server configuration and connection details"""
+
     id: str
     """UUID of the MCP server instance"""
 

@@ -707,6 +707,8 @@ class StateUnionMember1ValUnionMember1(BaseModel):
 
 
 class StateUnionMember1ValUnionMember2AuthedUser(BaseModel):
+    """for slack user scopes"""
+
     access_token: Optional[str] = None
 
     scope: Optional[str] = None
@@ -796,6 +798,8 @@ class StateUnionMember1ValUnionMember2(BaseModel):
 
 
 class StateUnionMember1ValUnionMember3AuthedUser(BaseModel):
+    """for slack user scopes"""
+
     access_token: Optional[str] = None
 
     scope: Optional[str] = None

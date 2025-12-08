@@ -8,6 +8,10 @@ __all__ = ["McpListResponse", "Item", "ItemCommands"]
 
 
 class ItemCommands(BaseModel):
+    """
+    Set of command line instructions for connecting various clients to this MCP server
+    """
+
     claude: str
     """Command line instruction for Claude client setup"""
 
@@ -19,6 +23,8 @@ class ItemCommands(BaseModel):
 
 
 class Item(BaseModel):
+    """MCP server configuration and connection details"""
+
     id: str
     """UUID of the MCP server instance"""
 
@@ -60,6 +66,8 @@ class Item(BaseModel):
 
 
 class McpListResponse(BaseModel):
+    """Paginated response containing MCP servers"""
+
     current_page: float
     """Current page number being returned"""
 

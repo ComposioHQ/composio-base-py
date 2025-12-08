@@ -6,5 +6,7 @@ __all__ = ["ConnectedAccountDeleteResponse"]
 
 
 class ConnectedAccountDeleteResponse(BaseModel):
+    """Response returned after successfully deleting a connected account"""
+
     success: bool
     """Indicates whether the connected account was successfully deleted"""

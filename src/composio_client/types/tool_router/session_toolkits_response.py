@@ -9,6 +9,8 @@ __all__ = ["SessionToolkitsResponse", "Item", "ItemConnectedAccount", "ItemConne
 
 
 class ItemConnectedAccountAuthConfig(BaseModel):
+    """Auth config details"""
+
     id: str
     """Auth config identifier"""
 
@@ -20,6 +22,8 @@ class ItemConnectedAccountAuthConfig(BaseModel):
 
 
 class ItemConnectedAccount(BaseModel):
+    """Connected account if available"""
+
     id: str
     """Connected account identifier"""
 
@@ -37,6 +41,8 @@ class ItemConnectedAccount(BaseModel):
 
 
 class ItemMeta(BaseModel):
+    """Toolkit metadata"""
+
     description: str
     """Description of the toolkit"""
 

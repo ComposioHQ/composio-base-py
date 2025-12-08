@@ -9,6 +9,8 @@ __all__ = ["ConnectedAccountRefreshResponse"]
 
 
 class ConnectedAccountRefreshResponse(BaseModel):
+    """Response schema for a refreshed connected account authentication"""
+
     id: str
     """The unique identifier of the connected account"""
 
