@@ -8,27 +8,11 @@ from .._models import BaseModel
 __all__ = [
     "AuthConfigListResponse",
     "Item",
-    "ItemDeprecatedParams",
     "ItemToolAccessConfig",
     "ItemToolkit",
+    "ItemDeprecatedParams",
     "ItemProxyConfig",
 ]
-
-
-class ItemDeprecatedParams(BaseModel):
-    """Deprecated parameters maintained for backward compatibility"""
-
-    default_connector_id: Optional[str] = None
-    """Deprecated: Default connector ID"""
-
-    expected_input_fields: Optional[List[Dict[str, Optional[object]]]] = None
-    """Deprecated: Fields expected during connection initialization"""
-
-    member_uuid: Optional[str] = None
-    """Deprecated: Member UUID"""
-
-    toolkit_id: Optional[str] = None
-    """Deprecated: Toolkit ID"""
 
 
 class ItemToolAccessConfig(BaseModel):
@@ -56,6 +40,22 @@ class ItemToolkit(BaseModel):
     """The unique identifier of the integration app"""
 
 
+class ItemDeprecatedParams(BaseModel):
+    """DEPRECATED: This parameter will be removed in a future version."""
+
+    default_connector_id: Optional[str] = None
+    """Deprecated: Default connector ID"""
+
+    expected_input_fields: Optional[List[Dict[str, Optional[object]]]] = None
+    """Deprecated: Fields expected during connection initialization"""
+
+    member_uuid: Optional[str] = None
+    """Deprecated: Member UUID"""
+
+    toolkit_id: Optional[str] = None
+    """Deprecated: Toolkit ID"""
+
+
 class ItemProxyConfig(BaseModel):
     proxy_url: str
     """The url of the auth proxy"""
@@ -67,9 +67,6 @@ class ItemProxyConfig(BaseModel):
 class Item(BaseModel):
     id: str
     """The unique ID of the authentication configuration"""
-
-    deprecated_params: ItemDeprecatedParams
-    """Deprecated parameters maintained for backward compatibility"""
 
     name: str
     """The display name of the authentication configuration"""
@@ -121,6 +118,9 @@ class Item(BaseModel):
     The authentication credentials (tokens, keys, etc.) - may be partially hidden
     for security
     """
+
+    deprecated_params: Optional[ItemDeprecatedParams] = None
+    """DEPRECATED: This parameter will be removed in a future version."""
 
     expected_input_fields: Optional[List[Optional[object]]] = None
     """Fields expected during connection initialization"""

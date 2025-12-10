@@ -58,10 +58,7 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     """When set to true, includes disabled triggers in the response."""
 
     query_show_disabled_2: Annotated[Optional[bool], PropertyInfo(alias="showDisabled")]
-    """DEPRECATED: This parameter will be removed in a future version.
-
-    Please use show_disabled instead.
-    """
+    """DEPRECATED: Use show_disabled instead"""
 
     query_trigger_ids_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="trigger_ids")]
     """Array of trigger IDs to filter triggers by"""

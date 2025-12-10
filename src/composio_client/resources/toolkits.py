@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import toolkit_list_params, toolkit_retrieve_params, toolkit_retrieve_categories_params
+from ..types import toolkit_list_params, toolkit_retrieve_params
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -162,7 +162,6 @@ class ToolkitsResource(SyncAPIResource):
     def retrieve_categories(
         self,
         *,
-        cache: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -175,28 +174,11 @@ class ToolkitsResource(SyncAPIResource):
         latest versions. These categories can be used to filter toolkits by type or
         purpose when using the toolkit listing endpoint. Categories help organize
         toolkits into logical groups based on their functionality or industry focus.
-
-        Args:
-          cache: Cache control parameter
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
             "/api/v3/toolkits/categories",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {"cache": cache}, toolkit_retrieve_categories_params.ToolkitRetrieveCategoriesParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ToolkitRetrieveCategoriesResponse,
         )
@@ -338,7 +320,6 @@ class AsyncToolkitsResource(AsyncAPIResource):
     async def retrieve_categories(
         self,
         *,
-        cache: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -351,28 +332,11 @@ class AsyncToolkitsResource(AsyncAPIResource):
         latest versions. These categories can be used to filter toolkits by type or
         purpose when using the toolkit listing endpoint. Categories help organize
         toolkits into logical groups based on their functionality or industry focus.
-
-        Args:
-          cache: Cache control parameter
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
             "/api/v3/toolkits/categories",
             options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {"cache": cache}, toolkit_retrieve_categories_params.ToolkitRetrieveCategoriesParams
-                ),
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ToolkitRetrieveCategoriesResponse,
         )
