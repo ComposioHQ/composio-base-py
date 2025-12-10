@@ -10,6 +10,8 @@ __all__ = ["ToolkitListResponse", "Item", "ItemDeprecated", "ItemMeta", "ItemMet
 
 
 class ItemDeprecated(BaseModel):
+    """Deprecated toolkit ID"""
+
     toolkit_id: str = FieldInfo(alias="toolkitId")
 
 
@@ -22,6 +24,8 @@ class ItemMetaCategory(BaseModel):
 
 
 class ItemMeta(BaseModel):
+    """Additional metadata about the toolkit"""
+
     categories: List[ItemMetaCategory]
     """List of categories associated with this toolkit"""
 
@@ -51,6 +55,8 @@ class ItemMeta(BaseModel):
 
 
 class Item(BaseModel):
+    """Detailed information about a toolkit"""
+
     deprecated: ItemDeprecated
     """Deprecated toolkit ID"""
 

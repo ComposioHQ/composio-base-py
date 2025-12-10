@@ -8,6 +8,10 @@ __all__ = ["McpUpdateResponse", "Commands"]
 
 
 class Commands(BaseModel):
+    """
+    Set of command line instructions for connecting various clients to this MCP server
+    """
+
     claude: str
     """Command line instruction for Claude client setup"""
 
@@ -19,6 +23,8 @@ class Commands(BaseModel):
 
 
 class McpUpdateResponse(BaseModel):
+    """MCP server configuration and connection details"""
+
     id: str
     """UUID of the MCP server instance"""
 
@@ -44,7 +50,9 @@ class McpUpdateResponse(BaseModel):
     """Whether the MCP server is managed by Composio"""
 
     mcp_url: str
-    """URL endpoint for establishing SSE connection to this MCP server"""
+    """
+    [DEPRECATED] Please use the URL with user_id or connected_account_id query param
+    """
 
     name: str
     """User-defined descriptive name for this MCP server"""

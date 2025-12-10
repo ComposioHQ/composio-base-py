@@ -669,6 +669,8 @@ class ConnectionDataUnionMember1ValUnionMember1(BaseModel):
 
 
 class ConnectionDataUnionMember1ValUnionMember2AuthedUser(BaseModel):
+    """for slack user scopes"""
+
     access_token: Optional[str] = None
 
     scope: Optional[str] = None
@@ -758,6 +760,8 @@ class ConnectionDataUnionMember1ValUnionMember2(BaseModel):
 
 
 class ConnectionDataUnionMember1ValUnionMember3AuthedUser(BaseModel):
+    """for slack user scopes"""
+
     access_token: Optional[str] = None
 
     scope: Optional[str] = None
@@ -4752,6 +4756,11 @@ ConnectionData: TypeAlias = Union[
 
 
 class Deprecated(BaseModel):
+    """DEPRECATED: This field will be removed in a future version.
+
+    Please use id and auth_config.id instead.
+    """
+
     auth_config_uuid: str = FieldInfo(alias="authConfigUuid")
     """The uuid of the auth config"""
 
@@ -4767,6 +4776,10 @@ class ConnectedAccountCreateResponse(BaseModel):
     """The connection data of the connected account"""
 
     deprecated: Deprecated
+    """DEPRECATED: This field will be removed in a future version.
+
+    Please use id and auth_config.id instead.
+    """
 
     redirect_uri: Optional[str] = None
     """DEPRECATED: This field will be removed in a future version"""

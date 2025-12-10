@@ -274,6 +274,8 @@ class AuthConfigsResource(SyncAPIResource):
 
           deprecated_app_id: The app id to filter by
 
+          deprecated_status: DEPRECATED: This parameter will be removed in a future version.
+
           is_composio_managed: Whether to filter by composio managed auth configs
 
           limit: Number of items per page, max allowed is 1000
@@ -641,6 +643,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
               required for the first page.
 
           deprecated_app_id: The app id to filter by
+
+          deprecated_status: DEPRECATED: This parameter will be removed in a future version.
 
           is_composio_managed: Whether to filter by composio managed auth configs
 

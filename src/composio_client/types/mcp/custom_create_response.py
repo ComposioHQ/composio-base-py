@@ -8,6 +8,10 @@ __all__ = ["CustomCreateResponse", "Commands"]
 
 
 class Commands(BaseModel):
+    """
+    Set of command line instructions for connecting various clients to this MCP server
+    """
+
     claude: str
     """Command line instruction for Claude client setup"""
 
@@ -19,6 +23,10 @@ class Commands(BaseModel):
 
 
 class CustomCreateResponse(BaseModel):
+    """
+    Response for a successfully created custom MCP server with multiple applications
+    """
+
     id: str
     """Unique identifier for the newly created custom MCP server"""
 

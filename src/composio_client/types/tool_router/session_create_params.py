@@ -2,24 +2,22 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
-from typing_extensions import Required, TypeAlias, TypedDict
+from typing import Dict, List, Union, Optional
+from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from ..._types import SequenceNotStr
 
 __all__ = [
     "SessionCreateParams",
-    "Connections",
-    "Execution",
+    "ManageConnections",
     "Toolkits",
     "ToolkitsEnabled",
     "ToolkitsDisabled",
     "Tools",
-    "ToolsFilters",
-    "ToolsFiltersTags",
-    "ToolsOverrides",
-    "ToolsOverridesEnabled",
-    "ToolsOverridesDisabled",
+    "ToolsEnabled",
+    "ToolsDisabled",
+    "ToolsTags",
+    "Workbench",
 ]
 
 
@@ -44,13 +42,16 @@ class SessionCreateParams(TypedDict, total=False):
     when specific toolkits are being executed
     """
 
-    connections: Connections
+    manage_connections: ManageConnections
     """Configuration for connection management settings"""
 
-    execution: Execution
-    """
-    Configuration for workbench behavior including security restrictions and
-    execution limits
+    tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]]
+    """Global MCP tool annotation hints for filtering.
+
+    readOnlyHint: tool does not modify environment. destructiveHint: tool may
+    perform destructive updates. idempotentHint: repeated calls with same args have
+    no additional effect. Toolkit-level tags override this. Toolkit enabled/disabled
+    lists take precedence over tag filtering.
     """
 
     toolkits: Toolkits
@@ -59,18 +60,18 @@ class SessionCreateParams(TypedDict, total=False):
     toolkits (denylist). Mutually exclusive.
     """
 
-    tools: Tools
-    """Configuration for tool overrides and filtering"""
-
-
-class Connections(TypedDict, total=False):
-    auto_manage_connections: Optional[bool]
-    """Whether to enable the connection manager for automatic connection handling.
-
-    If true, we will provide a tool your agent can use to initiate connections to
-    toolkits if it doesnt exist. If set to false, then you have to manage
-    connections manually.
+    tools: Dict[str, Tools]
     """
+    Tool-level configuration per toolkit - either specify enabled tools (whitelist),
+    disabled tools (blacklist), or filter by MCP tags for each toolkit
+    """
+
+    workbench: Workbench
+    """Configuration for workbench behavior"""
+
+
+class ManageConnections(TypedDict, total=False):
+    """Configuration for connection management settings"""
 
     callback_url: str
     """
@@ -78,34 +79,25 @@ class Connections(TypedDict, total=False):
     account. This allows you to handle the auth callback in your own application.
     """
 
-    infer_scopes_from_tools: Optional[bool]
-    """
-    If enabled, authentication scopes will be automatically inferred from the
-    specific tools being used in the session. This ensures minimal permissions are
-    requested.
-    """
+    enabled: Optional[bool]
+    """Whether to enable the connection manager for automatic connection handling.
 
-
-class Execution(TypedDict, total=False):
-    proxy_execution_enabled: Optional[bool]
-    """Whether to allow proxy execute calls in the workbench.
-
-    If false, prevents arbitrary HTTP requests and destructive actions.
-    """
-
-    timeout_seconds: float
-    """Maximum allowed execution time for workbench operations in seconds.
-
-    If not specified, uses the default timeout.
+    If true, we will provide a tool your agent can use to initiate connections to
+    toolkits if it doesnt exist. If set to false, then you have to manage
+    connections manually.
     """
 
 
 class ToolkitsEnabled(TypedDict, total=False):
+    """Enable only specific toolkits (allowlist)"""
+
     enabled: Required[SequenceNotStr[str]]
     """Only these specific toolkits will be enabled"""
 
 
 class ToolkitsDisabled(TypedDict, total=False):
+    """Disable specific toolkits (denylist)"""
+
     disabled: Required[SequenceNotStr[str]]
     """These specific toolkits will be disabled"""
 
@@ -113,48 +105,39 @@ class ToolkitsDisabled(TypedDict, total=False):
 Toolkits: TypeAlias = Union[ToolkitsEnabled, ToolkitsDisabled]
 
 
-class ToolsFiltersTags(TypedDict, total=False):
-    exclude: SequenceNotStr[str]
-    """Exclude tools that have any of these tags.
-
-    Tools with any of these tags will be filtered out.
-    """
-
-    include: SequenceNotStr[str]
-    """Only include tools that have these tags.
-
-    Tools must have at least one of these tags to be included.
-    """
-
-
-class ToolsFilters(TypedDict, total=False):
-    tags: ToolsFiltersTags
-    """
-    Filter tools by tags such as read_only_hint, non_destructive_hint,
-    open_world_hint, idempotent_hint. Use include to only show tools with specific
-    tags, or exclude to hide tools with specific tags.
-    """
-
-
-class ToolsOverridesEnabled(TypedDict, total=False):
+class ToolsEnabled(TypedDict, total=False):
     enabled: Required[SequenceNotStr[str]]
     """Only these specific tools will be available for this toolkit"""
 
 
-class ToolsOverridesDisabled(TypedDict, total=False):
+class ToolsDisabled(TypedDict, total=False):
     disabled: Required[SequenceNotStr[str]]
     """These specific tools will be disabled for this toolkit"""
 
 
-ToolsOverrides: TypeAlias = Union[ToolsOverridesEnabled, ToolsOverridesDisabled]
+class ToolsTags(TypedDict, total=False):
+    tags: Required[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]]]
+    """MCP tags to filter tools for this toolkit.
 
-
-class Tools(TypedDict, total=False):
-    filters: ToolsFilters
-    """Configuration for filtering available tools based on tags and characteristics"""
-
-    overrides: Dict[str, ToolsOverrides]
+    Only tools with these tags will be available.
     """
-    Tool-level overrides per toolkit - either specify enabled tools (whitelist) or
-    disabled tools (blacklist) for each toolkit
+
+
+Tools: TypeAlias = Union[ToolsEnabled, ToolsDisabled, ToolsTags]
+
+
+class Workbench(TypedDict, total=False):
+    """Configuration for workbench behavior"""
+
+    auto_offload_threshold: float
+    """Character threshold for automatic offloading.
+
+    When workbench response exceeds this threshold, it will be automatically
+    offloaded. Default is picked automatically based on the response size.
+    """
+
+    proxy_execution_enabled: bool
+    """Whether proxy execution is enabled.
+
+    When enabled, workbench can call URLs and APIs directly.
     """

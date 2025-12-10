@@ -631,6 +631,8 @@ ConnectionStateUnionMember1ValUnionMember1: TypeAlias = Union[
 
 
 class ConnectionStateUnionMember1ValUnionMember2AuthedUser(TypedDict, total=False):
+    """for slack user scopes"""
+
     access_token: str
 
     scope: str
@@ -713,6 +715,8 @@ ConnectionStateUnionMember1ValUnionMember2: TypeAlias = Union[
 
 
 class ConnectionStateUnionMember1ValUnionMember3AuthedUser(TypedDict, total=False):
+    """for slack user scopes"""
+
     access_token: str
 
     scope: str
