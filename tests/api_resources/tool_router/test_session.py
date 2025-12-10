@@ -39,27 +39,20 @@ class TestSession:
                 "slack": "ac_23343434343434",
             },
             connected_accounts={"github": "ca_34454545454545"},
-            connections={
-                "auto_manage_connections": True,
+            manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
-                "infer_scopes_from_tools": True,
+                "enabled": True,
             },
-            execution={
-                "proxy_execution_enabled": True,
-                "timeout_seconds": 600,
-            },
+            tags=["readOnlyHint", "destructiveHint"],
             toolkits={"enabled": ["gmail", "slack", "github"]},
             tools={
-                "filters": {
-                    "tags": {
-                        "exclude": ["destructive"],
-                        "include": ["read_only"],
-                    }
-                },
-                "overrides": {
-                    "gmail": {"enabled": ["GMAIL_SEND_EMAIL", "GMAIL_READ_EMAIL"]},
-                    "slack": {"disabled": ["SLACK_DELETE_MESSAGE"]},
-                },
+                "gmail": {"enabled": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
+                "slack": {"disabled": ["SLACK_ADD_EMOJI"]},
+                "slack_bot": {"tags": ["destructiveHint"]},
+            },
+            workbench={
+                "auto_offload_threshold": 20000,
+                "proxy_execution_enabled": True,
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -145,7 +138,6 @@ class TestSession:
                 "ref": "bar",
                 "inputs": "bar",
             },
-            x_session_access_key="sk_1a2b3c4d5e6f7g8h9i0j",
         )
         assert_matches_type(SessionExecuteResponse, session, path=["response"])
 
@@ -305,27 +297,20 @@ class TestAsyncSession:
                 "slack": "ac_23343434343434",
             },
             connected_accounts={"github": "ca_34454545454545"},
-            connections={
-                "auto_manage_connections": True,
+            manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
-                "infer_scopes_from_tools": True,
+                "enabled": True,
             },
-            execution={
-                "proxy_execution_enabled": True,
-                "timeout_seconds": 600,
-            },
+            tags=["readOnlyHint", "destructiveHint"],
             toolkits={"enabled": ["gmail", "slack", "github"]},
             tools={
-                "filters": {
-                    "tags": {
-                        "exclude": ["destructive"],
-                        "include": ["read_only"],
-                    }
-                },
-                "overrides": {
-                    "gmail": {"enabled": ["GMAIL_SEND_EMAIL", "GMAIL_READ_EMAIL"]},
-                    "slack": {"disabled": ["SLACK_DELETE_MESSAGE"]},
-                },
+                "gmail": {"enabled": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
+                "slack": {"disabled": ["SLACK_ADD_EMOJI"]},
+                "slack_bot": {"tags": ["destructiveHint"]},
+            },
+            workbench={
+                "auto_offload_threshold": 20000,
+                "proxy_execution_enabled": True,
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -411,7 +396,6 @@ class TestAsyncSession:
                 "ref": "bar",
                 "inputs": "bar",
             },
-            x_session_access_key="sk_1a2b3c4d5e6f7g8h9i0j",
         )
         assert_matches_type(SessionExecuteResponse, session, path=["response"])
 

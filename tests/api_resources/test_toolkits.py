@@ -110,13 +110,6 @@ class TestToolkits:
         assert_matches_type(ToolkitRetrieveCategoriesResponse, toolkit, path=["response"])
 
     @parametrize
-    def test_method_retrieve_categories_with_all_params(self, client: Composio) -> None:
-        toolkit = client.toolkits.retrieve_categories(
-            cache="1",
-        )
-        assert_matches_type(ToolkitRetrieveCategoriesResponse, toolkit, path=["response"])
-
-    @parametrize
     def test_raw_response_retrieve_categories(self, client: Composio) -> None:
         response = client.toolkits.with_raw_response.retrieve_categories()
 
@@ -228,13 +221,6 @@ class TestAsyncToolkits:
     @parametrize
     async def test_method_retrieve_categories(self, async_client: AsyncComposio) -> None:
         toolkit = await async_client.toolkits.retrieve_categories()
-        assert_matches_type(ToolkitRetrieveCategoriesResponse, toolkit, path=["response"])
-
-    @parametrize
-    async def test_method_retrieve_categories_with_all_params(self, async_client: AsyncComposio) -> None:
-        toolkit = await async_client.toolkits.retrieve_categories(
-            cache="1",
-        )
         assert_matches_type(ToolkitRetrieveCategoriesResponse, toolkit, path=["response"])
 
     @parametrize

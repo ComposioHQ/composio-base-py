@@ -65,12 +65,12 @@ class ToolRouterResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRouterCreateSessionResponse:
-        """Creates a new session for the tool router lab feature.
+        """Creates a new session for the tool router lab feature (Legacy).
 
-        This endpoint initializes
-        a new session with specified toolkits and their authentication configurations.
-        The session provides an isolated environment for testing and managing tool
-        routing logic with scoped MCP server access.
+        This endpoint
+        initializes a new session with specified toolkits and their authentication
+        configurations. The session provides an isolated environment for testing and
+        managing tool routing logic with scoped MCP server access.
 
         Args:
           user_id: Unique user identifier for the session owner
@@ -137,12 +137,12 @@ class AsyncToolRouterResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRouterCreateSessionResponse:
-        """Creates a new session for the tool router lab feature.
+        """Creates a new session for the tool router lab feature (Legacy).
 
-        This endpoint initializes
-        a new session with specified toolkits and their authentication configurations.
-        The session provides an isolated environment for testing and managing tool
-        routing logic with scoped MCP server access.
+        This endpoint
+        initializes a new session with specified toolkits and their authentication
+        configurations. The session provides an isolated environment for testing and
+        managing tool routing logic with scoped MCP server access.
 
         Args:
           user_id: Unique user identifier for the session owner

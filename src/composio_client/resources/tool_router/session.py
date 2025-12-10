@@ -2,12 +2,13 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, List, Optional
+from typing_extensions import Literal
 
 import httpx
 
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, strip_not_given, async_maybe_transform
+from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -58,10 +59,11 @@ class SessionResource(SyncAPIResource):
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
-        connections: session_create_params.Connections | Omit = omit,
-        execution: session_create_params.Execution | Omit = omit,
+        manage_connections: session_create_params.ManageConnections | Omit = omit,
+        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]] | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
-        tools: session_create_params.Tools | Omit = omit,
+        tools: Dict[str, session_create_params.Tools] | Omit = omit,
+        workbench: session_create_params.Workbench | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -87,15 +89,21 @@ class SessionResource(SyncAPIResource):
               behaviour and use the given connected account when specific toolkits are being
               executed
 
-          connections: Configuration for connection management settings
+          manage_connections: Configuration for connection management settings
 
-          execution: Configuration for workbench behavior including security restrictions and
-              execution limits
+          tags: Global MCP tool annotation hints for filtering. readOnlyHint: tool does not
+              modify environment. destructiveHint: tool may perform destructive updates.
+              idempotentHint: repeated calls with same args have no additional effect.
+              Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
+              over tag filtering.
 
           toolkits: Toolkit configuration - specify either enabled toolkits (allowlist) or disabled
               toolkits (denylist). Mutually exclusive.
 
-          tools: Configuration for tool overrides and filtering
+          tools: Tool-level configuration per toolkit - either specify enabled tools (whitelist),
+              disabled tools (blacklist), or filter by MCP tags for each toolkit
+
+          workbench: Configuration for workbench behavior
 
           extra_headers: Send extra headers
 
@@ -112,10 +120,11 @@ class SessionResource(SyncAPIResource):
                     "user_id": user_id,
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
-                    "connections": connections,
-                    "execution": execution,
+                    "manage_connections": manage_connections,
+                    "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
+                    "workbench": workbench,
                 },
                 session_create_params.SessionCreateParams,
             ),
@@ -168,7 +177,6 @@ class SessionResource(SyncAPIResource):
         *,
         tool_slug: str,
         arguments: Dict[str, Optional[object]] | Omit = omit,
-        x_session_access_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -192,9 +200,6 @@ class SessionResource(SyncAPIResource):
 
           arguments: The arguments required by the tool
 
-          x_session_access_key: Session access key for sandbox/workbench authentication. Alternative to
-              x-api-key for internal tool router endpoints.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -205,7 +210,6 @@ class SessionResource(SyncAPIResource):
         """
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
-        extra_headers = {**strip_not_given({"x-session-access-key": x_session_access_key}), **(extra_headers or {})}
         return self._post(
             f"/api/v3/tool_router/session/{session_id}/execute",
             body=maybe_transform(
@@ -364,10 +368,11 @@ class AsyncSessionResource(AsyncAPIResource):
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
-        connections: session_create_params.Connections | Omit = omit,
-        execution: session_create_params.Execution | Omit = omit,
+        manage_connections: session_create_params.ManageConnections | Omit = omit,
+        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]] | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
-        tools: session_create_params.Tools | Omit = omit,
+        tools: Dict[str, session_create_params.Tools] | Omit = omit,
+        workbench: session_create_params.Workbench | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -393,15 +398,21 @@ class AsyncSessionResource(AsyncAPIResource):
               behaviour and use the given connected account when specific toolkits are being
               executed
 
-          connections: Configuration for connection management settings
+          manage_connections: Configuration for connection management settings
 
-          execution: Configuration for workbench behavior including security restrictions and
-              execution limits
+          tags: Global MCP tool annotation hints for filtering. readOnlyHint: tool does not
+              modify environment. destructiveHint: tool may perform destructive updates.
+              idempotentHint: repeated calls with same args have no additional effect.
+              Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
+              over tag filtering.
 
           toolkits: Toolkit configuration - specify either enabled toolkits (allowlist) or disabled
               toolkits (denylist). Mutually exclusive.
 
-          tools: Configuration for tool overrides and filtering
+          tools: Tool-level configuration per toolkit - either specify enabled tools (whitelist),
+              disabled tools (blacklist), or filter by MCP tags for each toolkit
+
+          workbench: Configuration for workbench behavior
 
           extra_headers: Send extra headers
 
@@ -418,10 +429,11 @@ class AsyncSessionResource(AsyncAPIResource):
                     "user_id": user_id,
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
-                    "connections": connections,
-                    "execution": execution,
+                    "manage_connections": manage_connections,
+                    "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
+                    "workbench": workbench,
                 },
                 session_create_params.SessionCreateParams,
             ),
@@ -474,7 +486,6 @@ class AsyncSessionResource(AsyncAPIResource):
         *,
         tool_slug: str,
         arguments: Dict[str, Optional[object]] | Omit = omit,
-        x_session_access_key: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -498,9 +509,6 @@ class AsyncSessionResource(AsyncAPIResource):
 
           arguments: The arguments required by the tool
 
-          x_session_access_key: Session access key for sandbox/workbench authentication. Alternative to
-              x-api-key for internal tool router endpoints.
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -511,7 +519,6 @@ class AsyncSessionResource(AsyncAPIResource):
         """
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
-        extra_headers = {**strip_not_given({"x-session-access-key": x_session_access_key}), **(extra_headers or {})}
         return await self._post(
             f"/api/v3/tool_router/session/{session_id}/execute",
             body=await async_maybe_transform(

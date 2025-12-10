@@ -8,42 +8,27 @@ from ..._models import BaseModel
 __all__ = [
     "SessionRetrieveResponse",
     "Config",
-    "ConfigConnections",
-    "ConfigExecution",
+    "ConfigManageConnections",
     "ConfigToolkits",
     "ConfigToolkitsEnabled",
     "ConfigToolkitsDisabled",
     "ConfigTools",
-    "ConfigToolsFilters",
-    "ConfigToolsFiltersTags",
-    "ConfigToolsOverrides",
-    "ConfigToolsOverridesEnabled",
-    "ConfigToolsOverridesDisabled",
+    "ConfigToolsEnabled",
+    "ConfigToolsDisabled",
+    "ConfigToolsTags",
+    "ConfigWorkbench",
     "Mcp",
 ]
 
 
-class ConfigConnections(BaseModel):
-    """Connections configuration"""
-
-    auto_manage_connections: Optional[bool] = None
-    """Whether to enable the connection manager for automatic connection handling"""
+class ConfigManageConnections(BaseModel):
+    """Manage connections configuration"""
 
     callback_url: Optional[str] = None
     """Custom callback URL for connected account auth flows"""
 
-    infer_scopes_from_tools: Optional[bool] = None
-    """Whether to auto-infer auth scopes from tools"""
-
-
-class ConfigExecution(BaseModel):
-    """Execution configuration"""
-
-    proxy_execution_enabled: Optional[bool] = None
-    """Whether to allow proxy execute calls in the workbench"""
-
-    timeout_seconds: Optional[float] = None
-    """Maximum execution time for workbench operations in seconds"""
+    enabled: Optional[bool] = None
+    """Whether to enable the connection manager for automatic connection handling"""
 
 
 class ConfigToolkitsEnabled(BaseModel):
@@ -57,42 +42,32 @@ class ConfigToolkitsDisabled(BaseModel):
 ConfigToolkits: TypeAlias = Union[ConfigToolkitsEnabled, ConfigToolkitsDisabled]
 
 
-class ConfigToolsFiltersTags(BaseModel):
-    """Filter tools by specific tags"""
-
-    exclude: Optional[List[str]] = None
-    """Exclude tools that have these tags"""
-
-    include: Optional[List[str]] = None
-    """Only include tools that have these tags"""
-
-
-class ConfigToolsFilters(BaseModel):
-    """Tool filtering configuration"""
-
-    tags: Optional[ConfigToolsFiltersTags] = None
-    """Filter tools by specific tags"""
-
-
-class ConfigToolsOverridesEnabled(BaseModel):
+class ConfigToolsEnabled(BaseModel):
     enabled: List[str]
 
 
-class ConfigToolsOverridesDisabled(BaseModel):
+class ConfigToolsDisabled(BaseModel):
     disabled: List[str]
 
 
-ConfigToolsOverrides: TypeAlias = Union[ConfigToolsOverridesEnabled, ConfigToolsOverridesDisabled]
+class ConfigToolsTags(BaseModel):
+    tags: List[str]
 
 
-class ConfigTools(BaseModel):
-    """Tools configuration"""
+ConfigTools: TypeAlias = Union[ConfigToolsEnabled, ConfigToolsDisabled, ConfigToolsTags]
 
-    filters: Optional[ConfigToolsFilters] = None
-    """Tool filtering configuration"""
 
-    overrides: Optional[Dict[str, ConfigToolsOverrides]] = None
-    """Tool-level overrides per toolkit"""
+class ConfigWorkbench(BaseModel):
+    """Workbench configuration"""
+
+    auto_offload_threshold: Optional[float] = None
+    """
+    Character threshold after which tool execution response are saved to a file in
+    workbench. Default is 20k.
+    """
+
+    proxy_execution_enabled: Optional[bool] = None
+    """Whether proxy execution is enabled in the workbench"""
 
 
 class Config(BaseModel):
@@ -107,17 +82,25 @@ class Config(BaseModel):
     connected_accounts: Optional[Dict[str, str]] = None
     """Connected account overrides per toolkit"""
 
-    connections: Optional[ConfigConnections] = None
-    """Connections configuration"""
+    manage_connections: Optional[ConfigManageConnections] = None
+    """Manage connections configuration"""
 
-    execution: Optional[ConfigExecution] = None
-    """Execution configuration"""
+    tags: Optional[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]]] = None
+    """MCP tool annotation hints for filtering tools.
+
+    readOnlyHint: tool does not modify environment. destructiveHint: tool may
+    perform destructive updates. idempotentHint: tool may interact with external
+    entities.
+    """
 
     toolkits: Optional[ConfigToolkits] = None
     """Toolkit configuration - either enabled list or disabled list"""
 
-    tools: Optional[ConfigTools] = None
-    """Tools configuration"""
+    tools: Optional[Dict[str, ConfigTools]] = None
+    """Tool-level configuration per toolkit"""
+
+    workbench: Optional[ConfigWorkbench] = None
+    """Workbench configuration"""
 
 
 class Mcp(BaseModel):

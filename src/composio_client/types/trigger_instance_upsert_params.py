@@ -30,7 +30,13 @@ class TriggerInstanceUpsertParams(TypedDict, total=False):
     """Trigger configuration"""
 
     body_trigger_config_2: Annotated[Dict[str, Optional[object]], PropertyInfo(alias="triggerConfig")]
-    """Trigger configuration (deprecated)"""
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use trigger_config instead.
+    """
 
     version: str
-    """Optional version of the trigger type to retrieve"""
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use toolkit_versions instead.
+    """

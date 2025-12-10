@@ -108,8 +108,7 @@ class TriggerInstancesResource(SyncAPIResource):
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
-          query_show_disabled_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              show_disabled instead.
+          query_show_disabled_2: DEPRECATED: Use show_disabled instead
 
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
@@ -191,9 +190,11 @@ class TriggerInstancesResource(SyncAPIResource):
 
           body_trigger_config_1: Trigger configuration
 
-          body_trigger_config_2: Trigger configuration (deprecated)
+          body_trigger_config_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              trigger_config instead.
 
-          version: Optional version of the trigger type to retrieve
+          version: DEPRECATED: This parameter will be removed in a future version. Please use
+              toolkit_versions instead.
 
           extra_headers: Send extra headers
 
@@ -301,8 +302,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
-          query_show_disabled_2: DEPRECATED: This parameter will be removed in a future version. Please use
-              show_disabled instead.
+          query_show_disabled_2: DEPRECATED: Use show_disabled instead
 
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
@@ -384,9 +384,11 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           body_trigger_config_1: Trigger configuration
 
-          body_trigger_config_2: Trigger configuration (deprecated)
+          body_trigger_config_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              trigger_config instead.
 
-          version: Optional version of the trigger type to retrieve
+          version: DEPRECATED: This parameter will be removed in a future version. Please use
+              toolkit_versions instead.
 
           extra_headers: Send extra headers
 
