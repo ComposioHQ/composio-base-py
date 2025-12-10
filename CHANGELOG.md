@@ -1,5 +1,23 @@
 # Changelog
 
+## 1.19.0 (2025-12-10)
+
+Full Changelog: [v1.18.0...v1.19.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.18.0...v1.19.0)
+
+### Features
+
+* **api:** api update ([1a9c622](https://github.com/ComposioHQ/composio-base-py/commit/1a9c6221246f574d0247cbe983a90969ad6f0a60))
+
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([e883bb3](https://github.com/ComposioHQ/composio-base-py/commit/e883bb3d242f4ce941dfffa0dd27a857638206c0))
+
+
+### Chores
+
+* add missing docstrings ([19ca4bd](https://github.com/ComposioHQ/composio-base-py/commit/19ca4bdd3955fee1e7631fb119ebea24ba8dfbf8))
+
 ## 1.18.0 (2025-12-05)
 
 Full Changelog: [v1.17.1...v1.18.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.17.1...v1.18.0)
