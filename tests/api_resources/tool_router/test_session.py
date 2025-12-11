@@ -15,6 +15,7 @@ from composio_client.types.tool_router import (
     SessionExecuteResponse,
     SessionRetrieveResponse,
     SessionToolkitsResponse,
+    SessionExecuteMetaResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -41,18 +42,18 @@ class TestSession:
             connected_accounts={"github": "ca_34454545454545"},
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
-                "enabled": True,
+                "enable": True,
             },
             tags=["readOnlyHint", "destructiveHint"],
-            toolkits={"enabled": ["gmail", "slack", "github"]},
+            toolkits={"enable": ["gmail", "slack", "github"]},
             tools={
-                "gmail": {"enabled": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
-                "slack": {"disabled": ["SLACK_ADD_EMOJI"]},
+                "gmail": {"enable": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
+                "slack": {"disable": ["SLACK_ADD_EMOJI"]},
                 "slack_bot": {"tags": ["destructiveHint"]},
             },
             workbench={
                 "auto_offload_threshold": 20000,
-                "proxy_execution_enabled": True,
+                "enable_proxy_execution": True,
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -173,6 +174,60 @@ class TestSession:
             client.tool_router.session.with_raw_response.execute(
                 session_id="",
                 tool_slug="GITHUB_CREATE_ISSUE",
+            )
+
+    @parametrize
+    def test_method_execute_meta(self, client: Composio) -> None:
+        session = client.tool_router.session.execute_meta(
+            session_id="trs_LX9uJKBinWWr",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
+        )
+        assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
+
+    @parametrize
+    def test_method_execute_meta_with_all_params(self, client: Composio) -> None:
+        session = client.tool_router.session.execute_meta(
+            session_id="trs_LX9uJKBinWWr",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
+            arguments={
+                "toolkits": "bar",
+                "reinitiate_all": "bar",
+            },
+        )
+        assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
+
+    @parametrize
+    def test_raw_response_execute_meta(self, client: Composio) -> None:
+        response = client.tool_router.session.with_raw_response.execute_meta(
+            session_id="trs_LX9uJKBinWWr",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = response.parse()
+        assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
+
+    @parametrize
+    def test_streaming_response_execute_meta(self, client: Composio) -> None:
+        with client.tool_router.session.with_streaming_response.execute_meta(
+            session_id="trs_LX9uJKBinWWr",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = response.parse()
+            assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_execute_meta(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            client.tool_router.session.with_raw_response.execute_meta(
+                session_id="",
+                slug="COMPOSIO_MANAGE_CONNECTIONS",
             )
 
     @parametrize
@@ -299,18 +354,18 @@ class TestAsyncSession:
             connected_accounts={"github": "ca_34454545454545"},
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
-                "enabled": True,
+                "enable": True,
             },
             tags=["readOnlyHint", "destructiveHint"],
-            toolkits={"enabled": ["gmail", "slack", "github"]},
+            toolkits={"enable": ["gmail", "slack", "github"]},
             tools={
-                "gmail": {"enabled": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
-                "slack": {"disabled": ["SLACK_ADD_EMOJI"]},
+                "gmail": {"enable": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
+                "slack": {"disable": ["SLACK_ADD_EMOJI"]},
                 "slack_bot": {"tags": ["destructiveHint"]},
             },
             workbench={
                 "auto_offload_threshold": 20000,
-                "proxy_execution_enabled": True,
+                "enable_proxy_execution": True,
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -431,6 +486,60 @@ class TestAsyncSession:
             await async_client.tool_router.session.with_raw_response.execute(
                 session_id="",
                 tool_slug="GITHUB_CREATE_ISSUE",
+            )
+
+    @parametrize
+    async def test_method_execute_meta(self, async_client: AsyncComposio) -> None:
+        session = await async_client.tool_router.session.execute_meta(
+            session_id="trs_LX9uJKBinWWr",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
+        )
+        assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
+
+    @parametrize
+    async def test_method_execute_meta_with_all_params(self, async_client: AsyncComposio) -> None:
+        session = await async_client.tool_router.session.execute_meta(
+            session_id="trs_LX9uJKBinWWr",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
+            arguments={
+                "toolkits": "bar",
+                "reinitiate_all": "bar",
+            },
+        )
+        assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
+
+    @parametrize
+    async def test_raw_response_execute_meta(self, async_client: AsyncComposio) -> None:
+        response = await async_client.tool_router.session.with_raw_response.execute_meta(
+            session_id="trs_LX9uJKBinWWr",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = await response.parse()
+        assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_execute_meta(self, async_client: AsyncComposio) -> None:
+        async with async_client.tool_router.session.with_streaming_response.execute_meta(
+            session_id="trs_LX9uJKBinWWr",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = await response.parse()
+            assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_execute_meta(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            await async_client.tool_router.session.with_raw_response.execute_meta(
+                session_id="",
+                slug="COMPOSIO_MANAGE_CONNECTIONS",
             )
 
     @parametrize

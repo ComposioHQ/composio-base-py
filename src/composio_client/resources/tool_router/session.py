@@ -23,12 +23,14 @@ from ...types.tool_router import (
     session_create_params,
     session_execute_params,
     session_toolkits_params,
+    session_execute_meta_params,
 )
 from ...types.tool_router.session_link_response import SessionLinkResponse
 from ...types.tool_router.session_create_response import SessionCreateResponse
 from ...types.tool_router.session_execute_response import SessionExecuteResponse
 from ...types.tool_router.session_retrieve_response import SessionRetrieveResponse
 from ...types.tool_router.session_toolkits_response import SessionToolkitsResponse
+from ...types.tool_router.session_execute_meta_response import SessionExecuteMetaResponse
 
 __all__ = ["SessionResource", "AsyncSessionResource"]
 
@@ -97,11 +99,11 @@ class SessionResource(SyncAPIResource):
               Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
               over tag filtering.
 
-          toolkits: Toolkit configuration - specify either enabled toolkits (allowlist) or disabled
+          toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
 
-          tools: Tool-level configuration per toolkit - either specify enabled tools (whitelist),
-              disabled tools (blacklist), or filter by MCP tags for each toolkit
+          tools: Tool-level configuration per toolkit - either specify enable tools (whitelist),
+              disable tools (blacklist), or filter by MCP tags for each toolkit
 
           workbench: Configuration for workbench behavior
 
@@ -223,6 +225,55 @@ class SessionResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=SessionExecuteResponse,
+        )
+
+    def execute_meta(
+        self,
+        session_id: str,
+        *,
+        slug: str,
+        arguments: Dict[str, Optional[object]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SessionExecuteMetaResponse:
+        """
+        Executes a Composio meta tool (COMPOSIO\\__\\**) within a tool router session.
+
+        Args:
+          session_id: The unique identifier of the tool router session. Required for public API
+              endpoints, optional for internal endpoints where it is injected by middleware.
+
+          slug: The unique slug identifier of the meta tool to execute
+
+          arguments: The arguments required by the meta tool
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        return self._post(
+            f"/api/v3/tool_router/session/{session_id}/execute_meta",
+            body=maybe_transform(
+                {
+                    "slug": slug,
+                    "arguments": arguments,
+                },
+                session_execute_meta_params.SessionExecuteMetaParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SessionExecuteMetaResponse,
         )
 
     def link(
@@ -406,11 +457,11 @@ class AsyncSessionResource(AsyncAPIResource):
               Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
               over tag filtering.
 
-          toolkits: Toolkit configuration - specify either enabled toolkits (allowlist) or disabled
+          toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
 
-          tools: Tool-level configuration per toolkit - either specify enabled tools (whitelist),
-              disabled tools (blacklist), or filter by MCP tags for each toolkit
+          tools: Tool-level configuration per toolkit - either specify enable tools (whitelist),
+              disable tools (blacklist), or filter by MCP tags for each toolkit
 
           workbench: Configuration for workbench behavior
 
@@ -532,6 +583,55 @@ class AsyncSessionResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=SessionExecuteResponse,
+        )
+
+    async def execute_meta(
+        self,
+        session_id: str,
+        *,
+        slug: str,
+        arguments: Dict[str, Optional[object]] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SessionExecuteMetaResponse:
+        """
+        Executes a Composio meta tool (COMPOSIO\\__\\**) within a tool router session.
+
+        Args:
+          session_id: The unique identifier of the tool router session. Required for public API
+              endpoints, optional for internal endpoints where it is injected by middleware.
+
+          slug: The unique slug identifier of the meta tool to execute
+
+          arguments: The arguments required by the meta tool
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        return await self._post(
+            f"/api/v3/tool_router/session/{session_id}/execute_meta",
+            body=await async_maybe_transform(
+                {
+                    "slug": slug,
+                    "arguments": arguments,
+                },
+                session_execute_meta_params.SessionExecuteMetaParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SessionExecuteMetaResponse,
         )
 
     async def link(
@@ -664,6 +764,9 @@ class SessionResourceWithRawResponse:
         self.execute = to_raw_response_wrapper(
             session.execute,
         )
+        self.execute_meta = to_raw_response_wrapper(
+            session.execute_meta,
+        )
         self.link = to_raw_response_wrapper(
             session.link,
         )
@@ -684,6 +787,9 @@ class AsyncSessionResourceWithRawResponse:
         )
         self.execute = async_to_raw_response_wrapper(
             session.execute,
+        )
+        self.execute_meta = async_to_raw_response_wrapper(
+            session.execute_meta,
         )
         self.link = async_to_raw_response_wrapper(
             session.link,
@@ -706,6 +812,9 @@ class SessionResourceWithStreamingResponse:
         self.execute = to_streamed_response_wrapper(
             session.execute,
         )
+        self.execute_meta = to_streamed_response_wrapper(
+            session.execute_meta,
+        )
         self.link = to_streamed_response_wrapper(
             session.link,
         )
@@ -726,6 +835,9 @@ class AsyncSessionResourceWithStreamingResponse:
         )
         self.execute = async_to_streamed_response_wrapper(
             session.execute,
+        )
+        self.execute_meta = async_to_streamed_response_wrapper(
+            session.execute_meta,
         )
         self.link = async_to_streamed_response_wrapper(
             session.link,

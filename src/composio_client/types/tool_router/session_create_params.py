@@ -11,11 +11,11 @@ __all__ = [
     "SessionCreateParams",
     "ManageConnections",
     "Toolkits",
-    "ToolkitsEnabled",
-    "ToolkitsDisabled",
+    "ToolkitsEnable",
+    "ToolkitsDisable",
     "Tools",
-    "ToolsEnabled",
-    "ToolsDisabled",
+    "ToolsEnable",
+    "ToolsDisable",
     "ToolsTags",
     "Workbench",
 ]
@@ -56,14 +56,14 @@ class SessionCreateParams(TypedDict, total=False):
 
     toolkits: Toolkits
     """
-    Toolkit configuration - specify either enabled toolkits (allowlist) or disabled
+    Toolkit configuration - specify either enable toolkits (allowlist) or disable
     toolkits (denylist). Mutually exclusive.
     """
 
     tools: Dict[str, Tools]
     """
-    Tool-level configuration per toolkit - either specify enabled tools (whitelist),
-    disabled tools (blacklist), or filter by MCP tags for each toolkit
+    Tool-level configuration per toolkit - either specify enable tools (whitelist),
+    disable tools (blacklist), or filter by MCP tags for each toolkit
     """
 
     workbench: Workbench
@@ -79,7 +79,7 @@ class ManageConnections(TypedDict, total=False):
     account. This allows you to handle the auth callback in your own application.
     """
 
-    enabled: Optional[bool]
+    enable: Optional[bool]
     """Whether to enable the connection manager for automatic connection handling.
 
     If true, we will provide a tool your agent can use to initiate connections to
@@ -88,30 +88,30 @@ class ManageConnections(TypedDict, total=False):
     """
 
 
-class ToolkitsEnabled(TypedDict, total=False):
+class ToolkitsEnable(TypedDict, total=False):
     """Enable only specific toolkits (allowlist)"""
 
-    enabled: Required[SequenceNotStr[str]]
+    enable: Required[SequenceNotStr[str]]
     """Only these specific toolkits will be enabled"""
 
 
-class ToolkitsDisabled(TypedDict, total=False):
+class ToolkitsDisable(TypedDict, total=False):
     """Disable specific toolkits (denylist)"""
 
-    disabled: Required[SequenceNotStr[str]]
+    disable: Required[SequenceNotStr[str]]
     """These specific toolkits will be disabled"""
 
 
-Toolkits: TypeAlias = Union[ToolkitsEnabled, ToolkitsDisabled]
+Toolkits: TypeAlias = Union[ToolkitsEnable, ToolkitsDisable]
 
 
-class ToolsEnabled(TypedDict, total=False):
-    enabled: Required[SequenceNotStr[str]]
+class ToolsEnable(TypedDict, total=False):
+    enable: Required[SequenceNotStr[str]]
     """Only these specific tools will be available for this toolkit"""
 
 
-class ToolsDisabled(TypedDict, total=False):
-    disabled: Required[SequenceNotStr[str]]
+class ToolsDisable(TypedDict, total=False):
+    disable: Required[SequenceNotStr[str]]
     """These specific tools will be disabled for this toolkit"""
 
 
@@ -123,7 +123,7 @@ class ToolsTags(TypedDict, total=False):
     """
 
 
-Tools: TypeAlias = Union[ToolsEnabled, ToolsDisabled, ToolsTags]
+Tools: TypeAlias = Union[ToolsEnable, ToolsDisable, ToolsTags]
 
 
 class Workbench(TypedDict, total=False):
@@ -136,7 +136,7 @@ class Workbench(TypedDict, total=False):
     offloaded. Default is picked automatically based on the response size.
     """
 
-    proxy_execution_enabled: bool
+    enable_proxy_execution: bool
     """Whether proxy execution is enabled.
 
     When enabled, workbench can call URLs and APIs directly.
