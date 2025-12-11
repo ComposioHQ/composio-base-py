@@ -180,7 +180,7 @@ class TestSession:
     def test_method_execute_meta(self, client: Composio) -> None:
         session = client.tool_router.session.execute_meta(
             session_id="trs_LX9uJKBinWWr",
-            meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
         )
         assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
 
@@ -188,7 +188,7 @@ class TestSession:
     def test_method_execute_meta_with_all_params(self, client: Composio) -> None:
         session = client.tool_router.session.execute_meta(
             session_id="trs_LX9uJKBinWWr",
-            meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
             arguments={
                 "toolkits": "bar",
                 "reinitiate_all": "bar",
@@ -200,7 +200,7 @@ class TestSession:
     def test_raw_response_execute_meta(self, client: Composio) -> None:
         response = client.tool_router.session.with_raw_response.execute_meta(
             session_id="trs_LX9uJKBinWWr",
-            meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
         )
 
         assert response.is_closed is True
@@ -212,7 +212,7 @@ class TestSession:
     def test_streaming_response_execute_meta(self, client: Composio) -> None:
         with client.tool_router.session.with_streaming_response.execute_meta(
             session_id="trs_LX9uJKBinWWr",
-            meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -227,7 +227,7 @@ class TestSession:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
             client.tool_router.session.with_raw_response.execute_meta(
                 session_id="",
-                meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+                slug="COMPOSIO_MANAGE_CONNECTIONS",
             )
 
     @parametrize
@@ -492,7 +492,7 @@ class TestAsyncSession:
     async def test_method_execute_meta(self, async_client: AsyncComposio) -> None:
         session = await async_client.tool_router.session.execute_meta(
             session_id="trs_LX9uJKBinWWr",
-            meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
         )
         assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
 
@@ -500,7 +500,7 @@ class TestAsyncSession:
     async def test_method_execute_meta_with_all_params(self, async_client: AsyncComposio) -> None:
         session = await async_client.tool_router.session.execute_meta(
             session_id="trs_LX9uJKBinWWr",
-            meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
             arguments={
                 "toolkits": "bar",
                 "reinitiate_all": "bar",
@@ -512,7 +512,7 @@ class TestAsyncSession:
     async def test_raw_response_execute_meta(self, async_client: AsyncComposio) -> None:
         response = await async_client.tool_router.session.with_raw_response.execute_meta(
             session_id="trs_LX9uJKBinWWr",
-            meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
         )
 
         assert response.is_closed is True
@@ -524,7 +524,7 @@ class TestAsyncSession:
     async def test_streaming_response_execute_meta(self, async_client: AsyncComposio) -> None:
         async with async_client.tool_router.session.with_streaming_response.execute_meta(
             session_id="trs_LX9uJKBinWWr",
-            meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+            slug="COMPOSIO_MANAGE_CONNECTIONS",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -539,7 +539,7 @@ class TestAsyncSession:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
             await async_client.tool_router.session.with_raw_response.execute_meta(
                 session_id="",
-                meta_tool_slug="COMPOSIO_MANAGE_CONNECTIONS",
+                slug="COMPOSIO_MANAGE_CONNECTIONS",
             )
 
     @parametrize
