@@ -11,3 +11,5 @@ from .session_toolkits_params import SessionToolkitsParams as SessionToolkitsPar
 from .session_execute_response import SessionExecuteResponse as SessionExecuteResponse
 from .session_retrieve_response import SessionRetrieveResponse as SessionRetrieveResponse
 from .session_toolkits_response import SessionToolkitsResponse as SessionToolkitsResponse
+from .session_execute_meta_params import SessionExecuteMetaParams as SessionExecuteMetaParams
+from .session_execute_meta_response import SessionExecuteMetaResponse as SessionExecuteMetaResponse

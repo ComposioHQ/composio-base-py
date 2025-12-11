@@ -20,6 +20,9 @@ class ConnectedAccountListParams(TypedDict, total=False):
     cursor: Optional[str]
     """The cursor to paginate through the connected accounts"""
 
+    labels: Optional[SequenceNotStr[str]]
+    """The labels of the connected accounts"""
+
     limit: Optional[float]
     """The limit of the connected accounts to return"""
 

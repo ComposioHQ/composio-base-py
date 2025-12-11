@@ -138,6 +138,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         connected_account_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
+        labels: Optional[SequenceNotStr[str]] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         order_by: Literal["created_at", "updated_at"] | Omit = omit,
         order_direction: Literal["asc", "desc"] | Omit = omit,
@@ -161,6 +162,8 @@ class ConnectedAccountsResource(SyncAPIResource):
           connected_account_ids: The connected account ids to filter by
 
           cursor: The cursor to paginate through the connected accounts
+
+          labels: The labels of the connected accounts
 
           limit: The limit of the connected accounts to return
 
@@ -194,6 +197,7 @@ class ConnectedAccountsResource(SyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "connected_account_ids": connected_account_ids,
                         "cursor": cursor,
+                        "labels": labels,
                         "limit": limit,
                         "order_by": order_by,
                         "order_direction": order_direction,
@@ -444,6 +448,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         connected_account_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
+        labels: Optional[SequenceNotStr[str]] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         order_by: Literal["created_at", "updated_at"] | Omit = omit,
         order_direction: Literal["asc", "desc"] | Omit = omit,
@@ -467,6 +472,8 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
           connected_account_ids: The connected account ids to filter by
 
           cursor: The cursor to paginate through the connected accounts
+
+          labels: The labels of the connected accounts
 
           limit: The limit of the connected accounts to return
 
@@ -500,6 +507,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
                         "auth_config_ids": auth_config_ids,
                         "connected_account_ids": connected_account_ids,
                         "cursor": cursor,
+                        "labels": labels,
                         "limit": limit,
                         "order_by": order_by,
                         "order_direction": order_direction,
