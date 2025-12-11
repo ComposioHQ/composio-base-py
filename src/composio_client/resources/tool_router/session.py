@@ -99,11 +99,11 @@ class SessionResource(SyncAPIResource):
               Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
               over tag filtering.
 
-          toolkits: Toolkit configuration - specify either enabled toolkits (allowlist) or disabled
+          toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
 
-          tools: Tool-level configuration per toolkit - either specify enabled tools (whitelist),
-              disabled tools (blacklist), or filter by MCP tags for each toolkit
+          tools: Tool-level configuration per toolkit - either specify enable tools (whitelist),
+              disable tools (blacklist), or filter by MCP tags for each toolkit
 
           workbench: Configuration for workbench behavior
 
@@ -457,11 +457,11 @@ class AsyncSessionResource(AsyncAPIResource):
               Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
               over tag filtering.
 
-          toolkits: Toolkit configuration - specify either enabled toolkits (allowlist) or disabled
+          toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
 
-          tools: Tool-level configuration per toolkit - either specify enabled tools (whitelist),
-              disabled tools (blacklist), or filter by MCP tags for each toolkit
+          tools: Tool-level configuration per toolkit - either specify enable tools (whitelist),
+              disable tools (blacklist), or filter by MCP tags for each toolkit
 
           workbench: Configuration for workbench behavior
 

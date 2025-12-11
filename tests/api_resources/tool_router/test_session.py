@@ -42,18 +42,18 @@ class TestSession:
             connected_accounts={"github": "ca_34454545454545"},
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
-                "enabled": True,
+                "enable": True,
             },
             tags=["readOnlyHint", "destructiveHint"],
-            toolkits={"enabled": ["gmail", "slack", "github"]},
+            toolkits={"enable": ["gmail", "slack", "github"]},
             tools={
-                "gmail": {"enabled": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
-                "slack": {"disabled": ["SLACK_ADD_EMOJI"]},
+                "gmail": {"enable": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
+                "slack": {"disable": ["SLACK_ADD_EMOJI"]},
                 "slack_bot": {"tags": ["destructiveHint"]},
             },
             workbench={
                 "auto_offload_threshold": 20000,
-                "proxy_execution_enabled": True,
+                "proxy_execution_enable": True,
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -354,18 +354,18 @@ class TestAsyncSession:
             connected_accounts={"github": "ca_34454545454545"},
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
-                "enabled": True,
+                "enable": True,
             },
             tags=["readOnlyHint", "destructiveHint"],
-            toolkits={"enabled": ["gmail", "slack", "github"]},
+            toolkits={"enable": ["gmail", "slack", "github"]},
             tools={
-                "gmail": {"enabled": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
-                "slack": {"disabled": ["SLACK_ADD_EMOJI"]},
+                "gmail": {"enable": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
+                "slack": {"disable": ["SLACK_ADD_EMOJI"]},
                 "slack_bot": {"tags": ["destructiveHint"]},
             },
             workbench={
                 "auto_offload_threshold": 20000,
-                "proxy_execution_enabled": True,
+                "proxy_execution_enable": True,
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
