@@ -9,7 +9,7 @@ __all__ = ["SessionExecuteMetaParams"]
 
 
 class SessionExecuteMetaParams(TypedDict, total=False):
-    meta_tool_slug: Required[str]
+    slug: Required[str]
     """The unique slug identifier of the meta tool to execute"""
 
     arguments: Dict[str, Optional[object]]

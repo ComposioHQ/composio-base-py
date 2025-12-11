@@ -231,7 +231,7 @@ class SessionResource(SyncAPIResource):
         self,
         session_id: str,
         *,
-        meta_tool_slug: str,
+        slug: str,
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -247,7 +247,7 @@ class SessionResource(SyncAPIResource):
           session_id: The unique identifier of the tool router session. Required for public API
               endpoints, optional for internal endpoints where it is injected by middleware.
 
-          meta_tool_slug: The unique slug identifier of the meta tool to execute
+          slug: The unique slug identifier of the meta tool to execute
 
           arguments: The arguments required by the meta tool
 
@@ -265,7 +265,7 @@ class SessionResource(SyncAPIResource):
             f"/api/v3/tool_router/session/{session_id}/execute_meta",
             body=maybe_transform(
                 {
-                    "meta_tool_slug": meta_tool_slug,
+                    "slug": slug,
                     "arguments": arguments,
                 },
                 session_execute_meta_params.SessionExecuteMetaParams,
@@ -589,7 +589,7 @@ class AsyncSessionResource(AsyncAPIResource):
         self,
         session_id: str,
         *,
-        meta_tool_slug: str,
+        slug: str,
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -605,7 +605,7 @@ class AsyncSessionResource(AsyncAPIResource):
           session_id: The unique identifier of the tool router session. Required for public API
               endpoints, optional for internal endpoints where it is injected by middleware.
 
-          meta_tool_slug: The unique slug identifier of the meta tool to execute
+          slug: The unique slug identifier of the meta tool to execute
 
           arguments: The arguments required by the meta tool
 
@@ -623,7 +623,7 @@ class AsyncSessionResource(AsyncAPIResource):
             f"/api/v3/tool_router/session/{session_id}/execute_meta",
             body=await async_maybe_transform(
                 {
-                    "meta_tool_slug": meta_tool_slug,
+                    "slug": slug,
                     "arguments": arguments,
                 },
                 session_execute_meta_params.SessionExecuteMetaParams,
