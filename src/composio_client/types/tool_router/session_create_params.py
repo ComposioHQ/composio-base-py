@@ -136,7 +136,7 @@ class Workbench(TypedDict, total=False):
     offloaded. Default is picked automatically based on the response size.
     """
 
-    proxy_execution_enable: bool
+    enable_proxy_execution: bool
     """Whether proxy execution is enabled.
 
     When enabled, workbench can call URLs and APIs directly.

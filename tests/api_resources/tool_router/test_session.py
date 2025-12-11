@@ -53,7 +53,7 @@ class TestSession:
             },
             workbench={
                 "auto_offload_threshold": 20000,
-                "proxy_execution_enable": True,
+                "enable_proxy_execution": True,
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -365,7 +365,7 @@ class TestAsyncSession:
             },
             workbench={
                 "auto_offload_threshold": 20000,
-                "proxy_execution_enable": True,
+                "enable_proxy_execution": True,
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
