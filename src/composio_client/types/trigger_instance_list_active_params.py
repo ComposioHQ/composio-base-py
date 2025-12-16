@@ -41,12 +41,18 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     deprecated_auth_config_uuids: Annotated[
         Optional[SequenceNotStr[str]], PropertyInfo(alias="deprecatedAuthConfigUuids")
     ]
-    """Array of auth config UUIDs to filter triggers by"""
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use auth_config_ids instead.
+    """
 
     deprecated_connected_account_uuids: Annotated[
         Optional[SequenceNotStr[str]], PropertyInfo(alias="deprecatedConnectedAccountUuids")
     ]
-    """Array of connected account UUIDs to filter triggers by"""
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use connected_account_ids instead.
+    """
 
     limit: Optional[float]
     """Number of items per page, max allowed is 1000"""
@@ -58,7 +64,10 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     """When set to true, includes disabled triggers in the response."""
 
     query_show_disabled_2: Annotated[Optional[bool], PropertyInfo(alias="showDisabled")]
-    """DEPRECATED: Use show_disabled instead"""
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use show_disabled instead.
+    """
 
     query_trigger_ids_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="trigger_ids")]
     """Array of trigger IDs to filter triggers by"""
