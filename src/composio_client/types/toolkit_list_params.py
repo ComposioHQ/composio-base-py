@@ -20,9 +20,6 @@ class ToolkitListParams(TypedDict, total=False):
     paginate through the items. The cursor is not required for the first page.
     """
 
-    is_local: Optional[bool]
-    """Whether to include local toolkits in the results"""
-
     limit: Optional[float]
     """Number of items per page, max allowed is 1000"""
 

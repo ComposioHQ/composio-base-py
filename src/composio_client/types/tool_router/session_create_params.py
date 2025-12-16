@@ -45,13 +45,14 @@ class SessionCreateParams(TypedDict, total=False):
     manage_connections: ManageConnections
     """Configuration for connection management settings"""
 
-    tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]]
+    tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
     """Global MCP tool annotation hints for filtering.
 
     readOnlyHint: tool does not modify environment. destructiveHint: tool may
     perform destructive updates. idempotentHint: repeated calls with same args have
-    no additional effect. Toolkit-level tags override this. Toolkit enabled/disabled
-    lists take precedence over tag filtering.
+    no additional effect. openWorldHint: tool may interact with external entities.
+    Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
+    over tag filtering.
     """
 
     toolkits: Toolkits
@@ -116,7 +117,7 @@ class ToolsDisable(TypedDict, total=False):
 
 
 class ToolsTags(TypedDict, total=False):
-    tags: Required[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]]]
+    tags: Required[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]]
     """MCP tags to filter tools for this toolkit.
 
     Only tools with these tags will be available.

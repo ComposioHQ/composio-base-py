@@ -95,7 +95,6 @@ class ToolkitsResource(SyncAPIResource):
         *,
         category: str | Omit = omit,
         cursor: str | Omit = omit,
-        is_local: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         managed_by: Literal["composio", "all", "project"] | Omit = omit,
         sort_by: Literal["usage", "alphabetically"] | Omit = omit,
@@ -110,8 +109,8 @@ class ToolkitsResource(SyncAPIResource):
         Retrieves a comprehensive list of toolkits of their latest versions that are
         available to the authenticated project. Toolkits represent integration points
         with external services and applications, each containing a collection of tools
-        and triggers. This endpoint supports filtering by category, management type, and
-        local availability, as well as different sorting options.
+        and triggers. This endpoint supports filtering by category and management type,
+        as well as different sorting options.
 
         Args:
           category: Filter toolkits by category
@@ -120,8 +119,6 @@ class ToolkitsResource(SyncAPIResource):
               limit. The page is the page number and the limit is the number of items per
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
-
-          is_local: Whether to include local toolkits in the results
 
           limit: Number of items per page, max allowed is 1000
 
@@ -148,7 +145,6 @@ class ToolkitsResource(SyncAPIResource):
                     {
                         "category": category,
                         "cursor": cursor,
-                        "is_local": is_local,
                         "limit": limit,
                         "managed_by": managed_by,
                         "sort_by": sort_by,
@@ -253,7 +249,6 @@ class AsyncToolkitsResource(AsyncAPIResource):
         *,
         category: str | Omit = omit,
         cursor: str | Omit = omit,
-        is_local: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         managed_by: Literal["composio", "all", "project"] | Omit = omit,
         sort_by: Literal["usage", "alphabetically"] | Omit = omit,
@@ -268,8 +263,8 @@ class AsyncToolkitsResource(AsyncAPIResource):
         Retrieves a comprehensive list of toolkits of their latest versions that are
         available to the authenticated project. Toolkits represent integration points
         with external services and applications, each containing a collection of tools
-        and triggers. This endpoint supports filtering by category, management type, and
-        local availability, as well as different sorting options.
+        and triggers. This endpoint supports filtering by category and management type,
+        as well as different sorting options.
 
         Args:
           category: Filter toolkits by category
@@ -278,8 +273,6 @@ class AsyncToolkitsResource(AsyncAPIResource):
               limit. The page is the page number and the limit is the number of items per
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
-
-          is_local: Whether to include local toolkits in the results
 
           limit: Number of items per page, max allowed is 1000
 
@@ -306,7 +299,6 @@ class AsyncToolkitsResource(AsyncAPIResource):
                     {
                         "category": category,
                         "cursor": cursor,
-                        "is_local": is_local,
                         "limit": limit,
                         "managed_by": managed_by,
                         "sort_by": sort_by,

@@ -61,9 +61,10 @@ class Item(BaseModel):
     """Deprecated toolkit ID"""
 
     is_local_toolkit: bool
-    """
-    Indicates if this toolkit is specific to the current project or globally
-    available
+    """DEPRECATED: This field is no longer meaningful and will always return false.
+
+    It was previously used to indicate if a toolkit is specific to the current
+    project.
     """
 
     meta: ItemMeta
