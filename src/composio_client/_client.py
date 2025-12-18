@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import os
-from typing import Any, Dict, Mapping, cast
+from typing import TYPE_CHECKING, Any, Dict, Mapping, cast
 from typing_extensions import Self, Literal, override
 
 import httpx
@@ -20,8 +20,8 @@ from ._types import (
     not_given,
 )
 from ._utils import is_given, get_async_library
+from ._compat import cached_property
 from ._version import __version__
-from .resources import cli, link, files, tools, toolkits, migration, auth_configs, triggers_types, connected_accounts
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -29,9 +29,34 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
-from .resources.mcp import mcp
-from .resources.tool_router import tool_router
-from .resources.trigger_instances import trigger_instances
+
+if TYPE_CHECKING:
+    from .resources import (
+        cli,
+        mcp,
+        link,
+        files,
+        tools,
+        toolkits,
+        migration,
+        tool_router,
+        auth_configs,
+        triggers_types,
+        trigger_instances,
+        connected_accounts,
+    )
+    from .resources.cli import CliResource, AsyncCliResource
+    from .resources.link import LinkResource, AsyncLinkResource
+    from .resources.files import FilesResource, AsyncFilesResource
+    from .resources.tools import ToolsResource, AsyncToolsResource
+    from .resources.mcp.mcp import McpResource, AsyncMcpResource
+    from .resources.toolkits import ToolkitsResource, AsyncToolkitsResource
+    from .resources.migration import MigrationResource, AsyncMigrationResource
+    from .resources.auth_configs import AuthConfigsResource, AsyncAuthConfigsResource
+    from .resources.triggers_types import TriggersTypesResource, AsyncTriggersTypesResource
+    from .resources.connected_accounts import ConnectedAccountsResource, AsyncConnectedAccountsResource
+    from .resources.tool_router.tool_router import ToolRouterResource, AsyncToolRouterResource
+    from .resources.trigger_instances.trigger_instances import TriggerInstancesResource, AsyncTriggerInstancesResource
 
 __all__ = [
     "ENVIRONMENTS",
@@ -53,21 +78,6 @@ ENVIRONMENTS: Dict[str, str] = {
 
 
 class Composio(SyncAPIClient):
-    auth_configs: auth_configs.AuthConfigsResource
-    connected_accounts: connected_accounts.ConnectedAccountsResource
-    link: link.LinkResource
-    toolkits: toolkits.ToolkitsResource
-    tools: tools.ToolsResource
-    trigger_instances: trigger_instances.TriggerInstancesResource
-    triggers_types: triggers_types.TriggersTypesResource
-    mcp: mcp.McpResource
-    files: files.FilesResource
-    migration: migration.MigrationResource
-    cli: cli.CliResource
-    tool_router: tool_router.ToolRouterResource
-    with_raw_response: ComposioWithRawResponse
-    with_streaming_response: ComposioWithStreamedResponse
-
     # client options
     api_key: str | None
 
@@ -142,20 +152,85 @@ class Composio(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.auth_configs = auth_configs.AuthConfigsResource(self)
-        self.connected_accounts = connected_accounts.ConnectedAccountsResource(self)
-        self.link = link.LinkResource(self)
-        self.toolkits = toolkits.ToolkitsResource(self)
-        self.tools = tools.ToolsResource(self)
-        self.trigger_instances = trigger_instances.TriggerInstancesResource(self)
-        self.triggers_types = triggers_types.TriggersTypesResource(self)
-        self.mcp = mcp.McpResource(self)
-        self.files = files.FilesResource(self)
-        self.migration = migration.MigrationResource(self)
-        self.cli = cli.CliResource(self)
-        self.tool_router = tool_router.ToolRouterResource(self)
-        self.with_raw_response = ComposioWithRawResponse(self)
-        self.with_streaming_response = ComposioWithStreamedResponse(self)
+    @cached_property
+    def auth_configs(self) -> AuthConfigsResource:
+        from .resources.auth_configs import AuthConfigsResource
+
+        return AuthConfigsResource(self)
+
+    @cached_property
+    def connected_accounts(self) -> ConnectedAccountsResource:
+        from .resources.connected_accounts import ConnectedAccountsResource
+
+        return ConnectedAccountsResource(self)
+
+    @cached_property
+    def link(self) -> LinkResource:
+        from .resources.link import LinkResource
+
+        return LinkResource(self)
+
+    @cached_property
+    def toolkits(self) -> ToolkitsResource:
+        from .resources.toolkits import ToolkitsResource
+
+        return ToolkitsResource(self)
+
+    @cached_property
+    def tools(self) -> ToolsResource:
+        from .resources.tools import ToolsResource
+
+        return ToolsResource(self)
+
+    @cached_property
+    def trigger_instances(self) -> TriggerInstancesResource:
+        from .resources.trigger_instances import TriggerInstancesResource
+
+        return TriggerInstancesResource(self)
+
+    @cached_property
+    def triggers_types(self) -> TriggersTypesResource:
+        from .resources.triggers_types import TriggersTypesResource
+
+        return TriggersTypesResource(self)
+
+    @cached_property
+    def mcp(self) -> McpResource:
+        from .resources.mcp import McpResource
+
+        return McpResource(self)
+
+    @cached_property
+    def files(self) -> FilesResource:
+        from .resources.files import FilesResource
+
+        return FilesResource(self)
+
+    @cached_property
+    def migration(self) -> MigrationResource:
+        from .resources.migration import MigrationResource
+
+        return MigrationResource(self)
+
+    @cached_property
+    def cli(self) -> CliResource:
+        from .resources.cli import CliResource
+
+        return CliResource(self)
+
+    @cached_property
+    def tool_router(self) -> ToolRouterResource:
+        from .resources.tool_router import ToolRouterResource
+
+        return ToolRouterResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> ComposioWithRawResponse:
+        return ComposioWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> ComposioWithStreamedResponse:
+        return ComposioWithStreamedResponse(self)
 
     @property
     @override
@@ -267,21 +342,6 @@ class Composio(SyncAPIClient):
 
 
 class AsyncComposio(AsyncAPIClient):
-    auth_configs: auth_configs.AsyncAuthConfigsResource
-    connected_accounts: connected_accounts.AsyncConnectedAccountsResource
-    link: link.AsyncLinkResource
-    toolkits: toolkits.AsyncToolkitsResource
-    tools: tools.AsyncToolsResource
-    trigger_instances: trigger_instances.AsyncTriggerInstancesResource
-    triggers_types: triggers_types.AsyncTriggersTypesResource
-    mcp: mcp.AsyncMcpResource
-    files: files.AsyncFilesResource
-    migration: migration.AsyncMigrationResource
-    cli: cli.AsyncCliResource
-    tool_router: tool_router.AsyncToolRouterResource
-    with_raw_response: AsyncComposioWithRawResponse
-    with_streaming_response: AsyncComposioWithStreamedResponse
-
     # client options
     api_key: str | None
 
@@ -356,20 +416,85 @@ class AsyncComposio(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.auth_configs = auth_configs.AsyncAuthConfigsResource(self)
-        self.connected_accounts = connected_accounts.AsyncConnectedAccountsResource(self)
-        self.link = link.AsyncLinkResource(self)
-        self.toolkits = toolkits.AsyncToolkitsResource(self)
-        self.tools = tools.AsyncToolsResource(self)
-        self.trigger_instances = trigger_instances.AsyncTriggerInstancesResource(self)
-        self.triggers_types = triggers_types.AsyncTriggersTypesResource(self)
-        self.mcp = mcp.AsyncMcpResource(self)
-        self.files = files.AsyncFilesResource(self)
-        self.migration = migration.AsyncMigrationResource(self)
-        self.cli = cli.AsyncCliResource(self)
-        self.tool_router = tool_router.AsyncToolRouterResource(self)
-        self.with_raw_response = AsyncComposioWithRawResponse(self)
-        self.with_streaming_response = AsyncComposioWithStreamedResponse(self)
+    @cached_property
+    def auth_configs(self) -> AsyncAuthConfigsResource:
+        from .resources.auth_configs import AsyncAuthConfigsResource
+
+        return AsyncAuthConfigsResource(self)
+
+    @cached_property
+    def connected_accounts(self) -> AsyncConnectedAccountsResource:
+        from .resources.connected_accounts import AsyncConnectedAccountsResource
+
+        return AsyncConnectedAccountsResource(self)
+
+    @cached_property
+    def link(self) -> AsyncLinkResource:
+        from .resources.link import AsyncLinkResource
+
+        return AsyncLinkResource(self)
+
+    @cached_property
+    def toolkits(self) -> AsyncToolkitsResource:
+        from .resources.toolkits import AsyncToolkitsResource
+
+        return AsyncToolkitsResource(self)
+
+    @cached_property
+    def tools(self) -> AsyncToolsResource:
+        from .resources.tools import AsyncToolsResource
+
+        return AsyncToolsResource(self)
+
+    @cached_property
+    def trigger_instances(self) -> AsyncTriggerInstancesResource:
+        from .resources.trigger_instances import AsyncTriggerInstancesResource
+
+        return AsyncTriggerInstancesResource(self)
+
+    @cached_property
+    def triggers_types(self) -> AsyncTriggersTypesResource:
+        from .resources.triggers_types import AsyncTriggersTypesResource
+
+        return AsyncTriggersTypesResource(self)
+
+    @cached_property
+    def mcp(self) -> AsyncMcpResource:
+        from .resources.mcp import AsyncMcpResource
+
+        return AsyncMcpResource(self)
+
+    @cached_property
+    def files(self) -> AsyncFilesResource:
+        from .resources.files import AsyncFilesResource
+
+        return AsyncFilesResource(self)
+
+    @cached_property
+    def migration(self) -> AsyncMigrationResource:
+        from .resources.migration import AsyncMigrationResource
+
+        return AsyncMigrationResource(self)
+
+    @cached_property
+    def cli(self) -> AsyncCliResource:
+        from .resources.cli import AsyncCliResource
+
+        return AsyncCliResource(self)
+
+    @cached_property
+    def tool_router(self) -> AsyncToolRouterResource:
+        from .resources.tool_router import AsyncToolRouterResource
+
+        return AsyncToolRouterResource(self)
+
+    @cached_property
+    def with_raw_response(self) -> AsyncComposioWithRawResponse:
+        return AsyncComposioWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncComposioWithStreamedResponse:
+        return AsyncComposioWithStreamedResponse(self)
 
     @property
     @override
@@ -481,79 +606,319 @@ class AsyncComposio(AsyncAPIClient):
 
 
 class ComposioWithRawResponse:
+    _client: Composio
+
     def __init__(self, client: Composio) -> None:
-        self.auth_configs = auth_configs.AuthConfigsResourceWithRawResponse(client.auth_configs)
-        self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithRawResponse(client.connected_accounts)
-        self.link = link.LinkResourceWithRawResponse(client.link)
-        self.toolkits = toolkits.ToolkitsResourceWithRawResponse(client.toolkits)
-        self.tools = tools.ToolsResourceWithRawResponse(client.tools)
-        self.trigger_instances = trigger_instances.TriggerInstancesResourceWithRawResponse(client.trigger_instances)
-        self.triggers_types = triggers_types.TriggersTypesResourceWithRawResponse(client.triggers_types)
-        self.mcp = mcp.McpResourceWithRawResponse(client.mcp)
-        self.files = files.FilesResourceWithRawResponse(client.files)
-        self.migration = migration.MigrationResourceWithRawResponse(client.migration)
-        self.cli = cli.CliResourceWithRawResponse(client.cli)
-        self.tool_router = tool_router.ToolRouterResourceWithRawResponse(client.tool_router)
+        self._client = client
+
+    @cached_property
+    def auth_configs(self) -> auth_configs.AuthConfigsResourceWithRawResponse:
+        from .resources.auth_configs import AuthConfigsResourceWithRawResponse
+
+        return AuthConfigsResourceWithRawResponse(self._client.auth_configs)
+
+    @cached_property
+    def connected_accounts(self) -> connected_accounts.ConnectedAccountsResourceWithRawResponse:
+        from .resources.connected_accounts import ConnectedAccountsResourceWithRawResponse
+
+        return ConnectedAccountsResourceWithRawResponse(self._client.connected_accounts)
+
+    @cached_property
+    def link(self) -> link.LinkResourceWithRawResponse:
+        from .resources.link import LinkResourceWithRawResponse
+
+        return LinkResourceWithRawResponse(self._client.link)
+
+    @cached_property
+    def toolkits(self) -> toolkits.ToolkitsResourceWithRawResponse:
+        from .resources.toolkits import ToolkitsResourceWithRawResponse
+
+        return ToolkitsResourceWithRawResponse(self._client.toolkits)
+
+    @cached_property
+    def tools(self) -> tools.ToolsResourceWithRawResponse:
+        from .resources.tools import ToolsResourceWithRawResponse
+
+        return ToolsResourceWithRawResponse(self._client.tools)
+
+    @cached_property
+    def trigger_instances(self) -> trigger_instances.TriggerInstancesResourceWithRawResponse:
+        from .resources.trigger_instances import TriggerInstancesResourceWithRawResponse
+
+        return TriggerInstancesResourceWithRawResponse(self._client.trigger_instances)
+
+    @cached_property
+    def triggers_types(self) -> triggers_types.TriggersTypesResourceWithRawResponse:
+        from .resources.triggers_types import TriggersTypesResourceWithRawResponse
+
+        return TriggersTypesResourceWithRawResponse(self._client.triggers_types)
+
+    @cached_property
+    def mcp(self) -> mcp.McpResourceWithRawResponse:
+        from .resources.mcp import McpResourceWithRawResponse
+
+        return McpResourceWithRawResponse(self._client.mcp)
+
+    @cached_property
+    def files(self) -> files.FilesResourceWithRawResponse:
+        from .resources.files import FilesResourceWithRawResponse
+
+        return FilesResourceWithRawResponse(self._client.files)
+
+    @cached_property
+    def migration(self) -> migration.MigrationResourceWithRawResponse:
+        from .resources.migration import MigrationResourceWithRawResponse
+
+        return MigrationResourceWithRawResponse(self._client.migration)
+
+    @cached_property
+    def cli(self) -> cli.CliResourceWithRawResponse:
+        from .resources.cli import CliResourceWithRawResponse
+
+        return CliResourceWithRawResponse(self._client.cli)
+
+    @cached_property
+    def tool_router(self) -> tool_router.ToolRouterResourceWithRawResponse:
+        from .resources.tool_router import ToolRouterResourceWithRawResponse
+
+        return ToolRouterResourceWithRawResponse(self._client.tool_router)
 
 
 class AsyncComposioWithRawResponse:
+    _client: AsyncComposio
+
     def __init__(self, client: AsyncComposio) -> None:
-        self.auth_configs = auth_configs.AsyncAuthConfigsResourceWithRawResponse(client.auth_configs)
-        self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithRawResponse(
-            client.connected_accounts
-        )
-        self.link = link.AsyncLinkResourceWithRawResponse(client.link)
-        self.toolkits = toolkits.AsyncToolkitsResourceWithRawResponse(client.toolkits)
-        self.tools = tools.AsyncToolsResourceWithRawResponse(client.tools)
-        self.trigger_instances = trigger_instances.AsyncTriggerInstancesResourceWithRawResponse(
-            client.trigger_instances
-        )
-        self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithRawResponse(client.triggers_types)
-        self.mcp = mcp.AsyncMcpResourceWithRawResponse(client.mcp)
-        self.files = files.AsyncFilesResourceWithRawResponse(client.files)
-        self.migration = migration.AsyncMigrationResourceWithRawResponse(client.migration)
-        self.cli = cli.AsyncCliResourceWithRawResponse(client.cli)
-        self.tool_router = tool_router.AsyncToolRouterResourceWithRawResponse(client.tool_router)
+        self._client = client
+
+    @cached_property
+    def auth_configs(self) -> auth_configs.AsyncAuthConfigsResourceWithRawResponse:
+        from .resources.auth_configs import AsyncAuthConfigsResourceWithRawResponse
+
+        return AsyncAuthConfigsResourceWithRawResponse(self._client.auth_configs)
+
+    @cached_property
+    def connected_accounts(self) -> connected_accounts.AsyncConnectedAccountsResourceWithRawResponse:
+        from .resources.connected_accounts import AsyncConnectedAccountsResourceWithRawResponse
+
+        return AsyncConnectedAccountsResourceWithRawResponse(self._client.connected_accounts)
+
+    @cached_property
+    def link(self) -> link.AsyncLinkResourceWithRawResponse:
+        from .resources.link import AsyncLinkResourceWithRawResponse
+
+        return AsyncLinkResourceWithRawResponse(self._client.link)
+
+    @cached_property
+    def toolkits(self) -> toolkits.AsyncToolkitsResourceWithRawResponse:
+        from .resources.toolkits import AsyncToolkitsResourceWithRawResponse
+
+        return AsyncToolkitsResourceWithRawResponse(self._client.toolkits)
+
+    @cached_property
+    def tools(self) -> tools.AsyncToolsResourceWithRawResponse:
+        from .resources.tools import AsyncToolsResourceWithRawResponse
+
+        return AsyncToolsResourceWithRawResponse(self._client.tools)
+
+    @cached_property
+    def trigger_instances(self) -> trigger_instances.AsyncTriggerInstancesResourceWithRawResponse:
+        from .resources.trigger_instances import AsyncTriggerInstancesResourceWithRawResponse
+
+        return AsyncTriggerInstancesResourceWithRawResponse(self._client.trigger_instances)
+
+    @cached_property
+    def triggers_types(self) -> triggers_types.AsyncTriggersTypesResourceWithRawResponse:
+        from .resources.triggers_types import AsyncTriggersTypesResourceWithRawResponse
+
+        return AsyncTriggersTypesResourceWithRawResponse(self._client.triggers_types)
+
+    @cached_property
+    def mcp(self) -> mcp.AsyncMcpResourceWithRawResponse:
+        from .resources.mcp import AsyncMcpResourceWithRawResponse
+
+        return AsyncMcpResourceWithRawResponse(self._client.mcp)
+
+    @cached_property
+    def files(self) -> files.AsyncFilesResourceWithRawResponse:
+        from .resources.files import AsyncFilesResourceWithRawResponse
+
+        return AsyncFilesResourceWithRawResponse(self._client.files)
+
+    @cached_property
+    def migration(self) -> migration.AsyncMigrationResourceWithRawResponse:
+        from .resources.migration import AsyncMigrationResourceWithRawResponse
+
+        return AsyncMigrationResourceWithRawResponse(self._client.migration)
+
+    @cached_property
+    def cli(self) -> cli.AsyncCliResourceWithRawResponse:
+        from .resources.cli import AsyncCliResourceWithRawResponse
+
+        return AsyncCliResourceWithRawResponse(self._client.cli)
+
+    @cached_property
+    def tool_router(self) -> tool_router.AsyncToolRouterResourceWithRawResponse:
+        from .resources.tool_router import AsyncToolRouterResourceWithRawResponse
+
+        return AsyncToolRouterResourceWithRawResponse(self._client.tool_router)
 
 
 class ComposioWithStreamedResponse:
+    _client: Composio
+
     def __init__(self, client: Composio) -> None:
-        self.auth_configs = auth_configs.AuthConfigsResourceWithStreamingResponse(client.auth_configs)
-        self.connected_accounts = connected_accounts.ConnectedAccountsResourceWithStreamingResponse(
-            client.connected_accounts
-        )
-        self.link = link.LinkResourceWithStreamingResponse(client.link)
-        self.toolkits = toolkits.ToolkitsResourceWithStreamingResponse(client.toolkits)
-        self.tools = tools.ToolsResourceWithStreamingResponse(client.tools)
-        self.trigger_instances = trigger_instances.TriggerInstancesResourceWithStreamingResponse(
-            client.trigger_instances
-        )
-        self.triggers_types = triggers_types.TriggersTypesResourceWithStreamingResponse(client.triggers_types)
-        self.mcp = mcp.McpResourceWithStreamingResponse(client.mcp)
-        self.files = files.FilesResourceWithStreamingResponse(client.files)
-        self.migration = migration.MigrationResourceWithStreamingResponse(client.migration)
-        self.cli = cli.CliResourceWithStreamingResponse(client.cli)
-        self.tool_router = tool_router.ToolRouterResourceWithStreamingResponse(client.tool_router)
+        self._client = client
+
+    @cached_property
+    def auth_configs(self) -> auth_configs.AuthConfigsResourceWithStreamingResponse:
+        from .resources.auth_configs import AuthConfigsResourceWithStreamingResponse
+
+        return AuthConfigsResourceWithStreamingResponse(self._client.auth_configs)
+
+    @cached_property
+    def connected_accounts(self) -> connected_accounts.ConnectedAccountsResourceWithStreamingResponse:
+        from .resources.connected_accounts import ConnectedAccountsResourceWithStreamingResponse
+
+        return ConnectedAccountsResourceWithStreamingResponse(self._client.connected_accounts)
+
+    @cached_property
+    def link(self) -> link.LinkResourceWithStreamingResponse:
+        from .resources.link import LinkResourceWithStreamingResponse
+
+        return LinkResourceWithStreamingResponse(self._client.link)
+
+    @cached_property
+    def toolkits(self) -> toolkits.ToolkitsResourceWithStreamingResponse:
+        from .resources.toolkits import ToolkitsResourceWithStreamingResponse
+
+        return ToolkitsResourceWithStreamingResponse(self._client.toolkits)
+
+    @cached_property
+    def tools(self) -> tools.ToolsResourceWithStreamingResponse:
+        from .resources.tools import ToolsResourceWithStreamingResponse
+
+        return ToolsResourceWithStreamingResponse(self._client.tools)
+
+    @cached_property
+    def trigger_instances(self) -> trigger_instances.TriggerInstancesResourceWithStreamingResponse:
+        from .resources.trigger_instances import TriggerInstancesResourceWithStreamingResponse
+
+        return TriggerInstancesResourceWithStreamingResponse(self._client.trigger_instances)
+
+    @cached_property
+    def triggers_types(self) -> triggers_types.TriggersTypesResourceWithStreamingResponse:
+        from .resources.triggers_types import TriggersTypesResourceWithStreamingResponse
+
+        return TriggersTypesResourceWithStreamingResponse(self._client.triggers_types)
+
+    @cached_property
+    def mcp(self) -> mcp.McpResourceWithStreamingResponse:
+        from .resources.mcp import McpResourceWithStreamingResponse
+
+        return McpResourceWithStreamingResponse(self._client.mcp)
+
+    @cached_property
+    def files(self) -> files.FilesResourceWithStreamingResponse:
+        from .resources.files import FilesResourceWithStreamingResponse
+
+        return FilesResourceWithStreamingResponse(self._client.files)
+
+    @cached_property
+    def migration(self) -> migration.MigrationResourceWithStreamingResponse:
+        from .resources.migration import MigrationResourceWithStreamingResponse
+
+        return MigrationResourceWithStreamingResponse(self._client.migration)
+
+    @cached_property
+    def cli(self) -> cli.CliResourceWithStreamingResponse:
+        from .resources.cli import CliResourceWithStreamingResponse
+
+        return CliResourceWithStreamingResponse(self._client.cli)
+
+    @cached_property
+    def tool_router(self) -> tool_router.ToolRouterResourceWithStreamingResponse:
+        from .resources.tool_router import ToolRouterResourceWithStreamingResponse
+
+        return ToolRouterResourceWithStreamingResponse(self._client.tool_router)
 
 
 class AsyncComposioWithStreamedResponse:
+    _client: AsyncComposio
+
     def __init__(self, client: AsyncComposio) -> None:
-        self.auth_configs = auth_configs.AsyncAuthConfigsResourceWithStreamingResponse(client.auth_configs)
-        self.connected_accounts = connected_accounts.AsyncConnectedAccountsResourceWithStreamingResponse(
-            client.connected_accounts
-        )
-        self.link = link.AsyncLinkResourceWithStreamingResponse(client.link)
-        self.toolkits = toolkits.AsyncToolkitsResourceWithStreamingResponse(client.toolkits)
-        self.tools = tools.AsyncToolsResourceWithStreamingResponse(client.tools)
-        self.trigger_instances = trigger_instances.AsyncTriggerInstancesResourceWithStreamingResponse(
-            client.trigger_instances
-        )
-        self.triggers_types = triggers_types.AsyncTriggersTypesResourceWithStreamingResponse(client.triggers_types)
-        self.mcp = mcp.AsyncMcpResourceWithStreamingResponse(client.mcp)
-        self.files = files.AsyncFilesResourceWithStreamingResponse(client.files)
-        self.migration = migration.AsyncMigrationResourceWithStreamingResponse(client.migration)
-        self.cli = cli.AsyncCliResourceWithStreamingResponse(client.cli)
-        self.tool_router = tool_router.AsyncToolRouterResourceWithStreamingResponse(client.tool_router)
+        self._client = client
+
+    @cached_property
+    def auth_configs(self) -> auth_configs.AsyncAuthConfigsResourceWithStreamingResponse:
+        from .resources.auth_configs import AsyncAuthConfigsResourceWithStreamingResponse
+
+        return AsyncAuthConfigsResourceWithStreamingResponse(self._client.auth_configs)
+
+    @cached_property
+    def connected_accounts(self) -> connected_accounts.AsyncConnectedAccountsResourceWithStreamingResponse:
+        from .resources.connected_accounts import AsyncConnectedAccountsResourceWithStreamingResponse
+
+        return AsyncConnectedAccountsResourceWithStreamingResponse(self._client.connected_accounts)
+
+    @cached_property
+    def link(self) -> link.AsyncLinkResourceWithStreamingResponse:
+        from .resources.link import AsyncLinkResourceWithStreamingResponse
+
+        return AsyncLinkResourceWithStreamingResponse(self._client.link)
+
+    @cached_property
+    def toolkits(self) -> toolkits.AsyncToolkitsResourceWithStreamingResponse:
+        from .resources.toolkits import AsyncToolkitsResourceWithStreamingResponse
+
+        return AsyncToolkitsResourceWithStreamingResponse(self._client.toolkits)
+
+    @cached_property
+    def tools(self) -> tools.AsyncToolsResourceWithStreamingResponse:
+        from .resources.tools import AsyncToolsResourceWithStreamingResponse
+
+        return AsyncToolsResourceWithStreamingResponse(self._client.tools)
+
+    @cached_property
+    def trigger_instances(self) -> trigger_instances.AsyncTriggerInstancesResourceWithStreamingResponse:
+        from .resources.trigger_instances import AsyncTriggerInstancesResourceWithStreamingResponse
+
+        return AsyncTriggerInstancesResourceWithStreamingResponse(self._client.trigger_instances)
+
+    @cached_property
+    def triggers_types(self) -> triggers_types.AsyncTriggersTypesResourceWithStreamingResponse:
+        from .resources.triggers_types import AsyncTriggersTypesResourceWithStreamingResponse
+
+        return AsyncTriggersTypesResourceWithStreamingResponse(self._client.triggers_types)
+
+    @cached_property
+    def mcp(self) -> mcp.AsyncMcpResourceWithStreamingResponse:
+        from .resources.mcp import AsyncMcpResourceWithStreamingResponse
+
+        return AsyncMcpResourceWithStreamingResponse(self._client.mcp)
+
+    @cached_property
+    def files(self) -> files.AsyncFilesResourceWithStreamingResponse:
+        from .resources.files import AsyncFilesResourceWithStreamingResponse
+
+        return AsyncFilesResourceWithStreamingResponse(self._client.files)
+
+    @cached_property
+    def migration(self) -> migration.AsyncMigrationResourceWithStreamingResponse:
+        from .resources.migration import AsyncMigrationResourceWithStreamingResponse
+
+        return AsyncMigrationResourceWithStreamingResponse(self._client.migration)
+
+    @cached_property
+    def cli(self) -> cli.AsyncCliResourceWithStreamingResponse:
+        from .resources.cli import AsyncCliResourceWithStreamingResponse
+
+        return AsyncCliResourceWithStreamingResponse(self._client.cli)
+
+    @cached_property
+    def tool_router(self) -> tool_router.AsyncToolRouterResourceWithStreamingResponse:
+        from .resources.tool_router import AsyncToolRouterResourceWithStreamingResponse
+
+        return AsyncToolRouterResourceWithStreamingResponse(self._client.tool_router)
 
 
 Client = Composio

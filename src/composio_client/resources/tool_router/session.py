@@ -62,7 +62,7 @@ class SessionResource(SyncAPIResource):
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
-        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]] | Omit = omit,
+        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]] | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
         workbench: session_create_params.Workbench | Omit = omit,
@@ -96,8 +96,9 @@ class SessionResource(SyncAPIResource):
           tags: Global MCP tool annotation hints for filtering. readOnlyHint: tool does not
               modify environment. destructiveHint: tool may perform destructive updates.
               idempotentHint: repeated calls with same args have no additional effect.
-              Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
-              over tag filtering.
+              openWorldHint: tool may interact with external entities. Toolkit-level tags
+              override this. Toolkit enabled/disabled lists take precedence over tag
+              filtering.
 
           toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
@@ -420,7 +421,7 @@ class AsyncSessionResource(AsyncAPIResource):
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
-        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]] | Omit = omit,
+        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]] | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
         workbench: session_create_params.Workbench | Omit = omit,
@@ -454,8 +455,9 @@ class AsyncSessionResource(AsyncAPIResource):
           tags: Global MCP tool annotation hints for filtering. readOnlyHint: tool does not
               modify environment. destructiveHint: tool may perform destructive updates.
               idempotentHint: repeated calls with same args have no additional effect.
-              Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
-              over tag filtering.
+              openWorldHint: tool may interact with external entities. Toolkit-level tags
+              override this. Toolkit enabled/disabled lists take precedence over tag
+              filtering.
 
           toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.

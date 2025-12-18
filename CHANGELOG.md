@@ -1,5 +1,24 @@
 # Changelog
 
+## 1.21.0 (2025-12-17)
+
+Full Changelog: [v1.20.0...v1.21.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.20.0...v1.21.0)
+
+### Features
+
+* **api:** api update ([8876ed7](https://github.com/ComposioHQ/composio-base-py/commit/8876ed7aad8e4d5d78fd27a83c0c51596c03e04e))
+
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([9dc2080](https://github.com/ComposioHQ/composio-base-py/commit/9dc20808adcd7c673bbf9b913ebbf4b00d3b1abb))
+
+
+### Chores
+
+* **internal:** add missing files argument to base client ([29af46e](https://github.com/ComposioHQ/composio-base-py/commit/29af46e3a371cd48f53c3b91145c9628bd0b3c84))
+* speedup initial import ([e8c8ca1](https://github.com/ComposioHQ/composio-base-py/commit/e8c8ca17f879ec2ec043ac78153b6d69d400bdf5))
+
 ## 1.20.0 (2025-12-11)
 
 Full Changelog: [v1.19.0...v1.20.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.19.0...v1.20.0)

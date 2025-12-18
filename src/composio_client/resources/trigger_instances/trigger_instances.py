@@ -98,9 +98,11 @@ class TriggerInstancesResource(SyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          deprecated_auth_config_uuids: Array of auth config UUIDs to filter triggers by
+          deprecated_auth_config_uuids: DEPRECATED: This parameter will be removed in a future version. Please use
+              auth_config_ids instead.
 
-          deprecated_connected_account_uuids: Array of connected account UUIDs to filter triggers by
+          deprecated_connected_account_uuids: DEPRECATED: This parameter will be removed in a future version. Please use
+              connected_account_ids instead.
 
           limit: Number of items per page, max allowed is 1000
 
@@ -108,7 +110,8 @@ class TriggerInstancesResource(SyncAPIResource):
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
-          query_show_disabled_2: DEPRECATED: Use show_disabled instead
+          query_show_disabled_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              show_disabled instead.
 
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
@@ -292,9 +295,11 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          deprecated_auth_config_uuids: Array of auth config UUIDs to filter triggers by
+          deprecated_auth_config_uuids: DEPRECATED: This parameter will be removed in a future version. Please use
+              auth_config_ids instead.
 
-          deprecated_connected_account_uuids: Array of connected account UUIDs to filter triggers by
+          deprecated_connected_account_uuids: DEPRECATED: This parameter will be removed in a future version. Please use
+              connected_account_ids instead.
 
           limit: Number of items per page, max allowed is 1000
 
@@ -302,7 +307,8 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
-          query_show_disabled_2: DEPRECATED: Use show_disabled instead
+          query_show_disabled_2: DEPRECATED: This parameter will be removed in a future version. Please use
+              show_disabled instead.
 
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 

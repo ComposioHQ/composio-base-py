@@ -85,12 +85,12 @@ class Config(BaseModel):
     manage_connections: Optional[ConfigManageConnections] = None
     """Manage connections configuration"""
 
-    tags: Optional[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint"]]] = None
+    tags: Optional[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]] = None
     """MCP tool annotation hints for filtering tools.
 
     readOnlyHint: tool does not modify environment. destructiveHint: tool may
-    perform destructive updates. idempotentHint: tool may interact with external
-    entities.
+    perform destructive updates. idempotentHint: repeated calls with same args have
+    no additional effect. openWorldHint: tool may interact with external entities.
     """
 
     toolkits: Optional[ConfigToolkits] = None
