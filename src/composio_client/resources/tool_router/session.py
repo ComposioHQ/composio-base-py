@@ -232,7 +232,14 @@ class SessionResource(SyncAPIResource):
         self,
         session_id: str,
         *,
-        slug: str,
+        slug: Literal[
+            "COMPOSIO_SEARCH_TOOLS",
+            "COMPOSIO_MULTI_EXECUTE_TOOL",
+            "COMPOSIO_MANAGE_CONNECTIONS",
+            "COMPOSIO_REMOTE_WORKBENCH",
+            "COMPOSIO_REMOTE_BASH_TOOL",
+            "COMPOSIO_GET_TOOL_SCHEMAS",
+        ],
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -591,7 +598,14 @@ class AsyncSessionResource(AsyncAPIResource):
         self,
         session_id: str,
         *,
-        slug: str,
+        slug: Literal[
+            "COMPOSIO_SEARCH_TOOLS",
+            "COMPOSIO_MULTI_EXECUTE_TOOL",
+            "COMPOSIO_MANAGE_CONNECTIONS",
+            "COMPOSIO_REMOTE_WORKBENCH",
+            "COMPOSIO_REMOTE_BASH_TOOL",
+            "COMPOSIO_GET_TOOL_SCHEMAS",
+        ],
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

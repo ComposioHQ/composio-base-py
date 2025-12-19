@@ -20,6 +20,9 @@ class ToolkitListParams(TypedDict, total=False):
     paginate through the items. The cursor is not required for the first page.
     """
 
+    include_deprecated: Optional[bool]
+    """Include deprecated toolkits in the response"""
+
     limit: Optional[float]
     """Number of items per page, max allowed is 1000"""
 

@@ -77,6 +77,7 @@ class TestToolkits:
         toolkit = client.toolkits.list(
             category="productivity",
             cursor="cursor",
+            include_deprecated=True,
             limit=0,
             managed_by="composio",
             sort_by="usage",
@@ -190,6 +191,7 @@ class TestAsyncToolkits:
         toolkit = await async_client.toolkits.list(
             category="productivity",
             cursor="cursor",
+            include_deprecated=True,
             limit=0,
             managed_by="composio",
             sort_by="usage",
