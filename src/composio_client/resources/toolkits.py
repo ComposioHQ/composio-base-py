@@ -95,6 +95,7 @@ class ToolkitsResource(SyncAPIResource):
         *,
         category: str | Omit = omit,
         cursor: str | Omit = omit,
+        include_deprecated: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         managed_by: Literal["composio", "all", "project"] | Omit = omit,
         sort_by: Literal["usage", "alphabetically"] | Omit = omit,
@@ -119,6 +120,8 @@ class ToolkitsResource(SyncAPIResource):
               limit. The page is the page number and the limit is the number of items per
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
+
+          include_deprecated: Include deprecated toolkits in the response
 
           limit: Number of items per page, max allowed is 1000
 
@@ -145,6 +148,7 @@ class ToolkitsResource(SyncAPIResource):
                     {
                         "category": category,
                         "cursor": cursor,
+                        "include_deprecated": include_deprecated,
                         "limit": limit,
                         "managed_by": managed_by,
                         "sort_by": sort_by,
@@ -249,6 +253,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
         *,
         category: str | Omit = omit,
         cursor: str | Omit = omit,
+        include_deprecated: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         managed_by: Literal["composio", "all", "project"] | Omit = omit,
         sort_by: Literal["usage", "alphabetically"] | Omit = omit,
@@ -273,6 +278,8 @@ class AsyncToolkitsResource(AsyncAPIResource):
               limit. The page is the page number and the limit is the number of items per
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
+
+          include_deprecated: Include deprecated toolkits in the response
 
           limit: Number of items per page, max allowed is 1000
 
@@ -299,6 +306,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
                     {
                         "category": category,
                         "cursor": cursor,
+                        "include_deprecated": include_deprecated,
                         "limit": limit,
                         "managed_by": managed_by,
                         "sort_by": sort_by,
