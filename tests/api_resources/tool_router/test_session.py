@@ -44,12 +44,20 @@ class TestSession:
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
             },
-            tags=["readOnlyHint", "destructiveHint"],
+            tags={
+                "disable": ["destructiveHint"],
+                "enable": ["openWorldHint"],
+            },
             toolkits={"enable": ["gmail", "slack", "github"]},
             tools={
                 "gmail": {"enable": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
                 "slack": {"disable": ["SLACK_ADD_EMOJI"]},
-                "slack_bot": {"tags": ["destructiveHint"]},
+                "slack_bot": {
+                    "tags": {
+                        "disable": ["openWorldHint"],
+                        "enable": ["destructiveHint"],
+                    }
+                },
             },
             workbench={
                 "auto_offload_threshold": 20000,
@@ -356,12 +364,20 @@ class TestAsyncSession:
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
             },
-            tags=["readOnlyHint", "destructiveHint"],
+            tags={
+                "disable": ["destructiveHint"],
+                "enable": ["openWorldHint"],
+            },
             toolkits={"enable": ["gmail", "slack", "github"]},
             tools={
                 "gmail": {"enable": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
                 "slack": {"disable": ["SLACK_ADD_EMOJI"]},
-                "slack_bot": {"tags": ["destructiveHint"]},
+                "slack_bot": {
+                    "tags": {
+                        "disable": ["openWorldHint"],
+                        "enable": ["destructiveHint"],
+                    }
+                },
             },
             workbench={
                 "auto_offload_threshold": 20000,

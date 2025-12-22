@@ -10,6 +10,8 @@ from ..._types import SequenceNotStr
 __all__ = [
     "SessionCreateParams",
     "ManageConnections",
+    "Tags",
+    "TagsUnionMember1",
     "Toolkits",
     "ToolkitsEnable",
     "ToolkitsDisable",
@@ -17,6 +19,8 @@ __all__ = [
     "ToolsEnable",
     "ToolsDisable",
     "ToolsTags",
+    "ToolsTagsTags",
+    "ToolsTagsTagsUnionMember1",
     "Workbench",
 ]
 
@@ -45,12 +49,11 @@ class SessionCreateParams(TypedDict, total=False):
     manage_connections: ManageConnections
     """Configuration for connection management settings"""
 
-    tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
+    tags: Tags
     """Global MCP tool annotation hints for filtering.
 
-    readOnlyHint: tool does not modify environment. destructiveHint: tool may
-    perform destructive updates. idempotentHint: repeated calls with same args have
-    no additional effect. openWorldHint: tool may interact with external entities.
+    Array format is treated as enabled list. Object format supports both enabled
+    (tool must have at least one) and disabled (tool must NOT have any) lists.
     Toolkit-level tags override this. Toolkit enabled/disabled lists take precedence
     over tag filtering.
     """
@@ -89,6 +92,19 @@ class ManageConnections(TypedDict, total=False):
     """
 
 
+class TagsUnionMember1(TypedDict, total=False):
+    disable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
+    """Tags that the tool must NOT have any of"""
+
+    enable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
+    """Tags that the tool must have at least one of"""
+
+
+Tags: TypeAlias = Union[
+    List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]], TagsUnionMember1
+]
+
+
 class ToolkitsEnable(TypedDict, total=False):
     """Enable only specific toolkits (allowlist)"""
 
@@ -116,11 +132,25 @@ class ToolsDisable(TypedDict, total=False):
     """These specific tools will be disabled for this toolkit"""
 
 
-class ToolsTags(TypedDict, total=False):
-    tags: Required[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]]
-    """MCP tags to filter tools for this toolkit.
+class ToolsTagsTagsUnionMember1(TypedDict, total=False):
+    disable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
+    """Tags that the tool must NOT have any of"""
 
-    Only tools with these tags will be available.
+    enable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
+    """Tags that the tool must have at least one of"""
+
+
+ToolsTagsTags: TypeAlias = Union[
+    List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]], ToolsTagsTagsUnionMember1
+]
+
+
+class ToolsTags(TypedDict, total=False):
+    tags: Required[ToolsTagsTags]
+    """MCP tags to filter tools.
+
+    Array format is treated as enabled list. Object format supports both enabled and
+    disabled lists.
     """
 
 
