@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -62,7 +62,7 @@ class SessionResource(SyncAPIResource):
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
-        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]] | Omit = omit,
+        tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
         workbench: session_create_params.Workbench | Omit = omit,
@@ -93,12 +93,10 @@ class SessionResource(SyncAPIResource):
 
           manage_connections: Configuration for connection management settings
 
-          tags: Global MCP tool annotation hints for filtering. readOnlyHint: tool does not
-              modify environment. destructiveHint: tool may perform destructive updates.
-              idempotentHint: repeated calls with same args have no additional effect.
-              openWorldHint: tool may interact with external entities. Toolkit-level tags
-              override this. Toolkit enabled/disabled lists take precedence over tag
-              filtering.
+          tags: Global MCP tool annotation hints for filtering. Array format is treated as
+              enabled list. Object format supports both enabled (tool must have at least one)
+              and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
+              Toolkit enabled/disabled lists take precedence over tag filtering.
 
           toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
@@ -428,7 +426,7 @@ class AsyncSessionResource(AsyncAPIResource):
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
-        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]] | Omit = omit,
+        tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
         workbench: session_create_params.Workbench | Omit = omit,
@@ -459,12 +457,10 @@ class AsyncSessionResource(AsyncAPIResource):
 
           manage_connections: Configuration for connection management settings
 
-          tags: Global MCP tool annotation hints for filtering. readOnlyHint: tool does not
-              modify environment. destructiveHint: tool may perform destructive updates.
-              idempotentHint: repeated calls with same args have no additional effect.
-              openWorldHint: tool may interact with external entities. Toolkit-level tags
-              override this. Toolkit enabled/disabled lists take precedence over tag
-              filtering.
+          tags: Global MCP tool annotation hints for filtering. Array format is treated as
+              enabled list. Object format supports both enabled (tool must have at least one)
+              and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
+              Toolkit enabled/disabled lists take precedence over tag filtering.
 
           toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
