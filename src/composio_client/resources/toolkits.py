@@ -95,8 +95,10 @@ class ToolkitsResource(SyncAPIResource):
         *,
         category: str | Omit = omit,
         cursor: str | Omit = omit,
+        include_deprecated: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         managed_by: Literal["composio", "all", "project"] | Omit = omit,
+        search: str | Omit = omit,
         sort_by: Literal["usage", "alphabetically"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -120,9 +122,13 @@ class ToolkitsResource(SyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
+          include_deprecated: Include deprecated toolkits in the response
+
           limit: Number of items per page, max allowed is 1000
 
           managed_by: Filter toolkits by who manages them
+
+          search: Search query to filter toolkits by name, slug, or description
 
           sort_by: Sort order for returned toolkits
 
@@ -145,8 +151,10 @@ class ToolkitsResource(SyncAPIResource):
                     {
                         "category": category,
                         "cursor": cursor,
+                        "include_deprecated": include_deprecated,
                         "limit": limit,
                         "managed_by": managed_by,
+                        "search": search,
                         "sort_by": sort_by,
                     },
                     toolkit_list_params.ToolkitListParams,
@@ -249,8 +257,10 @@ class AsyncToolkitsResource(AsyncAPIResource):
         *,
         category: str | Omit = omit,
         cursor: str | Omit = omit,
+        include_deprecated: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
         managed_by: Literal["composio", "all", "project"] | Omit = omit,
+        search: str | Omit = omit,
         sort_by: Literal["usage", "alphabetically"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -274,9 +284,13 @@ class AsyncToolkitsResource(AsyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
+          include_deprecated: Include deprecated toolkits in the response
+
           limit: Number of items per page, max allowed is 1000
 
           managed_by: Filter toolkits by who manages them
+
+          search: Search query to filter toolkits by name, slug, or description
 
           sort_by: Sort order for returned toolkits
 
@@ -299,8 +313,10 @@ class AsyncToolkitsResource(AsyncAPIResource):
                     {
                         "category": category,
                         "cursor": cursor,
+                        "include_deprecated": include_deprecated,
                         "limit": limit,
                         "managed_by": managed_by,
+                        "search": search,
                         "sort_by": sort_by,
                     },
                     toolkit_list_params.ToolkitListParams,

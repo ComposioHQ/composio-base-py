@@ -1,5 +1,20 @@
 # Changelog
 
+## 1.22.0 (2025-12-24)
+
+Full Changelog: [v1.21.0...v1.22.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.21.0...v1.22.0)
+
+### Features
+
+* **api:** api update ([98d0a74](https://github.com/ComposioHQ/composio-base-py/commit/98d0a74e1917b5a6effcc90696ff8738c259a7c2))
+* **api:** api update ([9bd97f5](https://github.com/ComposioHQ/composio-base-py/commit/9bd97f5aa79943cdd87b33106f18f1b373ba024f))
+* **api:** api update ([6e090a3](https://github.com/ComposioHQ/composio-base-py/commit/6e090a312ee135635614aaa5333990cfe65fdc7e))
+
+
+### Chores
+
+* **internal:** add `--fix` argument to lint script ([e5ed5db](https://github.com/ComposioHQ/composio-base-py/commit/e5ed5dbcd558364074dc86b53b7dccad3626915c))
+
 ## 1.21.0 (2025-12-17)
 
 Full Changelog: [v1.20.0...v1.21.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.20.0...v1.21.0)

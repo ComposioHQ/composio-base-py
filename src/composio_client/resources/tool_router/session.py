@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Optional
+from typing import Dict, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -62,7 +62,7 @@ class SessionResource(SyncAPIResource):
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
-        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]] | Omit = omit,
+        tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
         workbench: session_create_params.Workbench | Omit = omit,
@@ -93,12 +93,10 @@ class SessionResource(SyncAPIResource):
 
           manage_connections: Configuration for connection management settings
 
-          tags: Global MCP tool annotation hints for filtering. readOnlyHint: tool does not
-              modify environment. destructiveHint: tool may perform destructive updates.
-              idempotentHint: repeated calls with same args have no additional effect.
-              openWorldHint: tool may interact with external entities. Toolkit-level tags
-              override this. Toolkit enabled/disabled lists take precedence over tag
-              filtering.
+          tags: Global MCP tool annotation hints for filtering. Array format is treated as
+              enabled list. Object format supports both enabled (tool must have at least one)
+              and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
+              Toolkit enabled/disabled lists take precedence over tag filtering.
 
           toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
@@ -232,7 +230,14 @@ class SessionResource(SyncAPIResource):
         self,
         session_id: str,
         *,
-        slug: str,
+        slug: Literal[
+            "COMPOSIO_SEARCH_TOOLS",
+            "COMPOSIO_MULTI_EXECUTE_TOOL",
+            "COMPOSIO_MANAGE_CONNECTIONS",
+            "COMPOSIO_REMOTE_WORKBENCH",
+            "COMPOSIO_REMOTE_BASH_TOOL",
+            "COMPOSIO_GET_TOOL_SCHEMAS",
+        ],
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -334,6 +339,7 @@ class SessionResource(SyncAPIResource):
         cursor: str | Omit = omit,
         is_connected: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
+        search: str | Omit = omit,
         toolkits: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -360,6 +366,8 @@ class SessionResource(SyncAPIResource):
 
           limit: Number of items per page, max allowed is 1000
 
+          search: Search query to filter toolkits by name, slug, or description
+
           toolkits: Optional comma-separated list of toolkit slugs to filter by. If provided, only
               these toolkits will be returned, overriding the session configuration.
 
@@ -385,6 +393,7 @@ class SessionResource(SyncAPIResource):
                         "cursor": cursor,
                         "is_connected": is_connected,
                         "limit": limit,
+                        "search": search,
                         "toolkits": toolkits,
                     },
                     session_toolkits_params.SessionToolkitsParams,
@@ -421,7 +430,7 @@ class AsyncSessionResource(AsyncAPIResource):
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
-        tags: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]] | Omit = omit,
+        tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
         workbench: session_create_params.Workbench | Omit = omit,
@@ -452,12 +461,10 @@ class AsyncSessionResource(AsyncAPIResource):
 
           manage_connections: Configuration for connection management settings
 
-          tags: Global MCP tool annotation hints for filtering. readOnlyHint: tool does not
-              modify environment. destructiveHint: tool may perform destructive updates.
-              idempotentHint: repeated calls with same args have no additional effect.
-              openWorldHint: tool may interact with external entities. Toolkit-level tags
-              override this. Toolkit enabled/disabled lists take precedence over tag
-              filtering.
+          tags: Global MCP tool annotation hints for filtering. Array format is treated as
+              enabled list. Object format supports both enabled (tool must have at least one)
+              and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
+              Toolkit enabled/disabled lists take precedence over tag filtering.
 
           toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
@@ -591,7 +598,14 @@ class AsyncSessionResource(AsyncAPIResource):
         self,
         session_id: str,
         *,
-        slug: str,
+        slug: Literal[
+            "COMPOSIO_SEARCH_TOOLS",
+            "COMPOSIO_MULTI_EXECUTE_TOOL",
+            "COMPOSIO_MANAGE_CONNECTIONS",
+            "COMPOSIO_REMOTE_WORKBENCH",
+            "COMPOSIO_REMOTE_BASH_TOOL",
+            "COMPOSIO_GET_TOOL_SCHEMAS",
+        ],
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -693,6 +707,7 @@ class AsyncSessionResource(AsyncAPIResource):
         cursor: str | Omit = omit,
         is_connected: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
+        search: str | Omit = omit,
         toolkits: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -719,6 +734,8 @@ class AsyncSessionResource(AsyncAPIResource):
 
           limit: Number of items per page, max allowed is 1000
 
+          search: Search query to filter toolkits by name, slug, or description
+
           toolkits: Optional comma-separated list of toolkit slugs to filter by. If provided, only
               these toolkits will be returned, overriding the session configuration.
 
@@ -744,6 +761,7 @@ class AsyncSessionResource(AsyncAPIResource):
                         "cursor": cursor,
                         "is_connected": is_connected,
                         "limit": limit,
+                        "search": search,
                         "toolkits": toolkits,
                     },
                     session_toolkits_params.SessionToolkitsParams,

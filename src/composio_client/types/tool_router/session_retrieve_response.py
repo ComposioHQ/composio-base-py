@@ -9,6 +9,7 @@ __all__ = [
     "SessionRetrieveResponse",
     "Config",
     "ConfigManageConnections",
+    "ConfigTags",
     "ConfigToolkits",
     "ConfigToolkitsEnabled",
     "ConfigToolkitsDisabled",
@@ -16,6 +17,7 @@ __all__ = [
     "ConfigToolsEnabled",
     "ConfigToolsDisabled",
     "ConfigToolsTags",
+    "ConfigToolsTagsTags",
     "ConfigWorkbench",
     "Mcp",
 ]
@@ -29,6 +31,19 @@ class ConfigManageConnections(BaseModel):
 
     enabled: Optional[bool] = None
     """Whether to enable the connection manager for automatic connection handling"""
+
+
+class ConfigTags(BaseModel):
+    """MCP tool annotation hints for filtering tools with enabled/disabled support.
+
+    enabled: tags that the tool must have at least one of. disabled: tags that the tool must NOT have any of. Both conditions must be satisfied.
+    """
+
+    disabled: Optional[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]] = None
+    """Tags that the tool must NOT have any of"""
+
+    enabled: Optional[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]] = None
+    """Tags that the tool must have at least one of"""
 
 
 class ConfigToolkitsEnabled(BaseModel):
@@ -50,8 +65,16 @@ class ConfigToolsDisabled(BaseModel):
     disabled: List[str]
 
 
+class ConfigToolsTagsTags(BaseModel):
+    disabled: Optional[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]] = None
+    """Tags that the tool must NOT have any of"""
+
+    enabled: Optional[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]] = None
+    """Tags that the tool must have at least one of"""
+
+
 class ConfigToolsTags(BaseModel):
-    tags: List[str]
+    tags: ConfigToolsTagsTags
 
 
 ConfigTools: TypeAlias = Union[ConfigToolsEnabled, ConfigToolsDisabled, ConfigToolsTags]
@@ -85,12 +108,11 @@ class Config(BaseModel):
     manage_connections: Optional[ConfigManageConnections] = None
     """Manage connections configuration"""
 
-    tags: Optional[List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]] = None
-    """MCP tool annotation hints for filtering tools.
+    tags: Optional[ConfigTags] = None
+    """MCP tool annotation hints for filtering tools with enabled/disabled support.
 
-    readOnlyHint: tool does not modify environment. destructiveHint: tool may
-    perform destructive updates. idempotentHint: repeated calls with same args have
-    no additional effect. openWorldHint: tool may interact with external entities.
+    enabled: tags that the tool must have at least one of. disabled: tags that the
+    tool must NOT have any of. Both conditions must be satisfied.
     """
 
     toolkits: Optional[ConfigToolkits] = None

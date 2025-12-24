@@ -77,8 +77,10 @@ class TestToolkits:
         toolkit = client.toolkits.list(
             category="productivity",
             cursor="cursor",
+            include_deprecated=True,
             limit=0,
             managed_by="composio",
+            search="gmail",
             sort_by="usage",
         )
         assert_matches_type(ToolkitListResponse, toolkit, path=["response"])
@@ -190,8 +192,10 @@ class TestAsyncToolkits:
         toolkit = await async_client.toolkits.list(
             category="productivity",
             cursor="cursor",
+            include_deprecated=True,
             limit=0,
             managed_by="composio",
+            search="gmail",
             sort_by="usage",
         )
         assert_matches_type(ToolkitListResponse, toolkit, path=["response"])
