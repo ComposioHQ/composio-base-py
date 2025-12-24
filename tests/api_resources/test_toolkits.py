@@ -80,6 +80,7 @@ class TestToolkits:
             include_deprecated=True,
             limit=0,
             managed_by="composio",
+            search="gmail",
             sort_by="usage",
         )
         assert_matches_type(ToolkitListResponse, toolkit, path=["response"])
@@ -194,6 +195,7 @@ class TestAsyncToolkits:
             include_deprecated=True,
             limit=0,
             managed_by="composio",
+            search="gmail",
             sort_by="usage",
         )
         assert_matches_type(ToolkitListResponse, toolkit, path=["response"])

@@ -339,6 +339,7 @@ class SessionResource(SyncAPIResource):
         cursor: str | Omit = omit,
         is_connected: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
+        search: str | Omit = omit,
         toolkits: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -365,6 +366,8 @@ class SessionResource(SyncAPIResource):
 
           limit: Number of items per page, max allowed is 1000
 
+          search: Search query to filter toolkits by name, slug, or description
+
           toolkits: Optional comma-separated list of toolkit slugs to filter by. If provided, only
               these toolkits will be returned, overriding the session configuration.
 
@@ -390,6 +393,7 @@ class SessionResource(SyncAPIResource):
                         "cursor": cursor,
                         "is_connected": is_connected,
                         "limit": limit,
+                        "search": search,
                         "toolkits": toolkits,
                     },
                     session_toolkits_params.SessionToolkitsParams,
@@ -703,6 +707,7 @@ class AsyncSessionResource(AsyncAPIResource):
         cursor: str | Omit = omit,
         is_connected: Optional[bool] | Omit = omit,
         limit: Optional[float] | Omit = omit,
+        search: str | Omit = omit,
         toolkits: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -729,6 +734,8 @@ class AsyncSessionResource(AsyncAPIResource):
 
           limit: Number of items per page, max allowed is 1000
 
+          search: Search query to filter toolkits by name, slug, or description
+
           toolkits: Optional comma-separated list of toolkit slugs to filter by. If provided, only
               these toolkits will be returned, overriding the session configuration.
 
@@ -754,6 +761,7 @@ class AsyncSessionResource(AsyncAPIResource):
                         "cursor": cursor,
                         "is_connected": is_connected,
                         "limit": limit,
+                        "search": search,
                         "toolkits": toolkits,
                     },
                     session_toolkits_params.SessionToolkitsParams,

@@ -29,5 +29,8 @@ class ToolkitListParams(TypedDict, total=False):
     managed_by: Literal["composio", "all", "project"]
     """Filter toolkits by who manages them"""
 
+    search: str
+    """Search query to filter toolkits by name, slug, or description"""
+
     sort_by: Literal["usage", "alphabetically"]
     """Sort order for returned toolkits"""
