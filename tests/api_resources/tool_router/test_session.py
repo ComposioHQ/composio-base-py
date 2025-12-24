@@ -303,6 +303,7 @@ class TestSession:
             cursor="cursor",
             is_connected=True,
             limit=0,
+            search="gmail",
             toolkits=["string"],
         )
         assert_matches_type(SessionToolkitsResponse, session, path=["response"])
@@ -623,6 +624,7 @@ class TestAsyncSession:
             cursor="cursor",
             is_connected=True,
             limit=0,
+            search="gmail",
             toolkits=["string"],
         )
         assert_matches_type(SessionToolkitsResponse, session, path=["response"])

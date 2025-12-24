@@ -28,6 +28,9 @@ class SessionToolkitsParams(TypedDict, total=False):
     limit: Optional[float]
     """Number of items per page, max allowed is 1000"""
 
+    search: str
+    """Search query to filter toolkits by name, slug, or description"""
+
     toolkits: Optional[SequenceNotStr[str]]
     """Optional comma-separated list of toolkit slugs to filter by.
 
