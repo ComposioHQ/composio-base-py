@@ -227,6 +227,21 @@ Methods:
 - <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli.py">create_session</a>() -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
 - <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/composio_client/resources/cli.py">get_session</a>(\*\*<a href="src/composio_client/types/cli_get_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_get_session_response.py">CliGetSessionResponse</a></code>
 
+# Project
+
+## Config
+
+Types:
+
+```python
+from composio_client.types.project import ConfigRetrieveResponse, ConfigUpdateResponse
+```
+
+Methods:
+
+- <code title="get /api/v3/org/project/config">client.project.config.<a href="./src/composio_client/resources/project/config.py">retrieve</a>() -> <a href="./src/composio_client/types/project/config_retrieve_response.py">ConfigRetrieveResponse</a></code>
+- <code title="patch /api/v3/org/project/config">client.project.config.<a href="./src/composio_client/resources/project/config.py">update</a>(\*\*<a href="src/composio_client/types/project/config_update_params.py">params</a>) -> <a href="./src/composio_client/types/project/config_update_response.py">ConfigUpdateResponse</a></code>
+
 # ToolRouter
 
 Types:
