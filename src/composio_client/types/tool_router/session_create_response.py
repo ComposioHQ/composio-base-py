@@ -9,6 +9,7 @@ __all__ = [
     "SessionCreateResponse",
     "Config",
     "ConfigManageConnections",
+    "ConfigRecipes",
     "ConfigTags",
     "ConfigToolkits",
     "ConfigToolkitsEnabled",
@@ -31,6 +32,18 @@ class ConfigManageConnections(BaseModel):
 
     enabled: Optional[bool] = None
     """Whether to enable the connection manager for automatic connection handling"""
+
+
+class ConfigRecipes(BaseModel):
+    """
+    [EXPERIMENTAL] Recipes configuration — enables creating reusable, composable workflows
+    """
+
+    enabled: Optional[bool] = None
+    """
+    [EXPERIMENTAL] Whether recipe tools are enabled for creating reusable workflow
+    templates
+    """
 
 
 class ConfigTags(BaseModel):
@@ -108,6 +121,12 @@ class Config(BaseModel):
     manage_connections: Optional[ConfigManageConnections] = None
     """Manage connections configuration"""
 
+    recipes: Optional[ConfigRecipes] = None
+    """
+    [EXPERIMENTAL] Recipes configuration — enables creating reusable, composable
+    workflows
+    """
+
     tags: Optional[ConfigTags] = None
     """MCP tool annotation hints for filtering tools with enabled/disabled support.
 
@@ -150,6 +169,8 @@ class SessionCreateResponse(BaseModel):
             "COMPOSIO_REMOTE_WORKBENCH",
             "COMPOSIO_REMOTE_BASH_TOOL",
             "COMPOSIO_GET_TOOL_SCHEMAS",
+            "COMPOSIO_UPSERT_RECIPE",
+            "COMPOSIO_GET_RECIPE",
         ]
     ]
     """List of available tools in this session"""
