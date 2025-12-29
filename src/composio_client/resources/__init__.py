@@ -40,6 +40,14 @@ from .tools import (
     ToolsResourceWithStreamingResponse,
     AsyncToolsResourceWithStreamingResponse,
 )
+from .project import (
+    ProjectResource,
+    AsyncProjectResource,
+    ProjectResourceWithRawResponse,
+    AsyncProjectResourceWithRawResponse,
+    ProjectResourceWithStreamingResponse,
+    AsyncProjectResourceWithStreamingResponse,
+)
 from .toolkits import (
     ToolkitsResource,
     AsyncToolkitsResource,
@@ -164,6 +172,12 @@ __all__ = [
     "AsyncCliResourceWithRawResponse",
     "CliResourceWithStreamingResponse",
     "AsyncCliResourceWithStreamingResponse",
+    "ProjectResource",
+    "AsyncProjectResource",
+    "ProjectResourceWithRawResponse",
+    "AsyncProjectResourceWithRawResponse",
+    "ProjectResourceWithStreamingResponse",
+    "AsyncProjectResourceWithStreamingResponse",
     "ToolRouterResource",
     "AsyncToolRouterResource",
     "ToolRouterResourceWithRawResponse",
