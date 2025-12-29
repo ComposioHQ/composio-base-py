@@ -10,6 +10,7 @@ from ..._types import SequenceNotStr
 __all__ = [
     "SessionCreateParams",
     "ManageConnections",
+    "Recipes",
     "Tags",
     "TagsUnionMember1",
     "Toolkits",
@@ -48,6 +49,14 @@ class SessionCreateParams(TypedDict, total=False):
 
     manage_connections: ManageConnections
     """Configuration for connection management settings"""
+
+    recipes: Recipes
+    """
+    [EXPERIMENTAL] Recipes are reusable workflow templates that let you chain
+    multiple tools together. Perfect for automating repetitive multi-step tasks.
+    This feature is currently experimental — API and behavior may evolve based on
+    user feedback.
+    """
 
     tags: Tags
     """Global MCP tool annotation hints for filtering.
@@ -89,6 +98,20 @@ class ManageConnections(TypedDict, total=False):
     If true, we will provide a tool your agent can use to initiate connections to
     toolkits if it doesnt exist. If set to false, then you have to manage
     connections manually.
+    """
+
+
+class Recipes(TypedDict, total=False):
+    """
+    [EXPERIMENTAL] Recipes are reusable workflow templates that let you chain multiple tools together. Perfect for automating repetitive multi-step tasks. This feature is currently experimental — API and behavior may evolve based on user feedback.
+    """
+
+    enabled: bool
+    """
+    [EXPERIMENTAL] When enabled, COMPOSIO_UPSERT_RECIPE tool becomes available,
+    allowing you to create powerful reusable workflows that combine multiple tools
+    into a single execution unit. Note: This feature is experimental — we'd love
+    your feedback as we continue to refine it.
     """
 
 

@@ -17,6 +17,8 @@ class SessionExecuteMetaParams(TypedDict, total=False):
             "COMPOSIO_REMOTE_WORKBENCH",
             "COMPOSIO_REMOTE_BASH_TOOL",
             "COMPOSIO_GET_TOOL_SCHEMAS",
+            "COMPOSIO_UPSERT_RECIPE",
+            "COMPOSIO_GET_RECIPE",
         ]
     ]
     """The unique slug identifier of the meta tool to execute"""
