@@ -44,7 +44,6 @@ class TestSession:
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
             },
-            recipes={"enabled": True},
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],
@@ -366,7 +365,6 @@ class TestAsyncSession:
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
             },
-            recipes={"enabled": True},
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],

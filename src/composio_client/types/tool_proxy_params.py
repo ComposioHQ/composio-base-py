@@ -10,6 +10,9 @@ from .._utils import PropertyInfo
 
 __all__ = [
     "ToolProxyParams",
+    "BinaryBody",
+    "BinaryBodyUnionMember0",
+    "BinaryBodyUnionMember1",
     "CustomConnectionData",
     "CustomConnectionDataUnionMember0",
     "CustomConnectionDataUnionMember0Val",
@@ -46,6 +49,13 @@ class ToolProxyParams(TypedDict, total=False):
     method: Required[Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"]]
     """The HTTP method to use for the request"""
 
+    binary_body: BinaryBody
+    """Binary body to send.
+
+    For binary upload via URL: use {url: "https://...", contentType?: "..."}. For
+    binary upload via base64: use {base64: "...", contentType?: "..."}.
+    """
+
     body: object
     """The request body (for POST, PUT, and PATCH requests)"""
 
@@ -59,6 +69,25 @@ class ToolProxyParams(TypedDict, total=False):
 
     parameters: Iterable[Parameter]
     """Additional HTTP headers or query parameters to include in the request"""
+
+
+class BinaryBodyUnionMember0(TypedDict, total=False):
+    url: Required[str]
+    """URL to fetch binary content from"""
+
+    content_type: str
+    """Content-Type header to use for the request"""
+
+
+class BinaryBodyUnionMember1(TypedDict, total=False):
+    base64: Required[str]
+    """Base64-encoded binary data"""
+
+    content_type: str
+    """Content-Type header to use for the request"""
+
+
+BinaryBody: TypeAlias = Union[BinaryBodyUnionMember0, BinaryBodyUnionMember1]
 
 
 class CustomConnectionDataUnionMember0ValAuthedUser(TypedDict, total=False):
