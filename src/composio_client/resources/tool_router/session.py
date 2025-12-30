@@ -62,7 +62,6 @@ class SessionResource(SyncAPIResource):
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
-        recipes: session_create_params.Recipes | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
@@ -94,11 +93,6 @@ class SessionResource(SyncAPIResource):
 
           manage_connections: Configuration for connection management settings
 
-          recipes: [EXPERIMENTAL] Recipes are reusable workflow templates that let you chain
-              multiple tools together. Perfect for automating repetitive multi-step tasks.
-              This feature is currently experimental — API and behavior may evolve based on
-              user feedback.
-
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
               and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
@@ -128,7 +122,6 @@ class SessionResource(SyncAPIResource):
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
                     "manage_connections": manage_connections,
-                    "recipes": recipes,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
@@ -439,7 +432,6 @@ class AsyncSessionResource(AsyncAPIResource):
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
-        recipes: session_create_params.Recipes | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
@@ -471,11 +463,6 @@ class AsyncSessionResource(AsyncAPIResource):
 
           manage_connections: Configuration for connection management settings
 
-          recipes: [EXPERIMENTAL] Recipes are reusable workflow templates that let you chain
-              multiple tools together. Perfect for automating repetitive multi-step tasks.
-              This feature is currently experimental — API and behavior may evolve based on
-              user feedback.
-
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
               and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
@@ -505,7 +492,6 @@ class AsyncSessionResource(AsyncAPIResource):
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
                     "manage_connections": manage_connections,
-                    "recipes": recipes,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
