@@ -45,6 +45,7 @@ class TestTriggerInstances:
             query_trigger_names_1=["string"],
             query_trigger_ids_2=["string"],
             query_trigger_names_2=["string"],
+            user_ids=["string"],
         )
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
@@ -152,6 +153,7 @@ class TestAsyncTriggerInstances:
             query_trigger_names_1=["string"],
             query_trigger_ids_2=["string"],
             query_trigger_names_2=["string"],
+            user_ids=["string"],
         )
         assert_matches_type(TriggerInstanceListActiveResponse, trigger_instance, path=["response"])
 
