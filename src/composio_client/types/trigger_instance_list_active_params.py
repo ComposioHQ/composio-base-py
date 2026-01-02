@@ -73,7 +73,10 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     """Array of trigger IDs to filter triggers by"""
 
     query_trigger_names_1: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="trigger_names")]
-    """Array of trigger names to filter triggers by"""
+    """Array of trigger names to filter triggers by.
+
+    Case-insensitive (internally normalized to uppercase).
+    """
 
     query_trigger_ids_2: Annotated[Optional[SequenceNotStr[str]], PropertyInfo(alias="triggerIds")]
     """DEPRECATED: This parameter will be removed in a future version.
@@ -86,3 +89,6 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
 
     Please use trigger_names instead.
     """
+
+    user_ids: Optional[SequenceNotStr[str]]
+    """Array of user IDs to filter triggers by"""

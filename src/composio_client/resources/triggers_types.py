@@ -62,7 +62,8 @@ class TriggersTypesResource(SyncAPIResource):
         identifier
 
         Args:
-          slug: The unique slug identifier for the trigger type
+          slug: The unique slug identifier for the trigger type. Case-insensitive (internally
+              normalized to uppercase).
 
           toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
               notation for specific versions per toolkit.
@@ -210,7 +211,8 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         identifier
 
         Args:
-          slug: The unique slug identifier for the trigger type
+          slug: The unique slug identifier for the trigger type. Case-insensitive (internally
+              normalized to uppercase).
 
           toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
               notation for specific versions per toolkit.

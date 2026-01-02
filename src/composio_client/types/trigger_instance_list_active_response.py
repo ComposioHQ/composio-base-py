@@ -36,7 +36,10 @@ class Item(BaseModel):
     """ISO 8601 timestamp when the trigger instance was disabled, if applicable"""
 
     disabled_at: Optional[str] = FieldInfo(alias="disabledAt", default=None)
-    """ID of the user who disabled the trigger instance, if applicable"""
+    """DEPRECATED: This parameter will be removed in a future version.
+
+    Please use disabled_at instead.
+    """
 
     state: Dict[str, Optional[object]]
     """State of the trigger instance"""

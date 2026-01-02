@@ -37,6 +37,7 @@ if TYPE_CHECKING:
         link,
         files,
         tools,
+        project,
         toolkits,
         migration,
         tool_router,
@@ -54,6 +55,7 @@ if TYPE_CHECKING:
     from .resources.migration import MigrationResource, AsyncMigrationResource
     from .resources.auth_configs import AuthConfigsResource, AsyncAuthConfigsResource
     from .resources.triggers_types import TriggersTypesResource, AsyncTriggersTypesResource
+    from .resources.project.project import ProjectResource, AsyncProjectResource
     from .resources.connected_accounts import ConnectedAccountsResource, AsyncConnectedAccountsResource
     from .resources.tool_router.tool_router import ToolRouterResource, AsyncToolRouterResource
     from .resources.trigger_instances.trigger_instances import TriggerInstancesResource, AsyncTriggerInstancesResource
@@ -217,6 +219,12 @@ class Composio(SyncAPIClient):
         from .resources.cli import CliResource
 
         return CliResource(self)
+
+    @cached_property
+    def project(self) -> ProjectResource:
+        from .resources.project import ProjectResource
+
+        return ProjectResource(self)
 
     @cached_property
     def tool_router(self) -> ToolRouterResource:
@@ -483,6 +491,12 @@ class AsyncComposio(AsyncAPIClient):
         return AsyncCliResource(self)
 
     @cached_property
+    def project(self) -> AsyncProjectResource:
+        from .resources.project import AsyncProjectResource
+
+        return AsyncProjectResource(self)
+
+    @cached_property
     def tool_router(self) -> AsyncToolRouterResource:
         from .resources.tool_router import AsyncToolRouterResource
 
@@ -678,6 +692,12 @@ class ComposioWithRawResponse:
         return CliResourceWithRawResponse(self._client.cli)
 
     @cached_property
+    def project(self) -> project.ProjectResourceWithRawResponse:
+        from .resources.project import ProjectResourceWithRawResponse
+
+        return ProjectResourceWithRawResponse(self._client.project)
+
+    @cached_property
     def tool_router(self) -> tool_router.ToolRouterResourceWithRawResponse:
         from .resources.tool_router import ToolRouterResourceWithRawResponse
 
@@ -755,6 +775,12 @@ class AsyncComposioWithRawResponse:
         from .resources.cli import AsyncCliResourceWithRawResponse
 
         return AsyncCliResourceWithRawResponse(self._client.cli)
+
+    @cached_property
+    def project(self) -> project.AsyncProjectResourceWithRawResponse:
+        from .resources.project import AsyncProjectResourceWithRawResponse
+
+        return AsyncProjectResourceWithRawResponse(self._client.project)
 
     @cached_property
     def tool_router(self) -> tool_router.AsyncToolRouterResourceWithRawResponse:
@@ -836,6 +862,12 @@ class ComposioWithStreamedResponse:
         return CliResourceWithStreamingResponse(self._client.cli)
 
     @cached_property
+    def project(self) -> project.ProjectResourceWithStreamingResponse:
+        from .resources.project import ProjectResourceWithStreamingResponse
+
+        return ProjectResourceWithStreamingResponse(self._client.project)
+
+    @cached_property
     def tool_router(self) -> tool_router.ToolRouterResourceWithStreamingResponse:
         from .resources.tool_router import ToolRouterResourceWithStreamingResponse
 
@@ -913,6 +945,12 @@ class AsyncComposioWithStreamedResponse:
         from .resources.cli import AsyncCliResourceWithStreamingResponse
 
         return AsyncCliResourceWithStreamingResponse(self._client.cli)
+
+    @cached_property
+    def project(self) -> project.AsyncProjectResourceWithStreamingResponse:
+        from .resources.project import AsyncProjectResourceWithStreamingResponse
+
+        return AsyncProjectResourceWithStreamingResponse(self._client.project)
 
     @cached_property
     def tool_router(self) -> tool_router.AsyncToolRouterResourceWithStreamingResponse:

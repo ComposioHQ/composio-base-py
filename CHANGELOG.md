@@ -1,5 +1,16 @@
 # Changelog
 
+## 1.23.0 (2026-01-02)
+
+Full Changelog: [v1.22.0...v1.23.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.22.0...v1.23.0)
+
+### Features
+
+* **api:** add project level apis to update project config ([b292d26](https://github.com/ComposioHQ/composio-base-py/commit/b292d26d2e0805059d6015501826b11691cb6505))
+* **api:** api update ([380a234](https://github.com/ComposioHQ/composio-base-py/commit/380a234f689c4a9f8b231c26fbbae3604653360c))
+* **api:** api update ([3b9da48](https://github.com/ComposioHQ/composio-base-py/commit/3b9da484f898c6b7d2d5b0c7be98ee2e4ab41d2a))
+* **api:** api update ([5b43330](https://github.com/ComposioHQ/composio-base-py/commit/5b43330e0f4b373fa772f6ed7427b2f2e5fec06a))
+
 ## 1.22.0 (2025-12-24)
 
 Full Changelog: [v1.21.0...v1.22.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.21.0...v1.22.0)

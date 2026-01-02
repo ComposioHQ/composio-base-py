@@ -341,6 +341,7 @@ class ToolsResource(SyncAPIResource):
         *,
         endpoint: str,
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+        binary_body: tool_proxy_params.BinaryBody | Omit = omit,
         body: object | Omit = omit,
         connected_account_id: str | Omit = omit,
         custom_connection_data: tool_proxy_params.CustomConnectionData | Omit = omit,
@@ -363,6 +364,10 @@ class ToolsResource(SyncAPIResource):
 
           method: The HTTP method to use for the request
 
+          binary_body: Binary body to send. For binary upload via URL: use {url: "https://...",
+              contentType?: "..."}. For binary upload via base64: use {base64: "...",
+              contentType?: "..."}.
+
           body: The request body (for POST, PUT, and PATCH requests)
 
           connected_account_id: The ID of the connected account to use for authentication (if not provided, will
@@ -384,6 +389,7 @@ class ToolsResource(SyncAPIResource):
                 {
                     "endpoint": endpoint,
                     "method": method,
+                    "binary_body": binary_body,
                     "body": body,
                     "connected_account_id": connected_account_id,
                     "custom_connection_data": custom_connection_data,
@@ -727,6 +733,7 @@ class AsyncToolsResource(AsyncAPIResource):
         *,
         endpoint: str,
         method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+        binary_body: tool_proxy_params.BinaryBody | Omit = omit,
         body: object | Omit = omit,
         connected_account_id: str | Omit = omit,
         custom_connection_data: tool_proxy_params.CustomConnectionData | Omit = omit,
@@ -749,6 +756,10 @@ class AsyncToolsResource(AsyncAPIResource):
 
           method: The HTTP method to use for the request
 
+          binary_body: Binary body to send. For binary upload via URL: use {url: "https://...",
+              contentType?: "..."}. For binary upload via base64: use {base64: "...",
+              contentType?: "..."}.
+
           body: The request body (for POST, PUT, and PATCH requests)
 
           connected_account_id: The ID of the connected account to use for authentication (if not provided, will
@@ -770,6 +781,7 @@ class AsyncToolsResource(AsyncAPIResource):
                 {
                     "endpoint": endpoint,
                     "method": method,
+                    "binary_body": binary_body,
                     "body": body,
                     "connected_account_id": connected_account_id,
                     "custom_connection_data": custom_connection_data,

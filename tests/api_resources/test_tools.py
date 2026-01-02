@@ -292,6 +292,10 @@ class TestTools:
         tool = client.tools.proxy(
             endpoint="/api/v1/resources",
             method="GET",
+            binary_body={
+                "url": "https://example.com",
+                "content_type": "content_type",
+            },
             body={
                 "name": "New Resource",
                 "description": "This is a new resource",
@@ -678,6 +682,10 @@ class TestAsyncTools:
         tool = await async_client.tools.proxy(
             endpoint="/api/v1/resources",
             method="GET",
+            binary_body={
+                "url": "https://example.com",
+                "content_type": "content_type",
+            },
             body={
                 "name": "New Resource",
                 "description": "This is a new resource",
