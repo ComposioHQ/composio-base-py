@@ -14,6 +14,12 @@ class ConfigUpdateParams(TypedDict, total=False):
 
     is_2_fa_enabled: Annotated[bool, PropertyInfo(alias="is_2FA_enabled")]
 
+    is_composio_link_enabled_for_managed_auth: bool
+    """Whether to enable composio link for managed authentication.
+
+    This key will be deprecated in the future. Please don't use this key.
+    """
+
     log_visibility_setting: Literal["show_all", "dont_store_data"]
 
     logo_url: str

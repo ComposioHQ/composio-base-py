@@ -19,6 +19,12 @@ class ConfigUpdateResponse(BaseModel):
 
     display_name: Optional[str] = None
 
+    is_composio_link_enabled_for_managed_auth: Optional[bool] = None
+    """Whether to enable composio link for managed authentication.
+
+    This key will be deprecated in the future. Please don't use this key.
+    """
+
     logo_url: Optional[str] = None
 
     require_mcp_api_key: Optional[bool] = None

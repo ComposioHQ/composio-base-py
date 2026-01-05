@@ -68,6 +68,7 @@ class ConfigResource(SyncAPIResource):
         *,
         display_name: str | Omit = omit,
         is_2_fa_enabled: bool | Omit = omit,
+        is_composio_link_enabled_for_managed_auth: bool | Omit = omit,
         log_visibility_setting: Literal["show_all", "dont_store_data"] | Omit = omit,
         logo_url: str | Omit = omit,
         mask_secret_keys_in_connected_account: bool | Omit = omit,
@@ -83,6 +84,9 @@ class ConfigResource(SyncAPIResource):
         Updates the project configuration settings.
 
         Args:
+          is_composio_link_enabled_for_managed_auth: Whether to enable composio link for managed authentication. This key will be
+              deprecated in the future. Please don't use this key.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -97,6 +101,7 @@ class ConfigResource(SyncAPIResource):
                 {
                     "display_name": display_name,
                     "is_2_fa_enabled": is_2_fa_enabled,
+                    "is_composio_link_enabled_for_managed_auth": is_composio_link_enabled_for_managed_auth,
                     "log_visibility_setting": log_visibility_setting,
                     "logo_url": logo_url,
                     "mask_secret_keys_in_connected_account": mask_secret_keys_in_connected_account,
@@ -155,6 +160,7 @@ class AsyncConfigResource(AsyncAPIResource):
         *,
         display_name: str | Omit = omit,
         is_2_fa_enabled: bool | Omit = omit,
+        is_composio_link_enabled_for_managed_auth: bool | Omit = omit,
         log_visibility_setting: Literal["show_all", "dont_store_data"] | Omit = omit,
         logo_url: str | Omit = omit,
         mask_secret_keys_in_connected_account: bool | Omit = omit,
@@ -170,6 +176,9 @@ class AsyncConfigResource(AsyncAPIResource):
         Updates the project configuration settings.
 
         Args:
+          is_composio_link_enabled_for_managed_auth: Whether to enable composio link for managed authentication. This key will be
+              deprecated in the future. Please don't use this key.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -184,6 +193,7 @@ class AsyncConfigResource(AsyncAPIResource):
                 {
                     "display_name": display_name,
                     "is_2_fa_enabled": is_2_fa_enabled,
+                    "is_composio_link_enabled_for_managed_auth": is_composio_link_enabled_for_managed_auth,
                     "log_visibility_setting": log_visibility_setting,
                     "logo_url": logo_url,
                     "mask_secret_keys_in_connected_account": mask_secret_keys_in_connected_account,

@@ -52,6 +52,7 @@ class TestConfig:
         config = client.project.config.update(
             display_name="display_name",
             is_2_fa_enabled=True,
+            is_composio_link_enabled_for_managed_auth=True,
             log_visibility_setting="show_all",
             logo_url="logo_url",
             mask_secret_keys_in_connected_account=True,
@@ -120,6 +121,7 @@ class TestAsyncConfig:
         config = await async_client.project.config.update(
             display_name="display_name",
             is_2_fa_enabled=True,
+            is_composio_link_enabled_for_managed_auth=True,
             log_visibility_setting="show_all",
             logo_url="logo_url",
             mask_secret_keys_in_connected_account=True,
