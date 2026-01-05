@@ -52,8 +52,8 @@ class ToolProxyParams(TypedDict, total=False):
     binary_body: BinaryBody
     """Binary body to send.
 
-    For binary upload via URL: use {url: "https://...", contentType?: "..."}. For
-    binary upload via base64: use {base64: "...", contentType?: "..."}.
+    For binary upload via URL: use {url: "https://...", content_type?: "..."}. For
+    binary upload via base64: use {base64: "...", content_type?: "..."}.
     """
 
     body: object

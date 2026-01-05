@@ -365,8 +365,8 @@ class ToolsResource(SyncAPIResource):
           method: The HTTP method to use for the request
 
           binary_body: Binary body to send. For binary upload via URL: use {url: "https://...",
-              contentType?: "..."}. For binary upload via base64: use {base64: "...",
-              contentType?: "..."}.
+              content_type?: "..."}. For binary upload via base64: use {base64: "...",
+              content_type?: "..."}.
 
           body: The request body (for POST, PUT, and PATCH requests)
 
@@ -757,8 +757,8 @@ class AsyncToolsResource(AsyncAPIResource):
           method: The HTTP method to use for the request
 
           binary_body: Binary body to send. For binary upload via URL: use {url: "https://...",
-              contentType?: "..."}. For binary upload via base64: use {base64: "...",
-              contentType?: "..."}.
+              content_type?: "..."}. For binary upload via base64: use {base64: "...",
+              content_type?: "..."}.
 
           body: The request body (for POST, PUT, and PATCH requests)
 
