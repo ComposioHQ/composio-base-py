@@ -74,6 +74,7 @@ class TriggerInstancesResource(SyncAPIResource):
         query_trigger_names_1: Optional[SequenceNotStr[str]] | Omit = omit,
         query_trigger_ids_2: Optional[SequenceNotStr[str]] | Omit = omit,
         query_trigger_names_2: Optional[SequenceNotStr[str]] | Omit = omit,
+        user_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -115,13 +116,16 @@ class TriggerInstancesResource(SyncAPIResource):
 
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
-          query_trigger_names_1: Array of trigger names to filter triggers by
+          query_trigger_names_1: Array of trigger names to filter triggers by. Case-insensitive (internally
+              normalized to uppercase).
 
           query_trigger_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
               trigger_ids instead.
 
           query_trigger_names_2: DEPRECATED: This parameter will be removed in a future version. Please use
               trigger_names instead.
+
+          user_ids: Array of user IDs to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -155,6 +159,7 @@ class TriggerInstancesResource(SyncAPIResource):
                         "query_trigger_names_1": query_trigger_names_1,
                         "query_trigger_ids_2": query_trigger_ids_2,
                         "query_trigger_names_2": query_trigger_names_2,
+                        "user_ids": user_ids,
                     },
                     trigger_instance_list_active_params.TriggerInstanceListActiveParams,
                 ),
@@ -179,9 +184,11 @@ class TriggerInstancesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceUpsertResponse:
-        """
-        Args:
-          slug: The slug of the trigger instance
+        """Args:
+          slug: The slug of the trigger instance.
+
+        Case-insensitive (internally normalized to
+              uppercase).
 
           connected_account_id: Connected account nanoid
 
@@ -271,6 +278,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         query_trigger_names_1: Optional[SequenceNotStr[str]] | Omit = omit,
         query_trigger_ids_2: Optional[SequenceNotStr[str]] | Omit = omit,
         query_trigger_names_2: Optional[SequenceNotStr[str]] | Omit = omit,
+        user_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -312,13 +320,16 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
 
           query_trigger_ids_1: Array of trigger IDs to filter triggers by
 
-          query_trigger_names_1: Array of trigger names to filter triggers by
+          query_trigger_names_1: Array of trigger names to filter triggers by. Case-insensitive (internally
+              normalized to uppercase).
 
           query_trigger_ids_2: DEPRECATED: This parameter will be removed in a future version. Please use
               trigger_ids instead.
 
           query_trigger_names_2: DEPRECATED: This parameter will be removed in a future version. Please use
               trigger_names instead.
+
+          user_ids: Array of user IDs to filter triggers by
 
           extra_headers: Send extra headers
 
@@ -352,6 +363,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
                         "query_trigger_names_1": query_trigger_names_1,
                         "query_trigger_ids_2": query_trigger_ids_2,
                         "query_trigger_names_2": query_trigger_names_2,
+                        "user_ids": user_ids,
                     },
                     trigger_instance_list_active_params.TriggerInstanceListActiveParams,
                 ),
@@ -376,9 +388,11 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerInstanceUpsertResponse:
-        """
-        Args:
-          slug: The slug of the trigger instance
+        """Args:
+          slug: The slug of the trigger instance.
+
+        Case-insensitive (internally normalized to
+              uppercase).
 
           connected_account_id: Connected account nanoid
 

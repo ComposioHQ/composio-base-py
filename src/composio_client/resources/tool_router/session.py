@@ -26,6 +26,7 @@ from ...types.tool_router import (
     session_execute_meta_params,
 )
 from ...types.tool_router.session_link_response import SessionLinkResponse
+from ...types.tool_router.session_tools_response import SessionToolsResponse
 from ...types.tool_router.session_create_response import SessionCreateResponse
 from ...types.tool_router.session_execute_response import SessionExecuteResponse
 from ...types.tool_router.session_retrieve_response import SessionRetrieveResponse
@@ -237,6 +238,8 @@ class SessionResource(SyncAPIResource):
             "COMPOSIO_REMOTE_WORKBENCH",
             "COMPOSIO_REMOTE_BASH_TOOL",
             "COMPOSIO_GET_TOOL_SCHEMAS",
+            "COMPOSIO_UPSERT_RECIPE",
+            "COMPOSIO_GET_RECIPE",
         ],
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -400,6 +403,43 @@ class SessionResource(SyncAPIResource):
                 ),
             ),
             cast_to=SessionToolkitsResponse,
+        )
+
+    def tools(
+        self,
+        session_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SessionToolsResponse:
+        """
+        Returns the meta tools available in a tool router session with their complete
+        schemas. This includes request and response schemas specific to the session
+        context.
+
+        Args:
+          session_id: Tool router session ID
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        return self._get(
+            f"/api/v3/tool_router/session/{session_id}/tools",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SessionToolsResponse,
         )
 
 
@@ -605,6 +645,8 @@ class AsyncSessionResource(AsyncAPIResource):
             "COMPOSIO_REMOTE_WORKBENCH",
             "COMPOSIO_REMOTE_BASH_TOOL",
             "COMPOSIO_GET_TOOL_SCHEMAS",
+            "COMPOSIO_UPSERT_RECIPE",
+            "COMPOSIO_GET_RECIPE",
         ],
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -770,6 +812,43 @@ class AsyncSessionResource(AsyncAPIResource):
             cast_to=SessionToolkitsResponse,
         )
 
+    async def tools(
+        self,
+        session_id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SessionToolsResponse:
+        """
+        Returns the meta tools available in a tool router session with their complete
+        schemas. This includes request and response schemas specific to the session
+        context.
+
+        Args:
+          session_id: Tool router session ID
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        return await self._get(
+            f"/api/v3/tool_router/session/{session_id}/tools",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SessionToolsResponse,
+        )
+
 
 class SessionResourceWithRawResponse:
     def __init__(self, session: SessionResource) -> None:
@@ -792,6 +871,9 @@ class SessionResourceWithRawResponse:
         )
         self.toolkits = to_raw_response_wrapper(
             session.toolkits,
+        )
+        self.tools = to_raw_response_wrapper(
+            session.tools,
         )
 
 
@@ -817,6 +899,9 @@ class AsyncSessionResourceWithRawResponse:
         self.toolkits = async_to_raw_response_wrapper(
             session.toolkits,
         )
+        self.tools = async_to_raw_response_wrapper(
+            session.tools,
+        )
 
 
 class SessionResourceWithStreamingResponse:
@@ -841,6 +926,9 @@ class SessionResourceWithStreamingResponse:
         self.toolkits = to_streamed_response_wrapper(
             session.toolkits,
         )
+        self.tools = to_streamed_response_wrapper(
+            session.tools,
+        )
 
 
 class AsyncSessionResourceWithStreamingResponse:
@@ -864,4 +952,7 @@ class AsyncSessionResourceWithStreamingResponse:
         )
         self.toolkits = async_to_streamed_response_wrapper(
             session.toolkits,
+        )
+        self.tools = async_to_streamed_response_wrapper(
+            session.tools,
         )

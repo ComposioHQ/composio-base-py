@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from composio_client import Composio, AsyncComposio
 from composio_client.types.tool_router import (
     SessionLinkResponse,
+    SessionToolsResponse,
     SessionCreateResponse,
     SessionExecuteResponse,
     SessionRetrieveResponse,
@@ -339,6 +340,44 @@ class TestSession:
                 session_id="",
             )
 
+    @parametrize
+    def test_method_tools(self, client: Composio) -> None:
+        session = client.tool_router.session.tools(
+            "session_id",
+        )
+        assert_matches_type(SessionToolsResponse, session, path=["response"])
+
+    @parametrize
+    def test_raw_response_tools(self, client: Composio) -> None:
+        response = client.tool_router.session.with_raw_response.tools(
+            "session_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = response.parse()
+        assert_matches_type(SessionToolsResponse, session, path=["response"])
+
+    @parametrize
+    def test_streaming_response_tools(self, client: Composio) -> None:
+        with client.tool_router.session.with_streaming_response.tools(
+            "session_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = response.parse()
+            assert_matches_type(SessionToolsResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_tools(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            client.tool_router.session.with_raw_response.tools(
+                "",
+            )
+
 
 class TestAsyncSession:
     parametrize = pytest.mark.parametrize(
@@ -658,4 +697,42 @@ class TestAsyncSession:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
             await async_client.tool_router.session.with_raw_response.toolkits(
                 session_id="",
+            )
+
+    @parametrize
+    async def test_method_tools(self, async_client: AsyncComposio) -> None:
+        session = await async_client.tool_router.session.tools(
+            "session_id",
+        )
+        assert_matches_type(SessionToolsResponse, session, path=["response"])
+
+    @parametrize
+    async def test_raw_response_tools(self, async_client: AsyncComposio) -> None:
+        response = await async_client.tool_router.session.with_raw_response.tools(
+            "session_id",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = await response.parse()
+        assert_matches_type(SessionToolsResponse, session, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_tools(self, async_client: AsyncComposio) -> None:
+        async with async_client.tool_router.session.with_streaming_response.tools(
+            "session_id",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = await response.parse()
+            assert_matches_type(SessionToolsResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_tools(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            await async_client.tool_router.session.with_raw_response.tools(
+                "",
             )
