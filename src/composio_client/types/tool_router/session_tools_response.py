@@ -2,41 +2,84 @@
 
 from typing import Dict, List, Optional
 
+from pydantic import Field as FieldInfo
+
 from ..._models import BaseModel
 
-__all__ = ["SessionToolsResponse", "Item", "ItemToolkit"]
+__all__ = ["SessionToolsResponse", "Item", "ItemDeprecated", "ItemDeprecatedToolkit", "ItemToolkit"]
+
+
+class ItemDeprecatedToolkit(BaseModel):
+    logo: str
+    """URL to the toolkit logo image"""
+
+
+class ItemDeprecated(BaseModel):
+    available_versions: List[str]
+    """List of all available versions for this tool"""
+
+    display_name: str = FieldInfo(alias="displayName")
+    """The display name of the tool"""
+
+    is_deprecated: bool
+    """Indicates if this tool is deprecated and may be removed in the future"""
+
+    toolkit: ItemDeprecatedToolkit
+
+    version: str
+    """Current version identifier of the tool"""
 
 
 class ItemToolkit(BaseModel):
+    logo: str
+    """URL to the toolkit logo image"""
+
     name: str
-    """Name of the toolkit"""
+    """Human-readable name of the parent toolkit"""
 
     slug: str
-    """Slug of the toolkit this tool belongs to"""
+    """Unique identifier of the parent toolkit"""
 
 
 class Item(BaseModel):
+    available_versions: List[str]
+    """List of all available versions for this tool"""
+
+    deprecated: ItemDeprecated
+
     description: str
-    """Description of what the tool does"""
+    """Detailed explanation of the tool's functionality and purpose"""
 
     input_parameters: Dict[str, Optional[object]]
-    """JSON Schema for the tool input parameters"""
+    """Schema definition of required input parameters for the tool"""
+
+    is_deprecated: bool
+    """Indicates if this tool is deprecated and may be removed in the future"""
 
     name: str
-    """Human-readable name of the tool"""
+    """Human-readable display name of the tool"""
+
+    no_auth: bool
+    """Indicates if the tool can be used without authentication"""
 
     output_parameters: Dict[str, Optional[object]]
-    """JSON Schema for the tool output parameters"""
+    """Schema definition of return values from the tool"""
+
+    scopes: List[str]
+    """List of scopes associated with the tool"""
 
     slug: str
     """Unique identifier for the tool"""
 
     tags: List[str]
-    """Tags associated with the tool"""
+    """List of tags associated with the tool for categorization and filtering"""
 
     toolkit: ItemToolkit
+
+    version: str
+    """Current version of the tool"""
 
 
 class SessionToolsResponse(BaseModel):
     items: List[Item]
-    """List of meta tools with their complete schemas"""
+    """List of tools with their complete schemas"""
