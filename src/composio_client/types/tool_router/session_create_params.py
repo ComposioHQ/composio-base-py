@@ -91,6 +91,13 @@ class ManageConnections(TypedDict, total=False):
     connections manually.
     """
 
+    enable_wait_for_connections: Optional[bool]
+    """
+    When true, the COMPOSIO_WAIT_FOR_CONNECTIONS tool is available for agents to
+    poll connection status after sharing auth URLs. Default is false (disabled). May
+    not work reliably with GPT models.
+    """
+
 
 class TagsUnionMember1(TypedDict, total=False):
     disable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]

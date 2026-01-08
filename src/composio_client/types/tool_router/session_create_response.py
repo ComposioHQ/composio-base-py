@@ -29,6 +29,12 @@ class ConfigManageConnections(BaseModel):
     callback_url: Optional[str] = None
     """Custom callback URL for connected account auth flows"""
 
+    enable_wait_for_connections: Optional[bool] = None
+    """Enable the COMPOSIO_WAIT_FOR_CONNECTIONS tool for polling connection status.
+
+    Default false. May not work reliably with GPT models.
+    """
+
     enabled: Optional[bool] = None
     """Whether to enable the connection manager for automatic connection handling"""
 
