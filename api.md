@@ -244,16 +244,6 @@ Methods:
 
 # ToolRouter
 
-Types:
-
-```python
-from composio_client.types import ToolRouterCreateSessionResponse
-```
-
-Methods:
-
-- <code title="post /api/v3/labs/tool_router/session">client.tool_router.<a href="./src/composio_client/resources/tool_router/tool_router.py">create_session</a>(\*\*<a href="src/composio_client/types/tool_router_create_session_params.py">params</a>) -> <a href="./src/composio_client/types/tool_router_create_session_response.py">ToolRouterCreateSessionResponse</a></code>
-
 ## Session
 
 Types:

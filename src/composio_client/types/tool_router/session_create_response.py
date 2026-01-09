@@ -29,6 +29,12 @@ class ConfigManageConnections(BaseModel):
     callback_url: Optional[str] = None
     """Custom callback URL for connected account auth flows"""
 
+    enable_wait_for_connections: Optional[bool] = None
+    """Enable the COMPOSIO_WAIT_FOR_CONNECTIONS tool for polling connection status.
+
+    Default false. May not work reliably with GPT models.
+    """
+
     enabled: Optional[bool] = None
     """Whether to enable the connection manager for automatic connection handling"""
 
@@ -142,16 +148,5 @@ class SessionCreateResponse(BaseModel):
     session_id: str
     """The identifier of the session"""
 
-    tool_router_tools: List[
-        Literal[
-            "COMPOSIO_SEARCH_TOOLS",
-            "COMPOSIO_MULTI_EXECUTE_TOOL",
-            "COMPOSIO_MANAGE_CONNECTIONS",
-            "COMPOSIO_REMOTE_WORKBENCH",
-            "COMPOSIO_REMOTE_BASH_TOOL",
-            "COMPOSIO_GET_TOOL_SCHEMAS",
-            "COMPOSIO_UPSERT_RECIPE",
-            "COMPOSIO_GET_RECIPE",
-        ]
-    ]
+    tool_router_tools: List[str]
     """List of available tools in this session"""

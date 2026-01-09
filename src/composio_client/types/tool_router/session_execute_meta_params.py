@@ -14,6 +14,7 @@ class SessionExecuteMetaParams(TypedDict, total=False):
             "COMPOSIO_SEARCH_TOOLS",
             "COMPOSIO_MULTI_EXECUTE_TOOL",
             "COMPOSIO_MANAGE_CONNECTIONS",
+            "COMPOSIO_WAIT_FOR_CONNECTIONS",
             "COMPOSIO_REMOTE_WORKBENCH",
             "COMPOSIO_REMOTE_BASH_TOOL",
             "COMPOSIO_GET_TOOL_SCHEMAS",
