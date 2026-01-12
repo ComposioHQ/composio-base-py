@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.25.0 (2026-01-12)
+
+Full Changelog: [v1.24.0...v1.25.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.24.0...v1.25.0)
+
+### Features
+
+* **api:** revert tool router create session methods ([d285d6f](https://github.com/ComposioHQ/composio-base-py/commit/d285d6f13f5d44516170d7831b91b2bcc8b5ef92))
+
 ## 1.24.0 (2026-01-12)
 
 Full Changelog: [v1.23.0...v1.24.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.23.0...v1.24.0)
