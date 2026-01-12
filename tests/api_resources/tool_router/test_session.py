@@ -44,6 +44,7 @@ class TestSession:
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
+                "enable_wait_for_connections": False,
             },
             tags={
                 "disable": ["destructiveHint"],
@@ -403,6 +404,7 @@ class TestAsyncSession:
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
+                "enable_wait_for_connections": False,
             },
             tags={
                 "disable": ["destructiveHint"],
