@@ -76,6 +76,9 @@ class Item(BaseModel):
     slug: str
     """URL-friendly unique identifier for the toolkit"""
 
+    status: str
+    """Lifecycle status of the toolkit"""
+
     auth_schemes: Optional[List[str]] = None
     """List of authentication methods supported by this toolkit"""
 
