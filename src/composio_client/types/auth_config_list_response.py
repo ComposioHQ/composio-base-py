@@ -128,6 +128,9 @@ class Item(BaseModel):
     is_composio_managed: Optional[bool] = None
     """Whether this authentication configuration is managed by Composio or the user"""
 
+    is_enabled_for_tool_router: Optional[bool] = None
+    """Whether this auth config is enabled for tool router"""
+
     last_updated_at: Optional[str] = None
     """ISO 8601 date-time when the auth config was last updated"""
 

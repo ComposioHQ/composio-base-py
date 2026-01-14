@@ -19,11 +19,14 @@ __all__ = [
 
 
 class Variant0(TypedDict, total=False):
-    credentials: Required[Variant0Credentials]
-
     type: Required[Literal["custom"]]
 
-    proxy_config: Variant0ProxyConfig
+    credentials: Variant0Credentials
+
+    is_enabled_for_tool_router: bool
+    """Whether this auth config is enabled for tool router"""
+
+    proxy_config: Optional[Variant0ProxyConfig]
 
     restrict_to_following_tools: SequenceNotStr[str]
     """Use tool_access_config instead. This field will be deprecated in the future."""
@@ -69,6 +72,9 @@ class Variant0ToolAccessConfig(TypedDict, total=False):
 
 class Variant1(TypedDict, total=False):
     type: Required[Literal["default"]]
+
+    is_enabled_for_tool_router: bool
+    """Whether this auth config is enabled for tool router"""
 
     restrict_to_following_tools: SequenceNotStr[str]
     """Use tool_access_config instead. This field will be deprecated in the future."""

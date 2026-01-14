@@ -52,6 +52,9 @@ class AuthConfigUnionMember0(TypedDict, total=False):
 
     credentials: AuthConfigUnionMember0Credentials
 
+    is_enabled_for_tool_router: bool
+    """Whether this auth config is enabled for tool router"""
+
     name: str
     """The name of the integration"""
 
@@ -115,10 +118,13 @@ class AuthConfigUnionMember1(TypedDict, total=False):
 
     credentials: AuthConfigUnionMember1Credentials
 
+    is_enabled_for_tool_router: bool
+    """Whether this auth config is enabled for tool router"""
+
     name: str
     """The name of the integration"""
 
-    proxy_config: AuthConfigUnionMember1ProxyConfig
+    proxy_config: Optional[AuthConfigUnionMember1ProxyConfig]
 
     restrict_to_following_tools: SequenceNotStr[str]
     """Use tool_access_config instead. This field will be deprecated in the future."""
