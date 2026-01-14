@@ -1,5 +1,15 @@
 # Changelog
 
+## 1.26.0 (2026-01-14)
+
+Full Changelog: [v1.25.0...v1.26.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.25.0...v1.26.0)
+
+### Features
+
+* **api:** api update ([3cabe6d](https://github.com/ComposioHQ/composio-base-py/commit/3cabe6dca07c00cc3ac14e900ef1545aca22cb3b))
+* **api:** api update ([74dbb5b](https://github.com/ComposioHQ/composio-base-py/commit/74dbb5bbb24419af1e55325ab1f71377037d75bc))
+* **client:** add support for binary request streaming ([16598d5](https://github.com/ComposioHQ/composio-base-py/commit/16598d5fd9053d9a978b98ba4532029079737689))
+
 ## 1.25.0 (2026-01-12)
 
 Full Changelog: [v1.24.0...v1.25.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.24.0...v1.25.0)
