@@ -126,9 +126,10 @@ class AuthConfigsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
-        credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
-        proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        is_enabled_for_tool_router: bool | Omit = omit,
+        proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
@@ -145,6 +146,8 @@ class AuthConfigsResource(SyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
+
+          is_enabled_for_tool_router: Whether this auth config is enabled for tool router
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
@@ -168,6 +171,7 @@ class AuthConfigsResource(SyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
+        is_enabled_for_tool_router: bool | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
@@ -186,6 +190,8 @@ class AuthConfigsResource(SyncAPIResource):
         Args:
           nanoid: The unique identifier of the authentication configuration to update
 
+          is_enabled_for_tool_router: Whether this auth config is enabled for tool router
+
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
@@ -202,14 +208,15 @@ class AuthConfigsResource(SyncAPIResource):
         """
         ...
 
-    @required_args(["credentials", "type"], ["type"])
+    @required_args(["type"])
     def update(
         self,
         nanoid: str,
         *,
-        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
         type: Literal["custom"] | Literal["default"],
-        proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        is_enabled_for_tool_router: bool | Omit = omit,
+        proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
@@ -229,8 +236,9 @@ class AuthConfigsResource(SyncAPIResource):
             f"/api/v3/auth_configs/{nanoid}",
             body=maybe_transform(
                 {
-                    "credentials": credentials,
                     "type": type,
+                    "credentials": credentials,
+                    "is_enabled_for_tool_router": is_enabled_for_tool_router,
                     "proxy_config": proxy_config,
                     "restrict_to_following_tools": restrict_to_following_tools,
                     "shared_credentials": shared_credentials,
@@ -496,9 +504,10 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
-        credentials: auth_config_update_params.Variant0Credentials,
         type: Literal["custom"],
-        proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        is_enabled_for_tool_router: bool | Omit = omit,
+        proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
@@ -515,6 +524,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
+
+          is_enabled_for_tool_router: Whether this auth config is enabled for tool router
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
@@ -538,6 +549,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         nanoid: str,
         *,
         type: Literal["default"],
+        is_enabled_for_tool_router: bool | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
@@ -556,6 +568,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         Args:
           nanoid: The unique identifier of the authentication configuration to update
 
+          is_enabled_for_tool_router: Whether this auth config is enabled for tool router
+
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
           shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
@@ -572,14 +586,15 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         """
         ...
 
-    @required_args(["credentials", "type"], ["type"])
+    @required_args(["type"])
     async def update(
         self,
         nanoid: str,
         *,
-        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
         type: Literal["custom"] | Literal["default"],
-        proxy_config: auth_config_update_params.Variant0ProxyConfig | Omit = omit,
+        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        is_enabled_for_tool_router: bool | Omit = omit,
+        proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
@@ -599,8 +614,9 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
             f"/api/v3/auth_configs/{nanoid}",
             body=await async_maybe_transform(
                 {
-                    "credentials": credentials,
                     "type": type,
+                    "credentials": credentials,
+                    "is_enabled_for_tool_router": is_enabled_for_tool_router,
                     "proxy_config": proxy_config,
                     "restrict_to_following_tools": restrict_to_following_tools,
                     "shared_credentials": shared_credentials,
