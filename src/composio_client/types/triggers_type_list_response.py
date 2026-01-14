@@ -40,6 +40,9 @@ class Item(BaseModel):
     slug: str
     """Unique identifier for the trigger type"""
 
+    status: str
+    """Lifecycle status of the trigger"""
+
     toolkit: ItemToolkit
     """Information about the toolkit that provides this trigger"""
 
