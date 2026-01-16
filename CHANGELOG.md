@@ -1,5 +1,13 @@
 # Changelog
 
+## 1.26.1 (2026-01-16)
+
+Full Changelog: [v1.26.0...v1.26.1](https://github.com/ComposioHQ/composio-base-py/compare/v1.26.0...v1.26.1)
+
+### Chores
+
+* **internal:** update `actions/checkout` version ([808f2d4](https://github.com/ComposioHQ/composio-base-py/commit/808f2d4f955497a751e2f34686359d0398e138e9))
+
 ## 1.26.0 (2026-01-14)
 
 Full Changelog: [v1.25.0...v1.26.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.25.0...v1.26.0)
