@@ -73,6 +73,7 @@ class ConfigResource(SyncAPIResource):
         logo_url: str | Omit = omit,
         mask_secret_keys_in_connected_account: bool | Omit = omit,
         require_mcp_api_key: bool | Omit = omit,
+        signed_url_file_expiry_in_seconds: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,6 +107,7 @@ class ConfigResource(SyncAPIResource):
                     "logo_url": logo_url,
                     "mask_secret_keys_in_connected_account": mask_secret_keys_in_connected_account,
                     "require_mcp_api_key": require_mcp_api_key,
+                    "signed_url_file_expiry_in_seconds": signed_url_file_expiry_in_seconds,
                 },
                 config_update_params.ConfigUpdateParams,
             ),
@@ -165,6 +167,7 @@ class AsyncConfigResource(AsyncAPIResource):
         logo_url: str | Omit = omit,
         mask_secret_keys_in_connected_account: bool | Omit = omit,
         require_mcp_api_key: bool | Omit = omit,
+        signed_url_file_expiry_in_seconds: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -198,6 +201,7 @@ class AsyncConfigResource(AsyncAPIResource):
                     "logo_url": logo_url,
                     "mask_secret_keys_in_connected_account": mask_secret_keys_in_connected_account,
                     "require_mcp_api_key": require_mcp_api_key,
+                    "signed_url_file_expiry_in_seconds": signed_url_file_expiry_in_seconds,
                 },
                 config_update_params.ConfigUpdateParams,
             ),

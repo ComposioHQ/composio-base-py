@@ -9,19 +9,22 @@ __all__ = ["FileCreatePresignedURLParams"]
 
 class FileCreatePresignedURLParams(TypedDict, total=False):
     filename: Required[str]
-    """Name of the original file. Example: "photo.jpg" """
+    """Name of the original file. Example: "quarterly_report.pdf" """
 
     md5: Required[str]
     """MD5 hash of the file for deduplication and integrity verification.
 
-    Example: "d41d8cd98f00b204e9800998ecf8427e"
+    Example: "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"
     """
 
     mimetype: Required[str]
-    """Mime type of the original file. Example: "image/jpeg" """
+    """Mime type of the original file. Example: "application/pdf", "image/png" """
 
     tool_slug: Required[str]
-    """Slug of the action where this file belongs to. Example: "resize-image" """
+    """Slug of the action where this file belongs to.
+
+    Example: "GMAIL_SEND_EMAIL", "SLACK_UPLOAD_FILE"
+    """
 
     toolkit_slug: Required[str]
-    """Slug of the app where this file belongs to. Example: "image-processing" """
+    """Slug of the app where this file belongs to. Example: "gmail", "slack", "github" """

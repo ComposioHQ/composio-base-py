@@ -58,22 +58,22 @@ class TestFiles:
     @parametrize
     def test_method_create_presigned_url(self, client: Composio) -> None:
         file = client.files.create_presigned_url(
-            filename="photo.jpg",
-            md5="d41d8cd98f00b204e9800998ecf8427e",
-            mimetype="image/jpeg",
-            tool_slug="resize-image",
-            toolkit_slug="image-processing",
+            filename="quarterly_report.pdf",
+            md5="a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+            mimetype="application/pdf",
+            tool_slug="GMAIL_SEND_EMAIL",
+            toolkit_slug="gmail",
         )
         assert_matches_type(FileCreatePresignedURLResponse, file, path=["response"])
 
     @parametrize
     def test_raw_response_create_presigned_url(self, client: Composio) -> None:
         response = client.files.with_raw_response.create_presigned_url(
-            filename="photo.jpg",
-            md5="d41d8cd98f00b204e9800998ecf8427e",
-            mimetype="image/jpeg",
-            tool_slug="resize-image",
-            toolkit_slug="image-processing",
+            filename="quarterly_report.pdf",
+            md5="a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+            mimetype="application/pdf",
+            tool_slug="GMAIL_SEND_EMAIL",
+            toolkit_slug="gmail",
         )
 
         assert response.is_closed is True
@@ -84,11 +84,11 @@ class TestFiles:
     @parametrize
     def test_streaming_response_create_presigned_url(self, client: Composio) -> None:
         with client.files.with_streaming_response.create_presigned_url(
-            filename="photo.jpg",
-            md5="d41d8cd98f00b204e9800998ecf8427e",
-            mimetype="image/jpeg",
-            tool_slug="resize-image",
-            toolkit_slug="image-processing",
+            filename="quarterly_report.pdf",
+            md5="a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+            mimetype="application/pdf",
+            tool_slug="GMAIL_SEND_EMAIL",
+            toolkit_slug="gmail",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -142,22 +142,22 @@ class TestAsyncFiles:
     @parametrize
     async def test_method_create_presigned_url(self, async_client: AsyncComposio) -> None:
         file = await async_client.files.create_presigned_url(
-            filename="photo.jpg",
-            md5="d41d8cd98f00b204e9800998ecf8427e",
-            mimetype="image/jpeg",
-            tool_slug="resize-image",
-            toolkit_slug="image-processing",
+            filename="quarterly_report.pdf",
+            md5="a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+            mimetype="application/pdf",
+            tool_slug="GMAIL_SEND_EMAIL",
+            toolkit_slug="gmail",
         )
         assert_matches_type(FileCreatePresignedURLResponse, file, path=["response"])
 
     @parametrize
     async def test_raw_response_create_presigned_url(self, async_client: AsyncComposio) -> None:
         response = await async_client.files.with_raw_response.create_presigned_url(
-            filename="photo.jpg",
-            md5="d41d8cd98f00b204e9800998ecf8427e",
-            mimetype="image/jpeg",
-            tool_slug="resize-image",
-            toolkit_slug="image-processing",
+            filename="quarterly_report.pdf",
+            md5="a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+            mimetype="application/pdf",
+            tool_slug="GMAIL_SEND_EMAIL",
+            toolkit_slug="gmail",
         )
 
         assert response.is_closed is True
@@ -168,11 +168,11 @@ class TestAsyncFiles:
     @parametrize
     async def test_streaming_response_create_presigned_url(self, async_client: AsyncComposio) -> None:
         async with async_client.files.with_streaming_response.create_presigned_url(
-            filename="photo.jpg",
-            md5="d41d8cd98f00b204e9800998ecf8427e",
-            mimetype="image/jpeg",
-            tool_slug="resize-image",
-            toolkit_slug="image-processing",
+            filename="quarterly_report.pdf",
+            md5="a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6",
+            mimetype="application/pdf",
+            tool_slug="GMAIL_SEND_EMAIL",
+            toolkit_slug="gmail",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -28,3 +28,5 @@ class ConfigRetrieveResponse(BaseModel):
     logo_url: Optional[str] = None
 
     require_mcp_api_key: Optional[bool] = None
+
+    signed_url_file_expiry_in_seconds: Optional[float] = None

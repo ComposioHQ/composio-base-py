@@ -29,23 +29,28 @@ class UnionMember0Metadata(BaseModel):
 
 class UnionMember0(BaseModel):
     id: str
-    """ID of the request file. Example: "f1e2d3c4b5a6" """
+    """ID of the request file. Example: "req_file_7kXm2pL9qNvR" """
 
     existing_url: str
     """URL of the existing request file.
 
-    Example: "https://storage.example.com/projects/123/files/photo-1234.jpg"
+    Example:
+    "https://storage.composio.dev/projects/prj_abc123/requests/gmail/attachment_7kXm2p.pdf"
     """
 
     existing_url: str = FieldInfo(alias="existingUrl")
     """[DEPRECATED] Use existing_url instead.
 
     URL of the existing request file. Example:
-    "https://storage.example.com/projects/123/files/photo-1234.jpg"
+    "https://storage.composio.dev/projects/prj_abc123/requests/gmail/attachment_7kXm2p.pdf"
     """
 
     key: str
-    """S3 upload location. Example: "projects/123/files/photo-1234.jpg" """
+    """S3 upload location.
+
+    Example:
+    "projects/prj_abc123/requests/gmail/GMAIL_SEND_EMAIL/attachment_7kXm2p.pdf"
+    """
 
     metadata: UnionMember0Metadata
 
@@ -64,10 +69,14 @@ class UnionMember1Metadata(BaseModel):
 
 class UnionMember1(BaseModel):
     id: str
-    """ID of the request file. Example: "f1e2d3c4b5a6" """
+    """ID of the request file. Example: "req_file_9mZn4qR8sXwT" """
 
     key: str
-    """S3 upload location. Example: "projects/123/files/photo-1234.jpg" """
+    """S3 upload location.
+
+    Example:
+    "projects/prj_xyz789/requests/slack/SLACK_UPLOAD_FILE/document_9mZn4q.docx"
+    """
 
     metadata: UnionMember1Metadata
 
@@ -75,14 +84,14 @@ class UnionMember1(BaseModel):
     """Presigned URL for upload.
 
     Example:
-    "https://storage.example.com/projects/123/files/photo-1234.jpg?X-Amz-Algorithm=..."
+    "https://storage.composio.dev/projects/prj_xyz789/requests/slack/document_9mZn4q.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=3600..."
     """
 
     new_presigned_url: str = FieldInfo(alias="newPresignedUrl")
     """[DEPRECATED] Use new_presigned_url instead.
 
     Presigned URL for upload. Example:
-    "https://storage.example.com/projects/123/files/photo-1234.jpg?X-Amz-Algorithm=..."
+    "https://storage.composio.dev/projects/prj_xyz789/requests/slack/document_9mZn4q.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=3600..."
     """
 
     type: Literal["new"]
@@ -100,10 +109,14 @@ class UnionMember2Metadata(BaseModel):
 
 class UnionMember2(BaseModel):
     id: str
-    """ID of the request file. Example: "f1e2d3c4b5a6" """
+    """ID of the request file. Example: "req_file_3bKp6vN1hYjS" """
 
     key: str
-    """S3 upload location. Example: "projects/123/files/photo-1234.jpg" """
+    """S3 upload location.
+
+    Example:
+    "projects/prj_def456/requests/github/GITHUB_CREATE_ISSUE/screenshot_3bKp6v.png"
+    """
 
     metadata: UnionMember2Metadata
 
@@ -114,14 +127,14 @@ class UnionMember2(BaseModel):
     """Presigned URL for upload.
 
     Example:
-    "https://storage.example.com/projects/123/files/photo-1234.jpg?X-Amz-Algorithm=..."
+    "https://storage.composio.dev/projects/prj_def456/requests/github/screenshot_3bKp6v.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=3600..."
     """
 
     update_presigned_url: str = FieldInfo(alias="updatePresignedUrl")
     """[DEPRECATED] Use update_presigned_url instead.
 
     Presigned URL for upload. Example:
-    "https://storage.example.com/projects/123/files/photo-1234.jpg?X-Amz-Algorithm=..."
+    "https://storage.composio.dev/projects/prj_def456/requests/github/screenshot_3bKp6v.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=3600..."
     """
 
 

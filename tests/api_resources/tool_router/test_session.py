@@ -41,6 +41,7 @@ class TestSession:
                 "slack": "ac_23343434343434",
             },
             connected_accounts={"github": "ca_34454545454545"},
+            experimental={"assistive_prompt_config": {"user_timezone": "America/New_York"}},
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
@@ -401,6 +402,7 @@ class TestAsyncSession:
                 "slack": "ac_23343434343434",
             },
             connected_accounts={"github": "ca_34454545454545"},
+            experimental={"assistive_prompt_config": {"user_timezone": "America/New_York"}},
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,

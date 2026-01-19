@@ -62,6 +62,7 @@ class SessionResource(SyncAPIResource):
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
+        experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
@@ -91,6 +92,9 @@ class SessionResource(SyncAPIResource):
           connected_accounts: The connected accounts to use for the session. This will override the default
               behaviour and use the given connected account when specific toolkits are being
               executed
+
+          experimental: Experimental features - not stable, may be modified or removed in future
+              versions.
 
           manage_connections: Configuration for connection management settings
 
@@ -122,6 +126,7 @@ class SessionResource(SyncAPIResource):
                     "user_id": user_id,
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
+                    "experimental": experimental,
                     "manage_connections": manage_connections,
                     "tags": tags,
                     "toolkits": toolkits,
@@ -470,6 +475,7 @@ class AsyncSessionResource(AsyncAPIResource):
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
+        experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
@@ -499,6 +505,9 @@ class AsyncSessionResource(AsyncAPIResource):
           connected_accounts: The connected accounts to use for the session. This will override the default
               behaviour and use the given connected account when specific toolkits are being
               executed
+
+          experimental: Experimental features - not stable, may be modified or removed in future
+              versions.
 
           manage_connections: Configuration for connection management settings
 
@@ -530,6 +539,7 @@ class AsyncSessionResource(AsyncAPIResource):
                     "user_id": user_id,
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
+                    "experimental": experimental,
                     "manage_connections": manage_connections,
                     "tags": tags,
                     "toolkits": toolkits,

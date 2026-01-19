@@ -20,6 +20,7 @@ __all__ = [
     "ConfigToolsTagsTags",
     "ConfigWorkbench",
     "Mcp",
+    "Experimental",
 ]
 
 
@@ -139,6 +140,19 @@ class Mcp(BaseModel):
     """The URL of the MCP server"""
 
 
+class Experimental(BaseModel):
+    """Experimental features including the generated system prompt.
+
+    Only returned on session creation, not on GET.
+    """
+
+    assistive_prompt: str
+    """
+    The assistive system prompt to inject into your agent for optimal tool router
+    usage
+    """
+
+
 class SessionCreateResponse(BaseModel):
     config: Config
     """The session configuration including user, toolkits, and overrides"""
@@ -150,3 +164,9 @@ class SessionCreateResponse(BaseModel):
 
     tool_router_tools: List[str]
     """List of available tools in this session"""
+
+    experimental: Optional[Experimental] = None
+    """Experimental features including the generated system prompt.
+
+    Only returned on session creation, not on GET.
+    """

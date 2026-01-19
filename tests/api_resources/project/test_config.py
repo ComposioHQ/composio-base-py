@@ -57,6 +57,7 @@ class TestConfig:
             logo_url="logo_url",
             mask_secret_keys_in_connected_account=True,
             require_mcp_api_key=True,
+            signed_url_file_expiry_in_seconds=1,
         )
         assert_matches_type(ConfigUpdateResponse, config, path=["response"])
 
@@ -126,6 +127,7 @@ class TestAsyncConfig:
             logo_url="logo_url",
             mask_secret_keys_in_connected_account=True,
             require_mcp_api_key=True,
+            signed_url_file_expiry_in_seconds=1,
         )
         assert_matches_type(ConfigUpdateResponse, config, path=["response"])
 

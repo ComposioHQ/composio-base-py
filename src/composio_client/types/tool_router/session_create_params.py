@@ -9,6 +9,8 @@ from ..._types import SequenceNotStr
 
 __all__ = [
     "SessionCreateParams",
+    "Experimental",
+    "ExperimentalAssistivePromptConfig",
     "ManageConnections",
     "Tags",
     "TagsUnionMember1",
@@ -46,6 +48,12 @@ class SessionCreateParams(TypedDict, total=False):
     when specific toolkits are being executed
     """
 
+    experimental: Experimental
+    """
+    Experimental features - not stable, may be modified or removed in future
+    versions.
+    """
+
     manage_connections: ManageConnections
     """Configuration for connection management settings"""
 
@@ -72,6 +80,25 @@ class SessionCreateParams(TypedDict, total=False):
 
     workbench: Workbench
     """Configuration for workbench behavior"""
+
+
+class ExperimentalAssistivePromptConfig(TypedDict, total=False):
+    """Customize assistive prompt generation (e.g., timezone)."""
+
+    user_timezone: str
+    """IANA timezone identifier (e.g., 'America/New_York', 'Europe/London').
+
+    Used to customize the system prompt with timezone-aware instructions.
+    """
+
+
+class Experimental(TypedDict, total=False):
+    """
+    Experimental features - not stable, may be modified or removed in future versions.
+    """
+
+    assistive_prompt_config: ExperimentalAssistivePromptConfig
+    """Customize assistive prompt generation (e.g., timezone)."""
 
 
 class ManageConnections(TypedDict, total=False):

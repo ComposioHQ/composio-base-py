@@ -124,17 +124,18 @@ class FilesResource(SyncAPIResource):
         deduplication by checking if a file with the same MD5 hash already exists.
 
         Args:
-          filename: Name of the original file. Example: "photo.jpg"
+          filename: Name of the original file. Example: "quarterly_report.pdf"
 
           md5:
               MD5 hash of the file for deduplication and integrity verification. Example:
-              "d41d8cd98f00b204e9800998ecf8427e"
+              "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"
 
-          mimetype: Mime type of the original file. Example: "image/jpeg"
+          mimetype: Mime type of the original file. Example: "application/pdf", "image/png"
 
-          tool_slug: Slug of the action where this file belongs to. Example: "resize-image"
+          tool_slug: Slug of the action where this file belongs to. Example: "GMAIL_SEND_EMAIL",
+              "SLACK_UPLOAD_FILE"
 
-          toolkit_slug: Slug of the app where this file belongs to. Example: "image-processing"
+          toolkit_slug: Slug of the app where this file belongs to. Example: "gmail", "slack", "github"
 
           extra_headers: Send extra headers
 
@@ -268,17 +269,18 @@ class AsyncFilesResource(AsyncAPIResource):
         deduplication by checking if a file with the same MD5 hash already exists.
 
         Args:
-          filename: Name of the original file. Example: "photo.jpg"
+          filename: Name of the original file. Example: "quarterly_report.pdf"
 
           md5:
               MD5 hash of the file for deduplication and integrity verification. Example:
-              "d41d8cd98f00b204e9800998ecf8427e"
+              "a1b2c3d4e5f6a7b8c9d0e1f2a3b4c5d6"
 
-          mimetype: Mime type of the original file. Example: "image/jpeg"
+          mimetype: Mime type of the original file. Example: "application/pdf", "image/png"
 
-          tool_slug: Slug of the action where this file belongs to. Example: "resize-image"
+          tool_slug: Slug of the action where this file belongs to. Example: "GMAIL_SEND_EMAIL",
+              "SLACK_UPLOAD_FILE"
 
-          toolkit_slug: Slug of the app where this file belongs to. Example: "image-processing"
+          toolkit_slug: Slug of the app where this file belongs to. Example: "gmail", "slack", "github"
 
           extra_headers: Send extra headers
 

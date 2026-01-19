@@ -27,3 +27,5 @@ class ConfigUpdateParams(TypedDict, total=False):
     mask_secret_keys_in_connected_account: bool
 
     require_mcp_api_key: bool
+
+    signed_url_file_expiry_in_seconds: float
