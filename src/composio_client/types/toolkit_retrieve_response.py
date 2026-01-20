@@ -256,3 +256,6 @@ class ToolkitRetrieveResponse(BaseModel):
 
     get_current_user_endpoint: Optional[str] = None
     """Endpoint to get the current user"""
+
+    get_current_user_endpoint_method: Optional[str] = None
+    """HTTP method to use when calling the get current user endpoint (e.g., GET, POST)"""

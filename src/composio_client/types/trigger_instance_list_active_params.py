@@ -57,9 +57,6 @@ class TriggerInstanceListActiveParams(TypedDict, total=False):
     limit: Optional[float]
     """Number of items per page, max allowed is 1000"""
 
-    page: float
-    """Page number for pagination. Starts from 1."""
-
     query_show_disabled_1: Annotated[Optional[bool], PropertyInfo(alias="show_disabled")]
     """When set to true, includes disabled triggers in the response."""
 

@@ -67,7 +67,6 @@ class TriggerInstancesResource(SyncAPIResource):
         deprecated_auth_config_uuids: Optional[SequenceNotStr[str]] | Omit = omit,
         deprecated_connected_account_uuids: Optional[SequenceNotStr[str]] | Omit = omit,
         limit: Optional[float] | Omit = omit,
-        page: float | Omit = omit,
         query_show_disabled_1: Optional[bool] | Omit = omit,
         query_show_disabled_2: Optional[bool] | Omit = omit,
         query_trigger_ids_1: Optional[SequenceNotStr[str]] | Omit = omit,
@@ -106,8 +105,6 @@ class TriggerInstancesResource(SyncAPIResource):
               connected_account_ids instead.
 
           limit: Number of items per page, max allowed is 1000
-
-          page: Page number for pagination. Starts from 1.
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
@@ -152,7 +149,6 @@ class TriggerInstancesResource(SyncAPIResource):
                         "deprecated_auth_config_uuids": deprecated_auth_config_uuids,
                         "deprecated_connected_account_uuids": deprecated_connected_account_uuids,
                         "limit": limit,
-                        "page": page,
                         "query_show_disabled_1": query_show_disabled_1,
                         "query_show_disabled_2": query_show_disabled_2,
                         "query_trigger_ids_1": query_trigger_ids_1,
@@ -271,7 +267,6 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         deprecated_auth_config_uuids: Optional[SequenceNotStr[str]] | Omit = omit,
         deprecated_connected_account_uuids: Optional[SequenceNotStr[str]] | Omit = omit,
         limit: Optional[float] | Omit = omit,
-        page: float | Omit = omit,
         query_show_disabled_1: Optional[bool] | Omit = omit,
         query_show_disabled_2: Optional[bool] | Omit = omit,
         query_trigger_ids_1: Optional[SequenceNotStr[str]] | Omit = omit,
@@ -310,8 +305,6 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
               connected_account_ids instead.
 
           limit: Number of items per page, max allowed is 1000
-
-          page: Page number for pagination. Starts from 1.
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
@@ -356,7 +349,6 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
                         "deprecated_auth_config_uuids": deprecated_auth_config_uuids,
                         "deprecated_connected_account_uuids": deprecated_connected_account_uuids,
                         "limit": limit,
-                        "page": page,
                         "query_show_disabled_1": query_show_disabled_1,
                         "query_show_disabled_2": query_show_disabled_2,
                         "query_trigger_ids_1": query_trigger_ids_1,
