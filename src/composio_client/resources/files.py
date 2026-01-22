@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Any, Optional, cast
+from typing import Optional
 
 import httpx
 
@@ -145,27 +145,22 @@ class FilesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return cast(
-            FileCreatePresignedURLResponse,
-            self._post(
-                "/api/v3/files/upload/request",
-                body=maybe_transform(
-                    {
-                        "filename": filename,
-                        "md5": md5,
-                        "mimetype": mimetype,
-                        "tool_slug": tool_slug,
-                        "toolkit_slug": toolkit_slug,
-                    },
-                    file_create_presigned_url_params.FileCreatePresignedURLParams,
-                ),
-                options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-                ),
-                cast_to=cast(
-                    Any, FileCreatePresignedURLResponse
-                ),  # Union types cannot be passed in as arguments in the type system
+        return self._post(
+            "/api/v3/files/upload/request",
+            body=maybe_transform(
+                {
+                    "filename": filename,
+                    "md5": md5,
+                    "mimetype": mimetype,
+                    "tool_slug": tool_slug,
+                    "toolkit_slug": toolkit_slug,
+                },
+                file_create_presigned_url_params.FileCreatePresignedURLParams,
             ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FileCreatePresignedURLResponse,
         )
 
 
@@ -290,27 +285,22 @@ class AsyncFilesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return cast(
-            FileCreatePresignedURLResponse,
-            await self._post(
-                "/api/v3/files/upload/request",
-                body=await async_maybe_transform(
-                    {
-                        "filename": filename,
-                        "md5": md5,
-                        "mimetype": mimetype,
-                        "tool_slug": tool_slug,
-                        "toolkit_slug": toolkit_slug,
-                    },
-                    file_create_presigned_url_params.FileCreatePresignedURLParams,
-                ),
-                options=make_request_options(
-                    extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
-                ),
-                cast_to=cast(
-                    Any, FileCreatePresignedURLResponse
-                ),  # Union types cannot be passed in as arguments in the type system
+        return await self._post(
+            "/api/v3/files/upload/request",
+            body=await async_maybe_transform(
+                {
+                    "filename": filename,
+                    "md5": md5,
+                    "mimetype": mimetype,
+                    "tool_slug": tool_slug,
+                    "toolkit_slug": toolkit_slug,
+                },
+                file_create_presigned_url_params.FileCreatePresignedURLParams,
             ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=FileCreatePresignedURLResponse,
         )
 
 
