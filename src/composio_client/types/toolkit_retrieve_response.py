@@ -239,9 +239,6 @@ class ToolkitRetrieveResponse(BaseModel):
     slug: str
     """URL-friendly unique identifier for the toolkit"""
 
-    status: str
-    """Lifecycle status of the toolkit"""
-
     auth_config_details: Optional[List[AuthConfigDetail]] = None
     """Complete authentication configuration details for each supported auth method"""
 

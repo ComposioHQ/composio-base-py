@@ -40,9 +40,6 @@ class TriggersTypeRetrieveResponse(BaseModel):
     slug: str
     """Unique identifier for the trigger type"""
 
-    status: str
-    """Lifecycle status of the trigger"""
-
     toolkit: Toolkit
     """Information about the toolkit that provides this trigger"""
 
