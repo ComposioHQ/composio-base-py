@@ -67,8 +67,13 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountCreateResponse:
-        """
-        Create a new connected account
+        """Initiates a new connection to an external service for a user.
+
+        For OAuth-based
+        toolkits, this returns a redirect URL to complete authentication. For API
+        key-based toolkits, provide the credentials directly in the request body. Use
+        the `user_id` field to associate the connection with a specific user in your
+        system.
 
         Args:
           validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
@@ -152,8 +157,12 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountListResponse:
-        """
-        List connected accounts with optional filters
+        """Retrieves all connected accounts for your project.
+
+        Connected accounts represent
+        authenticated user connections to external services (e.g., a user's Gmail
+        account, Slack workspace). Filter by toolkit, status, user ID, or auth config to
+        find specific connections.
 
         Args:
           auth_config_ids: The auth config ids of the connected accounts
@@ -373,8 +382,13 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountCreateResponse:
-        """
-        Create a new connected account
+        """Initiates a new connection to an external service for a user.
+
+        For OAuth-based
+        toolkits, this returns a redirect URL to complete authentication. For API
+        key-based toolkits, provide the credentials directly in the request body. Use
+        the `user_id` field to associate the connection with a specific user in your
+        system.
 
         Args:
           validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
@@ -458,8 +472,12 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountListResponse:
-        """
-        List connected accounts with optional filters
+        """Retrieves all connected accounts for your project.
+
+        Connected accounts represent
+        authenticated user connections to external services (e.g., a user's Gmail
+        account, Slack workspace). Filter by toolkit, status, user ID, or auth config to
+        find specific connections.
 
         Args:
           auth_config_ids: The auth config ids of the connected accounts

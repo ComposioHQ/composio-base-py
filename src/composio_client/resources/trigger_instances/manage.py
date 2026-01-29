@@ -56,7 +56,13 @@ class ManageResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManageUpdateResponse:
-        """
+        """Updates the status of a trigger instance to enable or disable it.
+
+        Disabling a
+        trigger pauses event listening without deleting the trigger configuration.
+        Re-enabling restores the trigger to its active state. Use this for temporary
+        maintenance or to control trigger execution.
+
         Args:
           trigger_id: The ID of the trigger instance to update
 
@@ -90,7 +96,12 @@ class ManageResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManageDeleteResponse:
-        """
+        """Permanently deletes a trigger instance.
+
+        This stops the trigger from listening
+        for events and removes it from your project. Use the PATCH endpoint with status
+        "disable" if you want to temporarily pause a trigger instead.
+
         Args:
           trigger_id: The ID of the trigger instance to delete
 
@@ -145,7 +156,13 @@ class AsyncManageResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManageUpdateResponse:
-        """
+        """Updates the status of a trigger instance to enable or disable it.
+
+        Disabling a
+        trigger pauses event listening without deleting the trigger configuration.
+        Re-enabling restores the trigger to its active state. Use this for temporary
+        maintenance or to control trigger execution.
+
         Args:
           trigger_id: The ID of the trigger instance to update
 
@@ -179,7 +196,12 @@ class AsyncManageResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManageDeleteResponse:
-        """
+        """Permanently deletes a trigger instance.
+
+        This stops the trigger from listening
+        for events and removes it from your project. Use the PATCH endpoint with status
+        "disable" if you want to temporarily pause a trigger instead.
+
         Args:
           trigger_id: The ID of the trigger instance to delete
 

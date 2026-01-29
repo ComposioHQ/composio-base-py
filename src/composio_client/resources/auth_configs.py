@@ -59,7 +59,10 @@ class AuthConfigsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigCreateResponse:
         """
-        Create new authentication configuration
+        Creates a new auth config for a toolkit, allowing you to use your own OAuth
+        credentials or API keys instead of Composio-managed authentication. This is
+        required when you want to use custom OAuth apps (bring your own client
+        ID/secret) or configure specific authentication parameters for a toolkit.
 
         Args:
           extra_headers: Send extra headers
@@ -271,8 +274,12 @@ class AuthConfigsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigListResponse:
-        """
-        List authentication configurations with optional filters
+        """Retrieves all auth configs for your project.
+
+        Auth configs define how users
+        authenticate with external services (OAuth, API keys, etc.). Use filters to find
+        configs for specific toolkits or to distinguish between Composio-managed and
+        custom configurations.
 
         Args:
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
@@ -437,7 +444,10 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigCreateResponse:
         """
-        Create new authentication configuration
+        Creates a new auth config for a toolkit, allowing you to use your own OAuth
+        credentials or API keys instead of Composio-managed authentication. This is
+        required when you want to use custom OAuth apps (bring your own client
+        ID/secret) or configure specific authentication parameters for a toolkit.
 
         Args:
           extra_headers: Send extra headers
@@ -649,8 +659,12 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AuthConfigListResponse:
-        """
-        List authentication configurations with optional filters
+        """Retrieves all auth configs for your project.
+
+        Auth configs define how users
+        authenticate with external services (OAuth, API keys, etc.). Use filters to find
+        configs for specific toolkits or to distinguish between Composio-managed and
+        custom configurations.
 
         Args:
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
