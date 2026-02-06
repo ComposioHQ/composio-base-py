@@ -109,6 +109,7 @@ class AuthConfigUnionMember1(TypedDict, total=False):
                 "SERVICE_ACCOUNT",
                 "SAML",
                 "DCR_OAUTH",
+                "S2S_OAUTH2",
             ],
             PropertyInfo(alias="authScheme"),
         ]

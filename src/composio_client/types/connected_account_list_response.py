@@ -137,6 +137,7 @@ class ItemAuthConfig(BaseModel):
         "SERVICE_ACCOUNT",
         "SAML",
         "DCR_OAUTH",
+        "S2S_OAUTH2",
     ]
     """the authScheme is part of the connection state use it there"""
 

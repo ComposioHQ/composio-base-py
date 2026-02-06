@@ -96,6 +96,7 @@ class AuthConfigRetrieveResponse(BaseModel):
             "SERVICE_ACCOUNT",
             "SAML",
             "DCR_OAUTH",
+            "S2S_OAUTH2",
         ]
     ] = None
     """The authentication scheme used (e.g., OAuth2, API Key, etc.)"""
