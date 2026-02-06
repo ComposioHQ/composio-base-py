@@ -71,7 +71,7 @@ class Item(BaseModel):
     slug: str
     """Unique identifier for the tool"""
 
-    status: str
+    status: Optional[str]
     """Lifecycle status of the tool"""
 
     tags: List[str]
