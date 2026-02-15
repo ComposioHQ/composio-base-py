@@ -15,7 +15,7 @@ from ..types import (
     tool_get_input_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import maybe_transform, strip_not_given, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -209,6 +209,7 @@ class ToolsResource(SyncAPIResource):
         text: str | Omit = omit,
         user_id: str | Omit = omit,
         version: str | Omit = omit,
+        x_llm_gateway_headers: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -244,6 +245,9 @@ class ToolsResource(SyncAPIResource):
 
           version: Tool version to execute (defaults to "00000000_00" if not specified)
 
+          x_llm_gateway_headers: JSON object containing custom headers to pass to LLM providers (OpenAI, Bedrock,
+              etc.)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -254,6 +258,7 @@ class ToolsResource(SyncAPIResource):
         """
         if not tool_slug:
             raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
+        extra_headers = {**strip_not_given({"x-llm-gateway-headers": x_llm_gateway_headers}), **(extra_headers or {})}
         return self._post(
             f"/api/v3/tools/execute/{tool_slug}",
             body=maybe_transform(
@@ -601,6 +606,7 @@ class AsyncToolsResource(AsyncAPIResource):
         text: str | Omit = omit,
         user_id: str | Omit = omit,
         version: str | Omit = omit,
+        x_llm_gateway_headers: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -636,6 +642,9 @@ class AsyncToolsResource(AsyncAPIResource):
 
           version: Tool version to execute (defaults to "00000000_00" if not specified)
 
+          x_llm_gateway_headers: JSON object containing custom headers to pass to LLM providers (OpenAI, Bedrock,
+              etc.)
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -646,6 +655,7 @@ class AsyncToolsResource(AsyncAPIResource):
         """
         if not tool_slug:
             raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
+        extra_headers = {**strip_not_given({"x-llm-gateway-headers": x_llm_gateway_headers}), **(extra_headers or {})}
         return await self._post(
             f"/api/v3/tools/execute/{tool_slug}",
             body=await async_maybe_transform(

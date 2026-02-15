@@ -77,6 +77,12 @@ class ToolExecuteParams(TypedDict, total=False):
     version: str
     """Tool version to execute (defaults to "00000000_00" if not specified)"""
 
+    x_llm_gateway_headers: Annotated[str, PropertyInfo(alias="x-llm-gateway-headers")]
+    """
+    JSON object containing custom headers to pass to LLM providers (OpenAI, Bedrock,
+    etc.)
+    """
+
 
 _CustomAuthParamsParameterReservedKeywords = TypedDict(
     "_CustomAuthParamsParameterReservedKeywords",
