@@ -115,6 +115,7 @@ class ToolsResource(SyncAPIResource):
         important: Literal["true", "false"] | Omit = omit,
         include_deprecated: bool | Omit = omit,
         limit: Optional[float] | Omit = omit,
+        query: str | Omit = omit,
         scopes: Optional[SequenceNotStr[str]] | Omit = omit,
         search: str | Omit = omit,
         tags: SequenceNotStr[str] | Omit = omit,
@@ -147,9 +148,13 @@ class ToolsResource(SyncAPIResource):
 
           limit: Number of items per page, max allowed is 1000
 
+          query: Full-text search query to filter tools by name, slug, or description. Applied as
+              a soft filter on top of other filters.
+
           scopes: Array of scopes to filter tools by)
 
-          search: Free-text search query to find tools by name, description, or functionality
+          search: Deprecated: use "query" instead. Free-text search query to find tools by name,
+              description, or functionality.
 
           tags: Filter tools by one or more tags (can be specified multiple times)
 
@@ -183,6 +188,7 @@ class ToolsResource(SyncAPIResource):
                         "important": important,
                         "include_deprecated": include_deprecated,
                         "limit": limit,
+                        "query": query,
                         "scopes": scopes,
                         "search": search,
                         "tags": tags,
@@ -512,6 +518,7 @@ class AsyncToolsResource(AsyncAPIResource):
         important: Literal["true", "false"] | Omit = omit,
         include_deprecated: bool | Omit = omit,
         limit: Optional[float] | Omit = omit,
+        query: str | Omit = omit,
         scopes: Optional[SequenceNotStr[str]] | Omit = omit,
         search: str | Omit = omit,
         tags: SequenceNotStr[str] | Omit = omit,
@@ -544,9 +551,13 @@ class AsyncToolsResource(AsyncAPIResource):
 
           limit: Number of items per page, max allowed is 1000
 
+          query: Full-text search query to filter tools by name, slug, or description. Applied as
+              a soft filter on top of other filters.
+
           scopes: Array of scopes to filter tools by)
 
-          search: Free-text search query to find tools by name, description, or functionality
+          search: Deprecated: use "query" instead. Free-text search query to find tools by name,
+              description, or functionality.
 
           tags: Filter tools by one or more tags (can be specified multiple times)
 
@@ -580,6 +591,7 @@ class AsyncToolsResource(AsyncAPIResource):
                         "important": important,
                         "include_deprecated": include_deprecated,
                         "limit": limit,
+                        "query": query,
                         "scopes": scopes,
                         "search": search,
                         "tags": tags,

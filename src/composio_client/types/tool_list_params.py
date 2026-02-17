@@ -31,11 +31,20 @@ class ToolListParams(TypedDict, total=False):
     limit: Optional[float]
     """Number of items per page, max allowed is 1000"""
 
+    query: str
+    """Full-text search query to filter tools by name, slug, or description.
+
+    Applied as a soft filter on top of other filters.
+    """
+
     scopes: Optional[SequenceNotStr[str]]
     """Array of scopes to filter tools by)"""
 
     search: str
-    """Free-text search query to find tools by name, description, or functionality"""
+    """Deprecated: use "query" instead.
+
+    Free-text search query to find tools by name, description, or functionality.
+    """
 
     tags: SequenceNotStr[str]
     """Filter tools by one or more tags (can be specified multiple times)"""
