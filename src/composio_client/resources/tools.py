@@ -230,7 +230,7 @@ class ToolsResource(SyncAPIResource):
         processing by providing a text description of what you want to accomplish.
 
         Args:
-          allow_tracing: Enable debug tracing for tool execution (useful for debugging)
+          allow_tracing: Deprecated. Enable debug tracing for tool execution (useful for debugging)
 
           arguments: Key-value pairs of arguments required by the tool (mutually exclusive with text)
 
@@ -633,7 +633,7 @@ class AsyncToolsResource(AsyncAPIResource):
         processing by providing a text description of what you want to accomplish.
 
         Args:
-          allow_tracing: Enable debug tracing for tool execution (useful for debugging)
+          allow_tracing: Deprecated. Enable debug tracing for tool execution (useful for debugging)
 
           arguments: Key-value pairs of arguments required by the tool (mutually exclusive with text)
 

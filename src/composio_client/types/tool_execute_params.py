@@ -39,7 +39,7 @@ __all__ = [
 
 class ToolExecuteParams(TypedDict, total=False):
     allow_tracing: Optional[bool]
-    """Enable debug tracing for tool execution (useful for debugging)"""
+    """Deprecated. Enable debug tracing for tool execution (useful for debugging)"""
 
     arguments: Dict[str, Optional[object]]
     """
