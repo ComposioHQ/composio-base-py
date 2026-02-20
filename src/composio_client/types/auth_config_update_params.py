@@ -26,6 +26,9 @@ class Variant0(TypedDict, total=False):
     is_enabled_for_tool_router: bool
     """Whether this auth config is enabled for tool router"""
 
+    name: str
+    """The display name of the authentication configuration"""
+
     proxy_config: Optional[Variant0ProxyConfig]
 
     restrict_to_following_tools: SequenceNotStr[str]
@@ -75,6 +78,9 @@ class Variant1(TypedDict, total=False):
 
     is_enabled_for_tool_router: bool
     """Whether this auth config is enabled for tool router"""
+
+    name: str
+    """The display name of the authentication configuration"""
 
     restrict_to_following_tools: SequenceNotStr[str]
     """Use tool_access_config instead. This field will be deprecated in the future."""

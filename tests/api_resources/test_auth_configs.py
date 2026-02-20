@@ -127,6 +127,7 @@ class TestAuthConfigs:
                 "user_scopes": "string",
             },
             is_enabled_for_tool_router=True,
+            name="x",
             proxy_config={
                 "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
@@ -188,6 +189,7 @@ class TestAuthConfigs:
             nanoid="nanoid",
             type="default",
             is_enabled_for_tool_router=True,
+            name="x",
             restrict_to_following_tools=["string"],
             scopes="string",
             shared_credentials={"foo": "bar"},
@@ -463,6 +465,7 @@ class TestAsyncAuthConfigs:
                 "user_scopes": "string",
             },
             is_enabled_for_tool_router=True,
+            name="x",
             proxy_config={
                 "proxy_url": "https://example.com",
                 "proxy_auth_key": "proxy_auth_key",
@@ -524,6 +527,7 @@ class TestAsyncAuthConfigs:
             nanoid="nanoid",
             type="default",
             is_enabled_for_tool_router=True,
+            name="x",
             restrict_to_following_tools=["string"],
             scopes="string",
             shared_credentials={"foo": "bar"},
