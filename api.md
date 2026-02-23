@@ -224,8 +224,21 @@ from composio_client.types import CliCreateSessionResponse, CliGetSessionRespons
 
 Methods:
 
-- <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli.py">create_session</a>(\*\*<a href="src/composio_client/types/cli_create_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
-- <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/composio_client/resources/cli.py">get_session</a>(\*\*<a href="src/composio_client/types/cli_get_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_get_session_response.py">CliGetSessionResponse</a></code>
+- <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli/cli.py">create_session</a>(\*\*<a href="src/composio_client/types/cli_create_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
+- <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/composio_client/resources/cli/cli.py">get_session</a>(\*\*<a href="src/composio_client/types/cli_get_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_get_session_response.py">CliGetSessionResponse</a></code>
+
+## Realtime
+
+Types:
+
+```python
+from composio_client.types.cli import RealtimeAuthResponse, RealtimeCredentialsResponse
+```
+
+Methods:
+
+- <code title="post /api/v3/cli/realtime/auth">client.cli.realtime.<a href="./src/composio_client/resources/cli/realtime.py">auth</a>(\*\*<a href="src/composio_client/types/cli/realtime_auth_params.py">params</a>) -> <a href="./src/composio_client/types/cli/realtime_auth_response.py">RealtimeAuthResponse</a></code>
+- <code title="get /api/v3/cli/realtime/credentials">client.cli.realtime.<a href="./src/composio_client/resources/cli/realtime.py">credentials</a>() -> <a href="./src/composio_client/types/cli/realtime_credentials_response.py">RealtimeCredentialsResponse</a></code>
 
 # Project
 

@@ -6,25 +6,37 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..types import cli_get_session_params, cli_create_session_params
-from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
-from .._compat import cached_property
-from .._resource import SyncAPIResource, AsyncAPIResource
-from .._response import (
+from ...types import cli_get_session_params, cli_create_session_params
+from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
+from ..._utils import maybe_transform, async_maybe_transform
+from .realtime import (
+    RealtimeResource,
+    AsyncRealtimeResource,
+    RealtimeResourceWithRawResponse,
+    AsyncRealtimeResourceWithRawResponse,
+    RealtimeResourceWithStreamingResponse,
+    AsyncRealtimeResourceWithStreamingResponse,
+)
+from ..._compat import cached_property
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from ..._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.cli_get_session_response import CliGetSessionResponse
-from ..types.cli_create_session_response import CliCreateSessionResponse
+from ..._base_client import make_request_options
+from ...types.cli_get_session_response import CliGetSessionResponse
+from ...types.cli_create_session_response import CliCreateSessionResponse
 
 __all__ = ["CliResource", "AsyncCliResource"]
 
 
 class CliResource(SyncAPIResource):
+    @cached_property
+    def realtime(self) -> RealtimeResource:
+        return RealtimeResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> CliResourceWithRawResponse:
         """
@@ -136,6 +148,10 @@ class CliResource(SyncAPIResource):
 
 
 class AsyncCliResource(AsyncAPIResource):
+    @cached_property
+    def realtime(self) -> AsyncRealtimeResource:
+        return AsyncRealtimeResource(self._client)
+
     @cached_property
     def with_raw_response(self) -> AsyncCliResourceWithRawResponse:
         """
@@ -257,6 +273,10 @@ class CliResourceWithRawResponse:
             cli.get_session,
         )
 
+    @cached_property
+    def realtime(self) -> RealtimeResourceWithRawResponse:
+        return RealtimeResourceWithRawResponse(self._cli.realtime)
+
 
 class AsyncCliResourceWithRawResponse:
     def __init__(self, cli: AsyncCliResource) -> None:
@@ -268,6 +288,10 @@ class AsyncCliResourceWithRawResponse:
         self.get_session = async_to_raw_response_wrapper(
             cli.get_session,
         )
+
+    @cached_property
+    def realtime(self) -> AsyncRealtimeResourceWithRawResponse:
+        return AsyncRealtimeResourceWithRawResponse(self._cli.realtime)
 
 
 class CliResourceWithStreamingResponse:
@@ -281,6 +305,10 @@ class CliResourceWithStreamingResponse:
             cli.get_session,
         )
 
+    @cached_property
+    def realtime(self) -> RealtimeResourceWithStreamingResponse:
+        return RealtimeResourceWithStreamingResponse(self._cli.realtime)
+
 
 class AsyncCliResourceWithStreamingResponse:
     def __init__(self, cli: AsyncCliResource) -> None:
@@ -292,3 +320,7 @@ class AsyncCliResourceWithStreamingResponse:
         self.get_session = async_to_streamed_response_wrapper(
             cli.get_session,
         )
+
+    @cached_property
+    def realtime(self) -> AsyncRealtimeResourceWithStreamingResponse:
+        return AsyncRealtimeResourceWithStreamingResponse(self._cli.realtime)

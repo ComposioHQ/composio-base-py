@@ -46,10 +46,10 @@ if TYPE_CHECKING:
         trigger_instances,
         connected_accounts,
     )
-    from .resources.cli import CliResource, AsyncCliResource
     from .resources.link import LinkResource, AsyncLinkResource
     from .resources.files import FilesResource, AsyncFilesResource
     from .resources.tools import ToolsResource, AsyncToolsResource
+    from .resources.cli.cli import CliResource, AsyncCliResource
     from .resources.mcp.mcp import McpResource, AsyncMcpResource
     from .resources.toolkits import ToolkitsResource, AsyncToolkitsResource
     from .resources.migration import MigrationResource, AsyncMigrationResource
