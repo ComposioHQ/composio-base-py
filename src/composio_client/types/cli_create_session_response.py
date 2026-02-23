@@ -22,5 +22,8 @@ class CliCreateSessionResponse(BaseModel):
     expires_at: str = FieldInfo(alias="expiresAt")
     """The ISO timestamp when the session expires"""
 
+    scope: Literal["project", "user"]
+    """The key scope for this session"""
+
     status: Literal["pending", "linked"]
     """The current status of the session"""

@@ -224,7 +224,7 @@ from composio_client.types import CliCreateSessionResponse, CliGetSessionRespons
 
 Methods:
 
-- <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli.py">create_session</a>() -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
+- <code title="post /api/v3/cli/create-session">client.cli.<a href="./src/composio_client/resources/cli.py">create_session</a>(\*\*<a href="src/composio_client/types/cli_create_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_create_session_response.py">CliCreateSessionResponse</a></code>
 - <code title="get /api/v3/cli/get-session">client.cli.<a href="./src/composio_client/resources/cli.py">get_session</a>(\*\*<a href="src/composio_client/types/cli_get_session_params.py">params</a>) -> <a href="./src/composio_client/types/cli_get_session_response.py">CliGetSessionResponse</a></code>
 
 # Project

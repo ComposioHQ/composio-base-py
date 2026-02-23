@@ -9,7 +9,10 @@ import pytest
 
 from tests.utils import assert_matches_type
 from composio_client import Composio, AsyncComposio
-from composio_client.types import CliGetSessionResponse, CliCreateSessionResponse
+from composio_client.types import (
+    CliGetSessionResponse,
+    CliCreateSessionResponse,
+)
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -20,6 +23,14 @@ class TestCli:
     @parametrize
     def test_method_create_session(self, client: Composio) -> None:
         cli = client.cli.create_session()
+        assert_matches_type(CliCreateSessionResponse, cli, path=["response"])
+
+    @parametrize
+    def test_method_create_session_with_all_params(self, client: Composio) -> None:
+        cli = client.cli.create_session(
+            scope="project",
+            source="source",
+        )
         assert_matches_type(CliCreateSessionResponse, cli, path=["response"])
 
     @parametrize
@@ -82,6 +93,14 @@ class TestAsyncCli:
     @parametrize
     async def test_method_create_session(self, async_client: AsyncComposio) -> None:
         cli = await async_client.cli.create_session()
+        assert_matches_type(CliCreateSessionResponse, cli, path=["response"])
+
+    @parametrize
+    async def test_method_create_session_with_all_params(self, async_client: AsyncComposio) -> None:
+        cli = await async_client.cli.create_session(
+            scope="project",
+            source="source",
+        )
         assert_matches_type(CliCreateSessionResponse, cli, path=["response"])
 
     @parametrize

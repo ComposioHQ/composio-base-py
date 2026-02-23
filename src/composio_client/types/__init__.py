@@ -34,6 +34,7 @@ from .cli_get_session_response import CliGetSessionResponse as CliGetSessionResp
 from .auth_config_create_params import AuthConfigCreateParams as AuthConfigCreateParams
 from .auth_config_list_response import AuthConfigListResponse as AuthConfigListResponse
 from .auth_config_update_params import AuthConfigUpdateParams as AuthConfigUpdateParams
+from .cli_create_session_params import CliCreateSessionParams as CliCreateSessionParams
 from .mcp_retrieve_app_response import McpRetrieveAppResponse as McpRetrieveAppResponse
 from .toolkit_retrieve_response import ToolkitRetrieveResponse as ToolkitRetrieveResponse
 from .triggers_type_list_params import TriggersTypeListParams as TriggersTypeListParams
