@@ -78,3 +78,6 @@ class ToolRetrieveResponse(BaseModel):
 
     version: str
     """Current version of the tool"""
+
+    human_description: Optional[str] = None
+    """Human-friendly description of the tool, if available"""
