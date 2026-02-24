@@ -13,6 +13,7 @@ from composio_client.types.tool_router import (
     SessionLinkResponse,
     SessionToolsResponse,
     SessionCreateResponse,
+    SessionSearchResponse,
     SessionExecuteResponse,
     SessionRetrieveResponse,
     SessionToolkitsResponse,
@@ -290,6 +291,62 @@ class TestSession:
             client.tool_router.session.with_raw_response.link(
                 session_id="",
                 toolkit="github",
+            )
+
+    @parametrize
+    def test_method_search(self, client: Composio) -> None:
+        session = client.tool_router.session.search(
+            session_id="trs_LX9uJKBinWWr",
+            queries=[{"use_case": "Send a slack message to a channel"}],
+        )
+        assert_matches_type(SessionSearchResponse, session, path=["response"])
+
+    @parametrize
+    def test_method_search_with_all_params(self, client: Composio) -> None:
+        session = client.tool_router.session.search(
+            session_id="trs_LX9uJKBinWWr",
+            queries=[
+                {
+                    "use_case": "Send a slack message to a channel",
+                    "known_fields": "channel_name:general",
+                }
+            ],
+            model="gpt-4o",
+        )
+        assert_matches_type(SessionSearchResponse, session, path=["response"])
+
+    @parametrize
+    def test_raw_response_search(self, client: Composio) -> None:
+        response = client.tool_router.session.with_raw_response.search(
+            session_id="trs_LX9uJKBinWWr",
+            queries=[{"use_case": "Send a slack message to a channel"}],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = response.parse()
+        assert_matches_type(SessionSearchResponse, session, path=["response"])
+
+    @parametrize
+    def test_streaming_response_search(self, client: Composio) -> None:
+        with client.tool_router.session.with_streaming_response.search(
+            session_id="trs_LX9uJKBinWWr",
+            queries=[{"use_case": "Send a slack message to a channel"}],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = response.parse()
+            assert_matches_type(SessionSearchResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_search(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            client.tool_router.session.with_raw_response.search(
+                session_id="",
+                queries=[{"use_case": "Send a slack message to a channel"}],
             )
 
     @parametrize
@@ -651,6 +708,62 @@ class TestAsyncSession:
             await async_client.tool_router.session.with_raw_response.link(
                 session_id="",
                 toolkit="github",
+            )
+
+    @parametrize
+    async def test_method_search(self, async_client: AsyncComposio) -> None:
+        session = await async_client.tool_router.session.search(
+            session_id="trs_LX9uJKBinWWr",
+            queries=[{"use_case": "Send a slack message to a channel"}],
+        )
+        assert_matches_type(SessionSearchResponse, session, path=["response"])
+
+    @parametrize
+    async def test_method_search_with_all_params(self, async_client: AsyncComposio) -> None:
+        session = await async_client.tool_router.session.search(
+            session_id="trs_LX9uJKBinWWr",
+            queries=[
+                {
+                    "use_case": "Send a slack message to a channel",
+                    "known_fields": "channel_name:general",
+                }
+            ],
+            model="gpt-4o",
+        )
+        assert_matches_type(SessionSearchResponse, session, path=["response"])
+
+    @parametrize
+    async def test_raw_response_search(self, async_client: AsyncComposio) -> None:
+        response = await async_client.tool_router.session.with_raw_response.search(
+            session_id="trs_LX9uJKBinWWr",
+            queries=[{"use_case": "Send a slack message to a channel"}],
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = await response.parse()
+        assert_matches_type(SessionSearchResponse, session, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_search(self, async_client: AsyncComposio) -> None:
+        async with async_client.tool_router.session.with_streaming_response.search(
+            session_id="trs_LX9uJKBinWWr",
+            queries=[{"use_case": "Send a slack message to a channel"}],
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = await response.parse()
+            assert_matches_type(SessionSearchResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_search(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            await async_client.tool_router.session.with_raw_response.search(
+                session_id="",
+                queries=[{"use_case": "Send a slack message to a channel"}],
             )
 
     @parametrize

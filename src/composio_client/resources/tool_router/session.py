@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Optional
+from typing import Dict, Iterable, Optional
 from typing_extensions import Literal
 
 import httpx
@@ -21,6 +21,7 @@ from ..._base_client import make_request_options
 from ...types.tool_router import (
     session_link_params,
     session_create_params,
+    session_search_params,
     session_execute_params,
     session_toolkits_params,
     session_execute_meta_params,
@@ -28,6 +29,7 @@ from ...types.tool_router import (
 from ...types.tool_router.session_link_response import SessionLinkResponse
 from ...types.tool_router.session_tools_response import SessionToolsResponse
 from ...types.tool_router.session_create_response import SessionCreateResponse
+from ...types.tool_router.session_search_response import SessionSearchResponse
 from ...types.tool_router.session_execute_response import SessionExecuteResponse
 from ...types.tool_router.session_retrieve_response import SessionRetrieveResponse
 from ...types.tool_router.session_toolkits_response import SessionToolkitsResponse
@@ -339,6 +341,57 @@ class SessionResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=SessionLinkResponse,
+        )
+
+    def search(
+        self,
+        session_id: str,
+        *,
+        queries: Iterable[session_search_params.Query],
+        model: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SessionSearchResponse:
+        """
+        Search for tools matching a given use case query within a tool router session.
+        Returns matching tool slugs, full tool schemas, toolkit connection statuses, and
+        workflow guidance in a predictable format.
+
+        Args:
+          session_id: Tool router session ID (trs\\__\\**)
+
+          queries: List of search queries to execute in parallel. Up to 7 queries supported.
+
+          model: Optional model hint for search/planning behavior (e.g., "gpt-4o"). Ignored if
+              invalid.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        return self._post(
+            f"/api/v3/tool_router/session/{session_id}/search",
+            body=maybe_transform(
+                {
+                    "queries": queries,
+                    "model": model,
+                },
+                session_search_params.SessionSearchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SessionSearchResponse,
         )
 
     def toolkits(
@@ -754,6 +807,57 @@ class AsyncSessionResource(AsyncAPIResource):
             cast_to=SessionLinkResponse,
         )
 
+    async def search(
+        self,
+        session_id: str,
+        *,
+        queries: Iterable[session_search_params.Query],
+        model: str | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SessionSearchResponse:
+        """
+        Search for tools matching a given use case query within a tool router session.
+        Returns matching tool slugs, full tool schemas, toolkit connection statuses, and
+        workflow guidance in a predictable format.
+
+        Args:
+          session_id: Tool router session ID (trs\\__\\**)
+
+          queries: List of search queries to execute in parallel. Up to 7 queries supported.
+
+          model: Optional model hint for search/planning behavior (e.g., "gpt-4o"). Ignored if
+              invalid.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        return await self._post(
+            f"/api/v3/tool_router/session/{session_id}/search",
+            body=await async_maybe_transform(
+                {
+                    "queries": queries,
+                    "model": model,
+                },
+                session_search_params.SessionSearchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SessionSearchResponse,
+        )
+
     async def toolkits(
         self,
         session_id: str,
@@ -881,6 +985,9 @@ class SessionResourceWithRawResponse:
         self.link = to_raw_response_wrapper(
             session.link,
         )
+        self.search = to_raw_response_wrapper(
+            session.search,
+        )
         self.toolkits = to_raw_response_wrapper(
             session.toolkits,
         )
@@ -907,6 +1014,9 @@ class AsyncSessionResourceWithRawResponse:
         )
         self.link = async_to_raw_response_wrapper(
             session.link,
+        )
+        self.search = async_to_raw_response_wrapper(
+            session.search,
         )
         self.toolkits = async_to_raw_response_wrapper(
             session.toolkits,
@@ -935,6 +1045,9 @@ class SessionResourceWithStreamingResponse:
         self.link = to_streamed_response_wrapper(
             session.link,
         )
+        self.search = to_streamed_response_wrapper(
+            session.search,
+        )
         self.toolkits = to_streamed_response_wrapper(
             session.toolkits,
         )
@@ -961,6 +1074,9 @@ class AsyncSessionResourceWithStreamingResponse:
         )
         self.link = async_to_streamed_response_wrapper(
             session.link,
+        )
+        self.search = async_to_streamed_response_wrapper(
+            session.search,
         )
         self.toolkits = async_to_streamed_response_wrapper(
             session.toolkits,

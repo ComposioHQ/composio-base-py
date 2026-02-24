@@ -5,9 +5,11 @@ from __future__ import annotations
 from .session_link_params import SessionLinkParams as SessionLinkParams
 from .session_create_params import SessionCreateParams as SessionCreateParams
 from .session_link_response import SessionLinkResponse as SessionLinkResponse
+from .session_search_params import SessionSearchParams as SessionSearchParams
 from .session_execute_params import SessionExecuteParams as SessionExecuteParams
 from .session_tools_response import SessionToolsResponse as SessionToolsResponse
 from .session_create_response import SessionCreateResponse as SessionCreateResponse
+from .session_search_response import SessionSearchResponse as SessionSearchResponse
 from .session_toolkits_params import SessionToolkitsParams as SessionToolkitsParams
 from .session_execute_response import SessionExecuteResponse as SessionExecuteResponse
 from .session_retrieve_response import SessionRetrieveResponse as SessionRetrieveResponse
