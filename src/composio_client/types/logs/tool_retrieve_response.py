@@ -1,50 +1,123 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import List, Optional
+from typing import Dict, List, Optional
 from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
 from ..._models import BaseModel
 
-__all__ = ["ToolRetrieveResponse", "Data", "DataApp", "DataMetadata"]
+__all__ = [
+    "ToolRetrieveResponse",
+    "App",
+    "Connection",
+    "Step",
+    "StepLog",
+    "StepLogRequest",
+    "StepLogResponse",
+    "StepMetadata",
+]
 
 
-class DataApp(BaseModel):
+class App(BaseModel):
     icon: str
 
     name: str
 
-
-class DataMetadata(BaseModel):
-    recipe_id: Optional[str] = None
+    unique_id: str = FieldInfo(alias="uniqueId")
 
 
-class Data(BaseModel):
+class Connection(BaseModel):
     id: str
 
-    action_key: str = FieldInfo(alias="actionKey")
+    entity: str
 
-    app: DataApp
 
-    app_key: str = FieldInfo(alias="appKey")
+class StepLogRequest(BaseModel):
+    method: str
 
-    connected_account_id: str = FieldInfo(alias="connectedAccountId")
+    url: str
 
-    created_at: float = FieldInfo(alias="createdAt")
+    headers: Optional[Dict[str, str]] = None
 
-    entity_id: str = FieldInfo(alias="entityId")
+    json_: Optional[Dict[str, Optional[object]]] = FieldInfo(alias="json", default=None)
 
-    execution_time: float = FieldInfo(alias="executionTime")
+    params: Optional[Dict[str, Optional[object]]] = None
 
-    minimal_response: str = FieldInfo(alias="minimalResponse")
+    timeout: Optional[float] = None
 
-    status: Literal["success", "failed"]
 
-    metadata: Optional[DataMetadata] = None
+class StepLogResponse(BaseModel):
+    status: float
+
+    time: str
+
+
+class StepLog(BaseModel):
+    level: str
+
+    message: str
+
+    request: StepLogRequest
+
+    request_id: str = FieldInfo(alias="requestId")
+
+    response: StepLogResponse
+
+    time: float
+
+    type: Literal["network", "system"]
+
+
+class StepMetadata(BaseModel):
+    encryption: Optional[str] = None
+
+
+class Step(BaseModel):
+    end_time: float = FieldInfo(alias="endTime")
+
+    message: str
+
+    start_time: float = FieldInfo(alias="startTime")
+
+    status: Literal["success", "failure", "error"]
+
+    total_duration: float = FieldInfo(alias="totalDuration")
+
+    type: Literal["tool_execution", "fetch_connection_details"]
+
+    logs: Optional[List[StepLog]] = None
+
+    metadata: Optional[StepMetadata] = None
 
 
 class ToolRetrieveResponse(BaseModel):
-    data: List[Data]
+    action_id: str = FieldInfo(alias="actionId")
 
-    next_cursor: Optional[float] = FieldInfo(alias="nextCursor", default=None)
+    action_log_id: str = FieldInfo(alias="actionLogId")
+
+    app: App
+
+    connection: Connection
+
+    end_time: float = FieldInfo(alias="endTime")
+
+    error: Dict[str, Optional[object]]
+
+    execution_metadata: Dict[str, Optional[object]] = FieldInfo(alias="executionMetadata")
+
+    payload_received: Dict[str, Optional[object]] = FieldInfo(alias="payloadReceived")
+
+    response: Dict[str, Optional[object]]
+
+    session: Dict[str, Optional[object]]
+
+    start_time: float = FieldInfo(alias="startTime")
+
+    status: Literal["success", "error", "warning", "info"]
+
+    steps: List[Step]
+
+    total_duration: str = FieldInfo(alias="totalDuration")
+
+    version: str

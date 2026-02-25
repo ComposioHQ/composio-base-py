@@ -16,7 +16,7 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...types.logs import tool_list_params, tool_retrieve_params
+from ...types.logs import tool_list_params
 from ..._base_client import make_request_options
 from ...types.logs.tool_list_response import ToolListResponse
 from ...types.logs.tool_retrieve_response import ToolRetrieveResponse
@@ -46,13 +46,8 @@ class ToolsResource(SyncAPIResource):
 
     def retrieve(
         self,
+        id: str,
         *,
-        cursor: Optional[float],
-        case_sensitive: Optional[bool] | Omit = omit,
-        from_: float | Omit = omit,
-        limit: float | Omit = omit,
-        search_params: Iterable[tool_retrieve_params.SearchParam] | Omit = omit,
-        to: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -61,19 +56,9 @@ class ToolsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRetrieveResponse:
         """
-        Search and retrieve action execution logs
+        Get detailed execution log by ID
 
         Args:
-          cursor: cursor_that_can_be_used_to_paginate_through_the_logs
-
-          case_sensitive: whether_the_search_is_case_sensitive_or_not
-
-          from_: start_time_of_the_logs_in_epoch_time
-
-          limit: number_of_logs_to_return
-
-          to: end_time_of_the_logs_in_epoch_time
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -82,19 +67,10 @@ class ToolsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._post(
-            "/api/v3/internal/action_execution/logs",
-            body=maybe_transform(
-                {
-                    "cursor": cursor,
-                    "case_sensitive": case_sensitive,
-                    "from_": from_,
-                    "limit": limit,
-                    "search_params": search_params,
-                    "to": to,
-                },
-                tool_retrieve_params.ToolRetrieveParams,
-            ),
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/api/v3/internal/action_execution/log/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -181,13 +157,8 @@ class AsyncToolsResource(AsyncAPIResource):
 
     async def retrieve(
         self,
+        id: str,
         *,
-        cursor: Optional[float],
-        case_sensitive: Optional[bool] | Omit = omit,
-        from_: float | Omit = omit,
-        limit: float | Omit = omit,
-        search_params: Iterable[tool_retrieve_params.SearchParam] | Omit = omit,
-        to: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -196,19 +167,9 @@ class AsyncToolsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ToolRetrieveResponse:
         """
-        Search and retrieve action execution logs
+        Get detailed execution log by ID
 
         Args:
-          cursor: cursor_that_can_be_used_to_paginate_through_the_logs
-
-          case_sensitive: whether_the_search_is_case_sensitive_or_not
-
-          from_: start_time_of_the_logs_in_epoch_time
-
-          limit: number_of_logs_to_return
-
-          to: end_time_of_the_logs_in_epoch_time
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -217,19 +178,10 @@ class AsyncToolsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._post(
-            "/api/v3/internal/action_execution/logs",
-            body=await async_maybe_transform(
-                {
-                    "cursor": cursor,
-                    "case_sensitive": case_sensitive,
-                    "from_": from_,
-                    "limit": limit,
-                    "search_params": search_params,
-                    "to": to,
-                },
-                tool_retrieve_params.ToolRetrieveParams,
-            ),
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/api/v3/internal/action_execution/log/{id}",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

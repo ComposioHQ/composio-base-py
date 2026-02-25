@@ -279,7 +279,7 @@ from composio_client.types.logs import ToolRetrieveResponse, ToolListResponse
 
 Methods:
 
-- <code title="post /api/v3/internal/action_execution/logs">client.logs.tools.<a href="./src/composio_client/resources/logs/tools.py">retrieve</a>(\*\*<a href="src/composio_client/types/logs/tool_retrieve_params.py">params</a>) -> <a href="./src/composio_client/types/logs/tool_retrieve_response.py">ToolRetrieveResponse</a></code>
+- <code title="get /api/v3/internal/action_execution/log/{id}">client.logs.tools.<a href="./src/composio_client/resources/logs/tools.py">retrieve</a>(id) -> <a href="./src/composio_client/types/logs/tool_retrieve_response.py">ToolRetrieveResponse</a></code>
 - <code title="post /api/v3/internal/action_execution/logs">client.logs.tools.<a href="./src/composio_client/resources/logs/tools.py">list</a>(\*\*<a href="src/composio_client/types/logs/tool_list_params.py">params</a>) -> <a href="./src/composio_client/types/logs/tool_list_response.py">ToolListResponse</a></code>
 
 # ToolRouter
