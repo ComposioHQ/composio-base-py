@@ -24,6 +24,14 @@ from .link import (
     LinkResourceWithStreamingResponse,
     AsyncLinkResourceWithStreamingResponse,
 )
+from .logs import (
+    LogsResource,
+    AsyncLogsResource,
+    LogsResourceWithRawResponse,
+    AsyncLogsResourceWithRawResponse,
+    LogsResourceWithStreamingResponse,
+    AsyncLogsResourceWithStreamingResponse,
+)
 from .files import (
     FilesResource,
     AsyncFilesResource,
@@ -178,6 +186,12 @@ __all__ = [
     "AsyncProjectResourceWithRawResponse",
     "ProjectResourceWithStreamingResponse",
     "AsyncProjectResourceWithStreamingResponse",
+    "LogsResource",
+    "AsyncLogsResource",
+    "LogsResourceWithRawResponse",
+    "AsyncLogsResourceWithRawResponse",
+    "LogsResourceWithStreamingResponse",
+    "AsyncLogsResourceWithStreamingResponse",
     "ToolRouterResource",
     "AsyncToolRouterResource",
     "ToolRouterResourceWithRawResponse",
