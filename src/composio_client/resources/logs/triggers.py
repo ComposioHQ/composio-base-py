@@ -20,6 +20,7 @@ from ..._response import (
 from ...types.logs import trigger_list_params
 from ..._base_client import make_request_options
 from ...types.logs.trigger_list_response import TriggerListResponse
+from ...types.logs.trigger_retrieve_response import TriggerRetrieveResponse
 
 __all__ = ["TriggersResource", "AsyncTriggersResource"]
 
@@ -43,6 +44,39 @@ class TriggersResource(SyncAPIResource):
         For more information, see https://www.github.com/ComposioHQ/composio-base-py#with_streaming_response
         """
         return TriggersResourceWithStreamingResponse(self)
+
+    def retrieve(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> TriggerRetrieveResponse:
+        """
+        Get detailed trigger log by ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return self._get(
+            f"/api/v3/internal/trigger/log/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TriggerRetrieveResponse,
+        )
 
     def list(
         self,
@@ -144,6 +178,39 @@ class AsyncTriggersResource(AsyncAPIResource):
         """
         return AsyncTriggersResourceWithStreamingResponse(self)
 
+    async def retrieve(
+        self,
+        id: str,
+        *,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> TriggerRetrieveResponse:
+        """
+        Get detailed trigger log by ID
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
+        return await self._get(
+            f"/api/v3/internal/trigger/log/{id}",
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=TriggerRetrieveResponse,
+        )
+
     async def list(
         self,
         *,
@@ -228,6 +295,9 @@ class TriggersResourceWithRawResponse:
     def __init__(self, triggers: TriggersResource) -> None:
         self._triggers = triggers
 
+        self.retrieve = to_raw_response_wrapper(
+            triggers.retrieve,
+        )
         self.list = to_raw_response_wrapper(
             triggers.list,
         )
@@ -237,6 +307,9 @@ class AsyncTriggersResourceWithRawResponse:
     def __init__(self, triggers: AsyncTriggersResource) -> None:
         self._triggers = triggers
 
+        self.retrieve = async_to_raw_response_wrapper(
+            triggers.retrieve,
+        )
         self.list = async_to_raw_response_wrapper(
             triggers.list,
         )
@@ -246,6 +319,9 @@ class TriggersResourceWithStreamingResponse:
     def __init__(self, triggers: TriggersResource) -> None:
         self._triggers = triggers
 
+        self.retrieve = to_streamed_response_wrapper(
+            triggers.retrieve,
+        )
         self.list = to_streamed_response_wrapper(
             triggers.list,
         )
@@ -255,6 +331,9 @@ class AsyncTriggersResourceWithStreamingResponse:
     def __init__(self, triggers: AsyncTriggersResource) -> None:
         self._triggers = triggers
 
+        self.retrieve = async_to_streamed_response_wrapper(
+            triggers.retrieve,
+        )
         self.list = async_to_streamed_response_wrapper(
             triggers.list,
         )

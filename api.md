@@ -262,11 +262,12 @@ Methods:
 Types:
 
 ```python
-from composio_client.types.logs import TriggerListResponse
+from composio_client.types.logs import TriggerRetrieveResponse, TriggerListResponse
 ```
 
 Methods:
 
+- <code title="get /api/v3/internal/trigger/log/{id}">client.logs.triggers.<a href="./src/composio_client/resources/logs/triggers.py">retrieve</a>(id) -> <a href="./src/composio_client/types/logs/trigger_retrieve_response.py">TriggerRetrieveResponse</a></code>
 - <code title="post /api/v3/internal/trigger/logs">client.logs.triggers.<a href="./src/composio_client/resources/logs/triggers.py">list</a>(\*\*<a href="src/composio_client/types/logs/trigger_list_params.py">params</a>) -> <a href="./src/composio_client/types/logs/trigger_list_response.py">TriggerListResponse</a></code>
 
 ## Tools
