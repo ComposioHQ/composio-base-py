@@ -232,8 +232,8 @@ class TestConnectedAccounts:
     def test_method_refresh_with_all_params(self, client: Composio) -> None:
         connected_account = client.connected_accounts.refresh(
             nanoid="con_1a2b3c4d5e6f",
-            query_redirect_url="redirect_url",
-            body_redirect_url="redirect_url",
+            query_redirect_url="https://example.com",
+            body_redirect_url="https://example.com",
             validate_credentials=True,
         )
         assert_matches_type(ConnectedAccountRefreshResponse, connected_account, path=["response"])
@@ -525,8 +525,8 @@ class TestAsyncConnectedAccounts:
     async def test_method_refresh_with_all_params(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.refresh(
             nanoid="con_1a2b3c4d5e6f",
-            query_redirect_url="redirect_url",
-            body_redirect_url="redirect_url",
+            query_redirect_url="https://example.com",
+            body_redirect_url="https://example.com",
             validate_credentials=True,
         )
         assert_matches_type(ConnectedAccountRefreshResponse, connected_account, path=["response"])
