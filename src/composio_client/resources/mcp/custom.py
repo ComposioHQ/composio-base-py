@@ -22,6 +22,8 @@ __all__ = ["CustomResource", "AsyncCustomResource"]
 
 
 class CustomResource(SyncAPIResource):
+    """MCP server management"""
+
     @cached_property
     def with_raw_response(self) -> CustomResourceWithRawResponse:
         """
@@ -107,6 +109,8 @@ class CustomResource(SyncAPIResource):
 
 
 class AsyncCustomResource(AsyncAPIResource):
+    """MCP server management"""
+
     @cached_property
     def with_raw_response(self) -> AsyncCustomResourceWithRawResponse:
         """

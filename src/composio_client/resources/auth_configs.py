@@ -27,6 +27,8 @@ __all__ = ["AuthConfigsResource", "AsyncAuthConfigsResource"]
 
 
 class AuthConfigsResource(SyncAPIResource):
+    """Authentication configuration management"""
+
     @cached_property
     def with_raw_response(self) -> AuthConfigsResourceWithRawResponse:
         """
@@ -420,6 +422,8 @@ class AuthConfigsResource(SyncAPIResource):
 
 
 class AsyncAuthConfigsResource(AsyncAPIResource):
+    """Authentication configuration management"""
+
     @cached_property
     def with_raw_response(self) -> AsyncAuthConfigsResourceWithRawResponse:
         """

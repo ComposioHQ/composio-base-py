@@ -35,6 +35,7 @@ __all__ = ["CliResource", "AsyncCliResource"]
 class CliResource(SyncAPIResource):
     @cached_property
     def realtime(self) -> RealtimeResource:
+        """CLI integration endpoints"""
         return RealtimeResource(self._client)
 
     @cached_property
@@ -150,6 +151,7 @@ class CliResource(SyncAPIResource):
 class AsyncCliResource(AsyncAPIResource):
     @cached_property
     def realtime(self) -> AsyncRealtimeResource:
+        """CLI integration endpoints"""
         return AsyncRealtimeResource(self._client)
 
     @cached_property
@@ -275,6 +277,7 @@ class CliResourceWithRawResponse:
 
     @cached_property
     def realtime(self) -> RealtimeResourceWithRawResponse:
+        """CLI integration endpoints"""
         return RealtimeResourceWithRawResponse(self._cli.realtime)
 
 
@@ -291,6 +294,7 @@ class AsyncCliResourceWithRawResponse:
 
     @cached_property
     def realtime(self) -> AsyncRealtimeResourceWithRawResponse:
+        """CLI integration endpoints"""
         return AsyncRealtimeResourceWithRawResponse(self._cli.realtime)
 
 
@@ -307,6 +311,7 @@ class CliResourceWithStreamingResponse:
 
     @cached_property
     def realtime(self) -> RealtimeResourceWithStreamingResponse:
+        """CLI integration endpoints"""
         return RealtimeResourceWithStreamingResponse(self._cli.realtime)
 
 
@@ -323,4 +328,5 @@ class AsyncCliResourceWithStreamingResponse:
 
     @cached_property
     def realtime(self) -> AsyncRealtimeResourceWithStreamingResponse:
+        """CLI integration endpoints"""
         return AsyncRealtimeResourceWithStreamingResponse(self._cli.realtime)

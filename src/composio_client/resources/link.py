@@ -22,6 +22,8 @@ __all__ = ["LinkResource", "AsyncLinkResource"]
 
 
 class LinkResource(SyncAPIResource):
+    """Connected account management"""
+
     @cached_property
     def with_raw_response(self) -> LinkResourceWithRawResponse:
         """
@@ -95,6 +97,8 @@ class LinkResource(SyncAPIResource):
 
 
 class AsyncLinkResource(AsyncAPIResource):
+    """Connected account management"""
+
     @cached_property
     def with_raw_response(self) -> AsyncLinkResourceWithRawResponse:
         """

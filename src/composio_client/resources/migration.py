@@ -24,6 +24,8 @@ __all__ = ["MigrationResource", "AsyncMigrationResource"]
 
 
 class MigrationResource(SyncAPIResource):
+    """Endpoints to help with migration from v1 to v3"""
+
     @cached_property
     def with_raw_response(self) -> MigrationResourceWithRawResponse:
         """
@@ -94,6 +96,8 @@ class MigrationResource(SyncAPIResource):
 
 
 class AsyncMigrationResource(AsyncAPIResource):
+    """Endpoints to help with migration from v1 to v3"""
+
     @cached_property
     def with_raw_response(self) -> AsyncMigrationResourceWithRawResponse:
         """

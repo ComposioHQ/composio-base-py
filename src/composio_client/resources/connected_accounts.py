@@ -35,6 +35,8 @@ __all__ = ["ConnectedAccountsResource", "AsyncConnectedAccountsResource"]
 
 
 class ConnectedAccountsResource(SyncAPIResource):
+    """Connected account management"""
+
     @cached_property
     def with_raw_response(self) -> ConnectedAccountsResourceWithRawResponse:
         """
@@ -350,6 +352,8 @@ class ConnectedAccountsResource(SyncAPIResource):
 
 
 class AsyncConnectedAccountsResource(AsyncAPIResource):
+    """Connected account management"""
+
     @cached_property
     def with_raw_response(self) -> AsyncConnectedAccountsResourceWithRawResponse:
         """

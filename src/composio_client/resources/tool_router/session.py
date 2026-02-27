@@ -39,6 +39,8 @@ __all__ = ["SessionResource", "AsyncSessionResource"]
 
 
 class SessionResource(SyncAPIResource):
+    """(Labs) Tool router endpoints"""
+
     @cached_property
     def with_raw_response(self) -> SessionResourceWithRawResponse:
         """
@@ -503,6 +505,8 @@ class SessionResource(SyncAPIResource):
 
 
 class AsyncSessionResource(AsyncAPIResource):
+    """(Labs) Tool router endpoints"""
+
     @cached_property
     def with_raw_response(self) -> AsyncSessionResourceWithRawResponse:
         """

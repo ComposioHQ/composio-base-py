@@ -46,12 +46,16 @@ __all__ = ["McpResource", "AsyncMcpResource"]
 
 
 class McpResource(SyncAPIResource):
+    """MCP server management"""
+
     @cached_property
     def custom(self) -> CustomResource:
+        """MCP server management"""
         return CustomResource(self._client)
 
     @cached_property
     def generate(self) -> GenerateResource:
+        """MCP server management"""
         return GenerateResource(self._client)
 
     @cached_property
@@ -418,12 +422,16 @@ class McpResource(SyncAPIResource):
 
 
 class AsyncMcpResource(AsyncAPIResource):
+    """MCP server management"""
+
     @cached_property
     def custom(self) -> AsyncCustomResource:
+        """MCP server management"""
         return AsyncCustomResource(self._client)
 
     @cached_property
     def generate(self) -> AsyncGenerateResource:
+        """MCP server management"""
         return AsyncGenerateResource(self._client)
 
     @cached_property
@@ -814,10 +822,12 @@ class McpResourceWithRawResponse:
 
     @cached_property
     def custom(self) -> CustomResourceWithRawResponse:
+        """MCP server management"""
         return CustomResourceWithRawResponse(self._mcp.custom)
 
     @cached_property
     def generate(self) -> GenerateResourceWithRawResponse:
+        """MCP server management"""
         return GenerateResourceWithRawResponse(self._mcp.generate)
 
 
@@ -846,10 +856,12 @@ class AsyncMcpResourceWithRawResponse:
 
     @cached_property
     def custom(self) -> AsyncCustomResourceWithRawResponse:
+        """MCP server management"""
         return AsyncCustomResourceWithRawResponse(self._mcp.custom)
 
     @cached_property
     def generate(self) -> AsyncGenerateResourceWithRawResponse:
+        """MCP server management"""
         return AsyncGenerateResourceWithRawResponse(self._mcp.generate)
 
 
@@ -878,10 +890,12 @@ class McpResourceWithStreamingResponse:
 
     @cached_property
     def custom(self) -> CustomResourceWithStreamingResponse:
+        """MCP server management"""
         return CustomResourceWithStreamingResponse(self._mcp.custom)
 
     @cached_property
     def generate(self) -> GenerateResourceWithStreamingResponse:
+        """MCP server management"""
         return GenerateResourceWithStreamingResponse(self._mcp.generate)
 
 
@@ -910,8 +924,10 @@ class AsyncMcpResourceWithStreamingResponse:
 
     @cached_property
     def custom(self) -> AsyncCustomResourceWithStreamingResponse:
+        """MCP server management"""
         return AsyncCustomResourceWithStreamingResponse(self._mcp.custom)
 
     @cached_property
     def generate(self) -> AsyncGenerateResourceWithStreamingResponse:
+        """MCP server management"""
         return AsyncGenerateResourceWithStreamingResponse(self._mcp.generate)

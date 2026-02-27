@@ -26,6 +26,8 @@ __all__ = ["TriggersResource", "AsyncTriggersResource"]
 
 
 class TriggersResource(SyncAPIResource):
+    """Logging and monitoring"""
+
     @cached_property
     def with_raw_response(self) -> TriggersResourceWithRawResponse:
         """
@@ -159,6 +161,8 @@ class TriggersResource(SyncAPIResource):
 
 
 class AsyncTriggersResource(AsyncAPIResource):
+    """Logging and monitoring"""
+
     @cached_property
     def with_raw_response(self) -> AsyncTriggersResourceWithRawResponse:
         """

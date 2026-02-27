@@ -158,60 +158,70 @@ class Composio(SyncAPIClient):
 
     @cached_property
     def auth_configs(self) -> AuthConfigsResource:
+        """Authentication configuration management"""
         from .resources.auth_configs import AuthConfigsResource
 
         return AuthConfigsResource(self)
 
     @cached_property
     def connected_accounts(self) -> ConnectedAccountsResource:
+        """Connected account management"""
         from .resources.connected_accounts import ConnectedAccountsResource
 
         return ConnectedAccountsResource(self)
 
     @cached_property
     def link(self) -> LinkResource:
+        """Connected account management"""
         from .resources.link import LinkResource
 
         return LinkResource(self)
 
     @cached_property
     def toolkits(self) -> ToolkitsResource:
+        """Toolkit and tool management"""
         from .resources.toolkits import ToolkitsResource
 
         return ToolkitsResource(self)
 
     @cached_property
     def tools(self) -> ToolsResource:
+        """Tool execution endpoints"""
         from .resources.tools import ToolsResource
 
         return ToolsResource(self)
 
     @cached_property
     def trigger_instances(self) -> TriggerInstancesResource:
+        """Trigger management and execution"""
         from .resources.trigger_instances import TriggerInstancesResource
 
         return TriggerInstancesResource(self)
 
     @cached_property
     def triggers_types(self) -> TriggersTypesResource:
+        """Trigger management and execution"""
         from .resources.triggers_types import TriggersTypesResource
 
         return TriggersTypesResource(self)
 
     @cached_property
     def mcp(self) -> McpResource:
+        """MCP server management"""
         from .resources.mcp import McpResource
 
         return McpResource(self)
 
     @cached_property
     def files(self) -> FilesResource:
+        """File management"""
         from .resources.files import FilesResource
 
         return FilesResource(self)
 
     @cached_property
     def migration(self) -> MigrationResource:
+        """Endpoints to help with migration from v1 to v3"""
         from .resources.migration import MigrationResource
 
         return MigrationResource(self)
@@ -236,6 +246,7 @@ class Composio(SyncAPIClient):
 
     @cached_property
     def tool_router(self) -> ToolRouterResource:
+        """(Labs) Tool router endpoints"""
         from .resources.tool_router import ToolRouterResource
 
         return ToolRouterResource(self)
@@ -434,60 +445,70 @@ class AsyncComposio(AsyncAPIClient):
 
     @cached_property
     def auth_configs(self) -> AsyncAuthConfigsResource:
+        """Authentication configuration management"""
         from .resources.auth_configs import AsyncAuthConfigsResource
 
         return AsyncAuthConfigsResource(self)
 
     @cached_property
     def connected_accounts(self) -> AsyncConnectedAccountsResource:
+        """Connected account management"""
         from .resources.connected_accounts import AsyncConnectedAccountsResource
 
         return AsyncConnectedAccountsResource(self)
 
     @cached_property
     def link(self) -> AsyncLinkResource:
+        """Connected account management"""
         from .resources.link import AsyncLinkResource
 
         return AsyncLinkResource(self)
 
     @cached_property
     def toolkits(self) -> AsyncToolkitsResource:
+        """Toolkit and tool management"""
         from .resources.toolkits import AsyncToolkitsResource
 
         return AsyncToolkitsResource(self)
 
     @cached_property
     def tools(self) -> AsyncToolsResource:
+        """Tool execution endpoints"""
         from .resources.tools import AsyncToolsResource
 
         return AsyncToolsResource(self)
 
     @cached_property
     def trigger_instances(self) -> AsyncTriggerInstancesResource:
+        """Trigger management and execution"""
         from .resources.trigger_instances import AsyncTriggerInstancesResource
 
         return AsyncTriggerInstancesResource(self)
 
     @cached_property
     def triggers_types(self) -> AsyncTriggersTypesResource:
+        """Trigger management and execution"""
         from .resources.triggers_types import AsyncTriggersTypesResource
 
         return AsyncTriggersTypesResource(self)
 
     @cached_property
     def mcp(self) -> AsyncMcpResource:
+        """MCP server management"""
         from .resources.mcp import AsyncMcpResource
 
         return AsyncMcpResource(self)
 
     @cached_property
     def files(self) -> AsyncFilesResource:
+        """File management"""
         from .resources.files import AsyncFilesResource
 
         return AsyncFilesResource(self)
 
     @cached_property
     def migration(self) -> AsyncMigrationResource:
+        """Endpoints to help with migration from v1 to v3"""
         from .resources.migration import AsyncMigrationResource
 
         return AsyncMigrationResource(self)
@@ -512,6 +533,7 @@ class AsyncComposio(AsyncAPIClient):
 
     @cached_property
     def tool_router(self) -> AsyncToolRouterResource:
+        """(Labs) Tool router endpoints"""
         from .resources.tool_router import AsyncToolRouterResource
 
         return AsyncToolRouterResource(self)
@@ -641,60 +663,70 @@ class ComposioWithRawResponse:
 
     @cached_property
     def auth_configs(self) -> auth_configs.AuthConfigsResourceWithRawResponse:
+        """Authentication configuration management"""
         from .resources.auth_configs import AuthConfigsResourceWithRawResponse
 
         return AuthConfigsResourceWithRawResponse(self._client.auth_configs)
 
     @cached_property
     def connected_accounts(self) -> connected_accounts.ConnectedAccountsResourceWithRawResponse:
+        """Connected account management"""
         from .resources.connected_accounts import ConnectedAccountsResourceWithRawResponse
 
         return ConnectedAccountsResourceWithRawResponse(self._client.connected_accounts)
 
     @cached_property
     def link(self) -> link.LinkResourceWithRawResponse:
+        """Connected account management"""
         from .resources.link import LinkResourceWithRawResponse
 
         return LinkResourceWithRawResponse(self._client.link)
 
     @cached_property
     def toolkits(self) -> toolkits.ToolkitsResourceWithRawResponse:
+        """Toolkit and tool management"""
         from .resources.toolkits import ToolkitsResourceWithRawResponse
 
         return ToolkitsResourceWithRawResponse(self._client.toolkits)
 
     @cached_property
     def tools(self) -> tools.ToolsResourceWithRawResponse:
+        """Tool execution endpoints"""
         from .resources.tools import ToolsResourceWithRawResponse
 
         return ToolsResourceWithRawResponse(self._client.tools)
 
     @cached_property
     def trigger_instances(self) -> trigger_instances.TriggerInstancesResourceWithRawResponse:
+        """Trigger management and execution"""
         from .resources.trigger_instances import TriggerInstancesResourceWithRawResponse
 
         return TriggerInstancesResourceWithRawResponse(self._client.trigger_instances)
 
     @cached_property
     def triggers_types(self) -> triggers_types.TriggersTypesResourceWithRawResponse:
+        """Trigger management and execution"""
         from .resources.triggers_types import TriggersTypesResourceWithRawResponse
 
         return TriggersTypesResourceWithRawResponse(self._client.triggers_types)
 
     @cached_property
     def mcp(self) -> mcp.McpResourceWithRawResponse:
+        """MCP server management"""
         from .resources.mcp import McpResourceWithRawResponse
 
         return McpResourceWithRawResponse(self._client.mcp)
 
     @cached_property
     def files(self) -> files.FilesResourceWithRawResponse:
+        """File management"""
         from .resources.files import FilesResourceWithRawResponse
 
         return FilesResourceWithRawResponse(self._client.files)
 
     @cached_property
     def migration(self) -> migration.MigrationResourceWithRawResponse:
+        """Endpoints to help with migration from v1 to v3"""
         from .resources.migration import MigrationResourceWithRawResponse
 
         return MigrationResourceWithRawResponse(self._client.migration)
@@ -719,6 +751,7 @@ class ComposioWithRawResponse:
 
     @cached_property
     def tool_router(self) -> tool_router.ToolRouterResourceWithRawResponse:
+        """(Labs) Tool router endpoints"""
         from .resources.tool_router import ToolRouterResourceWithRawResponse
 
         return ToolRouterResourceWithRawResponse(self._client.tool_router)
@@ -732,60 +765,70 @@ class AsyncComposioWithRawResponse:
 
     @cached_property
     def auth_configs(self) -> auth_configs.AsyncAuthConfigsResourceWithRawResponse:
+        """Authentication configuration management"""
         from .resources.auth_configs import AsyncAuthConfigsResourceWithRawResponse
 
         return AsyncAuthConfigsResourceWithRawResponse(self._client.auth_configs)
 
     @cached_property
     def connected_accounts(self) -> connected_accounts.AsyncConnectedAccountsResourceWithRawResponse:
+        """Connected account management"""
         from .resources.connected_accounts import AsyncConnectedAccountsResourceWithRawResponse
 
         return AsyncConnectedAccountsResourceWithRawResponse(self._client.connected_accounts)
 
     @cached_property
     def link(self) -> link.AsyncLinkResourceWithRawResponse:
+        """Connected account management"""
         from .resources.link import AsyncLinkResourceWithRawResponse
 
         return AsyncLinkResourceWithRawResponse(self._client.link)
 
     @cached_property
     def toolkits(self) -> toolkits.AsyncToolkitsResourceWithRawResponse:
+        """Toolkit and tool management"""
         from .resources.toolkits import AsyncToolkitsResourceWithRawResponse
 
         return AsyncToolkitsResourceWithRawResponse(self._client.toolkits)
 
     @cached_property
     def tools(self) -> tools.AsyncToolsResourceWithRawResponse:
+        """Tool execution endpoints"""
         from .resources.tools import AsyncToolsResourceWithRawResponse
 
         return AsyncToolsResourceWithRawResponse(self._client.tools)
 
     @cached_property
     def trigger_instances(self) -> trigger_instances.AsyncTriggerInstancesResourceWithRawResponse:
+        """Trigger management and execution"""
         from .resources.trigger_instances import AsyncTriggerInstancesResourceWithRawResponse
 
         return AsyncTriggerInstancesResourceWithRawResponse(self._client.trigger_instances)
 
     @cached_property
     def triggers_types(self) -> triggers_types.AsyncTriggersTypesResourceWithRawResponse:
+        """Trigger management and execution"""
         from .resources.triggers_types import AsyncTriggersTypesResourceWithRawResponse
 
         return AsyncTriggersTypesResourceWithRawResponse(self._client.triggers_types)
 
     @cached_property
     def mcp(self) -> mcp.AsyncMcpResourceWithRawResponse:
+        """MCP server management"""
         from .resources.mcp import AsyncMcpResourceWithRawResponse
 
         return AsyncMcpResourceWithRawResponse(self._client.mcp)
 
     @cached_property
     def files(self) -> files.AsyncFilesResourceWithRawResponse:
+        """File management"""
         from .resources.files import AsyncFilesResourceWithRawResponse
 
         return AsyncFilesResourceWithRawResponse(self._client.files)
 
     @cached_property
     def migration(self) -> migration.AsyncMigrationResourceWithRawResponse:
+        """Endpoints to help with migration from v1 to v3"""
         from .resources.migration import AsyncMigrationResourceWithRawResponse
 
         return AsyncMigrationResourceWithRawResponse(self._client.migration)
@@ -810,6 +853,7 @@ class AsyncComposioWithRawResponse:
 
     @cached_property
     def tool_router(self) -> tool_router.AsyncToolRouterResourceWithRawResponse:
+        """(Labs) Tool router endpoints"""
         from .resources.tool_router import AsyncToolRouterResourceWithRawResponse
 
         return AsyncToolRouterResourceWithRawResponse(self._client.tool_router)
@@ -823,60 +867,70 @@ class ComposioWithStreamedResponse:
 
     @cached_property
     def auth_configs(self) -> auth_configs.AuthConfigsResourceWithStreamingResponse:
+        """Authentication configuration management"""
         from .resources.auth_configs import AuthConfigsResourceWithStreamingResponse
 
         return AuthConfigsResourceWithStreamingResponse(self._client.auth_configs)
 
     @cached_property
     def connected_accounts(self) -> connected_accounts.ConnectedAccountsResourceWithStreamingResponse:
+        """Connected account management"""
         from .resources.connected_accounts import ConnectedAccountsResourceWithStreamingResponse
 
         return ConnectedAccountsResourceWithStreamingResponse(self._client.connected_accounts)
 
     @cached_property
     def link(self) -> link.LinkResourceWithStreamingResponse:
+        """Connected account management"""
         from .resources.link import LinkResourceWithStreamingResponse
 
         return LinkResourceWithStreamingResponse(self._client.link)
 
     @cached_property
     def toolkits(self) -> toolkits.ToolkitsResourceWithStreamingResponse:
+        """Toolkit and tool management"""
         from .resources.toolkits import ToolkitsResourceWithStreamingResponse
 
         return ToolkitsResourceWithStreamingResponse(self._client.toolkits)
 
     @cached_property
     def tools(self) -> tools.ToolsResourceWithStreamingResponse:
+        """Tool execution endpoints"""
         from .resources.tools import ToolsResourceWithStreamingResponse
 
         return ToolsResourceWithStreamingResponse(self._client.tools)
 
     @cached_property
     def trigger_instances(self) -> trigger_instances.TriggerInstancesResourceWithStreamingResponse:
+        """Trigger management and execution"""
         from .resources.trigger_instances import TriggerInstancesResourceWithStreamingResponse
 
         return TriggerInstancesResourceWithStreamingResponse(self._client.trigger_instances)
 
     @cached_property
     def triggers_types(self) -> triggers_types.TriggersTypesResourceWithStreamingResponse:
+        """Trigger management and execution"""
         from .resources.triggers_types import TriggersTypesResourceWithStreamingResponse
 
         return TriggersTypesResourceWithStreamingResponse(self._client.triggers_types)
 
     @cached_property
     def mcp(self) -> mcp.McpResourceWithStreamingResponse:
+        """MCP server management"""
         from .resources.mcp import McpResourceWithStreamingResponse
 
         return McpResourceWithStreamingResponse(self._client.mcp)
 
     @cached_property
     def files(self) -> files.FilesResourceWithStreamingResponse:
+        """File management"""
         from .resources.files import FilesResourceWithStreamingResponse
 
         return FilesResourceWithStreamingResponse(self._client.files)
 
     @cached_property
     def migration(self) -> migration.MigrationResourceWithStreamingResponse:
+        """Endpoints to help with migration from v1 to v3"""
         from .resources.migration import MigrationResourceWithStreamingResponse
 
         return MigrationResourceWithStreamingResponse(self._client.migration)
@@ -901,6 +955,7 @@ class ComposioWithStreamedResponse:
 
     @cached_property
     def tool_router(self) -> tool_router.ToolRouterResourceWithStreamingResponse:
+        """(Labs) Tool router endpoints"""
         from .resources.tool_router import ToolRouterResourceWithStreamingResponse
 
         return ToolRouterResourceWithStreamingResponse(self._client.tool_router)
@@ -914,60 +969,70 @@ class AsyncComposioWithStreamedResponse:
 
     @cached_property
     def auth_configs(self) -> auth_configs.AsyncAuthConfigsResourceWithStreamingResponse:
+        """Authentication configuration management"""
         from .resources.auth_configs import AsyncAuthConfigsResourceWithStreamingResponse
 
         return AsyncAuthConfigsResourceWithStreamingResponse(self._client.auth_configs)
 
     @cached_property
     def connected_accounts(self) -> connected_accounts.AsyncConnectedAccountsResourceWithStreamingResponse:
+        """Connected account management"""
         from .resources.connected_accounts import AsyncConnectedAccountsResourceWithStreamingResponse
 
         return AsyncConnectedAccountsResourceWithStreamingResponse(self._client.connected_accounts)
 
     @cached_property
     def link(self) -> link.AsyncLinkResourceWithStreamingResponse:
+        """Connected account management"""
         from .resources.link import AsyncLinkResourceWithStreamingResponse
 
         return AsyncLinkResourceWithStreamingResponse(self._client.link)
 
     @cached_property
     def toolkits(self) -> toolkits.AsyncToolkitsResourceWithStreamingResponse:
+        """Toolkit and tool management"""
         from .resources.toolkits import AsyncToolkitsResourceWithStreamingResponse
 
         return AsyncToolkitsResourceWithStreamingResponse(self._client.toolkits)
 
     @cached_property
     def tools(self) -> tools.AsyncToolsResourceWithStreamingResponse:
+        """Tool execution endpoints"""
         from .resources.tools import AsyncToolsResourceWithStreamingResponse
 
         return AsyncToolsResourceWithStreamingResponse(self._client.tools)
 
     @cached_property
     def trigger_instances(self) -> trigger_instances.AsyncTriggerInstancesResourceWithStreamingResponse:
+        """Trigger management and execution"""
         from .resources.trigger_instances import AsyncTriggerInstancesResourceWithStreamingResponse
 
         return AsyncTriggerInstancesResourceWithStreamingResponse(self._client.trigger_instances)
 
     @cached_property
     def triggers_types(self) -> triggers_types.AsyncTriggersTypesResourceWithStreamingResponse:
+        """Trigger management and execution"""
         from .resources.triggers_types import AsyncTriggersTypesResourceWithStreamingResponse
 
         return AsyncTriggersTypesResourceWithStreamingResponse(self._client.triggers_types)
 
     @cached_property
     def mcp(self) -> mcp.AsyncMcpResourceWithStreamingResponse:
+        """MCP server management"""
         from .resources.mcp import AsyncMcpResourceWithStreamingResponse
 
         return AsyncMcpResourceWithStreamingResponse(self._client.mcp)
 
     @cached_property
     def files(self) -> files.AsyncFilesResourceWithStreamingResponse:
+        """File management"""
         from .resources.files import AsyncFilesResourceWithStreamingResponse
 
         return AsyncFilesResourceWithStreamingResponse(self._client.files)
 
     @cached_property
     def migration(self) -> migration.AsyncMigrationResourceWithStreamingResponse:
+        """Endpoints to help with migration from v1 to v3"""
         from .resources.migration import AsyncMigrationResourceWithStreamingResponse
 
         return AsyncMigrationResourceWithStreamingResponse(self._client.migration)
@@ -992,6 +1057,7 @@ class AsyncComposioWithStreamedResponse:
 
     @cached_property
     def tool_router(self) -> tool_router.AsyncToolRouterResourceWithStreamingResponse:
+        """(Labs) Tool router endpoints"""
         from .resources.tool_router import AsyncToolRouterResourceWithStreamingResponse
 
         return AsyncToolRouterResourceWithStreamingResponse(self._client.tool_router)

@@ -30,8 +30,11 @@ __all__ = ["ToolRouterResource", "AsyncToolRouterResource"]
 
 
 class ToolRouterResource(SyncAPIResource):
+    """(Labs) Tool router endpoints"""
+
     @cached_property
     def session(self) -> SessionResource:
+        """(Labs) Tool router endpoints"""
         return SessionResource(self._client)
 
     @cached_property
@@ -102,8 +105,11 @@ class ToolRouterResource(SyncAPIResource):
 
 
 class AsyncToolRouterResource(AsyncAPIResource):
+    """(Labs) Tool router endpoints"""
+
     @cached_property
     def session(self) -> AsyncSessionResource:
+        """(Labs) Tool router endpoints"""
         return AsyncSessionResource(self._client)
 
     @cached_property
@@ -183,6 +189,7 @@ class ToolRouterResourceWithRawResponse:
 
     @cached_property
     def session(self) -> SessionResourceWithRawResponse:
+        """(Labs) Tool router endpoints"""
         return SessionResourceWithRawResponse(self._tool_router.session)
 
 
@@ -196,6 +203,7 @@ class AsyncToolRouterResourceWithRawResponse:
 
     @cached_property
     def session(self) -> AsyncSessionResourceWithRawResponse:
+        """(Labs) Tool router endpoints"""
         return AsyncSessionResourceWithRawResponse(self._tool_router.session)
 
 
@@ -209,6 +217,7 @@ class ToolRouterResourceWithStreamingResponse:
 
     @cached_property
     def session(self) -> SessionResourceWithStreamingResponse:
+        """(Labs) Tool router endpoints"""
         return SessionResourceWithStreamingResponse(self._tool_router.session)
 
 
@@ -222,4 +231,5 @@ class AsyncToolRouterResourceWithStreamingResponse:
 
     @cached_property
     def session(self) -> AsyncSessionResourceWithStreamingResponse:
+        """(Labs) Tool router endpoints"""
         return AsyncSessionResourceWithStreamingResponse(self._tool_router.session)

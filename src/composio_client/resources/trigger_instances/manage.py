@@ -25,6 +25,8 @@ __all__ = ["ManageResource", "AsyncManageResource"]
 
 
 class ManageResource(SyncAPIResource):
+    """Trigger management and execution"""
+
     @cached_property
     def with_raw_response(self) -> ManageResourceWithRawResponse:
         """
@@ -125,6 +127,8 @@ class ManageResource(SyncAPIResource):
 
 
 class AsyncManageResource(AsyncAPIResource):
+    """Trigger management and execution"""
+
     @cached_property
     def with_raw_response(self) -> AsyncManageResourceWithRawResponse:
         """

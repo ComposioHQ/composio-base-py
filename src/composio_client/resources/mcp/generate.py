@@ -22,6 +22,8 @@ __all__ = ["GenerateResource", "AsyncGenerateResource"]
 
 
 class GenerateResource(SyncAPIResource):
+    """MCP server management"""
+
     @cached_property
     def with_raw_response(self) -> GenerateResourceWithRawResponse:
         """
@@ -96,6 +98,8 @@ class GenerateResource(SyncAPIResource):
 
 
 class AsyncGenerateResource(AsyncAPIResource):
+    """MCP server management"""
+
     @cached_property
     def with_raw_response(self) -> AsyncGenerateResourceWithRawResponse:
         """

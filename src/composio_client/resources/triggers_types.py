@@ -26,6 +26,8 @@ __all__ = ["TriggersTypesResource", "AsyncTriggersTypesResource"]
 
 
 class TriggersTypesResource(SyncAPIResource):
+    """Trigger management and execution"""
+
     @cached_property
     def with_raw_response(self) -> TriggersTypesResourceWithRawResponse:
         """
@@ -175,6 +177,8 @@ class TriggersTypesResource(SyncAPIResource):
 
 
 class AsyncTriggersTypesResource(AsyncAPIResource):
+    """Trigger management and execution"""
+
     @cached_property
     def with_raw_response(self) -> AsyncTriggersTypesResourceWithRawResponse:
         """

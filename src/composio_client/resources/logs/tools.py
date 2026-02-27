@@ -25,6 +25,8 @@ __all__ = ["ToolsResource", "AsyncToolsResource"]
 
 
 class ToolsResource(SyncAPIResource):
+    """Logging and monitoring"""
+
     @cached_property
     def with_raw_response(self) -> ToolsResourceWithRawResponse:
         """
@@ -136,6 +138,8 @@ class ToolsResource(SyncAPIResource):
 
 
 class AsyncToolsResource(AsyncAPIResource):
+    """Logging and monitoring"""
+
     @cached_property
     def with_raw_response(self) -> AsyncToolsResourceWithRawResponse:
         """

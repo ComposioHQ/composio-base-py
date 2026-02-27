@@ -27,6 +27,8 @@ __all__ = ["ToolkitsResource", "AsyncToolkitsResource"]
 
 
 class ToolkitsResource(SyncAPIResource):
+    """Toolkit and tool management"""
+
     @cached_property
     def with_raw_response(self) -> ToolkitsResourceWithRawResponse:
         """
@@ -189,6 +191,8 @@ class ToolkitsResource(SyncAPIResource):
 
 
 class AsyncToolkitsResource(AsyncAPIResource):
+    """Toolkit and tool management"""
+
     @cached_property
     def with_raw_response(self) -> AsyncToolkitsResourceWithRawResponse:
         """

@@ -23,6 +23,8 @@ __all__ = ["RealtimeResource", "AsyncRealtimeResource"]
 
 
 class RealtimeResource(SyncAPIResource):
+    """CLI integration endpoints"""
+
     @cached_property
     def with_raw_response(self) -> RealtimeResourceWithRawResponse:
         """
@@ -110,6 +112,8 @@ class RealtimeResource(SyncAPIResource):
 
 
 class AsyncRealtimeResource(AsyncAPIResource):
+    """CLI integration endpoints"""
+
     @cached_property
     def with_raw_response(self) -> AsyncRealtimeResourceWithRawResponse:
         """

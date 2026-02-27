@@ -33,8 +33,11 @@ __all__ = ["TriggerInstancesResource", "AsyncTriggerInstancesResource"]
 
 
 class TriggerInstancesResource(SyncAPIResource):
+    """Trigger management and execution"""
+
     @cached_property
     def manage(self) -> ManageResource:
+        """Trigger management and execution"""
         return ManageResource(self._client)
 
     @cached_property
@@ -244,8 +247,11 @@ class TriggerInstancesResource(SyncAPIResource):
 
 
 class AsyncTriggerInstancesResource(AsyncAPIResource):
+    """Trigger management and execution"""
+
     @cached_property
     def manage(self) -> AsyncManageResource:
+        """Trigger management and execution"""
         return AsyncManageResource(self._client)
 
     @cached_property
@@ -467,6 +473,7 @@ class TriggerInstancesResourceWithRawResponse:
 
     @cached_property
     def manage(self) -> ManageResourceWithRawResponse:
+        """Trigger management and execution"""
         return ManageResourceWithRawResponse(self._trigger_instances.manage)
 
 
@@ -483,6 +490,7 @@ class AsyncTriggerInstancesResourceWithRawResponse:
 
     @cached_property
     def manage(self) -> AsyncManageResourceWithRawResponse:
+        """Trigger management and execution"""
         return AsyncManageResourceWithRawResponse(self._trigger_instances.manage)
 
 
@@ -499,6 +507,7 @@ class TriggerInstancesResourceWithStreamingResponse:
 
     @cached_property
     def manage(self) -> ManageResourceWithStreamingResponse:
+        """Trigger management and execution"""
         return ManageResourceWithStreamingResponse(self._trigger_instances.manage)
 
 
@@ -515,4 +524,5 @@ class AsyncTriggerInstancesResourceWithStreamingResponse:
 
     @cached_property
     def manage(self) -> AsyncManageResourceWithStreamingResponse:
+        """Trigger management and execution"""
         return AsyncManageResourceWithStreamingResponse(self._trigger_instances.manage)
