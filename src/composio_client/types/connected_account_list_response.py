@@ -4830,7 +4830,13 @@ class Item(BaseModel):
     """The status of the connection"""
 
     status_reason: Optional[str] = None
-    """The reason the connection is disabled"""
+    """The reason the connection status changed.
+
+    Possible reasons: Connection initiation did not complete within 10 minutes,
+    Permanent auth error during token refresh, Max auth failures reached, OAuth
+    callback failed during token exchange, Connection status updated by user, Auth
+    config is disabled
+    """
 
     toolkit: ItemToolkit
 
