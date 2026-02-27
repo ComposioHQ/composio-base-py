@@ -30,7 +30,7 @@ class AuthConfigListParams(TypedDict, total=False):
     """Number of items per page, max allowed is 1000"""
 
     search: str
-    """Search auth configs by name"""
+    """Search auth configs by name or id"""
 
     show_disabled: Optional[bool]
     """Show disabled auth configs"""

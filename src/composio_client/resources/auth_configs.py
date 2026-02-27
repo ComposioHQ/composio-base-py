@@ -303,7 +303,7 @@ class AuthConfigsResource(SyncAPIResource):
 
           limit: Number of items per page, max allowed is 1000
 
-          search: Search auth configs by name
+          search: Search auth configs by name or id
 
           show_disabled: Show disabled auth configs
 
@@ -696,7 +696,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           limit: Number of items per page, max allowed is 1000
 
-          search: Search auth configs by name
+          search: Search auth configs by name or id
 
           show_disabled: Show disabled auth configs
 
