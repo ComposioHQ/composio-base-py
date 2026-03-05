@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Dict, Union, Optional
+from typing import Union, Optional
 from typing_extensions import Required, Annotated, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
@@ -98,7 +98,7 @@ class LinkCreateParams(TypedDict, total=False):
     """Optional data to pre-fill connection fields with default values"""
 
 
-class ConnectionDataUnionMember0Typed(TypedDict, total=False):
+class ConnectionDataUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -144,10 +144,7 @@ class ConnectionDataUnionMember0Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember0: TypeAlias = Union[ConnectionDataUnionMember0Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember1Typed(TypedDict, total=False):
+class ConnectionDataUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     auth_uri: Required[Annotated[str, PropertyInfo(alias="authUri")]]
 
     oauth_token: Required[str]
@@ -203,10 +200,7 @@ class ConnectionDataUnionMember1Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember1: TypeAlias = Union[ConnectionDataUnionMember1Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember2Typed(TypedDict, total=False):
+class ConnectionDataUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     oauth_token: Required[str]
 
     oauth_token_secret: Required[str]
@@ -264,10 +258,7 @@ class ConnectionDataUnionMember2Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember2: TypeAlias = Union[ConnectionDataUnionMember2Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember3Typed(TypedDict, total=False):
+class ConnectionDataUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -317,10 +308,7 @@ class ConnectionDataUnionMember3Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember3: TypeAlias = Union[ConnectionDataUnionMember3Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember4Typed(TypedDict, total=False):
+class ConnectionDataUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -368,10 +356,7 @@ class ConnectionDataUnionMember4Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember4: TypeAlias = Union[ConnectionDataUnionMember4Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember5Typed(TypedDict, total=False):
+class ConnectionDataUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     oauth_token: Required[str]
 
     oauth_token_secret: Required[str]
@@ -429,10 +414,7 @@ class ConnectionDataUnionMember5Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember5: TypeAlias = Union[ConnectionDataUnionMember5Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember6Typed(TypedDict, total=False):
+class ConnectionDataUnionMember6(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -484,10 +466,7 @@ class ConnectionDataUnionMember6Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember6: TypeAlias = Union[ConnectionDataUnionMember6Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember7Typed(TypedDict, total=False):
+class ConnectionDataUnionMember7(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     account_id: str
@@ -549,9 +528,6 @@ class ConnectionDataUnionMember7Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember7: TypeAlias = Union[ConnectionDataUnionMember7Typed, Dict[str, Optional[object]]]
-
-
 class ConnectionDataUnionMember8AuthedUser(TypedDict, total=False):
     """for slack user scopes"""
 
@@ -560,7 +536,7 @@ class ConnectionDataUnionMember8AuthedUser(TypedDict, total=False):
     scope: str
 
 
-class ConnectionDataUnionMember8Typed(TypedDict, total=False):
+class ConnectionDataUnionMember8(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
     account_id: str
@@ -629,9 +605,6 @@ class ConnectionDataUnionMember8Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember8: TypeAlias = Union[ConnectionDataUnionMember8Typed, Dict[str, Optional[object]]]
-
-
 class ConnectionDataUnionMember9AuthedUser(TypedDict, total=False):
     """for slack user scopes"""
 
@@ -640,7 +613,7 @@ class ConnectionDataUnionMember9AuthedUser(TypedDict, total=False):
     scope: str
 
 
-class ConnectionDataUnionMember9Typed(TypedDict, total=False):
+class ConnectionDataUnionMember9(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
     account_id: str
@@ -709,10 +682,7 @@ class ConnectionDataUnionMember9Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember9: TypeAlias = Union[ConnectionDataUnionMember9Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember10Typed(TypedDict, total=False):
+class ConnectionDataUnionMember10(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -768,10 +738,7 @@ class ConnectionDataUnionMember10Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember10: TypeAlias = Union[ConnectionDataUnionMember10Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember11Typed(TypedDict, total=False):
+class ConnectionDataUnionMember11(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -825,10 +792,7 @@ class ConnectionDataUnionMember11Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember11: TypeAlias = Union[ConnectionDataUnionMember11Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember12Typed(TypedDict, total=False):
+class ConnectionDataUnionMember12(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -874,10 +838,7 @@ class ConnectionDataUnionMember12Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember12: TypeAlias = Union[ConnectionDataUnionMember12Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember13Typed(TypedDict, total=False):
+class ConnectionDataUnionMember13(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -923,10 +884,7 @@ class ConnectionDataUnionMember13Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember13: TypeAlias = Union[ConnectionDataUnionMember13Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember14Typed(TypedDict, total=False):
+class ConnectionDataUnionMember14(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -980,10 +938,7 @@ class ConnectionDataUnionMember14Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember14: TypeAlias = Union[ConnectionDataUnionMember14Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember15Typed(TypedDict, total=False):
+class ConnectionDataUnionMember15(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1037,10 +992,7 @@ class ConnectionDataUnionMember15Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember15: TypeAlias = Union[ConnectionDataUnionMember15Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember16Typed(TypedDict, total=False):
+class ConnectionDataUnionMember16(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1086,10 +1038,7 @@ class ConnectionDataUnionMember16Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember16: TypeAlias = Union[ConnectionDataUnionMember16Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember17Typed(TypedDict, total=False):
+class ConnectionDataUnionMember17(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1135,10 +1084,7 @@ class ConnectionDataUnionMember17Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember17: TypeAlias = Union[ConnectionDataUnionMember17Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember18Typed(TypedDict, total=False):
+class ConnectionDataUnionMember18(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     username: Required[str]
 
     account_id: str
@@ -1188,10 +1134,7 @@ class ConnectionDataUnionMember18Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember18: TypeAlias = Union[ConnectionDataUnionMember18Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember19Typed(TypedDict, total=False):
+class ConnectionDataUnionMember19(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     username: Required[str]
 
     account_id: str
@@ -1241,10 +1184,7 @@ class ConnectionDataUnionMember19Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember19: TypeAlias = Union[ConnectionDataUnionMember19Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember20Typed(TypedDict, total=False):
+class ConnectionDataUnionMember20(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1290,10 +1230,7 @@ class ConnectionDataUnionMember20Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember20: TypeAlias = Union[ConnectionDataUnionMember20Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember21Typed(TypedDict, total=False):
+class ConnectionDataUnionMember21(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1339,10 +1276,7 @@ class ConnectionDataUnionMember21Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember21: TypeAlias = Union[ConnectionDataUnionMember21Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember22Typed(TypedDict, total=False):
+class ConnectionDataUnionMember22(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     token: Required[str]
 
     account_id: str
@@ -1390,10 +1324,7 @@ class ConnectionDataUnionMember22Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember22: TypeAlias = Union[ConnectionDataUnionMember22Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember23Typed(TypedDict, total=False):
+class ConnectionDataUnionMember23(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     token: Required[str]
 
     account_id: str
@@ -1441,10 +1372,7 @@ class ConnectionDataUnionMember23Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember23: TypeAlias = Union[ConnectionDataUnionMember23Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember24Typed(TypedDict, total=False):
+class ConnectionDataUnionMember24(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1490,10 +1418,7 @@ class ConnectionDataUnionMember24Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember24: TypeAlias = Union[ConnectionDataUnionMember24Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember25Typed(TypedDict, total=False):
+class ConnectionDataUnionMember25(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     account_id: str
@@ -1543,10 +1468,7 @@ class ConnectionDataUnionMember25Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember25: TypeAlias = Union[ConnectionDataUnionMember25Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember26Typed(TypedDict, total=False):
+class ConnectionDataUnionMember26(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     credentials_json: Required[str]
 
     account_id: str
@@ -1594,10 +1516,7 @@ class ConnectionDataUnionMember26Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember26: TypeAlias = Union[ConnectionDataUnionMember26Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember27Typed(TypedDict, total=False):
+class ConnectionDataUnionMember27(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     credentials_json: Required[str]
 
     account_id: str
@@ -1645,10 +1564,7 @@ class ConnectionDataUnionMember27Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember27: TypeAlias = Union[ConnectionDataUnionMember27Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember28Typed(TypedDict, total=False):
+class ConnectionDataUnionMember28(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1694,10 +1610,7 @@ class ConnectionDataUnionMember28Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember28: TypeAlias = Union[ConnectionDataUnionMember28Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember29Typed(TypedDict, total=False):
+class ConnectionDataUnionMember29(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1743,10 +1656,7 @@ class ConnectionDataUnionMember29Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember29: TypeAlias = Union[ConnectionDataUnionMember29Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember30Typed(TypedDict, total=False):
+class ConnectionDataUnionMember30(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1792,10 +1702,7 @@ class ConnectionDataUnionMember30Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember30: TypeAlias = Union[ConnectionDataUnionMember30Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember31Typed(TypedDict, total=False):
+class ConnectionDataUnionMember31(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1841,10 +1748,7 @@ class ConnectionDataUnionMember31Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember31: TypeAlias = Union[ConnectionDataUnionMember31Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember32Typed(TypedDict, total=False):
+class ConnectionDataUnionMember32(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1894,10 +1798,7 @@ class ConnectionDataUnionMember32Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember32: TypeAlias = Union[ConnectionDataUnionMember32Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember33Typed(TypedDict, total=False):
+class ConnectionDataUnionMember33(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1945,10 +1846,7 @@ class ConnectionDataUnionMember33Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember33: TypeAlias = Union[ConnectionDataUnionMember33Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember34Typed(TypedDict, total=False):
+class ConnectionDataUnionMember34(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -1994,10 +1892,7 @@ class ConnectionDataUnionMember34Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember34: TypeAlias = Union[ConnectionDataUnionMember34Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember35Typed(TypedDict, total=False):
+class ConnectionDataUnionMember35(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2043,10 +1938,7 @@ class ConnectionDataUnionMember35Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember35: TypeAlias = Union[ConnectionDataUnionMember35Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember36Typed(TypedDict, total=False):
+class ConnectionDataUnionMember36(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2092,10 +1984,7 @@ class ConnectionDataUnionMember36Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember36: TypeAlias = Union[ConnectionDataUnionMember36Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember37Typed(TypedDict, total=False):
+class ConnectionDataUnionMember37(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2141,10 +2030,7 @@ class ConnectionDataUnionMember37Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember37: TypeAlias = Union[ConnectionDataUnionMember37Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember38Typed(TypedDict, total=False):
+class ConnectionDataUnionMember38(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2194,10 +2080,7 @@ class ConnectionDataUnionMember38Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember38: TypeAlias = Union[ConnectionDataUnionMember38Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember39Typed(TypedDict, total=False):
+class ConnectionDataUnionMember39(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2245,10 +2128,7 @@ class ConnectionDataUnionMember39Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember39: TypeAlias = Union[ConnectionDataUnionMember39Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember40Typed(TypedDict, total=False):
+class ConnectionDataUnionMember40(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2294,10 +2174,7 @@ class ConnectionDataUnionMember40Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember40: TypeAlias = Union[ConnectionDataUnionMember40Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember41Typed(TypedDict, total=False):
+class ConnectionDataUnionMember41(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     account_id: str
@@ -2345,10 +2222,7 @@ class ConnectionDataUnionMember41Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember41: TypeAlias = Union[ConnectionDataUnionMember41Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember42Typed(TypedDict, total=False):
+class ConnectionDataUnionMember42(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
 
     session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
@@ -2398,10 +2272,7 @@ class ConnectionDataUnionMember42Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember42: TypeAlias = Union[ConnectionDataUnionMember42Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember43Typed(TypedDict, total=False):
+class ConnectionDataUnionMember43(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
 
     session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
@@ -2451,10 +2322,7 @@ class ConnectionDataUnionMember43Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember43: TypeAlias = Union[ConnectionDataUnionMember43Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember44Typed(TypedDict, total=False):
+class ConnectionDataUnionMember44(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2504,10 +2372,7 @@ class ConnectionDataUnionMember44Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember44: TypeAlias = Union[ConnectionDataUnionMember44Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember45Typed(TypedDict, total=False):
+class ConnectionDataUnionMember45(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2555,10 +2420,7 @@ class ConnectionDataUnionMember45Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember45: TypeAlias = Union[ConnectionDataUnionMember45Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember46Typed(TypedDict, total=False):
+class ConnectionDataUnionMember46(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2604,10 +2466,7 @@ class ConnectionDataUnionMember46Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember46: TypeAlias = Union[ConnectionDataUnionMember46Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember47Typed(TypedDict, total=False):
+class ConnectionDataUnionMember47(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2653,10 +2512,7 @@ class ConnectionDataUnionMember47Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember47: TypeAlias = Union[ConnectionDataUnionMember47Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember48Typed(TypedDict, total=False):
+class ConnectionDataUnionMember48(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     password: Required[str]
 
     username: Required[str]
@@ -2706,10 +2562,7 @@ class ConnectionDataUnionMember48Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember48: TypeAlias = Union[ConnectionDataUnionMember48Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember49Typed(TypedDict, total=False):
+class ConnectionDataUnionMember49(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     password: Required[str]
 
     username: Required[str]
@@ -2759,10 +2612,7 @@ class ConnectionDataUnionMember49Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember49: TypeAlias = Union[ConnectionDataUnionMember49Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember50Typed(TypedDict, total=False):
+class ConnectionDataUnionMember50(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     password: Required[str]
 
     username: Required[str]
@@ -2816,10 +2666,7 @@ class ConnectionDataUnionMember50Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember50: TypeAlias = Union[ConnectionDataUnionMember50Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember51Typed(TypedDict, total=False):
+class ConnectionDataUnionMember51(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     password: Required[str]
 
     username: Required[str]
@@ -2871,10 +2718,7 @@ class ConnectionDataUnionMember51Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember51: TypeAlias = Union[ConnectionDataUnionMember51Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember52Typed(TypedDict, total=False):
+class ConnectionDataUnionMember52(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2920,10 +2764,7 @@ class ConnectionDataUnionMember52Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember52: TypeAlias = Union[ConnectionDataUnionMember52Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember53Typed(TypedDict, total=False):
+class ConnectionDataUnionMember53(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2969,10 +2810,7 @@ class ConnectionDataUnionMember53Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember53: TypeAlias = Union[ConnectionDataUnionMember53Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember54Typed(TypedDict, total=False):
+class ConnectionDataUnionMember54(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     application_id: Required[str]
 
     installation_id: Required[str]
@@ -3024,10 +2862,7 @@ class ConnectionDataUnionMember54Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember54: TypeAlias = Union[ConnectionDataUnionMember54Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember55Typed(TypedDict, total=False):
+class ConnectionDataUnionMember55(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     application_id: Required[str]
 
     installation_id: Required[str]
@@ -3079,10 +2914,7 @@ class ConnectionDataUnionMember55Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember55: TypeAlias = Union[ConnectionDataUnionMember55Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember56Typed(TypedDict, total=False):
+class ConnectionDataUnionMember56(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3128,10 +2960,7 @@ class ConnectionDataUnionMember56Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember56: TypeAlias = Union[ConnectionDataUnionMember56Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember57Typed(TypedDict, total=False):
+class ConnectionDataUnionMember57(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3177,10 +3006,7 @@ class ConnectionDataUnionMember57Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember57: TypeAlias = Union[ConnectionDataUnionMember57Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember58Typed(TypedDict, total=False):
+class ConnectionDataUnionMember58(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3226,10 +3052,7 @@ class ConnectionDataUnionMember58Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember58: TypeAlias = Union[ConnectionDataUnionMember58Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember59Typed(TypedDict, total=False):
+class ConnectionDataUnionMember59(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3275,10 +3098,7 @@ class ConnectionDataUnionMember59Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember59: TypeAlias = Union[ConnectionDataUnionMember59Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember60Typed(TypedDict, total=False):
+class ConnectionDataUnionMember60(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3328,10 +3148,7 @@ class ConnectionDataUnionMember60Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember60: TypeAlias = Union[ConnectionDataUnionMember60Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember61Typed(TypedDict, total=False):
+class ConnectionDataUnionMember61(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3379,10 +3196,7 @@ class ConnectionDataUnionMember61Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember61: TypeAlias = Union[ConnectionDataUnionMember61Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember62Typed(TypedDict, total=False):
+class ConnectionDataUnionMember62(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3434,10 +3248,7 @@ class ConnectionDataUnionMember62Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember62: TypeAlias = Union[ConnectionDataUnionMember62Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember63Typed(TypedDict, total=False):
+class ConnectionDataUnionMember63(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     client_id: Required[str]
     """Dynamically registered client ID"""
 
@@ -3507,10 +3318,7 @@ class ConnectionDataUnionMember63Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember63: TypeAlias = Union[ConnectionDataUnionMember63Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember64Typed(TypedDict, total=False):
+class ConnectionDataUnionMember64(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
     client_id: Required[str]
@@ -3584,10 +3392,7 @@ class ConnectionDataUnionMember64Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember64: TypeAlias = Union[ConnectionDataUnionMember64Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember65Typed(TypedDict, total=False):
+class ConnectionDataUnionMember65(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
     client_id: Required[str]
@@ -3661,10 +3466,7 @@ class ConnectionDataUnionMember65Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember65: TypeAlias = Union[ConnectionDataUnionMember65Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember66Typed(TypedDict, total=False):
+class ConnectionDataUnionMember66(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3720,10 +3522,7 @@ class ConnectionDataUnionMember66Typed(TypedDict, total=False):
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-ConnectionDataUnionMember66: TypeAlias = Union[ConnectionDataUnionMember66Typed, Dict[str, Optional[object]]]
-
-
-class ConnectionDataUnionMember67Typed(TypedDict, total=False):
+class ConnectionDataUnionMember67(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3776,8 +3575,6 @@ class ConnectionDataUnionMember67Typed(TypedDict, total=False):
 
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
-
-ConnectionDataUnionMember67: TypeAlias = Union[ConnectionDataUnionMember67Typed, Dict[str, Optional[object]]]
 
 ConnectionData: TypeAlias = Union[
     ConnectionDataUnionMember0,
