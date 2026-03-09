@@ -7,18 +7,26 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
-from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from ..._response import (
+from .files import (
+    FilesResource,
+    AsyncFilesResource,
+    FilesResourceWithRawResponse,
+    AsyncFilesResourceWithRawResponse,
+    FilesResourceWithStreamingResponse,
+    AsyncFilesResourceWithStreamingResponse,
+)
+from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
+from ...._utils import maybe_transform, async_maybe_transform
+from ...._compat import cached_property
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from ...._response import (
     to_raw_response_wrapper,
     to_streamed_response_wrapper,
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.tool_router import (
+from ...._base_client import make_request_options
+from ....types.tool_router import (
     session_link_params,
     session_create_params,
     session_search_params,
@@ -26,20 +34,25 @@ from ...types.tool_router import (
     session_toolkits_params,
     session_execute_meta_params,
 )
-from ...types.tool_router.session_link_response import SessionLinkResponse
-from ...types.tool_router.session_tools_response import SessionToolsResponse
-from ...types.tool_router.session_create_response import SessionCreateResponse
-from ...types.tool_router.session_search_response import SessionSearchResponse
-from ...types.tool_router.session_execute_response import SessionExecuteResponse
-from ...types.tool_router.session_retrieve_response import SessionRetrieveResponse
-from ...types.tool_router.session_toolkits_response import SessionToolkitsResponse
-from ...types.tool_router.session_execute_meta_response import SessionExecuteMetaResponse
+from ....types.tool_router.session_link_response import SessionLinkResponse
+from ....types.tool_router.session_tools_response import SessionToolsResponse
+from ....types.tool_router.session_create_response import SessionCreateResponse
+from ....types.tool_router.session_search_response import SessionSearchResponse
+from ....types.tool_router.session_execute_response import SessionExecuteResponse
+from ....types.tool_router.session_retrieve_response import SessionRetrieveResponse
+from ....types.tool_router.session_toolkits_response import SessionToolkitsResponse
+from ....types.tool_router.session_execute_meta_response import SessionExecuteMetaResponse
 
 __all__ = ["SessionResource", "AsyncSessionResource"]
 
 
 class SessionResource(SyncAPIResource):
     """(Labs) Tool router endpoints"""
+
+    @cached_property
+    def files(self) -> FilesResource:
+        """(Labs) Tool router endpoints"""
+        return FilesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> SessionResourceWithRawResponse:
@@ -506,6 +519,11 @@ class SessionResource(SyncAPIResource):
 
 class AsyncSessionResource(AsyncAPIResource):
     """(Labs) Tool router endpoints"""
+
+    @cached_property
+    def files(self) -> AsyncFilesResource:
+        """(Labs) Tool router endpoints"""
+        return AsyncFilesResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncSessionResourceWithRawResponse:
@@ -999,6 +1017,11 @@ class SessionResourceWithRawResponse:
             session.tools,
         )
 
+    @cached_property
+    def files(self) -> FilesResourceWithRawResponse:
+        """(Labs) Tool router endpoints"""
+        return FilesResourceWithRawResponse(self._session.files)
+
 
 class AsyncSessionResourceWithRawResponse:
     def __init__(self, session: AsyncSessionResource) -> None:
@@ -1028,6 +1051,11 @@ class AsyncSessionResourceWithRawResponse:
         self.tools = async_to_raw_response_wrapper(
             session.tools,
         )
+
+    @cached_property
+    def files(self) -> AsyncFilesResourceWithRawResponse:
+        """(Labs) Tool router endpoints"""
+        return AsyncFilesResourceWithRawResponse(self._session.files)
 
 
 class SessionResourceWithStreamingResponse:
@@ -1059,6 +1087,11 @@ class SessionResourceWithStreamingResponse:
             session.tools,
         )
 
+    @cached_property
+    def files(self) -> FilesResourceWithStreamingResponse:
+        """(Labs) Tool router endpoints"""
+        return FilesResourceWithStreamingResponse(self._session.files)
+
 
 class AsyncSessionResourceWithStreamingResponse:
     def __init__(self, session: AsyncSessionResource) -> None:
@@ -1088,3 +1121,8 @@ class AsyncSessionResourceWithStreamingResponse:
         self.tools = async_to_streamed_response_wrapper(
             session.tools,
         )
+
+    @cached_property
+    def files(self) -> AsyncFilesResourceWithStreamingResponse:
+        """(Labs) Tool router endpoints"""
+        return AsyncFilesResourceWithStreamingResponse(self._session.files)

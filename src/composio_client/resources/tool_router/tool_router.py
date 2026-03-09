@@ -5,14 +5,6 @@ from __future__ import annotations
 import httpx
 
 from ...types import tool_router_create_session_params
-from .session import (
-    SessionResource,
-    AsyncSessionResource,
-    SessionResourceWithRawResponse,
-    AsyncSessionResourceWithRawResponse,
-    SessionResourceWithStreamingResponse,
-    AsyncSessionResourceWithStreamingResponse,
-)
 from ..._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -24,6 +16,14 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
+from .session.session import (
+    SessionResource,
+    AsyncSessionResource,
+    SessionResourceWithRawResponse,
+    AsyncSessionResourceWithRawResponse,
+    SessionResourceWithStreamingResponse,
+    AsyncSessionResourceWithStreamingResponse,
+)
 from ...types.tool_router_create_session_response import ToolRouterCreateSessionResponse
 
 __all__ = ["ToolRouterResource", "AsyncToolRouterResource"]
