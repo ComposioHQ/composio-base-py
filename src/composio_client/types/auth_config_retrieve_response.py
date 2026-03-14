@@ -32,6 +32,12 @@ class Toolkit(BaseModel):
     slug: str
     """The unique identifier of the integration app"""
 
+    auth_guide_url: Optional[str] = None
+    """URL to a guide page with authentication setup instructions"""
+
+    auth_hint_url: Optional[str] = None
+    """URL to a page where users can obtain or configure credentials"""
+
 
 class DeprecatedParams(BaseModel):
     """DEPRECATED: This parameter will be removed in a future version."""

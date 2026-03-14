@@ -76,6 +76,9 @@ class Item(BaseModel):
     slug: str
     """URL-friendly unique identifier for the toolkit"""
 
+    auth_guide_url: Optional[str] = None
+    """URL to a guide page with authentication setup instructions for this toolkit"""
+
     auth_schemes: Optional[List[str]] = None
     """List of authentication methods supported by this toolkit"""
 

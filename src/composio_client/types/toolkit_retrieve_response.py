@@ -201,6 +201,12 @@ class AuthConfigDetail(BaseModel):
     name: str
     """Display name for this authentication method"""
 
+    auth_hint_url: Optional[str] = None
+    """
+    URL to a page where users can obtain or configure credentials for this
+    authentication method
+    """
+
     deprecated_auth_provider_details: Optional[AuthConfigDetailDeprecatedAuthProviderDetails] = None
     """Authentication URL fields for OAuth 2.0 and OAuth 1.0.
 
@@ -241,6 +247,9 @@ class ToolkitRetrieveResponse(BaseModel):
 
     auth_config_details: Optional[List[AuthConfigDetail]] = None
     """Complete authentication configuration details for each supported auth method"""
+
+    auth_guide_url: Optional[str] = None
+    """URL to a guide page with authentication setup instructions for this toolkit"""
 
     base_url: Optional[str] = None
     """
