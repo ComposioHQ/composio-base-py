@@ -8,6 +8,7 @@ from ..._models import BaseModel
 __all__ = [
     "SessionRetrieveResponse",
     "Config",
+    "ConfigCustomTool",
     "ConfigManageConnections",
     "ConfigTags",
     "ConfigToolkits",
@@ -21,6 +22,18 @@ __all__ = [
     "ConfigWorkbench",
     "Mcp",
 ]
+
+
+class ConfigCustomTool(BaseModel):
+    description: str
+
+    input_schema: Dict[str, Optional[object]]
+
+    name: str
+
+    slug: str
+
+    toolkit: Optional[str] = None
 
 
 class ConfigManageConnections(BaseModel):
@@ -110,6 +123,9 @@ class Config(BaseModel):
 
     connected_accounts: Optional[Dict[str, str]] = None
     """Connected account overrides per toolkit"""
+
+    custom_tools: Optional[List[ConfigCustomTool]] = None
+    """User-provided custom tools configured for this session"""
 
     manage_connections: Optional[ConfigManageConnections] = None
     """Manage connections configuration"""

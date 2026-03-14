@@ -109,6 +109,14 @@ __all__ = [
     "ConnectionStateUnionMember12ValUnionMember3",
     "ConnectionStateUnionMember12ValUnionMember4",
     "ConnectionStateUnionMember12ValUnionMember5",
+    "ConnectionStateUnionMember13",
+    "ConnectionStateUnionMember13Val",
+    "ConnectionStateUnionMember13ValUnionMember0",
+    "ConnectionStateUnionMember13ValUnionMember1",
+    "ConnectionStateUnionMember13ValUnionMember2",
+    "ConnectionStateUnionMember13ValUnionMember3",
+    "ConnectionStateUnionMember13ValUnionMember4",
+    "ConnectionStateUnionMember13ValUnionMember5",
 ]
 
 
@@ -3941,6 +3949,344 @@ class ConnectionStateUnionMember12(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember12Val]
 
 
+class ConnectionStateUnionMember13ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    status: Required[Literal["INITIALIZING"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionStateUnionMember13ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    status: Required[Literal["INITIATED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionStateUnionMember13ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    access_token: Required[str]
+
+    client_id: Required[str]
+
+    client_secret: Required[str]
+
+    status: Required[Literal["ACTIVE"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expires_at: str
+
+    expires_in: Union[float, str, None]
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    scope: Union[str, SequenceNotStr[str], None]
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    token_type: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionStateUnionMember13ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    access_token: Required[str]
+
+    client_id: Required[str]
+
+    client_secret: Required[str]
+
+    status: Required[Literal["INACTIVE"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expires_at: str
+
+    expires_in: Union[float, str, None]
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    scope: Union[str, SequenceNotStr[str], None]
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    token_type: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionStateUnionMember13ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    status: Required[Literal["FAILED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    error: str
+
+    error_description: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionStateUnionMember13ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    status: Required[Literal["EXPIRED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expired_at: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+ConnectionStateUnionMember13Val: TypeAlias = Union[
+    ConnectionStateUnionMember13ValUnionMember0,
+    ConnectionStateUnionMember13ValUnionMember1,
+    ConnectionStateUnionMember13ValUnionMember2,
+    ConnectionStateUnionMember13ValUnionMember3,
+    ConnectionStateUnionMember13ValUnionMember4,
+    ConnectionStateUnionMember13ValUnionMember5,
+]
+
+
+class ConnectionStateUnionMember13(TypedDict, total=False):
+    auth_scheme: Required[Annotated[Literal["S2S_OAUTH2"], PropertyInfo(alias="authScheme")]]
+
+    val: Required[ConnectionStateUnionMember13Val]
+
+
 ConnectionState: TypeAlias = Union[
     ConnectionStateUnionMember0,
     ConnectionStateUnionMember1,
@@ -3955,6 +4301,7 @@ ConnectionState: TypeAlias = Union[
     ConnectionStateUnionMember10,
     ConnectionStateUnionMember11,
     ConnectionStateUnionMember12,
+    ConnectionStateUnionMember13,
 ]
 
 

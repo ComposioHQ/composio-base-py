@@ -74,6 +74,9 @@ class Item(BaseModel):
     user_id: str
     """ID of the user this trigger is associated with"""
 
+    version: str
+    """Version of the trigger instance"""
+
     deprecated: Optional[ItemDeprecated] = None
     """Deprecated fields for the trigger instance"""
 

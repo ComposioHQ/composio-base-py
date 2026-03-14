@@ -35,6 +35,8 @@ __all__ = [
     "CustomConnectionDataUnionMember8Val",
     "CustomConnectionDataUnionMember9",
     "CustomConnectionDataUnionMember9Val",
+    "CustomConnectionDataUnionMember10",
+    "CustomConnectionDataUnionMember10Val",
     "Parameter",
 ]
 
@@ -727,6 +729,74 @@ class CustomConnectionDataUnionMember9(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember9Val]
 
 
+class CustomConnectionDataUnionMember10Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    access_token: Required[str]
+
+    client_id: Required[str]
+
+    client_secret: Required[str]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expires_at: str
+
+    expires_in: Union[float, str, None]
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    scope: Union[str, SequenceNotStr[str], None]
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    token_type: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class CustomConnectionDataUnionMember10(TypedDict, total=False):
+    auth_scheme: Required[Annotated[Literal["S2S_OAUTH2"], PropertyInfo(alias="authScheme")]]
+
+    toolkit_slug: Required[Annotated[str, PropertyInfo(alias="toolkitSlug")]]
+
+    val: Required[CustomConnectionDataUnionMember10Val]
+
+
 CustomConnectionData: TypeAlias = Union[
     CustomConnectionDataUnionMember0,
     CustomConnectionDataUnionMember1,
@@ -738,6 +808,7 @@ CustomConnectionData: TypeAlias = Union[
     CustomConnectionDataUnionMember7,
     CustomConnectionDataUnionMember8,
     CustomConnectionDataUnionMember9,
+    CustomConnectionDataUnionMember10,
 ]
 
 

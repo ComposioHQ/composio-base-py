@@ -2,13 +2,14 @@
 
 from __future__ import annotations
 
-from typing import Dict, List, Union, Optional
+from typing import Dict, List, Union, Iterable, Optional
 from typing_extensions import Literal, Required, TypeAlias, TypedDict
 
 from ..._types import SequenceNotStr
 
 __all__ = [
     "SessionCreateParams",
+    "CustomTool",
     "Experimental",
     "ExperimentalAssistivePromptConfig",
     "ManageConnections",
@@ -48,6 +49,14 @@ class SessionCreateParams(TypedDict, total=False):
     when specific toolkits are being executed
     """
 
+    custom_tools: Iterable[CustomTool]
+    """Custom tools to include in search.
+
+    Each tool needs a name, description, and input_schema. Optionally specify a
+    toolkit to inherit connection priority. These are searched via BM25 and merged
+    with Composio tool results.
+    """
+
     experimental: Experimental
     """
     Experimental features - not stable, may be modified or removed in future
@@ -80,6 +89,36 @@ class SessionCreateParams(TypedDict, total=False):
 
     workbench: Workbench
     """Configuration for workbench behavior"""
+
+
+class CustomTool(TypedDict, total=False):
+    description: Required[str]
+    """Description of what this tool does (max 5KB).
+
+    Used for BM25 search matching and shown to the LLM.
+    """
+
+    input_schema: Required[Dict[str, Optional[object]]]
+    """JSON schema describing the tool input parameters.
+
+    Must have type: "object" and a properties field.
+    """
+
+    name: Required[str]
+    """Human-readable display name for the tool (max 128 chars)"""
+
+    slug: Required[str]
+    """Machine identifier for the tool (e.g.
+
+    GET*USER_CONTEXT). Max 58 chars, alphanumeric + underscores/hyphens only. Used
+    to generate the LOCAL* prefixed tool name.
+    """
+
+    toolkit: str
+    """Associate this local tool with an existing toolkit.
+
+    Connected toolkit tools get higher search priority. Omit for no-auth tools.
+    """
 
 
 class ExperimentalAssistivePromptConfig(TypedDict, total=False):
