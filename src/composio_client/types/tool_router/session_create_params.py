@@ -9,9 +9,11 @@ from ..._types import SequenceNotStr
 
 __all__ = [
     "SessionCreateParams",
-    "CustomTool",
     "Experimental",
     "ExperimentalAssistivePromptConfig",
+    "ExperimentalCustomToolkit",
+    "ExperimentalCustomToolkitTool",
+    "ExperimentalCustomTool",
     "ManageConnections",
     "Tags",
     "TagsUnionMember1",
@@ -49,14 +51,6 @@ class SessionCreateParams(TypedDict, total=False):
     when specific toolkits are being executed
     """
 
-    custom_tools: Iterable[CustomTool]
-    """Custom tools to include in search.
-
-    Each tool needs a name, description, and input_schema. Optionally specify a
-    toolkit to inherit connection priority. These are searched via BM25 and merged
-    with Composio tool results.
-    """
-
     experimental: Experimental
     """
     Experimental features - not stable, may be modified or removed in future
@@ -91,36 +85,6 @@ class SessionCreateParams(TypedDict, total=False):
     """Configuration for workbench behavior"""
 
 
-class CustomTool(TypedDict, total=False):
-    description: Required[str]
-    """Description of what this tool does (max 5KB).
-
-    Used for BM25 search matching and shown to the LLM.
-    """
-
-    input_schema: Required[Dict[str, Optional[object]]]
-    """JSON schema describing the tool input parameters.
-
-    Must have type: "object" and a properties field.
-    """
-
-    name: Required[str]
-    """Human-readable display name for the tool (max 128 chars)"""
-
-    slug: Required[str]
-    """Machine identifier for the tool (e.g.
-
-    GET*USER_CONTEXT). Max 58 chars, alphanumeric + underscores/hyphens only. Used
-    to generate the LOCAL* prefixed tool name.
-    """
-
-    toolkit: str
-    """Associate this local tool with an existing toolkit.
-
-    Connected toolkit tools get higher search priority. Omit for no-auth tools.
-    """
-
-
 class ExperimentalAssistivePromptConfig(TypedDict, total=False):
     """Customize assistive prompt generation (e.g., timezone)."""
 
@@ -131,6 +95,72 @@ class ExperimentalAssistivePromptConfig(TypedDict, total=False):
     """
 
 
+class ExperimentalCustomToolkitTool(TypedDict, total=False):
+    description: Required[str]
+    """Used for BM25 search matching and shown to the LLM."""
+
+    input_schema: Required[Dict[str, Optional[object]]]
+    """Must have type: "object" and a properties field."""
+
+    name: Required[str]
+    """Human-readable display name"""
+
+    slug: Required[str]
+    """Tool slug.
+
+    Combined with toolkit slug to form LOCAL*<TOOLKIT>*<TOOL> (max 60 chars total).
+    """
+
+    output_schema: Dict[str, Optional[object]]
+    """Optional output schema for the tool response."""
+
+
+class ExperimentalCustomToolkit(TypedDict, total=False):
+    description: Required[str]
+    """Used for BM25 search matching and shown in toolkit connection statuses."""
+
+    name: Required[str]
+    """Display name shown to the LLM and in search results."""
+
+    slug: Required[str]
+    """Unique slug for the toolkit.
+
+    Must not conflict with existing Composio toolkit slugs. Alphanumeric,
+    underscores, and hyphens only.
+    """
+
+    tools: Required[Iterable[ExperimentalCustomToolkitTool]]
+    """Tools in this custom toolkit"""
+
+
+class ExperimentalCustomTool(TypedDict, total=False):
+    description: Required[str]
+    """Used for BM25 search matching and shown to the LLM."""
+
+    input_schema: Required[Dict[str, Optional[object]]]
+    """Must have type: "object" and a properties field."""
+
+    name: Required[str]
+    """Human-readable display name"""
+
+    slug: Required[str]
+    """Tool slug.
+
+    Forms LOCAL*<TOOL> (standalone) or LOCAL*<TOOLKIT>\\__<TOOL> (extending). Max 60
+    chars total.
+    """
+
+    extends_toolkit: str
+    """If set, must be a valid Composio toolkit slug.
+
+    The tool inherits that toolkit's auth/connection status. If omitted, the tool is
+    standalone (no-auth).
+    """
+
+    output_schema: Dict[str, Optional[object]]
+    """JSON Schema describing tool output (optional)"""
+
+
 class Experimental(TypedDict, total=False):
     """
     Experimental features - not stable, may be modified or removed in future versions.
@@ -138,6 +168,20 @@ class Experimental(TypedDict, total=False):
 
     assistive_prompt_config: ExperimentalAssistivePromptConfig
     """Customize assistive prompt generation (e.g., timezone)."""
+
+    custom_toolkits: Iterable[ExperimentalCustomToolkit]
+    """Custom toolkits with grouped tools.
+
+    Toolkit slugs must not conflict with existing Composio toolkits. All tools are
+    no-auth.
+    """
+
+    custom_tools: Iterable[ExperimentalCustomTool]
+    """Custom tools to include in search.
+
+    Standalone tools need no auth. Tools with extends_toolkit inherit the Composio
+    toolkit's connection.
+    """
 
 
 class ManageConnections(TypedDict, total=False):
@@ -238,6 +282,12 @@ class Workbench(TypedDict, total=False):
 
     When workbench response exceeds this threshold, it will be automatically
     offloaded. Default is picked automatically based on the response size.
+    """
+
+    enable: bool
+    """Set to false to disable the workbench entirely.
+
+    When disabled, no code execution tools are available in the session.
     """
 
     enable_proxy_execution: bool

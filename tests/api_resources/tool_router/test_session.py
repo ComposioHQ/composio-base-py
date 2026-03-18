@@ -42,20 +42,42 @@ class TestSession:
                 "slack": "ac_23343434343434",
             },
             connected_accounts={"github": "ca_34454545454545"},
-            custom_tools=[
-                {
-                    "description": "Fetch recent orders for a customer by their email address",
-                    "input_schema": {
-                        "type": "bar",
-                        "properties": "bar",
-                        "required": "bar",
-                    },
-                    "name": "Get customer orders",
-                    "slug": "GET_CUSTOMER_ORDERS",
-                    "toolkit": "gmail",
-                }
-            ],
-            experimental={"assistive_prompt_config": {"user_timezone": "America/New_York"}},
+            experimental={
+                "assistive_prompt_config": {"user_timezone": "America/New_York"},
+                "custom_toolkits": [
+                    {
+                        "description": "Internal e-commerce API for order management and fulfillment",
+                        "name": "E-Commerce API",
+                        "slug": "ecommerce",
+                        "tools": [
+                            {
+                                "description": "Fetch recent orders for a customer by their email address",
+                                "input_schema": {
+                                    "type": "bar",
+                                    "properties": "bar",
+                                    "required": "bar",
+                                },
+                                "name": "Get Customer Orders",
+                                "slug": "GET_CUSTOMER_ORDERS",
+                                "output_schema": {"foo": "bar"},
+                            }
+                        ],
+                    }
+                ],
+                "custom_tools": [
+                    {
+                        "description": "Fetch emails marked as important from the last 24 hours",
+                        "input_schema": {
+                            "type": "bar",
+                            "properties": "bar",
+                        },
+                        "name": "Get Important Emails",
+                        "slug": "GET_IMPORTANT_EMAILS",
+                        "extends_toolkit": "gmail",
+                        "output_schema": {"foo": "bar"},
+                    }
+                ],
+            },
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
@@ -78,6 +100,7 @@ class TestSession:
             },
             workbench={
                 "auto_offload_threshold": 20000,
+                "enable": True,
                 "enable_proxy_execution": True,
             },
         )
@@ -472,20 +495,42 @@ class TestAsyncSession:
                 "slack": "ac_23343434343434",
             },
             connected_accounts={"github": "ca_34454545454545"},
-            custom_tools=[
-                {
-                    "description": "Fetch recent orders for a customer by their email address",
-                    "input_schema": {
-                        "type": "bar",
-                        "properties": "bar",
-                        "required": "bar",
-                    },
-                    "name": "Get customer orders",
-                    "slug": "GET_CUSTOMER_ORDERS",
-                    "toolkit": "gmail",
-                }
-            ],
-            experimental={"assistive_prompt_config": {"user_timezone": "America/New_York"}},
+            experimental={
+                "assistive_prompt_config": {"user_timezone": "America/New_York"},
+                "custom_toolkits": [
+                    {
+                        "description": "Internal e-commerce API for order management and fulfillment",
+                        "name": "E-Commerce API",
+                        "slug": "ecommerce",
+                        "tools": [
+                            {
+                                "description": "Fetch recent orders for a customer by their email address",
+                                "input_schema": {
+                                    "type": "bar",
+                                    "properties": "bar",
+                                    "required": "bar",
+                                },
+                                "name": "Get Customer Orders",
+                                "slug": "GET_CUSTOMER_ORDERS",
+                                "output_schema": {"foo": "bar"},
+                            }
+                        ],
+                    }
+                ],
+                "custom_tools": [
+                    {
+                        "description": "Fetch emails marked as important from the last 24 hours",
+                        "input_schema": {
+                            "type": "bar",
+                            "properties": "bar",
+                        },
+                        "name": "Get Important Emails",
+                        "slug": "GET_IMPORTANT_EMAILS",
+                        "extends_toolkit": "gmail",
+                        "output_schema": {"foo": "bar"},
+                    }
+                ],
+            },
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
@@ -508,6 +553,7 @@ class TestAsyncSession:
             },
             workbench={
                 "auto_offload_threshold": 20000,
+                "enable": True,
                 "enable_proxy_execution": True,
             },
         )

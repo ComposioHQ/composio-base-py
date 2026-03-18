@@ -79,7 +79,6 @@ class SessionResource(SyncAPIResource):
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
-        custom_tools: Iterable[session_create_params.CustomTool] | Omit = omit,
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
@@ -110,10 +109,6 @@ class SessionResource(SyncAPIResource):
           connected_accounts: The connected accounts to use for the session. This will override the default
               behaviour and use the given connected account when specific toolkits are being
               executed
-
-          custom_tools: Custom tools to include in search. Each tool needs a name, description, and
-              input_schema. Optionally specify a toolkit to inherit connection priority. These
-              are searched via BM25 and merged with Composio tool results.
 
           experimental: Experimental features - not stable, may be modified or removed in future
               versions.
@@ -148,7 +143,6 @@ class SessionResource(SyncAPIResource):
                     "user_id": user_id,
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
-                    "custom_tools": custom_tools,
                     "experimental": experimental,
                     "manage_connections": manage_connections,
                     "tags": tags,
@@ -556,7 +550,6 @@ class AsyncSessionResource(AsyncAPIResource):
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
-        custom_tools: Iterable[session_create_params.CustomTool] | Omit = omit,
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
@@ -587,10 +580,6 @@ class AsyncSessionResource(AsyncAPIResource):
           connected_accounts: The connected accounts to use for the session. This will override the default
               behaviour and use the given connected account when specific toolkits are being
               executed
-
-          custom_tools: Custom tools to include in search. Each tool needs a name, description, and
-              input_schema. Optionally specify a toolkit to inherit connection priority. These
-              are searched via BM25 and merged with Composio tool results.
 
           experimental: Experimental features - not stable, may be modified or removed in future
               versions.
@@ -625,7 +614,6 @@ class AsyncSessionResource(AsyncAPIResource):
                     "user_id": user_id,
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
-                    "custom_tools": custom_tools,
                     "experimental": experimental,
                     "manage_connections": manage_connections,
                     "tags": tags,

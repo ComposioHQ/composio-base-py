@@ -8,7 +8,6 @@ from ..._models import BaseModel
 __all__ = [
     "SessionRetrieveResponse",
     "Config",
-    "ConfigCustomTool",
     "ConfigManageConnections",
     "ConfigTags",
     "ConfigToolkits",
@@ -21,19 +20,11 @@ __all__ = [
     "ConfigToolsTagsTags",
     "ConfigWorkbench",
     "Mcp",
+    "Experimental",
+    "ExperimentalCustomToolkit",
+    "ExperimentalCustomToolkitTool",
+    "ExperimentalCustomTool",
 ]
-
-
-class ConfigCustomTool(BaseModel):
-    description: str
-
-    input_schema: Dict[str, Optional[object]]
-
-    name: str
-
-    slug: str
-
-    toolkit: Optional[str] = None
 
 
 class ConfigManageConnections(BaseModel):
@@ -108,6 +99,13 @@ class ConfigWorkbench(BaseModel):
     workbench. Default is 20k.
     """
 
+    enable: Optional[bool] = None
+    """Whether the workbench (code execution sandbox) is enabled.
+
+    When false, COMPOSIO_REMOTE_WORKBENCH and COMPOSIO_REMOTE_BASH_TOOL are not
+    exposed.
+    """
+
     proxy_execution_enabled: Optional[bool] = None
     """Whether proxy execution is enabled in the workbench"""
 
@@ -123,9 +121,6 @@ class Config(BaseModel):
 
     connected_accounts: Optional[Dict[str, str]] = None
     """Connected account overrides per toolkit"""
-
-    custom_tools: Optional[List[ConfigCustomTool]] = None
-    """User-provided custom tools configured for this session"""
 
     manage_connections: Optional[ConfigManageConnections] = None
     """Manage connections configuration"""
@@ -155,6 +150,63 @@ class Mcp(BaseModel):
     """The URL of the MCP server"""
 
 
+class ExperimentalCustomToolkitTool(BaseModel):
+    description: str
+
+    input_schema: Dict[str, Optional[object]]
+
+    name: str
+
+    original_slug: str
+    """Original tool slug as provided by the user"""
+
+    slug: str
+    """Prefixed tool slug (e.g. LOCAL_CRM_FIND_CUSTOMER)"""
+
+    output_schema: Optional[Dict[str, Optional[object]]] = None
+
+
+class ExperimentalCustomToolkit(BaseModel):
+    description: str
+
+    name: str
+
+    slug: str
+
+    tools: List[ExperimentalCustomToolkitTool]
+
+
+class ExperimentalCustomTool(BaseModel):
+    description: str
+
+    input_schema: Dict[str, Optional[object]]
+
+    name: str
+
+    original_slug: str
+    """Original tool slug as provided by the user"""
+
+    slug: str
+    """Prefixed tool slug (e.g. LOCAL_GMAIL_GET_IMPORTANT_EMAILS)"""
+
+    extends_toolkit: Optional[str] = None
+
+    output_schema: Optional[Dict[str, Optional[object]]] = None
+
+
+class Experimental(BaseModel):
+    """Experimental features"""
+
+    assistive_prompt: Optional[str] = None
+    """The assistive system prompt for the tool router session"""
+
+    custom_toolkits: Optional[List[ExperimentalCustomToolkit]] = None
+    """User-defined custom toolkits with grouped tools (no-auth)"""
+
+    custom_tools: Optional[List[ExperimentalCustomTool]] = None
+    """Custom tools — standalone or extending Composio toolkits"""
+
+
 class SessionRetrieveResponse(BaseModel):
     config: Config
     """The session configuration including user, toolkits, and overrides"""
@@ -166,3 +218,6 @@ class SessionRetrieveResponse(BaseModel):
 
     tool_router_tools: List[str]
     """List of available tools in this session"""
+
+    experimental: Optional[Experimental] = None
+    """Experimental features"""
