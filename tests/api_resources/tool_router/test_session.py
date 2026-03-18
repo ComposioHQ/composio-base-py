@@ -18,6 +18,7 @@ from composio_client.types.tool_router import (
     SessionRetrieveResponse,
     SessionToolkitsResponse,
     SessionExecuteMetaResponse,
+    SessionProxyExecuteResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -327,6 +328,127 @@ class TestSession:
             client.tool_router.session.with_raw_response.link(
                 session_id="",
                 toolkit="github",
+            )
+
+    @parametrize
+    def test_method_proxy_execute(self, client: Composio) -> None:
+        session = client.tool_router.session.proxy_execute(
+            session_id="trs_LX9uJKBinWWr",
+            endpoint="/api/v1/resources",
+            method="GET",
+            toolkit_slug="gmail",
+        )
+        assert_matches_type(SessionProxyExecuteResponse, session, path=["response"])
+
+    @parametrize
+    def test_method_proxy_execute_with_all_params(self, client: Composio) -> None:
+        session = client.tool_router.session.proxy_execute(
+            session_id="trs_LX9uJKBinWWr",
+            endpoint="/api/v1/resources",
+            method="GET",
+            toolkit_slug="gmail",
+            binary_body={
+                "url": "https://example.com",
+                "content_type": "content_type",
+            },
+            body={
+                "name": "New Resource",
+                "description": "This is a new resource",
+            },
+            custom_connection_data={
+                "auth_scheme": "OAUTH2",
+                "toolkit_slug": "toolkitSlug",
+                "val": {
+                    "access_token": "access_token",
+                    "account_id": "account_id",
+                    "account_url": "account_url",
+                    "api_url": "api_url",
+                    "authed_user": {
+                        "access_token": "access_token",
+                        "scope": "scope",
+                    },
+                    "base_url": "base_url",
+                    "borneo_dashboard_url": "borneo_dashboard_url",
+                    "companydomain": "COMPANYDOMAIN",
+                    "dc": "dc",
+                    "domain": "domain",
+                    "expires_in": 0,
+                    "extension": "extension",
+                    "form_api_base_url": "form_api_base_url",
+                    "id_token": "id_token",
+                    "instance_endpoint": "instanceEndpoint",
+                    "instance_name": "instanceName",
+                    "long_redirect_url": True,
+                    "proxy_password": "proxy_password",
+                    "proxy_username": "proxy_username",
+                    "refresh_token": "refresh_token",
+                    "region": "region",
+                    "scope": "string",
+                    "server_location": "server_location",
+                    "shop": "shop",
+                    "site_name": "site_name",
+                    "state_prefix": "state_prefix",
+                    "subdomain": "subdomain",
+                    "token_type": "token_type",
+                    "version": "version",
+                    "webhook_signature": "webhook_signature",
+                    "your_server": "your_server",
+                    "your_domain": "your-domain",
+                },
+            },
+            parameters=[
+                {
+                    "name": "x-api-key",
+                    "type": "header",
+                    "value": "abc123def456",
+                },
+                {
+                    "name": "filter",
+                    "type": "query",
+                    "value": "active",
+                },
+            ],
+        )
+        assert_matches_type(SessionProxyExecuteResponse, session, path=["response"])
+
+    @parametrize
+    def test_raw_response_proxy_execute(self, client: Composio) -> None:
+        response = client.tool_router.session.with_raw_response.proxy_execute(
+            session_id="trs_LX9uJKBinWWr",
+            endpoint="/api/v1/resources",
+            method="GET",
+            toolkit_slug="gmail",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = response.parse()
+        assert_matches_type(SessionProxyExecuteResponse, session, path=["response"])
+
+    @parametrize
+    def test_streaming_response_proxy_execute(self, client: Composio) -> None:
+        with client.tool_router.session.with_streaming_response.proxy_execute(
+            session_id="trs_LX9uJKBinWWr",
+            endpoint="/api/v1/resources",
+            method="GET",
+            toolkit_slug="gmail",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = response.parse()
+            assert_matches_type(SessionProxyExecuteResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_path_params_proxy_execute(self, client: Composio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            client.tool_router.session.with_raw_response.proxy_execute(
+                session_id="",
+                endpoint="/api/v1/resources",
+                method="GET",
+                toolkit_slug="gmail",
             )
 
     @parametrize
@@ -780,6 +902,127 @@ class TestAsyncSession:
             await async_client.tool_router.session.with_raw_response.link(
                 session_id="",
                 toolkit="github",
+            )
+
+    @parametrize
+    async def test_method_proxy_execute(self, async_client: AsyncComposio) -> None:
+        session = await async_client.tool_router.session.proxy_execute(
+            session_id="trs_LX9uJKBinWWr",
+            endpoint="/api/v1/resources",
+            method="GET",
+            toolkit_slug="gmail",
+        )
+        assert_matches_type(SessionProxyExecuteResponse, session, path=["response"])
+
+    @parametrize
+    async def test_method_proxy_execute_with_all_params(self, async_client: AsyncComposio) -> None:
+        session = await async_client.tool_router.session.proxy_execute(
+            session_id="trs_LX9uJKBinWWr",
+            endpoint="/api/v1/resources",
+            method="GET",
+            toolkit_slug="gmail",
+            binary_body={
+                "url": "https://example.com",
+                "content_type": "content_type",
+            },
+            body={
+                "name": "New Resource",
+                "description": "This is a new resource",
+            },
+            custom_connection_data={
+                "auth_scheme": "OAUTH2",
+                "toolkit_slug": "toolkitSlug",
+                "val": {
+                    "access_token": "access_token",
+                    "account_id": "account_id",
+                    "account_url": "account_url",
+                    "api_url": "api_url",
+                    "authed_user": {
+                        "access_token": "access_token",
+                        "scope": "scope",
+                    },
+                    "base_url": "base_url",
+                    "borneo_dashboard_url": "borneo_dashboard_url",
+                    "companydomain": "COMPANYDOMAIN",
+                    "dc": "dc",
+                    "domain": "domain",
+                    "expires_in": 0,
+                    "extension": "extension",
+                    "form_api_base_url": "form_api_base_url",
+                    "id_token": "id_token",
+                    "instance_endpoint": "instanceEndpoint",
+                    "instance_name": "instanceName",
+                    "long_redirect_url": True,
+                    "proxy_password": "proxy_password",
+                    "proxy_username": "proxy_username",
+                    "refresh_token": "refresh_token",
+                    "region": "region",
+                    "scope": "string",
+                    "server_location": "server_location",
+                    "shop": "shop",
+                    "site_name": "site_name",
+                    "state_prefix": "state_prefix",
+                    "subdomain": "subdomain",
+                    "token_type": "token_type",
+                    "version": "version",
+                    "webhook_signature": "webhook_signature",
+                    "your_server": "your_server",
+                    "your_domain": "your-domain",
+                },
+            },
+            parameters=[
+                {
+                    "name": "x-api-key",
+                    "type": "header",
+                    "value": "abc123def456",
+                },
+                {
+                    "name": "filter",
+                    "type": "query",
+                    "value": "active",
+                },
+            ],
+        )
+        assert_matches_type(SessionProxyExecuteResponse, session, path=["response"])
+
+    @parametrize
+    async def test_raw_response_proxy_execute(self, async_client: AsyncComposio) -> None:
+        response = await async_client.tool_router.session.with_raw_response.proxy_execute(
+            session_id="trs_LX9uJKBinWWr",
+            endpoint="/api/v1/resources",
+            method="GET",
+            toolkit_slug="gmail",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        session = await response.parse()
+        assert_matches_type(SessionProxyExecuteResponse, session, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_proxy_execute(self, async_client: AsyncComposio) -> None:
+        async with async_client.tool_router.session.with_streaming_response.proxy_execute(
+            session_id="trs_LX9uJKBinWWr",
+            endpoint="/api/v1/resources",
+            method="GET",
+            toolkit_slug="gmail",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            session = await response.parse()
+            assert_matches_type(SessionProxyExecuteResponse, session, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_path_params_proxy_execute(self, async_client: AsyncComposio) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
+            await async_client.tool_router.session.with_raw_response.proxy_execute(
+                session_id="",
+                endpoint="/api/v1/resources",
+                method="GET",
+                toolkit_slug="gmail",
             )
 
     @parametrize

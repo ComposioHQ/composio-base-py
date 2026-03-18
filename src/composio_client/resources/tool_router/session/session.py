@@ -33,6 +33,7 @@ from ....types.tool_router import (
     session_execute_params,
     session_toolkits_params,
     session_execute_meta_params,
+    session_proxy_execute_params,
 )
 from ....types.tool_router.session_link_response import SessionLinkResponse
 from ....types.tool_router.session_tools_response import SessionToolsResponse
@@ -42,6 +43,7 @@ from ....types.tool_router.session_execute_response import SessionExecuteRespons
 from ....types.tool_router.session_retrieve_response import SessionRetrieveResponse
 from ....types.tool_router.session_toolkits_response import SessionToolkitsResponse
 from ....types.tool_router.session_execute_meta_response import SessionExecuteMetaResponse
+from ....types.tool_router.session_proxy_execute_response import SessionProxyExecuteResponse
 
 __all__ = ["SessionResource", "AsyncSessionResource"]
 
@@ -356,6 +358,82 @@ class SessionResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=SessionLinkResponse,
+        )
+
+    def proxy_execute(
+        self,
+        session_id: str,
+        *,
+        endpoint: str,
+        method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+        toolkit_slug: str,
+        binary_body: session_proxy_execute_params.BinaryBody | Omit = omit,
+        body: object | Omit = omit,
+        custom_connection_data: session_proxy_execute_params.CustomConnectionData | Omit = omit,
+        parameters: Iterable[session_proxy_execute_params.Parameter] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SessionProxyExecuteResponse:
+        """
+        Execute any native API call on a toolkit with authentication automatically
+        injected from Composio. This endpoint proxies HTTP requests to third-party APIs
+        using connected account credentials resolved from the session context. Provide
+        the toolkit slug, API endpoint, and HTTP method — Composio handles
+        authentication injection, abstracting away credential management. Supports all
+        HTTP methods, custom headers/query parameters, and binary request/response
+        bodies.
+
+        Args:
+          session_id: The unique identifier of the tool router session. Required for public API
+              endpoints, optional for internal endpoints where it is injected by middleware.
+
+          endpoint: The API endpoint to call (absolute URL or path relative to base URL of the
+              connected account)
+
+          method: The HTTP method to use for the request
+
+          toolkit_slug: The slug of the toolkit to use for the request
+
+          binary_body: Binary body to send. For binary upload via URL: use {url: "https://...",
+              content_type?: "..."}. For binary upload via base64: use {base64: "...",
+              content_type?: "..."}.
+
+          body: The request body (for POST, PUT, and PATCH requests)
+
+          parameters: Additional HTTP headers or query parameters to include in the request
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        return self._post(
+            f"/api/v3/tool_router/session/{session_id}/proxy_execute",
+            body=maybe_transform(
+                {
+                    "endpoint": endpoint,
+                    "method": method,
+                    "toolkit_slug": toolkit_slug,
+                    "binary_body": binary_body,
+                    "body": body,
+                    "custom_connection_data": custom_connection_data,
+                    "parameters": parameters,
+                },
+                session_proxy_execute_params.SessionProxyExecuteParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SessionProxyExecuteResponse,
         )
 
     def search(
@@ -829,6 +907,82 @@ class AsyncSessionResource(AsyncAPIResource):
             cast_to=SessionLinkResponse,
         )
 
+    async def proxy_execute(
+        self,
+        session_id: str,
+        *,
+        endpoint: str,
+        method: Literal["GET", "POST", "PUT", "DELETE", "PATCH", "HEAD"],
+        toolkit_slug: str,
+        binary_body: session_proxy_execute_params.BinaryBody | Omit = omit,
+        body: object | Omit = omit,
+        custom_connection_data: session_proxy_execute_params.CustomConnectionData | Omit = omit,
+        parameters: Iterable[session_proxy_execute_params.Parameter] | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> SessionProxyExecuteResponse:
+        """
+        Execute any native API call on a toolkit with authentication automatically
+        injected from Composio. This endpoint proxies HTTP requests to third-party APIs
+        using connected account credentials resolved from the session context. Provide
+        the toolkit slug, API endpoint, and HTTP method — Composio handles
+        authentication injection, abstracting away credential management. Supports all
+        HTTP methods, custom headers/query parameters, and binary request/response
+        bodies.
+
+        Args:
+          session_id: The unique identifier of the tool router session. Required for public API
+              endpoints, optional for internal endpoints where it is injected by middleware.
+
+          endpoint: The API endpoint to call (absolute URL or path relative to base URL of the
+              connected account)
+
+          method: The HTTP method to use for the request
+
+          toolkit_slug: The slug of the toolkit to use for the request
+
+          binary_body: Binary body to send. For binary upload via URL: use {url: "https://...",
+              content_type?: "..."}. For binary upload via base64: use {base64: "...",
+              content_type?: "..."}.
+
+          body: The request body (for POST, PUT, and PATCH requests)
+
+          parameters: Additional HTTP headers or query parameters to include in the request
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not session_id:
+            raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
+        return await self._post(
+            f"/api/v3/tool_router/session/{session_id}/proxy_execute",
+            body=await async_maybe_transform(
+                {
+                    "endpoint": endpoint,
+                    "method": method,
+                    "toolkit_slug": toolkit_slug,
+                    "binary_body": binary_body,
+                    "body": body,
+                    "custom_connection_data": custom_connection_data,
+                    "parameters": parameters,
+                },
+                session_proxy_execute_params.SessionProxyExecuteParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=SessionProxyExecuteResponse,
+        )
+
     async def search(
         self,
         session_id: str,
@@ -1007,6 +1161,9 @@ class SessionResourceWithRawResponse:
         self.link = to_raw_response_wrapper(
             session.link,
         )
+        self.proxy_execute = to_raw_response_wrapper(
+            session.proxy_execute,
+        )
         self.search = to_raw_response_wrapper(
             session.search,
         )
@@ -1041,6 +1198,9 @@ class AsyncSessionResourceWithRawResponse:
         )
         self.link = async_to_raw_response_wrapper(
             session.link,
+        )
+        self.proxy_execute = async_to_raw_response_wrapper(
+            session.proxy_execute,
         )
         self.search = async_to_raw_response_wrapper(
             session.search,
@@ -1077,6 +1237,9 @@ class SessionResourceWithStreamingResponse:
         self.link = to_streamed_response_wrapper(
             session.link,
         )
+        self.proxy_execute = to_streamed_response_wrapper(
+            session.proxy_execute,
+        )
         self.search = to_streamed_response_wrapper(
             session.search,
         )
@@ -1111,6 +1274,9 @@ class AsyncSessionResourceWithStreamingResponse:
         )
         self.link = async_to_streamed_response_wrapper(
             session.link,
+        )
+        self.proxy_execute = async_to_streamed_response_wrapper(
+            session.proxy_execute,
         )
         self.search = async_to_streamed_response_wrapper(
             session.search,
