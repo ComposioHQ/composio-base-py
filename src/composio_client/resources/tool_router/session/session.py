@@ -16,7 +16,7 @@ from .files import (
     AsyncFilesResourceWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -190,7 +190,7 @@ class SessionResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._get(
-            f"/api/v3/tool_router/session/{session_id}",
+            path_template("/api/v3/tool_router/session/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -237,7 +237,7 @@ class SessionResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/api/v3/tool_router/session/{session_id}/execute",
+            path_template("/api/v3/tool_router/session/{session_id}/execute", session_id=session_id),
             body=maybe_transform(
                 {
                     "tool_slug": tool_slug,
@@ -296,7 +296,7 @@ class SessionResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/api/v3/tool_router/session/{session_id}/execute_meta",
+            path_template("/api/v3/tool_router/session/{session_id}/execute_meta", session_id=session_id),
             body=maybe_transform(
                 {
                     "slug": slug,
@@ -346,7 +346,7 @@ class SessionResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/api/v3/tool_router/session/{session_id}/link",
+            path_template("/api/v3/tool_router/session/{session_id}/link", session_id=session_id),
             body=maybe_transform(
                 {
                     "toolkit": toolkit,
@@ -417,7 +417,7 @@ class SessionResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/api/v3/tool_router/session/{session_id}/proxy_execute",
+            path_template("/api/v3/tool_router/session/{session_id}/proxy_execute", session_id=session_id),
             body=maybe_transform(
                 {
                     "endpoint": endpoint,
@@ -473,7 +473,7 @@ class SessionResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._post(
-            f"/api/v3/tool_router/session/{session_id}/search",
+            path_template("/api/v3/tool_router/session/{session_id}/search", session_id=session_id),
             body=maybe_transform(
                 {
                     "queries": queries,
@@ -537,7 +537,7 @@ class SessionResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._get(
-            f"/api/v3/tool_router/session/{session_id}/toolkits",
+            path_template("/api/v3/tool_router/session/{session_id}/toolkits", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -587,7 +587,7 @@ class SessionResource(SyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return self._get(
-            f"/api/v3/tool_router/session/{session_id}/tools",
+            path_template("/api/v3/tool_router/session/{session_id}/tools", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -737,7 +737,7 @@ class AsyncSessionResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._get(
-            f"/api/v3/tool_router/session/{session_id}",
+            path_template("/api/v3/tool_router/session/{session_id}", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -784,7 +784,7 @@ class AsyncSessionResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/api/v3/tool_router/session/{session_id}/execute",
+            path_template("/api/v3/tool_router/session/{session_id}/execute", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "tool_slug": tool_slug,
@@ -843,7 +843,7 @@ class AsyncSessionResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/api/v3/tool_router/session/{session_id}/execute_meta",
+            path_template("/api/v3/tool_router/session/{session_id}/execute_meta", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "slug": slug,
@@ -893,7 +893,7 @@ class AsyncSessionResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/api/v3/tool_router/session/{session_id}/link",
+            path_template("/api/v3/tool_router/session/{session_id}/link", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "toolkit": toolkit,
@@ -964,7 +964,7 @@ class AsyncSessionResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/api/v3/tool_router/session/{session_id}/proxy_execute",
+            path_template("/api/v3/tool_router/session/{session_id}/proxy_execute", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "endpoint": endpoint,
@@ -1020,7 +1020,7 @@ class AsyncSessionResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._post(
-            f"/api/v3/tool_router/session/{session_id}/search",
+            path_template("/api/v3/tool_router/session/{session_id}/search", session_id=session_id),
             body=await async_maybe_transform(
                 {
                     "queries": queries,
@@ -1084,7 +1084,7 @@ class AsyncSessionResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._get(
-            f"/api/v3/tool_router/session/{session_id}/toolkits",
+            path_template("/api/v3/tool_router/session/{session_id}/toolkits", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1134,7 +1134,7 @@ class AsyncSessionResource(AsyncAPIResource):
         if not session_id:
             raise ValueError(f"Expected a non-empty value for `session_id` but received {session_id!r}")
         return await self._get(
-            f"/api/v3/tool_router/session/{session_id}/tools",
+            path_template("/api/v3/tool_router/session/{session_id}/tools", session_id=session_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

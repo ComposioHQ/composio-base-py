@@ -9,7 +9,7 @@ import httpx
 
 from ..types import auth_config_list_params, auth_config_create_params, auth_config_update_params
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import required_args, maybe_transform, async_maybe_transform
+from .._utils import path_template, required_args, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -119,7 +119,7 @@ class AuthConfigsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._get(
-            f"/api/v3/auth_configs/{nanoid}",
+            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -245,7 +245,7 @@ class AuthConfigsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._patch(
-            f"/api/v3/auth_configs/{nanoid}",
+            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
             body=maybe_transform(
                 {
                     "type": type,
@@ -372,7 +372,7 @@ class AuthConfigsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._delete(
-            f"/api/v3/auth_configs/{nanoid}",
+            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -413,7 +413,7 @@ class AuthConfigsResource(SyncAPIResource):
         if not status:
             raise ValueError(f"Expected a non-empty value for `status` but received {status!r}")
         return self._patch(
-            f"/api/v3/auth_configs/{nanoid}/{status}",
+            path_template("/api/v3/auth_configs/{nanoid}/{status}", nanoid=nanoid, status=status),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -514,7 +514,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._get(
-            f"/api/v3/auth_configs/{nanoid}",
+            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -640,7 +640,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._patch(
-            f"/api/v3/auth_configs/{nanoid}",
+            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
             body=await async_maybe_transform(
                 {
                     "type": type,
@@ -767,7 +767,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._delete(
-            f"/api/v3/auth_configs/{nanoid}",
+            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -808,7 +808,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         if not status:
             raise ValueError(f"Expected a non-empty value for `status` but received {status!r}")
         return await self._patch(
-            f"/api/v3/auth_configs/{nanoid}/{status}",
+            path_template("/api/v3/auth_configs/{nanoid}/{status}", nanoid=nanoid, status=status),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

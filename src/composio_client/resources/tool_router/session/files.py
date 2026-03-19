@@ -5,7 +5,7 @@ from __future__ import annotations
 import httpx
 
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform, async_maybe_transform
+from ...._utils import path_template, maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -95,7 +95,11 @@ class FilesResource(SyncAPIResource):
         if not mount_id:
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return self._get(
-            f"/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/items",
+            path_template(
+                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/items",
+                session_id=session_id,
+                mount_id=mount_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -151,7 +155,11 @@ class FilesResource(SyncAPIResource):
         if not mount_id:
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return self._post(
-            f"/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/delete",
+            path_template(
+                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/delete",
+                session_id=session_id,
+                mount_id=mount_id,
+            ),
             body=maybe_transform({"mount_relative_path": mount_relative_path}, file_delete_params.FileDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -196,7 +204,11 @@ class FilesResource(SyncAPIResource):
         if not mount_id:
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return self._post(
-            f"/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/download_url",
+            path_template(
+                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/download_url",
+                session_id=session_id,
+                mount_id=mount_id,
+            ),
             body=maybe_transform(
                 {"mount_relative_path": mount_relative_path},
                 file_create_download_url_params.FileCreateDownloadURLParams,
@@ -247,7 +259,11 @@ class FilesResource(SyncAPIResource):
         if not mount_id:
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return self._post(
-            f"/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/upload_url",
+            path_template(
+                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/upload_url",
+                session_id=session_id,
+                mount_id=mount_id,
+            ),
             body=maybe_transform(
                 {
                     "mount_relative_path": mount_relative_path,
@@ -328,7 +344,11 @@ class AsyncFilesResource(AsyncAPIResource):
         if not mount_id:
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return await self._get(
-            f"/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/items",
+            path_template(
+                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/items",
+                session_id=session_id,
+                mount_id=mount_id,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -384,7 +404,11 @@ class AsyncFilesResource(AsyncAPIResource):
         if not mount_id:
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return await self._post(
-            f"/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/delete",
+            path_template(
+                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/delete",
+                session_id=session_id,
+                mount_id=mount_id,
+            ),
             body=await async_maybe_transform(
                 {"mount_relative_path": mount_relative_path}, file_delete_params.FileDeleteParams
             ),
@@ -431,7 +455,11 @@ class AsyncFilesResource(AsyncAPIResource):
         if not mount_id:
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return await self._post(
-            f"/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/download_url",
+            path_template(
+                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/download_url",
+                session_id=session_id,
+                mount_id=mount_id,
+            ),
             body=await async_maybe_transform(
                 {"mount_relative_path": mount_relative_path},
                 file_create_download_url_params.FileCreateDownloadURLParams,
@@ -482,7 +510,11 @@ class AsyncFilesResource(AsyncAPIResource):
         if not mount_id:
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return await self._post(
-            f"/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/upload_url",
+            path_template(
+                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/upload_url",
+                session_id=session_id,
+                mount_id=mount_id,
+            ),
             body=await async_maybe_transform(
                 {
                     "mount_relative_path": mount_relative_path,

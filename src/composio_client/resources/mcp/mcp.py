@@ -17,7 +17,7 @@ from .custom import (
 )
 from ...types import mcp_list_params, mcp_create_params, mcp_update_params, mcp_retrieve_app_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from .generate import (
     GenerateResource,
     AsyncGenerateResource,
@@ -168,7 +168,7 @@ class McpResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/api/v3/mcp/{id}",
+            path_template("/api/v3/mcp/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -221,7 +221,7 @@ class McpResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._patch(
-            f"/api/v3/mcp/{id}",
+            path_template("/api/v3/mcp/{id}", id=id),
             body=maybe_transform(
                 {
                     "allowed_tools": allowed_tools,
@@ -339,7 +339,7 @@ class McpResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            f"/api/v3/mcp/{id}",
+            path_template("/api/v3/mcp/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -398,7 +398,7 @@ class McpResource(SyncAPIResource):
         if not app_key:
             raise ValueError(f"Expected a non-empty value for `app_key` but received {app_key!r}")
         return self._get(
-            f"/api/v3/mcp/app/{app_key}",
+            path_template("/api/v3/mcp/app/{app_key}", app_key=app_key),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -544,7 +544,7 @@ class AsyncMcpResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/api/v3/mcp/{id}",
+            path_template("/api/v3/mcp/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -597,7 +597,7 @@ class AsyncMcpResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._patch(
-            f"/api/v3/mcp/{id}",
+            path_template("/api/v3/mcp/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "allowed_tools": allowed_tools,
@@ -715,7 +715,7 @@ class AsyncMcpResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            f"/api/v3/mcp/{id}",
+            path_template("/api/v3/mcp/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -774,7 +774,7 @@ class AsyncMcpResource(AsyncAPIResource):
         if not app_key:
             raise ValueError(f"Expected a non-empty value for `app_key` but received {app_key!r}")
         return await self._get(
-            f"/api/v3/mcp/app/{app_key}",
+            path_template("/api/v3/mcp/app/{app_key}", app_key=app_key),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

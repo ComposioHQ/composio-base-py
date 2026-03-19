@@ -15,7 +15,7 @@ from ..types import (
     tool_get_input_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from .._utils import maybe_transform, strip_not_given, async_maybe_transform
+from .._utils import path_template, maybe_transform, strip_not_given, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -92,7 +92,7 @@ class ToolsResource(SyncAPIResource):
         if not tool_slug:
             raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         return self._get(
-            f"/api/v3/tools/{tool_slug}",
+            path_template("/api/v3/tools/{tool_slug}", tool_slug=tool_slug),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -268,7 +268,7 @@ class ToolsResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         extra_headers = {**strip_not_given({"x-llm-gateway-headers": x_llm_gateway_headers}), **(extra_headers or {})}
         return self._post(
-            f"/api/v3/tools/execute/{tool_slug}",
+            path_template("/api/v3/tools/execute/{tool_slug}", tool_slug=tool_slug),
             body=maybe_transform(
                 {
                     "allow_tracing": allow_tracing,
@@ -333,7 +333,7 @@ class ToolsResource(SyncAPIResource):
         if not tool_slug:
             raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         return self._post(
-            f"/api/v3/tools/execute/{tool_slug}/input",
+            path_template("/api/v3/tools/execute/{tool_slug}/input", tool_slug=tool_slug),
             body=maybe_transform(
                 {
                     "text": text,
@@ -497,7 +497,7 @@ class AsyncToolsResource(AsyncAPIResource):
         if not tool_slug:
             raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         return await self._get(
-            f"/api/v3/tools/{tool_slug}",
+            path_template("/api/v3/tools/{tool_slug}", tool_slug=tool_slug),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -673,7 +673,7 @@ class AsyncToolsResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         extra_headers = {**strip_not_given({"x-llm-gateway-headers": x_llm_gateway_headers}), **(extra_headers or {})}
         return await self._post(
-            f"/api/v3/tools/execute/{tool_slug}",
+            path_template("/api/v3/tools/execute/{tool_slug}", tool_slug=tool_slug),
             body=await async_maybe_transform(
                 {
                     "allow_tracing": allow_tracing,
@@ -738,7 +738,7 @@ class AsyncToolsResource(AsyncAPIResource):
         if not tool_slug:
             raise ValueError(f"Expected a non-empty value for `tool_slug` but received {tool_slug!r}")
         return await self._post(
-            f"/api/v3/tools/execute/{tool_slug}/input",
+            path_template("/api/v3/tools/execute/{tool_slug}/input", tool_slug=tool_slug),
             body=await async_maybe_transform(
                 {
                     "text": text,

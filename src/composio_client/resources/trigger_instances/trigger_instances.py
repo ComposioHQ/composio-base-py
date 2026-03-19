@@ -16,7 +16,7 @@ from .manage import (
 )
 from ...types import trigger_instance_upsert_params, trigger_instance_list_active_params
 from ..._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -227,7 +227,7 @@ class TriggerInstancesResource(SyncAPIResource):
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
         return self._post(
-            f"/api/v3/trigger_instances/{slug}/upsert",
+            path_template("/api/v3/trigger_instances/{slug}/upsert", slug=slug),
             body=maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
@@ -441,7 +441,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
         return await self._post(
-            f"/api/v3/trigger_instances/{slug}/upsert",
+            path_template("/api/v3/trigger_instances/{slug}/upsert", slug=slug),
             body=await async_maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
