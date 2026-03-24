@@ -202,6 +202,7 @@ class SessionResource(SyncAPIResource):
         session_id: str,
         *,
         tool_slug: str,
+        account: str | Omit = omit,
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -224,6 +225,11 @@ class SessionResource(SyncAPIResource):
 
           tool_slug: The unique slug identifier of the tool to execute
 
+          account: Account identifier to specify which connected account to use. Use the account ID
+              (e.g. "coup_hurricane_dal_analytical") or an alias. When omitted with a single
+              account, the default is used. When omitted with multiple accounts, an error
+              lists available accounts.
+
           arguments: The arguments required by the tool
 
           extra_headers: Send extra headers
@@ -241,6 +247,7 @@ class SessionResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "tool_slug": tool_slug,
+                    "account": account,
                     "arguments": arguments,
                 },
                 session_execute_params.SessionExecuteParams,
@@ -749,6 +756,7 @@ class AsyncSessionResource(AsyncAPIResource):
         session_id: str,
         *,
         tool_slug: str,
+        account: str | Omit = omit,
         arguments: Dict[str, Optional[object]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -771,6 +779,11 @@ class AsyncSessionResource(AsyncAPIResource):
 
           tool_slug: The unique slug identifier of the tool to execute
 
+          account: Account identifier to specify which connected account to use. Use the account ID
+              (e.g. "coup_hurricane_dal_analytical") or an alias. When omitted with a single
+              account, the default is used. When omitted with multiple accounts, an error
+              lists available accounts.
+
           arguments: The arguments required by the tool
 
           extra_headers: Send extra headers
@@ -788,6 +801,7 @@ class AsyncSessionResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "tool_slug": tool_slug,
+                    "account": account,
                     "arguments": arguments,
                 },
                 session_execute_params.SessionExecuteParams,

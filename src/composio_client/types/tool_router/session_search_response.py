@@ -17,6 +17,7 @@ __all__ = [
     "ToolSchemasSchemaRef",
     "ToolSchemasSchemaRefArgs",
     "ToolkitConnectionStatus",
+    "ToolkitConnectionStatusAccount",
 ]
 
 
@@ -153,6 +154,26 @@ class ToolSchemas(BaseModel):
     """Reference to fetch full schema when hasFullSchema is false"""
 
 
+class ToolkitConnectionStatusAccount(BaseModel):
+    id: str
+    """Unique identifier for this account"""
+
+    created_at: str
+    """ISO 8601 timestamp of when the account was connected"""
+
+    is_default: bool
+    """Whether this is the default account for the toolkit"""
+
+    status: str
+    """Connection status (e.g., "active")"""
+
+    alias: Optional[str] = None
+    """User-assigned alias for this account"""
+
+    user_info: Optional[Dict[str, Optional[object]]] = None
+    """Information about the connected user (email, name, etc.)"""
+
+
 class ToolkitConnectionStatus(BaseModel):
     description: str
     """Description of what the toolkit does and its capabilities"""
@@ -165,6 +186,18 @@ class ToolkitConnectionStatus(BaseModel):
 
     toolkit: str
     """The toolkit slug identifier (e.g., "gmail", "slack")"""
+
+    account_selection: Optional[Literal["required"]] = None
+    """When "required", the agent must specify which account to use.
+
+    Present only when multiple accounts exist.
+    """
+
+    accounts: Optional[List[ToolkitConnectionStatusAccount]] = None
+    """List of connected accounts for this toolkit.
+
+    Present when multi-account is enabled.
+    """
 
     connection_details: Optional[Dict[str, Optional[object]]] = None
     """Connection details including auth config and connected account IDs.

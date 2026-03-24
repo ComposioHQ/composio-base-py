@@ -182,6 +182,7 @@ class TestSession:
         session = client.tool_router.session.execute(
             session_id="trs_LX9uJKBinWWr",
             tool_slug="GITHUB_CREATE_ISSUE",
+            account="coup_hurricane_dal_analytical",
             arguments={
                 "repository": "bar",
                 "workflow_id": "bar",
@@ -756,6 +757,7 @@ class TestAsyncSession:
         session = await async_client.tool_router.session.execute(
             session_id="trs_LX9uJKBinWWr",
             tool_slug="GITHUB_CREATE_ISSUE",
+            account="coup_hurricane_dal_analytical",
             arguments={
                 "repository": "bar",
                 "workflow_id": "bar",
