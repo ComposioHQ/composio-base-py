@@ -82,6 +82,7 @@ class TestSession:
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
+                "enable_connection_removal": True,
                 "enable_wait_for_connections": False,
             },
             tags={
@@ -657,6 +658,7 @@ class TestAsyncSession:
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
                 "enable": True,
+                "enable_connection_removal": True,
                 "enable_wait_for_connections": False,
             },
             tags={

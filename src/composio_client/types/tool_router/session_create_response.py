@@ -33,6 +33,9 @@ class ConfigManageConnections(BaseModel):
     callback_url: Optional[str] = None
     """Custom callback URL for connected account auth flows"""
 
+    enable_connection_removal: Optional[bool] = None
+    """Enable the "remove" action in COMPOSIO_MANAGE_CONNECTIONS. Default true."""
+
     enable_wait_for_connections: Optional[bool] = None
     """Enable the COMPOSIO_WAIT_FOR_CONNECTIONS tool for polling connection status.
 

@@ -201,6 +201,12 @@ class ManageConnections(TypedDict, total=False):
     connections manually.
     """
 
+    enable_connection_removal: Optional[bool]
+    """
+    Enable the "remove" action in COMPOSIO_MANAGE_CONNECTIONS to allow deleting
+    connected accounts. Default true.
+    """
+
     enable_wait_for_connections: Optional[bool]
     """
     When true, the COMPOSIO_WAIT_FOR_CONNECTIONS tool is available for agents to
