@@ -1,12 +1,22 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Dict, List, Optional
+from typing import Dict, List, Union, Optional
+from typing_extensions import TypeAlias
 
 from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["ToolListResponse", "Item", "ItemDeprecated", "ItemDeprecatedToolkit", "ItemToolkit"]
+__all__ = [
+    "ToolListResponse",
+    "Item",
+    "ItemDeprecated",
+    "ItemDeprecatedToolkit",
+    "ItemScopeRequirements",
+    "ItemScopeRequirementsAllOf",
+    "ItemScopeRequirementsAllOfAnyOf",
+    "ItemToolkit",
+]
 
 
 class ItemDeprecatedToolkit(BaseModel):
@@ -28,6 +38,22 @@ class ItemDeprecated(BaseModel):
 
     version: str
     """Current version identifier of the tool"""
+
+
+class ItemScopeRequirementsAllOfAnyOf(BaseModel):
+    any_of: List[str]
+
+
+ItemScopeRequirementsAllOf: TypeAlias = Union[str, ItemScopeRequirementsAllOfAnyOf]
+
+
+class ItemScopeRequirements(BaseModel):
+    """Structured scope requirements for the tool.
+
+    Null means the tool is legacy and only exposes flat scopes.
+    """
+
+    all_of: List[ItemScopeRequirementsAllOf]
 
 
 class ItemToolkit(BaseModel):
@@ -64,6 +90,12 @@ class Item(BaseModel):
 
     output_parameters: Dict[str, Optional[object]]
     """Schema definition of return values from the tool"""
+
+    scope_requirements: Optional[ItemScopeRequirements] = None
+    """Structured scope requirements for the tool.
+
+    Null means the tool is legacy and only exposes flat scopes.
+    """
 
     scopes: List[str]
     """List of scopes associated with the tool"""
