@@ -42,7 +42,10 @@ class Item(BaseModel):
     """
 
     state: Dict[str, Optional[object]]
-    """State of the trigger instance"""
+    """
+    DEPRECATED: This field exposes internal state and will be removed in a future
+    version.
+    """
 
     trigger_config: Dict[str, Optional[object]]
     """Configuration for the trigger"""
