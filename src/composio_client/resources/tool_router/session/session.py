@@ -500,7 +500,7 @@ class SessionResource(SyncAPIResource):
         *,
         cursor: str | Omit = omit,
         is_connected: Optional[bool] | Omit = omit,
-        limit: Optional[float] | Omit = omit,
+        limit: int | Omit = omit,
         search: str | Omit = omit,
         toolkits: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -526,7 +526,7 @@ class SessionResource(SyncAPIResource):
           is_connected: Whether to filter by connected toolkits. If provided, only connected toolkits
               will be returned.
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           search: Search query to filter toolkits by name, slug, or description
 
@@ -1054,7 +1054,7 @@ class AsyncSessionResource(AsyncAPIResource):
         *,
         cursor: str | Omit = omit,
         is_connected: Optional[bool] | Omit = omit,
-        limit: Optional[float] | Omit = omit,
+        limit: int | Omit = omit,
         search: str | Omit = omit,
         toolkits: Optional[SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1080,7 +1080,7 @@ class AsyncSessionResource(AsyncAPIResource):
           is_connected: Whether to filter by connected toolkits. If provided, only connected toolkits
               will be returned.
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           search: Search query to filter toolkits by name, slug, or description
 

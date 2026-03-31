@@ -522,7 +522,7 @@ class TestSession:
             session_id="trs_123456789",
             cursor="cursor",
             is_connected=True,
-            limit=0,
+            limit=1,
             search="gmail",
             toolkits=["string"],
         )
@@ -1098,7 +1098,7 @@ class TestAsyncSession:
             session_id="trs_123456789",
             cursor="cursor",
             is_connected=True,
-            limit=0,
+            limit=1,
             search="gmail",
             toolkits=["string"],
         )

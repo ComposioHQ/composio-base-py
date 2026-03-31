@@ -25,8 +25,8 @@ class SessionToolkitsParams(TypedDict, total=False):
     If provided, only connected toolkits will be returned.
     """
 
-    limit: Optional[float]
-    """Number of items per page, max allowed is 1000"""
+    limit: int
+    """Number of items per page, max allowed is 50"""
 
     search: str
     """Search query to filter toolkits by name, slug, or description"""
