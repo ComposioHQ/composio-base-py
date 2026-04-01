@@ -124,11 +124,11 @@ class ToolSchemasSchemaRef(BaseModel):
     args: ToolSchemasSchemaRefArgs
     """Arguments to pass to the tool"""
 
-    message: str
-    """Instruction message for the LLM"""
-
     tool: Literal["COMPOSIO_GET_TOOL_SCHEMAS"]
     """Tool to call"""
+
+    message: Optional[str] = None
+    """Instruction message for the LLM"""
 
 
 class ToolSchemas(BaseModel):
@@ -148,7 +148,10 @@ class ToolSchemas(BaseModel):
     """Input schema for the tool (only present when hasFullSchema is true)"""
 
     output_schema: Optional[Dict[str, Optional[object]]] = None
-    """Output/response schema for the tool"""
+    """Output/response schema for the tool.
+
+    Only included when include_output_schemas is true.
+    """
 
     schema_ref: Optional[ToolSchemasSchemaRef] = FieldInfo(alias="schemaRef", default=None)
     """Reference to fetch full schema when hasFullSchema is false"""
