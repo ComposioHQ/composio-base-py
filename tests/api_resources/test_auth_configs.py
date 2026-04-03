@@ -197,6 +197,7 @@ class TestAuthConfigs:
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
             },
+            user_scopes="string",
         )
         assert_matches_type(object, auth_config, path=["response"])
 
@@ -535,6 +536,7 @@ class TestAsyncAuthConfigs:
                 "tools_available_for_execution": ["string"],
                 "tools_for_connected_account_creation": ["string"],
             },
+            user_scopes="string",
         )
         assert_matches_type(object, auth_config, path=["response"])
 

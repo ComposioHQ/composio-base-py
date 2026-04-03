@@ -96,6 +96,8 @@ class Variant1(TypedDict, total=False):
 
     tool_access_config: Variant1ToolAccessConfig
 
+    user_scopes: Union[str, SequenceNotStr[str]]
+
 
 class Variant1ToolAccessConfig(TypedDict, total=False):
     tools_available_for_execution: SequenceNotStr[str]

@@ -185,6 +185,7 @@ class AuthConfigsResource(SyncAPIResource):
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
+        user_scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -235,6 +236,7 @@ class AuthConfigsResource(SyncAPIResource):
         | auth_config_update_params.Variant1ToolAccessConfig
         | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
+        user_scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -257,6 +259,7 @@ class AuthConfigsResource(SyncAPIResource):
                     "shared_credentials": shared_credentials,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
+                    "user_scopes": user_scopes,
                 },
                 auth_config_update_params.AuthConfigUpdateParams,
             ),
@@ -580,6 +583,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
+        user_scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -630,6 +634,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         | auth_config_update_params.Variant1ToolAccessConfig
         | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
+        user_scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -652,6 +657,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                     "shared_credentials": shared_credentials,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
+                    "user_scopes": user_scopes,
                 },
                 auth_config_update_params.AuthConfigUpdateParams,
             ),
