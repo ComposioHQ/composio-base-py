@@ -5230,6 +5230,9 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     id: str
     """The id of the connection"""
 
+    alias: Optional[str] = None
+    """A user-defined alias for the connected account"""
+
     auth_config: AuthConfig
 
     created_at: str
@@ -5268,6 +5271,12 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     """
     This is deprecated, we will not be providing userId from this api anymore, you
     will only be able to read via userId not get it back
+    """
+
+    word_id: Optional[str] = None
+    """
+    A short, token-friendly identifier for multi-account disambiguation, typically
+    toolkit-prefixed with 1-2 words (e.g., "gmail_red-castle")
     """
 
     deprecated: Optional[Deprecated] = None
