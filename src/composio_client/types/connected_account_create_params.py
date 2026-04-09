@@ -4306,6 +4306,12 @@ ConnectionState: TypeAlias = Union[
 
 
 class Connection(TypedDict, total=False):
+    alias: str
+    """A human-readable alias for this connected account.
+
+    Must be unique per entity and toolkit within the project.
+    """
+
     callback_url: str
     """The URL to redirect to after connection completion"""
 

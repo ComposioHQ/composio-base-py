@@ -33,15 +33,15 @@ class TestToolRouter:
                 "toolkits": [
                     {
                         "toolkit": "gmail",
-                        "auth_config_id": "auth_config_123",
+                        "auth_config_id": "ac_1a2b3c4d5e6f",
                     },
                     {
                         "toolkit": "slack",
-                        "auth_config_id": "auth_config_456",
+                        "auth_config_id": "ac_7g8h9i0j1k2l",
                     },
                     {
                         "toolkit": "github",
-                        "auth_config_id": "auth_config_123",
+                        "auth_config_id": "ac_1a2b3c4d5e6f",
                     },
                 ],
             },
@@ -94,15 +94,15 @@ class TestAsyncToolRouter:
                 "toolkits": [
                     {
                         "toolkit": "gmail",
-                        "auth_config_id": "auth_config_123",
+                        "auth_config_id": "ac_1a2b3c4d5e6f",
                     },
                     {
                         "toolkit": "slack",
-                        "auth_config_id": "auth_config_456",
+                        "auth_config_id": "ac_7g8h9i0j1k2l",
                     },
                     {
                         "toolkit": "github",
-                        "auth_config_id": "auth_config_123",
+                        "auth_config_id": "ac_1a2b3c4d5e6f",
                     },
                 ],
             },

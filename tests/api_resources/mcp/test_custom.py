@@ -28,9 +28,9 @@ class TestCustom:
     def test_method_create_with_all_params(self, client: Composio) -> None:
         custom = client.mcp.custom.create(
             name="Development Integration Server",
-            allowed_tools=["custom-api-tool", "internal-database-tool"],
-            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
-            custom_tools=["custom-api-tool", "internal-database-tool"],
+            allowed_tools=["GITHUB_CREATE_AN_ISSUE", "SLACK_SEND_MESSAGE"],
+            auth_config_ids=["ac_1a2b3c4d5e6f", "ac_7g8h9i0j1k2l"],
+            custom_tools=["GITHUB_CREATE_AN_ISSUE", "SLACK_SEND_MESSAGE"],
             managed_auth_via_composio=True,
             toolkits=["github", "jira"],
         )
@@ -77,9 +77,9 @@ class TestAsyncCustom:
     async def test_method_create_with_all_params(self, async_client: AsyncComposio) -> None:
         custom = await async_client.mcp.custom.create(
             name="Development Integration Server",
-            allowed_tools=["custom-api-tool", "internal-database-tool"],
-            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
-            custom_tools=["custom-api-tool", "internal-database-tool"],
+            allowed_tools=["GITHUB_CREATE_AN_ISSUE", "SLACK_SEND_MESSAGE"],
+            auth_config_ids=["ac_1a2b3c4d5e6f", "ac_7g8h9i0j1k2l"],
+            custom_tools=["GITHUB_CREATE_AN_ISSUE", "SLACK_SEND_MESSAGE"],
             managed_auth_via_composio=True,
             toolkits=["github", "jira"],
         )

@@ -27,7 +27,7 @@ class TestMcp:
     @parametrize
     def test_method_create(self, client: Composio) -> None:
         mcp = client.mcp.create(
-            auth_config_ids=["auth_cfg_abc123def456"],
+            auth_config_ids=["ac_1a2b3c4d5e6f"],
             name="GitHub Integration Server",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -35,9 +35,9 @@ class TestMcp:
     @parametrize
     def test_method_create_with_all_params(self, client: Composio) -> None:
         mcp = client.mcp.create(
-            auth_config_ids=["auth_cfg_abc123def456"],
+            auth_config_ids=["ac_1a2b3c4d5e6f"],
             name="GitHub Integration Server",
-            allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
+            allowed_tools=["GITHUB_CREATE_AN_ISSUE", "GITHUB_GET_A_REPOSITORY", "GITHUB_LIST_PULL_REQUESTS"],
             managed_auth_via_composio=True,
             no_auth_apps=["exa", "codeinterpreter", "composio", "composio_search"],
         )
@@ -46,7 +46,7 @@ class TestMcp:
     @parametrize
     def test_raw_response_create(self, client: Composio) -> None:
         response = client.mcp.with_raw_response.create(
-            auth_config_ids=["auth_cfg_abc123def456"],
+            auth_config_ids=["ac_1a2b3c4d5e6f"],
             name="GitHub Integration Server",
         )
 
@@ -58,7 +58,7 @@ class TestMcp:
     @parametrize
     def test_streaming_response_create(self, client: Composio) -> None:
         with client.mcp.with_streaming_response.create(
-            auth_config_ids=["auth_cfg_abc123def456"],
+            auth_config_ids=["ac_1a2b3c4d5e6f"],
             name="GitHub Integration Server",
         ) as response:
             assert not response.is_closed
@@ -119,7 +119,7 @@ class TestMcp:
         mcp = client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
             allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
-            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
+            auth_config_ids=["ac_1a2b3c4d5e6f", "ac_7g8h9i0j1k2l"],
             managed_auth_via_composio=True,
             name="Updated GitHub Integration Server",
             toolkits=["gmail", "notion"],
@@ -298,7 +298,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_create(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.create(
-            auth_config_ids=["auth_cfg_abc123def456"],
+            auth_config_ids=["ac_1a2b3c4d5e6f"],
             name="GitHub Integration Server",
         )
         assert_matches_type(McpCreateResponse, mcp, path=["response"])
@@ -306,9 +306,9 @@ class TestAsyncMcp:
     @parametrize
     async def test_method_create_with_all_params(self, async_client: AsyncComposio) -> None:
         mcp = await async_client.mcp.create(
-            auth_config_ids=["auth_cfg_abc123def456"],
+            auth_config_ids=["ac_1a2b3c4d5e6f"],
             name="GitHub Integration Server",
-            allowed_tools=["github-issues", "github-repos", "github-pull-requests"],
+            allowed_tools=["GITHUB_CREATE_AN_ISSUE", "GITHUB_GET_A_REPOSITORY", "GITHUB_LIST_PULL_REQUESTS"],
             managed_auth_via_composio=True,
             no_auth_apps=["exa", "codeinterpreter", "composio", "composio_search"],
         )
@@ -317,7 +317,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_raw_response_create(self, async_client: AsyncComposio) -> None:
         response = await async_client.mcp.with_raw_response.create(
-            auth_config_ids=["auth_cfg_abc123def456"],
+            auth_config_ids=["ac_1a2b3c4d5e6f"],
             name="GitHub Integration Server",
         )
 
@@ -329,7 +329,7 @@ class TestAsyncMcp:
     @parametrize
     async def test_streaming_response_create(self, async_client: AsyncComposio) -> None:
         async with async_client.mcp.with_streaming_response.create(
-            auth_config_ids=["auth_cfg_abc123def456"],
+            auth_config_ids=["ac_1a2b3c4d5e6f"],
             name="GitHub Integration Server",
         ) as response:
             assert not response.is_closed
@@ -390,7 +390,7 @@ class TestAsyncMcp:
         mcp = await async_client.mcp.update(
             id="550e8400-e29b-41d4-a716-446655440000",
             allowed_tools=["GMAIL_ADD_LABEL_TO_EMAIL"],
-            auth_config_ids=["auth_cfg_abc123def456", "auth_cfg_xyz789"],
+            auth_config_ids=["ac_1a2b3c4d5e6f", "ac_7g8h9i0j1k2l"],
             managed_auth_via_composio=True,
             name="Updated GitHub Integration Server",
             toolkits=["gmail", "notion"],

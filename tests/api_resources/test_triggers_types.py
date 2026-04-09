@@ -24,14 +24,14 @@ class TestTriggersTypes:
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
         triggers_type = client.triggers_types.retrieve(
-            slug="SLACK_NEW_MESSAGE",
+            slug="SLACK_RECEIVE_MESSAGE",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
 
     @parametrize
     def test_method_retrieve_with_all_params(self, client: Composio) -> None:
         triggers_type = client.triggers_types.retrieve(
-            slug="SLACK_NEW_MESSAGE",
+            slug="SLACK_RECEIVE_MESSAGE",
             toolkit_versions="string",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
@@ -39,7 +39,7 @@ class TestTriggersTypes:
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.triggers_types.with_raw_response.retrieve(
-            slug="SLACK_NEW_MESSAGE",
+            slug="SLACK_RECEIVE_MESSAGE",
         )
 
         assert response.is_closed is True
@@ -50,7 +50,7 @@ class TestTriggersTypes:
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.triggers_types.with_streaming_response.retrieve(
-            slug="SLACK_NEW_MESSAGE",
+            slug="SLACK_RECEIVE_MESSAGE",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -140,14 +140,14 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         triggers_type = await async_client.triggers_types.retrieve(
-            slug="SLACK_NEW_MESSAGE",
+            slug="SLACK_RECEIVE_MESSAGE",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
 
     @parametrize
     async def test_method_retrieve_with_all_params(self, async_client: AsyncComposio) -> None:
         triggers_type = await async_client.triggers_types.retrieve(
-            slug="SLACK_NEW_MESSAGE",
+            slug="SLACK_RECEIVE_MESSAGE",
             toolkit_versions="string",
         )
         assert_matches_type(TriggersTypeRetrieveResponse, triggers_type, path=["response"])
@@ -155,7 +155,7 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.triggers_types.with_raw_response.retrieve(
-            slug="SLACK_NEW_MESSAGE",
+            slug="SLACK_RECEIVE_MESSAGE",
         )
 
         assert response.is_closed is True
@@ -166,7 +166,7 @@ class TestAsyncTriggersTypes:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.triggers_types.with_streaming_response.retrieve(
-            slug="SLACK_NEW_MESSAGE",
+            slug="SLACK_RECEIVE_MESSAGE",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
