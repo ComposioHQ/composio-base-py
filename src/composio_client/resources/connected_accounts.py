@@ -9,6 +9,7 @@ import httpx
 
 from ..types import (
     connected_account_list_params,
+    connected_account_patch_params,
     connected_account_create_params,
     connected_account_refresh_params,
     connected_account_update_status_params,
@@ -25,6 +26,7 @@ from .._response import (
 )
 from .._base_client import make_request_options
 from ..types.connected_account_list_response import ConnectedAccountListResponse
+from ..types.connected_account_patch_response import ConnectedAccountPatchResponse
 from ..types.connected_account_create_response import ConnectedAccountCreateResponse
 from ..types.connected_account_delete_response import ConnectedAccountDeleteResponse
 from ..types.connected_account_refresh_response import ConnectedAccountRefreshResponse
@@ -252,6 +254,54 @@ class ConnectedAccountsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=ConnectedAccountDeleteResponse,
+        )
+
+    def patch(
+        self,
+        nanoid: str,
+        *,
+        alias: str | Omit = omit,
+        connection: connected_account_patch_params.Connection | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ConnectedAccountPatchResponse:
+        """Update a connected account.
+
+        Supports updating the alias and/or credentials. Only
+        specified fields will be updated. Set a credential field to null to remove it.
+        Alias must be unique within the same project, entity, and toolkit scope.
+
+        Args:
+          alias: A human-readable alias for this connected account. Pass an empty string to clear
+              the alias. Must be unique per entity and toolkit within the project.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not nanoid:
+            raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
+        return self._patch(
+            path_template("/api/v3/connected_accounts/{nanoid}", nanoid=nanoid),
+            body=maybe_transform(
+                {
+                    "alias": alias,
+                    "connection": connection,
+                },
+                connected_account_patch_params.ConnectedAccountPatchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ConnectedAccountPatchResponse,
         )
 
     def refresh(
@@ -571,6 +621,54 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
             cast_to=ConnectedAccountDeleteResponse,
         )
 
+    async def patch(
+        self,
+        nanoid: str,
+        *,
+        alias: str | Omit = omit,
+        connection: connected_account_patch_params.Connection | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ConnectedAccountPatchResponse:
+        """Update a connected account.
+
+        Supports updating the alias and/or credentials. Only
+        specified fields will be updated. Set a credential field to null to remove it.
+        Alias must be unique within the same project, entity, and toolkit scope.
+
+        Args:
+          alias: A human-readable alias for this connected account. Pass an empty string to clear
+              the alias. Must be unique per entity and toolkit within the project.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        if not nanoid:
+            raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
+        return await self._patch(
+            path_template("/api/v3/connected_accounts/{nanoid}", nanoid=nanoid),
+            body=await async_maybe_transform(
+                {
+                    "alias": alias,
+                    "connection": connection,
+                },
+                connected_account_patch_params.ConnectedAccountPatchParams,
+            ),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=ConnectedAccountPatchResponse,
+        )
+
     async def refresh(
         self,
         nanoid: str,
@@ -684,6 +782,9 @@ class ConnectedAccountsResourceWithRawResponse:
         self.delete = to_raw_response_wrapper(
             connected_accounts.delete,
         )
+        self.patch = to_raw_response_wrapper(
+            connected_accounts.patch,
+        )
         self.refresh = to_raw_response_wrapper(
             connected_accounts.refresh,
         )
@@ -707,6 +808,9 @@ class AsyncConnectedAccountsResourceWithRawResponse:
         )
         self.delete = async_to_raw_response_wrapper(
             connected_accounts.delete,
+        )
+        self.patch = async_to_raw_response_wrapper(
+            connected_accounts.patch,
         )
         self.refresh = async_to_raw_response_wrapper(
             connected_accounts.refresh,
@@ -732,6 +836,9 @@ class ConnectedAccountsResourceWithStreamingResponse:
         self.delete = to_streamed_response_wrapper(
             connected_accounts.delete,
         )
+        self.patch = to_streamed_response_wrapper(
+            connected_accounts.patch,
+        )
         self.refresh = to_streamed_response_wrapper(
             connected_accounts.refresh,
         )
@@ -755,6 +862,9 @@ class AsyncConnectedAccountsResourceWithStreamingResponse:
         )
         self.delete = async_to_streamed_response_wrapper(
             connected_accounts.delete,
+        )
+        self.patch = async_to_streamed_response_wrapper(
+            connected_accounts.patch,
         )
         self.refresh = async_to_streamed_response_wrapper(
             connected_accounts.refresh,
