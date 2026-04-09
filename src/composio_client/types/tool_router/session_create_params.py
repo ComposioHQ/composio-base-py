@@ -15,6 +15,7 @@ __all__ = [
     "ExperimentalCustomToolkitTool",
     "ExperimentalCustomTool",
     "ManageConnections",
+    "MultiAccount",
     "Tags",
     "TagsUnionMember1",
     "Toolkits",
@@ -59,6 +60,12 @@ class SessionCreateParams(TypedDict, total=False):
 
     manage_connections: ManageConnections
     """Configuration for connection management settings"""
+
+    multi_account: MultiAccount
+    """Configure multi-account behavior.
+
+    When enabled, users can connect multiple accounts per toolkit.
+    """
 
     tags: Tags
     """Global MCP tool annotation hints for filtering.
@@ -212,6 +219,31 @@ class ManageConnections(TypedDict, total=False):
     When true, the COMPOSIO_WAIT_FOR_CONNECTIONS tool is available for agents to
     poll connection status after sharing auth URLs. Default is false (disabled). May
     not work reliably with GPT models.
+    """
+
+
+class MultiAccount(TypedDict, total=False):
+    """Configure multi-account behavior.
+
+    When enabled, users can connect multiple accounts per toolkit.
+    """
+
+    enable: bool
+    """When true, enables multi-account mode for this session.
+
+    When not set, falls back to org/project-level configuration.
+    """
+
+    max_accounts_per_toolkit: int
+    """Maximum number of connected accounts allowed per toolkit.
+
+    Must be between 2 and 10.
+    """
+
+    require_explicit_selection: bool
+    """When true, the agent must explicitly select which account to use.
+
+    When false (default), the first/default account is used automatically.
     """
 
 

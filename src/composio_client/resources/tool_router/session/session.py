@@ -83,6 +83,7 @@ class SessionResource(SyncAPIResource):
         connected_accounts: Dict[str, str] | Omit = omit,
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
+        multi_account: session_create_params.MultiAccount | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
@@ -117,6 +118,9 @@ class SessionResource(SyncAPIResource):
 
           manage_connections: Configuration for connection management settings
 
+          multi_account: Configure multi-account behavior. When enabled, users can connect multiple
+              accounts per toolkit.
+
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
               and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
@@ -147,6 +151,7 @@ class SessionResource(SyncAPIResource):
                     "connected_accounts": connected_accounts,
                     "experimental": experimental,
                     "manage_connections": manage_connections,
+                    "multi_account": multi_account,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
@@ -637,6 +642,7 @@ class AsyncSessionResource(AsyncAPIResource):
         connected_accounts: Dict[str, str] | Omit = omit,
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
+        multi_account: session_create_params.MultiAccount | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
@@ -671,6 +677,9 @@ class AsyncSessionResource(AsyncAPIResource):
 
           manage_connections: Configuration for connection management settings
 
+          multi_account: Configure multi-account behavior. When enabled, users can connect multiple
+              accounts per toolkit.
+
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
               and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
@@ -701,6 +710,7 @@ class AsyncSessionResource(AsyncAPIResource):
                     "connected_accounts": connected_accounts,
                     "experimental": experimental,
                     "manage_connections": manage_connections,
+                    "multi_account": multi_account,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,

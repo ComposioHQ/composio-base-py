@@ -85,6 +85,11 @@ class TestSession:
                 "enable_connection_removal": True,
                 "enable_wait_for_connections": False,
             },
+            multi_account={
+                "enable": True,
+                "max_accounts_per_toolkit": 5,
+                "require_explicit_selection": False,
+            },
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],
@@ -660,6 +665,11 @@ class TestAsyncSession:
                 "enable": True,
                 "enable_connection_removal": True,
                 "enable_wait_for_connections": False,
+            },
+            multi_account={
+                "enable": True,
+                "max_accounts_per_toolkit": 5,
+                "require_explicit_selection": False,
             },
             tags={
                 "disable": ["destructiveHint"],
