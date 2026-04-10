@@ -11,5 +11,11 @@ class SessionLinkParams(TypedDict, total=False):
     toolkit: Required[str]
     """The unique slug identifier of the toolkit to connect"""
 
+    alias: str
+    """A human-readable alias for this connected account.
+
+    Must be unique per entity and toolkit within the project.
+    """
+
     callback_url: str
     """URL where users will be redirected after completing auth"""

@@ -299,6 +299,7 @@ class TestSession:
         session = client.tool_router.session.link(
             session_id="trs_LX9uJKBinWWr",
             toolkit="github",
+            alias="alias",
             callback_url="https://myapp.com/callback",
         )
         assert_matches_type(SessionLinkResponse, session, path=["response"])
@@ -880,6 +881,7 @@ class TestAsyncSession:
         session = await async_client.tool_router.session.link(
             session_id="trs_LX9uJKBinWWr",
             toolkit="github",
+            alias="alias",
             callback_url="https://myapp.com/callback",
         )
         assert_matches_type(SessionLinkResponse, session, path=["response"])

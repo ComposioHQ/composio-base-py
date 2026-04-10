@@ -327,6 +327,7 @@ class SessionResource(SyncAPIResource):
         session_id: str,
         *,
         toolkit: str,
+        alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -345,6 +346,9 @@ class SessionResource(SyncAPIResource):
 
           toolkit: The unique slug identifier of the toolkit to connect
 
+          alias: A human-readable alias for this connected account. Must be unique per entity and
+              toolkit within the project.
+
           callback_url: URL where users will be redirected after completing auth
 
           extra_headers: Send extra headers
@@ -362,6 +366,7 @@ class SessionResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "toolkit": toolkit,
+                    "alias": alias,
                     "callback_url": callback_url,
                 },
                 session_link_params.SessionLinkParams,
@@ -886,6 +891,7 @@ class AsyncSessionResource(AsyncAPIResource):
         session_id: str,
         *,
         toolkit: str,
+        alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -904,6 +910,9 @@ class AsyncSessionResource(AsyncAPIResource):
 
           toolkit: The unique slug identifier of the toolkit to connect
 
+          alias: A human-readable alias for this connected account. Must be unique per entity and
+              toolkit within the project.
+
           callback_url: URL where users will be redirected after completing auth
 
           extra_headers: Send extra headers
@@ -921,6 +930,7 @@ class AsyncSessionResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "toolkit": toolkit,
+                    "alias": alias,
                     "callback_url": callback_url,
                 },
                 session_link_params.SessionLinkParams,
