@@ -28,7 +28,7 @@ class TestGenerate:
     def test_method_url_with_all_params(self, client: Composio) -> None:
         generate = client.mcp.generate.url(
             mcp_server_id="550e8400-e29b-41d4-a716-446655440000",
-            connected_account_ids=["account_1", "account_2"],
+            connected_account_ids=["ca_1a2b3c4d5e6f", "ca_7g8h9i0j1k2l"],
             managed_auth_by_composio=True,
             user_ids=["user_123456"],
         )
@@ -75,7 +75,7 @@ class TestAsyncGenerate:
     async def test_method_url_with_all_params(self, async_client: AsyncComposio) -> None:
         generate = await async_client.mcp.generate.url(
             mcp_server_id="550e8400-e29b-41d4-a716-446655440000",
-            connected_account_ids=["account_1", "account_2"],
+            connected_account_ids=["ca_1a2b3c4d5e6f", "ca_7g8h9i0j1k2l"],
             managed_auth_by_composio=True,
             user_ids=["user_123456"],
         )

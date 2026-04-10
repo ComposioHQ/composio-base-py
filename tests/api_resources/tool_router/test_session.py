@@ -39,10 +39,10 @@ class TestSession:
         session = client.tool_router.session.create(
             user_id="user_123456789",
             auth_configs={
-                "gmail": "ac_1223434343",
-                "slack": "ac_23343434343434",
+                "gmail": "ac_1a2b3c4d5e6f",
+                "slack": "ac_7g8h9i0j1k2l",
             },
-            connected_accounts={"github": "ca_34454545454545"},
+            connected_accounts={"github": "ca_3m4n5o6p7q8r"},
             experimental={
                 "assistive_prompt_config": {"user_timezone": "America/New_York"},
                 "custom_toolkits": [
@@ -621,10 +621,10 @@ class TestAsyncSession:
         session = await async_client.tool_router.session.create(
             user_id="user_123456789",
             auth_configs={
-                "gmail": "ac_1223434343",
-                "slack": "ac_23343434343434",
+                "gmail": "ac_1a2b3c4d5e6f",
+                "slack": "ac_7g8h9i0j1k2l",
             },
-            connected_accounts={"github": "ca_34454545454545"},
+            connected_accounts={"github": "ca_3m4n5o6p7q8r"},
             experimental={
                 "assistive_prompt_config": {"user_timezone": "America/New_York"},
                 "custom_toolkits": [
