@@ -97,6 +97,12 @@ class LinkCreateParams(TypedDict, total=False):
     user_id: Required[str]
     """The user id to create a link for"""
 
+    alias: str
+    """A human-readable alias for this connected account.
+
+    Must be unique per entity and toolkit within the project.
+    """
+
     callback_url: str
     """The callback url to create a link for"""
 

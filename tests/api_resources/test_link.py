@@ -30,6 +30,7 @@ class TestLink:
         link = client.link.create(
             auth_config_id="auth_config_id",
             user_id="x",
+            alias="alias",
             callback_url="callback_url",
             connection_data={
                 "account_id": "account_id",
@@ -103,6 +104,7 @@ class TestAsyncLink:
         link = await async_client.link.create(
             auth_config_id="auth_config_id",
             user_id="x",
+            alias="alias",
             callback_url="callback_url",
             connection_data={
                 "account_id": "account_id",

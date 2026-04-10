@@ -48,6 +48,7 @@ class LinkResource(SyncAPIResource):
         *,
         auth_config_id: str,
         user_id: str,
+        alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         connection_data: link_create_params.ConnectionData | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -65,6 +66,9 @@ class LinkResource(SyncAPIResource):
           auth_config_id: The auth config id to create a link for
 
           user_id: The user id to create a link for
+
+          alias: A human-readable alias for this connected account. Must be unique per entity and
+              toolkit within the project.
 
           callback_url: The callback url to create a link for
 
@@ -84,6 +88,7 @@ class LinkResource(SyncAPIResource):
                 {
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
+                    "alias": alias,
                     "callback_url": callback_url,
                     "connection_data": connection_data,
                 },
@@ -123,6 +128,7 @@ class AsyncLinkResource(AsyncAPIResource):
         *,
         auth_config_id: str,
         user_id: str,
+        alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         connection_data: link_create_params.ConnectionData | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -140,6 +146,9 @@ class AsyncLinkResource(AsyncAPIResource):
           auth_config_id: The auth config id to create a link for
 
           user_id: The user id to create a link for
+
+          alias: A human-readable alias for this connected account. Must be unique per entity and
+              toolkit within the project.
 
           callback_url: The callback url to create a link for
 
@@ -159,6 +168,7 @@ class AsyncLinkResource(AsyncAPIResource):
                 {
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
+                    "alias": alias,
                     "callback_url": callback_url,
                     "connection_data": connection_data,
                 },
