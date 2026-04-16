@@ -26,7 +26,7 @@ class TestFiles:
     def test_method_list(self, client: Composio) -> None:
         file = client.tool_router.session.files.list(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         )
         assert_matches_type(FileListResponse, file, path=["response"])
 
@@ -34,7 +34,7 @@ class TestFiles:
     def test_method_list_with_all_params(self, client: Composio) -> None:
         file = client.tool_router.session.files.list(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             cursor="cursor",
             limit=1,
             mount_relative_prefix="data/",
@@ -45,7 +45,7 @@ class TestFiles:
     def test_raw_response_list(self, client: Composio) -> None:
         response = client.tool_router.session.files.with_raw_response.list(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -57,7 +57,7 @@ class TestFiles:
     def test_streaming_response_list(self, client: Composio) -> None:
         with client.tool_router.session.files.with_streaming_response.list(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -78,14 +78,14 @@ class TestFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `mount_id` but received ''"):
             client.tool_router.session.files.with_raw_response.list(
                 mount_id="",
-                session_id="trs_123456789",
+                session_id="trs_1a2b3c4d5e6f",
             )
 
     @parametrize
     def test_method_delete(self, client: Composio) -> None:
         file = client.tool_router.session.files.delete(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
         assert_matches_type(FileDeleteResponse, file, path=["response"])
@@ -94,7 +94,7 @@ class TestFiles:
     def test_raw_response_delete(self, client: Composio) -> None:
         response = client.tool_router.session.files.with_raw_response.delete(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
 
@@ -107,7 +107,7 @@ class TestFiles:
     def test_streaming_response_delete(self, client: Composio) -> None:
         with client.tool_router.session.files.with_streaming_response.delete(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         ) as response:
             assert not response.is_closed
@@ -130,7 +130,7 @@ class TestFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `mount_id` but received ''"):
             client.tool_router.session.files.with_raw_response.delete(
                 mount_id="",
-                session_id="trs_123456789",
+                session_id="trs_1a2b3c4d5e6f",
                 mount_relative_path="report.pdf",
             )
 
@@ -138,7 +138,7 @@ class TestFiles:
     def test_method_create_download_url(self, client: Composio) -> None:
         file = client.tool_router.session.files.create_download_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
         assert_matches_type(FileCreateDownloadURLResponse, file, path=["response"])
@@ -147,7 +147,7 @@ class TestFiles:
     def test_raw_response_create_download_url(self, client: Composio) -> None:
         response = client.tool_router.session.files.with_raw_response.create_download_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
 
@@ -160,7 +160,7 @@ class TestFiles:
     def test_streaming_response_create_download_url(self, client: Composio) -> None:
         with client.tool_router.session.files.with_streaming_response.create_download_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         ) as response:
             assert not response.is_closed
@@ -183,7 +183,7 @@ class TestFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `mount_id` but received ''"):
             client.tool_router.session.files.with_raw_response.create_download_url(
                 mount_id="",
-                session_id="trs_123456789",
+                session_id="trs_1a2b3c4d5e6f",
                 mount_relative_path="report.pdf",
             )
 
@@ -191,7 +191,7 @@ class TestFiles:
     def test_method_create_upload_url(self, client: Composio) -> None:
         file = client.tool_router.session.files.create_upload_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
         assert_matches_type(FileCreateUploadURLResponse, file, path=["response"])
@@ -200,7 +200,7 @@ class TestFiles:
     def test_method_create_upload_url_with_all_params(self, client: Composio) -> None:
         file = client.tool_router.session.files.create_upload_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
             mimetype="application/pdf",
         )
@@ -210,7 +210,7 @@ class TestFiles:
     def test_raw_response_create_upload_url(self, client: Composio) -> None:
         response = client.tool_router.session.files.with_raw_response.create_upload_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
 
@@ -223,7 +223,7 @@ class TestFiles:
     def test_streaming_response_create_upload_url(self, client: Composio) -> None:
         with client.tool_router.session.files.with_streaming_response.create_upload_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         ) as response:
             assert not response.is_closed
@@ -246,7 +246,7 @@ class TestFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `mount_id` but received ''"):
             client.tool_router.session.files.with_raw_response.create_upload_url(
                 mount_id="",
-                session_id="trs_123456789",
+                session_id="trs_1a2b3c4d5e6f",
                 mount_relative_path="report.pdf",
             )
 
@@ -260,7 +260,7 @@ class TestAsyncFiles:
     async def test_method_list(self, async_client: AsyncComposio) -> None:
         file = await async_client.tool_router.session.files.list(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         )
         assert_matches_type(FileListResponse, file, path=["response"])
 
@@ -268,7 +268,7 @@ class TestAsyncFiles:
     async def test_method_list_with_all_params(self, async_client: AsyncComposio) -> None:
         file = await async_client.tool_router.session.files.list(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             cursor="cursor",
             limit=1,
             mount_relative_prefix="data/",
@@ -279,7 +279,7 @@ class TestAsyncFiles:
     async def test_raw_response_list(self, async_client: AsyncComposio) -> None:
         response = await async_client.tool_router.session.files.with_raw_response.list(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -291,7 +291,7 @@ class TestAsyncFiles:
     async def test_streaming_response_list(self, async_client: AsyncComposio) -> None:
         async with async_client.tool_router.session.files.with_streaming_response.list(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -312,14 +312,14 @@ class TestAsyncFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `mount_id` but received ''"):
             await async_client.tool_router.session.files.with_raw_response.list(
                 mount_id="",
-                session_id="trs_123456789",
+                session_id="trs_1a2b3c4d5e6f",
             )
 
     @parametrize
     async def test_method_delete(self, async_client: AsyncComposio) -> None:
         file = await async_client.tool_router.session.files.delete(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
         assert_matches_type(FileDeleteResponse, file, path=["response"])
@@ -328,7 +328,7 @@ class TestAsyncFiles:
     async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
         response = await async_client.tool_router.session.files.with_raw_response.delete(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
 
@@ -341,7 +341,7 @@ class TestAsyncFiles:
     async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
         async with async_client.tool_router.session.files.with_streaming_response.delete(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         ) as response:
             assert not response.is_closed
@@ -364,7 +364,7 @@ class TestAsyncFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `mount_id` but received ''"):
             await async_client.tool_router.session.files.with_raw_response.delete(
                 mount_id="",
-                session_id="trs_123456789",
+                session_id="trs_1a2b3c4d5e6f",
                 mount_relative_path="report.pdf",
             )
 
@@ -372,7 +372,7 @@ class TestAsyncFiles:
     async def test_method_create_download_url(self, async_client: AsyncComposio) -> None:
         file = await async_client.tool_router.session.files.create_download_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
         assert_matches_type(FileCreateDownloadURLResponse, file, path=["response"])
@@ -381,7 +381,7 @@ class TestAsyncFiles:
     async def test_raw_response_create_download_url(self, async_client: AsyncComposio) -> None:
         response = await async_client.tool_router.session.files.with_raw_response.create_download_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
 
@@ -394,7 +394,7 @@ class TestAsyncFiles:
     async def test_streaming_response_create_download_url(self, async_client: AsyncComposio) -> None:
         async with async_client.tool_router.session.files.with_streaming_response.create_download_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         ) as response:
             assert not response.is_closed
@@ -417,7 +417,7 @@ class TestAsyncFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `mount_id` but received ''"):
             await async_client.tool_router.session.files.with_raw_response.create_download_url(
                 mount_id="",
-                session_id="trs_123456789",
+                session_id="trs_1a2b3c4d5e6f",
                 mount_relative_path="report.pdf",
             )
 
@@ -425,7 +425,7 @@ class TestAsyncFiles:
     async def test_method_create_upload_url(self, async_client: AsyncComposio) -> None:
         file = await async_client.tool_router.session.files.create_upload_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
         assert_matches_type(FileCreateUploadURLResponse, file, path=["response"])
@@ -434,7 +434,7 @@ class TestAsyncFiles:
     async def test_method_create_upload_url_with_all_params(self, async_client: AsyncComposio) -> None:
         file = await async_client.tool_router.session.files.create_upload_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
             mimetype="application/pdf",
         )
@@ -444,7 +444,7 @@ class TestAsyncFiles:
     async def test_raw_response_create_upload_url(self, async_client: AsyncComposio) -> None:
         response = await async_client.tool_router.session.files.with_raw_response.create_upload_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         )
 
@@ -457,7 +457,7 @@ class TestAsyncFiles:
     async def test_streaming_response_create_upload_url(self, async_client: AsyncComposio) -> None:
         async with async_client.tool_router.session.files.with_streaming_response.create_upload_url(
             mount_id="files",
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             mount_relative_path="report.pdf",
         ) as response:
             assert not response.is_closed
@@ -480,6 +480,6 @@ class TestAsyncFiles:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `mount_id` but received ''"):
             await async_client.tool_router.session.files.with_raw_response.create_upload_url(
                 mount_id="",
-                session_id="trs_123456789",
+                session_id="trs_1a2b3c4d5e6f",
                 mount_relative_path="report.pdf",
             )

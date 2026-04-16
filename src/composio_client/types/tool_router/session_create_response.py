@@ -9,6 +9,7 @@ __all__ = [
     "SessionCreateResponse",
     "Config",
     "ConfigManageConnections",
+    "ConfigMultiAccount",
     "ConfigTags",
     "ConfigToolkits",
     "ConfigToolkitsEnabled",
@@ -44,6 +45,28 @@ class ConfigManageConnections(BaseModel):
 
     enabled: Optional[bool] = None
     """Whether to enable the connection manager for automatic connection handling"""
+
+
+class ConfigMultiAccount(BaseModel):
+    """Multi-account configuration for this session."""
+
+    enable: Optional[bool] = None
+    """When true, enables multi-account mode for this session.
+
+    When not set, falls back to org/project-level configuration.
+    """
+
+    max_accounts_per_toolkit: Optional[int] = None
+    """Maximum number of connected accounts allowed per toolkit.
+
+    Defaults to 5 when multi-account is enabled.
+    """
+
+    require_explicit_selection: Optional[bool] = None
+    """
+    When true, require explicit account selection when multiple accounts are
+    connected. When false (default), use the first/default account.
+    """
 
 
 class ConfigTags(BaseModel):
@@ -127,6 +150,9 @@ class Config(BaseModel):
 
     manage_connections: Optional[ConfigManageConnections] = None
     """Manage connections configuration"""
+
+    multi_account: Optional[ConfigMultiAccount] = None
+    """Multi-account configuration for this session."""
 
     tags: Optional[ConfigTags] = None
     """MCP tool annotation hints for filtering tools with enabled/disabled support.

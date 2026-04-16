@@ -140,14 +140,14 @@ class TestSession:
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
         session = client.tool_router.session.retrieve(
-            "trs_123456789",
+            "trs_1a2b3c4d5e6f",
         )
         assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
         response = client.tool_router.session.with_raw_response.retrieve(
-            "trs_123456789",
+            "trs_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -158,7 +158,7 @@ class TestSession:
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
         with client.tool_router.session.with_streaming_response.retrieve(
-            "trs_123456789",
+            "trs_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -518,14 +518,14 @@ class TestSession:
     @parametrize
     def test_method_toolkits(self, client: Composio) -> None:
         session = client.tool_router.session.toolkits(
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         )
         assert_matches_type(SessionToolkitsResponse, session, path=["response"])
 
     @parametrize
     def test_method_toolkits_with_all_params(self, client: Composio) -> None:
         session = client.tool_router.session.toolkits(
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             cursor="cursor",
             is_connected=True,
             limit=1,
@@ -537,7 +537,7 @@ class TestSession:
     @parametrize
     def test_raw_response_toolkits(self, client: Composio) -> None:
         response = client.tool_router.session.with_raw_response.toolkits(
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -548,7 +548,7 @@ class TestSession:
     @parametrize
     def test_streaming_response_toolkits(self, client: Composio) -> None:
         with client.tool_router.session.with_streaming_response.toolkits(
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -722,14 +722,14 @@ class TestAsyncSession:
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
         session = await async_client.tool_router.session.retrieve(
-            "trs_123456789",
+            "trs_1a2b3c4d5e6f",
         )
         assert_matches_type(SessionRetrieveResponse, session, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
         response = await async_client.tool_router.session.with_raw_response.retrieve(
-            "trs_123456789",
+            "trs_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -740,7 +740,7 @@ class TestAsyncSession:
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
         async with async_client.tool_router.session.with_streaming_response.retrieve(
-            "trs_123456789",
+            "trs_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1100,14 +1100,14 @@ class TestAsyncSession:
     @parametrize
     async def test_method_toolkits(self, async_client: AsyncComposio) -> None:
         session = await async_client.tool_router.session.toolkits(
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         )
         assert_matches_type(SessionToolkitsResponse, session, path=["response"])
 
     @parametrize
     async def test_method_toolkits_with_all_params(self, async_client: AsyncComposio) -> None:
         session = await async_client.tool_router.session.toolkits(
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
             cursor="cursor",
             is_connected=True,
             limit=1,
@@ -1119,7 +1119,7 @@ class TestAsyncSession:
     @parametrize
     async def test_raw_response_toolkits(self, async_client: AsyncComposio) -> None:
         response = await async_client.tool_router.session.with_raw_response.toolkits(
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -1130,7 +1130,7 @@ class TestAsyncSession:
     @parametrize
     async def test_streaming_response_toolkits(self, async_client: AsyncComposio) -> None:
         async with async_client.tool_router.session.with_streaming_response.toolkits(
-            session_id="trs_123456789",
+            session_id="trs_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
