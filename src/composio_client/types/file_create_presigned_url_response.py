@@ -26,7 +26,7 @@ class FileCreatePresignedURLResponse(BaseModel):
     """Object storage upload location.
 
     Example:
-    "projects/prj_xyz789/requests/slack/SLACK_UPLOAD_FILE/document_9mZn4q.docx"
+    "projects/pr_1a2b3c4d5e6f/requests/slack/SLACK_UPLOAD_FILE/document_9mZn4q.docx"
     """
 
     metadata: Metadata
@@ -35,14 +35,14 @@ class FileCreatePresignedURLResponse(BaseModel):
     """Presigned URL for upload.
 
     Example:
-    "https://storage.composio.dev/projects/prj_xyz789/requests/slack/document_9mZn4q.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=3600..."
+    "https://storage.composio.dev/projects/pr_1a2b3c4d5e6f/requests/slack/document_9mZn4q.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=3600..."
     """
 
     new_presigned_url: str = FieldInfo(alias="newPresignedUrl")
     """[DEPRECATED] Use new_presigned_url instead.
 
     Presigned URL for upload. Example:
-    "https://storage.composio.dev/projects/prj_xyz789/requests/slack/document_9mZn4q.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=3600..."
+    "https://storage.composio.dev/projects/pr_1a2b3c4d5e6f/requests/slack/document_9mZn4q.docx?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Expires=3600..."
     """
 
     type: Literal["new"]
