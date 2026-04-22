@@ -249,10 +249,8 @@ class MultiAccount(TypedDict, total=False):
 
 class TagsUnionMember1(TypedDict, total=False):
     disable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
-    """Tags that the tool must NOT have any of"""
 
     enable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
-    """Tags that the tool must have at least one of"""
 
 
 Tags: TypeAlias = Union[
@@ -289,10 +287,8 @@ class ToolsDisable(TypedDict, total=False):
 
 class ToolsTagsTagsUnionMember1(TypedDict, total=False):
     disable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
-    """Tags that the tool must NOT have any of"""
 
     enable: List[Literal["readOnlyHint", "destructiveHint", "idempotentHint", "openWorldHint"]]
-    """Tags that the tool must have at least one of"""
 
 
 ToolsTagsTags: TypeAlias = Union[
