@@ -84,6 +84,7 @@ class SessionResource(SyncAPIResource):
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
         multi_account: session_create_params.MultiAccount | Omit = omit,
+        preload: session_create_params.Preload | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
@@ -121,6 +122,15 @@ class SessionResource(SyncAPIResource):
           multi_account: Configure multi-account behavior. When enabled, users can connect multiple
               accounts per toolkit.
 
+          preload: Preload configuration. Controls which tools appear in `session.tools` and the
+              MCP server tool list so the agent can call them directly without going through
+              search first — useful for frequently used tools. Each slug must be allowed by
+              the session filters (`toolkits`, `tools`, `tags`), otherwise session creation
+              fails with a 400. Custom tools declared in `custom_tools` / `custom_toolkits`
+              can also be preloaded. Not supported when multi-account is enabled. Each
+              preloaded tool adds to the agent context window, so keep the list at or under
+              ~20 tools.
+
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
               and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
@@ -152,6 +162,7 @@ class SessionResource(SyncAPIResource):
                     "experimental": experimental,
                     "manage_connections": manage_connections,
                     "multi_account": multi_account,
+                    "preload": preload,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
@@ -218,17 +229,19 @@ class SessionResource(SyncAPIResource):
     ) -> SessionExecuteResponse:
         """Executes a specific tool within a tool router session.
 
-        The toolkit is
-        automatically inferred from the tool slug. The tool must belong to an allowed
-        toolkit and must not be disabled in the session configuration. This endpoint
-        validates permissions, resolves connected accounts, and executes the tool with
-        the session context.
+        This is the primary
+        execution endpoint for both meta tools and app tools exposed by the session. The
+        toolkit is automatically inferred from the tool slug. For app tools, the tool
+        must belong to an allowed toolkit and must not be disabled in the session
+        configuration. The endpoint validates permissions, resolves connected accounts
+        when needed, and executes the tool with the session context.
 
         Args:
           session_id: The unique identifier of the tool router session. Required for public API
               endpoints, optional for internal endpoints where it is injected by middleware.
 
-          tool_slug: The unique slug identifier of the tool to execute
+          tool_slug: The unique slug identifier of the tool to execute. Supports both meta tools and
+              app tools exposed by the session.
 
           account: Account identifier to specify which connected account to use. Use the account ID
               (e.g. "coup_hurricane_dal_analytical") or an alias. When omitted with a single
@@ -286,8 +299,11 @@ class SessionResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionExecuteMetaResponse:
-        """
-        Executes a Composio meta tool (COMPOSIO\\__\\**) within a tool router session.
+        """Executes a Composio meta tool (COMPOSIO\\__\\**) within a tool router session.
+
+        This
+        endpoint is kept for meta-tool compatibility; clients can also use the primary
+        /execute endpoint.
 
         Args:
           session_id: The unique identifier of the tool router session. Required for public API
@@ -585,10 +601,11 @@ class SessionResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionToolsResponse:
-        """
-        Returns the meta tools available in a tool router session with their complete
-        schemas. This includes request and response schemas specific to the session
-        context.
+        """Returns the tools available in a tool router session with their complete
+        schemas.
+
+        This includes both meta tools and any preloaded app tools exposed by
+        the session.
 
         Args:
           session_id: Tool router session ID
@@ -648,6 +665,7 @@ class AsyncSessionResource(AsyncAPIResource):
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
         multi_account: session_create_params.MultiAccount | Omit = omit,
+        preload: session_create_params.Preload | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
@@ -685,6 +703,15 @@ class AsyncSessionResource(AsyncAPIResource):
           multi_account: Configure multi-account behavior. When enabled, users can connect multiple
               accounts per toolkit.
 
+          preload: Preload configuration. Controls which tools appear in `session.tools` and the
+              MCP server tool list so the agent can call them directly without going through
+              search first — useful for frequently used tools. Each slug must be allowed by
+              the session filters (`toolkits`, `tools`, `tags`), otherwise session creation
+              fails with a 400. Custom tools declared in `custom_tools` / `custom_toolkits`
+              can also be preloaded. Not supported when multi-account is enabled. Each
+              preloaded tool adds to the agent context window, so keep the list at or under
+              ~20 tools.
+
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
               and disabled (tool must NOT have any) lists. Toolkit-level tags override this.
@@ -716,6 +743,7 @@ class AsyncSessionResource(AsyncAPIResource):
                     "experimental": experimental,
                     "manage_connections": manage_connections,
                     "multi_account": multi_account,
+                    "preload": preload,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
@@ -782,17 +810,19 @@ class AsyncSessionResource(AsyncAPIResource):
     ) -> SessionExecuteResponse:
         """Executes a specific tool within a tool router session.
 
-        The toolkit is
-        automatically inferred from the tool slug. The tool must belong to an allowed
-        toolkit and must not be disabled in the session configuration. This endpoint
-        validates permissions, resolves connected accounts, and executes the tool with
-        the session context.
+        This is the primary
+        execution endpoint for both meta tools and app tools exposed by the session. The
+        toolkit is automatically inferred from the tool slug. For app tools, the tool
+        must belong to an allowed toolkit and must not be disabled in the session
+        configuration. The endpoint validates permissions, resolves connected accounts
+        when needed, and executes the tool with the session context.
 
         Args:
           session_id: The unique identifier of the tool router session. Required for public API
               endpoints, optional for internal endpoints where it is injected by middleware.
 
-          tool_slug: The unique slug identifier of the tool to execute
+          tool_slug: The unique slug identifier of the tool to execute. Supports both meta tools and
+              app tools exposed by the session.
 
           account: Account identifier to specify which connected account to use. Use the account ID
               (e.g. "coup_hurricane_dal_analytical") or an alias. When omitted with a single
@@ -850,8 +880,11 @@ class AsyncSessionResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionExecuteMetaResponse:
-        """
-        Executes a Composio meta tool (COMPOSIO\\__\\**) within a tool router session.
+        """Executes a Composio meta tool (COMPOSIO\\__\\**) within a tool router session.
+
+        This
+        endpoint is kept for meta-tool compatibility; clients can also use the primary
+        /execute endpoint.
 
         Args:
           session_id: The unique identifier of the tool router session. Required for public API
@@ -1149,10 +1182,11 @@ class AsyncSessionResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionToolsResponse:
-        """
-        Returns the meta tools available in a tool router session with their complete
-        schemas. This includes request and response schemas specific to the session
-        context.
+        """Returns the tools available in a tool router session with their complete
+        schemas.
+
+        This includes both meta tools and any preloaded app tools exposed by
+        the session.
 
         Args:
           session_id: Tool router session ID

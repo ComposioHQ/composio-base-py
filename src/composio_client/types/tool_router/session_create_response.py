@@ -8,6 +8,7 @@ from ..._models import BaseModel
 __all__ = [
     "SessionCreateResponse",
     "Config",
+    "ConfigPreload",
     "ConfigManageConnections",
     "ConfigMultiAccount",
     "ConfigTags",
@@ -25,7 +26,22 @@ __all__ = [
     "ExperimentalCustomToolkit",
     "ExperimentalCustomToolkitTool",
     "ExperimentalCustomTool",
+    "Warning",
 ]
+
+
+class ConfigPreload(BaseModel):
+    """Preload configuration.
+
+    Controls which tools appear in `session.tools` and the MCP server tool list, callable directly without going through search. Each preloaded tool adds to the agent context — roughly ≤20 tools is recommended. Always present in the response (empty `tools: []` when the session was created without a preload config).
+    """
+
+    tools: List[str]
+    """Tool slugs preloaded for this session.
+
+    Appear in `session.tools` and the MCP server tool list, callable directly
+    without going through search. Empty array when no preload was configured.
+    """
 
 
 class ConfigManageConnections(BaseModel):
@@ -139,6 +155,15 @@ class ConfigWorkbench(BaseModel):
 class Config(BaseModel):
     """The session configuration including user, toolkits, and overrides"""
 
+    preload: ConfigPreload
+    """Preload configuration.
+
+    Controls which tools appear in `session.tools` and the MCP server tool list,
+    callable directly without going through search. Each preloaded tool adds to the
+    agent context — roughly ≤20 tools is recommended. Always present in the response
+    (empty `tools: []` when the session was created without a preload config).
+    """
+
     user_id: str
     """User identifier for this session"""
 
@@ -146,7 +171,10 @@ class Config(BaseModel):
     """Auth config overrides per toolkit"""
 
     connected_accounts: Optional[Dict[str, str]] = None
-    """Connected account overrides per toolkit"""
+    """Connected account overrides per toolkit.
+
+    Each connected account must belong to the same user_id as the session.
+    """
 
     manage_connections: Optional[ConfigManageConnections] = None
     """Manage connections configuration"""
@@ -239,6 +267,17 @@ class Experimental(BaseModel):
     """Custom tools — standalone or extending Composio toolkits"""
 
 
+class Warning(BaseModel):
+    code: Literal["PRELOAD_TOOLS_HIGH_CONTEXT_USAGE"]
+    """Stable machine code identifying the advisory. Safe to switch on in client code."""
+
+    message: str
+    """Human-readable description of the advisory.
+
+    Suitable for logging or surfacing to end users.
+    """
+
+
 class SessionCreateResponse(BaseModel):
     config: Config
     """The session configuration including user, toolkits, and overrides"""
@@ -255,4 +294,10 @@ class SessionCreateResponse(BaseModel):
     """Experimental features including the generated system prompt.
 
     Only returned on session creation, not on GET.
+    """
+
+    warnings: Optional[List[Warning]] = None
+    """
+    Advisory list — session was created, but the listed issues may warrant
+    attention.
     """

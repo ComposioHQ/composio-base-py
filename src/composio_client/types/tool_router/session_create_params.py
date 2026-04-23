@@ -16,6 +16,7 @@ __all__ = [
     "ExperimentalCustomTool",
     "ManageConnections",
     "MultiAccount",
+    "Preload",
     "Tags",
     "TagsUnionMember1",
     "Toolkits",
@@ -65,6 +66,18 @@ class SessionCreateParams(TypedDict, total=False):
     """Configure multi-account behavior.
 
     When enabled, users can connect multiple accounts per toolkit.
+    """
+
+    preload: Preload
+    """Preload configuration.
+
+    Controls which tools appear in `session.tools` and the MCP server tool list so
+    the agent can call them directly without going through search first — useful for
+    frequently used tools. Each slug must be allowed by the session filters
+    (`toolkits`, `tools`, `tags`), otherwise session creation fails with a 400.
+    Custom tools declared in `custom_tools` / `custom_toolkits` can also be
+    preloaded. Not supported when multi-account is enabled. Each preloaded tool adds
+    to the agent context window, so keep the list at or under ~20 tools.
     """
 
     tags: Tags
@@ -244,6 +257,21 @@ class MultiAccount(TypedDict, total=False):
     """When true, the agent must explicitly select which account to use.
 
     When false (default), the first/default account is used automatically.
+    """
+
+
+class Preload(TypedDict, total=False):
+    """Preload configuration.
+
+    Controls which tools appear in `session.tools` and the MCP server tool list so the agent can call them directly without going through search first — useful for frequently used tools. Each slug must be allowed by the session filters (`toolkits`, `tools`, `tags`), otherwise session creation fails with a 400. Custom tools declared in `custom_tools` / `custom_toolkits` can also be preloaded. Not supported when multi-account is enabled. Each preloaded tool adds to the agent context window, so keep the list at or under ~20 tools.
+    """
+
+    tools: SequenceNotStr[str]
+    """Tool slugs to preload.
+
+    Each slug must be allowed by the session filters (`toolkits`, `tools`, `tags`)
+    and exist either in the Composio tool catalog or in `custom_tools` /
+    `custom_toolkits` — unknown or blocked slugs return a 400 at session creation.
     """
 
 

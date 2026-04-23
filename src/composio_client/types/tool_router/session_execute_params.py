@@ -10,7 +10,10 @@ __all__ = ["SessionExecuteParams"]
 
 class SessionExecuteParams(TypedDict, total=False):
     tool_slug: Required[str]
-    """The unique slug identifier of the tool to execute"""
+    """The unique slug identifier of the tool to execute.
+
+    Supports both meta tools and app tools exposed by the session.
+    """
 
     account: str
     """Account identifier to specify which connected account to use.

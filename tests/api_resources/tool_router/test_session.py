@@ -90,6 +90,7 @@ class TestSession:
                 "max_accounts_per_toolkit": 5,
                 "require_explicit_selection": False,
             },
+            preload={"tools": ["GMAIL_FETCH_EMAILS", "SLACK_SEND_MESSAGE"]},
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],
@@ -672,6 +673,7 @@ class TestAsyncSession:
                 "max_accounts_per_toolkit": 5,
                 "require_explicit_selection": False,
             },
+            preload={"tools": ["GMAIL_FETCH_EMAILS", "SLACK_SEND_MESSAGE"]},
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],
