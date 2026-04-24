@@ -282,6 +282,12 @@ class SessionCreateResponse(BaseModel):
     config: Config
     """The session configuration including user, toolkits, and overrides"""
 
+    config_version: int
+    """Monotonic version of the config.
+
+    Incremented on each PATCH. Use for optimistic concurrency control.
+    """
+
     mcp: Mcp
 
     session_id: str

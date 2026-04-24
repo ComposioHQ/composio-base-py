@@ -112,7 +112,9 @@ class SessionResource(SyncAPIResource):
 
           connected_accounts: The connected accounts to use for the session. This will override the default
               behaviour and use the given connected account when specific toolkits are being
-              executed
+              executed. Each connected account must exist (not deleted or disabled) and belong
+              to the same `user_id` as the session — otherwise session creation fails with a
+              clear error explaining which account didn't match.
 
           experimental: Experimental features - not stable, may be modified or removed in future
               versions.
@@ -139,8 +141,11 @@ class SessionResource(SyncAPIResource):
           toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
 
-          tools: Tool-level configuration per toolkit - either specify enable tools (whitelist),
-              disable tools (blacklist), or filter by MCP tags for each toolkit
+          tools: Tool-level configuration per toolkit. Allows you to enable, disable, or filter
+              by tags for specific tools within each toolkit. Every slug passed in `enable` /
+              `disable` must be a valid Composio tool slug for that toolkit — invalid or
+              typo'd slugs fail session creation with a clear error listing which ones didn't
+              match.
 
           workbench: Configuration for workbench behavior
 
@@ -693,7 +698,9 @@ class AsyncSessionResource(AsyncAPIResource):
 
           connected_accounts: The connected accounts to use for the session. This will override the default
               behaviour and use the given connected account when specific toolkits are being
-              executed
+              executed. Each connected account must exist (not deleted or disabled) and belong
+              to the same `user_id` as the session — otherwise session creation fails with a
+              clear error explaining which account didn't match.
 
           experimental: Experimental features - not stable, may be modified or removed in future
               versions.
@@ -720,8 +727,11 @@ class AsyncSessionResource(AsyncAPIResource):
           toolkits: Toolkit configuration - specify either enable toolkits (allowlist) or disable
               toolkits (denylist). Mutually exclusive.
 
-          tools: Tool-level configuration per toolkit - either specify enable tools (whitelist),
-              disable tools (blacklist), or filter by MCP tags for each toolkit
+          tools: Tool-level configuration per toolkit. Allows you to enable, disable, or filter
+              by tags for specific tools within each toolkit. Every slug passed in `enable` /
+              `disable` must be a valid Composio tool slug for that toolkit — invalid or
+              typo'd slugs fail session creation with a clear error listing which ones didn't
+              match.
 
           workbench: Configuration for workbench behavior
 
