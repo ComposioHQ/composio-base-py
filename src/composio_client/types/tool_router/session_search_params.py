@@ -23,11 +23,11 @@ class Query(TypedDict, total=False):
     use_case: Required[str]
     """The task or use case to search tools for.
 
-    Provide a detailed description to get the best results.
+    Provide a detailed description to get the best results. Max 1024 characters.
     """
 
     known_fields: str
     """
     Known field hints as key:value pairs (e.g., "channel_name:general,
-    user_email:john@example.com")
+    user_email:john@example.com"). Max 500 characters.
     """

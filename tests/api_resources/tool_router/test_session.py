@@ -99,7 +99,7 @@ class TestSession:
             tools={
                 "gmail": {"enable": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
                 "slack": {"disable": ["SLACK_ADD_EMOJI"]},
-                "slack_bot": {
+                "slackbot": {
                     "tags": {
                         "disable": ["openWorldHint"],
                         "enable": ["destructiveHint"],
@@ -682,7 +682,7 @@ class TestAsyncSession:
             tools={
                 "gmail": {"enable": ["GMAIL_SEND_EMAIL", "GMAIL_FETCH_EMAILS"]},
                 "slack": {"disable": ["SLACK_ADD_EMOJI"]},
-                "slack_bot": {
+                "slackbot": {
                     "tags": {
                         "disable": ["openWorldHint"],
                         "enable": ["destructiveHint"],
