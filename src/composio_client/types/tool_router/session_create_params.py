@@ -363,3 +363,9 @@ class Workbench(TypedDict, total=False):
 
     When enabled, workbench can call URLs and APIs directly.
     """
+
+    sandbox_size: Literal["standard", "medium", "large", "xlarge"]
+    """
+    Sandbox compute tier: standard (1 vCPU / 1 GB), medium (2 vCPU / 2 GB), large (4
+    vCPU / 4 GB), xlarge (8 vCPU / 8 GB). Defaults to standard.
+    """

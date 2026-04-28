@@ -110,6 +110,7 @@ class TestSession:
                 "auto_offload_threshold": 20000,
                 "enable": True,
                 "enable_proxy_execution": True,
+                "sandbox_size": "standard",
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])
@@ -693,6 +694,7 @@ class TestAsyncSession:
                 "auto_offload_threshold": 20000,
                 "enable": True,
                 "enable_proxy_execution": True,
+                "sandbox_size": "standard",
             },
         )
         assert_matches_type(SessionCreateResponse, session, path=["response"])

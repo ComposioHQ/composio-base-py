@@ -151,6 +151,12 @@ class ConfigWorkbench(BaseModel):
     proxy_execution_enabled: Optional[bool] = None
     """Whether proxy execution is enabled in the workbench"""
 
+    sandbox_size: Optional[Literal["standard", "medium", "large", "xlarge"]] = None
+    """
+    Sandbox compute tier: standard (1 vCPU / 1 GB), medium (2 vCPU / 2 GB), large (4
+    vCPU / 4 GB), xlarge (8 vCPU / 8 GB). Defaults to standard.
+    """
+
 
 class Config(BaseModel):
     """The session configuration including user, toolkits, and overrides"""
