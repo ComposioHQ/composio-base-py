@@ -384,7 +384,7 @@ class ToolsResource(SyncAPIResource):
           body: The request body (for POST, PUT, and PATCH requests)
 
           connected_account_id: The ID of the connected account to use for authentication. Required
-              unless ``custom_connection_data`` is provided — the proxy endpoint
+              unless ``custom_connection_data`` is provided. The proxy endpoint
               returns 400 ``ExternalProxy_MissingAuthContext`` when both are
               omitted.
 
@@ -791,7 +791,7 @@ class AsyncToolsResource(AsyncAPIResource):
           body: The request body (for POST, PUT, and PATCH requests)
 
           connected_account_id: The ID of the connected account to use for authentication. Required
-              unless ``custom_connection_data`` is provided — the proxy endpoint
+              unless ``custom_connection_data`` is provided. The proxy endpoint
               returns 400 ``ExternalProxy_MissingAuthContext`` when both are
               omitted.
 
