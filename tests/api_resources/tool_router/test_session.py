@@ -201,6 +201,7 @@ class TestSession:
                 "ref": "bar",
                 "inputs": "bar",
             },
+            enable_auto_workbench_offload=True,
         )
         assert_matches_type(SessionExecuteResponse, session, path=["response"])
 
@@ -789,6 +790,7 @@ class TestAsyncSession:
                 "ref": "bar",
                 "inputs": "bar",
             },
+            enable_auto_workbench_offload=True,
         )
         assert_matches_type(SessionExecuteResponse, session, path=["response"])
 

@@ -225,6 +225,7 @@ class SessionResource(SyncAPIResource):
         tool_slug: str,
         account: str | Omit = omit,
         arguments: Dict[str, Optional[object]] | Omit = omit,
+        enable_auto_workbench_offload: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -252,7 +253,7 @@ class SessionResource(SyncAPIResource):
           tool_slug: The unique slug identifier of the tool to execute. Supports both meta tools and
               app tools exposed by the session.
 
-          account: Account identifier to specify which connected account to use for direct app tool
+          account: Account identifier to specify which connected account to use for direct tool
               execution. Use the account ID (e.g. "coup_hurricane_dal_analytical") or an
               alias. When omitted with a single account, the default is used. When omitted
               with multiple accounts, an error lists available accounts. Meta/helper tools
@@ -260,6 +261,12 @@ class SessionResource(SyncAPIResource):
               for example COMPOSIO_MULTI_EXECUTE_TOOL.tools[].account.
 
           arguments: The arguments required by the tool
+
+          enable_auto_workbench_offload: When true, direct non-meta tool execution may return a workbench offload preview
+              if the response exceeds the configured threshold and the session workbench is
+              enabled. When omitted or false, direct tool execution returns the normal inline
+              response. Meta/helper tools are unaffected, and COMPOSIO_MULTI_EXECUTE_TOOL uses
+              session.workbench configuration for its own batch-level offload behavior.
 
           extra_headers: Send extra headers
 
@@ -278,6 +285,7 @@ class SessionResource(SyncAPIResource):
                     "tool_slug": tool_slug,
                     "account": account,
                     "arguments": arguments,
+                    "enable_auto_workbench_offload": enable_auto_workbench_offload,
                 },
                 session_execute_params.SessionExecuteParams,
             ),
@@ -817,6 +825,7 @@ class AsyncSessionResource(AsyncAPIResource):
         tool_slug: str,
         account: str | Omit = omit,
         arguments: Dict[str, Optional[object]] | Omit = omit,
+        enable_auto_workbench_offload: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -844,7 +853,7 @@ class AsyncSessionResource(AsyncAPIResource):
           tool_slug: The unique slug identifier of the tool to execute. Supports both meta tools and
               app tools exposed by the session.
 
-          account: Account identifier to specify which connected account to use for direct app tool
+          account: Account identifier to specify which connected account to use for direct tool
               execution. Use the account ID (e.g. "coup_hurricane_dal_analytical") or an
               alias. When omitted with a single account, the default is used. When omitted
               with multiple accounts, an error lists available accounts. Meta/helper tools
@@ -852,6 +861,12 @@ class AsyncSessionResource(AsyncAPIResource):
               for example COMPOSIO_MULTI_EXECUTE_TOOL.tools[].account.
 
           arguments: The arguments required by the tool
+
+          enable_auto_workbench_offload: When true, direct non-meta tool execution may return a workbench offload preview
+              if the response exceeds the configured threshold and the session workbench is
+              enabled. When omitted or false, direct tool execution returns the normal inline
+              response. Meta/helper tools are unaffected, and COMPOSIO_MULTI_EXECUTE_TOOL uses
+              session.workbench configuration for its own batch-level offload behavior.
 
           extra_headers: Send extra headers
 
@@ -870,6 +885,7 @@ class AsyncSessionResource(AsyncAPIResource):
                     "tool_slug": tool_slug,
                     "account": account,
                     "arguments": arguments,
+                    "enable_auto_workbench_offload": enable_auto_workbench_offload,
                 },
                 session_execute_params.SessionExecuteParams,
             ),
