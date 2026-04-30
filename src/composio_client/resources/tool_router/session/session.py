@@ -239,7 +239,11 @@ class SessionResource(SyncAPIResource):
         toolkit is automatically inferred from the tool slug. For app tools, the tool
         must belong to an allowed toolkit and must not be disabled in the session
         configuration. The endpoint validates permissions, resolves connected accounts
-        when needed, and executes the tool with the session context.
+        when needed, and executes the tool with the session context. The top-level
+        account field applies only to direct app tool execution in multi-account
+        sessions. Meta/helper tools either ignore it or define their own
+        account-selection fields, for example
+        COMPOSIO_MULTI_EXECUTE_TOOL.tools[].account.
 
         Args:
           session_id: The unique identifier of the tool router session. Required for public API
@@ -248,10 +252,12 @@ class SessionResource(SyncAPIResource):
           tool_slug: The unique slug identifier of the tool to execute. Supports both meta tools and
               app tools exposed by the session.
 
-          account: Account identifier to specify which connected account to use. Use the account ID
-              (e.g. "coup_hurricane_dal_analytical") or an alias. When omitted with a single
-              account, the default is used. When omitted with multiple accounts, an error
-              lists available accounts.
+          account: Account identifier to specify which connected account to use for direct app tool
+              execution. Use the account ID (e.g. "coup_hurricane_dal_analytical") or an
+              alias. When omitted with a single account, the default is used. When omitted
+              with multiple accounts, an error lists available accounts. Meta/helper tools
+              either ignore this top-level field or define their own account-selection fields,
+              for example COMPOSIO_MULTI_EXECUTE_TOOL.tools[].account.
 
           arguments: The arguments required by the tool
 
@@ -825,7 +831,11 @@ class AsyncSessionResource(AsyncAPIResource):
         toolkit is automatically inferred from the tool slug. For app tools, the tool
         must belong to an allowed toolkit and must not be disabled in the session
         configuration. The endpoint validates permissions, resolves connected accounts
-        when needed, and executes the tool with the session context.
+        when needed, and executes the tool with the session context. The top-level
+        account field applies only to direct app tool execution in multi-account
+        sessions. Meta/helper tools either ignore it or define their own
+        account-selection fields, for example
+        COMPOSIO_MULTI_EXECUTE_TOOL.tools[].account.
 
         Args:
           session_id: The unique identifier of the tool router session. Required for public API
@@ -834,10 +844,12 @@ class AsyncSessionResource(AsyncAPIResource):
           tool_slug: The unique slug identifier of the tool to execute. Supports both meta tools and
               app tools exposed by the session.
 
-          account: Account identifier to specify which connected account to use. Use the account ID
-              (e.g. "coup_hurricane_dal_analytical") or an alias. When omitted with a single
-              account, the default is used. When omitted with multiple accounts, an error
-              lists available accounts.
+          account: Account identifier to specify which connected account to use for direct app tool
+              execution. Use the account ID (e.g. "coup_hurricane_dal_analytical") or an
+              alias. When omitted with a single account, the default is used. When omitted
+              with multiple accounts, an error lists available accounts. Meta/helper tools
+              either ignore this top-level field or define their own account-selection fields,
+              for example COMPOSIO_MULTI_EXECUTE_TOOL.tools[].account.
 
           arguments: The arguments required by the tool
 

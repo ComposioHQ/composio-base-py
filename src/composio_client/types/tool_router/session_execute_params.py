@@ -16,11 +16,13 @@ class SessionExecuteParams(TypedDict, total=False):
     """
 
     account: str
-    """Account identifier to specify which connected account to use.
-
-    Use the account ID (e.g. "coup_hurricane_dal_analytical") or an alias. When
-    omitted with a single account, the default is used. When omitted with multiple
-    accounts, an error lists available accounts.
+    """
+    Account identifier to specify which connected account to use for direct app tool
+    execution. Use the account ID (e.g. "coup_hurricane_dal_analytical") or an
+    alias. When omitted with a single account, the default is used. When omitted
+    with multiple accounts, an error lists available accounts. Meta/helper tools
+    either ignore this top-level field or define their own account-selection fields,
+    for example COMPOSIO_MULTI_EXECUTE_TOOL.tools[].account.
     """
 
     arguments: Dict[str, Optional[object]]

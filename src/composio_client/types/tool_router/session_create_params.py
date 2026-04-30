@@ -14,6 +14,7 @@ __all__ = [
     "ExperimentalCustomToolkit",
     "ExperimentalCustomToolkitTool",
     "ExperimentalCustomTool",
+    "ExperimentalPermissions",
     "ManageConnections",
     "MultiAccount",
     "Preload",
@@ -187,6 +188,28 @@ class ExperimentalCustomTool(TypedDict, total=False):
     """JSON Schema describing tool output (optional)"""
 
 
+class ExperimentalPermissions(TypedDict, total=False):
+    """Per-tool elicitation permission config.
+
+    Default behavior + per-tool always_allow/always_deny overrides. Mutation via PATCH.
+    """
+
+    default: Required[Literal["allow_all", "ask_every_call", "ask_once_per_session"]]
+    """Default elicitation behavior when no override matches.
+
+    `allow_all` runs every tool without prompting; `ask_every_call` prompts on each
+    invocation; `ask_once_per_session` prompts once and remembers the answer for the
+    rest of the session.
+    """
+
+    overrides: Dict[str, Literal["always_allow", "always_deny"]]
+    """Per-tool overrides keyed by `${toolSlug}:${connectedAccountId ?? "__none__"}`.
+
+    `always_allow` skips the prompt and runs the tool; `always_deny` blocks the
+    tool. Overrides take precedence over `default` and the session cache.
+    """
+
+
 class Experimental(TypedDict, total=False):
     """
     Experimental features - not stable, may be modified or removed in future versions.
@@ -207,6 +230,13 @@ class Experimental(TypedDict, total=False):
 
     Standalone tools need no auth. Tools with extends_toolkit inherit the Composio
     toolkit's connection.
+    """
+
+    permissions: ExperimentalPermissions
+    """Per-tool elicitation permission config.
+
+    Default behavior + per-tool always_allow/always_deny overrides. Mutation via
+    PATCH.
     """
 
 

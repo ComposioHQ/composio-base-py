@@ -310,6 +310,6 @@ class SessionCreateResponse(BaseModel):
 
     warnings: Optional[List[Warning]] = None
     """
-    Advisory list — session was created, but the listed issues may warrant
-    attention.
+    Advisory list — the session exists and is usable, but the listed issues may
+    warrant attention.
     """

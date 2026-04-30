@@ -26,6 +26,7 @@ __all__ = [
     "ExperimentalCustomToolkit",
     "ExperimentalCustomToolkitTool",
     "ExperimentalCustomTool",
+    "Warning",
 ]
 
 
@@ -269,6 +270,17 @@ class Experimental(BaseModel):
     """Custom tools — standalone or extending Composio toolkits"""
 
 
+class Warning(BaseModel):
+    code: Literal["PRELOAD_TOOLS_HIGH_CONTEXT_USAGE"]
+    """Stable machine code identifying the advisory. Safe to switch on in client code."""
+
+    message: str
+    """Human-readable description of the advisory.
+
+    Suitable for logging or surfacing to end users.
+    """
+
+
 class SessionRetrieveResponse(BaseModel):
     config: Config
     """The session configuration including user, toolkits, and overrides"""
@@ -289,3 +301,9 @@ class SessionRetrieveResponse(BaseModel):
 
     experimental: Optional[Experimental] = None
     """Experimental features"""
+
+    warnings: Optional[List[Warning]] = None
+    """
+    Advisory list — the session exists and is usable, but the listed issues may
+    warrant attention.
+    """

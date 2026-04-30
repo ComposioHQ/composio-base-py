@@ -78,6 +78,10 @@ class TestSession:
                         "output_schema": {"foo": "bar"},
                     }
                 ],
+                "permissions": {
+                    "default": "allow_all",
+                    "overrides": {"foo": "always_allow"},
+                },
             },
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
@@ -662,6 +666,10 @@ class TestAsyncSession:
                         "output_schema": {"foo": "bar"},
                     }
                 ],
+                "permissions": {
+                    "default": "allow_all",
+                    "overrides": {"foo": "always_allow"},
+                },
             },
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
