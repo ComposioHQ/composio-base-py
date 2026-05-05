@@ -28,6 +28,7 @@ __all__ = [
     "ConnectionDataUnionMember1ValUnionMember3AuthedUser",
     "ConnectionDataUnionMember1ValUnionMember4",
     "ConnectionDataUnionMember1ValUnionMember5",
+    "ConnectionDataUnionMember1ValUnionMember6",
     "ConnectionDataUnionMember2",
     "ConnectionDataUnionMember2Val",
     "ConnectionDataUnionMember2ValUnionMember0",
@@ -996,6 +997,74 @@ class ConnectionDataUnionMember1ValUnionMember5(BaseModel):
         __pydantic_extra__: Dict[str, Optional[object]]
 
 
+class ConnectionDataUnionMember1ValUnionMember6(BaseModel):
+    status: Literal["REVOKED"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    long_redirect_url: Optional[bool] = None
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    revoked_at: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    state_prefix: Optional[str] = None
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+    else:
+        __pydantic_extra__: Dict[str, Optional[object]]
+
+
 ConnectionDataUnionMember1Val: TypeAlias = Union[
     ConnectionDataUnionMember1ValUnionMember0,
     ConnectionDataUnionMember1ValUnionMember1,
@@ -1003,6 +1072,7 @@ ConnectionDataUnionMember1Val: TypeAlias = Union[
     ConnectionDataUnionMember1ValUnionMember3,
     ConnectionDataUnionMember1ValUnionMember4,
     ConnectionDataUnionMember1ValUnionMember5,
+    ConnectionDataUnionMember1ValUnionMember6,
 ]
 
 
@@ -5206,5 +5276,5 @@ class ConnectedAccountCreateResponse(BaseModel):
     redirect_url: Optional[str] = None
     """DEPRECATED: This field will be removed in a future version"""
 
-    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]
+    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE", "REVOKED"]
     """DEPRECATED: This field will be removed in a future version"""

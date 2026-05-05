@@ -10,7 +10,9 @@ __all__ = [
     "SessionConfigHistoryResponse",
     "Item",
     "ItemConfig",
+    "ItemConfigExecute",
     "ItemConfigPreload",
+    "ItemConfigSearch",
     "ItemConfigManageConnections",
     "ItemConfigMultiAccount",
     "ItemConfigTags",
@@ -26,18 +28,29 @@ __all__ = [
 ]
 
 
+class ItemConfigExecute(BaseModel):
+    """Execute helper configuration"""
+
+    enable_multi_execute: Optional[bool] = None
+
+
 class ItemConfigPreload(BaseModel):
     """Preload configuration.
 
-    Controls which tools appear in `session.tools` and the MCP server tool list, callable directly without going through search. Each preloaded tool adds to the agent context — roughly ≤20 tools is recommended. Always present in the response (empty `tools: []` when the session was created without a preload config).
+    Explicit slugs are returned as an array; dynamic preload is returned as "all".
     """
 
-    tools: List[str]
-    """Tool slugs preloaded for this session.
-
-    Appear in `session.tools` and the MCP server tool list, callable directly
-    without going through search. Empty array when no preload was configured.
+    tools: Union[List[str], Literal["all"]]
     """
+    Explicit preloaded tool slugs, or "all" when the session dynamically exposes all
+    app tools allowed by its filters.
+    """
+
+
+class ItemConfigSearch(BaseModel):
+    """Search helper configuration"""
+
+    enable: Optional[bool] = None
 
 
 class ItemConfigManageConnections(BaseModel):
@@ -157,14 +170,17 @@ class ItemConfigWorkbench(BaseModel):
 class ItemConfig(BaseModel):
     """The session configuration at this version"""
 
+    execute: ItemConfigExecute
+    """Execute helper configuration"""
+
     preload: ItemConfigPreload
     """Preload configuration.
 
-    Controls which tools appear in `session.tools` and the MCP server tool list,
-    callable directly without going through search. Each preloaded tool adds to the
-    agent context — roughly ≤20 tools is recommended. Always present in the response
-    (empty `tools: []` when the session was created without a preload config).
+    Explicit slugs are returned as an array; dynamic preload is returned as "all".
     """
+
+    search: ItemConfigSearch
+    """Search helper configuration"""
 
     user_id: str
     """User identifier for this session"""

@@ -20,5 +20,5 @@ class ConnectedAccountRefreshResponse(BaseModel):
     process (null for auth schemes that do not require redirection)
     """
 
-    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]
+    status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE", "REVOKED"]
     """The current status of the connected account (e.g., active, pending, failed)"""

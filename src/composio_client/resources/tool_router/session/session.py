@@ -29,6 +29,7 @@ from ...._base_client import make_request_options
 from ....types.tool_router import (
     session_link_params,
     session_patch_params,
+    session_tools_params,
     session_attach_params,
     session_create_params,
     session_search_params,
@@ -87,10 +88,12 @@ class SessionResource(SyncAPIResource):
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
+        execute: session_create_params.Execute | Omit = omit,
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
         multi_account: session_create_params.MultiAccount | Omit = omit,
         preload: session_create_params.Preload | Omit = omit,
+        search: session_create_params.Search | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
@@ -130,14 +133,9 @@ class SessionResource(SyncAPIResource):
           multi_account: Configure multi-account behavior. When enabled, users can connect multiple
               accounts per toolkit.
 
-          preload: Preload configuration. Controls which tools appear in `session.tools` and the
-              MCP server tool list so the agent can call them directly without going through
-              search first — useful for frequently used tools. Each slug must be allowed by
-              the session filters (`toolkits`, `tools`, `tags`), otherwise session creation
-              fails with a 400. Custom tools declared in `custom_tools` / `custom_toolkits`
-              can also be preloaded. Not supported when multi-account is enabled. Each
-              preloaded tool adds to the agent context window, so keep the list at or under
-              ~20 tools.
+          preload: Preload configuration. Use an explicit list for frequently used tool slugs, or
+              "all" to dynamically expose every app tool allowed by positive
+              toolkits/tools/tags filters.
 
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
@@ -170,10 +168,12 @@ class SessionResource(SyncAPIResource):
                     "user_id": user_id,
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
+                    "execute": execute,
                     "experimental": experimental,
                     "manage_connections": manage_connections,
                     "multi_account": multi_account,
                     "preload": preload,
+                    "search": search,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
@@ -519,10 +519,12 @@ class SessionResource(SyncAPIResource):
         *,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
+        execute: session_patch_params.Execute | Omit = omit,
         experimental: Optional[session_patch_params.Experimental] | Omit = omit,
         manage_connections: Optional[session_patch_params.ManageConnections] | Omit = omit,
         multi_account: Optional[session_patch_params.MultiAccount] | Omit = omit,
         preload: session_patch_params.Preload | Omit = omit,
+        search: session_patch_params.Search | Omit = omit,
         tags: session_patch_params.Tags | Omit = omit,
         toolkits: session_patch_params.Toolkits | Omit = omit,
         tools: Dict[str, session_patch_params.Tools] | Omit = omit,
@@ -553,14 +555,9 @@ class SessionResource(SyncAPIResource):
               to the same `user_id` as the session — otherwise session creation fails with a
               clear error explaining which account didn't match.
 
-          preload: Preload configuration. Controls which tools appear in `session.tools` and the
-              MCP server tool list so the agent can call them directly without going through
-              search first — useful for frequently used tools. Each slug must be allowed by
-              the session filters (`toolkits`, `tools`, `tags`), otherwise session creation
-              fails with a 400. Custom tools declared in `custom_tools` / `custom_toolkits`
-              can also be preloaded. Not supported when multi-account is enabled. Each
-              preloaded tool adds to the agent context window, so keep the list at or under
-              ~20 tools.
+          preload: Preload configuration. Use an explicit list for frequently used tool slugs, or
+              "all" to dynamically expose every app tool allowed by positive
+              toolkits/tools/tags filters.
 
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
@@ -592,10 +589,12 @@ class SessionResource(SyncAPIResource):
                 {
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
+                    "execute": execute,
                     "experimental": experimental,
                     "manage_connections": manage_connections,
                     "multi_account": multi_account,
                     "preload": preload,
+                    "search": search,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
@@ -813,6 +812,8 @@ class SessionResource(SyncAPIResource):
         self,
         session_id: str,
         *,
+        cursor: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -820,14 +821,20 @@ class SessionResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionToolsResponse:
-        """Returns the tools available in a tool router session with their complete
-        schemas.
+        """Returns tools available in a tool router session with complete schemas.
 
-        This includes both meta tools and any preloaded app tools exposed by
-        the session.
+        Results
+        are paginated; use `next_cursor` to fetch the next page.
 
         Args:
           session_id: Tool router session ID
+
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
+
+          limit: Number of items per page, max allowed is 500
 
           extra_headers: Send extra headers
 
@@ -842,7 +849,17 @@ class SessionResource(SyncAPIResource):
         return self._get(
             path_template("/api/v3.1/tool_router/session/{session_id}/tools", session_id=session_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    session_tools_params.SessionToolsParams,
+                ),
             ),
             cast_to=SessionToolsResponse,
         )
@@ -881,10 +898,12 @@ class AsyncSessionResource(AsyncAPIResource):
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
+        execute: session_create_params.Execute | Omit = omit,
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
         multi_account: session_create_params.MultiAccount | Omit = omit,
         preload: session_create_params.Preload | Omit = omit,
+        search: session_create_params.Search | Omit = omit,
         tags: session_create_params.Tags | Omit = omit,
         toolkits: session_create_params.Toolkits | Omit = omit,
         tools: Dict[str, session_create_params.Tools] | Omit = omit,
@@ -924,14 +943,9 @@ class AsyncSessionResource(AsyncAPIResource):
           multi_account: Configure multi-account behavior. When enabled, users can connect multiple
               accounts per toolkit.
 
-          preload: Preload configuration. Controls which tools appear in `session.tools` and the
-              MCP server tool list so the agent can call them directly without going through
-              search first — useful for frequently used tools. Each slug must be allowed by
-              the session filters (`toolkits`, `tools`, `tags`), otherwise session creation
-              fails with a 400. Custom tools declared in `custom_tools` / `custom_toolkits`
-              can also be preloaded. Not supported when multi-account is enabled. Each
-              preloaded tool adds to the agent context window, so keep the list at or under
-              ~20 tools.
+          preload: Preload configuration. Use an explicit list for frequently used tool slugs, or
+              "all" to dynamically expose every app tool allowed by positive
+              toolkits/tools/tags filters.
 
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
@@ -964,10 +978,12 @@ class AsyncSessionResource(AsyncAPIResource):
                     "user_id": user_id,
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
+                    "execute": execute,
                     "experimental": experimental,
                     "manage_connections": manage_connections,
                     "multi_account": multi_account,
                     "preload": preload,
+                    "search": search,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
@@ -1313,10 +1329,12 @@ class AsyncSessionResource(AsyncAPIResource):
         *,
         auth_configs: Dict[str, str] | Omit = omit,
         connected_accounts: Dict[str, str] | Omit = omit,
+        execute: session_patch_params.Execute | Omit = omit,
         experimental: Optional[session_patch_params.Experimental] | Omit = omit,
         manage_connections: Optional[session_patch_params.ManageConnections] | Omit = omit,
         multi_account: Optional[session_patch_params.MultiAccount] | Omit = omit,
         preload: session_patch_params.Preload | Omit = omit,
+        search: session_patch_params.Search | Omit = omit,
         tags: session_patch_params.Tags | Omit = omit,
         toolkits: session_patch_params.Toolkits | Omit = omit,
         tools: Dict[str, session_patch_params.Tools] | Omit = omit,
@@ -1347,14 +1365,9 @@ class AsyncSessionResource(AsyncAPIResource):
               to the same `user_id` as the session — otherwise session creation fails with a
               clear error explaining which account didn't match.
 
-          preload: Preload configuration. Controls which tools appear in `session.tools` and the
-              MCP server tool list so the agent can call them directly without going through
-              search first — useful for frequently used tools. Each slug must be allowed by
-              the session filters (`toolkits`, `tools`, `tags`), otherwise session creation
-              fails with a 400. Custom tools declared in `custom_tools` / `custom_toolkits`
-              can also be preloaded. Not supported when multi-account is enabled. Each
-              preloaded tool adds to the agent context window, so keep the list at or under
-              ~20 tools.
+          preload: Preload configuration. Use an explicit list for frequently used tool slugs, or
+              "all" to dynamically expose every app tool allowed by positive
+              toolkits/tools/tags filters.
 
           tags: Global MCP tool annotation hints for filtering. Array format is treated as
               enabled list. Object format supports both enabled (tool must have at least one)
@@ -1386,10 +1399,12 @@ class AsyncSessionResource(AsyncAPIResource):
                 {
                     "auth_configs": auth_configs,
                     "connected_accounts": connected_accounts,
+                    "execute": execute,
                     "experimental": experimental,
                     "manage_connections": manage_connections,
                     "multi_account": multi_account,
                     "preload": preload,
+                    "search": search,
                     "tags": tags,
                     "toolkits": toolkits,
                     "tools": tools,
@@ -1607,6 +1622,8 @@ class AsyncSessionResource(AsyncAPIResource):
         self,
         session_id: str,
         *,
+        cursor: str | Omit = omit,
+        limit: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1614,14 +1631,20 @@ class AsyncSessionResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SessionToolsResponse:
-        """Returns the tools available in a tool router session with their complete
-        schemas.
+        """Returns tools available in a tool router session with complete schemas.
 
-        This includes both meta tools and any preloaded app tools exposed by
-        the session.
+        Results
+        are paginated; use `next_cursor` to fetch the next page.
 
         Args:
           session_id: Tool router session ID
+
+          cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
+              limit. The page is the page number and the limit is the number of items per
+              page. The cursor is used to paginate through the items. The cursor is not
+              required for the first page.
+
+          limit: Number of items per page, max allowed is 500
 
           extra_headers: Send extra headers
 
@@ -1636,7 +1659,17 @@ class AsyncSessionResource(AsyncAPIResource):
         return await self._get(
             path_template("/api/v3.1/tool_router/session/{session_id}/tools", session_id=session_id),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "cursor": cursor,
+                        "limit": limit,
+                    },
+                    session_tools_params.SessionToolsParams,
+                ),
             ),
             cast_to=SessionToolsResponse,
         )

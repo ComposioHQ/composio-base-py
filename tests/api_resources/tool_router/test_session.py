@@ -46,6 +46,7 @@ class TestSession:
                 "slack": "ac_7g8h9i0j1k2l",
             },
             connected_accounts={"github": "ca_3m4n5o6p7q8r"},
+            execute={"enable_multi_execute": True},
             experimental={
                 "assistive_prompt_config": {"user_timezone": "America/New_York"},
                 "custom_toolkits": [
@@ -97,7 +98,8 @@ class TestSession:
                 "max_accounts_per_toolkit": 5,
                 "require_explicit_selection": False,
             },
-            preload={"tools": ["GMAIL_FETCH_EMAILS", "SLACK_SEND_MESSAGE"]},
+            preload={"tools": "all"},
+            search={"enable": True},
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],
@@ -561,6 +563,7 @@ class TestSession:
                 "slack": "ac_7g8h9i0j1k2l",
             },
             connected_accounts={"github": "ca_3m4n5o6p7q8r"},
+            execute={"enable_multi_execute": True},
             experimental={
                 "permissions": {
                     "default": "allow_all",
@@ -578,7 +581,8 @@ class TestSession:
                 "max_accounts_per_toolkit": 5,
                 "require_explicit_selection": False,
             },
-            preload={"tools": ["GMAIL_FETCH_EMAILS", "SLACK_SEND_MESSAGE"]},
+            preload={"tools": "all"},
+            search={"enable": True},
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],
@@ -899,14 +903,23 @@ class TestSession:
     @parametrize
     def test_method_tools(self, client: Composio) -> None:
         session = client.tool_router.session.tools(
-            "session_id",
+            session_id="session_id",
+        )
+        assert_matches_type(SessionToolsResponse, session, path=["response"])
+
+    @parametrize
+    def test_method_tools_with_all_params(self, client: Composio) -> None:
+        session = client.tool_router.session.tools(
+            session_id="session_id",
+            cursor="cursor",
+            limit=1,
         )
         assert_matches_type(SessionToolsResponse, session, path=["response"])
 
     @parametrize
     def test_raw_response_tools(self, client: Composio) -> None:
         response = client.tool_router.session.with_raw_response.tools(
-            "session_id",
+            session_id="session_id",
         )
 
         assert response.is_closed is True
@@ -917,7 +930,7 @@ class TestSession:
     @parametrize
     def test_streaming_response_tools(self, client: Composio) -> None:
         with client.tool_router.session.with_streaming_response.tools(
-            "session_id",
+            session_id="session_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -931,7 +944,7 @@ class TestSession:
     def test_path_params_tools(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
             client.tool_router.session.with_raw_response.tools(
-                "",
+                session_id="",
             )
 
 
@@ -956,6 +969,7 @@ class TestAsyncSession:
                 "slack": "ac_7g8h9i0j1k2l",
             },
             connected_accounts={"github": "ca_3m4n5o6p7q8r"},
+            execute={"enable_multi_execute": True},
             experimental={
                 "assistive_prompt_config": {"user_timezone": "America/New_York"},
                 "custom_toolkits": [
@@ -1007,7 +1021,8 @@ class TestAsyncSession:
                 "max_accounts_per_toolkit": 5,
                 "require_explicit_selection": False,
             },
-            preload={"tools": ["GMAIL_FETCH_EMAILS", "SLACK_SEND_MESSAGE"]},
+            preload={"tools": "all"},
+            search={"enable": True},
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],
@@ -1471,6 +1486,7 @@ class TestAsyncSession:
                 "slack": "ac_7g8h9i0j1k2l",
             },
             connected_accounts={"github": "ca_3m4n5o6p7q8r"},
+            execute={"enable_multi_execute": True},
             experimental={
                 "permissions": {
                     "default": "allow_all",
@@ -1488,7 +1504,8 @@ class TestAsyncSession:
                 "max_accounts_per_toolkit": 5,
                 "require_explicit_selection": False,
             },
-            preload={"tools": ["GMAIL_FETCH_EMAILS", "SLACK_SEND_MESSAGE"]},
+            preload={"tools": "all"},
+            search={"enable": True},
             tags={
                 "disable": ["destructiveHint"],
                 "enable": ["openWorldHint"],
@@ -1809,14 +1826,23 @@ class TestAsyncSession:
     @parametrize
     async def test_method_tools(self, async_client: AsyncComposio) -> None:
         session = await async_client.tool_router.session.tools(
-            "session_id",
+            session_id="session_id",
+        )
+        assert_matches_type(SessionToolsResponse, session, path=["response"])
+
+    @parametrize
+    async def test_method_tools_with_all_params(self, async_client: AsyncComposio) -> None:
+        session = await async_client.tool_router.session.tools(
+            session_id="session_id",
+            cursor="cursor",
+            limit=1,
         )
         assert_matches_type(SessionToolsResponse, session, path=["response"])
 
     @parametrize
     async def test_raw_response_tools(self, async_client: AsyncComposio) -> None:
         response = await async_client.tool_router.session.with_raw_response.tools(
-            "session_id",
+            session_id="session_id",
         )
 
         assert response.is_closed is True
@@ -1827,7 +1853,7 @@ class TestAsyncSession:
     @parametrize
     async def test_streaming_response_tools(self, async_client: AsyncComposio) -> None:
         async with async_client.tool_router.session.with_streaming_response.tools(
-            "session_id",
+            session_id="session_id",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -1841,5 +1867,5 @@ class TestAsyncSession:
     async def test_path_params_tools(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `session_id` but received ''"):
             await async_client.tool_router.session.with_raw_response.tools(
-                "",
+                session_id="",
             )

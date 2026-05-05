@@ -29,7 +29,7 @@ class ConnectedAccountListParams(TypedDict, total=False):
     order_direction: Literal["asc", "desc"]
     """The order direction of the connected accounts"""
 
-    statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
+    statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE", "REVOKED"]]]
     """The status of the connected account"""
 
     toolkit_slugs: Optional[SequenceNotStr[str]]

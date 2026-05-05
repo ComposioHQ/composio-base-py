@@ -116,5 +116,12 @@ class Item(BaseModel):
 
 
 class SessionToolsResponse(BaseModel):
+    current_page: float
+
     items: List[Item]
-    """List of tools with their complete schemas"""
+
+    total_items: float
+
+    total_pages: float
+
+    next_cursor: Optional[str] = None

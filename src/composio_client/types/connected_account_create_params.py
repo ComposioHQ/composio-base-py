@@ -31,6 +31,7 @@ __all__ = [
     "ConnectionStateUnionMember1ValUnionMember3AuthedUser",
     "ConnectionStateUnionMember1ValUnionMember4",
     "ConnectionStateUnionMember1ValUnionMember5",
+    "ConnectionStateUnionMember1ValUnionMember6",
     "ConnectionStateUnionMember2",
     "ConnectionStateUnionMember2Val",
     "ConnectionStateUnionMember2ValUnionMember0",
@@ -871,6 +872,62 @@ class ConnectionStateUnionMember1ValUnionMember5(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
+class ConnectionStateUnionMember1ValUnionMember6(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    status: Required[Literal["REVOKED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    revoked_at: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
 ConnectionStateUnionMember1Val: TypeAlias = Union[
     ConnectionStateUnionMember1ValUnionMember0,
     ConnectionStateUnionMember1ValUnionMember1,
@@ -878,6 +935,7 @@ ConnectionStateUnionMember1Val: TypeAlias = Union[
     ConnectionStateUnionMember1ValUnionMember3,
     ConnectionStateUnionMember1ValUnionMember4,
     ConnectionStateUnionMember1ValUnionMember5,
+    ConnectionStateUnionMember1ValUnionMember6,
 ]
 
 

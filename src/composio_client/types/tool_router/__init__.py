@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from .session_link_params import SessionLinkParams as SessionLinkParams
 from .session_patch_params import SessionPatchParams as SessionPatchParams
+from .session_tools_params import SessionToolsParams as SessionToolsParams
 from .session_attach_params import SessionAttachParams as SessionAttachParams
 from .session_create_params import SessionCreateParams as SessionCreateParams
 from .session_link_response import SessionLinkResponse as SessionLinkResponse

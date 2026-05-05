@@ -8,7 +8,9 @@ from ..._models import BaseModel
 __all__ = [
     "SessionCreateResponse",
     "Config",
+    "ConfigExecute",
     "ConfigPreload",
+    "ConfigSearch",
     "ConfigManageConnections",
     "ConfigMultiAccount",
     "ConfigTags",
@@ -30,18 +32,29 @@ __all__ = [
 ]
 
 
+class ConfigExecute(BaseModel):
+    """Execute helper configuration"""
+
+    enable_multi_execute: Optional[bool] = None
+
+
 class ConfigPreload(BaseModel):
     """Preload configuration.
 
-    Controls which tools appear in `session.tools` and the MCP server tool list, callable directly without going through search. Each preloaded tool adds to the agent context — roughly ≤20 tools is recommended. Always present in the response (empty `tools: []` when the session was created without a preload config).
+    Explicit slugs are returned as an array; dynamic preload is returned as "all".
     """
 
-    tools: List[str]
-    """Tool slugs preloaded for this session.
-
-    Appear in `session.tools` and the MCP server tool list, callable directly
-    without going through search. Empty array when no preload was configured.
+    tools: Union[List[str], Literal["all"]]
     """
+    Explicit preloaded tool slugs, or "all" when the session dynamically exposes all
+    app tools allowed by its filters.
+    """
+
+
+class ConfigSearch(BaseModel):
+    """Search helper configuration"""
+
+    enable: Optional[bool] = None
 
 
 class ConfigManageConnections(BaseModel):
@@ -159,16 +172,19 @@ class ConfigWorkbench(BaseModel):
 
 
 class Config(BaseModel):
-    """The session configuration including user, toolkits, and overrides"""
+    """The configuration used to create this session"""
+
+    execute: ConfigExecute
+    """Execute helper configuration"""
 
     preload: ConfigPreload
     """Preload configuration.
 
-    Controls which tools appear in `session.tools` and the MCP server tool list,
-    callable directly without going through search. Each preloaded tool adds to the
-    agent context — roughly ≤20 tools is recommended. Always present in the response
-    (empty `tools: []` when the session was created without a preload config).
+    Explicit slugs are returned as an array; dynamic preload is returned as "all".
     """
+
+    search: ConfigSearch
+    """Search helper configuration"""
 
     user_id: str
     """User identifier for this session"""
@@ -286,7 +302,7 @@ class Warning(BaseModel):
 
 class SessionCreateResponse(BaseModel):
     config: Config
-    """The session configuration including user, toolkits, and overrides"""
+    """The configuration used to create this session"""
 
     config_version: int
     """Monotonic version of the config.

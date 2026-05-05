@@ -9,11 +9,13 @@ from ..._types import SequenceNotStr
 
 __all__ = [
     "SessionPatchParams",
+    "Execute",
     "Experimental",
     "ExperimentalPermissions",
     "ManageConnections",
     "MultiAccount",
     "Preload",
+    "Search",
     "Tags",
     "TagsUnionMember1",
     "Toolkits",
@@ -47,6 +49,8 @@ class SessionPatchParams(TypedDict, total=False):
     didn't match.
     """
 
+    execute: Execute
+
     experimental: Optional[Experimental]
 
     manage_connections: Optional[ManageConnections]
@@ -56,14 +60,11 @@ class SessionPatchParams(TypedDict, total=False):
     preload: Preload
     """Preload configuration.
 
-    Controls which tools appear in `session.tools` and the MCP server tool list so
-    the agent can call them directly without going through search first — useful for
-    frequently used tools. Each slug must be allowed by the session filters
-    (`toolkits`, `tools`, `tags`), otherwise session creation fails with a 400.
-    Custom tools declared in `custom_tools` / `custom_toolkits` can also be
-    preloaded. Not supported when multi-account is enabled. Each preloaded tool adds
-    to the agent context window, so keep the list at or under ~20 tools.
+    Use an explicit list for frequently used tool slugs, or "all" to dynamically
+    expose every app tool allowed by positive toolkits/tools/tags filters.
     """
+
+    search: Search
 
     tags: Tags
     """Global MCP tool annotation hints for filtering.
@@ -92,6 +93,10 @@ class SessionPatchParams(TypedDict, total=False):
     workbench: Optional[Workbench]
 
 
+class Execute(TypedDict, total=False):
+    enable_multi_execute: bool
+
+
 class ExperimentalPermissions(TypedDict, total=False):
     """Per-tool elicitation permission config.
 
@@ -106,11 +111,15 @@ class ExperimentalPermissions(TypedDict, total=False):
     rest of the session.
     """
 
-    overrides: Dict[str, Literal["always_allow", "always_deny"]]
-    """Per-tool overrides keyed by `${toolSlug}:${connectedAccountId ?? "__none__"}`.
-
-    `always_allow` skips the prompt and runs the tool; `always_deny` blocks the
-    tool. Overrides take precedence over `default` and the session cache.
+    overrides: Dict[str, Literal["always_allow", "always_deny", "ask_once", "ask_always"]]
+    """
+    Per-tool overrides keyed by `${toolSlug}:${connectedAccountId ?? "__none__"}`,
+    plus account-wide overrides keyed by `*:${connectedAccountId ?? "__none__"}`.
+    Exact tool overrides take precedence over account-wide overrides. `always_allow`
+    skips the prompt and runs the tool; `always_deny` blocks the tool; `ask_once`
+    prompts once per session (allow/deny) and remembers; `ask_always` prompts on
+    every call with allow-once/allow-session/deny, ignoring any cached session
+    allow. Overrides take precedence over `default`.
     """
 
 
@@ -174,16 +183,19 @@ class MultiAccount(TypedDict, total=False):
 class Preload(TypedDict, total=False):
     """Preload configuration.
 
-    Controls which tools appear in `session.tools` and the MCP server tool list so the agent can call them directly without going through search first — useful for frequently used tools. Each slug must be allowed by the session filters (`toolkits`, `tools`, `tags`), otherwise session creation fails with a 400. Custom tools declared in `custom_tools` / `custom_toolkits` can also be preloaded. Not supported when multi-account is enabled. Each preloaded tool adds to the agent context window, so keep the list at or under ~20 tools.
+    Use an explicit list for frequently used tool slugs, or "all" to dynamically expose every app tool allowed by positive toolkits/tools/tags filters.
     """
 
-    tools: SequenceNotStr[str]
-    """Tool slugs to preload.
-
-    Each slug must be allowed by the session filters (`toolkits`, `tools`, `tags`)
-    and exist either in the Composio tool catalog or in `custom_tools` /
-    `custom_toolkits` — unknown or blocked slugs return a 400 at session creation.
+    tools: Union[SequenceNotStr[str], str]
     """
+    Explicit tool slugs to preload, or "all" to dynamically expose all current and
+    future app tools allowed by the positive session filters. "all" is capped at
+    1000 tools and is not supported without a positive allowlist.
+    """
+
+
+class Search(TypedDict, total=False):
+    enable: bool
 
 
 class TagsUnionMember1(TypedDict, total=False):

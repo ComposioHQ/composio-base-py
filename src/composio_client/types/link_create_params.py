@@ -87,6 +87,7 @@ __all__ = [
     "ConnectionDataUnionMember71",
     "ConnectionDataUnionMember72",
     "ConnectionDataUnionMember73",
+    "ConnectionDataUnionMember74",
 ]
 
 
@@ -829,17 +830,25 @@ class ConnectionDataUnionMember12(TypedDict, total=False, extra_items=Optional[o
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
 
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
     proxy_password: str
 
     proxy_username: str
 
     region: str
 
+    revoked_at: str
+
     server_location: str
 
     shop: str
 
     site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
 
     subdomain: str
 
@@ -901,15 +910,9 @@ class ConnectionDataUnionMember14(TypedDict, total=False, extra_items=Optional[o
 
     account_url: str
 
-    api_key: str
-
     api_url: str
 
     base_url: str
-
-    basic_encoded: str
-
-    bearer_token: str
 
     borneo_dashboard_url: str
 
@@ -922,8 +925,6 @@ class ConnectionDataUnionMember14(TypedDict, total=False, extra_items=Optional[o
     extension: str
 
     form_api_base_url: str
-
-    generic_api_key: str
 
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
@@ -1009,9 +1010,15 @@ class ConnectionDataUnionMember16(TypedDict, total=False, extra_items=Optional[o
 
     account_url: str
 
+    api_key: str
+
     api_url: str
 
     base_url: str
+
+    basic_encoded: str
+
+    bearer_token: str
 
     borneo_dashboard_url: str
 
@@ -1024,6 +1031,8 @@ class ConnectionDataUnionMember16(TypedDict, total=False, extra_items=Optional[o
     extension: str
 
     form_api_base_url: str
+
+    generic_api_key: str
 
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
@@ -1097,8 +1106,6 @@ class ConnectionDataUnionMember17(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember18(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    username: Required[str]
-
     account_id: str
 
     account_url: str
@@ -1122,8 +1129,6 @@ class ConnectionDataUnionMember18(TypedDict, total=False, extra_items=Optional[o
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    password: str
 
     proxy_password: str
 
@@ -1197,6 +1202,8 @@ class ConnectionDataUnionMember19(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember20(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    username: Required[str]
+
     account_id: str
 
     account_url: str
@@ -1220,6 +1227,8 @@ class ConnectionDataUnionMember20(TypedDict, total=False, extra_items=Optional[o
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    password: str
 
     proxy_password: str
 
@@ -1289,8 +1298,6 @@ class ConnectionDataUnionMember21(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember22(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    token: Required[str]
-
     account_id: str
 
     account_url: str
@@ -1385,6 +1392,8 @@ class ConnectionDataUnionMember23(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember24(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    token: Required[str]
+
     account_id: str
 
     account_url: str
@@ -1431,8 +1440,6 @@ class ConnectionDataUnionMember24(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember25(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
-
     account_id: str
 
     account_url: str
@@ -1444,8 +1451,6 @@ class ConnectionDataUnionMember25(TypedDict, total=False, extra_items=Optional[o
     borneo_dashboard_url: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    composio_link_redirect_url: str
 
     dc: str
 
@@ -1481,7 +1486,7 @@ class ConnectionDataUnionMember25(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember26(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    credentials_json: Required[str]
+    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     account_id: str
 
@@ -1494,6 +1499,8 @@ class ConnectionDataUnionMember26(TypedDict, total=False, extra_items=Optional[o
     borneo_dashboard_url: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    composio_link_redirect_url: str
 
     dc: str
 
@@ -1577,6 +1584,8 @@ class ConnectionDataUnionMember27(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember28(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    credentials_json: Required[str]
+
     account_id: str
 
     account_url: str
@@ -1777,10 +1786,6 @@ class ConnectionDataUnionMember32(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
-    error: str
-
-    error_description: str
-
     extension: str
 
     form_api_base_url: str
@@ -1827,7 +1832,9 @@ class ConnectionDataUnionMember33(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
-    expired_at: str
+    error: str
+
+    error_description: str
 
     extension: str
 
@@ -1874,6 +1881,8 @@ class ConnectionDataUnionMember34(TypedDict, total=False, extra_items=Optional[o
     dc: str
 
     domain: str
+
+    expired_at: str
 
     extension: str
 
@@ -2059,10 +2068,6 @@ class ConnectionDataUnionMember38(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
-    error: str
-
-    error_description: str
-
     extension: str
 
     form_api_base_url: str
@@ -2109,7 +2114,9 @@ class ConnectionDataUnionMember39(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
-    expired_at: str
+    error: str
+
+    error_description: str
 
     extension: str
 
@@ -2157,6 +2164,8 @@ class ConnectionDataUnionMember40(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
+    expired_at: str
+
     extension: str
 
     form_api_base_url: str
@@ -2187,8 +2196,6 @@ class ConnectionDataUnionMember40(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember41(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
-
     account_id: str
 
     account_url: str
@@ -2235,9 +2242,7 @@ class ConnectionDataUnionMember41(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember42(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
-
-    session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
+    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     account_id: str
 
@@ -2335,6 +2340,56 @@ class ConnectionDataUnionMember43(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember44(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
+
+    session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember45(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2384,7 +2439,7 @@ class ConnectionDataUnionMember44(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember45(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember46(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -2402,52 +2457,6 @@ class ConnectionDataUnionMember45(TypedDict, total=False, extra_items=Optional[o
     domain: str
 
     expired_at: str
-
-    extension: str
-
-    form_api_base_url: str
-
-    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
-
-    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    proxy_password: str
-
-    proxy_username: str
-
-    region: str
-
-    server_location: str
-
-    shop: str
-
-    site_name: str
-
-    subdomain: str
-
-    version: str
-
-    your_server: str
-
-    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
-
-
-class ConnectionDataUnionMember46(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    account_id: str
-
-    account_url: str
-
-    api_url: str
-
-    base_url: str
-
-    borneo_dashboard_url: str
-
-    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    dc: str
-
-    domain: str
 
     extension: str
 
@@ -2525,10 +2534,6 @@ class ConnectionDataUnionMember47(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember48(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    password: Required[str]
-
-    username: Required[str]
-
     account_id: str
 
     account_url: str
@@ -2645,10 +2650,6 @@ class ConnectionDataUnionMember50(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
-    error: str
-
-    error_description: str
-
     extension: str
 
     form_api_base_url: str
@@ -2699,7 +2700,9 @@ class ConnectionDataUnionMember51(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
-    expired_at: str
+    error: str
+
+    error_description: str
 
     extension: str
 
@@ -2731,6 +2734,10 @@ class ConnectionDataUnionMember51(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember52(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    password: Required[str]
+
+    username: Required[str]
+
     account_id: str
 
     account_url: str
@@ -2746,6 +2753,8 @@ class ConnectionDataUnionMember52(TypedDict, total=False, extra_items=Optional[o
     dc: str
 
     domain: str
+
+    expired_at: str
 
     extension: str
 
@@ -2823,12 +2832,6 @@ class ConnectionDataUnionMember53(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember54(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    application_id: Required[str]
-
-    installation_id: Required[str]
-
-    private_key: Required[str]
-
     account_id: str
 
     account_url: str
@@ -2927,6 +2930,12 @@ class ConnectionDataUnionMember55(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember56(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    application_id: Required[str]
+
+    installation_id: Required[str]
+
+    private_key: Required[str]
+
     account_id: str
 
     account_url: str
@@ -3127,6 +3136,52 @@ class ConnectionDataUnionMember60(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember61(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
     error: str
 
     error_description: str
@@ -3160,7 +3215,7 @@ class ConnectionDataUnionMember60(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember61(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember62(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3208,7 +3263,7 @@ class ConnectionDataUnionMember61(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember62(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember63(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3260,7 +3315,7 @@ class ConnectionDataUnionMember62(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember63(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember64(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     client_id: Required[str]
     """Dynamically registered client ID"""
 
@@ -3322,80 +3377,6 @@ class ConnectionDataUnionMember63(TypedDict, total=False, extra_items=Optional[o
     """The oauth2 state prefix for the connection"""
 
     subdomain: str
-
-    version: str
-
-    your_server: str
-
-    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
-
-
-class ConnectionDataUnionMember64(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    access_token: Required[str]
-
-    client_id: Required[str]
-    """Dynamically registered client ID"""
-
-    account_id: str
-
-    account_url: str
-
-    api_url: str
-
-    base_url: str
-
-    borneo_dashboard_url: str
-
-    client_id_issued_at: float
-
-    client_secret: str
-    """Dynamically registered client secret"""
-
-    client_secret_expires_at: float
-
-    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    dc: str
-
-    domain: str
-
-    expires_in: Union[float, str, None]
-
-    extension: str
-
-    form_api_base_url: str
-
-    id_token: str
-
-    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
-
-    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    long_redirect_url: bool
-    """Whether to return the redirect url without shortening"""
-
-    proxy_password: str
-
-    proxy_username: str
-
-    refresh_token: Optional[str]
-
-    region: str
-
-    scope: Union[str, SequenceNotStr[str], None]
-
-    server_location: str
-
-    shop: str
-
-    site_name: str
-
-    state_prefix: str
-    """The oauth2 state prefix for the connection"""
-
-    subdomain: str
-
-    token_type: str
 
     version: str
 
@@ -3479,6 +3460,80 @@ class ConnectionDataUnionMember65(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember66(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    access_token: Required[str]
+
+    client_id: Required[str]
+    """Dynamically registered client ID"""
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    client_id_issued_at: float
+
+    client_secret: str
+    """Dynamically registered client secret"""
+
+    client_secret_expires_at: float
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expires_in: Union[float, str, None]
+
+    extension: str
+
+    form_api_base_url: str
+
+    id_token: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    long_redirect_url: bool
+    """Whether to return the redirect url without shortening"""
+
+    proxy_password: str
+
+    proxy_username: str
+
+    refresh_token: Optional[str]
+
+    region: str
+
+    scope: Union[str, SequenceNotStr[str], None]
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    state_prefix: str
+    """The oauth2 state prefix for the connection"""
+
+    subdomain: str
+
+    token_type: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember67(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3534,7 +3589,7 @@ class ConnectionDataUnionMember66(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember67(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember68(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3578,52 +3633,6 @@ class ConnectionDataUnionMember67(TypedDict, total=False, extra_items=Optional[o
 
     state_prefix: str
     """The oauth2 state prefix for the connection"""
-
-    subdomain: str
-
-    version: str
-
-    your_server: str
-
-    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
-
-
-class ConnectionDataUnionMember68(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    account_id: str
-
-    account_url: str
-
-    api_url: str
-
-    base_url: str
-
-    borneo_dashboard_url: str
-
-    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    dc: str
-
-    domain: str
-
-    extension: str
-
-    form_api_base_url: str
-
-    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
-
-    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    proxy_password: str
-
-    proxy_username: str
-
-    region: str
-
-    server_location: str
-
-    shop: str
-
-    site_name: str
 
     subdomain: str
 
@@ -3681,12 +3690,6 @@ class ConnectionDataUnionMember69(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember70(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    access_token: Required[str]
-
-    client_id: Required[str]
-
-    client_secret: Required[str]
-
     account_id: str
 
     account_url: str
@@ -3703,10 +3706,6 @@ class ConnectionDataUnionMember70(TypedDict, total=False, extra_items=Optional[o
 
     domain: str
 
-    expires_at: str
-
-    expires_in: Union[float, str, None]
-
     extension: str
 
     form_api_base_url: str
@@ -3721,8 +3720,6 @@ class ConnectionDataUnionMember70(TypedDict, total=False, extra_items=Optional[o
 
     region: str
 
-    scope: Union[str, SequenceNotStr[str], None]
-
     server_location: str
 
     shop: str
@@ -3730,8 +3727,6 @@ class ConnectionDataUnionMember70(TypedDict, total=False, extra_items=Optional[o
     site_name: str
 
     subdomain: str
-
-    token_type: str
 
     version: str
 
@@ -3801,6 +3796,66 @@ class ConnectionDataUnionMember71(TypedDict, total=False, extra_items=Optional[o
 
 
 class ConnectionDataUnionMember72(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+    access_token: Required[str]
+
+    client_id: Required[str]
+
+    client_secret: Required[str]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expires_at: str
+
+    expires_in: Union[float, str, None]
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    scope: Union[str, SequenceNotStr[str], None]
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    token_type: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember73(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3850,7 +3905,7 @@ class ConnectionDataUnionMember72(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember73(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember74(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     account_id: str
 
     account_url: str
@@ -3973,4 +4028,5 @@ ConnectionData: TypeAlias = Union[
     ConnectionDataUnionMember71,
     ConnectionDataUnionMember72,
     ConnectionDataUnionMember73,
+    ConnectionDataUnionMember74,
 ]

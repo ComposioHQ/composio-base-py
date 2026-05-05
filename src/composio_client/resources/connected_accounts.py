@@ -79,6 +79,15 @@ class ConnectedAccountsResource(SyncAPIResource):
         the `user_id` field to associate the connection with a specific user in your
         system.
 
+        **Deprecated for Composio-managed OAuth:** For Composio-managed auth configs on
+        OAuth1, OAuth2, or DCR_OAUTH schemes, this endpoint is being retired and will
+        start returning `400 BadRequest` on **2026-05-08** for new organizations and
+        **2026-07-03** for all remaining organizations. Migrate those calls to
+        `POST /api/v3/connected_accounts/link`. Custom auth configs and non-OAuth
+        schemes (API key, bearer, basic) continue to be supported here. Responses on the
+        retiring path carry a `Deprecation` header (RFC 9745) and a `Sunset` header
+        (RFC 8594) for client-side detection.
+
         Args:
           validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
               API Key Auth scheme
@@ -150,7 +159,9 @@ class ConnectedAccountsResource(SyncAPIResource):
         limit: Optional[float] | Omit = omit,
         order_by: Literal["created_at", "updated_at"] | Omit = omit,
         order_direction: Literal["asc", "desc"] | Omit = omit,
-        statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
+        statuses: Optional[
+            List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE", "REVOKED"]]
+        ]
         | Omit = omit,
         toolkit_slugs: Optional[SequenceNotStr[str]] | Omit = omit,
         user_ids: Optional[SequenceNotStr[str]] | Omit = omit,
@@ -444,6 +455,15 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         the `user_id` field to associate the connection with a specific user in your
         system.
 
+        **Deprecated for Composio-managed OAuth:** For Composio-managed auth configs on
+        OAuth1, OAuth2, or DCR_OAUTH schemes, this endpoint is being retired and will
+        start returning `400 BadRequest` on **2026-05-08** for new organizations and
+        **2026-07-03** for all remaining organizations. Migrate those calls to
+        `POST /api/v3/connected_accounts/link`. Custom auth configs and non-OAuth
+        schemes (API key, bearer, basic) continue to be supported here. Responses on the
+        retiring path carry a `Deprecation` header (RFC 9745) and a `Sunset` header
+        (RFC 8594) for client-side detection.
+
         Args:
           validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
               API Key Auth scheme
@@ -515,7 +535,9 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         limit: Optional[float] | Omit = omit,
         order_by: Literal["created_at", "updated_at"] | Omit = omit,
         order_direction: Literal["asc", "desc"] | Omit = omit,
-        statuses: Optional[List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE"]]]
+        statuses: Optional[
+            List[Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE", "REVOKED"]]
+        ]
         | Omit = omit,
         toolkit_slugs: Optional[SequenceNotStr[str]] | Omit = omit,
         user_ids: Optional[SequenceNotStr[str]] | Omit = omit,
