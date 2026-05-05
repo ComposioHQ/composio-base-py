@@ -79,7 +79,7 @@ class ManageResource(SyncAPIResource):
         if not trigger_id:
             raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
         return self._patch(
-            path_template("/api/v3/trigger_instances/manage/{trigger_id}", trigger_id=trigger_id),
+            path_template("/api/v3.1/trigger_instances/manage/{trigger_id}", trigger_id=trigger_id),
             body=maybe_transform({"status": status}, manage_update_params.ManageUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -118,7 +118,7 @@ class ManageResource(SyncAPIResource):
         if not trigger_id:
             raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
         return self._delete(
-            path_template("/api/v3/trigger_instances/manage/{trigger_id}", trigger_id=trigger_id),
+            path_template("/api/v3.1/trigger_instances/manage/{trigger_id}", trigger_id=trigger_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -181,7 +181,7 @@ class AsyncManageResource(AsyncAPIResource):
         if not trigger_id:
             raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
         return await self._patch(
-            path_template("/api/v3/trigger_instances/manage/{trigger_id}", trigger_id=trigger_id),
+            path_template("/api/v3.1/trigger_instances/manage/{trigger_id}", trigger_id=trigger_id),
             body=await async_maybe_transform({"status": status}, manage_update_params.ManageUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -220,7 +220,7 @@ class AsyncManageResource(AsyncAPIResource):
         if not trigger_id:
             raise ValueError(f"Expected a non-empty value for `trigger_id` but received {trigger_id!r}")
         return await self._delete(
-            path_template("/api/v3/trigger_instances/manage/{trigger_id}", trigger_id=trigger_id),
+            path_template("/api/v3.1/trigger_instances/manage/{trigger_id}", trigger_id=trigger_id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -83,7 +83,7 @@ class LinkResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/connected_accounts/link",
+            "/api/v3.1/connected_accounts/link",
             body=maybe_transform(
                 {
                     "auth_config_id": auth_config_id,
@@ -163,7 +163,7 @@ class AsyncLinkResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/connected_accounts/link",
+            "/api/v3.1/connected_accounts/link",
             body=await async_maybe_transform(
                 {
                     "auth_config_id": auth_config_id,

@@ -142,7 +142,7 @@ class TriggerInstancesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/trigger_instances/active",
+            "/api/v3.1/trigger_instances/active",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -227,7 +227,7 @@ class TriggerInstancesResource(SyncAPIResource):
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
         return self._post(
-            path_template("/api/v3/trigger_instances/{slug}/upsert", slug=slug),
+            path_template("/api/v3.1/trigger_instances/{slug}/upsert", slug=slug),
             body=maybe_transform(
                 {
                     "connected_account_id": connected_account_id,
@@ -356,7 +356,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/trigger_instances/active",
+            "/api/v3.1/trigger_instances/active",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -441,7 +441,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
         return await self._post(
-            path_template("/api/v3/trigger_instances/{slug}/upsert", slug=slug),
+            path_template("/api/v3.1/trigger_instances/{slug}/upsert", slug=slug),
             body=await async_maybe_transform(
                 {
                     "connected_account_id": connected_account_id,

@@ -77,7 +77,7 @@ class MigrationResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/migration/get-nanoid",
+            "/api/v3.1/migration/get-nanoid",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -149,7 +149,7 @@ class AsyncMigrationResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/migration/get-nanoid",
+            "/api/v3.1/migration/get-nanoid",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

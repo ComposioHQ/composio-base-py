@@ -89,7 +89,7 @@ class CustomResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/mcp/servers/custom",
+            "/api/v3.1/mcp/servers/custom",
             body=maybe_transform(
                 {
                     "name": name,
@@ -176,7 +176,7 @@ class AsyncCustomResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/mcp/servers/custom",
+            "/api/v3.1/mcp/servers/custom",
             body=await async_maybe_transform(
                 {
                     "name": name,

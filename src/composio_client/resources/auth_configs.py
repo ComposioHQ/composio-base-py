@@ -76,7 +76,7 @@ class AuthConfigsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/auth_configs",
+            "/api/v3.1/auth_configs",
             body=maybe_transform(
                 {
                     "toolkit": toolkit,
@@ -119,7 +119,7 @@ class AuthConfigsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._get(
-            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -247,7 +247,7 @@ class AuthConfigsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._patch(
-            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/auth_configs/{nanoid}", nanoid=nanoid),
             body=maybe_transform(
                 {
                     "type": type,
@@ -323,7 +323,7 @@ class AuthConfigsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/auth_configs",
+            "/api/v3.1/auth_configs",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -375,7 +375,7 @@ class AuthConfigsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._delete(
-            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -416,7 +416,7 @@ class AuthConfigsResource(SyncAPIResource):
         if not status:
             raise ValueError(f"Expected a non-empty value for `status` but received {status!r}")
         return self._patch(
-            path_template("/api/v3/auth_configs/{nanoid}/{status}", nanoid=nanoid, status=status),
+            path_template("/api/v3.1/auth_configs/{nanoid}/{status}", nanoid=nanoid, status=status),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -474,7 +474,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/auth_configs",
+            "/api/v3.1/auth_configs",
             body=await async_maybe_transform(
                 {
                     "toolkit": toolkit,
@@ -517,7 +517,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._get(
-            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -645,7 +645,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._patch(
-            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/auth_configs/{nanoid}", nanoid=nanoid),
             body=await async_maybe_transform(
                 {
                     "type": type,
@@ -721,7 +721,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/auth_configs",
+            "/api/v3.1/auth_configs",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -773,7 +773,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._delete(
-            path_template("/api/v3/auth_configs/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -814,7 +814,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         if not status:
             raise ValueError(f"Expected a non-empty value for `status` but received {status!r}")
         return await self._patch(
-            path_template("/api/v3/auth_configs/{nanoid}/{status}", nanoid=nanoid, status=status),
+            path_template("/api/v3.1/auth_configs/{nanoid}/{status}", nanoid=nanoid, status=status),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

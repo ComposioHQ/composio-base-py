@@ -92,7 +92,7 @@ class CliResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/cli/create-session",
+            "/api/v3.1/cli/create-session",
             body=maybe_transform(
                 {
                     "scope": scope,
@@ -136,7 +136,7 @@ class CliResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/cli/get-session",
+            "/api/v3.1/cli/get-session",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -208,7 +208,7 @@ class AsyncCliResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/cli/create-session",
+            "/api/v3.1/cli/create-session",
             body=await async_maybe_transform(
                 {
                     "scope": scope,
@@ -252,7 +252,7 @@ class AsyncCliResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/cli/get-session",
+            "/api/v3.1/cli/get-session",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

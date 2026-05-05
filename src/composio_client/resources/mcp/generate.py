@@ -80,7 +80,7 @@ class GenerateResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/mcp/servers/generate",
+            "/api/v3.1/mcp/servers/generate",
             body=maybe_transform(
                 {
                     "mcp_server_id": mcp_server_id,
@@ -156,7 +156,7 @@ class AsyncGenerateResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/mcp/servers/generate",
+            "/api/v3.1/mcp/servers/generate",
             body=await async_maybe_transform(
                 {
                     "mcp_server_id": mcp_server_id,

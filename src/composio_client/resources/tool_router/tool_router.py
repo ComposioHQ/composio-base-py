@@ -89,7 +89,7 @@ class ToolRouterResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/labs/tool_router/session",
+            "/api/v3.1/labs/tool_router/session",
             body=maybe_transform(
                 {
                     "user_id": user_id,
@@ -164,7 +164,7 @@ class AsyncToolRouterResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/labs/tool_router/session",
+            "/api/v3.1/labs/tool_router/session",
             body=await async_maybe_transform(
                 {
                     "user_id": user_id,

@@ -121,7 +121,7 @@ class McpResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/mcp/servers",
+            "/api/v3.1/mcp/servers",
             body=maybe_transform(
                 {
                     "auth_config_ids": auth_config_ids,
@@ -168,7 +168,7 @@ class McpResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            path_template("/api/v3/mcp/{id}", id=id),
+            path_template("/api/v3.1/mcp/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -221,7 +221,7 @@ class McpResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._patch(
-            path_template("/api/v3/mcp/{id}", id=id),
+            path_template("/api/v3.1/mcp/{id}", id=id),
             body=maybe_transform(
                 {
                     "allowed_tools": allowed_tools,
@@ -286,7 +286,7 @@ class McpResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/mcp/servers",
+            "/api/v3.1/mcp/servers",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -339,7 +339,7 @@ class McpResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._delete(
-            path_template("/api/v3/mcp/{id}", id=id),
+            path_template("/api/v3.1/mcp/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -398,7 +398,7 @@ class McpResource(SyncAPIResource):
         if not app_key:
             raise ValueError(f"Expected a non-empty value for `app_key` but received {app_key!r}")
         return self._get(
-            path_template("/api/v3/mcp/app/{app_key}", app_key=app_key),
+            path_template("/api/v3.1/mcp/app/{app_key}", app_key=app_key),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -497,7 +497,7 @@ class AsyncMcpResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/mcp/servers",
+            "/api/v3.1/mcp/servers",
             body=await async_maybe_transform(
                 {
                     "auth_config_ids": auth_config_ids,
@@ -544,7 +544,7 @@ class AsyncMcpResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            path_template("/api/v3/mcp/{id}", id=id),
+            path_template("/api/v3.1/mcp/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -597,7 +597,7 @@ class AsyncMcpResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._patch(
-            path_template("/api/v3/mcp/{id}", id=id),
+            path_template("/api/v3.1/mcp/{id}", id=id),
             body=await async_maybe_transform(
                 {
                     "allowed_tools": allowed_tools,
@@ -662,7 +662,7 @@ class AsyncMcpResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/mcp/servers",
+            "/api/v3.1/mcp/servers",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -715,7 +715,7 @@ class AsyncMcpResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._delete(
-            path_template("/api/v3/mcp/{id}", id=id),
+            path_template("/api/v3.1/mcp/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -774,7 +774,7 @@ class AsyncMcpResource(AsyncAPIResource):
         if not app_key:
             raise ValueError(f"Expected a non-empty value for `app_key` but received {app_key!r}")
         return await self._get(
-            path_template("/api/v3/mcp/app/{app_key}", app_key=app_key),
+            path_template("/api/v3.1/mcp/app/{app_key}", app_key=app_key),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

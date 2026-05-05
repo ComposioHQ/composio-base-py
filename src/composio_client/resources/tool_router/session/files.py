@@ -96,7 +96,7 @@ class FilesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return self._get(
             path_template(
-                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/items",
+                "/api/v3.1/tool_router/session/{session_id}/mounts/{mount_id}/items",
                 session_id=session_id,
                 mount_id=mount_id,
             ),
@@ -156,7 +156,7 @@ class FilesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return self._post(
             path_template(
-                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/delete",
+                "/api/v3.1/tool_router/session/{session_id}/mounts/{mount_id}/delete",
                 session_id=session_id,
                 mount_id=mount_id,
             ),
@@ -205,7 +205,7 @@ class FilesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return self._post(
             path_template(
-                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/download_url",
+                "/api/v3.1/tool_router/session/{session_id}/mounts/{mount_id}/download_url",
                 session_id=session_id,
                 mount_id=mount_id,
             ),
@@ -260,7 +260,7 @@ class FilesResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return self._post(
             path_template(
-                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/upload_url",
+                "/api/v3.1/tool_router/session/{session_id}/mounts/{mount_id}/upload_url",
                 session_id=session_id,
                 mount_id=mount_id,
             ),
@@ -345,7 +345,7 @@ class AsyncFilesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return await self._get(
             path_template(
-                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/items",
+                "/api/v3.1/tool_router/session/{session_id}/mounts/{mount_id}/items",
                 session_id=session_id,
                 mount_id=mount_id,
             ),
@@ -405,7 +405,7 @@ class AsyncFilesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return await self._post(
             path_template(
-                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/delete",
+                "/api/v3.1/tool_router/session/{session_id}/mounts/{mount_id}/delete",
                 session_id=session_id,
                 mount_id=mount_id,
             ),
@@ -456,7 +456,7 @@ class AsyncFilesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return await self._post(
             path_template(
-                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/download_url",
+                "/api/v3.1/tool_router/session/{session_id}/mounts/{mount_id}/download_url",
                 session_id=session_id,
                 mount_id=mount_id,
             ),
@@ -511,7 +511,7 @@ class AsyncFilesResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `mount_id` but received {mount_id!r}")
         return await self._post(
             path_template(
-                "/api/v3/tool_router/session/{session_id}/mounts/{mount_id}/upload_url",
+                "/api/v3.1/tool_router/session/{session_id}/mounts/{mount_id}/upload_url",
                 session_id=session_id,
                 mount_id=mount_id,
             ),

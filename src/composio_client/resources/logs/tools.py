@@ -72,7 +72,7 @@ class ToolsResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            path_template("/api/v3/internal/action_execution/log/{id}", id=id),
+            path_template("/api/v3.1/internal/action_execution/log/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -118,7 +118,7 @@ class ToolsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/internal/action_execution/logs",
+            "/api/v3.1/internal/action_execution/logs",
             body=maybe_transform(
                 {
                     "cursor": cursor,
@@ -185,7 +185,7 @@ class AsyncToolsResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            path_template("/api/v3/internal/action_execution/log/{id}", id=id),
+            path_template("/api/v3.1/internal/action_execution/log/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -231,7 +231,7 @@ class AsyncToolsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/internal/action_execution/logs",
+            "/api/v3.1/internal/action_execution/logs",
             body=await async_maybe_transform(
                 {
                     "cursor": cursor,

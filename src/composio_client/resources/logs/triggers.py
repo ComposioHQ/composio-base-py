@@ -73,7 +73,7 @@ class TriggersResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            path_template("/api/v3/internal/trigger/log/{id}", id=id),
+            path_template("/api/v3.1/internal/trigger/log/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -135,7 +135,7 @@ class TriggersResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/internal/trigger/logs",
+            "/api/v3.1/internal/trigger/logs",
             body=maybe_transform(
                 {
                     "cursor": cursor,
@@ -208,7 +208,7 @@ class AsyncTriggersResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            path_template("/api/v3/internal/trigger/log/{id}", id=id),
+            path_template("/api/v3.1/internal/trigger/log/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -270,7 +270,7 @@ class AsyncTriggersResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/internal/trigger/logs",
+            "/api/v3.1/internal/trigger/logs",
             body=await async_maybe_transform(
                 {
                     "cursor": cursor,

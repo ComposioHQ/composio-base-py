@@ -73,7 +73,7 @@ class RealtimeResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/cli/realtime/auth",
+            "/api/v3.1/cli/realtime/auth",
             body=maybe_transform(
                 {
                     "channel_name": channel_name,
@@ -103,7 +103,7 @@ class RealtimeResource(SyncAPIResource):
         CLI subscribes to private-cli-{project_id}.
         """
         return self._get(
-            "/api/v3/cli/realtime/credentials",
+            "/api/v3.1/cli/realtime/credentials",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -162,7 +162,7 @@ class AsyncRealtimeResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/cli/realtime/auth",
+            "/api/v3.1/cli/realtime/auth",
             body=await async_maybe_transform(
                 {
                     "channel_name": channel_name,
@@ -192,7 +192,7 @@ class AsyncRealtimeResource(AsyncAPIResource):
         CLI subscribes to private-cli-{project_id}.
         """
         return await self._get(
-            "/api/v3/cli/realtime/credentials",
+            "/api/v3.1/cli/realtime/credentials",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -81,7 +81,7 @@ class ToolkitsResource(SyncAPIResource):
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
         return self._get(
-            path_template("/api/v3/toolkits/{slug}", slug=slug),
+            path_template("/api/v3.1/toolkits/{slug}", slug=slug),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -143,7 +143,7 @@ class ToolkitsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/toolkits",
+            "/api/v3.1/toolkits",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -182,7 +182,7 @@ class ToolkitsResource(SyncAPIResource):
         toolkits into logical groups based on their functionality or industry focus.
         """
         return self._get(
-            "/api/v3/toolkits/categories",
+            "/api/v3.1/toolkits/categories",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -245,7 +245,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
         return await self._get(
-            path_template("/api/v3/toolkits/{slug}", slug=slug),
+            path_template("/api/v3.1/toolkits/{slug}", slug=slug),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -307,7 +307,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/toolkits",
+            "/api/v3.1/toolkits",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -346,7 +346,7 @@ class AsyncToolkitsResource(AsyncAPIResource):
         toolkits into logical groups based on their functionality or industry focus.
         """
         return await self._get(
-            "/api/v3/toolkits/categories",
+            "/api/v3.1/toolkits/categories",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

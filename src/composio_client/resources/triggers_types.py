@@ -81,7 +81,7 @@ class TriggersTypesResource(SyncAPIResource):
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
         return self._get(
-            path_template("/api/v3/triggers_types/{slug}", slug=slug),
+            path_template("/api/v3.1/triggers_types/{slug}", slug=slug),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -134,7 +134,7 @@ class TriggersTypesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/triggers_types",
+            "/api/v3.1/triggers_types",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -168,7 +168,7 @@ class TriggersTypesResource(SyncAPIResource):
         across the API from latest versions of the toolkit only
         """
         return self._get(
-            "/api/v3/triggers_types/list/enum",
+            "/api/v3.1/triggers_types/list/enum",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -232,7 +232,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         if not slug:
             raise ValueError(f"Expected a non-empty value for `slug` but received {slug!r}")
         return await self._get(
-            path_template("/api/v3/triggers_types/{slug}", slug=slug),
+            path_template("/api/v3.1/triggers_types/{slug}", slug=slug),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -285,7 +285,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/triggers_types",
+            "/api/v3.1/triggers_types",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -319,7 +319,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
         across the API from latest versions of the toolkit only
         """
         return await self._get(
-            "/api/v3/triggers_types/list/enum",
+            "/api/v3.1/triggers_types/list/enum",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

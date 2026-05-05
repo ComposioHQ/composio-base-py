@@ -887,7 +887,7 @@ class TestComposio:
     @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_timeout_errors_doesnt_leak(self, respx_mock: MockRouter, client: Composio) -> None:
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(
             side_effect=httpx.TimeoutException("Test timeout error")
         )
 
@@ -899,7 +899,7 @@ class TestComposio:
     @mock.patch("composio_client._base_client.BaseClient._calculate_retry_timeout", _low_retry_timeout)
     @pytest.mark.respx(base_url=base_url)
     def test_retrying_status_errors_doesnt_leak(self, respx_mock: MockRouter, client: Composio) -> None:
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(return_value=httpx.Response(500))
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             client.tools.with_streaming_response.execute(tool_slug="tool_slug").__enter__()
@@ -929,7 +929,7 @@ class TestComposio:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(side_effect=retry_handler)
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(side_effect=retry_handler)
 
         response = client.tools.with_raw_response.execute(tool_slug="tool_slug")
 
@@ -953,7 +953,7 @@ class TestComposio:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(side_effect=retry_handler)
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(side_effect=retry_handler)
 
         response = client.tools.with_raw_response.execute(
             tool_slug="tool_slug", extra_headers={"x-stainless-retry-count": Omit()}
@@ -978,7 +978,7 @@ class TestComposio:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(side_effect=retry_handler)
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(side_effect=retry_handler)
 
         response = client.tools.with_raw_response.execute(
             tool_slug="tool_slug", extra_headers={"x-stainless-retry-count": "42"}
@@ -1837,7 +1837,7 @@ class TestAsyncComposio:
     async def test_retrying_timeout_errors_doesnt_leak(
         self, respx_mock: MockRouter, async_client: AsyncComposio
     ) -> None:
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(
             side_effect=httpx.TimeoutException("Test timeout error")
         )
 
@@ -1851,7 +1851,7 @@ class TestAsyncComposio:
     async def test_retrying_status_errors_doesnt_leak(
         self, respx_mock: MockRouter, async_client: AsyncComposio
     ) -> None:
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(return_value=httpx.Response(500))
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(return_value=httpx.Response(500))
 
         with pytest.raises(APIStatusError):
             await async_client.tools.with_streaming_response.execute(tool_slug="tool_slug").__aenter__()
@@ -1881,7 +1881,7 @@ class TestAsyncComposio:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(side_effect=retry_handler)
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(side_effect=retry_handler)
 
         response = await client.tools.with_raw_response.execute(tool_slug="tool_slug")
 
@@ -1905,7 +1905,7 @@ class TestAsyncComposio:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(side_effect=retry_handler)
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(side_effect=retry_handler)
 
         response = await client.tools.with_raw_response.execute(
             tool_slug="tool_slug", extra_headers={"x-stainless-retry-count": Omit()}
@@ -1930,7 +1930,7 @@ class TestAsyncComposio:
                 return httpx.Response(500)
             return httpx.Response(200)
 
-        respx_mock.post("/api/v3/tools/execute/tool_slug").mock(side_effect=retry_handler)
+        respx_mock.post("/api/v3.1/tools/execute/tool_slug").mock(side_effect=retry_handler)
 
         response = await client.tools.with_raw_response.execute(
             tool_slug="tool_slug", extra_headers={"x-stainless-retry-count": "42"}

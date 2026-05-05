@@ -202,6 +202,41 @@ class TestSession:
                 "inputs": "bar",
             },
             enable_auto_workbench_offload=True,
+            experimental={
+                "custom_toolkits": [
+                    {
+                        "description": "Internal e-commerce API for order management and fulfillment",
+                        "name": "E-Commerce API",
+                        "slug": "ecommerce",
+                        "tools": [
+                            {
+                                "description": "Fetch recent orders for a customer by their email address",
+                                "input_schema": {
+                                    "type": "bar",
+                                    "properties": "bar",
+                                    "required": "bar",
+                                },
+                                "name": "Get Customer Orders",
+                                "slug": "GET_CUSTOMER_ORDERS",
+                                "output_schema": {"foo": "bar"},
+                            }
+                        ],
+                    }
+                ],
+                "custom_tools": [
+                    {
+                        "description": "Fetch emails marked as important from the last 24 hours",
+                        "input_schema": {
+                            "type": "bar",
+                            "properties": "bar",
+                        },
+                        "name": "Get Important Emails",
+                        "slug": "GET_IMPORTANT_EMAILS",
+                        "extends_toolkit": "gmail",
+                        "output_schema": {"foo": "bar"},
+                    }
+                ],
+            },
         )
         assert_matches_type(SessionExecuteResponse, session, path=["response"])
 
@@ -255,6 +290,41 @@ class TestSession:
             arguments={
                 "toolkits": "bar",
                 "reinitiate_all": "bar",
+            },
+            experimental={
+                "custom_toolkits": [
+                    {
+                        "description": "Internal e-commerce API for order management and fulfillment",
+                        "name": "E-Commerce API",
+                        "slug": "ecommerce",
+                        "tools": [
+                            {
+                                "description": "Fetch recent orders for a customer by their email address",
+                                "input_schema": {
+                                    "type": "bar",
+                                    "properties": "bar",
+                                    "required": "bar",
+                                },
+                                "name": "Get Customer Orders",
+                                "slug": "GET_CUSTOMER_ORDERS",
+                                "output_schema": {"foo": "bar"},
+                            }
+                        ],
+                    }
+                ],
+                "custom_tools": [
+                    {
+                        "description": "Fetch emails marked as important from the last 24 hours",
+                        "input_schema": {
+                            "type": "bar",
+                            "properties": "bar",
+                        },
+                        "name": "Get Important Emails",
+                        "slug": "GET_IMPORTANT_EMAILS",
+                        "extends_toolkit": "gmail",
+                        "output_schema": {"foo": "bar"},
+                    }
+                ],
             },
         )
         assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
@@ -484,6 +554,41 @@ class TestSession:
                     "known_fields": "channel_name:general",
                 }
             ],
+            experimental={
+                "custom_toolkits": [
+                    {
+                        "description": "Internal e-commerce API for order management and fulfillment",
+                        "name": "E-Commerce API",
+                        "slug": "ecommerce",
+                        "tools": [
+                            {
+                                "description": "Fetch recent orders for a customer by their email address",
+                                "input_schema": {
+                                    "type": "bar",
+                                    "properties": "bar",
+                                    "required": "bar",
+                                },
+                                "name": "Get Customer Orders",
+                                "slug": "GET_CUSTOMER_ORDERS",
+                                "output_schema": {"foo": "bar"},
+                            }
+                        ],
+                    }
+                ],
+                "custom_tools": [
+                    {
+                        "description": "Fetch emails marked as important from the last 24 hours",
+                        "input_schema": {
+                            "type": "bar",
+                            "properties": "bar",
+                        },
+                        "name": "Get Important Emails",
+                        "slug": "GET_IMPORTANT_EMAILS",
+                        "extends_toolkit": "gmail",
+                        "output_schema": {"foo": "bar"},
+                    }
+                ],
+            },
             model="gpt-4o",
         )
         assert_matches_type(SessionSearchResponse, session, path=["response"])
@@ -791,6 +896,41 @@ class TestAsyncSession:
                 "inputs": "bar",
             },
             enable_auto_workbench_offload=True,
+            experimental={
+                "custom_toolkits": [
+                    {
+                        "description": "Internal e-commerce API for order management and fulfillment",
+                        "name": "E-Commerce API",
+                        "slug": "ecommerce",
+                        "tools": [
+                            {
+                                "description": "Fetch recent orders for a customer by their email address",
+                                "input_schema": {
+                                    "type": "bar",
+                                    "properties": "bar",
+                                    "required": "bar",
+                                },
+                                "name": "Get Customer Orders",
+                                "slug": "GET_CUSTOMER_ORDERS",
+                                "output_schema": {"foo": "bar"},
+                            }
+                        ],
+                    }
+                ],
+                "custom_tools": [
+                    {
+                        "description": "Fetch emails marked as important from the last 24 hours",
+                        "input_schema": {
+                            "type": "bar",
+                            "properties": "bar",
+                        },
+                        "name": "Get Important Emails",
+                        "slug": "GET_IMPORTANT_EMAILS",
+                        "extends_toolkit": "gmail",
+                        "output_schema": {"foo": "bar"},
+                    }
+                ],
+            },
         )
         assert_matches_type(SessionExecuteResponse, session, path=["response"])
 
@@ -844,6 +984,41 @@ class TestAsyncSession:
             arguments={
                 "toolkits": "bar",
                 "reinitiate_all": "bar",
+            },
+            experimental={
+                "custom_toolkits": [
+                    {
+                        "description": "Internal e-commerce API for order management and fulfillment",
+                        "name": "E-Commerce API",
+                        "slug": "ecommerce",
+                        "tools": [
+                            {
+                                "description": "Fetch recent orders for a customer by their email address",
+                                "input_schema": {
+                                    "type": "bar",
+                                    "properties": "bar",
+                                    "required": "bar",
+                                },
+                                "name": "Get Customer Orders",
+                                "slug": "GET_CUSTOMER_ORDERS",
+                                "output_schema": {"foo": "bar"},
+                            }
+                        ],
+                    }
+                ],
+                "custom_tools": [
+                    {
+                        "description": "Fetch emails marked as important from the last 24 hours",
+                        "input_schema": {
+                            "type": "bar",
+                            "properties": "bar",
+                        },
+                        "name": "Get Important Emails",
+                        "slug": "GET_IMPORTANT_EMAILS",
+                        "extends_toolkit": "gmail",
+                        "output_schema": {"foo": "bar"},
+                    }
+                ],
             },
         )
         assert_matches_type(SessionExecuteMetaResponse, session, path=["response"])
@@ -1073,6 +1248,41 @@ class TestAsyncSession:
                     "known_fields": "channel_name:general",
                 }
             ],
+            experimental={
+                "custom_toolkits": [
+                    {
+                        "description": "Internal e-commerce API for order management and fulfillment",
+                        "name": "E-Commerce API",
+                        "slug": "ecommerce",
+                        "tools": [
+                            {
+                                "description": "Fetch recent orders for a customer by their email address",
+                                "input_schema": {
+                                    "type": "bar",
+                                    "properties": "bar",
+                                    "required": "bar",
+                                },
+                                "name": "Get Customer Orders",
+                                "slug": "GET_CUSTOMER_ORDERS",
+                                "output_schema": {"foo": "bar"},
+                            }
+                        ],
+                    }
+                ],
+                "custom_tools": [
+                    {
+                        "description": "Fetch emails marked as important from the last 24 hours",
+                        "input_schema": {
+                            "type": "bar",
+                            "properties": "bar",
+                        },
+                        "name": "Get Important Emails",
+                        "slug": "GET_IMPORTANT_EMAILS",
+                        "extends_toolkit": "gmail",
+                        "output_schema": {"foo": "bar"},
+                    }
+                ],
+            },
             model="gpt-4o",
         )
         assert_matches_type(SessionSearchResponse, session, path=["response"])

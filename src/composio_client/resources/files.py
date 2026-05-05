@@ -86,7 +86,7 @@ class FilesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/files/list",
+            "/api/v3.1/files/list",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -148,7 +148,7 @@ class FilesResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/files/upload/request",
+            "/api/v3.1/files/upload/request",
             body=maybe_transform(
                 {
                     "filename": filename,
@@ -228,7 +228,7 @@ class AsyncFilesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/files/list",
+            "/api/v3.1/files/list",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -290,7 +290,7 @@ class AsyncFilesResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/files/upload/request",
+            "/api/v3.1/files/upload/request",
             body=await async_maybe_transform(
                 {
                     "filename": filename,

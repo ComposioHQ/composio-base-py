@@ -56,7 +56,7 @@ class ConfigResource(SyncAPIResource):
     ) -> ConfigRetrieveResponse:
         """Retrieves the current project configuration including 2FA settings."""
         return self._get(
-            "/api/v3/org/project/config",
+            "/api/v3.1/org/project/config",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -97,7 +97,7 @@ class ConfigResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._patch(
-            "/api/v3/org/project/config",
+            "/api/v3.1/org/project/config",
             body=maybe_transform(
                 {
                     "display_name": display_name,
@@ -150,7 +150,7 @@ class AsyncConfigResource(AsyncAPIResource):
     ) -> ConfigRetrieveResponse:
         """Retrieves the current project configuration including 2FA settings."""
         return await self._get(
-            "/api/v3/org/project/config",
+            "/api/v3.1/org/project/config",
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -191,7 +191,7 @@ class AsyncConfigResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._patch(
-            "/api/v3/org/project/config",
+            "/api/v3.1/org/project/config",
             body=await async_maybe_transform(
                 {
                     "display_name": display_name,

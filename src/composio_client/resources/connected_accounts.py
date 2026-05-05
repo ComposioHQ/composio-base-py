@@ -92,7 +92,7 @@ class ConnectedAccountsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._post(
-            "/api/v3/connected_accounts",
+            "/api/v3.1/connected_accounts",
             body=maybe_transform(
                 {
                     "auth_config": auth_config,
@@ -134,7 +134,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._get(
-            path_template("/api/v3/connected_accounts/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -196,7 +196,7 @@ class ConnectedAccountsResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return self._get(
-            "/api/v3/connected_accounts",
+            "/api/v3.1/connected_accounts",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -249,7 +249,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._delete(
-            path_template("/api/v3/connected_accounts/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -290,7 +290,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._patch(
-            path_template("/api/v3/connected_accounts/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             body=maybe_transform(
                 {
                     "alias": alias,
@@ -338,7 +338,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._post(
-            path_template("/api/v3/connected_accounts/{nanoid}/refresh", nanoid=nanoid),
+            path_template("/api/v3.1/connected_accounts/{nanoid}/refresh", nanoid=nanoid),
             body=maybe_transform(
                 {
                     "body_redirect_url": body_redirect_url,
@@ -390,7 +390,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         if not nano_id:
             raise ValueError(f"Expected a non-empty value for `nano_id` but received {nano_id!r}")
         return self._patch(
-            path_template("/api/v3/connected_accounts/{nano_id}/status", nano_id=nano_id),
+            path_template("/api/v3.1/connected_accounts/{nano_id}/status", nano_id=nano_id),
             body=maybe_transform(
                 {"enabled": enabled}, connected_account_update_status_params.ConnectedAccountUpdateStatusParams
             ),
@@ -457,7 +457,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._post(
-            "/api/v3/connected_accounts",
+            "/api/v3.1/connected_accounts",
             body=await async_maybe_transform(
                 {
                     "auth_config": auth_config,
@@ -499,7 +499,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._get(
-            path_template("/api/v3/connected_accounts/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -561,7 +561,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         return await self._get(
-            "/api/v3/connected_accounts",
+            "/api/v3.1/connected_accounts",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -614,7 +614,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._delete(
-            path_template("/api/v3/connected_accounts/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -655,7 +655,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._patch(
-            path_template("/api/v3/connected_accounts/{nanoid}", nanoid=nanoid),
+            path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             body=await async_maybe_transform(
                 {
                     "alias": alias,
@@ -703,7 +703,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._post(
-            path_template("/api/v3/connected_accounts/{nanoid}/refresh", nanoid=nanoid),
+            path_template("/api/v3.1/connected_accounts/{nanoid}/refresh", nanoid=nanoid),
             body=await async_maybe_transform(
                 {
                     "body_redirect_url": body_redirect_url,
@@ -755,7 +755,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         if not nano_id:
             raise ValueError(f"Expected a non-empty value for `nano_id` but received {nano_id!r}")
         return await self._patch(
-            path_template("/api/v3/connected_accounts/{nano_id}/status", nano_id=nano_id),
+            path_template("/api/v3.1/connected_accounts/{nano_id}/status", nano_id=nano_id),
             body=await async_maybe_transform(
                 {"enabled": enabled}, connected_account_update_status_params.ConnectedAccountUpdateStatusParams
             ),
