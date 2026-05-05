@@ -3,11 +3,15 @@
 from __future__ import annotations
 
 from .session_link_params import SessionLinkParams as SessionLinkParams
+from .session_patch_params import SessionPatchParams as SessionPatchParams
+from .session_attach_params import SessionAttachParams as SessionAttachParams
 from .session_create_params import SessionCreateParams as SessionCreateParams
 from .session_link_response import SessionLinkResponse as SessionLinkResponse
 from .session_search_params import SessionSearchParams as SessionSearchParams
 from .session_execute_params import SessionExecuteParams as SessionExecuteParams
+from .session_patch_response import SessionPatchResponse as SessionPatchResponse
 from .session_tools_response import SessionToolsResponse as SessionToolsResponse
+from .session_attach_response import SessionAttachResponse as SessionAttachResponse
 from .session_create_response import SessionCreateResponse as SessionCreateResponse
 from .session_search_response import SessionSearchResponse as SessionSearchResponse
 from .session_toolkits_params import SessionToolkitsParams as SessionToolkitsParams
@@ -16,5 +20,7 @@ from .session_retrieve_response import SessionRetrieveResponse as SessionRetriev
 from .session_toolkits_response import SessionToolkitsResponse as SessionToolkitsResponse
 from .session_execute_meta_params import SessionExecuteMetaParams as SessionExecuteMetaParams
 from .session_proxy_execute_params import SessionProxyExecuteParams as SessionProxyExecuteParams
+from .session_config_history_params import SessionConfigHistoryParams as SessionConfigHistoryParams
 from .session_execute_meta_response import SessionExecuteMetaResponse as SessionExecuteMetaResponse
 from .session_proxy_execute_response import SessionProxyExecuteResponse as SessionProxyExecuteResponse
+from .session_config_history_response import SessionConfigHistoryResponse as SessionConfigHistoryResponse
