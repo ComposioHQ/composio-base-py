@@ -49,14 +49,13 @@ class SessionCreateParams(TypedDict, total=False):
     specific toolkits are being executed
     """
 
-    connected_accounts: Dict[str, str]
-    """The connected accounts to use for the session.
-
-    This will override the default behaviour and use the given connected account
-    when specific toolkits are being executed. Each connected account must exist
-    (not deleted or disabled) and belong to the same `user_id` as the session —
-    otherwise session creation fails with a clear error explaining which account
-    didn't match.
+    connected_accounts: Dict[str, SequenceNotStr[str]]
+    """
+    The connected accounts to use for the session, as an array of nano-IDs per
+    toolkit. This overrides the default behaviour and pins specific connected
+    accounts when toolkits are executed. Each account must exist (not deleted or
+    disabled) and belong to the same `user_id` as the session. Multi-account
+    sessions can pin multiple; non-multi-account sessions are capped at length 1.
     """
 
     execute: Execute
@@ -146,6 +145,13 @@ class ExperimentalCustomToolkitTool(TypedDict, total=False):
     output_schema: Dict[str, Optional[object]]
     """Optional output schema for the tool response."""
 
+    preload: bool
+    """SDK hint for direct custom-tool exposure.
+
+    Not stored in session config; echoed in create/attach responses for inline
+    custom definitions.
+    """
+
 
 class ExperimentalCustomToolkit(TypedDict, total=False):
     description: Required[str]
@@ -163,6 +169,13 @@ class ExperimentalCustomToolkit(TypedDict, total=False):
 
     tools: Required[Iterable[ExperimentalCustomToolkitTool]]
     """Tools in this custom toolkit"""
+
+    preload: bool
+    """SDK hint for direct custom-tool exposure.
+
+    Not stored in session config; echoed in create/attach responses for inline
+    custom definitions.
+    """
 
 
 class ExperimentalCustomTool(TypedDict, total=False):
@@ -191,6 +204,13 @@ class ExperimentalCustomTool(TypedDict, total=False):
 
     output_schema: Dict[str, Optional[object]]
     """JSON Schema describing tool output (optional)"""
+
+    preload: bool
+    """SDK hint for direct custom-tool exposure.
+
+    Not stored in session config; echoed in create/attach responses for inline
+    custom definitions.
+    """
 
 
 class ExperimentalPermissions(TypedDict, total=False):
@@ -239,6 +259,15 @@ class Experimental(TypedDict, total=False):
 
     Standalone tools need no auth. Tools with extends_toolkit inherit the Composio
     toolkit's connection.
+    """
+
+    link_url_overwrite: str
+    """
+    Experimental base URL override for connection link redirects created from this
+    tool-router session. When set, link creation returns
+    `${link_url_overwrite}/link/{link_token}` instead of the default Composio
+    Connect base URL. Use only when your integration needs links to open through a
+    custom Connect host.
     """
 
     permissions: ExperimentalPermissions

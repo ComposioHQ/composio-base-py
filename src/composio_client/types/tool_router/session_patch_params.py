@@ -39,14 +39,13 @@ class SessionPatchParams(TypedDict, total=False):
     specific toolkits are being executed
     """
 
-    connected_accounts: Dict[str, str]
-    """The connected accounts to use for the session.
-
-    This will override the default behaviour and use the given connected account
-    when specific toolkits are being executed. Each connected account must exist
-    (not deleted or disabled) and belong to the same `user_id` as the session —
-    otherwise session creation fails with a clear error explaining which account
-    didn't match.
+    connected_accounts: Optional[Dict[str, SequenceNotStr[str]]]
+    """
+    The connected accounts to use for the session, as an array of nano-IDs per
+    toolkit. This overrides the default behaviour and pins specific connected
+    accounts when toolkits are executed. Each account must exist (not deleted or
+    disabled) and belong to the same `user_id` as the session. Multi-account
+    sessions can pin multiple; non-multi-account sessions are capped at length 1.
     """
 
     execute: Execute
@@ -124,6 +123,15 @@ class ExperimentalPermissions(TypedDict, total=False):
 
 
 class Experimental(TypedDict, total=False):
+    link_url_overwrite: str
+    """
+    Experimental base URL override for connection link redirects created from this
+    tool-router session. When set, link creation returns
+    `${link_url_overwrite}/link/{link_token}` instead of the default Composio
+    Connect base URL. Use only when your integration needs links to open through a
+    custom Connect host.
+    """
+
     permissions: ExperimentalPermissions
     """Per-tool elicitation permission config.
 

@@ -188,10 +188,11 @@ class ItemConfig(BaseModel):
     auth_configs: Optional[Dict[str, str]] = None
     """Auth config overrides per toolkit"""
 
-    connected_accounts: Optional[Dict[str, str]] = None
-    """Connected account overrides per toolkit.
+    connected_accounts: Optional[Dict[str, List[str]]] = None
+    """Per-toolkit connected account overrides (array of nano-IDs).
 
-    Each connected account must belong to the same user_id as the session.
+    Multi-account sessions can pin more than one account per toolkit; otherwise
+    length is 1.
     """
 
     manage_connections: Optional[ItemConfigManageConnections] = None

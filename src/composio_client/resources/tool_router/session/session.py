@@ -87,7 +87,7 @@ class SessionResource(SyncAPIResource):
         *,
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
-        connected_accounts: Dict[str, str] | Omit = omit,
+        connected_accounts: Dict[str, SequenceNotStr[str]] | Omit = omit,
         execute: session_create_params.Execute | Omit = omit,
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
@@ -119,11 +119,11 @@ class SessionResource(SyncAPIResource):
           auth_configs: The auth configs to use for the session. This will override the default behavior
               and use the given auth config when specific toolkits are being executed
 
-          connected_accounts: The connected accounts to use for the session. This will override the default
-              behaviour and use the given connected account when specific toolkits are being
-              executed. Each connected account must exist (not deleted or disabled) and belong
-              to the same `user_id` as the session — otherwise session creation fails with a
-              clear error explaining which account didn't match.
+          connected_accounts: The connected accounts to use for the session, as an array of nano-IDs per
+              toolkit. This overrides the default behaviour and pins specific connected
+              accounts when toolkits are executed. Each account must exist (not deleted or
+              disabled) and belong to the same `user_id` as the session. Multi-account
+              sessions can pin multiple; non-multi-account sessions are capped at length 1.
 
           experimental: Experimental features - not stable, may be modified or removed in future
               versions.
@@ -518,7 +518,7 @@ class SessionResource(SyncAPIResource):
         session_id: str,
         *,
         auth_configs: Dict[str, str] | Omit = omit,
-        connected_accounts: Dict[str, str] | Omit = omit,
+        connected_accounts: Optional[Dict[str, SequenceNotStr[str]]] | Omit = omit,
         execute: session_patch_params.Execute | Omit = omit,
         experimental: Optional[session_patch_params.Experimental] | Omit = omit,
         manage_connections: Optional[session_patch_params.ManageConnections] | Omit = omit,
@@ -549,11 +549,11 @@ class SessionResource(SyncAPIResource):
           auth_configs: The auth configs to use for the session. This will override the default behavior
               and use the given auth config when specific toolkits are being executed
 
-          connected_accounts: The connected accounts to use for the session. This will override the default
-              behaviour and use the given connected account when specific toolkits are being
-              executed. Each connected account must exist (not deleted or disabled) and belong
-              to the same `user_id` as the session — otherwise session creation fails with a
-              clear error explaining which account didn't match.
+          connected_accounts: The connected accounts to use for the session, as an array of nano-IDs per
+              toolkit. This overrides the default behaviour and pins specific connected
+              accounts when toolkits are executed. Each account must exist (not deleted or
+              disabled) and belong to the same `user_id` as the session. Multi-account
+              sessions can pin multiple; non-multi-account sessions are capped at length 1.
 
           preload: Preload configuration. Use an explicit list for frequently used tool slugs, or
               "all" to dynamically expose every app tool allowed by positive
@@ -897,7 +897,7 @@ class AsyncSessionResource(AsyncAPIResource):
         *,
         user_id: str,
         auth_configs: Dict[str, str] | Omit = omit,
-        connected_accounts: Dict[str, str] | Omit = omit,
+        connected_accounts: Dict[str, SequenceNotStr[str]] | Omit = omit,
         execute: session_create_params.Execute | Omit = omit,
         experimental: session_create_params.Experimental | Omit = omit,
         manage_connections: session_create_params.ManageConnections | Omit = omit,
@@ -929,11 +929,11 @@ class AsyncSessionResource(AsyncAPIResource):
           auth_configs: The auth configs to use for the session. This will override the default behavior
               and use the given auth config when specific toolkits are being executed
 
-          connected_accounts: The connected accounts to use for the session. This will override the default
-              behaviour and use the given connected account when specific toolkits are being
-              executed. Each connected account must exist (not deleted or disabled) and belong
-              to the same `user_id` as the session — otherwise session creation fails with a
-              clear error explaining which account didn't match.
+          connected_accounts: The connected accounts to use for the session, as an array of nano-IDs per
+              toolkit. This overrides the default behaviour and pins specific connected
+              accounts when toolkits are executed. Each account must exist (not deleted or
+              disabled) and belong to the same `user_id` as the session. Multi-account
+              sessions can pin multiple; non-multi-account sessions are capped at length 1.
 
           experimental: Experimental features - not stable, may be modified or removed in future
               versions.
@@ -1328,7 +1328,7 @@ class AsyncSessionResource(AsyncAPIResource):
         session_id: str,
         *,
         auth_configs: Dict[str, str] | Omit = omit,
-        connected_accounts: Dict[str, str] | Omit = omit,
+        connected_accounts: Optional[Dict[str, SequenceNotStr[str]]] | Omit = omit,
         execute: session_patch_params.Execute | Omit = omit,
         experimental: Optional[session_patch_params.Experimental] | Omit = omit,
         manage_connections: Optional[session_patch_params.ManageConnections] | Omit = omit,
@@ -1359,11 +1359,11 @@ class AsyncSessionResource(AsyncAPIResource):
           auth_configs: The auth configs to use for the session. This will override the default behavior
               and use the given auth config when specific toolkits are being executed
 
-          connected_accounts: The connected accounts to use for the session. This will override the default
-              behaviour and use the given connected account when specific toolkits are being
-              executed. Each connected account must exist (not deleted or disabled) and belong
-              to the same `user_id` as the session — otherwise session creation fails with a
-              clear error explaining which account didn't match.
+          connected_accounts: The connected accounts to use for the session, as an array of nano-IDs per
+              toolkit. This overrides the default behaviour and pins specific connected
+              accounts when toolkits are executed. Each account must exist (not deleted or
+              disabled) and belong to the same `user_id` as the session. Multi-account
+              sessions can pin multiple; non-multi-account sessions are capped at length 1.
 
           preload: Preload configuration. Use an explicit list for frequently used tool slugs, or
               "all" to dynamically expose every app tool allowed by positive

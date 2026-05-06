@@ -45,7 +45,7 @@ class TestSession:
                 "gmail": "ac_1a2b3c4d5e6f",
                 "slack": "ac_7g8h9i0j1k2l",
             },
-            connected_accounts={"github": "ca_3m4n5o6p7q8r"},
+            connected_accounts={"foo": ["string"]},
             execute={"enable_multi_execute": True},
             experimental={
                 "assistive_prompt_config": {"user_timezone": "America/New_York"},
@@ -65,8 +65,10 @@ class TestSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -80,8 +82,10 @@ class TestSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
+                "link_url_overwrite": "https://example.com",
                 "permissions": {
                     "default": "allow_all",
                     "overrides": {"foo": "always_allow"},
@@ -214,8 +218,10 @@ class TestSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -229,6 +235,7 @@ class TestSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
             },
@@ -351,8 +358,10 @@ class TestSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -366,6 +375,7 @@ class TestSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
             },
@@ -440,8 +450,10 @@ class TestSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -455,6 +467,7 @@ class TestSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
             },
@@ -562,13 +575,14 @@ class TestSession:
                 "gmail": "ac_1a2b3c4d5e6f",
                 "slack": "ac_7g8h9i0j1k2l",
             },
-            connected_accounts={"github": "ca_3m4n5o6p7q8r"},
+            connected_accounts={"foo": ["string"]},
             execute={"enable_multi_execute": True},
             experimental={
+                "link_url_overwrite": "https://example.com",
                 "permissions": {
                     "default": "allow_all",
                     "overrides": {"foo": "always_allow"},
-                }
+                },
             },
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
@@ -794,8 +808,10 @@ class TestSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -809,6 +825,7 @@ class TestSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
             },
@@ -968,7 +985,7 @@ class TestAsyncSession:
                 "gmail": "ac_1a2b3c4d5e6f",
                 "slack": "ac_7g8h9i0j1k2l",
             },
-            connected_accounts={"github": "ca_3m4n5o6p7q8r"},
+            connected_accounts={"foo": ["string"]},
             execute={"enable_multi_execute": True},
             experimental={
                 "assistive_prompt_config": {"user_timezone": "America/New_York"},
@@ -988,8 +1005,10 @@ class TestAsyncSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -1003,8 +1022,10 @@ class TestAsyncSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
+                "link_url_overwrite": "https://example.com",
                 "permissions": {
                     "default": "allow_all",
                     "overrides": {"foo": "always_allow"},
@@ -1137,8 +1158,10 @@ class TestAsyncSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -1152,6 +1175,7 @@ class TestAsyncSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
             },
@@ -1274,8 +1298,10 @@ class TestAsyncSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -1289,6 +1315,7 @@ class TestAsyncSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
             },
@@ -1363,8 +1390,10 @@ class TestAsyncSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -1378,6 +1407,7 @@ class TestAsyncSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
             },
@@ -1485,13 +1515,14 @@ class TestAsyncSession:
                 "gmail": "ac_1a2b3c4d5e6f",
                 "slack": "ac_7g8h9i0j1k2l",
             },
-            connected_accounts={"github": "ca_3m4n5o6p7q8r"},
+            connected_accounts={"foo": ["string"]},
             execute={"enable_multi_execute": True},
             experimental={
+                "link_url_overwrite": "https://example.com",
                 "permissions": {
                     "default": "allow_all",
                     "overrides": {"foo": "always_allow"},
-                }
+                },
             },
             manage_connections={
                 "callback_url": "https://your-app.com/auth/callback",
@@ -1717,8 +1748,10 @@ class TestAsyncSession:
                                 "name": "Get Customer Orders",
                                 "slug": "GET_CUSTOMER_ORDERS",
                                 "output_schema": {"foo": "bar"},
+                                "preload": True,
                             }
                         ],
+                        "preload": True,
                     }
                 ],
                 "custom_tools": [
@@ -1732,6 +1765,7 @@ class TestAsyncSession:
                         "slug": "GET_IMPORTANT_EMAILS",
                         "extends_toolkit": "gmail",
                         "output_schema": {"foo": "bar"},
+                        "preload": True,
                     }
                 ],
             },

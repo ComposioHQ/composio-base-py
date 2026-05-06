@@ -63,6 +63,13 @@ class ExperimentalCustomToolkitTool(TypedDict, total=False):
     output_schema: Dict[str, Optional[object]]
     """Optional output schema for the tool response."""
 
+    preload: bool
+    """SDK hint for direct custom-tool exposure.
+
+    Not stored in session config; echoed in create/attach responses for inline
+    custom definitions.
+    """
+
 
 class ExperimentalCustomToolkit(TypedDict, total=False):
     description: Required[str]
@@ -80,6 +87,13 @@ class ExperimentalCustomToolkit(TypedDict, total=False):
 
     tools: Required[Iterable[ExperimentalCustomToolkitTool]]
     """Tools in this custom toolkit"""
+
+    preload: bool
+    """SDK hint for direct custom-tool exposure.
+
+    Not stored in session config; echoed in create/attach responses for inline
+    custom definitions.
+    """
 
 
 class ExperimentalCustomTool(TypedDict, total=False):
@@ -108,6 +122,13 @@ class ExperimentalCustomTool(TypedDict, total=False):
 
     output_schema: Dict[str, Optional[object]]
     """JSON Schema describing tool output (optional)"""
+
+    preload: bool
+    """SDK hint for direct custom-tool exposure.
+
+    Not stored in session config; echoed in create/attach responses for inline
+    custom definitions.
+    """
 
 
 class Experimental(TypedDict, total=False):
