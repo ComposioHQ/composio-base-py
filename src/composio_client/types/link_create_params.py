@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Union, Optional
-from typing_extensions import Required, Annotated, TypeAlias, TypedDict
+from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
 from .._utils import PropertyInfo
@@ -97,6 +97,15 @@ class LinkCreateParams(TypedDict, total=False):
 
     user_id: Required[str]
     """The user id to create a link for"""
+
+    account_type: Literal["PRIVATE", "SHARED"]
+    """Sharing model for this connected account.
+
+    PRIVATE (default) is usable only by the owning user_id. SHARED is reachable from
+    a tool-router session ONLY when explicitly pinned in the session config — at
+    most one SHARED connection per toolkit per session. Sessions never use a SHARED
+    connection implicitly. Set at creation time only — cannot be changed later.
+    """
 
     alias: str
     """A human-readable alias for this connected account.

@@ -49,6 +49,13 @@ class Item(BaseModel):
     version: str
     """Version of the trigger type"""
 
+    requires_webhook_endpoint_setup: Optional[bool] = None
+    """
+    True when the developer must register a Composio-issued webhook URL with the
+    upstream provider (e.g. Slack Event Subscriptions, Notion integration webhooks).
+    See the webhook_endpoint API for the setup.
+    """
+
 
 class TriggersTypeListResponse(BaseModel):
     current_page: float

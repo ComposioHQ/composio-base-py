@@ -153,6 +153,7 @@ class ConnectedAccountsResource(SyncAPIResource):
     def list(
         self,
         *,
+        account_type: Literal["PRIVATE", "SHARED", "ALL"] | Omit = omit,
         auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         connected_account_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
@@ -180,6 +181,10 @@ class ConnectedAccountsResource(SyncAPIResource):
         find specific connections.
 
         Args:
+          account_type: Filter by sharing model. Default (omitted) returns PRIVATE only — shared
+              accounts must be requested explicitly. Pass SHARED for only shared accounts, or
+              ALL for PRIVATE + SHARED.
+
           auth_config_ids: The auth config ids of the connected accounts
 
           connected_account_ids: The connected account ids to filter by
@@ -215,6 +220,7 @@ class ConnectedAccountsResource(SyncAPIResource):
                 timeout=timeout,
                 query=maybe_transform(
                     {
+                        "account_type": account_type,
                         "auth_config_ids": auth_config_ids,
                         "connected_account_ids": connected_account_ids,
                         "cursor": cursor,
@@ -529,6 +535,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
     async def list(
         self,
         *,
+        account_type: Literal["PRIVATE", "SHARED", "ALL"] | Omit = omit,
         auth_config_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         connected_account_ids: Optional[SequenceNotStr[str]] | Omit = omit,
         cursor: Optional[str] | Omit = omit,
@@ -556,6 +563,10 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         find specific connections.
 
         Args:
+          account_type: Filter by sharing model. Default (omitted) returns PRIVATE only — shared
+              accounts must be requested explicitly. Pass SHARED for only shared accounts, or
+              ALL for PRIVATE + SHARED.
+
           auth_config_ids: The auth config ids of the connected accounts
 
           connected_account_ids: The connected account ids to filter by
@@ -591,6 +602,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
                 timeout=timeout,
                 query=await async_maybe_transform(
                     {
+                        "account_type": account_type,
                         "auth_config_ids": auth_config_ids,
                         "connected_account_ids": connected_account_ids,
                         "cursor": cursor,

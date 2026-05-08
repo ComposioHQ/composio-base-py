@@ -4364,6 +4364,15 @@ ConnectionState: TypeAlias = Union[
 
 
 class Connection(TypedDict, total=False):
+    account_type: Literal["PRIVATE", "SHARED"]
+    """Sharing model for this connected account.
+
+    PRIVATE (default) is usable only by the owning user_id. SHARED is reachable from
+    a tool-router session ONLY when explicitly pinned in the session config — at
+    most one SHARED connection per toolkit per session. Sessions never use a SHARED
+    connection implicitly. Set at creation time only — cannot be changed later.
+    """
+
     alias: str
     """A human-readable alias for this connected account.
 

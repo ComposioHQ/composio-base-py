@@ -5300,6 +5300,15 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     id: str
     """The id of the connection"""
 
+    account_type: Literal["PRIVATE", "SHARED"]
+    """Sharing model.
+
+    PRIVATE accounts are usable only by their owning user_id. SHARED accounts are
+    reachable from a tool-router session only when explicitly pinned in the session
+    config (at most one SHARED per toolkit per session); they are never used
+    implicitly.
+    """
+
     alias: Optional[str] = None
     """A user-defined alias for the connected account"""
 

@@ -11,6 +11,13 @@ __all__ = ["ConnectedAccountListParams"]
 
 
 class ConnectedAccountListParams(TypedDict, total=False):
+    account_type: Literal["PRIVATE", "SHARED", "ALL"]
+    """Filter by sharing model.
+
+    Default (omitted) returns PRIVATE only — shared accounts must be requested
+    explicitly. Pass SHARED for only shared accounts, or ALL for PRIVATE + SHARED.
+    """
+
     auth_config_ids: Optional[SequenceNotStr[str]]
     """The auth config ids of the connected accounts"""
 

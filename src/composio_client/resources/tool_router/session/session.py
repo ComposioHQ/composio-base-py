@@ -463,6 +463,7 @@ class SessionResource(SyncAPIResource):
         session_id: str,
         *,
         toolkit: str,
+        account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -481,6 +482,12 @@ class SessionResource(SyncAPIResource):
           session_id: The session ID returned when creating the session
 
           toolkit: The unique slug identifier of the toolkit to connect
+
+          account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
+              the owning user_id. SHARED is reachable from a tool-router session ONLY when
+              explicitly pinned in the session config — at most one SHARED connection per
+              toolkit per session. Sessions never use a SHARED connection implicitly. Set at
+              creation time only — cannot be changed later.
 
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
@@ -502,6 +509,7 @@ class SessionResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "toolkit": toolkit,
+                    "account_type": account_type,
                     "alias": alias,
                     "callback_url": callback_url,
                 },
@@ -1273,6 +1281,7 @@ class AsyncSessionResource(AsyncAPIResource):
         session_id: str,
         *,
         toolkit: str,
+        account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1291,6 +1300,12 @@ class AsyncSessionResource(AsyncAPIResource):
           session_id: The session ID returned when creating the session
 
           toolkit: The unique slug identifier of the toolkit to connect
+
+          account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
+              the owning user_id. SHARED is reachable from a tool-router session ONLY when
+              explicitly pinned in the session config — at most one SHARED connection per
+              toolkit per session. Sessions never use a SHARED connection implicitly. Set at
+              creation time only — cannot be changed later.
 
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
@@ -1312,6 +1327,7 @@ class AsyncSessionResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "toolkit": toolkit,
+                    "account_type": account_type,
                     "alias": alias,
                     "callback_url": callback_url,
                 },

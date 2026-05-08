@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing_extensions import Literal
+
 import httpx
 
 from ..types import link_create_params
@@ -48,6 +50,7 @@ class LinkResource(SyncAPIResource):
         *,
         auth_config_id: str,
         user_id: str,
+        account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         connection_data: link_create_params.ConnectionData | Omit = omit,
@@ -66,6 +69,12 @@ class LinkResource(SyncAPIResource):
           auth_config_id: The auth config id to create a link for
 
           user_id: The user id to create a link for
+
+          account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
+              the owning user_id. SHARED is reachable from a tool-router session ONLY when
+              explicitly pinned in the session config — at most one SHARED connection per
+              toolkit per session. Sessions never use a SHARED connection implicitly. Set at
+              creation time only — cannot be changed later.
 
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
@@ -88,6 +97,7 @@ class LinkResource(SyncAPIResource):
                 {
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
+                    "account_type": account_type,
                     "alias": alias,
                     "callback_url": callback_url,
                     "connection_data": connection_data,
@@ -128,6 +138,7 @@ class AsyncLinkResource(AsyncAPIResource):
         *,
         auth_config_id: str,
         user_id: str,
+        account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         connection_data: link_create_params.ConnectionData | Omit = omit,
@@ -146,6 +157,12 @@ class AsyncLinkResource(AsyncAPIResource):
           auth_config_id: The auth config id to create a link for
 
           user_id: The user id to create a link for
+
+          account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
+              the owning user_id. SHARED is reachable from a tool-router session ONLY when
+              explicitly pinned in the session config — at most one SHARED connection per
+              toolkit per session. Sessions never use a SHARED connection implicitly. Set at
+              creation time only — cannot be changed later.
 
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
@@ -168,6 +185,7 @@ class AsyncLinkResource(AsyncAPIResource):
                 {
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
+                    "account_type": account_type,
                     "alias": alias,
                     "callback_url": callback_url,
                     "connection_data": connection_data,
