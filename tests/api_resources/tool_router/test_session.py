@@ -522,6 +522,11 @@ class TestSession:
             session_id="trs_LX9uJKBinWWr",
             toolkit="github",
             account_type="PRIVATE",
+            acl_config_for_shared={
+                "allow_all_users": True,
+                "allowed_user_ids": ["x"],
+                "not_allowed_user_ids": ["x"],
+            },
             alias="alias",
             callback_url="https://myapp.com/callback",
         )
@@ -697,6 +702,7 @@ class TestSession:
                     "domain": "domain",
                     "expires_in": 0,
                     "extension": "extension",
+                    "extra_token_data": {"foo": "bar"},
                     "form_api_base_url": "form_api_base_url",
                     "id_token": "id_token",
                     "instance_endpoint": "instanceEndpoint",
@@ -1463,6 +1469,11 @@ class TestAsyncSession:
             session_id="trs_LX9uJKBinWWr",
             toolkit="github",
             account_type="PRIVATE",
+            acl_config_for_shared={
+                "allow_all_users": True,
+                "allowed_user_ids": ["x"],
+                "not_allowed_user_ids": ["x"],
+            },
             alias="alias",
             callback_url="https://myapp.com/callback",
         )
@@ -1638,6 +1649,7 @@ class TestAsyncSession:
                     "domain": "domain",
                     "expires_in": 0,
                     "extension": "extension",
+                    "extra_token_data": {"foo": "bar"},
                     "form_api_base_url": "form_api_base_url",
                     "id_token": "id_token",
                     "instance_endpoint": "instanceEndpoint",

@@ -51,6 +51,7 @@ class LinkResource(SyncAPIResource):
         auth_config_id: str,
         user_id: str,
         account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
+        acl_config_for_shared: link_create_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         connection_data: link_create_params.ConnectionData | Omit = omit,
@@ -73,8 +74,12 @@ class LinkResource(SyncAPIResource):
           account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
               the owning user_id. SHARED is reachable from a tool-router session ONLY when
               explicitly pinned in the session config — at most one SHARED connection per
-              toolkit per session. Sessions never use a SHARED connection implicitly. Set at
-              creation time only — cannot be changed later.
+              toolkit per session. Sessions never use a SHARED connection implicitly.
+
+          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
+              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
+              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+              deny-by-default — only the creator can use.
 
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
@@ -98,6 +103,7 @@ class LinkResource(SyncAPIResource):
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
                     "account_type": account_type,
+                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "callback_url": callback_url,
                     "connection_data": connection_data,
@@ -139,6 +145,7 @@ class AsyncLinkResource(AsyncAPIResource):
         auth_config_id: str,
         user_id: str,
         account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
+        acl_config_for_shared: link_create_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         connection_data: link_create_params.ConnectionData | Omit = omit,
@@ -161,8 +168,12 @@ class AsyncLinkResource(AsyncAPIResource):
           account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
               the owning user_id. SHARED is reachable from a tool-router session ONLY when
               explicitly pinned in the session config — at most one SHARED connection per
-              toolkit per session. Sessions never use a SHARED connection implicitly. Set at
-              creation time only — cannot be changed later.
+              toolkit per session. Sessions never use a SHARED connection implicitly.
+
+          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
+              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
+              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+              deny-by-default — only the creator can use.
 
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
@@ -186,6 +197,7 @@ class AsyncLinkResource(AsyncAPIResource):
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
                     "account_type": account_type,
+                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "callback_url": callback_url,
                     "connection_data": connection_data,

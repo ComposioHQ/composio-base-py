@@ -12,6 +12,7 @@ __all__ = [
     "ConnectedAccountCreateParams",
     "AuthConfig",
     "Connection",
+    "ConnectionACLConfigForShared",
     "ConnectionState",
     "ConnectionStateUnionMember0",
     "ConnectionStateUnionMember0Val",
@@ -136,6 +137,25 @@ class ConnectedAccountCreateParams(TypedDict, total=False):
 class AuthConfig(TypedDict, total=False):
     id: Required[str]
     """The auth config id of the app (must be a valid auth config id)"""
+
+
+class ConnectionACLConfigForShared(TypedDict, total=False):
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is deny-by-default — only the creator can use.
+    """
+
+    allow_all_users: bool
+    """Wildcard "any user_id in the project" allow toggle.
+
+    Only valid on SHARED connections.
+    """
+
+    allowed_user_ids: SequenceNotStr[str]
+    """Explicit allow list of user_ids who can use this SHARED connection."""
+
+    not_allowed_user_ids: SequenceNotStr[str]
+    """Explicit deny list. Wins on conflict with allow_all_users and allowed_user_ids."""
 
 
 class ConnectionStateUnionMember0ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
@@ -636,6 +656,8 @@ class ConnectionStateUnionMember1ValUnionMember2(TypedDict, total=False, extra_i
 
     extension: str
 
+    extra_token_data: Dict[str, Optional[object]]
+
     form_api_base_url: str
 
     id_token: str
@@ -714,6 +736,8 @@ class ConnectionStateUnionMember1ValUnionMember3(TypedDict, total=False, extra_i
     expires_in: Union[float, str, None]
 
     extension: str
+
+    extra_token_data: Dict[str, Optional[object]]
 
     form_api_base_url: str
 
@@ -4370,7 +4394,16 @@ class Connection(TypedDict, total=False):
     PRIVATE (default) is usable only by the owning user_id. SHARED is reachable from
     a tool-router session ONLY when explicitly pinned in the session config — at
     most one SHARED connection per toolkit per session. Sessions never use a SHARED
-    connection implicitly. Set at creation time only — cannot be changed later.
+    connection implicitly.
+    """
+
+    acl_config_for_shared: ConnectionACLConfigForShared
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in
+    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
+    allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+    deny-by-default — only the creator can use.
     """
 
     alias: str

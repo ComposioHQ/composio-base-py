@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable, Optional
+from typing import Dict, Union, Iterable, Optional
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from ..._types import SequenceNotStr
@@ -122,6 +122,8 @@ class CustomConnectionDataUnionMember0Val(TypedDict, total=False, extra_items=Op
     expires_in: Union[float, str, None]
 
     extension: str
+
+    extra_token_data: Dict[str, Optional[object]]
 
     form_api_base_url: str
 

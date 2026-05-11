@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import Union, Optional
+from typing import Dict, Union, Optional
 from typing_extensions import Literal, Required, Annotated, TypeAlias, TypedDict
 
 from .._types import SequenceNotStr
@@ -10,6 +10,7 @@ from .._utils import PropertyInfo
 
 __all__ = [
     "LinkCreateParams",
+    "ACLConfigForShared",
     "ConnectionData",
     "ConnectionDataUnionMember0",
     "ConnectionDataUnionMember1",
@@ -104,7 +105,16 @@ class LinkCreateParams(TypedDict, total=False):
     PRIVATE (default) is usable only by the owning user_id. SHARED is reachable from
     a tool-router session ONLY when explicitly pinned in the session config — at
     most one SHARED connection per toolkit per session. Sessions never use a SHARED
-    connection implicitly. Set at creation time only — cannot be changed later.
+    connection implicitly.
+    """
+
+    acl_config_for_shared: ACLConfigForShared
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in
+    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
+    allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+    deny-by-default — only the creator can use.
     """
 
     alias: str
@@ -118,6 +128,25 @@ class LinkCreateParams(TypedDict, total=False):
 
     connection_data: ConnectionData
     """Optional data to pre-fill connection fields with default values"""
+
+
+class ACLConfigForShared(TypedDict, total=False):
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is deny-by-default — only the creator can use.
+    """
+
+    allow_all_users: bool
+    """Wildcard "any user_id in the project" allow toggle.
+
+    Only valid on SHARED connections.
+    """
+
+    allowed_user_ids: SequenceNotStr[str]
+    """Explicit allow list of user_ids who can use this SHARED connection."""
+
+    not_allowed_user_ids: SequenceNotStr[str]
+    """Explicit deny list. Wins on conflict with allow_all_users and allowed_user_ids."""
 
 
 class ConnectionDataUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
@@ -584,6 +613,8 @@ class ConnectionDataUnionMember8(TypedDict, total=False, extra_items=Optional[ob
 
     extension: str
 
+    extra_token_data: Dict[str, Optional[object]]
+
     form_api_base_url: str
 
     id_token: str
@@ -660,6 +691,8 @@ class ConnectionDataUnionMember9(TypedDict, total=False, extra_items=Optional[ob
     expires_in: Union[float, str, None]
 
     extension: str
+
+    extra_token_data: Dict[str, Optional[object]]
 
     form_api_base_url: str
 

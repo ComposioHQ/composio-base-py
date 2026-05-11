@@ -87,7 +87,11 @@ class AuthConfigDetailFieldsAuthConfigCreationOptional(BaseModel):
 
     type: str
 
+    advanced: Optional[bool] = None
+
     default: Optional[str] = None
+
+    is_secret: Optional[bool] = None
 
     legacy_template_name: Optional[str] = None
 
@@ -103,7 +107,11 @@ class AuthConfigDetailFieldsAuthConfigCreationRequired(BaseModel):
 
     type: str
 
+    advanced: Optional[bool] = None
+
     default: Optional[str] = None
+
+    is_secret: Optional[bool] = None
 
     legacy_template_name: Optional[str] = None
 
@@ -127,7 +135,11 @@ class AuthConfigDetailFieldsConnectedAccountInitiationOptional(BaseModel):
 
     type: str
 
+    advanced: Optional[bool] = None
+
     default: Optional[str] = None
+
+    is_secret: Optional[bool] = None
 
     legacy_template_name: Optional[str] = None
 
@@ -143,7 +155,11 @@ class AuthConfigDetailFieldsConnectedAccountInitiationRequired(BaseModel):
 
     type: str
 
+    advanced: Optional[bool] = None
+
     default: Optional[str] = None
+
+    is_secret: Optional[bool] = None
 
     legacy_template_name: Optional[str] = None
 

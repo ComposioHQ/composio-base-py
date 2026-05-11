@@ -159,6 +159,8 @@ class CustomConnectionDataUnionMember0Val(TypedDict, total=False, extra_items=Op
 
     extension: str
 
+    extra_token_data: Dict[str, Optional[object]]
+
     form_api_base_url: str
 
     id_token: str

@@ -464,6 +464,7 @@ class SessionResource(SyncAPIResource):
         *,
         toolkit: str,
         account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
+        acl_config_for_shared: session_link_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -486,8 +487,12 @@ class SessionResource(SyncAPIResource):
           account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
               the owning user_id. SHARED is reachable from a tool-router session ONLY when
               explicitly pinned in the session config — at most one SHARED connection per
-              toolkit per session. Sessions never use a SHARED connection implicitly. Set at
-              creation time only — cannot be changed later.
+              toolkit per session. Sessions never use a SHARED connection implicitly.
+
+          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
+              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
+              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+              deny-by-default — only the creator can use.
 
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
@@ -510,6 +515,7 @@ class SessionResource(SyncAPIResource):
                 {
                     "toolkit": toolkit,
                     "account_type": account_type,
+                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "callback_url": callback_url,
                 },
@@ -1282,6 +1288,7 @@ class AsyncSessionResource(AsyncAPIResource):
         *,
         toolkit: str,
         account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
+        acl_config_for_shared: session_link_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1304,8 +1311,12 @@ class AsyncSessionResource(AsyncAPIResource):
           account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
               the owning user_id. SHARED is reachable from a tool-router session ONLY when
               explicitly pinned in the session config — at most one SHARED connection per
-              toolkit per session. Sessions never use a SHARED connection implicitly. Set at
-              creation time only — cannot be changed later.
+              toolkit per session. Sessions never use a SHARED connection implicitly.
+
+          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
+              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
+              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+              deny-by-default — only the creator can use.
 
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
@@ -1328,6 +1339,7 @@ class AsyncSessionResource(AsyncAPIResource):
                 {
                     "toolkit": toolkit,
                     "account_type": account_type,
+                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "callback_url": callback_url,
                 },

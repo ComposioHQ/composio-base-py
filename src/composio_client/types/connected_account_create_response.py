@@ -713,6 +713,8 @@ class ConnectionDataUnionMember1ValUnionMember2(BaseModel):
 
     extension: Optional[str] = None
 
+    extra_token_data: Optional[Dict[str, Optional[object]]] = None
+
     form_api_base_url: Optional[str] = None
 
     id_token: Optional[str] = None
@@ -803,6 +805,8 @@ class ConnectionDataUnionMember1ValUnionMember3(BaseModel):
     expires_in: Union[float, str, None] = None
 
     extension: Optional[str] = None
+
+    extra_token_data: Optional[Dict[str, Optional[object]]] = None
 
     form_api_base_url: Optional[str] = None
 

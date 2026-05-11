@@ -118,6 +118,7 @@ __all__ = [
     "StateUnionMember13ValUnionMember4",
     "StateUnionMember13ValUnionMember5",
     "Toolkit",
+    "ACLConfigForShared",
     "Deprecated",
 ]
 
@@ -752,6 +753,8 @@ class StateUnionMember1ValUnionMember2(BaseModel):
 
     extension: Optional[str] = None
 
+    extra_token_data: Optional[Dict[str, Optional[object]]] = None
+
     form_api_base_url: Optional[str] = None
 
     id_token: Optional[str] = None
@@ -842,6 +845,8 @@ class StateUnionMember1ValUnionMember3(BaseModel):
     expires_in: Union[float, str, None] = None
 
     extension: Optional[str] = None
+
+    extra_token_data: Optional[Dict[str, Optional[object]]] = None
 
     form_api_base_url: Optional[str] = None
 
@@ -5288,6 +5293,19 @@ class Toolkit(BaseModel):
     """The slug of the toolkit"""
 
 
+class ACLConfigForShared(BaseModel):
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY.
+    """
+
+    allow_all_users: bool
+
+    allowed_user_ids: List[str]
+
+    not_allowed_user_ids: List[str]
+
+
 class Deprecated(BaseModel):
     labels: List[str]
     """The labels of the connection"""
@@ -5357,6 +5375,14 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     """
     A short, token-friendly identifier for multi-account disambiguation, typically
     toolkit-prefixed with 1-2 words (e.g., "gmail_red-castle")
+    """
+
+    acl_config_for_shared: Optional[ACLConfigForShared] = None
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in
+    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
+    allowed_user_ids → ALLOW; else DENY.
     """
 
     deprecated: Optional[Deprecated] = None
