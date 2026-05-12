@@ -521,14 +521,16 @@ class TestSession:
         session = client.tool_router.session.link(
             session_id="trs_LX9uJKBinWWr",
             toolkit="github",
-            account_type="PRIVATE",
-            acl_config_for_shared={
-                "allow_all_users": True,
-                "allowed_user_ids": ["x"],
-                "not_allowed_user_ids": ["x"],
-            },
             alias="alias",
             callback_url="https://myapp.com/callback",
+            experimental={
+                "account_type": "PRIVATE",
+                "acl_config_for_shared": {
+                    "allow_all_users": True,
+                    "allowed_user_ids": ["x"],
+                    "not_allowed_user_ids": ["x"],
+                },
+            },
         )
         assert_matches_type(SessionLinkResponse, session, path=["response"])
 
@@ -1468,14 +1470,16 @@ class TestAsyncSession:
         session = await async_client.tool_router.session.link(
             session_id="trs_LX9uJKBinWWr",
             toolkit="github",
-            account_type="PRIVATE",
-            acl_config_for_shared={
-                "allow_all_users": True,
-                "allowed_user_ids": ["x"],
-                "not_allowed_user_ids": ["x"],
-            },
             alias="alias",
             callback_url="https://myapp.com/callback",
+            experimental={
+                "account_type": "PRIVATE",
+                "acl_config_for_shared": {
+                    "allow_all_users": True,
+                    "allowed_user_ids": ["x"],
+                    "not_allowed_user_ids": ["x"],
+                },
+            },
         )
         assert_matches_type(SessionLinkResponse, session, path=["response"])
 

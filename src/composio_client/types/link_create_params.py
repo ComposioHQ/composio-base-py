@@ -10,7 +10,6 @@ from .._utils import PropertyInfo
 
 __all__ = [
     "LinkCreateParams",
-    "ACLConfigForShared",
     "ConnectionData",
     "ConnectionDataUnionMember0",
     "ConnectionDataUnionMember1",
@@ -89,6 +88,8 @@ __all__ = [
     "ConnectionDataUnionMember72",
     "ConnectionDataUnionMember73",
     "ConnectionDataUnionMember74",
+    "Experimental",
+    "ExperimentalACLConfigForShared",
 ]
 
 
@@ -98,24 +99,6 @@ class LinkCreateParams(TypedDict, total=False):
 
     user_id: Required[str]
     """The user id to create a link for"""
-
-    account_type: Literal["PRIVATE", "SHARED"]
-    """Sharing model for this connected account.
-
-    PRIVATE (default) is usable only by the owning user_id. SHARED is reachable from
-    a tool-router session ONLY when explicitly pinned in the session config — at
-    most one SHARED connection per toolkit per session. Sessions never use a SHARED
-    connection implicitly.
-    """
-
-    acl_config_for_shared: ACLConfigForShared
-    """Access control for SHARED connections.
-
-    Resolution rule (only fires when caller != creator): user in
-    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
-    allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-    deny-by-default — only the creator can use.
-    """
 
     alias: str
     """A human-readable alias for this connected account.
@@ -129,24 +112,11 @@ class LinkCreateParams(TypedDict, total=False):
     connection_data: ConnectionData
     """Optional data to pre-fill connection fields with default values"""
 
-
-class ACLConfigForShared(TypedDict, total=False):
-    """Access control for SHARED connections.
-
-    Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is deny-by-default — only the creator can use.
+    experimental: Experimental
     """
-
-    allow_all_users: bool
-    """Wildcard "any user_id in the project" allow toggle.
-
-    Only valid on SHARED connections.
+    Experimental features - not stable, may be modified or removed in future
+    versions.
     """
-
-    allowed_user_ids: SequenceNotStr[str]
-    """Explicit allow list of user_ids who can use this SHARED connection."""
-
-    not_allowed_user_ids: SequenceNotStr[str]
-    """Explicit deny list. Wins on conflict with allow_all_users and allowed_user_ids."""
 
 
 class ConnectionDataUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
@@ -4072,3 +4042,46 @@ ConnectionData: TypeAlias = Union[
     ConnectionDataUnionMember73,
     ConnectionDataUnionMember74,
 ]
+
+
+class ExperimentalACLConfigForShared(TypedDict, total=False):
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is deny-by-default — only the creator can use.
+    """
+
+    allow_all_users: bool
+    """Wildcard "any user_id in the project" allow toggle.
+
+    Only valid on SHARED connections.
+    """
+
+    allowed_user_ids: SequenceNotStr[str]
+    """Explicit allow list of user_ids who can use this SHARED connection."""
+
+    not_allowed_user_ids: SequenceNotStr[str]
+    """Explicit deny list. Wins on conflict with allow_all_users and allowed_user_ids."""
+
+
+class Experimental(TypedDict, total=False):
+    """
+    Experimental features - not stable, may be modified or removed in future versions.
+    """
+
+    account_type: Literal["PRIVATE", "SHARED"]
+    """Sharing model for this connected account.
+
+    PRIVATE (default) is usable only by the owning user_id. SHARED is reachable from
+    a tool-router session ONLY when explicitly pinned in the session config — at
+    most one SHARED connection per toolkit per session. Sessions never use a SHARED
+    connection implicitly.
+    """
+
+    acl_config_for_shared: ExperimentalACLConfigForShared
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in
+    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
+    allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+    deny-by-default — only the creator can use.
+    """

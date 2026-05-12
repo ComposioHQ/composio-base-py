@@ -30,12 +30,6 @@ class TestLink:
         link = client.link.create(
             auth_config_id="auth_config_id",
             user_id="x",
-            account_type="PRIVATE",
-            acl_config_for_shared={
-                "allow_all_users": True,
-                "allowed_user_ids": ["x"],
-                "not_allowed_user_ids": ["x"],
-            },
             alias="alias",
             callback_url="callback_url",
             connection_data={
@@ -61,6 +55,14 @@ class TestLink:
                 "version": "version",
                 "your_server": "your_server",
                 "your_domain": "your-domain",
+            },
+            experimental={
+                "account_type": "PRIVATE",
+                "acl_config_for_shared": {
+                    "allow_all_users": True,
+                    "allowed_user_ids": ["x"],
+                    "not_allowed_user_ids": ["x"],
+                },
             },
         )
         assert_matches_type(LinkCreateResponse, link, path=["response"])
@@ -110,12 +112,6 @@ class TestAsyncLink:
         link = await async_client.link.create(
             auth_config_id="auth_config_id",
             user_id="x",
-            account_type="PRIVATE",
-            acl_config_for_shared={
-                "allow_all_users": True,
-                "allowed_user_ids": ["x"],
-                "not_allowed_user_ids": ["x"],
-            },
             alias="alias",
             callback_url="callback_url",
             connection_data={
@@ -141,6 +137,14 @@ class TestAsyncLink:
                 "version": "version",
                 "your_server": "your_server",
                 "your_domain": "your-domain",
+            },
+            experimental={
+                "account_type": "PRIVATE",
+                "acl_config_for_shared": {
+                    "allow_all_users": True,
+                    "allowed_user_ids": ["x"],
+                    "not_allowed_user_ids": ["x"],
+                },
             },
         )
         assert_matches_type(LinkCreateResponse, link, path=["response"])

@@ -463,10 +463,9 @@ class SessionResource(SyncAPIResource):
         session_id: str,
         *,
         toolkit: str,
-        account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
-        acl_config_for_shared: session_link_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
+        experimental: session_link_params.Experimental | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -484,20 +483,13 @@ class SessionResource(SyncAPIResource):
 
           toolkit: The unique slug identifier of the toolkit to connect
 
-          account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
-              the owning user_id. SHARED is reachable from a tool-router session ONLY when
-              explicitly pinned in the session config — at most one SHARED connection per
-              toolkit per session. Sessions never use a SHARED connection implicitly.
-
-          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
-              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
-              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-              deny-by-default — only the creator can use.
-
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
 
           callback_url: URL where users will be redirected after completing auth
+
+          experimental: Experimental features - not stable, may be modified or removed in future
+              versions.
 
           extra_headers: Send extra headers
 
@@ -514,10 +506,9 @@ class SessionResource(SyncAPIResource):
             body=maybe_transform(
                 {
                     "toolkit": toolkit,
-                    "account_type": account_type,
-                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "callback_url": callback_url,
+                    "experimental": experimental,
                 },
                 session_link_params.SessionLinkParams,
             ),
@@ -1287,10 +1278,9 @@ class AsyncSessionResource(AsyncAPIResource):
         session_id: str,
         *,
         toolkit: str,
-        account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
-        acl_config_for_shared: session_link_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
+        experimental: session_link_params.Experimental | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1308,20 +1298,13 @@ class AsyncSessionResource(AsyncAPIResource):
 
           toolkit: The unique slug identifier of the toolkit to connect
 
-          account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
-              the owning user_id. SHARED is reachable from a tool-router session ONLY when
-              explicitly pinned in the session config — at most one SHARED connection per
-              toolkit per session. Sessions never use a SHARED connection implicitly.
-
-          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
-              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
-              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-              deny-by-default — only the creator can use.
-
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
 
           callback_url: URL where users will be redirected after completing auth
+
+          experimental: Experimental features - not stable, may be modified or removed in future
+              versions.
 
           extra_headers: Send extra headers
 
@@ -1338,10 +1321,9 @@ class AsyncSessionResource(AsyncAPIResource):
             body=await async_maybe_transform(
                 {
                     "toolkit": toolkit,
-                    "account_type": account_type,
-                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "callback_url": callback_url,
+                    "experimental": experimental,
                 },
                 session_link_params.SessionLinkParams,
             ),

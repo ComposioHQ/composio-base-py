@@ -8,19 +8,17 @@ from typing_extensions import Literal, Required, Annotated, TypedDict
 from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
-__all__ = ["ConnectedAccountPatchParams", "ACLConfigForShared", "Connection", "ConnectionState", "ConnectionStateVal"]
+__all__ = [
+    "ConnectedAccountPatchParams",
+    "Connection",
+    "ConnectionState",
+    "ConnectionStateVal",
+    "Experimental",
+    "ExperimentalACLConfigForShared",
+]
 
 
 class ConnectedAccountPatchParams(TypedDict, total=False):
-    acl_config_for_shared: ACLConfigForShared
-    """Access control for SHARED connections.
-
-    Resolution rule (only fires when caller != creator): user in
-    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
-    allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-    deny-by-default — only the creator can use.
-    """
-
     alias: str
     """A human-readable alias for this connected account.
 
@@ -30,24 +28,11 @@ class ConnectedAccountPatchParams(TypedDict, total=False):
 
     connection: Connection
 
-
-class ACLConfigForShared(TypedDict, total=False):
-    """Access control for SHARED connections.
-
-    Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is deny-by-default — only the creator can use.
+    experimental: Experimental
     """
-
-    allow_all_users: bool
-    """Wildcard "any user_id in the project" allow toggle.
-
-    Only valid on SHARED connections.
+    Experimental features - not stable, may be modified or removed in future
+    versions.
     """
-
-    allowed_user_ids: SequenceNotStr[str]
-    """Explicit allow list of user_ids who can use this SHARED connection."""
-
-    not_allowed_user_ids: SequenceNotStr[str]
-    """Explicit deny list. Wins on conflict with allow_all_users and allowed_user_ids."""
 
 
 class ConnectionStateVal(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
@@ -145,3 +130,37 @@ class ConnectionState(TypedDict, total=False):
 
 class Connection(TypedDict, total=False):
     state: Required[ConnectionState]
+
+
+class ExperimentalACLConfigForShared(TypedDict, total=False):
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is deny-by-default — only the creator can use.
+    """
+
+    allow_all_users: bool
+    """Wildcard "any user_id in the project" allow toggle.
+
+    Only valid on SHARED connections.
+    """
+
+    allowed_user_ids: SequenceNotStr[str]
+    """Explicit allow list of user_ids who can use this SHARED connection."""
+
+    not_allowed_user_ids: SequenceNotStr[str]
+    """Explicit deny list. Wins on conflict with allow_all_users and allowed_user_ids."""
+
+
+class Experimental(TypedDict, total=False):
+    """
+    Experimental features - not stable, may be modified or removed in future versions.
+    """
+
+    acl_config_for_shared: ExperimentalACLConfigForShared
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in
+    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
+    allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+    deny-by-default — only the creator can use.
+    """

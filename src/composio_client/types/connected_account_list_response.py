@@ -119,8 +119,9 @@ __all__ = [
     "ItemStateUnionMember13ValUnionMember4",
     "ItemStateUnionMember13ValUnionMember5",
     "ItemToolkit",
-    "ItemACLConfigForShared",
     "ItemDeprecated",
+    "ItemExperimental",
+    "ItemExperimentalACLConfigForShared",
 ]
 
 
@@ -5294,10 +5295,18 @@ class ItemToolkit(BaseModel):
     """The slug of the toolkit"""
 
 
-class ItemACLConfigForShared(BaseModel):
+class ItemDeprecated(BaseModel):
+    labels: List[str]
+    """The labels of the connection"""
+
+    uuid: str
+    """The uuid of the connection"""
+
+
+class ItemExperimentalACLConfigForShared(BaseModel):
     """Access control for SHARED connections.
 
-    Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY.
+    Visible only to the connection creator and project/org API key callers; non-creator cookie callers receive the response without this block.
     """
 
     allow_all_users: bool
@@ -5307,26 +5316,29 @@ class ItemACLConfigForShared(BaseModel):
     not_allowed_user_ids: List[str]
 
 
-class ItemDeprecated(BaseModel):
-    labels: List[str]
-    """The labels of the connection"""
+class ItemExperimental(BaseModel):
+    """
+    Experimental features - not stable, may be modified or removed in future versions.
+    """
 
-    uuid: str
-    """The uuid of the connection"""
+    account_type: Literal["PRIVATE", "SHARED"]
+    """Sharing model for this connected account.
+
+    PRIVATE is usable only by the owning user_id. SHARED is reachable from a
+    tool-router session only when explicitly pinned in the session config.
+    """
+
+    acl_config_for_shared: Optional[ItemExperimentalACLConfigForShared] = None
+    """Access control for SHARED connections.
+
+    Visible only to the connection creator and project/org API key callers;
+    non-creator cookie callers receive the response without this block.
+    """
 
 
 class Item(BaseModel):
     id: str
     """The id of the connection"""
-
-    account_type: Literal["PRIVATE", "SHARED"]
-    """Sharing model.
-
-    PRIVATE accounts are usable only by their owning user_id. SHARED accounts are
-    reachable from a tool-router session only when explicitly pinned in the session
-    config (at most one SHARED per toolkit per session); they are never used
-    implicitly.
-    """
 
     alias: Optional[str] = None
     """A user-defined alias for the connected account"""
@@ -5375,15 +5387,13 @@ class Item(BaseModel):
     toolkit-prefixed with 1-2 words (e.g., "gmail_red-castle")
     """
 
-    acl_config_for_shared: Optional[ItemACLConfigForShared] = None
-    """Access control for SHARED connections.
-
-    Resolution rule (only fires when caller != creator): user in
-    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
-    allowed_user_ids → ALLOW; else DENY.
-    """
-
     deprecated: Optional[ItemDeprecated] = None
+
+    experimental: Optional[ItemExperimental] = None
+    """
+    Experimental features - not stable, may be modified or removed in future
+    versions.
+    """
 
     test_request_endpoint: Optional[str] = None
     """The endpoint to make test request for verification"""

@@ -116,6 +116,8 @@ __all__ = [
     "ConnectionDataUnionMember13ValUnionMember4",
     "ConnectionDataUnionMember13ValUnionMember5",
     "Deprecated",
+    "Experimental",
+    "ExperimentalACLConfigForShared",
 ]
 
 
@@ -5261,16 +5263,42 @@ class Deprecated(BaseModel):
     """The uuid of the connected account"""
 
 
+class ExperimentalACLConfigForShared(BaseModel):
+    """Access control for SHARED connections.
+
+    Visible only to the connection creator and project/org API key callers; non-creator cookie callers receive the response without this block.
+    """
+
+    allow_all_users: bool
+
+    allowed_user_ids: List[str]
+
+    not_allowed_user_ids: List[str]
+
+
+class Experimental(BaseModel):
+    """
+    Experimental features - not stable, may be modified or removed in future versions.
+    """
+
+    account_type: Literal["PRIVATE", "SHARED"]
+    """Sharing model for this connected account.
+
+    PRIVATE is usable only by the owning user_id. SHARED is reachable from a
+    tool-router session only when explicitly pinned in the session config.
+    """
+
+    acl_config_for_shared: Optional[ExperimentalACLConfigForShared] = None
+    """Access control for SHARED connections.
+
+    Visible only to the connection creator and project/org API key callers;
+    non-creator cookie callers receive the response without this block.
+    """
+
+
 class ConnectedAccountCreateResponse(BaseModel):
     id: str
     """The id of the connected account"""
-
-    account_type: Literal["PRIVATE", "SHARED"]
-    """The persisted sharing model for this connected account (PRIVATE | SHARED).
-
-    Echoes back the value supplied at creation time so callers can confirm what
-    landed without a follow-up GET.
-    """
 
     connection_data: ConnectionData = FieldInfo(alias="connectionData")
     """The connection data of the connected account"""
@@ -5289,3 +5317,9 @@ class ConnectedAccountCreateResponse(BaseModel):
 
     status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE", "REVOKED"]
     """DEPRECATED: This field will be removed in a future version"""
+
+    experimental: Optional[Experimental] = None
+    """
+    Experimental features - not stable, may be modified or removed in future
+    versions.
+    """

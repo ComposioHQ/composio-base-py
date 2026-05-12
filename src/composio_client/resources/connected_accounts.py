@@ -181,9 +181,9 @@ class ConnectedAccountsResource(SyncAPIResource):
         find specific connections.
 
         Args:
-          account_type: Filter by sharing model. Default (omitted) returns PRIVATE only — shared
-              accounts must be requested explicitly. Pass SHARED for only shared accounts, or
-              ALL for PRIVATE + SHARED.
+          account_type: [Experimental] Filter by sharing model. Default (omitted) returns PRIVATE only —
+              shared accounts must be requested explicitly. Pass SHARED for only shared
+              accounts, or ALL for PRIVATE + SHARED.
 
           auth_config_ids: The auth config ids of the connected accounts
 
@@ -277,9 +277,9 @@ class ConnectedAccountsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
-        acl_config_for_shared: connected_account_patch_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         connection: connected_account_patch_params.Connection | Omit = omit,
+        experimental: connected_account_patch_params.Experimental | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -294,13 +294,11 @@ class ConnectedAccountsResource(SyncAPIResource):
         Alias must be unique within the same project, entity, and toolkit scope.
 
         Args:
-          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
-              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
-              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-              deny-by-default — only the creator can use.
-
           alias: A human-readable alias for this connected account. Pass an empty string to clear
               the alias. Must be unique per entity and toolkit within the project.
+
+          experimental: Experimental features - not stable, may be modified or removed in future
+              versions.
 
           extra_headers: Send extra headers
 
@@ -316,9 +314,9 @@ class ConnectedAccountsResource(SyncAPIResource):
             path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             body=maybe_transform(
                 {
-                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "connection": connection,
+                    "experimental": experimental,
                 },
                 connected_account_patch_params.ConnectedAccountPatchParams,
             ),
@@ -570,9 +568,9 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         find specific connections.
 
         Args:
-          account_type: Filter by sharing model. Default (omitted) returns PRIVATE only — shared
-              accounts must be requested explicitly. Pass SHARED for only shared accounts, or
-              ALL for PRIVATE + SHARED.
+          account_type: [Experimental] Filter by sharing model. Default (omitted) returns PRIVATE only —
+              shared accounts must be requested explicitly. Pass SHARED for only shared
+              accounts, or ALL for PRIVATE + SHARED.
 
           auth_config_ids: The auth config ids of the connected accounts
 
@@ -666,9 +664,9 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
-        acl_config_for_shared: connected_account_patch_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         connection: connected_account_patch_params.Connection | Omit = omit,
+        experimental: connected_account_patch_params.Experimental | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -683,13 +681,11 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         Alias must be unique within the same project, entity, and toolkit scope.
 
         Args:
-          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
-              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
-              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-              deny-by-default — only the creator can use.
-
           alias: A human-readable alias for this connected account. Pass an empty string to clear
               the alias. Must be unique per entity and toolkit within the project.
+
+          experimental: Experimental features - not stable, may be modified or removed in future
+              versions.
 
           extra_headers: Send extra headers
 
@@ -705,9 +701,9 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
             path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             body=await async_maybe_transform(
                 {
-                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "connection": connection,
+                    "experimental": experimental,
                 },
                 connected_account_patch_params.ConnectedAccountPatchParams,
             ),

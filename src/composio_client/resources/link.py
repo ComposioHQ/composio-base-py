@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing_extensions import Literal
-
 import httpx
 
 from ..types import link_create_params
@@ -50,11 +48,10 @@ class LinkResource(SyncAPIResource):
         *,
         auth_config_id: str,
         user_id: str,
-        account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
-        acl_config_for_shared: link_create_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         connection_data: link_create_params.ConnectionData | Omit = omit,
+        experimental: link_create_params.Experimental | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -71,22 +68,15 @@ class LinkResource(SyncAPIResource):
 
           user_id: The user id to create a link for
 
-          account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
-              the owning user_id. SHARED is reachable from a tool-router session ONLY when
-              explicitly pinned in the session config — at most one SHARED connection per
-              toolkit per session. Sessions never use a SHARED connection implicitly.
-
-          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
-              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
-              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-              deny-by-default — only the creator can use.
-
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
 
           callback_url: The callback url to create a link for
 
           connection_data: Optional data to pre-fill connection fields with default values
+
+          experimental: Experimental features - not stable, may be modified or removed in future
+              versions.
 
           extra_headers: Send extra headers
 
@@ -102,11 +92,10 @@ class LinkResource(SyncAPIResource):
                 {
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
-                    "account_type": account_type,
-                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "callback_url": callback_url,
                     "connection_data": connection_data,
+                    "experimental": experimental,
                 },
                 link_create_params.LinkCreateParams,
             ),
@@ -144,11 +133,10 @@ class AsyncLinkResource(AsyncAPIResource):
         *,
         auth_config_id: str,
         user_id: str,
-        account_type: Literal["PRIVATE", "SHARED"] | Omit = omit,
-        acl_config_for_shared: link_create_params.ACLConfigForShared | Omit = omit,
         alias: str | Omit = omit,
         callback_url: str | Omit = omit,
         connection_data: link_create_params.ConnectionData | Omit = omit,
+        experimental: link_create_params.Experimental | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -165,22 +153,15 @@ class AsyncLinkResource(AsyncAPIResource):
 
           user_id: The user id to create a link for
 
-          account_type: Sharing model for this connected account. PRIVATE (default) is usable only by
-              the owning user_id. SHARED is reachable from a tool-router session ONLY when
-              explicitly pinned in the session config — at most one SHARED connection per
-              toolkit per session. Sessions never use a SHARED connection implicitly.
-
-          acl_config_for_shared: Access control for SHARED connections. Resolution rule (only fires when caller
-              != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW;
-              user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-              deny-by-default — only the creator can use.
-
           alias: A human-readable alias for this connected account. Must be unique per entity and
               toolkit within the project.
 
           callback_url: The callback url to create a link for
 
           connection_data: Optional data to pre-fill connection fields with default values
+
+          experimental: Experimental features - not stable, may be modified or removed in future
+              versions.
 
           extra_headers: Send extra headers
 
@@ -196,11 +177,10 @@ class AsyncLinkResource(AsyncAPIResource):
                 {
                     "auth_config_id": auth_config_id,
                     "user_id": user_id,
-                    "account_type": account_type,
-                    "acl_config_for_shared": acl_config_for_shared,
                     "alias": alias,
                     "callback_url": callback_url,
                     "connection_data": connection_data,
+                    "experimental": experimental,
                 },
                 link_create_params.LinkCreateParams,
             ),

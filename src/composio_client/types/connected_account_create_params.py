@@ -12,7 +12,8 @@ __all__ = [
     "ConnectedAccountCreateParams",
     "AuthConfig",
     "Connection",
-    "ConnectionACLConfigForShared",
+    "ConnectionExperimental",
+    "ConnectionExperimentalACLConfigForShared",
     "ConnectionState",
     "ConnectionStateUnionMember0",
     "ConnectionStateUnionMember0Val",
@@ -139,7 +140,7 @@ class AuthConfig(TypedDict, total=False):
     """The auth config id of the app (must be a valid auth config id)"""
 
 
-class ConnectionACLConfigForShared(TypedDict, total=False):
+class ConnectionExperimentalACLConfigForShared(TypedDict, total=False):
     """Access control for SHARED connections.
 
     Resolution rule (only fires when caller != creator): user in not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is deny-by-default — only the creator can use.
@@ -156,6 +157,30 @@ class ConnectionACLConfigForShared(TypedDict, total=False):
 
     not_allowed_user_ids: SequenceNotStr[str]
     """Explicit deny list. Wins on conflict with allow_all_users and allowed_user_ids."""
+
+
+class ConnectionExperimental(TypedDict, total=False):
+    """
+    Experimental features - not stable, may be modified or removed in future versions.
+    """
+
+    account_type: Literal["PRIVATE", "SHARED"]
+    """Sharing model for this connected account.
+
+    PRIVATE (default) is usable only by the owning user_id. SHARED is reachable from
+    a tool-router session ONLY when explicitly pinned in the session config — at
+    most one SHARED connection per toolkit per session. Sessions never use a SHARED
+    connection implicitly.
+    """
+
+    acl_config_for_shared: ConnectionExperimentalACLConfigForShared
+    """Access control for SHARED connections.
+
+    Resolution rule (only fires when caller != creator): user in
+    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
+    allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
+    deny-by-default — only the creator can use.
+    """
 
 
 class ConnectionStateUnionMember0ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
@@ -4388,24 +4413,6 @@ ConnectionState: TypeAlias = Union[
 
 
 class Connection(TypedDict, total=False):
-    account_type: Literal["PRIVATE", "SHARED"]
-    """Sharing model for this connected account.
-
-    PRIVATE (default) is usable only by the owning user_id. SHARED is reachable from
-    a tool-router session ONLY when explicitly pinned in the session config — at
-    most one SHARED connection per toolkit per session. Sessions never use a SHARED
-    connection implicitly.
-    """
-
-    acl_config_for_shared: ConnectionACLConfigForShared
-    """Access control for SHARED connections.
-
-    Resolution rule (only fires when caller != creator): user in
-    not_allowed_user_ids → DENY; allow_all_users=true → ALLOW; user in
-    allowed_user_ids → ALLOW; else DENY. Default state (omitted or {}) is
-    deny-by-default — only the creator can use.
-    """
-
     alias: str
     """A human-readable alias for this connected account.
 
@@ -4423,6 +4430,12 @@ class Connection(TypedDict, total=False):
 
     deprecated_is_v1_rerouted: bool
     """DEPRECATED: This parameter will be removed in a future version."""
+
+    experimental: ConnectionExperimental
+    """
+    Experimental features - not stable, may be modified or removed in future
+    versions.
+    """
 
     redirect_uri: str
     """DEPRECATED: This parameter will be removed in a future version.
