@@ -170,6 +170,13 @@ class ToolkitConnectionStatusAccount(BaseModel):
     status: str
     """Connection status (e.g., "active")"""
 
+    account_type: Optional[Literal["PRIVATE", "SHARED"]] = None
+    """Sharing model for this connected account.
+
+    PRIVATE is owner-only; SHARED is reachable from a tool-router session only when
+    explicitly pinned.
+    """
+
     alias: Optional[str] = None
     """User-assigned alias for this account"""
 
@@ -194,6 +201,13 @@ class ToolkitConnectionStatus(BaseModel):
     """When "required", the agent must specify which account to use.
 
     Present only when multiple accounts exist.
+    """
+
+    account_type: Optional[Literal["PRIVATE", "SHARED"]] = None
+    """Sharing model for the connected account when has_active_connection is true.
+
+    PRIVATE is owner-only; SHARED is reachable only when explicitly pinned to the
+    session.
     """
 
     accounts: Optional[List[ToolkitConnectionStatusAccount]] = None
