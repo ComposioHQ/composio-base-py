@@ -285,11 +285,12 @@ class TestConnectedAccounts:
                 }
             },
             experimental={
+                "account_type": "PRIVATE",
                 "acl_config_for_shared": {
                     "allow_all_users": True,
                     "allowed_user_ids": ["x"],
                     "not_allowed_user_ids": ["x"],
-                }
+                },
             },
         )
         assert_matches_type(ConnectedAccountPatchResponse, connected_account, path=["response"])
@@ -681,11 +682,12 @@ class TestAsyncConnectedAccounts:
                 }
             },
             experimental={
+                "account_type": "PRIVATE",
                 "acl_config_for_shared": {
                     "allow_all_users": True,
                     "allowed_user_ids": ["x"],
                     "not_allowed_user_ids": ["x"],
-                }
+                },
             },
         )
         assert_matches_type(ConnectedAccountPatchResponse, connected_account, path=["response"])

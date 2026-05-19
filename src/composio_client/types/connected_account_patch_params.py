@@ -156,6 +156,14 @@ class Experimental(TypedDict, total=False):
     Experimental features - not stable, may be modified or removed in future versions.
     """
 
+    account_type: Literal["PRIVATE", "SHARED"]
+    """Mutate the sharing model.
+
+    PRIVATE → SHARED promotes the existing connection without re-auth; SHARED →
+    PRIVATE revokes all non-creator access and clears the stored ACL atomically.
+    Omit to leave unchanged.
+    """
+
     acl_config_for_shared: ExperimentalACLConfigForShared
     """Access control for SHARED connections.
 
