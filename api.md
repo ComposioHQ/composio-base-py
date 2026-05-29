@@ -242,21 +242,6 @@ Methods:
 - <code title="post /api/v3.1/cli/realtime/auth">client.cli.realtime.<a href="./src/composio_client/resources/cli/realtime.py">auth</a>(\*\*<a href="src/composio_client/types/cli/realtime_auth_params.py">params</a>) -> <a href="./src/composio_client/types/cli/realtime_auth_response.py">RealtimeAuthResponse</a></code>
 - <code title="get /api/v3.1/cli/realtime/credentials">client.cli.realtime.<a href="./src/composio_client/resources/cli/realtime.py">credentials</a>() -> <a href="./src/composio_client/types/cli/realtime_credentials_response.py">RealtimeCredentialsResponse</a></code>
 
-# Project
-
-## Config
-
-Types:
-
-```python
-from composio_client.types.project import ConfigRetrieveResponse, ConfigUpdateResponse
-```
-
-Methods:
-
-- <code title="get /api/v3.1/org/project/config">client.project.config.<a href="./src/composio_client/resources/project/config.py">retrieve</a>() -> <a href="./src/composio_client/types/project/config_retrieve_response.py">ConfigRetrieveResponse</a></code>
-- <code title="patch /api/v3.1/org/project/config">client.project.config.<a href="./src/composio_client/resources/project/config.py">update</a>(\*\*<a href="src/composio_client/types/project/config_update_params.py">params</a>) -> <a href="./src/composio_client/types/project/config_update_response.py">ConfigUpdateResponse</a></code>
-
 # Logs
 
 ## Triggers
@@ -286,16 +271,6 @@ Methods:
 - <code title="post /api/v3.1/internal/action_execution/logs">client.logs.tools.<a href="./src/composio_client/resources/logs/tools.py">list</a>(\*\*<a href="src/composio_client/types/logs/tool_list_params.py">params</a>) -> <a href="./src/composio_client/types/logs/tool_list_response.py">ToolListResponse</a></code>
 
 # ToolRouter
-
-Types:
-
-```python
-from composio_client.types import ToolRouterCreateSessionResponse
-```
-
-Methods:
-
-- <code title="post /api/v3.1/labs/tool_router/session">client.tool_router.<a href="./src/composio_client/resources/tool_router/tool_router.py">create_session</a>(\*\*<a href="src/composio_client/types/tool_router_create_session_params.py">params</a>) -> <a href="./src/composio_client/types/tool_router_create_session_response.py">ToolRouterCreateSessionResponse</a></code>
 
 ## Session
 
