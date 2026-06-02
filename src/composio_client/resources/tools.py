@@ -369,7 +369,8 @@ class ToolsResource(SyncAPIResource):
         """
         Proxy an HTTP request to a third-party API using connected account credentials.
         This endpoint allows making authenticated API calls to external services while
-        abstracting away authentication details.
+        abstracting away authentication details. v3.1 requires a proxy_execute scoped
+        project API key; default project API keys are rejected.
 
         Args:
           endpoint: The API endpoint to call (absolute URL or path relative to base URL of the
@@ -774,7 +775,8 @@ class AsyncToolsResource(AsyncAPIResource):
         """
         Proxy an HTTP request to a third-party API using connected account credentials.
         This endpoint allows making authenticated API calls to external services while
-        abstracting away authentication details.
+        abstracting away authentication details. v3.1 requires a proxy_execute scoped
+        project API key; default project API keys are rejected.
 
         Args:
           endpoint: The API endpoint to call (absolute URL or path relative to base URL of the
