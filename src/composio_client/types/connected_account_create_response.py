@@ -5303,6 +5303,12 @@ class ConnectedAccountCreateResponse(BaseModel):
     connection_data: ConnectionData = FieldInfo(alias="connectionData")
     """The connection data of the connected account"""
 
+    deprecated: Deprecated
+    """DEPRECATED: This field will be removed in a future version.
+
+    Please use id and auth_config.id instead.
+    """
+
     redirect_uri: Optional[str] = None
     """DEPRECATED: This field will be removed in a future version"""
 
@@ -5311,12 +5317,6 @@ class ConnectedAccountCreateResponse(BaseModel):
 
     status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE", "REVOKED"]
     """DEPRECATED: This field will be removed in a future version"""
-
-    deprecated: Optional[Deprecated] = None
-    """DEPRECATED: This field will be removed in a future version.
-
-    Please use id and auth_config.id instead.
-    """
 
     experimental: Optional[Experimental] = None
     """
