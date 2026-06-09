@@ -56,14 +56,6 @@ from .toolkits import (
     ToolkitsResourceWithStreamingResponse,
     AsyncToolkitsResourceWithStreamingResponse,
 )
-from .migration import (
-    MigrationResource,
-    AsyncMigrationResource,
-    MigrationResourceWithRawResponse,
-    AsyncMigrationResourceWithRawResponse,
-    MigrationResourceWithStreamingResponse,
-    AsyncMigrationResourceWithStreamingResponse,
-)
 from .tool_router import (
     ToolRouterResource,
     AsyncToolRouterResource,
@@ -160,12 +152,6 @@ __all__ = [
     "AsyncFilesResourceWithRawResponse",
     "FilesResourceWithStreamingResponse",
     "AsyncFilesResourceWithStreamingResponse",
-    "MigrationResource",
-    "AsyncMigrationResource",
-    "MigrationResourceWithRawResponse",
-    "AsyncMigrationResourceWithRawResponse",
-    "MigrationResourceWithStreamingResponse",
-    "AsyncMigrationResourceWithStreamingResponse",
     "CliResource",
     "AsyncCliResource",
     "CliResourceWithRawResponse",

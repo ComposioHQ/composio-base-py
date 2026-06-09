@@ -5397,5 +5397,18 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     versions.
     """
 
+    requested_scopes: Optional[List[str]] = None
+    """
+    OAuth scopes requested when this connection was most recently initiated (create
+    or refresh). Absent for connections created before scope snapshots were captured
+    and for non-OAuth auth schemes.
+    """
+
+    requested_user_scopes: Optional[List[str]] = None
+    """OAuth user-token scopes requested at the most recent initiation.
+
+    Only meaningful for Slackbot auth configs (user-token scopes); absent otherwise.
+    """
+
     test_request_endpoint: Optional[str] = None
     """The endpoint to make test request for verification"""

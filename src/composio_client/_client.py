@@ -43,7 +43,6 @@ if TYPE_CHECKING:
         files,
         tools,
         toolkits,
-        migration,
         tool_router,
         auth_configs,
         triggers_types,
@@ -57,7 +56,6 @@ if TYPE_CHECKING:
     from .resources.mcp.mcp import McpResource, AsyncMcpResource
     from .resources.toolkits import ToolkitsResource, AsyncToolkitsResource
     from .resources.logs.logs import LogsResource, AsyncLogsResource
-    from .resources.migration import MigrationResource, AsyncMigrationResource
     from .resources.auth_configs import AuthConfigsResource, AsyncAuthConfigsResource
     from .resources.triggers_types import TriggersTypesResource, AsyncTriggersTypesResource
     from .resources.connected_accounts import ConnectedAccountsResource, AsyncConnectedAccountsResource
@@ -229,13 +227,6 @@ class Composio(SyncAPIClient):
         from .resources.files import FilesResource
 
         return FilesResource(self)
-
-    @cached_property
-    def migration(self) -> MigrationResource:
-        """Endpoints to help with migration from v1 to v3"""
-        from .resources.migration import MigrationResource
-
-        return MigrationResource(self)
 
     @cached_property
     def cli(self) -> CliResource:
@@ -520,13 +511,6 @@ class AsyncComposio(AsyncAPIClient):
         return AsyncFilesResource(self)
 
     @cached_property
-    def migration(self) -> AsyncMigrationResource:
-        """Endpoints to help with migration from v1 to v3"""
-        from .resources.migration import AsyncMigrationResource
-
-        return AsyncMigrationResource(self)
-
-    @cached_property
     def cli(self) -> AsyncCliResource:
         from .resources.cli import AsyncCliResource
 
@@ -731,13 +715,6 @@ class ComposioWithRawResponse:
         return FilesResourceWithRawResponse(self._client.files)
 
     @cached_property
-    def migration(self) -> migration.MigrationResourceWithRawResponse:
-        """Endpoints to help with migration from v1 to v3"""
-        from .resources.migration import MigrationResourceWithRawResponse
-
-        return MigrationResourceWithRawResponse(self._client.migration)
-
-    @cached_property
     def cli(self) -> cli.CliResourceWithRawResponse:
         from .resources.cli import CliResourceWithRawResponse
 
@@ -824,13 +801,6 @@ class AsyncComposioWithRawResponse:
         from .resources.files import AsyncFilesResourceWithRawResponse
 
         return AsyncFilesResourceWithRawResponse(self._client.files)
-
-    @cached_property
-    def migration(self) -> migration.AsyncMigrationResourceWithRawResponse:
-        """Endpoints to help with migration from v1 to v3"""
-        from .resources.migration import AsyncMigrationResourceWithRawResponse
-
-        return AsyncMigrationResourceWithRawResponse(self._client.migration)
 
     @cached_property
     def cli(self) -> cli.AsyncCliResourceWithRawResponse:
@@ -921,13 +891,6 @@ class ComposioWithStreamedResponse:
         return FilesResourceWithStreamingResponse(self._client.files)
 
     @cached_property
-    def migration(self) -> migration.MigrationResourceWithStreamingResponse:
-        """Endpoints to help with migration from v1 to v3"""
-        from .resources.migration import MigrationResourceWithStreamingResponse
-
-        return MigrationResourceWithStreamingResponse(self._client.migration)
-
-    @cached_property
     def cli(self) -> cli.CliResourceWithStreamingResponse:
         from .resources.cli import CliResourceWithStreamingResponse
 
@@ -1014,13 +977,6 @@ class AsyncComposioWithStreamedResponse:
         from .resources.files import AsyncFilesResourceWithStreamingResponse
 
         return AsyncFilesResourceWithStreamingResponse(self._client.files)
-
-    @cached_property
-    def migration(self) -> migration.AsyncMigrationResourceWithStreamingResponse:
-        """Endpoints to help with migration from v1 to v3"""
-        from .resources.migration import AsyncMigrationResourceWithStreamingResponse
-
-        return AsyncMigrationResourceWithStreamingResponse(self._client.migration)
 
     @cached_property
     def cli(self) -> cli.AsyncCliResourceWithStreamingResponse:
