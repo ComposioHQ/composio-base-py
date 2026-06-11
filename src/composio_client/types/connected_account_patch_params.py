@@ -35,7 +35,7 @@ class ConnectedAccountPatchParams(TypedDict, total=False):
     """
 
 
-class ConnectionStateVal(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateVal(TypedDict, total=False):
     """Credential fields to update.
 
     Only provided fields are changed — omitted fields are preserved. Set a field to null to remove it.
@@ -43,69 +43,35 @@ class ConnectionStateVal(TypedDict, total=False, extra_items=Optional[object]): 
 
     token: Optional[str]
 
-    account_id: Optional[str]
-
-    account_url: Optional[str]
-
     api_key: Optional[str]
 
-    api_url: Optional[str]
+    api_key_prefix: Optional[str]
 
     application_id: Optional[str]
-
-    base_url: Optional[str]
 
     basic_encoded: Optional[str]
 
     bearer_token: Optional[str]
 
-    borneo_dashboard_url: Optional[str]
-
-    companydomain: Annotated[Optional[str], PropertyInfo(alias="COMPANYDOMAIN")]
-
     credentials_json: Optional[str]
-
-    dc: Optional[str]
-
-    domain: Optional[str]
-
-    extension: Optional[str]
-
-    form_api_base_url: Optional[str]
 
     generic_api_key: Optional[str]
 
+    generic_id: Optional[str]
+
+    generic_secret: Optional[str]
+
+    generic_token: Optional[str]
+
     installation_id: Optional[str]
-
-    instance_endpoint: Annotated[Optional[str], PropertyInfo(alias="instanceEndpoint")]
-
-    instance_name: Annotated[Optional[str], PropertyInfo(alias="instanceName")]
 
     password: Optional[str]
 
     private_key: Optional[str]
 
-    proxy_password: Optional[str]
-
-    proxy_username: Optional[str]
-
-    region: Optional[str]
-
-    server_location: Optional[str]
-
-    shop: Optional[str]
-
-    site_name: Optional[str]
-
-    subdomain: Optional[str]
+    user_agent: Optional[str]
 
     username: Optional[str]
-
-    version: Optional[str]
-
-    your_server: Optional[str]
-
-    your_domain: Annotated[Optional[str], PropertyInfo(alias="your-domain")]
 
 
 class ConnectionState(TypedDict, total=False):
