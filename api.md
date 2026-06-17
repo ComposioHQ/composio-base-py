@@ -7,6 +7,7 @@ from composio_client.types import (
     AuthConfigCreateResponse,
     AuthConfigRetrieveResponse,
     AuthConfigListResponse,
+    AuthConfigDeleteResponse,
 )
 ```
 
@@ -16,7 +17,7 @@ Methods:
 - <code title="get /api/v3.1/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">retrieve</a>(nanoid) -> <a href="./src/composio_client/types/auth_config_retrieve_response.py">AuthConfigRetrieveResponse</a></code>
 - <code title="patch /api/v3.1/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update</a>(nanoid, \*\*<a href="src/composio_client/types/auth_config_update_params.py">params</a>) -> object</code>
 - <code title="get /api/v3.1/auth_configs">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">list</a>(\*\*<a href="src/composio_client/types/auth_config_list_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_list_response.py">AuthConfigListResponse</a></code>
-- <code title="delete /api/v3.1/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">delete</a>(nanoid) -> object</code>
+- <code title="delete /api/v3.1/auth_configs/{nanoid}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">delete</a>(nanoid, \*\*<a href="src/composio_client/types/auth_config_delete_params.py">params</a>) -> <a href="./src/composio_client/types/auth_config_delete_response.py">AuthConfigDeleteResponse</a></code>
 - <code title="patch /api/v3.1/auth_configs/{nanoid}/{status}">client.auth_configs.<a href="./src/composio_client/resources/auth_configs.py">update_status</a>(status, \*, nanoid) -> object</code>
 
 # ConnectedAccounts
@@ -40,7 +41,7 @@ Methods:
 - <code title="post /api/v3.1/connected_accounts">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">create</a>(\*\*<a href="src/composio_client/types/connected_account_create_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_create_response.py">ConnectedAccountCreateResponse</a></code>
 - <code title="get /api/v3.1/connected_accounts/{nanoid}">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">retrieve</a>(nanoid) -> <a href="./src/composio_client/types/connected_account_retrieve_response.py">ConnectedAccountRetrieveResponse</a></code>
 - <code title="get /api/v3.1/connected_accounts">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">list</a>(\*\*<a href="src/composio_client/types/connected_account_list_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_list_response.py">ConnectedAccountListResponse</a></code>
-- <code title="delete /api/v3.1/connected_accounts/{nanoid}">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">delete</a>(nanoid) -> <a href="./src/composio_client/types/connected_account_delete_response.py">ConnectedAccountDeleteResponse</a></code>
+- <code title="delete /api/v3.1/connected_accounts/{nanoid}">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">delete</a>(nanoid, \*\*<a href="src/composio_client/types/connected_account_delete_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_delete_response.py">ConnectedAccountDeleteResponse</a></code>
 - <code title="patch /api/v3.1/connected_accounts/{nanoid}">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">patch</a>(nanoid, \*\*<a href="src/composio_client/types/connected_account_patch_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_patch_response.py">ConnectedAccountPatchResponse</a></code>
 - <code title="post /api/v3.1/connected_accounts/{nanoid}/refresh">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">refresh</a>(nanoid, \*\*<a href="src/composio_client/types/connected_account_refresh_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_refresh_response.py">ConnectedAccountRefreshResponse</a></code>
 - <code title="patch /api/v3.1/connected_accounts/{nanoId}/status">client.connected_accounts.<a href="./src/composio_client/resources/connected_accounts.py">update_status</a>(nano_id, \*\*<a href="src/composio_client/types/connected_account_update_status_params.py">params</a>) -> <a href="./src/composio_client/types/connected_account_update_status_response.py">ConnectedAccountUpdateStatusResponse</a></code>

@@ -197,14 +197,22 @@ class TestConnectedAccounts:
     @parametrize
     def test_method_delete(self, client: Composio) -> None:
         connected_account = client.connected_accounts.delete(
-            "ca_1a2b3c4d5e6f",
+            nanoid="ca_1a2b3c4d5e6f",
+        )
+        assert_matches_type(ConnectedAccountDeleteResponse, connected_account, path=["response"])
+
+    @parametrize
+    def test_method_delete_with_all_params(self, client: Composio) -> None:
+        connected_account = client.connected_accounts.delete(
+            nanoid="ca_1a2b3c4d5e6f",
+            revoke_on_delete=True,
         )
         assert_matches_type(ConnectedAccountDeleteResponse, connected_account, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: Composio) -> None:
         response = client.connected_accounts.with_raw_response.delete(
-            "ca_1a2b3c4d5e6f",
+            nanoid="ca_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -215,7 +223,7 @@ class TestConnectedAccounts:
     @parametrize
     def test_streaming_response_delete(self, client: Composio) -> None:
         with client.connected_accounts.with_streaming_response.delete(
-            "ca_1a2b3c4d5e6f",
+            nanoid="ca_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -229,7 +237,7 @@ class TestConnectedAccounts:
     def test_path_params_delete(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             client.connected_accounts.with_raw_response.delete(
-                "",
+                nanoid="",
             )
 
     @parametrize
@@ -576,14 +584,22 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_method_delete(self, async_client: AsyncComposio) -> None:
         connected_account = await async_client.connected_accounts.delete(
-            "ca_1a2b3c4d5e6f",
+            nanoid="ca_1a2b3c4d5e6f",
+        )
+        assert_matches_type(ConnectedAccountDeleteResponse, connected_account, path=["response"])
+
+    @parametrize
+    async def test_method_delete_with_all_params(self, async_client: AsyncComposio) -> None:
+        connected_account = await async_client.connected_accounts.delete(
+            nanoid="ca_1a2b3c4d5e6f",
+            revoke_on_delete=True,
         )
         assert_matches_type(ConnectedAccountDeleteResponse, connected_account, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
         response = await async_client.connected_accounts.with_raw_response.delete(
-            "ca_1a2b3c4d5e6f",
+            nanoid="ca_1a2b3c4d5e6f",
         )
 
         assert response.is_closed is True
@@ -594,7 +610,7 @@ class TestAsyncConnectedAccounts:
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
         async with async_client.connected_accounts.with_streaming_response.delete(
-            "ca_1a2b3c4d5e6f",
+            nanoid="ca_1a2b3c4d5e6f",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -608,7 +624,7 @@ class TestAsyncConnectedAccounts:
     async def test_path_params_delete(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             await async_client.connected_accounts.with_raw_response.delete(
-                "",
+                nanoid="",
             )
 
     @parametrize

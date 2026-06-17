@@ -35,6 +35,13 @@ class TriggerInstanceUpsertParams(TypedDict, total=False):
     Please use trigger_config instead.
     """
 
+    user_id: str
+    """The user id (entity id) that owns the connected account.
+
+    When the project has 2FA enabled, this is validated against the owner of
+    connected_account_id.
+    """
+
     version: str
     """DEPRECATED: This parameter will be removed in a future version.
 

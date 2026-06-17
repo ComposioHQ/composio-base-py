@@ -86,6 +86,7 @@ class TestTriggerInstances:
             toolkit_versions="latest",
             body_trigger_config_1={"foo": "bar"},
             body_trigger_config_2={"foo": "bar"},
+            user_id="user_id",
             version="latest",
         )
         assert_matches_type(TriggerInstanceUpsertResponse, trigger_instance, path=["response"])
@@ -193,6 +194,7 @@ class TestAsyncTriggerInstances:
             toolkit_versions="latest",
             body_trigger_config_1={"foo": "bar"},
             body_trigger_config_2={"foo": "bar"},
+            user_id="user_id",
             version="latest",
         )
         assert_matches_type(TriggerInstanceUpsertResponse, trigger_instance, path=["response"])

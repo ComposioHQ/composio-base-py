@@ -7,7 +7,12 @@ from typing_extensions import Literal, overload
 
 import httpx
 
-from ..types import auth_config_list_params, auth_config_create_params, auth_config_update_params
+from ..types import (
+    auth_config_list_params,
+    auth_config_create_params,
+    auth_config_delete_params,
+    auth_config_update_params,
+)
 from .._types import Body, Omit, Query, Headers, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import path_template, required_args, maybe_transform, async_maybe_transform
 from .._compat import cached_property
@@ -21,6 +26,7 @@ from .._response import (
 from .._base_client import make_request_options
 from ..types.auth_config_list_response import AuthConfigListResponse
 from ..types.auth_config_create_response import AuthConfigCreateResponse
+from ..types.auth_config_delete_response import AuthConfigDeleteResponse
 from ..types.auth_config_retrieve_response import AuthConfigRetrieveResponse
 
 __all__ = ["AuthConfigsResource", "AsyncAuthConfigsResource"]
@@ -350,19 +356,27 @@ class AuthConfigsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
+        revoke_on_delete: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
+    ) -> AuthConfigDeleteResponse:
         """
         Soft-deletes an authentication configuration by marking it as deleted in the
-        database. This operation cannot be undone.
+        database. This operation cannot be undone. Pass `?revoke_on_delete=true` to also
+        revoke the upstream credentials of every connection using this auth config via a
+        background job.
 
         Args:
           nanoid: The unique identifier of the authentication configuration to delete
+
+          revoke_on_delete: When `true`, the delete also starts a background job that revokes the upstream
+              credentials of every connected account in scope, and the response carries a
+              `revoke_job_id`. Defaults to `false`. Revocation is irreversible — recovering a
+              deleted entity does not restore working credentials.
 
           extra_headers: Send extra headers
 
@@ -377,9 +391,15 @@ class AuthConfigsResource(SyncAPIResource):
         return self._delete(
             path_template("/api/v3.1/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"revoke_on_delete": revoke_on_delete}, auth_config_delete_params.AuthConfigDeleteParams
+                ),
             ),
-            cast_to=object,
+            cast_to=AuthConfigDeleteResponse,
         )
 
     def update_status(
@@ -748,19 +768,27 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
+        revoke_on_delete: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
+    ) -> AuthConfigDeleteResponse:
         """
         Soft-deletes an authentication configuration by marking it as deleted in the
-        database. This operation cannot be undone.
+        database. This operation cannot be undone. Pass `?revoke_on_delete=true` to also
+        revoke the upstream credentials of every connection using this auth config via a
+        background job.
 
         Args:
           nanoid: The unique identifier of the authentication configuration to delete
+
+          revoke_on_delete: When `true`, the delete also starts a background job that revokes the upstream
+              credentials of every connected account in scope, and the response carries a
+              `revoke_job_id`. Defaults to `false`. Revocation is irreversible — recovering a
+              deleted entity does not restore working credentials.
 
           extra_headers: Send extra headers
 
@@ -775,9 +803,15 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         return await self._delete(
             path_template("/api/v3.1/auth_configs/{nanoid}", nanoid=nanoid),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"revoke_on_delete": revoke_on_delete}, auth_config_delete_params.AuthConfigDeleteParams
+                ),
             ),
-            cast_to=object,
+            cast_to=AuthConfigDeleteResponse,
         )
 
     async def update_status(

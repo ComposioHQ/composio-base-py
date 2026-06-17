@@ -12,6 +12,7 @@ from composio_client import Composio, AsyncComposio
 from composio_client.types import (
     AuthConfigListResponse,
     AuthConfigCreateResponse,
+    AuthConfigDeleteResponse,
     AuthConfigRetrieveResponse,
 )
 
@@ -277,31 +278,39 @@ class TestAuthConfigs:
     @parametrize
     def test_method_delete(self, client: Composio) -> None:
         auth_config = client.auth_configs.delete(
-            "nanoid",
+            nanoid="nanoid",
         )
-        assert_matches_type(object, auth_config, path=["response"])
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
+
+    @parametrize
+    def test_method_delete_with_all_params(self, client: Composio) -> None:
+        auth_config = client.auth_configs.delete(
+            nanoid="nanoid",
+            revoke_on_delete=True,
+        )
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
 
     @parametrize
     def test_raw_response_delete(self, client: Composio) -> None:
         response = client.auth_configs.with_raw_response.delete(
-            "nanoid",
+            nanoid="nanoid",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         auth_config = response.parse()
-        assert_matches_type(object, auth_config, path=["response"])
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
 
     @parametrize
     def test_streaming_response_delete(self, client: Composio) -> None:
         with client.auth_configs.with_streaming_response.delete(
-            "nanoid",
+            nanoid="nanoid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             auth_config = response.parse()
-            assert_matches_type(object, auth_config, path=["response"])
+            assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -309,7 +318,7 @@ class TestAuthConfigs:
     def test_path_params_delete(self, client: Composio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             client.auth_configs.with_raw_response.delete(
-                "",
+                nanoid="",
             )
 
     @parametrize
@@ -616,31 +625,39 @@ class TestAsyncAuthConfigs:
     @parametrize
     async def test_method_delete(self, async_client: AsyncComposio) -> None:
         auth_config = await async_client.auth_configs.delete(
-            "nanoid",
+            nanoid="nanoid",
         )
-        assert_matches_type(object, auth_config, path=["response"])
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
+
+    @parametrize
+    async def test_method_delete_with_all_params(self, async_client: AsyncComposio) -> None:
+        auth_config = await async_client.auth_configs.delete(
+            nanoid="nanoid",
+            revoke_on_delete=True,
+        )
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
 
     @parametrize
     async def test_raw_response_delete(self, async_client: AsyncComposio) -> None:
         response = await async_client.auth_configs.with_raw_response.delete(
-            "nanoid",
+            nanoid="nanoid",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         auth_config = await response.parse()
-        assert_matches_type(object, auth_config, path=["response"])
+        assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
 
     @parametrize
     async def test_streaming_response_delete(self, async_client: AsyncComposio) -> None:
         async with async_client.auth_configs.with_streaming_response.delete(
-            "nanoid",
+            nanoid="nanoid",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             auth_config = await response.parse()
-            assert_matches_type(object, auth_config, path=["response"])
+            assert_matches_type(AuthConfigDeleteResponse, auth_config, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -648,7 +665,7 @@ class TestAsyncAuthConfigs:
     async def test_path_params_delete(self, async_client: AsyncComposio) -> None:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `nanoid` but received ''"):
             await async_client.auth_configs.with_raw_response.delete(
-                "",
+                nanoid="",
             )
 
     @parametrize

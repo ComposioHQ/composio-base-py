@@ -11,6 +11,7 @@ from ..types import (
     connected_account_list_params,
     connected_account_patch_params,
     connected_account_create_params,
+    connected_account_delete_params,
     connected_account_refresh_params,
     connected_account_update_status_params,
 )
@@ -241,6 +242,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         self,
         nanoid: str,
         *,
+        revoke_on_delete: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -252,9 +254,15 @@ class ConnectedAccountsResource(SyncAPIResource):
 
         This
         prevents the account from being used for API calls but preserves the record for
-        audit purposes.
+        audit purposes. Pass `?revoke_on_delete=true` to also revoke the account's
+        upstream credentials via a background job.
 
         Args:
+          revoke_on_delete: When `true`, the delete also starts a background job that revokes the upstream
+              credentials of every connected account in scope, and the response carries a
+              `revoke_job_id`. Defaults to `false`. Revocation is irreversible — recovering a
+              deleted entity does not restore working credentials.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -268,7 +276,13 @@ class ConnectedAccountsResource(SyncAPIResource):
         return self._delete(
             path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {"revoke_on_delete": revoke_on_delete}, connected_account_delete_params.ConnectedAccountDeleteParams
+                ),
             ),
             cast_to=ConnectedAccountDeleteResponse,
         )
@@ -628,6 +642,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         self,
         nanoid: str,
         *,
+        revoke_on_delete: Optional[bool] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -639,9 +654,15 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
 
         This
         prevents the account from being used for API calls but preserves the record for
-        audit purposes.
+        audit purposes. Pass `?revoke_on_delete=true` to also revoke the account's
+        upstream credentials via a background job.
 
         Args:
+          revoke_on_delete: When `true`, the delete also starts a background job that revokes the upstream
+              credentials of every connected account in scope, and the response carries a
+              `revoke_job_id`. Defaults to `false`. Revocation is irreversible — recovering a
+              deleted entity does not restore working credentials.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -655,7 +676,13 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         return await self._delete(
             path_template("/api/v3.1/connected_accounts/{nanoid}", nanoid=nanoid),
             options=make_request_options(
-                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {"revoke_on_delete": revoke_on_delete}, connected_account_delete_params.ConnectedAccountDeleteParams
+                ),
             ),
             cast_to=ConnectedAccountDeleteResponse,
         )

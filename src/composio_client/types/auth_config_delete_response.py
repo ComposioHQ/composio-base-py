@@ -4,15 +4,10 @@ from typing import Optional
 
 from .._models import BaseModel
 
-__all__ = ["ConnectedAccountDeleteResponse"]
+__all__ = ["AuthConfigDeleteResponse"]
 
 
-class ConnectedAccountDeleteResponse(BaseModel):
-    """Response returned after successfully deleting a connected account"""
-
-    success: bool
-    """Indicates whether the connected account was successfully deleted"""
-
+class AuthConfigDeleteResponse(BaseModel):
     revoke_job_id: Optional[str] = None
     """Identifier of the background revoke job started for this delete.
 
