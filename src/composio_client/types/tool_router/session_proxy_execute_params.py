@@ -731,10 +731,6 @@ class CustomConnectionDataUnionMember9(TypedDict, total=False):
 class CustomConnectionDataUnionMember10Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
-    client_id: Required[str]
-
-    client_secret: Required[str]
-
     account_id: str
 
     account_url: str
@@ -744,6 +740,10 @@ class CustomConnectionDataUnionMember10Val(TypedDict, total=False, extra_items=O
     base_url: str
 
     borneo_dashboard_url: str
+
+    client_id: str
+
+    client_secret: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 

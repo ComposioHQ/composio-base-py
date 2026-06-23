@@ -165,9 +165,9 @@ class AuthConfigsResource(SyncAPIResource):
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
-          shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
-              can be used to share the API key for a tool with all connected accounts using
-              this auth config.
+          shared_credentials: Shared credentials inherited by all connected accounts using this auth config.
+              Secret values are redacted in responses, so provide the real values when
+              updating; omit this field to leave them unchanged.
 
           extra_headers: Send extra headers
 
@@ -212,9 +212,9 @@ class AuthConfigsResource(SyncAPIResource):
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
-          shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
-              can be used to share the API key for a tool with all connected accounts using
-              this auth config.
+          shared_credentials: Shared credentials inherited by all connected accounts using this auth config.
+              Secret values are redacted in responses, so provide the real values when
+              updating; omit this field to leave them unchanged.
 
           extra_headers: Send extra headers
 
@@ -577,9 +577,9 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
-          shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
-              can be used to share the API key for a tool with all connected accounts using
-              this auth config.
+          shared_credentials: Shared credentials inherited by all connected accounts using this auth config.
+              Secret values are redacted in responses, so provide the real values when
+              updating; omit this field to leave them unchanged.
 
           extra_headers: Send extra headers
 
@@ -624,9 +624,9 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
-          shared_credentials: Shared credentials that will be inherited by connected accounts. For eg: this
-              can be used to share the API key for a tool with all connected accounts using
-              this auth config.
+          shared_credentials: Shared credentials inherited by all connected accounts using this auth config.
+              Secret values are redacted in responses, so provide the real values when
+              updating; omit this field to leave them unchanged.
 
           extra_headers: Send extra headers
 

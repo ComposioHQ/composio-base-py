@@ -4984,10 +4984,6 @@ class StateUnionMember13ValUnionMember1(BaseModel):
 class StateUnionMember13ValUnionMember2(BaseModel):
     access_token: str
 
-    client_id: str
-
-    client_secret: str
-
     status: Literal["ACTIVE"]
 
     account_id: Optional[str] = None
@@ -4999,6 +4995,10 @@ class StateUnionMember13ValUnionMember2(BaseModel):
     base_url: Optional[str] = None
 
     borneo_dashboard_url: Optional[str] = None
+
+    client_id: Optional[str] = None
+
+    client_secret: Optional[str] = None
 
     companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
 
@@ -5058,10 +5058,6 @@ class StateUnionMember13ValUnionMember2(BaseModel):
 class StateUnionMember13ValUnionMember3(BaseModel):
     access_token: str
 
-    client_id: str
-
-    client_secret: str
-
     status: Literal["INACTIVE"]
 
     account_id: Optional[str] = None
@@ -5073,6 +5069,10 @@ class StateUnionMember13ValUnionMember3(BaseModel):
     base_url: Optional[str] = None
 
     borneo_dashboard_url: Optional[str] = None
+
+    client_id: Optional[str] = None
+
+    client_secret: Optional[str] = None
 
     companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
 

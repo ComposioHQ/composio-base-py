@@ -4155,10 +4155,6 @@ class ConnectionStateUnionMember13ValUnionMember1(TypedDict, total=False, extra_
 class ConnectionStateUnionMember13ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
-    client_id: Required[str]
-
-    client_secret: Required[str]
-
     status: Required[Literal["ACTIVE"]]
 
     account_id: str
@@ -4170,6 +4166,10 @@ class ConnectionStateUnionMember13ValUnionMember2(TypedDict, total=False, extra_
     base_url: str
 
     borneo_dashboard_url: str
+
+    client_id: str
+
+    client_secret: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
@@ -4217,10 +4217,6 @@ class ConnectionStateUnionMember13ValUnionMember2(TypedDict, total=False, extra_
 class ConnectionStateUnionMember13ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
-    client_id: Required[str]
-
-    client_secret: Required[str]
-
     status: Required[Literal["INACTIVE"]]
 
     account_id: str
@@ -4232,6 +4228,10 @@ class ConnectionStateUnionMember13ValUnionMember3(TypedDict, total=False, extra_
     base_url: str
 
     borneo_dashboard_url: str
+
+    client_id: str
+
+    client_secret: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 

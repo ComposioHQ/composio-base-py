@@ -3750,10 +3750,6 @@ class ConnectionDataUnionMember70(TypedDict, total=False, extra_items=Optional[o
 class ConnectionDataUnionMember71(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
-    client_id: Required[str]
-
-    client_secret: Required[str]
-
     account_id: str
 
     account_url: str
@@ -3763,6 +3759,10 @@ class ConnectionDataUnionMember71(TypedDict, total=False, extra_items=Optional[o
     base_url: str
 
     borneo_dashboard_url: str
+
+    client_id: str
+
+    client_secret: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
@@ -3810,10 +3810,6 @@ class ConnectionDataUnionMember71(TypedDict, total=False, extra_items=Optional[o
 class ConnectionDataUnionMember72(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
     access_token: Required[str]
 
-    client_id: Required[str]
-
-    client_secret: Required[str]
-
     account_id: str
 
     account_url: str
@@ -3823,6 +3819,10 @@ class ConnectionDataUnionMember72(TypedDict, total=False, extra_items=Optional[o
     base_url: str
 
     borneo_dashboard_url: str
+
+    client_id: str
+
+    client_secret: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
