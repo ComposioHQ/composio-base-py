@@ -35,10 +35,10 @@ class Variant0(TypedDict, total=False):
     """Use tool_access_config instead. This field will be deprecated in the future."""
 
     shared_credentials: Dict[str, Optional[object]]
-    """Shared credentials that will be inherited by connected accounts.
+    """Shared credentials inherited by all connected accounts using this auth config.
 
-    For eg: this can be used to share the API key for a tool with all connected
-    accounts using this auth config.
+    Secret values are redacted in responses, so provide the real values when
+    updating; omit this field to leave them unchanged.
     """
 
     tool_access_config: Variant0ToolAccessConfig
@@ -88,10 +88,10 @@ class Variant1(TypedDict, total=False):
     scopes: Union[str, SequenceNotStr[str]]
 
     shared_credentials: Dict[str, Optional[object]]
-    """Shared credentials that will be inherited by connected accounts.
+    """Shared credentials inherited by all connected accounts using this auth config.
 
-    For eg: this can be used to share the API key for a tool with all connected
-    accounts using this auth config.
+    Secret values are redacted in responses, so provide the real values when
+    updating; omit this field to leave them unchanged.
     """
 
     tool_access_config: Variant1ToolAccessConfig
