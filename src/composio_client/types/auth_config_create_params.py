@@ -35,8 +35,13 @@ class Toolkit(TypedDict, total=False):
 
 class AuthConfigUnionMember0Credentials(TypedDict, total=False):
     scopes: Union[str, SequenceNotStr[str]]
+    """OAuth scopes requested for the managed auth config."""
 
     user_scopes: Union[str, SequenceNotStr[str]]
+    """OAuth user-token scopes requested for the managed auth config.
+
+    This is primarily used by Slack OAuth v2.
+    """
 
 
 class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
@@ -72,8 +77,13 @@ class AuthConfigUnionMember0(TypedDict, total=False):
 
 class AuthConfigUnionMember1Credentials(TypedDict, total=False):
     scopes: Union[str, SequenceNotStr[str]]
+    """OAuth scopes requested for the custom auth config."""
 
     user_scopes: Union[str, SequenceNotStr[str]]
+    """OAuth user-token scopes requested for the custom auth config.
+
+    This is primarily used by Slack OAuth v2.
+    """
 
 
 class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):

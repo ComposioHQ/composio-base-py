@@ -212,9 +212,14 @@ class AuthConfigsResource(SyncAPIResource):
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
+          scopes: OAuth scopes requested for the auth config.
+
           shared_credentials: Shared credentials inherited by all connected accounts using this auth config.
               Secret values are redacted in responses, so provide the real values when
               updating; omit this field to leave them unchanged.
+
+          user_scopes: OAuth user-token scopes requested for the auth config. This is primarily used by
+              Slack OAuth v2.
 
           extra_headers: Send extra headers
 
@@ -624,9 +629,14 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
 
+          scopes: OAuth scopes requested for the auth config.
+
           shared_credentials: Shared credentials inherited by all connected accounts using this auth config.
               Secret values are redacted in responses, so provide the real values when
               updating; omit this field to leave them unchanged.
+
+          user_scopes: OAuth user-token scopes requested for the auth config. This is primarily used by
+              Slack OAuth v2.
 
           extra_headers: Send extra headers
 
