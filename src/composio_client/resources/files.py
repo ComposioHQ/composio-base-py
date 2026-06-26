@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Optional
 
 import httpx
@@ -46,6 +47,7 @@ class FilesResource(SyncAPIResource):
         """
         return FilesResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -60,10 +62,11 @@ class FilesResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FileListResponse:
-        """Retrieves a list of files associated with the authenticated project.
-
-        Results can
-        be filtered by toolkit and tool slugs.
+        """
+        DEPRECATED: This endpoint is deprecated and will be removed in a future release.
+        Retrieves a list of files associated with the authenticated project. Results can
+        be filtered by toolkit and tool slugs. Responses carry a `Deprecation` header
+        (RFC 9745) for client-side detection.
 
         Args:
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
@@ -188,6 +191,7 @@ class AsyncFilesResource(AsyncAPIResource):
         """
         return AsyncFilesResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def list(
         self,
         *,
@@ -202,10 +206,11 @@ class AsyncFilesResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FileListResponse:
-        """Retrieves a list of files associated with the authenticated project.
-
-        Results can
-        be filtered by toolkit and tool slugs.
+        """
+        DEPRECATED: This endpoint is deprecated and will be removed in a future release.
+        Retrieves a list of files associated with the authenticated project. Results can
+        be filtered by toolkit and tool slugs. Responses carry a `Deprecation` header
+        (RFC 9745) for client-side detection.
 
         Args:
           cursor: Cursor for pagination. The cursor is a base64 encoded string of the page and
@@ -312,8 +317,10 @@ class FilesResourceWithRawResponse:
     def __init__(self, files: FilesResource) -> None:
         self._files = files
 
-        self.list = to_raw_response_wrapper(
-            files.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                files.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.create_presigned_url = to_raw_response_wrapper(
             files.create_presigned_url,
@@ -324,8 +331,10 @@ class AsyncFilesResourceWithRawResponse:
     def __init__(self, files: AsyncFilesResource) -> None:
         self._files = files
 
-        self.list = async_to_raw_response_wrapper(
-            files.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                files.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.create_presigned_url = async_to_raw_response_wrapper(
             files.create_presigned_url,
@@ -336,8 +345,10 @@ class FilesResourceWithStreamingResponse:
     def __init__(self, files: FilesResource) -> None:
         self._files = files
 
-        self.list = to_streamed_response_wrapper(
-            files.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                files.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.create_presigned_url = to_streamed_response_wrapper(
             files.create_presigned_url,
@@ -348,8 +359,10 @@ class AsyncFilesResourceWithStreamingResponse:
     def __init__(self, files: AsyncFilesResource) -> None:
         self._files = files
 
-        self.list = async_to_streamed_response_wrapper(
-            files.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                files.list,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.create_presigned_url = async_to_streamed_response_wrapper(
             files.create_presigned_url,
