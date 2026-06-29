@@ -119,7 +119,11 @@ class LinkCreateParams(TypedDict, total=False):
     """
 
 
-class ConnectionDataUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -165,7 +169,11 @@ class ConnectionDataUnionMember0(TypedDict, total=False, extra_items=Optional[ob
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     auth_uri: Required[Annotated[str, PropertyInfo(alias="authUri")]]
 
     oauth_token: Required[str]
@@ -221,7 +229,11 @@ class ConnectionDataUnionMember1(TypedDict, total=False, extra_items=Optional[ob
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     oauth_token: Required[str]
 
     oauth_token_secret: Required[str]
@@ -279,7 +291,11 @@ class ConnectionDataUnionMember2(TypedDict, total=False, extra_items=Optional[ob
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -329,7 +345,11 @@ class ConnectionDataUnionMember3(TypedDict, total=False, extra_items=Optional[ob
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -377,7 +397,11 @@ class ConnectionDataUnionMember4(TypedDict, total=False, extra_items=Optional[ob
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     oauth_token: Required[str]
 
     oauth_token_secret: Required[str]
@@ -435,7 +459,11 @@ class ConnectionDataUnionMember5(TypedDict, total=False, extra_items=Optional[ob
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember6(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember6(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -487,7 +515,11 @@ class ConnectionDataUnionMember6(TypedDict, total=False, extra_items=Optional[ob
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember7(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember7(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     account_id: str
@@ -557,7 +589,11 @@ class ConnectionDataUnionMember8AuthedUser(TypedDict, total=False):
     scope: str
 
 
-class ConnectionDataUnionMember8(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember8(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     account_id: str
@@ -636,7 +672,11 @@ class ConnectionDataUnionMember9AuthedUser(TypedDict, total=False):
     scope: str
 
 
-class ConnectionDataUnionMember9(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember9(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     account_id: str
@@ -707,7 +747,11 @@ class ConnectionDataUnionMember9(TypedDict, total=False, extra_items=Optional[ob
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember10(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember10(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -763,7 +807,11 @@ class ConnectionDataUnionMember10(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember11(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember11(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -817,7 +865,11 @@ class ConnectionDataUnionMember11(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember12(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember12(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -871,7 +923,11 @@ class ConnectionDataUnionMember12(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember13(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember13(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -917,7 +973,11 @@ class ConnectionDataUnionMember13(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember14(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember14(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -963,61 +1023,11 @@ class ConnectionDataUnionMember14(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember15(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
-    account_id: str
-
-    account_url: str
-
-    api_key: str
-
-    api_url: str
-
-    base_url: str
-
-    basic_encoded: str
-
-    bearer_token: str
-
-    borneo_dashboard_url: str
-
-    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    dc: str
-
-    domain: str
-
-    extension: str
-
-    form_api_base_url: str
-
-    generic_api_key: str
-
-    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
-
-    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    proxy_password: str
-
-    proxy_username: str
-
-    region: str
-
-    server_location: str
-
-    shop: str
-
-    site_name: str
-
-    subdomain: str
-
-    version: str
-
-    your_server: str
-
-    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
-
-
-class ConnectionDataUnionMember16(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember15(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1071,7 +1081,69 @@ class ConnectionDataUnionMember16(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember17(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember16(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    account_id: str
+
+    account_url: str
+
+    api_key: str
+
+    api_url: str
+
+    base_url: str
+
+    basic_encoded: str
+
+    bearer_token: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    generic_api_key: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember17(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1117,7 +1189,11 @@ class ConnectionDataUnionMember17(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember18(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember18(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1163,7 +1239,11 @@ class ConnectionDataUnionMember18(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember19(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember19(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     username: Required[str]
 
     account_id: str
@@ -1213,7 +1293,11 @@ class ConnectionDataUnionMember19(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember20(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember20(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     username: Required[str]
 
     account_id: str
@@ -1263,7 +1347,11 @@ class ConnectionDataUnionMember20(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember21(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember21(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1309,7 +1397,11 @@ class ConnectionDataUnionMember21(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember22(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember22(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1355,7 +1447,11 @@ class ConnectionDataUnionMember22(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember23(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember23(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     token: Required[str]
 
     account_id: str
@@ -1403,7 +1499,11 @@ class ConnectionDataUnionMember23(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember24(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember24(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     token: Required[str]
 
     account_id: str
@@ -1451,7 +1551,11 @@ class ConnectionDataUnionMember24(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember25(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember25(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1497,7 +1601,11 @@ class ConnectionDataUnionMember25(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember26(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember26(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     account_id: str
@@ -1547,7 +1655,11 @@ class ConnectionDataUnionMember26(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember27(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember27(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     credentials_json: Required[str]
 
     account_id: str
@@ -1595,7 +1707,11 @@ class ConnectionDataUnionMember27(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember28(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember28(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     credentials_json: Required[str]
 
     account_id: str
@@ -1643,7 +1759,11 @@ class ConnectionDataUnionMember28(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember29(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember29(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1689,7 +1809,11 @@ class ConnectionDataUnionMember29(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember30(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember30(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1735,7 +1859,11 @@ class ConnectionDataUnionMember30(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember31(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember31(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1781,7 +1909,11 @@ class ConnectionDataUnionMember31(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember32(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember32(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1827,7 +1959,11 @@ class ConnectionDataUnionMember32(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember33(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember33(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1877,7 +2013,11 @@ class ConnectionDataUnionMember33(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember34(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember34(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1925,7 +2065,11 @@ class ConnectionDataUnionMember34(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember35(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember35(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -1971,7 +2115,11 @@ class ConnectionDataUnionMember35(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember36(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember36(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2017,7 +2165,11 @@ class ConnectionDataUnionMember36(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember37(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember37(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2063,7 +2215,11 @@ class ConnectionDataUnionMember37(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember38(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember38(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2109,7 +2265,11 @@ class ConnectionDataUnionMember38(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember39(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember39(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2159,7 +2319,11 @@ class ConnectionDataUnionMember39(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember40(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember40(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2207,7 +2371,11 @@ class ConnectionDataUnionMember40(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember41(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember41(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2253,7 +2421,11 @@ class ConnectionDataUnionMember41(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember42(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember42(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     account_id: str
@@ -2301,7 +2473,11 @@ class ConnectionDataUnionMember42(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember43(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember43(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
 
     session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
@@ -2351,7 +2527,11 @@ class ConnectionDataUnionMember43(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember44(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember44(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
 
     session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
@@ -2401,7 +2581,11 @@ class ConnectionDataUnionMember44(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember45(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember45(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2451,7 +2635,11 @@ class ConnectionDataUnionMember45(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember46(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember46(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2499,7 +2687,11 @@ class ConnectionDataUnionMember46(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember47(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember47(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2545,7 +2737,11 @@ class ConnectionDataUnionMember47(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember48(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember48(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2591,7 +2787,11 @@ class ConnectionDataUnionMember48(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember49(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember49(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     username: Required[str]
@@ -2641,7 +2841,11 @@ class ConnectionDataUnionMember49(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember50(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember50(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     username: Required[str]
@@ -2691,7 +2895,11 @@ class ConnectionDataUnionMember50(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember51(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember51(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     username: Required[str]
@@ -2745,7 +2953,11 @@ class ConnectionDataUnionMember51(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember52(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember52(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     username: Required[str]
@@ -2797,7 +3009,11 @@ class ConnectionDataUnionMember52(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember53(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember53(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2843,7 +3059,11 @@ class ConnectionDataUnionMember53(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember54(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember54(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -2889,7 +3109,11 @@ class ConnectionDataUnionMember54(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember55(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember55(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     application_id: Required[str]
 
     installation_id: Required[str]
@@ -2941,7 +3165,11 @@ class ConnectionDataUnionMember55(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember56(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember56(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     application_id: Required[str]
 
     installation_id: Required[str]
@@ -2993,7 +3221,11 @@ class ConnectionDataUnionMember56(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember57(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember57(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3039,7 +3271,11 @@ class ConnectionDataUnionMember57(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember58(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember58(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3085,7 +3321,11 @@ class ConnectionDataUnionMember58(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember59(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember59(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3131,7 +3371,11 @@ class ConnectionDataUnionMember59(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember60(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember60(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3177,7 +3421,11 @@ class ConnectionDataUnionMember60(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember61(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember61(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3227,7 +3475,11 @@ class ConnectionDataUnionMember61(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember62(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember62(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3275,7 +3527,11 @@ class ConnectionDataUnionMember62(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember63(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember63(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3327,7 +3583,11 @@ class ConnectionDataUnionMember63(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember64(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember64(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     client_id: Required[str]
     """Dynamically registered client ID"""
 
@@ -3397,7 +3657,11 @@ class ConnectionDataUnionMember64(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember65(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember65(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     client_id: Required[str]
@@ -3471,7 +3735,11 @@ class ConnectionDataUnionMember65(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember66(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember66(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     client_id: Required[str]
@@ -3545,7 +3813,11 @@ class ConnectionDataUnionMember66(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember67(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember67(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3601,7 +3873,11 @@ class ConnectionDataUnionMember67(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember68(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember68(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3655,7 +3931,11 @@ class ConnectionDataUnionMember68(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember69(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember69(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3701,7 +3981,11 @@ class ConnectionDataUnionMember69(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember70(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember70(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3747,7 +4031,11 @@ class ConnectionDataUnionMember70(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember71(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember71(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     account_id: str
@@ -3807,7 +4095,11 @@ class ConnectionDataUnionMember71(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember72(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember72(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     account_id: str
@@ -3867,7 +4159,11 @@ class ConnectionDataUnionMember72(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember73(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember73(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -3917,7 +4213,11 @@ class ConnectionDataUnionMember73(TypedDict, total=False, extra_items=Optional[o
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember74(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionDataUnionMember74(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
