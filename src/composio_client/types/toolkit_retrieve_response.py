@@ -120,8 +120,6 @@ class AuthConfigDetailFieldsAuthConfigCreationOptional(BaseModel):
 
     type: str
 
-    advanced: Optional[bool] = None
-
     default: Optional[str] = None
 
     is_secret: Optional[bool] = None
@@ -139,8 +137,6 @@ class AuthConfigDetailFieldsAuthConfigCreationRequired(BaseModel):
     required: bool
 
     type: str
-
-    advanced: Optional[bool] = None
 
     default: Optional[str] = None
 
@@ -168,8 +164,6 @@ class AuthConfigDetailFieldsConnectedAccountInitiationOptional(BaseModel):
 
     type: str
 
-    advanced: Optional[bool] = None
-
     default: Optional[str] = None
 
     is_secret: Optional[bool] = None
@@ -187,8 +181,6 @@ class AuthConfigDetailFieldsConnectedAccountInitiationRequired(BaseModel):
     required: bool
 
     type: str
-
-    advanced: Optional[bool] = None
 
     default: Optional[str] = None
 
