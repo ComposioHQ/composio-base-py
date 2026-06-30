@@ -183,7 +183,11 @@ class ConnectionExperimental(TypedDict, total=False):
     """
 
 
-class ConnectionStateUnionMember0ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember0ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -231,7 +235,11 @@ class ConnectionStateUnionMember0ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember0ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember0ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     auth_uri: Required[Annotated[str, PropertyInfo(alias="authUri")]]
 
     oauth_token: Required[str]
@@ -289,7 +297,11 @@ class ConnectionStateUnionMember0ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember0ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember0ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     oauth_token: Required[str]
 
     oauth_token_secret: Required[str]
@@ -349,7 +361,11 @@ class ConnectionStateUnionMember0ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember0ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember0ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["FAILED"]]
 
     account_id: str
@@ -401,7 +417,11 @@ class ConnectionStateUnionMember0ValUnionMember3(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember0ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember0ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["EXPIRED"]]
 
     account_id: str
@@ -451,7 +471,11 @@ class ConnectionStateUnionMember0ValUnionMember4(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember0ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember0ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     oauth_token: Required[str]
 
     oauth_token_secret: Required[str]
@@ -527,7 +551,11 @@ class ConnectionStateUnionMember0(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember0Val]
 
 
-class ConnectionStateUnionMember1ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember1ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -581,7 +609,11 @@ class ConnectionStateUnionMember1ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember1ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember1ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     status: Required[Literal["INITIATED"]]
@@ -653,7 +685,11 @@ class ConnectionStateUnionMember1ValUnionMember2AuthedUser(TypedDict, total=Fals
     scope: str
 
 
-class ConnectionStateUnionMember1ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember1ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     status: Required[Literal["ACTIVE"]]
@@ -734,7 +770,11 @@ class ConnectionStateUnionMember1ValUnionMember3AuthedUser(TypedDict, total=Fals
     scope: str
 
 
-class ConnectionStateUnionMember1ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember1ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     status: Required[Literal["INACTIVE"]]
@@ -807,7 +847,11 @@ class ConnectionStateUnionMember1ValUnionMember3(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember1ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember1ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["FAILED"]]
 
     account_id: str
@@ -865,7 +909,11 @@ class ConnectionStateUnionMember1ValUnionMember4(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember1ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember1ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["EXPIRED"]]
 
     account_id: str
@@ -921,7 +969,11 @@ class ConnectionStateUnionMember1ValUnionMember5(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember1ValUnionMember6(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember1ValUnionMember6(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["REVOKED"]]
 
     account_id: str
@@ -994,7 +1046,11 @@ class ConnectionStateUnionMember1(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember1Val]
 
 
-class ConnectionStateUnionMember2ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember2ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -1042,7 +1098,11 @@ class ConnectionStateUnionMember2ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember2ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember2ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -1090,7 +1150,11 @@ class ConnectionStateUnionMember2ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember2ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember2ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["ACTIVE"]]
 
     account_id: str
@@ -1146,7 +1210,11 @@ class ConnectionStateUnionMember2ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember2ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember2ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INACTIVE"]]
 
     account_id: str
@@ -1216,7 +1284,11 @@ class ConnectionStateUnionMember2(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember2Val]
 
 
-class ConnectionStateUnionMember3ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember3ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -1264,7 +1336,11 @@ class ConnectionStateUnionMember3ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember3ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember3ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -1312,7 +1388,11 @@ class ConnectionStateUnionMember3ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember3ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember3ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["ACTIVE"]]
 
     username: Required[str]
@@ -1364,7 +1444,11 @@ class ConnectionStateUnionMember3ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember3ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember3ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INACTIVE"]]
 
     username: Required[str]
@@ -1430,7 +1514,11 @@ class ConnectionStateUnionMember3(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember3Val]
 
 
-class ConnectionStateUnionMember4ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember4ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -1478,7 +1566,11 @@ class ConnectionStateUnionMember4ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember4ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember4ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -1526,7 +1618,11 @@ class ConnectionStateUnionMember4ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember4ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember4ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     token: Required[str]
 
     status: Required[Literal["ACTIVE"]]
@@ -1576,7 +1672,11 @@ class ConnectionStateUnionMember4ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember4ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember4ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     token: Required[str]
 
     status: Required[Literal["INACTIVE"]]
@@ -1640,7 +1740,11 @@ class ConnectionStateUnionMember4(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember4Val]
 
 
-class ConnectionStateUnionMember5ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember5ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -1688,7 +1792,11 @@ class ConnectionStateUnionMember5ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember5ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember5ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     status: Required[Literal["INITIATED"]]
@@ -1740,7 +1848,11 @@ class ConnectionStateUnionMember5ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember5ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember5ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     credentials_json: Required[str]
 
     status: Required[Literal["ACTIVE"]]
@@ -1790,7 +1902,11 @@ class ConnectionStateUnionMember5ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember5ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember5ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     credentials_json: Required[str]
 
     status: Required[Literal["INACTIVE"]]
@@ -1854,7 +1970,11 @@ class ConnectionStateUnionMember5(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember5Val]
 
 
-class ConnectionStateUnionMember6ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember6ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -1902,7 +2022,11 @@ class ConnectionStateUnionMember6ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember6ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember6ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -1950,7 +2074,11 @@ class ConnectionStateUnionMember6ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember6ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember6ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["ACTIVE"]]
 
     account_id: str
@@ -1998,7 +2126,11 @@ class ConnectionStateUnionMember6ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember6ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember6ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INACTIVE"]]
 
     account_id: str
@@ -2046,7 +2178,11 @@ class ConnectionStateUnionMember6ValUnionMember3(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember6ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember6ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["FAILED"]]
 
     account_id: str
@@ -2098,7 +2234,11 @@ class ConnectionStateUnionMember6ValUnionMember4(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember6ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember6ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["EXPIRED"]]
 
     account_id: str
@@ -2164,7 +2304,11 @@ class ConnectionStateUnionMember6(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember6Val]
 
 
-class ConnectionStateUnionMember7ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember7ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -2212,7 +2356,11 @@ class ConnectionStateUnionMember7ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember7ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember7ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -2260,7 +2408,11 @@ class ConnectionStateUnionMember7ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember7ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember7ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["ACTIVE"]]
 
     account_id: str
@@ -2308,7 +2460,11 @@ class ConnectionStateUnionMember7ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember7ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember7ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INACTIVE"]]
 
     account_id: str
@@ -2356,7 +2512,11 @@ class ConnectionStateUnionMember7ValUnionMember3(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember7ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember7ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["FAILED"]]
 
     account_id: str
@@ -2408,7 +2568,11 @@ class ConnectionStateUnionMember7ValUnionMember4(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember7ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember7ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["EXPIRED"]]
 
     account_id: str
@@ -2474,7 +2638,11 @@ class ConnectionStateUnionMember7(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember7Val]
 
 
-class ConnectionStateUnionMember8ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember8ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -2522,7 +2690,11 @@ class ConnectionStateUnionMember8ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember8ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember8ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
 
     status: Required[Literal["INITIATED"]]
@@ -2572,7 +2744,11 @@ class ConnectionStateUnionMember8ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember8ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember8ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
 
     session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
@@ -2624,7 +2800,11 @@ class ConnectionStateUnionMember8ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember8ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember8ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
 
     session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
@@ -2676,7 +2856,11 @@ class ConnectionStateUnionMember8ValUnionMember3(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember8ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember8ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["FAILED"]]
 
     account_id: str
@@ -2728,7 +2912,11 @@ class ConnectionStateUnionMember8ValUnionMember4(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember8ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember8ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["EXPIRED"]]
 
     account_id: str
@@ -2794,7 +2982,11 @@ class ConnectionStateUnionMember8(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember8Val]
 
 
-class ConnectionStateUnionMember9ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember9ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -2842,7 +3034,11 @@ class ConnectionStateUnionMember9ValUnionMember0(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember9ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember9ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -2890,7 +3086,11 @@ class ConnectionStateUnionMember9ValUnionMember1(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember9ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember9ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     status: Required[Literal["ACTIVE"]]
@@ -2942,7 +3142,11 @@ class ConnectionStateUnionMember9ValUnionMember2(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember9ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember9ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     status: Required[Literal["INACTIVE"]]
@@ -2994,7 +3198,11 @@ class ConnectionStateUnionMember9ValUnionMember3(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember9ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember9ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     status: Required[Literal["FAILED"]]
@@ -3050,7 +3258,11 @@ class ConnectionStateUnionMember9ValUnionMember4(TypedDict, total=False, extra_i
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember9ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember9ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     status: Required[Literal["EXPIRED"]]
@@ -3120,7 +3332,11 @@ class ConnectionStateUnionMember9(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember9Val]
 
 
-class ConnectionStateUnionMember10ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember10ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -3168,7 +3384,11 @@ class ConnectionStateUnionMember10ValUnionMember0(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember10ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember10ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -3216,7 +3436,11 @@ class ConnectionStateUnionMember10ValUnionMember1(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember10ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember10ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     application_id: Required[str]
 
     installation_id: Required[str]
@@ -3270,7 +3494,11 @@ class ConnectionStateUnionMember10ValUnionMember2(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember10ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember10ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     application_id: Required[str]
 
     installation_id: Required[str]
@@ -3338,7 +3566,11 @@ class ConnectionStateUnionMember10(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember10Val]
 
 
-class ConnectionStateUnionMember11ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember11ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -3386,7 +3618,11 @@ class ConnectionStateUnionMember11ValUnionMember0(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember11ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember11ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -3434,7 +3670,11 @@ class ConnectionStateUnionMember11ValUnionMember1(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember11ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember11ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["ACTIVE"]]
 
     account_id: str
@@ -3482,7 +3722,11 @@ class ConnectionStateUnionMember11ValUnionMember2(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember11ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember11ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INACTIVE"]]
 
     account_id: str
@@ -3530,7 +3774,11 @@ class ConnectionStateUnionMember11ValUnionMember3(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember11ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember11ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["FAILED"]]
 
     account_id: str
@@ -3582,7 +3830,11 @@ class ConnectionStateUnionMember11ValUnionMember4(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember11ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember11ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["EXPIRED"]]
 
     account_id: str
@@ -3648,7 +3900,11 @@ class ConnectionStateUnionMember11(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember11Val]
 
 
-class ConnectionStateUnionMember12ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember12ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -3702,7 +3958,11 @@ class ConnectionStateUnionMember12ValUnionMember0(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember12ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember12ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     client_id: Required[str]
     """Dynamically registered client ID"""
 
@@ -3774,7 +4034,11 @@ class ConnectionStateUnionMember12ValUnionMember1(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember12ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember12ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     client_id: Required[str]
@@ -3850,7 +4114,11 @@ class ConnectionStateUnionMember12ValUnionMember2(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember12ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember12ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     client_id: Required[str]
@@ -3926,7 +4194,11 @@ class ConnectionStateUnionMember12ValUnionMember3(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember12ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember12ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["FAILED"]]
 
     account_id: str
@@ -3984,7 +4256,11 @@ class ConnectionStateUnionMember12ValUnionMember4(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember12ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember12ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["EXPIRED"]]
 
     account_id: str
@@ -4056,7 +4332,11 @@ class ConnectionStateUnionMember12(TypedDict, total=False):
     val: Required[ConnectionStateUnionMember12Val]
 
 
-class ConnectionStateUnionMember13ValUnionMember0(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember13ValUnionMember0(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIALIZING"]]
 
     account_id: str
@@ -4104,7 +4384,11 @@ class ConnectionStateUnionMember13ValUnionMember0(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember13ValUnionMember1(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember13ValUnionMember1(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["INITIATED"]]
 
     account_id: str
@@ -4152,12 +4436,12 @@ class ConnectionStateUnionMember13ValUnionMember1(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember13ValUnionMember2(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember13ValUnionMember2(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
-
-    client_id: Required[str]
-
-    client_secret: Required[str]
 
     status: Required[Literal["ACTIVE"]]
 
@@ -4171,6 +4455,10 @@ class ConnectionStateUnionMember13ValUnionMember2(TypedDict, total=False, extra_
 
     borneo_dashboard_url: str
 
+    client_id: str
+
+    client_secret: str
+
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
     dc: str
@@ -4214,12 +4502,12 @@ class ConnectionStateUnionMember13ValUnionMember2(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember13ValUnionMember3(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember13ValUnionMember3(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
-
-    client_id: Required[str]
-
-    client_secret: Required[str]
 
     status: Required[Literal["INACTIVE"]]
 
@@ -4233,6 +4521,10 @@ class ConnectionStateUnionMember13ValUnionMember3(TypedDict, total=False, extra_
 
     borneo_dashboard_url: str
 
+    client_id: str
+
+    client_secret: str
+
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 
     dc: str
@@ -4276,7 +4568,11 @@ class ConnectionStateUnionMember13ValUnionMember3(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember13ValUnionMember4(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember13ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["FAILED"]]
 
     account_id: str
@@ -4328,7 +4624,11 @@ class ConnectionStateUnionMember13ValUnionMember4(TypedDict, total=False, extra_
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionStateUnionMember13ValUnionMember5(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class ConnectionStateUnionMember13ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     status: Required[Literal["EXPIRED"]]
 
     account_id: str

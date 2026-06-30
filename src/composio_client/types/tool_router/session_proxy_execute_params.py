@@ -97,7 +97,11 @@ class CustomConnectionDataUnionMember0ValAuthedUser(TypedDict, total=False):
     scope: str
 
 
-class CustomConnectionDataUnionMember0Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember0Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     account_id: str
@@ -176,7 +180,11 @@ class CustomConnectionDataUnionMember0(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember0Val]
 
 
-class CustomConnectionDataUnionMember1Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember1Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
 
     client_id: Required[str]
@@ -258,7 +266,11 @@ class CustomConnectionDataUnionMember1(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember1Val]
 
 
-class CustomConnectionDataUnionMember2Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember2Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -320,7 +332,11 @@ class CustomConnectionDataUnionMember2(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember2Val]
 
 
-class CustomConnectionDataUnionMember3Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember3Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     password: Required[str]
 
     username: Required[str]
@@ -378,7 +394,11 @@ class CustomConnectionDataUnionMember3(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember3Val]
 
 
-class CustomConnectionDataUnionMember4Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember4Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     username: Required[str]
 
     account_id: str
@@ -436,7 +456,11 @@ class CustomConnectionDataUnionMember4(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember4Val]
 
 
-class CustomConnectionDataUnionMember5Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember5Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     token: Required[str]
 
     account_id: str
@@ -492,7 +516,11 @@ class CustomConnectionDataUnionMember5(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember5Val]
 
 
-class CustomConnectionDataUnionMember6Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember6Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     oauth_token: Required[str]
 
     oauth_token_secret: Required[str]
@@ -558,7 +586,11 @@ class CustomConnectionDataUnionMember6(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember6Val]
 
 
-class CustomConnectionDataUnionMember7Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember7Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     account_id: str
 
     account_url: str
@@ -612,7 +644,11 @@ class CustomConnectionDataUnionMember7(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember7Val]
 
 
-class CustomConnectionDataUnionMember8Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember8Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     application_id: Required[str]
 
     installation_id: Required[str]
@@ -672,7 +708,11 @@ class CustomConnectionDataUnionMember8(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember8Val]
 
 
-class CustomConnectionDataUnionMember9Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember9Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     credentials_json: Required[str]
 
     account_id: str
@@ -728,12 +768,12 @@ class CustomConnectionDataUnionMember9(TypedDict, total=False):
     val: Required[CustomConnectionDataUnionMember9Val]
 
 
-class CustomConnectionDataUnionMember10Val(TypedDict, total=False, extra_items=Optional[object]):  # type: ignore[call-arg]
+class CustomConnectionDataUnionMember10Val(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     access_token: Required[str]
-
-    client_id: Required[str]
-
-    client_secret: Required[str]
 
     account_id: str
 
@@ -744,6 +784,10 @@ class CustomConnectionDataUnionMember10Val(TypedDict, total=False, extra_items=O
     base_url: str
 
     borneo_dashboard_url: str
+
+    client_id: str
+
+    client_secret: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
 

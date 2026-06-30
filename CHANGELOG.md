@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.42.0 (2026-06-29)
+
+Full Changelog: [v1.41.0...v1.42.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.41.0...v1.42.0)
+
+### Features
+
+* **api:** api update ([8dc07d6](https://github.com/ComposioHQ/composio-base-py/commit/8dc07d604fe742a9cf013ebddab30dbc43b1c875))
+* **api:** api update ([5f043dd](https://github.com/ComposioHQ/composio-base-py/commit/5f043dddcef5762614f61e8821d57ee778efa6c8))
+* **api:** api update ([59974fe](https://github.com/ComposioHQ/composio-base-py/commit/59974fe49f5952fc6792b29821c54e2e3e65dc76))
+* **api:** api update ([03a2cea](https://github.com/ComposioHQ/composio-base-py/commit/03a2cea7d39abbcbe4ba867abeac6b41783e2a3f))
+
+
+### Bug Fixes
+
+* **types:** avoid type-checker errors on params with additional properties ([1d3e152](https://github.com/ComposioHQ/composio-base-py/commit/1d3e1528b398aff3dca2f2a3195129a64914252c))
+
 ## 1.41.0 (2026-06-17)
 
 Full Changelog: [v1.40.0...v1.41.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.40.0...v1.41.0)

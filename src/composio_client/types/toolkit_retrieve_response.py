@@ -8,6 +8,9 @@ from .._models import BaseModel
 
 __all__ = [
     "ToolkitRetrieveResponse",
+    "ComposioManagedAuth",
+    "ComposioManagedAuthScopes",
+    "ComposioManagedAuthUserScopes",
     "Deprecated",
     "Meta",
     "MetaCategory",
@@ -22,6 +25,36 @@ __all__ = [
     "AuthConfigDetailDeprecatedAuthProviderDetails",
     "AuthConfigDetailProxy",
 ]
+
+
+class ComposioManagedAuthScopes(BaseModel):
+    """OAuth scopes available in the Composio-managed auth config for this auth mode."""
+
+    available: List[str]
+    """Available OAuth scopes"""
+
+
+class ComposioManagedAuthUserScopes(BaseModel):
+    """
+    OAuth user scopes available in the Composio-managed auth config for this auth mode. Only present for Slack toolkits.
+    """
+
+    available: List[str]
+    """Available OAuth user scopes"""
+
+
+class ComposioManagedAuth(BaseModel):
+    mode: str
+    """Authentication mode for the Composio-managed auth config"""
+
+    scopes: ComposioManagedAuthScopes
+    """OAuth scopes available in the Composio-managed auth config for this auth mode."""
+
+    user_scopes: Optional[ComposioManagedAuthUserScopes] = None
+    """
+    OAuth user scopes available in the Composio-managed auth config for this auth
+    mode. Only present for Slack toolkits.
+    """
 
 
 class Deprecated(BaseModel):
@@ -87,8 +120,6 @@ class AuthConfigDetailFieldsAuthConfigCreationOptional(BaseModel):
 
     type: str
 
-    advanced: Optional[bool] = None
-
     default: Optional[str] = None
 
     is_secret: Optional[bool] = None
@@ -106,8 +137,6 @@ class AuthConfigDetailFieldsAuthConfigCreationRequired(BaseModel):
     required: bool
 
     type: str
-
-    advanced: Optional[bool] = None
 
     default: Optional[str] = None
 
@@ -135,8 +164,6 @@ class AuthConfigDetailFieldsConnectedAccountInitiationOptional(BaseModel):
 
     type: str
 
-    advanced: Optional[bool] = None
-
     default: Optional[str] = None
 
     is_secret: Optional[bool] = None
@@ -154,8 +181,6 @@ class AuthConfigDetailFieldsConnectedAccountInitiationRequired(BaseModel):
     required: bool
 
     type: str
-
-    advanced: Optional[bool] = None
 
     default: Optional[str] = None
 
@@ -236,6 +261,9 @@ class AuthConfigDetail(BaseModel):
 
 class ToolkitRetrieveResponse(BaseModel):
     """Detailed information about a single toolkit"""
+
+    composio_managed_auth: List[ComposioManagedAuth]
+    """Managed-auth-only metadata, including the supported OAuth scope ceiling."""
 
     deprecated: Deprecated
 
