@@ -12,7 +12,11 @@ __all__ = ["TriggerInstanceUpsertParams"]
 
 class TriggerInstanceUpsertParams(TypedDict, total=False):
     connected_account_id: str
-    """Connected account nanoid"""
+    """Connected account nanoid.
+
+    Optional when user_id is provided — the first active connection for that user
+    and the trigger's toolkit is auto-resolved.
+    """
 
     connected_auth_id: Annotated[str, PropertyInfo(alias="connectedAuthId")]
     """DEPRECATED: This parameter will be removed in a future version.
@@ -36,10 +40,12 @@ class TriggerInstanceUpsertParams(TypedDict, total=False):
     """
 
     user_id: str
-    """The user id (entity id) that owns the connected account.
+    """The user id (entity id) that owns the connection.
 
-    When the project has 2FA enabled, this is validated against the owner of
-    connected_account_id.
+    When connected_account_id is omitted, the first active connection for this user
+    and the trigger's toolkit is auto-resolved (same as tool execution). When
+    connected_account_id is also provided and the project has 2FA enabled, user_id
+    is validated against the owner of that connection.
     """
 
     version: str
