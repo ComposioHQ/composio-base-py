@@ -34,3 +34,6 @@ class ToolkitListParams(TypedDict, total=False):
 
     sort_by: Literal["usage", "alphabetically"]
     """Sort order for returned toolkits"""
+
+    type: Literal["native", "custom", "all"]
+    """Filter toolkits by provenance (alias over managed_by)"""

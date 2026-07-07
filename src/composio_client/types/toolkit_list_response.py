@@ -1,6 +1,7 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 from typing import List, Optional
+from typing_extensions import Literal
 
 from pydantic import Field as FieldInfo
 
@@ -75,6 +76,12 @@ class Item(BaseModel):
 
     slug: str
     """URL-friendly unique identifier for the toolkit"""
+
+    type: Literal["native", "custom"]
+    """
+    Toolkit provenance: "native" for Composio-managed toolkits, "custom" for a
+    project-registered custom (MCP) toolkit
+    """
 
     auth_guide_url: Optional[str] = None
     """URL to a guide page with authentication setup instructions for this toolkit"""
