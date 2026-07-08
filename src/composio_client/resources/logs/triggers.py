@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Iterable, Optional
 from typing_extensions import Literal
 
@@ -47,6 +48,7 @@ class TriggersResource(SyncAPIResource):
         """
         return TriggersResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def retrieve(
         self,
         id: str,
@@ -59,7 +61,8 @@ class TriggersResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerRetrieveResponse:
         """
-        Get detailed trigger log by ID
+        DEPRECATED: This endpoint has declining traffic and will be removed in a future
+        version.
 
         Args:
           extra_headers: Send extra headers
@@ -182,6 +185,7 @@ class AsyncTriggersResource(AsyncAPIResource):
         """
         return AsyncTriggersResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def retrieve(
         self,
         id: str,
@@ -194,7 +198,8 @@ class AsyncTriggersResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> TriggerRetrieveResponse:
         """
-        Get detailed trigger log by ID
+        DEPRECATED: This endpoint has declining traffic and will be removed in a future
+        version.
 
         Args:
           extra_headers: Send extra headers
@@ -299,8 +304,10 @@ class TriggersResourceWithRawResponse:
     def __init__(self, triggers: TriggersResource) -> None:
         self._triggers = triggers
 
-        self.retrieve = to_raw_response_wrapper(
-            triggers.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                triggers.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.list = to_raw_response_wrapper(
             triggers.list,
@@ -311,8 +318,10 @@ class AsyncTriggersResourceWithRawResponse:
     def __init__(self, triggers: AsyncTriggersResource) -> None:
         self._triggers = triggers
 
-        self.retrieve = async_to_raw_response_wrapper(
-            triggers.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                triggers.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.list = async_to_raw_response_wrapper(
             triggers.list,
@@ -323,8 +332,10 @@ class TriggersResourceWithStreamingResponse:
     def __init__(self, triggers: TriggersResource) -> None:
         self._triggers = triggers
 
-        self.retrieve = to_streamed_response_wrapper(
-            triggers.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                triggers.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.list = to_streamed_response_wrapper(
             triggers.list,
@@ -335,8 +346,10 @@ class AsyncTriggersResourceWithStreamingResponse:
     def __init__(self, triggers: AsyncTriggersResource) -> None:
         self._triggers = triggers
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            triggers.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                triggers.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.list = async_to_streamed_response_wrapper(
             triggers.list,

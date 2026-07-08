@@ -10,7 +10,6 @@ from .._models import BaseModel
 __all__ = [
     "ConnectedAccountRetrieveResponse",
     "AuthConfig",
-    "AuthConfigDeprecated",
     "State",
     "StateUnionMember0",
     "StateUnionMember0Val",
@@ -118,15 +117,9 @@ __all__ = [
     "StateUnionMember13ValUnionMember4",
     "StateUnionMember13ValUnionMember5",
     "Toolkit",
-    "Deprecated",
     "Experimental",
     "ExperimentalACLConfigForShared",
 ]
-
-
-class AuthConfigDeprecated(BaseModel):
-    uuid: str
-    """The uuid of the auth config"""
 
 
 class AuthConfig(BaseModel):
@@ -156,8 +149,6 @@ class AuthConfig(BaseModel):
 
     is_disabled: bool
     """Whether the auth config is disabled"""
-
-    deprecated: Optional[AuthConfigDeprecated] = None
 
 
 class StateUnionMember0ValUnionMember0(BaseModel):
@@ -5294,14 +5285,6 @@ class Toolkit(BaseModel):
     """The slug of the toolkit"""
 
 
-class Deprecated(BaseModel):
-    labels: List[str]
-    """The labels of the connection"""
-
-    uuid: str
-    """The uuid of the connection"""
-
-
 class ExperimentalACLConfigForShared(BaseModel):
     """Access control for SHARED connections.
 
@@ -5388,8 +5371,6 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     A short, token-friendly identifier for multi-account disambiguation, typically
     toolkit-prefixed with 1-2 words (e.g., "gmail_red-castle")
     """
-
-    deprecated: Optional[Deprecated] = None
 
     experimental: Optional[Experimental] = None
     """
