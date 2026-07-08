@@ -5,7 +5,7 @@ from typing_extensions import Literal
 
 from .._models import BaseModel
 
-__all__ = ["AuthConfigRetrieveResponse", "ToolAccessConfig", "Toolkit", "DeprecatedParams", "ProxyConfig"]
+__all__ = ["AuthConfigRetrieveResponse", "ToolAccessConfig", "Toolkit", "ProxyConfig"]
 
 
 class ToolAccessConfig(BaseModel):
@@ -37,22 +37,6 @@ class Toolkit(BaseModel):
 
     auth_hint_url: Optional[str] = None
     """URL to a page where users can obtain or configure credentials"""
-
-
-class DeprecatedParams(BaseModel):
-    """DEPRECATED: This parameter will be removed in a future version."""
-
-    default_connector_id: Optional[str] = None
-    """Deprecated: Default connector ID"""
-
-    expected_input_fields: Optional[List[Dict[str, Optional[object]]]] = None
-    """Deprecated: Fields expected during connection initialization"""
-
-    member_uuid: Optional[str] = None
-    """Deprecated: Member UUID"""
-
-    toolkit_id: Optional[str] = None
-    """Deprecated: Toolkit ID"""
 
 
 class ProxyConfig(BaseModel):
@@ -118,9 +102,6 @@ class AuthConfigRetrieveResponse(BaseModel):
     The authentication credentials (tokens, keys, etc.) - may be partially hidden
     for security
     """
-
-    deprecated_params: Optional[DeprecatedParams] = None
-    """DEPRECATED: This parameter will be removed in a future version."""
 
     expected_input_fields: Optional[List[Optional[object]]] = None
     """Fields expected during connection initialization"""

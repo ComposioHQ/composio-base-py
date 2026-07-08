@@ -11,7 +11,6 @@ __all__ = [
     "ConnectedAccountListResponse",
     "Item",
     "ItemAuthConfig",
-    "ItemAuthConfigDeprecated",
     "ItemState",
     "ItemStateUnionMember0",
     "ItemStateUnionMember0Val",
@@ -119,15 +118,9 @@ __all__ = [
     "ItemStateUnionMember13ValUnionMember4",
     "ItemStateUnionMember13ValUnionMember5",
     "ItemToolkit",
-    "ItemDeprecated",
     "ItemExperimental",
     "ItemExperimentalACLConfigForShared",
 ]
-
-
-class ItemAuthConfigDeprecated(BaseModel):
-    uuid: str
-    """The uuid of the auth config"""
 
 
 class ItemAuthConfig(BaseModel):
@@ -157,8 +150,6 @@ class ItemAuthConfig(BaseModel):
 
     is_disabled: bool
     """Whether the auth config is disabled"""
-
-    deprecated: Optional[ItemAuthConfigDeprecated] = None
 
 
 class ItemStateUnionMember0ValUnionMember0(BaseModel):
@@ -5295,14 +5286,6 @@ class ItemToolkit(BaseModel):
     """The slug of the toolkit"""
 
 
-class ItemDeprecated(BaseModel):
-    labels: List[str]
-    """The labels of the connection"""
-
-    uuid: str
-    """The uuid of the connection"""
-
-
 class ItemExperimentalACLConfigForShared(BaseModel):
     """Access control for SHARED connections.
 
@@ -5386,8 +5369,6 @@ class Item(BaseModel):
     A short, token-friendly identifier for multi-account disambiguation, typically
     toolkit-prefixed with 1-2 words (e.g., "gmail_red-castle")
     """
-
-    deprecated: Optional[ItemDeprecated] = None
 
     experimental: Optional[ItemExperimental] = None
     """
