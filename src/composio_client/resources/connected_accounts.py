@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import List, Optional
 from typing_extensions import Literal
 
@@ -340,6 +341,7 @@ class ConnectedAccountsResource(SyncAPIResource):
             cast_to=ConnectedAccountPatchResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def refresh(
         self,
         nanoid: str,
@@ -354,7 +356,11 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountRefreshResponse:
-        """
+        """DEPRECATED: Manual refresh of a connected account is deprecated.
+
+        Composio
+        automatically refreshes credentials in the background as they approach expiry,
+        so this endpoint is no longer required and may be removed in a future release.
         Initiates a new authentication flow for a connected account when credentials
         have expired or become invalid. This may generate a new authentication URL for
         OAuth flows or refresh tokens for other auth schemes.
@@ -740,6 +746,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
             cast_to=ConnectedAccountPatchResponse,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def refresh(
         self,
         nanoid: str,
@@ -754,7 +761,11 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountRefreshResponse:
-        """
+        """DEPRECATED: Manual refresh of a connected account is deprecated.
+
+        Composio
+        automatically refreshes credentials in the background as they approach expiry,
+        so this endpoint is no longer required and may be removed in a future release.
         Initiates a new authentication flow for a connected account when credentials
         have expired or become invalid. This may generate a new authentication URL for
         OAuth flows or refresh tokens for other auth schemes.
@@ -856,8 +867,10 @@ class ConnectedAccountsResourceWithRawResponse:
         self.patch = to_raw_response_wrapper(
             connected_accounts.patch,
         )
-        self.refresh = to_raw_response_wrapper(
-            connected_accounts.refresh,
+        self.refresh = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                connected_accounts.refresh,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.update_status = to_raw_response_wrapper(
             connected_accounts.update_status,
@@ -883,8 +896,10 @@ class AsyncConnectedAccountsResourceWithRawResponse:
         self.patch = async_to_raw_response_wrapper(
             connected_accounts.patch,
         )
-        self.refresh = async_to_raw_response_wrapper(
-            connected_accounts.refresh,
+        self.refresh = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                connected_accounts.refresh,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.update_status = async_to_raw_response_wrapper(
             connected_accounts.update_status,
@@ -910,8 +925,10 @@ class ConnectedAccountsResourceWithStreamingResponse:
         self.patch = to_streamed_response_wrapper(
             connected_accounts.patch,
         )
-        self.refresh = to_streamed_response_wrapper(
-            connected_accounts.refresh,
+        self.refresh = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                connected_accounts.refresh,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.update_status = to_streamed_response_wrapper(
             connected_accounts.update_status,
@@ -937,8 +954,10 @@ class AsyncConnectedAccountsResourceWithStreamingResponse:
         self.patch = async_to_streamed_response_wrapper(
             connected_accounts.patch,
         )
-        self.refresh = async_to_streamed_response_wrapper(
-            connected_accounts.refresh,
+        self.refresh = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                connected_accounts.refresh,  # pyright: ignore[reportDeprecated],
+            )
         )
         self.update_status = async_to_streamed_response_wrapper(
             connected_accounts.update_status,

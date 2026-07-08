@@ -82,6 +82,7 @@ class TestToolkits:
             managed_by="composio",
             search="gmail",
             sort_by="usage",
+            type="custom",
         )
         assert_matches_type(ToolkitListResponse, toolkit, path=["response"])
 
@@ -197,6 +198,7 @@ class TestAsyncToolkits:
             managed_by="composio",
             search="gmail",
             sort_by="usage",
+            type="custom",
         )
         assert_matches_type(ToolkitListResponse, toolkit, path=["response"])
 
