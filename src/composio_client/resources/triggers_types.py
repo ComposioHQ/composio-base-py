@@ -118,7 +118,7 @@ class TriggersTypesResource(SyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           toolkit_slugs: Array of toolkit slugs to filter triggers by
 
@@ -269,7 +269,7 @@ class AsyncTriggersTypesResource(AsyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           toolkit_slugs: Array of toolkit slugs to filter triggers by
 
