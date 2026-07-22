@@ -16,7 +16,7 @@ __all__ = [
     "ItemScopeRequirementsAllOf",
     "ItemScopeRequirementsAllOfUnionMember1",
     "ItemScopeRequirementsAllOfUnionMember1AnyOf",
-    "ItemScopeRequirementsAllOfUnionMember1AnyOfAllOf",
+    "ItemScopeRequirementsAllOfUnionMember1AnyOfUnionMember1",
     "ItemToolkit",
 ]
 
@@ -42,15 +42,21 @@ class ItemDeprecated(BaseModel):
     """Current version identifier of the tool"""
 
 
-class ItemScopeRequirementsAllOfUnionMember1AnyOfAllOf(BaseModel):
+class ItemScopeRequirementsAllOfUnionMember1AnyOfUnionMember1(BaseModel):
     all_of: List[str]
 
+    source: Optional[List[str]] = None
 
-ItemScopeRequirementsAllOfUnionMember1AnyOf: TypeAlias = Union[str, ItemScopeRequirementsAllOfUnionMember1AnyOfAllOf]
+
+ItemScopeRequirementsAllOfUnionMember1AnyOf: TypeAlias = Union[
+    str, ItemScopeRequirementsAllOfUnionMember1AnyOfUnionMember1
+]
 
 
 class ItemScopeRequirementsAllOfUnionMember1(BaseModel):
     any_of: List[ItemScopeRequirementsAllOfUnionMember1AnyOf]
+
+    source: Optional[List[str]] = None
 
     when: Optional[Dict[str, List[str]]] = None
 
@@ -65,6 +71,8 @@ class ItemScopeRequirements(BaseModel):
     """
 
     all_of: List[ItemScopeRequirementsAllOf]
+
+    source: Optional[List[str]] = None
 
 
 class ItemToolkit(BaseModel):
