@@ -243,6 +243,14 @@ class AuthConfigDetail(BaseModel):
     name: str
     """Display name for this authentication method"""
 
+    required_scopes: List[str]
+    """
+    OAuth scopes that are always requested for this authentication method regardless
+    of the tool-specific scopes selected, such as token-refresh (e.g.
+    offline_access) and identity/whoami scopes. Consumers handling authentication
+    themselves should union these with per-tool scopes.
+    """
+
     auth_hint_url: Optional[str] = None
     """
     URL to a page where users can obtain or configure credentials for this
