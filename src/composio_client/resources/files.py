@@ -74,7 +74,7 @@ class FilesResource(SyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           tool_slug: Filter files by action slug. Example: "convert-to-pdf"
 
@@ -218,7 +218,7 @@ class AsyncFilesResource(AsyncAPIResource):
               page. The cursor is used to paginate through the items. The cursor is not
               required for the first page.
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           tool_slug: Filter files by action slug. Example: "convert-to-pdf"
 

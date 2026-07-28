@@ -356,14 +356,13 @@ class ConnectedAccountsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountRefreshResponse:
-        """DEPRECATED: Manual refresh of a connected account is deprecated.
-
-        Composio
-        automatically refreshes credentials in the background as they approach expiry,
-        so this endpoint is no longer required and may be removed in a future release.
-        Initiates a new authentication flow for a connected account when credentials
-        have expired or become invalid. This may generate a new authentication URL for
-        OAuth flows or refresh tokens for other auth schemes.
+        """
+        DEPRECATED: This endpoint re-initiates the authorization flow for a connected
+        account — a developer-triggered reconnection (e.g. to recover a connection whose
+        credentials expired or became invalid), returning a new OAuth redirect URL where
+        applicable. It does NOT perform background credential auto-refresh; the
+        "refresh" name was misleading, which is why the endpoint is deprecated and may
+        be removed in a future release.
 
         Args:
           validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
@@ -761,14 +760,13 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConnectedAccountRefreshResponse:
-        """DEPRECATED: Manual refresh of a connected account is deprecated.
-
-        Composio
-        automatically refreshes credentials in the background as they approach expiry,
-        so this endpoint is no longer required and may be removed in a future release.
-        Initiates a new authentication flow for a connected account when credentials
-        have expired or become invalid. This may generate a new authentication URL for
-        OAuth flows or refresh tokens for other auth schemes.
+        """
+        DEPRECATED: This endpoint re-initiates the authorization flow for a connected
+        account — a developer-triggered reconnection (e.g. to recover a connection whose
+        credentials expired or became invalid), returning a new OAuth redirect URL where
+        applicable. It does NOT perform background credential auto-refresh; the
+        "refresh" name was misleading, which is why the endpoint is deprecated and may
+        be removed in a future release.
 
         Args:
           validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for

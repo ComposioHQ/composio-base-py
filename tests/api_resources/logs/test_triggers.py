@@ -11,6 +11,8 @@ from tests.utils import assert_matches_type
 from composio_client import Composio, AsyncComposio
 from composio_client.types.logs import TriggerListResponse, TriggerRetrieveResponse
 
+# pyright: reportDeprecated=false
+
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
@@ -19,16 +21,19 @@ class TestTriggers:
 
     @parametrize
     def test_method_retrieve(self, client: Composio) -> None:
-        trigger = client.logs.triggers.retrieve(
-            "id",
-        )
+        with pytest.warns(DeprecationWarning):
+            trigger = client.logs.triggers.retrieve(
+                "id",
+            )
+
         assert_matches_type(TriggerRetrieveResponse, trigger, path=["response"])
 
     @parametrize
     def test_raw_response_retrieve(self, client: Composio) -> None:
-        response = client.logs.triggers.with_raw_response.retrieve(
-            "id",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = client.logs.triggers.with_raw_response.retrieve(
+                "id",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -37,23 +42,25 @@ class TestTriggers:
 
     @parametrize
     def test_streaming_response_retrieve(self, client: Composio) -> None:
-        with client.logs.triggers.with_streaming_response.retrieve(
-            "id",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            with client.logs.triggers.with_streaming_response.retrieve(
+                "id",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            trigger = response.parse()
-            assert_matches_type(TriggerRetrieveResponse, trigger, path=["response"])
+                trigger = response.parse()
+                assert_matches_type(TriggerRetrieveResponse, trigger, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_path_params_retrieve(self, client: Composio) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            client.logs.triggers.with_raw_response.retrieve(
-                "",
-            )
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+                client.logs.triggers.with_raw_response.retrieve(
+                    "",
+                )
 
     @parametrize
     def test_method_list(self, client: Composio) -> None:
@@ -112,16 +119,19 @@ class TestAsyncTriggers:
 
     @parametrize
     async def test_method_retrieve(self, async_client: AsyncComposio) -> None:
-        trigger = await async_client.logs.triggers.retrieve(
-            "id",
-        )
+        with pytest.warns(DeprecationWarning):
+            trigger = await async_client.logs.triggers.retrieve(
+                "id",
+            )
+
         assert_matches_type(TriggerRetrieveResponse, trigger, path=["response"])
 
     @parametrize
     async def test_raw_response_retrieve(self, async_client: AsyncComposio) -> None:
-        response = await async_client.logs.triggers.with_raw_response.retrieve(
-            "id",
-        )
+        with pytest.warns(DeprecationWarning):
+            response = await async_client.logs.triggers.with_raw_response.retrieve(
+                "id",
+            )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -130,23 +140,25 @@ class TestAsyncTriggers:
 
     @parametrize
     async def test_streaming_response_retrieve(self, async_client: AsyncComposio) -> None:
-        async with async_client.logs.triggers.with_streaming_response.retrieve(
-            "id",
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        with pytest.warns(DeprecationWarning):
+            async with async_client.logs.triggers.with_streaming_response.retrieve(
+                "id",
+            ) as response:
+                assert not response.is_closed
+                assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
-            trigger = await response.parse()
-            assert_matches_type(TriggerRetrieveResponse, trigger, path=["response"])
+                trigger = await response.parse()
+                assert_matches_type(TriggerRetrieveResponse, trigger, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_path_params_retrieve(self, async_client: AsyncComposio) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
-            await async_client.logs.triggers.with_raw_response.retrieve(
-                "",
-            )
+        with pytest.warns(DeprecationWarning):
+            with pytest.raises(ValueError, match=r"Expected a non-empty value for `id` but received ''"):
+                await async_client.logs.triggers.with_raw_response.retrieve(
+                    "",
+                )
 
     @parametrize
     async def test_method_list(self, async_client: AsyncComposio) -> None:

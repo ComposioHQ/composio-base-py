@@ -113,7 +113,7 @@ class TriggerInstancesResource(SyncAPIResource):
           deprecated_connected_account_uuids: DEPRECATED: This parameter will be removed in a future version. Please use
               connected_account_ids instead.
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 
@@ -337,7 +337,7 @@ class AsyncTriggerInstancesResource(AsyncAPIResource):
           deprecated_connected_account_uuids: DEPRECATED: This parameter will be removed in a future version. Please use
               connected_account_ids instead.
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           query_show_disabled_1: When set to true, includes disabled triggers in the response.
 

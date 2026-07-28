@@ -115,7 +115,6 @@ __all__ = [
     "ConnectionDataUnionMember13ValUnionMember3",
     "ConnectionDataUnionMember13ValUnionMember4",
     "ConnectionDataUnionMember13ValUnionMember5",
-    "Deprecated",
     "Experimental",
     "ExperimentalACLConfigForShared",
 ]
@@ -5250,19 +5249,6 @@ ConnectionData: TypeAlias = Union[
 ]
 
 
-class Deprecated(BaseModel):
-    """DEPRECATED: This field will be removed in a future version.
-
-    Please use id and auth_config.id instead.
-    """
-
-    auth_config_uuid: str = FieldInfo(alias="authConfigUuid")
-    """The uuid of the auth config"""
-
-    uuid: str
-    """The uuid of the connected account"""
-
-
 class ExperimentalACLConfigForShared(BaseModel):
     """Access control for SHARED connections.
 
@@ -5311,12 +5297,6 @@ class ConnectedAccountCreateResponse(BaseModel):
 
     status: Literal["INITIALIZING", "INITIATED", "ACTIVE", "FAILED", "EXPIRED", "INACTIVE", "REVOKED"]
     """DEPRECATED: This field will be removed in a future version"""
-
-    deprecated: Optional[Deprecated] = None
-    """DEPRECATED: This field will be removed in a future version.
-
-    Please use id and auth_config.id instead.
-    """
 
     experimental: Optional[Experimental] = None
     """

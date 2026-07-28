@@ -13,7 +13,9 @@ __all__ = [
     "DeprecatedToolkit",
     "ScopeRequirements",
     "ScopeRequirementsAllOf",
-    "ScopeRequirementsAllOfAnyOf",
+    "ScopeRequirementsAllOfUnionMember1",
+    "ScopeRequirementsAllOfUnionMember1AnyOf",
+    "ScopeRequirementsAllOfUnionMember1AnyOfUnionMember1",
     "Toolkit",
 ]
 
@@ -39,11 +41,24 @@ class Deprecated(BaseModel):
     """Current version identifier of the tool"""
 
 
-class ScopeRequirementsAllOfAnyOf(BaseModel):
-    any_of: List[str]
+class ScopeRequirementsAllOfUnionMember1AnyOfUnionMember1(BaseModel):
+    all_of: List[str]
+
+    source: Optional[List[str]] = None
 
 
-ScopeRequirementsAllOf: TypeAlias = Union[str, ScopeRequirementsAllOfAnyOf]
+ScopeRequirementsAllOfUnionMember1AnyOf: TypeAlias = Union[str, ScopeRequirementsAllOfUnionMember1AnyOfUnionMember1]
+
+
+class ScopeRequirementsAllOfUnionMember1(BaseModel):
+    any_of: List[ScopeRequirementsAllOfUnionMember1AnyOf]
+
+    source: Optional[List[str]] = None
+
+    when: Optional[Dict[str, List[str]]] = None
+
+
+ScopeRequirementsAllOf: TypeAlias = Union[str, ScopeRequirementsAllOfUnionMember1]
 
 
 class ScopeRequirements(BaseModel):
@@ -53,6 +68,8 @@ class ScopeRequirements(BaseModel):
     """
 
     all_of: List[ScopeRequirementsAllOf]
+
+    source: Optional[List[str]] = None
 
 
 class Toolkit(BaseModel):

@@ -827,7 +827,8 @@ class SessionResource(SyncAPIResource):
         """Returns tools available in a tool router session with complete schemas.
 
         Results
-        are paginated; use `next_cursor` to fetch the next page.
+        are paginated; use `next_cursor` to fetch the next page. Tools are returned in
+        alphabetical order.
 
         Args:
           session_id: Tool router session ID
@@ -1640,7 +1641,8 @@ class AsyncSessionResource(AsyncAPIResource):
         """Returns tools available in a tool router session with complete schemas.
 
         Results
-        are paginated; use `next_cursor` to fetch the next page.
+        are paginated; use `next_cursor` to fetch the next page. Tools are returned in
+        alphabetical order.
 
         Args:
           session_id: Tool router session ID

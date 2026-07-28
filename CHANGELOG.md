@@ -1,5 +1,19 @@
 # Changelog
 
+## 1.44.0 (2026-07-28)
+
+Full Changelog: [v1.43.0...v1.44.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.43.0...v1.44.0)
+
+### Features
+
+* **api:** api update ([607d4e3](https://github.com/ComposioHQ/composio-base-py/commit/607d4e3bc0749785d710c1e78c975d096747840a))
+* **api:** api update ([68d403e](https://github.com/ComposioHQ/composio-base-py/commit/68d403ed83a9cd2fc694a02ec91e1587b67b39a8))
+* **api:** api update ([2331f78](https://github.com/ComposioHQ/composio-base-py/commit/2331f78997fb668d59db7684db07e04859ca3d3a))
+* **api:** api update ([4e22ff9](https://github.com/ComposioHQ/composio-base-py/commit/4e22ff9787b199c2850cf9c3b10f4bdf2c13cef9))
+* **api:** api update ([c12de8b](https://github.com/ComposioHQ/composio-base-py/commit/c12de8b38eab5752523312b6fe639ccf7dc6cdb3))
+* **api:** api update ([40c0e62](https://github.com/ComposioHQ/composio-base-py/commit/40c0e62d01a827007a62123b6887b88fe0997c82))
+* **stlc:** configurable CI runner and private-production-repo support in workflow templates ([b3cc42a](https://github.com/ComposioHQ/composio-base-py/commit/b3cc42aaff23c59f9954f1f53d9ea2c98449c96e))
+
 ## 1.43.0 (2026-07-07)
 
 Full Changelog: [v1.42.0...v1.43.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.42.0...v1.43.0)

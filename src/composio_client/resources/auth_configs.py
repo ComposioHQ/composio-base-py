@@ -317,7 +317,7 @@ class AuthConfigsResource(SyncAPIResource):
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           search: Search auth configs by name or id
 
@@ -734,7 +734,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
           is_composio_managed: Whether to filter by composio managed auth configs
 
-          limit: Number of items per page, max allowed is 1000
+          limit: Number of items per page, max allowed is 50
 
           search: Search auth configs by name or id
 
