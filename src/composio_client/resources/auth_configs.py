@@ -27,6 +27,7 @@ from .._base_client import make_request_options
 from ..types.auth_config_list_response import AuthConfigListResponse
 from ..types.auth_config_create_response import AuthConfigCreateResponse
 from ..types.auth_config_delete_response import AuthConfigDeleteResponse
+from ..types.auth_config_update_response import AuthConfigUpdateResponse
 from ..types.auth_config_retrieve_response import AuthConfigRetrieveResponse
 
 __all__ = ["AuthConfigsResource", "AsyncAuthConfigsResource"]
@@ -151,7 +152,7 @@ class AuthConfigsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
+    ) -> AuthConfigUpdateResponse:
         """
         Modifies an existing authentication configuration with new credentials or other
         settings. Only specified fields will be updated.
@@ -198,7 +199,7 @@ class AuthConfigsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
+    ) -> AuthConfigUpdateResponse:
         """
         Modifies an existing authentication configuration with new credentials or other
         settings. Only specified fields will be updated.
@@ -254,7 +255,7 @@ class AuthConfigsResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
+    ) -> AuthConfigUpdateResponse:
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return self._patch(
@@ -277,7 +278,7 @@ class AuthConfigsResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=AuthConfigUpdateResponse,
         )
 
     def list(
@@ -568,7 +569,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
+    ) -> AuthConfigUpdateResponse:
         """
         Modifies an existing authentication configuration with new credentials or other
         settings. Only specified fields will be updated.
@@ -615,7 +616,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
+    ) -> AuthConfigUpdateResponse:
         """
         Modifies an existing authentication configuration with new credentials or other
         settings. Only specified fields will be updated.
@@ -671,7 +672,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = not_given,
-    ) -> object:
+    ) -> AuthConfigUpdateResponse:
         if not nanoid:
             raise ValueError(f"Expected a non-empty value for `nanoid` but received {nanoid!r}")
         return await self._patch(
@@ -694,7 +695,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=object,
+            cast_to=AuthConfigUpdateResponse,
         )
 
     async def list(

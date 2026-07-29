@@ -8,6 +8,12 @@ __all__ = ["AuthConfigDeleteResponse"]
 
 
 class AuthConfigDeleteResponse(BaseModel):
+    message: str
+    """A human-readable result message"""
+
+    success: bool
+    """Whether the auth config was deleted"""
+
     revoke_job_id: Optional[str] = None
     """Identifier of the background revoke job started for this delete.
 
