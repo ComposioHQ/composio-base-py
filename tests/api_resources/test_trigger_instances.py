@@ -13,12 +13,65 @@ from composio_client.types import (
     TriggerInstanceUpsertResponse,
     TriggerInstanceListActiveResponse,
 )
+from composio_client.types.trigger_instance_list_active_response import Item
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
 
 class TestTriggerInstances:
     parametrize = pytest.mark.parametrize("client", [False, True], indirect=True, ids=["loose", "strict"])
+
+    def test_list_active_response_preserves_canonical_and_deprecated_fields(self) -> None:
+        payload_item = Item(
+            id="ti_123",
+            connected_account_id="ca_nanoid",
+            connected_account_uuid="uuid-123",
+            connectedAccountId="legacy-account-id",
+            trigger_name="CANONICAL_TRIGGER",
+            triggerName="LEGACY_TRIGGER",
+            trigger_config={"canonical": True},
+            triggerConfig={"legacy": True},
+            state={},
+            updated_at="2026-07-29T00:00:00Z",
+            updatedAt="2025-07-29T00:00:00Z",
+            disabled_at=None,
+            disabledAt="2025-07-29T00:00:00Z",
+            user_id="user_123",
+            version="latest",
+        )
+        response = TriggerInstanceListActiveResponse(
+            current_page=1,
+            items=[payload_item],
+            total_items=1,
+            total_pages=1,
+            next_cursor=None,
+        )
+
+        item = response.items[0]
+        assert item.connected_account_id == "ca_nanoid"
+        assert item.connected_account_uuid == "uuid-123"
+        assert item.deprecated_connected_account_id == "legacy-account-id"
+        assert item.trigger_name == "CANONICAL_TRIGGER"
+        assert item.deprecated_trigger_name == "LEGACY_TRIGGER"
+        assert item.trigger_config == {"canonical": True}
+        assert item.deprecated_trigger_config == {"legacy": True}
+        assert item.updated_at == "2026-07-29T00:00:00Z"
+        assert item.deprecated_updated_at == "2025-07-29T00:00:00Z"
+        assert item.disabled_at is None
+        assert item.deprecated_disabled_at == "2025-07-29T00:00:00Z"
+
+        serialized = item.to_dict(use_api_names=True)
+        assert serialized["connected_account_id"] == "ca_nanoid"
+        assert serialized["connected_account_uuid"] == "uuid-123"
+        assert serialized["connectedAccountId"] == "legacy-account-id"
+        assert serialized["trigger_name"] == "CANONICAL_TRIGGER"
+        assert serialized["triggerName"] == "LEGACY_TRIGGER"
+        assert serialized["trigger_config"] == {"canonical": True}
+        assert serialized["triggerConfig"] == {"legacy": True}
+        assert serialized["updated_at"] == "2026-07-29T00:00:00Z"
+        assert serialized["updatedAt"] == "2025-07-29T00:00:00Z"
+        assert serialized["disabled_at"] is None
+        assert serialized["disabledAt"] == "2025-07-29T00:00:00Z"
 
     @pytest.mark.skip(reason="no prism support for query param arrays")
     @parametrize
