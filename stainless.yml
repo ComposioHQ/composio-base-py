@@ -1,0 +1,42 @@
+openapi:
+  transforms:
+    - command: merge
+      reason: "Keep the deprecated connected account identifier distinct in Python"
+      args:
+        target: "$.paths['/api/v3.1/trigger_instances/active'].get.responses['200'].content['application/json'].schema.properties.items.items.properties.connectedAccountId"
+        value:
+          x-stainless-naming:
+            python:
+              property_name: deprecated_connected_account_id
+    - command: merge
+      reason: "Keep the deprecated disabled timestamp distinct in Python"
+      args:
+        target: "$.paths['/api/v3.1/trigger_instances/active'].get.responses['200'].content['application/json'].schema.properties.items.items.properties.disabledAt"
+        value:
+          x-stainless-naming:
+            python:
+              property_name: deprecated_disabled_at
+    - command: merge
+      reason: "Keep the deprecated trigger config distinct in Python"
+      args:
+        target: "$.paths['/api/v3.1/trigger_instances/active'].get.responses['200'].content['application/json'].schema.properties.items.items.properties.triggerConfig"
+        value:
+          x-stainless-naming:
+            python:
+              property_name: deprecated_trigger_config
+    - command: merge
+      reason: "Keep the deprecated trigger name distinct in Python"
+      args:
+        target: "$.paths['/api/v3.1/trigger_instances/active'].get.responses['200'].content['application/json'].schema.properties.items.items.properties.triggerName"
+        value:
+          x-stainless-naming:
+            python:
+              property_name: deprecated_trigger_name
+    - command: merge
+      reason: "Keep the deprecated updated timestamp distinct in Python"
+      args:
+        target: "$.paths['/api/v3.1/trigger_instances/active'].get.responses['200'].content['application/json'].schema.properties.items.items.properties.updatedAt"
+        value:
+          x-stainless-naming:
+            python:
+              property_name: deprecated_updated_at

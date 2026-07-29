@@ -26,7 +26,7 @@ class Item(BaseModel):
     connected_account_uuid: str
     """UUID of the connected account this trigger is associated with"""
 
-    connected_account_id: str = FieldInfo(alias="connectedAccountId")
+    deprecated_connected_account_id: str = FieldInfo(alias="connectedAccountId")
     """DEPRECATED: This parameter will be removed in a future version.
 
     Please use connected_account_id instead.
@@ -35,7 +35,7 @@ class Item(BaseModel):
     disabled_at: Optional[str] = None
     """ISO 8601 timestamp when the trigger instance was disabled, if applicable"""
 
-    disabled_at: Optional[str] = FieldInfo(alias="disabledAt", default=None)
+    deprecated_disabled_at: Optional[str] = FieldInfo(alias="disabledAt", default=None)
     """DEPRECATED: This parameter will be removed in a future version.
 
     Please use disabled_at instead.
@@ -53,13 +53,13 @@ class Item(BaseModel):
     trigger_name: str
     """Name of the trigger"""
 
-    trigger_config: Dict[str, Optional[object]] = FieldInfo(alias="triggerConfig")
+    deprecated_trigger_config: Dict[str, Optional[object]] = FieldInfo(alias="triggerConfig")
     """DEPRECATED: This parameter will be removed in a future version.
 
     Please use trigger_config instead.
     """
 
-    trigger_name: str = FieldInfo(alias="triggerName")
+    deprecated_trigger_name: str = FieldInfo(alias="triggerName")
     """DEPRECATED: This parameter will be removed in a future version.
 
     Please use trigger_name instead.
@@ -68,7 +68,7 @@ class Item(BaseModel):
     updated_at: str
     """ISO 8601 timestamp when the trigger instance was updated"""
 
-    updated_at: str = FieldInfo(alias="updatedAt")
+    deprecated_updated_at: str = FieldInfo(alias="updatedAt")
     """DEPRECATED: This parameter will be removed in a future version.
 
     Please use updated_at instead.
