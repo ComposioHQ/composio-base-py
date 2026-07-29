@@ -40,6 +40,7 @@ __all__ = [
     "ConnectionStateUnionMember2ValUnionMember1",
     "ConnectionStateUnionMember2ValUnionMember2",
     "ConnectionStateUnionMember2ValUnionMember3",
+    "ConnectionStateUnionMember2ValUnionMember4",
     "ConnectionStateUnionMember3",
     "ConnectionStateUnionMember3Val",
     "ConnectionStateUnionMember3ValUnionMember0",
@@ -1270,11 +1271,72 @@ class ConnectionStateUnionMember2ValUnionMember3(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
+class ConnectionStateUnionMember2ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    status: Required[Literal["REVOKED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_key: str
+
+    api_url: str
+
+    base_url: str
+
+    basic_encoded: str
+
+    bearer_token: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    generic_api_key: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
 ConnectionStateUnionMember2Val: TypeAlias = Union[
     ConnectionStateUnionMember2ValUnionMember0,
     ConnectionStateUnionMember2ValUnionMember1,
     ConnectionStateUnionMember2ValUnionMember2,
     ConnectionStateUnionMember2ValUnionMember3,
+    ConnectionStateUnionMember2ValUnionMember4,
 ]
 
 

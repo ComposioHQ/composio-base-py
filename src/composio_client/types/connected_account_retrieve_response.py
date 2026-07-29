@@ -36,6 +36,7 @@ __all__ = [
     "StateUnionMember2ValUnionMember1",
     "StateUnionMember2ValUnionMember2",
     "StateUnionMember2ValUnionMember3",
+    "StateUnionMember2ValUnionMember4",
     "StateUnionMember3",
     "StateUnionMember3Val",
     "StateUnionMember3ValUnionMember0",
@@ -1374,11 +1375,80 @@ class StateUnionMember2ValUnionMember3(BaseModel):
         __pydantic_extra__: Dict[str, Optional[object]]
 
 
+class StateUnionMember2ValUnionMember4(BaseModel):
+    status: Literal["REVOKED"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_key: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    basic_encoded: Optional[str] = None
+
+    bearer_token: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    generic_api_key: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+    else:
+        __pydantic_extra__: Dict[str, Optional[object]]
+
+
 StateUnionMember2Val: TypeAlias = Union[
     StateUnionMember2ValUnionMember0,
     StateUnionMember2ValUnionMember1,
     StateUnionMember2ValUnionMember2,
     StateUnionMember2ValUnionMember3,
+    StateUnionMember2ValUnionMember4,
 ]
 
 
@@ -5352,7 +5422,8 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     Permanent auth error during token refresh, Max auth failures reached, OAuth
     callback failed during token exchange, Connection status updated by user, Auth
     config is disabled, Revoked via user-initiated revoke endpoint, Revoked via
-    admin tool, Revoked as part of connection delete
+    admin tool, Revoked as part of connection delete, Callback identity verification
+    failed
     """
 
     toolkit: Toolkit
@@ -5370,6 +5441,30 @@ class ConnectedAccountRetrieveResponse(BaseModel):
     """
     A short, token-friendly identifier for multi-account disambiguation, typically
     toolkit-prefixed with 1-2 words (e.g., "gmail_red-castle")
+    """
+
+    auth_scheme: Optional[
+        Literal[
+            "OAUTH2",
+            "OAUTH1",
+            "API_KEY",
+            "BASIC",
+            "BILLCOM_AUTH",
+            "BEARER_TOKEN",
+            "GOOGLE_SERVICE_ACCOUNT",
+            "NO_AUTH",
+            "BASIC_WITH_JWT",
+            "CALCOM_AUTH",
+            "SERVICE_ACCOUNT",
+            "SAML",
+            "DCR_OAUTH",
+            "S2S_OAUTH2",
+        ]
+    ] = FieldInfo(alias="authScheme", default=None)
+    """Duplicates state.authScheme.
+
+    Kept for backward compatibility with existing readers; use state.authScheme
+    instead.
     """
 
     experimental: Optional[Experimental] = None
