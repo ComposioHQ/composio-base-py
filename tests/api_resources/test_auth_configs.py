@@ -15,6 +15,7 @@ from composio_client.types import (
     AuthConfigDeleteResponse,
     AuthConfigUpdateResponse,
     AuthConfigRetrieveResponse,
+    AuthConfigUpdateStatusResponse,
 )
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -328,7 +329,7 @@ class TestAuthConfigs:
             status="ENABLED",
             nanoid="nanoid",
         )
-        assert_matches_type(object, auth_config, path=["response"])
+        assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
 
     @parametrize
     def test_raw_response_update_status(self, client: Composio) -> None:
@@ -340,7 +341,7 @@ class TestAuthConfigs:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         auth_config = response.parse()
-        assert_matches_type(object, auth_config, path=["response"])
+        assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
 
     @parametrize
     def test_streaming_response_update_status(self, client: Composio) -> None:
@@ -352,7 +353,7 @@ class TestAuthConfigs:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             auth_config = response.parse()
-            assert_matches_type(object, auth_config, path=["response"])
+            assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -675,7 +676,7 @@ class TestAsyncAuthConfigs:
             status="ENABLED",
             nanoid="nanoid",
         )
-        assert_matches_type(object, auth_config, path=["response"])
+        assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
 
     @parametrize
     async def test_raw_response_update_status(self, async_client: AsyncComposio) -> None:
@@ -687,7 +688,7 @@ class TestAsyncAuthConfigs:
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         auth_config = await response.parse()
-        assert_matches_type(object, auth_config, path=["response"])
+        assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
 
     @parametrize
     async def test_streaming_response_update_status(self, async_client: AsyncComposio) -> None:
@@ -699,7 +700,7 @@ class TestAsyncAuthConfigs:
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             auth_config = await response.parse()
-            assert_matches_type(object, auth_config, path=["response"])
+            assert_matches_type(AuthConfigUpdateStatusResponse, auth_config, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
