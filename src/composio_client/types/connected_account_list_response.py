@@ -38,6 +38,7 @@ __all__ = [
     "ItemStateUnionMember2ValUnionMember2",
     "ItemStateUnionMember2ValUnionMember3",
     "ItemStateUnionMember2ValUnionMember4",
+    "ItemStateUnionMember2ValUnionMember5",
     "ItemStateUnionMember3",
     "ItemStateUnionMember3Val",
     "ItemStateUnionMember3ValUnionMember0",
@@ -51,6 +52,7 @@ __all__ = [
     "ItemStateUnionMember4ValUnionMember1",
     "ItemStateUnionMember4ValUnionMember2",
     "ItemStateUnionMember4ValUnionMember3",
+    "ItemStateUnionMember4ValUnionMember4",
     "ItemStateUnionMember5",
     "ItemStateUnionMember5Val",
     "ItemStateUnionMember5ValUnionMember0",
@@ -96,6 +98,7 @@ __all__ = [
     "ItemStateUnionMember10ValUnionMember1",
     "ItemStateUnionMember10ValUnionMember2",
     "ItemStateUnionMember10ValUnionMember3",
+    "ItemStateUnionMember10ValUnionMember4",
     "ItemStateUnionMember11",
     "ItemStateUnionMember11Val",
     "ItemStateUnionMember11ValUnionMember0",
@@ -1446,12 +1449,73 @@ class ItemStateUnionMember2ValUnionMember4(BaseModel):
         __pydantic_extra__: Dict[str, Optional[object]]
 
 
+class ItemStateUnionMember2ValUnionMember5(BaseModel):
+    status: Literal["EXPIRED"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+    else:
+        __pydantic_extra__: Dict[str, Optional[object]]
+
+
 ItemStateUnionMember2Val: TypeAlias = Union[
     ItemStateUnionMember2ValUnionMember0,
     ItemStateUnionMember2ValUnionMember1,
     ItemStateUnionMember2ValUnionMember2,
     ItemStateUnionMember2ValUnionMember3,
     ItemStateUnionMember2ValUnionMember4,
+    ItemStateUnionMember2ValUnionMember5,
 ]
 
 
@@ -2030,11 +2094,72 @@ class ItemStateUnionMember4ValUnionMember3(BaseModel):
         __pydantic_extra__: Dict[str, Optional[object]]
 
 
+class ItemStateUnionMember4ValUnionMember4(BaseModel):
+    status: Literal["EXPIRED"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+    else:
+        __pydantic_extra__: Dict[str, Optional[object]]
+
+
 ItemStateUnionMember4Val: TypeAlias = Union[
     ItemStateUnionMember4ValUnionMember0,
     ItemStateUnionMember4ValUnionMember1,
     ItemStateUnionMember4ValUnionMember2,
     ItemStateUnionMember4ValUnionMember3,
+    ItemStateUnionMember4ValUnionMember4,
 ]
 
 
@@ -4175,11 +4300,72 @@ class ItemStateUnionMember10ValUnionMember3(BaseModel):
         __pydantic_extra__: Dict[str, Optional[object]]
 
 
+class ItemStateUnionMember10ValUnionMember4(BaseModel):
+    status: Literal["EXPIRED"]
+
+    account_id: Optional[str] = None
+
+    account_url: Optional[str] = None
+
+    api_url: Optional[str] = None
+
+    base_url: Optional[str] = None
+
+    borneo_dashboard_url: Optional[str] = None
+
+    companydomain: Optional[str] = FieldInfo(alias="COMPANYDOMAIN", default=None)
+
+    dc: Optional[str] = None
+
+    domain: Optional[str] = None
+
+    extension: Optional[str] = None
+
+    form_api_base_url: Optional[str] = None
+
+    instance_endpoint: Optional[str] = FieldInfo(alias="instanceEndpoint", default=None)
+
+    instance_name: Optional[str] = FieldInfo(alias="instanceName", default=None)
+
+    proxy_password: Optional[str] = None
+
+    proxy_username: Optional[str] = None
+
+    region: Optional[str] = None
+
+    server_location: Optional[str] = None
+
+    shop: Optional[str] = None
+
+    site_name: Optional[str] = None
+
+    subdomain: Optional[str] = None
+
+    version: Optional[str] = None
+
+    your_server: Optional[str] = None
+
+    your_domain: Optional[str] = FieldInfo(alias="your-domain", default=None)
+
+    if TYPE_CHECKING:
+        # Some versions of Pydantic <2.8.0 have a bug and don’t allow assigning a
+        # value to this field, so for compatibility we avoid doing it at runtime.
+        __pydantic_extra__: Dict[str, Optional[object]] = FieldInfo(init=False)  # pyright: ignore[reportIncompatibleVariableOverride]
+
+        # Stub to indicate that arbitrary properties are accepted.
+        # To access properties that are not valid identifiers you can use `getattr`, e.g.
+        # `getattr(obj, '$type')`
+        def __getattr__(self, attr: str) -> Optional[object]: ...
+    else:
+        __pydantic_extra__: Dict[str, Optional[object]]
+
+
 ItemStateUnionMember10Val: TypeAlias = Union[
     ItemStateUnionMember10ValUnionMember0,
     ItemStateUnionMember10ValUnionMember1,
     ItemStateUnionMember10ValUnionMember2,
     ItemStateUnionMember10ValUnionMember3,
+    ItemStateUnionMember10ValUnionMember4,
 ]
 
 
