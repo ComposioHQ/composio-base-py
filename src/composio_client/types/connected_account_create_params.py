@@ -3546,11 +3546,7 @@ class ConnectionStateUnionMember9ValUnionMember5(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    password: Required[str]
-
     status: Required[Literal["EXPIRED"]]
-
-    username: Required[str]
 
     account_id: str
 

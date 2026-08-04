@@ -3966,11 +3966,7 @@ class StateUnionMember9ValUnionMember4(BaseModel):
 
 
 class StateUnionMember9ValUnionMember5(BaseModel):
-    password: str
-
     status: Literal["EXPIRED"]
-
-    username: str
 
     account_id: Optional[str] = None
 
