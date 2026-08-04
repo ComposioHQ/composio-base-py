@@ -3226,10 +3226,6 @@ class ConnectionDataUnionMember57(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    password: Required[str]
-
-    username: Required[str]
-
     account_id: str
 
     account_url: str

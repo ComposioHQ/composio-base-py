@@ -3935,11 +3935,7 @@ class ConnectionDataUnionMember9ValUnionMember4(BaseModel):
 
 
 class ConnectionDataUnionMember9ValUnionMember5(BaseModel):
-    password: str
-
     status: Literal["EXPIRED"]
-
-    username: str
 
     account_id: Optional[str] = None
 
