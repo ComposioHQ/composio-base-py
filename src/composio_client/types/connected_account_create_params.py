@@ -40,24 +40,29 @@ __all__ = [
     "ConnectionStateUnionMember2ValUnionMember1",
     "ConnectionStateUnionMember2ValUnionMember2",
     "ConnectionStateUnionMember2ValUnionMember3",
+    "ConnectionStateUnionMember2ValUnionMember4",
+    "ConnectionStateUnionMember2ValUnionMember5",
     "ConnectionStateUnionMember3",
     "ConnectionStateUnionMember3Val",
     "ConnectionStateUnionMember3ValUnionMember0",
     "ConnectionStateUnionMember3ValUnionMember1",
     "ConnectionStateUnionMember3ValUnionMember2",
     "ConnectionStateUnionMember3ValUnionMember3",
+    "ConnectionStateUnionMember3ValUnionMember4",
     "ConnectionStateUnionMember4",
     "ConnectionStateUnionMember4Val",
     "ConnectionStateUnionMember4ValUnionMember0",
     "ConnectionStateUnionMember4ValUnionMember1",
     "ConnectionStateUnionMember4ValUnionMember2",
     "ConnectionStateUnionMember4ValUnionMember3",
+    "ConnectionStateUnionMember4ValUnionMember4",
     "ConnectionStateUnionMember5",
     "ConnectionStateUnionMember5Val",
     "ConnectionStateUnionMember5ValUnionMember0",
     "ConnectionStateUnionMember5ValUnionMember1",
     "ConnectionStateUnionMember5ValUnionMember2",
     "ConnectionStateUnionMember5ValUnionMember3",
+    "ConnectionStateUnionMember5ValUnionMember4",
     "ConnectionStateUnionMember6",
     "ConnectionStateUnionMember6Val",
     "ConnectionStateUnionMember6ValUnionMember0",
@@ -96,6 +101,7 @@ __all__ = [
     "ConnectionStateUnionMember10ValUnionMember1",
     "ConnectionStateUnionMember10ValUnionMember2",
     "ConnectionStateUnionMember10ValUnionMember3",
+    "ConnectionStateUnionMember10ValUnionMember4",
     "ConnectionStateUnionMember11",
     "ConnectionStateUnionMember11Val",
     "ConnectionStateUnionMember11ValUnionMember0",
@@ -1270,11 +1276,125 @@ class ConnectionStateUnionMember2ValUnionMember3(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
+class ConnectionStateUnionMember2ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    status: Required[Literal["REVOKED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_key: str
+
+    api_url: str
+
+    base_url: str
+
+    basic_encoded: str
+
+    bearer_token: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    generic_api_key: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionStateUnionMember2ValUnionMember5(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    status: Required[Literal["EXPIRED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
 ConnectionStateUnionMember2Val: TypeAlias = Union[
     ConnectionStateUnionMember2ValUnionMember0,
     ConnectionStateUnionMember2ValUnionMember1,
     ConnectionStateUnionMember2ValUnionMember2,
     ConnectionStateUnionMember2ValUnionMember3,
+    ConnectionStateUnionMember2ValUnionMember4,
+    ConnectionStateUnionMember2ValUnionMember5,
 ]
 
 
@@ -1500,11 +1620,66 @@ class ConnectionStateUnionMember3ValUnionMember3(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
+class ConnectionStateUnionMember3ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    status: Required[Literal["EXPIRED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expired_at: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
 ConnectionStateUnionMember3Val: TypeAlias = Union[
     ConnectionStateUnionMember3ValUnionMember0,
     ConnectionStateUnionMember3ValUnionMember1,
     ConnectionStateUnionMember3ValUnionMember2,
     ConnectionStateUnionMember3ValUnionMember3,
+    ConnectionStateUnionMember3ValUnionMember4,
 ]
 
 
@@ -1726,11 +1901,64 @@ class ConnectionStateUnionMember4ValUnionMember3(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
+class ConnectionStateUnionMember4ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    status: Required[Literal["EXPIRED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
 ConnectionStateUnionMember4Val: TypeAlias = Union[
     ConnectionStateUnionMember4ValUnionMember0,
     ConnectionStateUnionMember4ValUnionMember1,
     ConnectionStateUnionMember4ValUnionMember2,
     ConnectionStateUnionMember4ValUnionMember3,
+    ConnectionStateUnionMember4ValUnionMember4,
 ]
 
 
@@ -1956,11 +2184,66 @@ class ConnectionStateUnionMember5ValUnionMember3(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
+class ConnectionStateUnionMember5ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    status: Required[Literal["EXPIRED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expired_at: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
 ConnectionStateUnionMember5Val: TypeAlias = Union[
     ConnectionStateUnionMember5ValUnionMember0,
     ConnectionStateUnionMember5ValUnionMember1,
     ConnectionStateUnionMember5ValUnionMember2,
     ConnectionStateUnionMember5ValUnionMember3,
+    ConnectionStateUnionMember5ValUnionMember4,
 ]
 
 
@@ -3263,11 +3546,7 @@ class ConnectionStateUnionMember9ValUnionMember5(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    password: Required[str]
-
     status: Required[Literal["EXPIRED"]]
-
-    username: Required[str]
 
     account_id: str
 
@@ -3552,11 +3831,64 @@ class ConnectionStateUnionMember10ValUnionMember3(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
+class ConnectionStateUnionMember10ValUnionMember4(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    status: Required[Literal["EXPIRED"]]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
 ConnectionStateUnionMember10Val: TypeAlias = Union[
     ConnectionStateUnionMember10ValUnionMember0,
     ConnectionStateUnionMember10ValUnionMember1,
     ConnectionStateUnionMember10ValUnionMember2,
     ConnectionStateUnionMember10ValUnionMember3,
+    ConnectionStateUnionMember10ValUnionMember4,
 ]
 
 

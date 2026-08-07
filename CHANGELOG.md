@@ -1,5 +1,21 @@
 # Changelog
 
+## 1.45.0 (2026-08-07)
+
+Full Changelog: [v1.44.0...v1.45.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.44.0...v1.45.0)
+
+### Features
+
+* **api:** api update ([07226cd](https://github.com/ComposioHQ/composio-base-py/commit/07226cd873dc633cca9516dbd16c49ae139abad8))
+* **api:** api update ([d331cc3](https://github.com/ComposioHQ/composio-base-py/commit/d331cc3825e45b95cffea1fde1236162504a1e12))
+* **api:** api update ([a566771](https://github.com/ComposioHQ/composio-base-py/commit/a5667717cb01d873f926dd202d247e9b33e61c77))
+* **api:** api update ([2070e12](https://github.com/ComposioHQ/composio-base-py/commit/2070e1229cfb5a3c9f51b01efae7f8681ad40c08))
+
+
+### Bug Fixes
+
+* preserve trigger account identifiers in Python ([4fa4bbb](https://github.com/ComposioHQ/composio-base-py/commit/4fa4bbb9324b32e538727b6a13999744a7ef95c7))
+
 ## 1.44.0 (2026-07-28)
 
 Full Changelog: [v1.43.0...v1.44.0](https://github.com/ComposioHQ/composio-base-py/compare/v1.43.0...v1.44.0)
