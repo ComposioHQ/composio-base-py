@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Literal, TypedDict
 
 __all__ = ["McpRetrieveAppParams"]
@@ -12,7 +11,7 @@ class McpRetrieveAppParams(TypedDict, total=False):
     auth_config_ids: str
     """Comma-separated list of auth config IDs to filter servers by"""
 
-    limit: Optional[float]
+    limit: int
     """Number of items per page (default: 10)"""
 
     name: str
@@ -24,7 +23,7 @@ class McpRetrieveAppParams(TypedDict, total=False):
     order_direction: Literal["asc", "desc"]
     """Direction of ordering"""
 
-    page_no: Optional[float]
+    page_no: int
     """Page number for pagination (1-based)"""
 
     toolkits: str
