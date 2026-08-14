@@ -17,6 +17,7 @@ __all__ = [
     "AuthConfigUnionMember0ToolAccessConfig",
     "AuthConfigUnionMember1",
     "AuthConfigUnionMember1Credentials",
+    "AuthConfigUnionMember1Experimental",
     "AuthConfigUnionMember1ProxyConfig",
     "AuthConfigUnionMember1ToolAccessConfig",
 ]
@@ -86,6 +87,17 @@ class AuthConfigUnionMember1Credentials(TypedDict, total=False):
     """
 
 
+class AuthConfigUnionMember1Experimental(TypedDict, total=False):
+    """[EXPERIMENTAL] Opt-in auth-config features."""
+
+    sealed_credentials: Dict[str, str]
+    """
+    Client-sealed secret fields to redeem through the organization keyring instance
+    (GET /api/v3.1/keyring/transfer_keys). The plaintext must not also appear in
+    credentials.
+    """
+
+
 class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
     proxy_url: Required[str]
     """The url of the auth proxy"""
@@ -128,6 +140,9 @@ class AuthConfigUnionMember1(TypedDict, total=False):
     type: Required[Literal["use_custom_auth"]]
 
     credentials: AuthConfigUnionMember1Credentials
+
+    experimental: AuthConfigUnionMember1Experimental
+    """[EXPERIMENTAL] Opt-in auth-config features."""
 
     is_enabled_for_tool_router: bool
     """Whether this auth config is enabled for tool router"""

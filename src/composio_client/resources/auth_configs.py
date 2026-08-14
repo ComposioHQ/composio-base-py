@@ -141,6 +141,7 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         type: Literal["custom"],
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        experimental: auth_config_update_params.Variant0Experimental | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
         proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
@@ -160,6 +161,8 @@ class AuthConfigsResource(SyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
+
+          experimental: [EXPERIMENTAL] Opt-in auth-config features.
 
           is_enabled_for_tool_router: Whether this auth config is enabled for tool router
 
@@ -240,6 +243,7 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         type: Literal["custom"] | Literal["default"],
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        experimental: auth_config_update_params.Variant0Experimental | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
         proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
@@ -265,6 +269,7 @@ class AuthConfigsResource(SyncAPIResource):
                 {
                     "type": type,
                     "credentials": credentials,
+                    "experimental": experimental,
                     "is_enabled_for_tool_router": is_enabled_for_tool_router,
                     "name": name,
                     "proxy_config": proxy_config,
@@ -558,6 +563,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         type: Literal["custom"],
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        experimental: auth_config_update_params.Variant0Experimental | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
         proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
@@ -577,6 +583,8 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
 
         Args:
           nanoid: The unique identifier of the authentication configuration to update
+
+          experimental: [EXPERIMENTAL] Opt-in auth-config features.
 
           is_enabled_for_tool_router: Whether this auth config is enabled for tool router
 
@@ -657,6 +665,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         type: Literal["custom"] | Literal["default"],
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        experimental: auth_config_update_params.Variant0Experimental | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
         proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
@@ -682,6 +691,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                 {
                     "type": type,
                     "credentials": credentials,
+                    "experimental": experimental,
                     "is_enabled_for_tool_router": is_enabled_for_tool_router,
                     "name": name,
                     "proxy_config": proxy_config,

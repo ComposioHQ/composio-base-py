@@ -129,6 +129,7 @@ class TestAuthConfigs:
                 "scopes": "string",
                 "user_scopes": "string",
             },
+            experimental={"sealed_credentials": {"foo": "x"}},
             is_enabled_for_tool_router=True,
             name="x",
             proxy_config={
@@ -476,6 +477,7 @@ class TestAsyncAuthConfigs:
                 "scopes": "string",
                 "user_scopes": "string",
             },
+            experimental={"sealed_credentials": {"foo": "x"}},
             is_enabled_for_tool_router=True,
             name="x",
             proxy_config={
