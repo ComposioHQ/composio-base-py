@@ -141,11 +141,11 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         type: Literal["custom"],
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
-        experimental: auth_config_update_params.Variant0Experimental | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
         proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
+        sealed_credentials: Dict[str, str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -162,13 +162,16 @@ class AuthConfigsResource(SyncAPIResource):
         Args:
           nanoid: The unique identifier of the authentication configuration to update
 
-          experimental: [EXPERIMENTAL] Opt-in auth-config features.
-
           is_enabled_for_tool_router: Whether this auth config is enabled for tool router
 
           name: The display name of the authentication configuration
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
+
+          sealed_credentials: [EXPERIMENTAL] Client-sealed secret fields to redeem through the organization
+              keyring instance (GET /api/v3.1/keyring/transfer_keys). The plaintext must not
+              also appear in credentials. Rotates the stored client_secret without Apollo ever
+              holding it.
 
           shared_credentials: Shared credentials inherited by all connected accounts using this auth config.
               Secret values are redacted in responses, so provide the real values when
@@ -243,11 +246,11 @@ class AuthConfigsResource(SyncAPIResource):
         *,
         type: Literal["custom"] | Literal["default"],
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
-        experimental: auth_config_update_params.Variant0Experimental | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
         proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
+        sealed_credentials: Dict[str, str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
         | auth_config_update_params.Variant1ToolAccessConfig
@@ -269,11 +272,11 @@ class AuthConfigsResource(SyncAPIResource):
                 {
                     "type": type,
                     "credentials": credentials,
-                    "experimental": experimental,
                     "is_enabled_for_tool_router": is_enabled_for_tool_router,
                     "name": name,
                     "proxy_config": proxy_config,
                     "restrict_to_following_tools": restrict_to_following_tools,
+                    "sealed_credentials": sealed_credentials,
                     "shared_credentials": shared_credentials,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
@@ -563,11 +566,11 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         type: Literal["custom"],
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
-        experimental: auth_config_update_params.Variant0Experimental | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
         proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
+        sealed_credentials: Dict[str, str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -584,13 +587,16 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         Args:
           nanoid: The unique identifier of the authentication configuration to update
 
-          experimental: [EXPERIMENTAL] Opt-in auth-config features.
-
           is_enabled_for_tool_router: Whether this auth config is enabled for tool router
 
           name: The display name of the authentication configuration
 
           restrict_to_following_tools: Use tool_access_config instead. This field will be deprecated in the future.
+
+          sealed_credentials: [EXPERIMENTAL] Client-sealed secret fields to redeem through the organization
+              keyring instance (GET /api/v3.1/keyring/transfer_keys). The plaintext must not
+              also appear in credentials. Rotates the stored client_secret without Apollo ever
+              holding it.
 
           shared_credentials: Shared credentials inherited by all connected accounts using this auth config.
               Secret values are redacted in responses, so provide the real values when
@@ -665,11 +671,11 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         *,
         type: Literal["custom"] | Literal["default"],
         credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
-        experimental: auth_config_update_params.Variant0Experimental | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
         proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
+        sealed_credentials: Dict[str, str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
         tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
         | auth_config_update_params.Variant1ToolAccessConfig
@@ -691,11 +697,11 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
                 {
                     "type": type,
                     "credentials": credentials,
-                    "experimental": experimental,
                     "is_enabled_for_tool_router": is_enabled_for_tool_router,
                     "name": name,
                     "proxy_config": proxy_config,
                     "restrict_to_following_tools": restrict_to_following_tools,
+                    "sealed_credentials": sealed_credentials,
                     "shared_credentials": shared_credentials,
                     "tool_access_config": tool_access_config,
                     "scopes": scopes,
