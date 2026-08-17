@@ -129,7 +129,6 @@ class TestAuthConfigs:
                 "scopes": "string",
                 "user_scopes": "string",
             },
-            experimental={"sealed_credentials": {"foo": "x"}},
             is_enabled_for_tool_router=True,
             name="x",
             proxy_config={
@@ -137,6 +136,7 @@ class TestAuthConfigs:
                 "proxy_auth_key": "proxy_auth_key",
             },
             restrict_to_following_tools=["string"],
+            sealed_credentials={"foo": "x"},
             shared_credentials={"foo": "bar"},
             tool_access_config={
                 "tools_available_for_execution": ["string"],
@@ -477,7 +477,6 @@ class TestAsyncAuthConfigs:
                 "scopes": "string",
                 "user_scopes": "string",
             },
-            experimental={"sealed_credentials": {"foo": "x"}},
             is_enabled_for_tool_router=True,
             name="x",
             proxy_config={
@@ -485,6 +484,7 @@ class TestAsyncAuthConfigs:
                 "proxy_auth_key": "proxy_auth_key",
             },
             restrict_to_following_tools=["string"],
+            sealed_credentials={"foo": "x"},
             shared_credentials={"foo": "bar"},
             tool_access_config={
                 "tools_available_for_execution": ["string"],

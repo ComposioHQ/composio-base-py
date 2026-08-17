@@ -11,7 +11,6 @@ __all__ = [
     "AuthConfigUpdateParams",
     "Variant0",
     "Variant0Credentials",
-    "Variant0Experimental",
     "Variant0ProxyConfig",
     "Variant0ToolAccessConfig",
     "Variant1",
@@ -24,9 +23,6 @@ class Variant0(TypedDict, total=False):
 
     credentials: Variant0Credentials
 
-    experimental: Variant0Experimental
-    """[EXPERIMENTAL] Opt-in auth-config features."""
-
     is_enabled_for_tool_router: bool
     """Whether this auth config is enabled for tool router"""
 
@@ -37,6 +33,14 @@ class Variant0(TypedDict, total=False):
 
     restrict_to_following_tools: SequenceNotStr[str]
     """Use tool_access_config instead. This field will be deprecated in the future."""
+
+    sealed_credentials: Dict[str, str]
+    """
+    [EXPERIMENTAL] Client-sealed secret fields to redeem through the organization
+    keyring instance (GET /api/v3.1/keyring/transfer_keys). The plaintext must not
+    also appear in credentials. Rotates the stored client_secret without Apollo ever
+    holding it.
+    """
 
     shared_credentials: Dict[str, Optional[object]]
     """Shared credentials inherited by all connected accounts using this auth config.
@@ -56,17 +60,6 @@ class Variant0Credentials(TypedDict, total=False):
     """OAuth user-token scopes requested for the auth config.
 
     This is primarily used by Slack OAuth v2.
-    """
-
-
-class Variant0Experimental(TypedDict, total=False):
-    """[EXPERIMENTAL] Opt-in auth-config features."""
-
-    sealed_credentials: Dict[str, str]
-    """
-    Client-sealed secret fields to redeem through the organization keyring instance
-    (GET /api/v3.1/keyring/transfer_keys). The plaintext must not also appear in
-    credentials. Rotates the stored client_secret without Apollo ever holding it.
     """
 
 
