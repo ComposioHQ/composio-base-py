@@ -24,7 +24,7 @@ class ToolGetInputParams(TypedDict, total=False):
     """
 
     version: str
-    """
-    Tool version to use when generating inputs (defaults to "latest" if not
-    specified)
+    """Tool version to use when generating inputs.
+
+    Defaults to the latest published version ("latest") when omitted.
     """

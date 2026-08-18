@@ -83,7 +83,6 @@ class TestConnectedAccounts:
                 },
                 "user_id": "user_id",
             },
-            validate_credentials=True,
         )
         assert_matches_type(ConnectedAccountCreateResponse, connected_account, path=["response"])
 
@@ -334,7 +333,6 @@ class TestConnectedAccounts:
                 nanoid="ca_1a2b3c4d5e6f",
                 query_redirect_url="https://example.com",
                 body_redirect_url="https://example.com",
-                validate_credentials=True,
             )
 
         assert_matches_type(ConnectedAccountRefreshResponse, connected_account, path=["response"])
@@ -477,7 +475,6 @@ class TestAsyncConnectedAccounts:
                 },
                 "user_id": "user_id",
             },
-            validate_credentials=True,
         )
         assert_matches_type(ConnectedAccountCreateResponse, connected_account, path=["response"])
 
@@ -728,7 +725,6 @@ class TestAsyncConnectedAccounts:
                 nanoid="ca_1a2b3c4d5e6f",
                 query_redirect_url="https://example.com",
                 body_redirect_url="https://example.com",
-                validate_credentials=True,
             )
 
         assert_matches_type(ConnectedAccountRefreshResponse, connected_account, path=["response"])
