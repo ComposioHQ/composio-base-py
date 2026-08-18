@@ -9,19 +9,19 @@ from .._types import SequenceNotStr
 
 __all__ = [
     "AuthConfigUpdateParams",
-    "Variant0",
-    "Variant0Credentials",
-    "Variant0ProxyConfig",
-    "Variant0ToolAccessConfig",
-    "Variant1",
-    "Variant1ToolAccessConfig",
+    "CustomAuthConfigUpdate",
+    "CustomAuthConfigUpdateCredentials",
+    "CustomAuthConfigUpdateProxyConfig",
+    "CustomAuthConfigUpdateToolAccessConfig",
+    "DefaultAuthConfigUpdate",
+    "DefaultAuthConfigUpdateToolAccessConfig",
 ]
 
 
-class Variant0(TypedDict, total=False):
+class CustomAuthConfigUpdate(TypedDict, total=False):
     type: Required[Literal["custom"]]
 
-    credentials: Variant0Credentials
+    credentials: CustomAuthConfigUpdateCredentials
 
     is_enabled_for_tool_router: bool
     """Whether this auth config is enabled for tool router"""
@@ -29,7 +29,7 @@ class Variant0(TypedDict, total=False):
     name: str
     """The display name of the authentication configuration"""
 
-    proxy_config: Optional[Variant0ProxyConfig]
+    proxy_config: Optional[CustomAuthConfigUpdateProxyConfig]
 
     restrict_to_following_tools: SequenceNotStr[str]
     """Use tool_access_config instead. This field will be deprecated in the future."""
@@ -49,10 +49,10 @@ class Variant0(TypedDict, total=False):
     updating; omit this field to leave them unchanged.
     """
 
-    tool_access_config: Variant0ToolAccessConfig
+    tool_access_config: CustomAuthConfigUpdateToolAccessConfig
 
 
-class Variant0Credentials(TypedDict, total=False):
+class CustomAuthConfigUpdateCredentials(TypedDict, total=False):
     scopes: Union[str, SequenceNotStr[str]]
     """OAuth scopes requested for the auth config."""
 
@@ -63,7 +63,7 @@ class Variant0Credentials(TypedDict, total=False):
     """
 
 
-class Variant0ProxyConfig(TypedDict, total=False):
+class CustomAuthConfigUpdateProxyConfig(TypedDict, total=False):
     proxy_url: Required[str]
     """The url of the auth proxy"""
 
@@ -71,7 +71,7 @@ class Variant0ProxyConfig(TypedDict, total=False):
     """The auth key for the auth proxy"""
 
 
-class Variant0ToolAccessConfig(TypedDict, total=False):
+class CustomAuthConfigUpdateToolAccessConfig(TypedDict, total=False):
     tools_available_for_execution: SequenceNotStr[str]
     """The actions that the user can perform on the auth config.
 
@@ -86,7 +86,7 @@ class Variant0ToolAccessConfig(TypedDict, total=False):
     """
 
 
-class Variant1(TypedDict, total=False):
+class DefaultAuthConfigUpdate(TypedDict, total=False):
     type: Required[Literal["default"]]
 
     is_enabled_for_tool_router: bool
@@ -108,7 +108,7 @@ class Variant1(TypedDict, total=False):
     updating; omit this field to leave them unchanged.
     """
 
-    tool_access_config: Variant1ToolAccessConfig
+    tool_access_config: DefaultAuthConfigUpdateToolAccessConfig
 
     user_scopes: Union[str, SequenceNotStr[str]]
     """OAuth user-token scopes requested for the auth config.
@@ -117,7 +117,7 @@ class Variant1(TypedDict, total=False):
     """
 
 
-class Variant1ToolAccessConfig(TypedDict, total=False):
+class DefaultAuthConfigUpdateToolAccessConfig(TypedDict, total=False):
     tools_available_for_execution: SequenceNotStr[str]
     """The actions that the user can perform on the auth config.
 
@@ -132,4 +132,4 @@ class Variant1ToolAccessConfig(TypedDict, total=False):
     """
 
 
-AuthConfigUpdateParams: TypeAlias = Union[Variant0, Variant1]
+AuthConfigUpdateParams: TypeAlias = Union[CustomAuthConfigUpdate, DefaultAuthConfigUpdate]

@@ -65,7 +65,6 @@ class ConnectedAccountsResource(SyncAPIResource):
         *,
         auth_config: connected_account_create_params.AuthConfig,
         connection: connected_account_create_params.Connection,
-        validate_credentials: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -90,10 +89,14 @@ class ConnectedAccountsResource(SyncAPIResource):
         retiring path carry a `Deprecation` header (RFC 9745) and a `Sunset` header
         (RFC 8594) for client-side detection.
 
-        Args:
-          validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
-              API Key Auth scheme
+        **Credential check:** where the toolkit supports it, submitted API key, basic,
+        and bearer credentials are checked against the provider before the connection is
+        stored — no opt-in required. For toolkits with the check enabled, credentials
+        the provider rejects fail the request with
+        `ConnectedAccount_CredentialValidationRejected`. If the provider is unreachable,
+        times out, or returns an error of its own, the connection is created as normal.
 
+        Args:
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -108,7 +111,6 @@ class ConnectedAccountsResource(SyncAPIResource):
                 {
                     "auth_config": auth_config,
                     "connection": connection,
-                    "validate_credentials": validate_credentials,
                 },
                 connected_account_create_params.ConnectedAccountCreateParams,
             ),
@@ -348,7 +350,6 @@ class ConnectedAccountsResource(SyncAPIResource):
         *,
         query_redirect_url: str | Omit = omit,
         body_redirect_url: str | Omit = omit,
-        validate_credentials: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -365,9 +366,6 @@ class ConnectedAccountsResource(SyncAPIResource):
         be removed in a future release.
 
         Args:
-          validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
-              API Key Auth scheme
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -381,11 +379,7 @@ class ConnectedAccountsResource(SyncAPIResource):
         return self._post(
             path_template("/api/v3.1/connected_accounts/{nanoid}/refresh", nanoid=nanoid),
             body=maybe_transform(
-                {
-                    "body_redirect_url": body_redirect_url,
-                    "validate_credentials": validate_credentials,
-                },
-                connected_account_refresh_params.ConnectedAccountRefreshParams,
+                {"body_redirect_url": body_redirect_url}, connected_account_refresh_params.ConnectedAccountRefreshParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -469,7 +463,6 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         *,
         auth_config: connected_account_create_params.AuthConfig,
         connection: connected_account_create_params.Connection,
-        validate_credentials: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -494,10 +487,14 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         retiring path carry a `Deprecation` header (RFC 9745) and a `Sunset` header
         (RFC 8594) for client-side detection.
 
-        Args:
-          validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
-              API Key Auth scheme
+        **Credential check:** where the toolkit supports it, submitted API key, basic,
+        and bearer credentials are checked against the provider before the connection is
+        stored — no opt-in required. For toolkits with the check enabled, credentials
+        the provider rejects fail the request with
+        `ConnectedAccount_CredentialValidationRejected`. If the provider is unreachable,
+        times out, or returns an error of its own, the connection is created as normal.
 
+        Args:
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -512,7 +509,6 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
                 {
                     "auth_config": auth_config,
                     "connection": connection,
-                    "validate_credentials": validate_credentials,
                 },
                 connected_account_create_params.ConnectedAccountCreateParams,
             ),
@@ -752,7 +748,6 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         *,
         query_redirect_url: str | Omit = omit,
         body_redirect_url: str | Omit = omit,
-        validate_credentials: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -769,9 +764,6 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         be removed in a future release.
 
         Args:
-          validate_credentials: [EXPERIMENTAL] Whether to validate the provided credentials, validates only for
-              API Key Auth scheme
-
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -785,11 +777,7 @@ class AsyncConnectedAccountsResource(AsyncAPIResource):
         return await self._post(
             path_template("/api/v3.1/connected_accounts/{nanoid}/refresh", nanoid=nanoid),
             body=await async_maybe_transform(
-                {
-                    "body_redirect_url": body_redirect_url,
-                    "validate_credentials": validate_credentials,
-                },
-                connected_account_refresh_params.ConnectedAccountRefreshParams,
+                {"body_redirect_url": body_redirect_url}, connected_account_refresh_params.ConnectedAccountRefreshParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers,

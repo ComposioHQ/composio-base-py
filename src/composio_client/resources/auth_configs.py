@@ -140,14 +140,14 @@ class AuthConfigsResource(SyncAPIResource):
         nanoid: str,
         *,
         type: Literal["custom"],
-        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        credentials: auth_config_update_params.CustomAuthConfigUpdateCredentials | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
-        proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
+        proxy_config: Optional[auth_config_update_params.CustomAuthConfigUpdateProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         sealed_credentials: Dict[str, str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
+        tool_access_config: auth_config_update_params.CustomAuthConfigUpdateToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -198,7 +198,7 @@ class AuthConfigsResource(SyncAPIResource):
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
-        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
+        tool_access_config: auth_config_update_params.DefaultAuthConfigUpdateToolAccessConfig | Omit = omit,
         user_scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -245,15 +245,15 @@ class AuthConfigsResource(SyncAPIResource):
         nanoid: str,
         *,
         type: Literal["custom"] | Literal["default"],
-        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        credentials: auth_config_update_params.CustomAuthConfigUpdateCredentials | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
-        proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
+        proxy_config: Optional[auth_config_update_params.CustomAuthConfigUpdateProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         sealed_credentials: Dict[str, str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
-        | auth_config_update_params.Variant1ToolAccessConfig
+        tool_access_config: auth_config_update_params.CustomAuthConfigUpdateToolAccessConfig
+        | auth_config_update_params.DefaultAuthConfigUpdateToolAccessConfig
         | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         user_scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
@@ -565,14 +565,14 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         nanoid: str,
         *,
         type: Literal["custom"],
-        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        credentials: auth_config_update_params.CustomAuthConfigUpdateCredentials | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
-        proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
+        proxy_config: Optional[auth_config_update_params.CustomAuthConfigUpdateProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         sealed_credentials: Dict[str, str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig | Omit = omit,
+        tool_access_config: auth_config_update_params.CustomAuthConfigUpdateToolAccessConfig | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -623,7 +623,7 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
-        tool_access_config: auth_config_update_params.Variant1ToolAccessConfig | Omit = omit,
+        tool_access_config: auth_config_update_params.DefaultAuthConfigUpdateToolAccessConfig | Omit = omit,
         user_scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -670,15 +670,15 @@ class AsyncAuthConfigsResource(AsyncAPIResource):
         nanoid: str,
         *,
         type: Literal["custom"] | Literal["default"],
-        credentials: auth_config_update_params.Variant0Credentials | Omit = omit,
+        credentials: auth_config_update_params.CustomAuthConfigUpdateCredentials | Omit = omit,
         is_enabled_for_tool_router: bool | Omit = omit,
         name: str | Omit = omit,
-        proxy_config: Optional[auth_config_update_params.Variant0ProxyConfig] | Omit = omit,
+        proxy_config: Optional[auth_config_update_params.CustomAuthConfigUpdateProxyConfig] | Omit = omit,
         restrict_to_following_tools: SequenceNotStr[str] | Omit = omit,
         sealed_credentials: Dict[str, str] | Omit = omit,
         shared_credentials: Dict[str, Optional[object]] | Omit = omit,
-        tool_access_config: auth_config_update_params.Variant0ToolAccessConfig
-        | auth_config_update_params.Variant1ToolAccessConfig
+        tool_access_config: auth_config_update_params.CustomAuthConfigUpdateToolAccessConfig
+        | auth_config_update_params.DefaultAuthConfigUpdateToolAccessConfig
         | Omit = omit,
         scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
         user_scopes: Union[str, SequenceNotStr[str]] | Omit = omit,
