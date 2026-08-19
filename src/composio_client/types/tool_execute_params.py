@@ -77,7 +77,10 @@ class ToolExecuteParams(TypedDict, total=False):
     """User id for multi-user connected accounts (e.g. multiple users, organizations)"""
 
     version: str
-    """Tool version to execute (defaults to "00000000_00" if not specified)"""
+    """Tool version to execute.
+
+    Defaults to the latest published version ("latest") when omitted.
+    """
 
     x_llm_gateway_headers: Annotated[str, PropertyInfo(alias="x-llm-gateway-headers")]
     """

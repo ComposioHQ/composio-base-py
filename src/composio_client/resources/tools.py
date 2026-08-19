@@ -77,9 +77,13 @@ class ToolsResource(SyncAPIResource):
 
         Args:
           toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
-              notation for specific versions per toolkit.
+              notation for specific versions per toolkit. Read only when version is omitted;
+              when neither is supplied the tool resolves to the latest published version
+              ("latest").
 
-          version: Optional version of the tool to retrieve
+          version: Optional version of the tool to retrieve. Takes precedence over
+              toolkit_versions; when both are omitted the tool resolves to the latest
+              published version ("latest").
 
           extra_headers: Send extra headers
 
@@ -166,7 +170,8 @@ class ToolsResource(SyncAPIResource):
           toolkit_slug: The slug of the toolkit to filter by
 
           toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
-              notation for specific versions per toolkit.
+              notation for specific versions per toolkit. Defaults to the latest published
+              version ("latest") when omitted.
 
           extra_headers: Send extra headers
 
@@ -251,7 +256,8 @@ class ToolsResource(SyncAPIResource):
 
           user_id: User id for multi-user connected accounts (e.g. multiple users, organizations)
 
-          version: Tool version to execute (defaults to "00000000_00" if not specified)
+          version: Tool version to execute. Defaults to the latest published version ("latest")
+              when omitted.
 
           x_llm_gateway_headers: JSON object containing custom headers to pass to LLM providers (OpenAI, Bedrock,
               etc.)
@@ -319,8 +325,8 @@ class ToolsResource(SyncAPIResource):
           system_prompt: System prompt to control and guide the behavior of the LLM when generating
               inputs
 
-          version: Tool version to use when generating inputs (defaults to "latest" if not
-              specified)
+          version: Tool version to use when generating inputs. Defaults to the latest published
+              version ("latest") when omitted.
 
           extra_headers: Send extra headers
 
@@ -369,8 +375,7 @@ class ToolsResource(SyncAPIResource):
         """
         Proxy an HTTP request to a third-party API using connected account credentials.
         This endpoint allows making authenticated API calls to external services while
-        abstracting away authentication details. v3.1 requires a proxy_execute scoped
-        project API key; default project API keys are rejected.
+        abstracting away authentication details.
 
         Args:
           endpoint: The API endpoint to call (absolute URL or path relative to base URL of the
@@ -483,9 +488,13 @@ class AsyncToolsResource(AsyncAPIResource):
 
         Args:
           toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
-              notation for specific versions per toolkit.
+              notation for specific versions per toolkit. Read only when version is omitted;
+              when neither is supplied the tool resolves to the latest published version
+              ("latest").
 
-          version: Optional version of the tool to retrieve
+          version: Optional version of the tool to retrieve. Takes precedence over
+              toolkit_versions; when both are omitted the tool resolves to the latest
+              published version ("latest").
 
           extra_headers: Send extra headers
 
@@ -572,7 +581,8 @@ class AsyncToolsResource(AsyncAPIResource):
           toolkit_slug: The slug of the toolkit to filter by
 
           toolkit_versions: Toolkit version specification. Use "latest" for latest versions or bracket
-              notation for specific versions per toolkit.
+              notation for specific versions per toolkit. Defaults to the latest published
+              version ("latest") when omitted.
 
           extra_headers: Send extra headers
 
@@ -657,7 +667,8 @@ class AsyncToolsResource(AsyncAPIResource):
 
           user_id: User id for multi-user connected accounts (e.g. multiple users, organizations)
 
-          version: Tool version to execute (defaults to "00000000_00" if not specified)
+          version: Tool version to execute. Defaults to the latest published version ("latest")
+              when omitted.
 
           x_llm_gateway_headers: JSON object containing custom headers to pass to LLM providers (OpenAI, Bedrock,
               etc.)
@@ -725,8 +736,8 @@ class AsyncToolsResource(AsyncAPIResource):
           system_prompt: System prompt to control and guide the behavior of the LLM when generating
               inputs
 
-          version: Tool version to use when generating inputs (defaults to "latest" if not
-              specified)
+          version: Tool version to use when generating inputs. Defaults to the latest published
+              version ("latest") when omitted.
 
           extra_headers: Send extra headers
 
@@ -775,8 +786,7 @@ class AsyncToolsResource(AsyncAPIResource):
         """
         Proxy an HTTP request to a third-party API using connected account credentials.
         This endpoint allows making authenticated API calls to external services while
-        abstracting away authentication details. v3.1 requires a proxy_execute scoped
-        project API key; default project API keys are rejected.
+        abstracting away authentication details.
 
         Args:
           endpoint: The API endpoint to call (absolute URL or path relative to base URL of the

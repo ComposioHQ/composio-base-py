@@ -245,6 +245,9 @@ class ExperimentalCustomToolkitTool(BaseModel):
 
     output_schema: Optional[Dict[str, Optional[object]]] = None
 
+    preload: Optional[bool] = None
+    """Echoes the SDK-local preload hint provided for this tool"""
+
 
 class ExperimentalCustomToolkit(BaseModel):
     description: str
@@ -254,6 +257,9 @@ class ExperimentalCustomToolkit(BaseModel):
     slug: str
 
     tools: List[ExperimentalCustomToolkitTool]
+
+    preload: Optional[bool] = None
+    """Echoes the SDK-local preload hint provided for this toolkit"""
 
 
 class ExperimentalCustomTool(BaseModel):
@@ -272,6 +278,9 @@ class ExperimentalCustomTool(BaseModel):
     extends_toolkit: Optional[str] = None
 
     output_schema: Optional[Dict[str, Optional[object]]] = None
+
+    preload: Optional[bool] = None
+    """Echoes the SDK-local preload hint provided for this tool"""
 
 
 class Experimental(BaseModel):

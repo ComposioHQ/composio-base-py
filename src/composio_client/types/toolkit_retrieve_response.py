@@ -121,9 +121,20 @@ class AuthConfigDetailFieldsAuthConfigCreationOptional(BaseModel):
 
     type: str
 
+    user_visible: bool
+    """Whether this field is shown to the end user in the hosted connect flow.
+
+    Fields with `false` are never required — the field's `default` applies unless
+    the developer supplies a value on the auth config (e.g. as a shared credential).
+    """
+
     default: Optional[str] = None
 
     is_secret: Optional[bool] = None
+    """Whether this field holds a secret/credential value.
+
+    Clients use it to decide whether to mask the input.
+    """
 
     legacy_template_name: Optional[str] = None
 
@@ -139,9 +150,20 @@ class AuthConfigDetailFieldsAuthConfigCreationRequired(BaseModel):
 
     type: str
 
+    user_visible: bool
+    """Whether this field is shown to the end user in the hosted connect flow.
+
+    Fields with `false` are never required — the field's `default` applies unless
+    the developer supplies a value on the auth config (e.g. as a shared credential).
+    """
+
     default: Optional[str] = None
 
     is_secret: Optional[bool] = None
+    """Whether this field holds a secret/credential value.
+
+    Clients use it to decide whether to mask the input.
+    """
 
     legacy_template_name: Optional[str] = None
 
@@ -165,9 +187,20 @@ class AuthConfigDetailFieldsConnectedAccountInitiationOptional(BaseModel):
 
     type: str
 
+    user_visible: bool
+    """Whether this field is shown to the end user in the hosted connect flow.
+
+    Fields with `false` are never required — the field's `default` applies unless
+    the developer supplies a value on the auth config (e.g. as a shared credential).
+    """
+
     default: Optional[str] = None
 
     is_secret: Optional[bool] = None
+    """Whether this field holds a secret/credential value.
+
+    Clients use it to decide whether to mask the input.
+    """
 
     legacy_template_name: Optional[str] = None
 
@@ -183,9 +216,20 @@ class AuthConfigDetailFieldsConnectedAccountInitiationRequired(BaseModel):
 
     type: str
 
+    user_visible: bool
+    """Whether this field is shown to the end user in the hosted connect flow.
+
+    Fields with `false` are never required — the field's `default` applies unless
+    the developer supplies a value on the auth config (e.g. as a shared credential).
+    """
+
     default: Optional[str] = None
 
     is_secret: Optional[bool] = None
+    """Whether this field holds a secret/credential value.
+
+    Clients use it to decide whether to mask the input.
+    """
 
     legacy_template_name: Optional[str] = None
 

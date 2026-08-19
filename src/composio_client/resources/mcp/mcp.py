@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Optional
 from typing_extensions import Literal
 
 import httpx
@@ -242,11 +241,11 @@ class McpResource(SyncAPIResource):
         self,
         *,
         auth_config_ids: str | Omit = omit,
-        limit: Optional[float] | Omit = omit,
+        limit: int | Omit = omit,
         name: str | Omit = omit,
         order_by: Literal["created_at", "updated_at"] | Omit = omit,
         order_direction: Literal["asc", "desc"] | Omit = omit,
-        page_no: Optional[float] | Omit = omit,
+        page_no: int | Omit = omit,
         toolkits: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -351,11 +350,11 @@ class McpResource(SyncAPIResource):
         app_key: str,
         *,
         auth_config_ids: str | Omit = omit,
-        limit: Optional[float] | Omit = omit,
+        limit: int | Omit = omit,
         name: str | Omit = omit,
         order_by: Literal["created_at", "updated_at"] | Omit = omit,
         order_direction: Literal["asc", "desc"] | Omit = omit,
-        page_no: Optional[float] | Omit = omit,
+        page_no: int | Omit = omit,
         toolkits: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -618,11 +617,11 @@ class AsyncMcpResource(AsyncAPIResource):
         self,
         *,
         auth_config_ids: str | Omit = omit,
-        limit: Optional[float] | Omit = omit,
+        limit: int | Omit = omit,
         name: str | Omit = omit,
         order_by: Literal["created_at", "updated_at"] | Omit = omit,
         order_direction: Literal["asc", "desc"] | Omit = omit,
-        page_no: Optional[float] | Omit = omit,
+        page_no: int | Omit = omit,
         toolkits: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -727,11 +726,11 @@ class AsyncMcpResource(AsyncAPIResource):
         app_key: str,
         *,
         auth_config_ids: str | Omit = omit,
-        limit: Optional[float] | Omit = omit,
+        limit: int | Omit = omit,
         name: str | Omit = omit,
         order_by: Literal["created_at", "updated_at"] | Omit = omit,
         order_direction: Literal["asc", "desc"] | Omit = omit,
-        page_no: Optional[float] | Omit = omit,
+        page_no: int | Omit = omit,
         toolkits: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

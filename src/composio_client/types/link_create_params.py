@@ -88,6 +88,12 @@ __all__ = [
     "ConnectionDataUnionMember72",
     "ConnectionDataUnionMember73",
     "ConnectionDataUnionMember74",
+    "ConnectionDataUnionMember75",
+    "ConnectionDataUnionMember76",
+    "ConnectionDataUnionMember77",
+    "ConnectionDataUnionMember78",
+    "ConnectionDataUnionMember79",
+    "ConnectionDataUnionMember80",
     "Experimental",
     "ExperimentalACLConfigForShared",
 ]
@@ -1148,9 +1154,15 @@ class ConnectionDataUnionMember17(  # type: ignore[call-arg]
 
     account_url: str
 
+    api_key: str
+
     api_url: str
 
     base_url: str
+
+    basic_encoded: str
+
+    bearer_token: str
 
     borneo_dashboard_url: str
 
@@ -1163,6 +1175,8 @@ class ConnectionDataUnionMember17(  # type: ignore[call-arg]
     extension: str
 
     form_api_base_url: str
+
+    generic_api_key: str
 
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
@@ -1244,8 +1258,6 @@ class ConnectionDataUnionMember19(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    username: Required[str]
-
     account_id: str
 
     account_url: str
@@ -1269,8 +1281,6 @@ class ConnectionDataUnionMember19(  # type: ignore[call-arg]
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    password: str
 
     proxy_password: str
 
@@ -1298,6 +1308,56 @@ class ConnectionDataUnionMember20(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember21(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
     username: Required[str]
 
     account_id: str
@@ -1347,61 +1407,13 @@ class ConnectionDataUnionMember20(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember21(  # type: ignore[call-arg]
-    TypedDict,
-    total=False,
-    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
-):
-    account_id: str
-
-    account_url: str
-
-    api_url: str
-
-    base_url: str
-
-    borneo_dashboard_url: str
-
-    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    dc: str
-
-    domain: str
-
-    extension: str
-
-    form_api_base_url: str
-
-    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
-
-    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    proxy_password: str
-
-    proxy_username: str
-
-    region: str
-
-    server_location: str
-
-    shop: str
-
-    site_name: str
-
-    subdomain: str
-
-    version: str
-
-    your_server: str
-
-    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
-
-
 class ConnectionDataUnionMember22(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    username: Required[str]
+
     account_id: str
 
     account_url: str
@@ -1425,6 +1437,8 @@ class ConnectionDataUnionMember22(  # type: ignore[call-arg]
     instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    password: str
 
     proxy_password: str
 
@@ -1452,8 +1466,6 @@ class ConnectionDataUnionMember23(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    token: Required[str]
-
     account_id: str
 
     account_url: str
@@ -1469,6 +1481,8 @@ class ConnectionDataUnionMember23(  # type: ignore[call-arg]
     dc: str
 
     domain: str
+
+    expired_at: str
 
     extension: str
 
@@ -1504,8 +1518,6 @@ class ConnectionDataUnionMember24(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    token: Required[str]
-
     account_id: str
 
     account_url: str
@@ -1606,7 +1618,7 @@ class ConnectionDataUnionMember26(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
+    token: Required[str]
 
     account_id: str
 
@@ -1619,8 +1631,6 @@ class ConnectionDataUnionMember26(  # type: ignore[call-arg]
     borneo_dashboard_url: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    composio_link_redirect_url: str
 
     dc: str
 
@@ -1660,7 +1670,7 @@ class ConnectionDataUnionMember27(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    credentials_json: Required[str]
+    token: Required[str]
 
     account_id: str
 
@@ -1712,8 +1722,6 @@ class ConnectionDataUnionMember28(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    credentials_json: Required[str]
-
     account_id: str
 
     account_url: str
@@ -1814,6 +1822,8 @@ class ConnectionDataUnionMember30(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
+
     account_id: str
 
     account_url: str
@@ -1825,6 +1835,8 @@ class ConnectionDataUnionMember30(  # type: ignore[call-arg]
     borneo_dashboard_url: str
 
     companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    composio_link_redirect_url: str
 
     dc: str
 
@@ -1864,6 +1876,8 @@ class ConnectionDataUnionMember31(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    credentials_json: Required[str]
+
     account_id: str
 
     account_url: str
@@ -1914,6 +1928,8 @@ class ConnectionDataUnionMember32(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    credentials_json: Required[str]
+
     account_id: str
 
     account_url: str
@@ -1980,9 +1996,7 @@ class ConnectionDataUnionMember33(  # type: ignore[call-arg]
 
     domain: str
 
-    error: str
-
-    error_description: str
+    expired_at: str
 
     extension: str
 
@@ -2033,8 +2047,6 @@ class ConnectionDataUnionMember34(  # type: ignore[call-arg]
     dc: str
 
     domain: str
-
-    expired_at: str
 
     extension: str
 
@@ -2236,6 +2248,10 @@ class ConnectionDataUnionMember38(  # type: ignore[call-arg]
 
     domain: str
 
+    error: str
+
+    error_description: str
+
     extension: str
 
     form_api_base_url: str
@@ -2286,9 +2302,7 @@ class ConnectionDataUnionMember39(  # type: ignore[call-arg]
 
     domain: str
 
-    error: str
-
-    error_description: str
+    expired_at: str
 
     extension: str
 
@@ -2339,8 +2353,6 @@ class ConnectionDataUnionMember40(  # type: ignore[call-arg]
     dc: str
 
     domain: str
-
-    expired_at: str
 
     extension: str
 
@@ -2426,8 +2438,6 @@ class ConnectionDataUnionMember42(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
-
     account_id: str
 
     account_url: str
@@ -2478,10 +2488,6 @@ class ConnectionDataUnionMember43(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
-
-    session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
-
     account_id: str
 
     account_url: str
@@ -2532,10 +2538,6 @@ class ConnectionDataUnionMember44(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
-
-    session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
-
     account_id: str
 
     account_url: str
@@ -2551,6 +2553,10 @@ class ConnectionDataUnionMember44(  # type: ignore[call-arg]
     dc: str
 
     domain: str
+
+    error: str
+
+    error_description: str
 
     extension: str
 
@@ -2602,9 +2608,7 @@ class ConnectionDataUnionMember45(  # type: ignore[call-arg]
 
     domain: str
 
-    error: str
-
-    error_description: str
+    expired_at: str
 
     extension: str
 
@@ -2656,8 +2660,6 @@ class ConnectionDataUnionMember46(  # type: ignore[call-arg]
 
     domain: str
 
-    expired_at: str
-
     extension: str
 
     form_api_base_url: str
@@ -2692,6 +2694,8 @@ class ConnectionDataUnionMember47(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    redirect_url: Required[Annotated[str, PropertyInfo(alias="redirectUrl")]]
+
     account_id: str
 
     account_url: str
@@ -2742,6 +2746,10 @@ class ConnectionDataUnionMember48(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
+
+    session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
+
     account_id: str
 
     account_url: str
@@ -2792,9 +2800,9 @@ class ConnectionDataUnionMember49(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    password: Required[str]
+    dev_key: Required[Annotated[str, PropertyInfo(alias="devKey")]]
 
-    username: Required[str]
+    session_id: Required[Annotated[str, PropertyInfo(alias="sessionId")]]
 
     account_id: str
 
@@ -2846,64 +2854,6 @@ class ConnectionDataUnionMember50(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    password: Required[str]
-
-    username: Required[str]
-
-    account_id: str
-
-    account_url: str
-
-    api_url: str
-
-    base_url: str
-
-    borneo_dashboard_url: str
-
-    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    dc: str
-
-    domain: str
-
-    extension: str
-
-    form_api_base_url: str
-
-    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
-
-    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    proxy_password: str
-
-    proxy_username: str
-
-    region: str
-
-    server_location: str
-
-    shop: str
-
-    site_name: str
-
-    subdomain: str
-
-    version: str
-
-    your_server: str
-
-    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
-
-
-class ConnectionDataUnionMember51(  # type: ignore[call-arg]
-    TypedDict,
-    total=False,
-    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
-):
-    password: Required[str]
-
-    username: Required[str]
-
     account_id: str
 
     account_url: str
@@ -2953,15 +2903,11 @@ class ConnectionDataUnionMember51(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember52(  # type: ignore[call-arg]
+class ConnectionDataUnionMember51(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    password: Required[str]
-
-    username: Required[str]
-
     account_id: str
 
     account_url: str
@@ -2979,6 +2925,56 @@ class ConnectionDataUnionMember52(  # type: ignore[call-arg]
     domain: str
 
     expired_at: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember52(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
 
     extension: str
 
@@ -3064,6 +3060,10 @@ class ConnectionDataUnionMember54(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    password: Required[str]
+
+    username: Required[str]
+
     account_id: str
 
     account_url: str
@@ -3114,11 +3114,9 @@ class ConnectionDataUnionMember55(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    application_id: Required[str]
+    password: Required[str]
 
-    installation_id: Required[str]
-
-    private_key: Required[str]
+    username: Required[str]
 
     account_id: str
 
@@ -3170,11 +3168,9 @@ class ConnectionDataUnionMember56(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
-    application_id: Required[str]
+    password: Required[str]
 
-    installation_id: Required[str]
-
-    private_key: Required[str]
+    username: Required[str]
 
     account_id: str
 
@@ -3191,6 +3187,10 @@ class ConnectionDataUnionMember56(  # type: ignore[call-arg]
     dc: str
 
     domain: str
+
+    error: str
+
+    error_description: str
 
     extension: str
 
@@ -3241,6 +3241,8 @@ class ConnectionDataUnionMember57(  # type: ignore[call-arg]
     dc: str
 
     domain: str
+
+    expired_at: str
 
     extension: str
 
@@ -3376,6 +3378,12 @@ class ConnectionDataUnionMember60(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    application_id: Required[str]
+
+    installation_id: Required[str]
+
+    private_key: Required[str]
+
     account_id: str
 
     account_url: str
@@ -3426,6 +3434,12 @@ class ConnectionDataUnionMember61(  # type: ignore[call-arg]
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
 ):
+    application_id: Required[str]
+
+    installation_id: Required[str]
+
+    private_key: Required[str]
+
     account_id: str
 
     account_url: str
@@ -3441,10 +3455,6 @@ class ConnectionDataUnionMember61(  # type: ignore[call-arg]
     dc: str
 
     domain: str
-
-    error: str
-
-    error_description: str
 
     extension: str
 
@@ -3495,8 +3505,6 @@ class ConnectionDataUnionMember62(  # type: ignore[call-arg]
     dc: str
 
     domain: str
-
-    expired_at: str
 
     extension: str
 
@@ -3556,6 +3564,312 @@ class ConnectionDataUnionMember63(  # type: ignore[call-arg]
 
     instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
 
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember64(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember65(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember66(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember67(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    error: str
+
+    error_description: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember68(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expired_at: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember69(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
     long_redirect_url: bool
     """Whether to return the redirect url without shortening"""
 
@@ -3583,7 +3897,7 @@ class ConnectionDataUnionMember63(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember64(  # type: ignore[call-arg]
+class ConnectionDataUnionMember70(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -3657,7 +3971,7 @@ class ConnectionDataUnionMember64(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember65(  # type: ignore[call-arg]
+class ConnectionDataUnionMember71(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -3735,7 +4049,7 @@ class ConnectionDataUnionMember65(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember66(  # type: ignore[call-arg]
+class ConnectionDataUnionMember72(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -3813,7 +4127,7 @@ class ConnectionDataUnionMember66(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember67(  # type: ignore[call-arg]
+class ConnectionDataUnionMember73(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -3873,7 +4187,7 @@ class ConnectionDataUnionMember67(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember68(  # type: ignore[call-arg]
+class ConnectionDataUnionMember74(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -3931,7 +4245,7 @@ class ConnectionDataUnionMember68(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember69(  # type: ignore[call-arg]
+class ConnectionDataUnionMember75(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -3981,7 +4295,7 @@ class ConnectionDataUnionMember69(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember70(  # type: ignore[call-arg]
+class ConnectionDataUnionMember76(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -4031,71 +4345,7 @@ class ConnectionDataUnionMember70(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember71(  # type: ignore[call-arg]
-    TypedDict,
-    total=False,
-    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
-):
-    access_token: Required[str]
-
-    account_id: str
-
-    account_url: str
-
-    api_url: str
-
-    base_url: str
-
-    borneo_dashboard_url: str
-
-    client_id: str
-
-    client_secret: str
-
-    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
-
-    dc: str
-
-    domain: str
-
-    expires_at: str
-
-    expires_in: Union[float, str, None]
-
-    extension: str
-
-    form_api_base_url: str
-
-    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
-
-    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
-
-    proxy_password: str
-
-    proxy_username: str
-
-    region: str
-
-    scope: Union[str, SequenceNotStr[str], None]
-
-    server_location: str
-
-    shop: str
-
-    site_name: str
-
-    subdomain: str
-
-    token_type: str
-
-    version: str
-
-    your_server: str
-
-    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
-
-
-class ConnectionDataUnionMember72(  # type: ignore[call-arg]
+class ConnectionDataUnionMember77(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -4159,7 +4409,71 @@ class ConnectionDataUnionMember72(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember73(  # type: ignore[call-arg]
+class ConnectionDataUnionMember78(  # type: ignore[call-arg]
+    TypedDict,
+    total=False,
+    extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
+):
+    access_token: Required[str]
+
+    account_id: str
+
+    account_url: str
+
+    api_url: str
+
+    base_url: str
+
+    borneo_dashboard_url: str
+
+    client_id: str
+
+    client_secret: str
+
+    companydomain: Annotated[str, PropertyInfo(alias="COMPANYDOMAIN")]
+
+    dc: str
+
+    domain: str
+
+    expires_at: str
+
+    expires_in: Union[float, str, None]
+
+    extension: str
+
+    form_api_base_url: str
+
+    instance_endpoint: Annotated[str, PropertyInfo(alias="instanceEndpoint")]
+
+    instance_name: Annotated[str, PropertyInfo(alias="instanceName")]
+
+    proxy_password: str
+
+    proxy_username: str
+
+    region: str
+
+    scope: Union[str, SequenceNotStr[str], None]
+
+    server_location: str
+
+    shop: str
+
+    site_name: str
+
+    subdomain: str
+
+    token_type: str
+
+    version: str
+
+    your_server: str
+
+    your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
+
+
+class ConnectionDataUnionMember79(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -4213,7 +4527,7 @@ class ConnectionDataUnionMember73(  # type: ignore[call-arg]
     your_domain: Annotated[str, PropertyInfo(alias="your-domain")]
 
 
-class ConnectionDataUnionMember74(  # type: ignore[call-arg]
+class ConnectionDataUnionMember80(  # type: ignore[call-arg]
     TypedDict,
     total=False,
     extra_items=Optional[object],  # pyright: ignore[reportGeneralTypeIssues]
@@ -4341,6 +4655,12 @@ ConnectionData: TypeAlias = Union[
     ConnectionDataUnionMember72,
     ConnectionDataUnionMember73,
     ConnectionDataUnionMember74,
+    ConnectionDataUnionMember75,
+    ConnectionDataUnionMember76,
+    ConnectionDataUnionMember77,
+    ConnectionDataUnionMember78,
+    ConnectionDataUnionMember79,
+    ConnectionDataUnionMember80,
 ]
 
 

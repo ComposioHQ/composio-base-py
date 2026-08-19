@@ -108,7 +108,7 @@ class ToolRetrieveResponse(BaseModel):
 
     payload_received: Dict[str, Optional[object]] = FieldInfo(alias="payloadReceived")
 
-    response: Dict[str, Optional[object]]
+    response: Optional[Dict[str, Optional[object]]] = None
 
     session: Dict[str, Optional[object]]
 

@@ -62,5 +62,5 @@ class ToolListParams(TypedDict, total=False):
     """Toolkit version specification.
 
     Use "latest" for latest versions or bracket notation for specific versions per
-    toolkit.
+    toolkit. Defaults to the latest published version ("latest") when omitted.
     """

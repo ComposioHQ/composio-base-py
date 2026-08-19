@@ -3,6 +3,8 @@
 from typing import List, Optional
 from datetime import datetime
 
+from pydantic import Field as FieldInfo
+
 from ..._models import BaseModel
 
 __all__ = ["SessionToolkitsResponse", "Item", "ItemConnectedAccount", "ItemConnectedAccountAuthConfig", "ItemMeta"]
@@ -48,6 +50,12 @@ class ItemMeta(BaseModel):
 
     logo: str
     """URL to the toolkit logo"""
+
+    is_no_auth: Optional[bool] = FieldInfo(alias="isNoAuth", default=None)
+    """Duplicates the top-level is_no_auth field.
+
+    Kept for backward compatibility with existing readers; use is_no_auth instead.
+    """
 
 
 class Item(BaseModel):

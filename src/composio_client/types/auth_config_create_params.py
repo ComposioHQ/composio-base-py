@@ -12,13 +12,13 @@ __all__ = [
     "AuthConfigCreateParams",
     "Toolkit",
     "AuthConfig",
-    "AuthConfigUnionMember0",
-    "AuthConfigUnionMember0Credentials",
-    "AuthConfigUnionMember0ToolAccessConfig",
-    "AuthConfigUnionMember1",
-    "AuthConfigUnionMember1Credentials",
-    "AuthConfigUnionMember1ProxyConfig",
-    "AuthConfigUnionMember1ToolAccessConfig",
+    "AuthConfigComposioManagedAuthConfigCreate",
+    "AuthConfigComposioManagedAuthConfigCreateCredentials",
+    "AuthConfigComposioManagedAuthConfigCreateToolAccessConfig",
+    "AuthConfigCustomAuthConfigCreate",
+    "AuthConfigCustomAuthConfigCreateCredentials",
+    "AuthConfigCustomAuthConfigCreateProxyConfig",
+    "AuthConfigCustomAuthConfigCreateToolAccessConfig",
 ]
 
 
@@ -33,7 +33,7 @@ class Toolkit(TypedDict, total=False):
     """Toolkit slug to create auth config for"""
 
 
-class AuthConfigUnionMember0Credentials(TypedDict, total=False):
+class AuthConfigComposioManagedAuthConfigCreateCredentials(TypedDict, total=False):
     scopes: Union[str, SequenceNotStr[str]]
     """OAuth scopes requested for the managed auth config."""
 
@@ -44,7 +44,7 @@ class AuthConfigUnionMember0Credentials(TypedDict, total=False):
     """
 
 
-class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
+class AuthConfigComposioManagedAuthConfigCreateToolAccessConfig(TypedDict, total=False):
     tools_for_connected_account_creation: SequenceNotStr[str]
     """
     Tools used to generate the minimum required scopes for the auth config (only
@@ -52,10 +52,10 @@ class AuthConfigUnionMember0ToolAccessConfig(TypedDict, total=False):
     """
 
 
-class AuthConfigUnionMember0(TypedDict, total=False):
+class AuthConfigComposioManagedAuthConfigCreate(TypedDict, total=False):
     type: Required[Literal["use_composio_managed_auth"]]
 
-    credentials: AuthConfigUnionMember0Credentials
+    credentials: AuthConfigComposioManagedAuthConfigCreateCredentials
 
     is_enabled_for_tool_router: bool
     """Whether this auth config is enabled for tool router"""
@@ -72,10 +72,10 @@ class AuthConfigUnionMember0(TypedDict, total=False):
     accounts using this auth config
     """
 
-    tool_access_config: AuthConfigUnionMember0ToolAccessConfig
+    tool_access_config: AuthConfigComposioManagedAuthConfigCreateToolAccessConfig
 
 
-class AuthConfigUnionMember1Credentials(TypedDict, total=False):
+class AuthConfigCustomAuthConfigCreateCredentials(TypedDict, total=False):
     scopes: Union[str, SequenceNotStr[str]]
     """OAuth scopes requested for the custom auth config."""
 
@@ -86,7 +86,7 @@ class AuthConfigUnionMember1Credentials(TypedDict, total=False):
     """
 
 
-class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
+class AuthConfigCustomAuthConfigCreateProxyConfig(TypedDict, total=False):
     proxy_url: Required[str]
     """The url of the auth proxy"""
 
@@ -94,7 +94,7 @@ class AuthConfigUnionMember1ProxyConfig(TypedDict, total=False):
     """The auth key for the auth proxy"""
 
 
-class AuthConfigUnionMember1ToolAccessConfig(TypedDict, total=False):
+class AuthConfigCustomAuthConfigCreateToolAccessConfig(TypedDict, total=False):
     tools_for_connected_account_creation: SequenceNotStr[str]
     """
     Tools used to generate the minimum required scopes for the auth config (only
@@ -102,7 +102,7 @@ class AuthConfigUnionMember1ToolAccessConfig(TypedDict, total=False):
     """
 
 
-class AuthConfigUnionMember1(TypedDict, total=False):
+class AuthConfigCustomAuthConfigCreate(TypedDict, total=False):
     auth_scheme: Required[
         Annotated[
             Literal[
@@ -127,7 +127,7 @@ class AuthConfigUnionMember1(TypedDict, total=False):
 
     type: Required[Literal["use_custom_auth"]]
 
-    credentials: AuthConfigUnionMember1Credentials
+    credentials: AuthConfigCustomAuthConfigCreateCredentials
 
     is_enabled_for_tool_router: bool
     """Whether this auth config is enabled for tool router"""
@@ -135,10 +135,17 @@ class AuthConfigUnionMember1(TypedDict, total=False):
     name: str
     """The name of the integration"""
 
-    proxy_config: Optional[AuthConfigUnionMember1ProxyConfig]
+    proxy_config: Optional[AuthConfigCustomAuthConfigCreateProxyConfig]
 
     restrict_to_following_tools: SequenceNotStr[str]
     """Use tool_access_config instead. This field will be deprecated in the future."""
+
+    sealed_credentials: Dict[str, str]
+    """
+    [EXPERIMENTAL] Client-sealed secret fields to redeem through the organization
+    keyring instance (GET /api/v3.1/keyring/transfer_keys). The plaintext must not
+    also appear in credentials.
+    """
 
     shared_credentials: Dict[str, Optional[object]]
     """
@@ -146,7 +153,7 @@ class AuthConfigUnionMember1(TypedDict, total=False):
     accounts using this auth config
     """
 
-    tool_access_config: AuthConfigUnionMember1ToolAccessConfig
+    tool_access_config: AuthConfigCustomAuthConfigCreateToolAccessConfig
 
 
-AuthConfig: TypeAlias = Union[AuthConfigUnionMember0, AuthConfigUnionMember1]
+AuthConfig: TypeAlias = Union[AuthConfigComposioManagedAuthConfigCreate, AuthConfigCustomAuthConfigCreate]

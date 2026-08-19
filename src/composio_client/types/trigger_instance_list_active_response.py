@@ -41,7 +41,7 @@ class Item(BaseModel):
     Please use disabled_at instead.
     """
 
-    state: Dict[str, Optional[object]]
+    state: Optional[Dict[str, Optional[object]]] = None
     """
     DEPRECATED: This field exposes internal state and will be removed in a future
     version.
