@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 from typing import Dict, Iterable, Optional
-from typing_extensions import Required, TypedDict
+from typing_extensions import Literal, Required, TypedDict
 
 __all__ = [
     "SessionSearchParams",
@@ -28,6 +28,13 @@ class SessionSearchParams(TypedDict, total=False):
 
     model: str
     """Optional model hint for search/planning behavior (e.g., "gpt-4o")."""
+
+    search_strategy: Literal["auto", "tool_search"]
+    """Search path to use.
+
+    Defaults to auto. Use tool_search to bypass cached plans and run direct tool
+    search.
+    """
 
 
 class Query(TypedDict, total=False):

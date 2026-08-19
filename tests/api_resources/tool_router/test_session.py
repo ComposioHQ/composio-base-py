@@ -839,6 +839,7 @@ class TestSession:
                 ],
             },
             model="gpt-4o",
+            search_strategy="tool_search",
         )
         assert_matches_type(SessionSearchResponse, session, path=["response"])
 
@@ -1788,6 +1789,7 @@ class TestAsyncSession:
                 ],
             },
             model="gpt-4o",
+            search_strategy="tool_search",
         )
         assert_matches_type(SessionSearchResponse, session, path=["response"])
 

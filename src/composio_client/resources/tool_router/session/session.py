@@ -694,6 +694,7 @@ class SessionResource(SyncAPIResource):
         queries: Iterable[session_search_params.Query],
         experimental: session_search_params.Experimental | Omit = omit,
         model: str | Omit = omit,
+        search_strategy: Literal["auto", "tool_search"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -715,6 +716,9 @@ class SessionResource(SyncAPIResource):
 
           model: Optional model hint for search/planning behavior (e.g., "gpt-4o").
 
+          search_strategy: Search path to use. Defaults to auto. Use tool_search to bypass cached plans and
+              run direct tool search.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -732,6 +736,7 @@ class SessionResource(SyncAPIResource):
                     "queries": queries,
                     "experimental": experimental,
                     "model": model,
+                    "search_strategy": search_strategy,
                 },
                 session_search_params.SessionSearchParams,
             ),
@@ -1508,6 +1513,7 @@ class AsyncSessionResource(AsyncAPIResource):
         queries: Iterable[session_search_params.Query],
         experimental: session_search_params.Experimental | Omit = omit,
         model: str | Omit = omit,
+        search_strategy: Literal["auto", "tool_search"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1529,6 +1535,9 @@ class AsyncSessionResource(AsyncAPIResource):
 
           model: Optional model hint for search/planning behavior (e.g., "gpt-4o").
 
+          search_strategy: Search path to use. Defaults to auto. Use tool_search to bypass cached plans and
+              run direct tool search.
+
           extra_headers: Send extra headers
 
           extra_query: Add additional query parameters to the request
@@ -1546,6 +1555,7 @@ class AsyncSessionResource(AsyncAPIResource):
                     "queries": queries,
                     "experimental": experimental,
                     "model": model,
+                    "search_strategy": search_strategy,
                 },
                 session_search_params.SessionSearchParams,
             ),
